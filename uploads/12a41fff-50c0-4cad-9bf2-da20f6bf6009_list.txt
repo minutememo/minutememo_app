@@ -1,2 +1,0 @@
-file 'uploads/12a41fff-50c0-4cad-9bf2-da20f6bf6009_chunk_0.webm'
-file 'uploads/12a41fff-50c0-4cad-9bf2-da20f6bf6009_chunk_1.webm'

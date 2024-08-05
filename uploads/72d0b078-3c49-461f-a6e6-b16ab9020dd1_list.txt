@@ -1,6 +1,0 @@
-file '/Users/gaetanbuelinckx/minutememo_app/uploads/72d0b078-3c49-461f-a6e6-b16ab9020dd1.webm'
-file '/Users/gaetanbuelinckx/minutememo_app/uploads/72d0b078-3c49-461f-a6e6-b16ab9020dd1_chunk_0.webm'
-file '/Users/gaetanbuelinckx/minutememo_app/uploads/72d0b078-3c49-461f-a6e6-b16ab9020dd1_chunk_1.webm'
-file '/Users/gaetanbuelinckx/minutememo_app/uploads/72d0b078-3c49-461f-a6e6-b16ab9020dd1_chunk_2.webm'
-file '/Users/gaetanbuelinckx/minutememo_app/uploads/72d0b078-3c49-461f-a6e6-b16ab9020dd1_chunk_3.webm'
-file '/Users/gaetanbuelinckx/minutememo_app/uploads/72d0b078-3c49-461f-a6e6-b16ab9020dd1_chunk_4.webm'

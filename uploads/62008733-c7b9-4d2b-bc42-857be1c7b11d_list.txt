@@ -1,3 +1,0 @@
-file '/Users/gaetanbuelinckx/minutememo_app/uploads/62008733-c7b9-4d2b-bc42-857be1c7b11d_chunk_0.webm'
-file '/Users/gaetanbuelinckx/minutememo_app/uploads/62008733-c7b9-4d2b-bc42-857be1c7b11d_chunk_1.webm'
-file '/Users/gaetanbuelinckx/minutememo_app/uploads/62008733-c7b9-4d2b-bc42-857be1c7b11d_chunk_2.webm'
