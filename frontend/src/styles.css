@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+html, body, #root, .container-fluid, .row {
+  height: 100%;
+  margin: 0; /* Ensure no margin causes overflow */
+  padding: 0; /* Ensure no padding causes overflow */
+  font-family: 'Montserrat', sans-serif;
+}
+
+.sidebar {
+  padding: 20px;
+  background-color: #F7F5EF; /* Light gray background for the sidebar */
+  transition: width 0.3s;
+  width: 250px;
+  position: relative; /* Add relative positioning */
+}
+
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.sidebar .nav-link {
+  display: flex;
+  align-items: center;
+  overflow: hidden; /* Ensure content doesn't overflow */
+  color: #18A04F;
+}
+
+.sidebar .nav-link .icon {
+  margin-right: 10px;
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.sidebar.collapsed .nav-link .link-text {
+  display: none;
+}
+
+.sidebar.collapsed .nav-link::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 100%;
+  white-space: nowrap;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  transform: translateX(-10px);
+}
+
+.sidebar.collapsed .nav-link:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.sidebar .nav-link:hover {
+  background-color: #18A04F;
+  color: #fff;
+}
+
+.content {
+  padding: 20px;
+  height: calc(100% - 56px); /* Adjust for the height of the navbar */
+  overflow-y: auto;
+  background-color: #FDFDFC; /* White background for the content area */
+}
+
+.navbar, .btn-outline-success {
+  background-color: #18A04F !important;
+  border-color: #18A04F !important;
+}
+
+.btn-outline-success {
+  color: #fff;
+}
+
+.navbar-brand {
+  font-weight: 600; /* Bold font weight for the brand */
+}
+
+.nav-link {
+  color: #18A04F;
+}
+
+.nav-link.active {
+  font-weight: bold;
+}
+/* src/styles.css */
+
+.dashboard {
+  padding: 20px;
+}
+
+.dashboard h2 {
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+audio {
+  width: 100%;
+  max-width: 200px;
+}
+
+.error {
+  color: red;
+  margin-bottom: 20px;
+}
