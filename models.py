@@ -1,13 +1,12 @@
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
+#models
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin
+from .extensions import db
+import uuid
+from sqlalchemy.dialects.postgresql import UUID
+from datetime import datetime
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://username:password@localhost/minutememo_app_db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
 
 class Company(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -20,11 +19,10 @@ class Company(db.Model):
     phone_number = db.Column(db.String(20))
     users = db.relationship('User', backref='company', lazy=True)
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(64), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    password_hash = db.Column(db.String(128), nullable=False)
+    password_hash = db.Column(db.String(512), nullable=False)
     first_name = db.Column(db.String(64))
     last_name = db.Column(db.String(64))
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
@@ -34,6 +32,11 @@ class User(db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
-
-if __name__ == '__main__':
-    app.run(debug=True)
+    
+class Recording(db.Model):
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, unique=True, nullable=False)
+    file_name = db.Column(db.String(256), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    concatenation_status = db.Column(db.String(10), nullable=False)
+    concatenation_file_name = db.Column(db.String(256), nullable=False)

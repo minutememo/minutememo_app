@@ -1,17 +1,52 @@
-from flask import Flask, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
+#app.py
+import os
+import sys
+from flask import Flask, request, jsonify, session, g
 from flask_cors import CORS
 from flask_migrate import Migrate
+from flask_login import LoginManager, login_required, current_user
 from dotenv import load_dotenv
-import os
+from datetime import timedelta
 import re
+from logging.handlers import RotatingFileHandler
+import logging
+from .extensions import db  # Import db from extensions.py
+from .models import Recording, User
+from .auth import auth
+from datetime import timedelta
 
-db = SQLAlchemy()
+# Initialize login manager
+login_manager = LoginManager()
+
+# Setup logging
+logging.basicConfig(filename='app.log', level=logging.DEBUG, 
+                    format='%(asctime)s %(levelname)s: %(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S')
+
+log_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+# Log to file with rotation
+file_handler = RotatingFileHandler('app.log', maxBytes=100000, backupCount=10)
+file_handler.setFormatter(log_formatter)
+file_handler.setLevel(logging.DEBUG)
+
+# Log to console
+console_handler = logging.StreamHandler()
+console_handler.setFormatter(log_formatter)
+console_handler.setLevel(logging.DEBUG)
+
+# Configure the root logger
+logging.getLogger().setLevel(logging.DEBUG)
+logging.getLogger().addHandler(file_handler)
+logging.getLogger().addHandler(console_handler)
+
 migrate = Migrate()
 
 def create_app():
     app = Flask(__name__)
-    CORS(app)
+    CORS(app, supports_credentials=True, resources={r"/*": {"origins": "http://localhost:3000"}})
+
+    logging.basicConfig(level=logging.DEBUG)
 
     # Load environment variables
     env = os.getenv('FLASK_ENV', 'development')
@@ -22,17 +57,68 @@ def create_app():
 
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL').replace("postgres://", "postgresql://")
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.secret_key = 'supersecretkey'  # Needed for session management
+    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)  # Session lifetime
+    app.config['REMEMBER_COOKIE_DURATION'] = timedelta(days=7)
+    app.config['REMEMBER_COOKIE_SECURE'] = env == 'production'  # True if using HTTPS in production
+    app.config['REMEMBER_COOKIE_HTTPONLY'] = True
+    app.config['SESSION_COOKIE_SECURE'] = env == 'production'  # True if using HTTPS in production
+    app.config['SESSION_COOKIE_HTTPONLY'] = True
+    app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'  # Prevent CSRF
 
-    # Print the database URL for verification
-    print(f"Database URL: {app.config['SQLALCHEMY_DATABASE_URI']}")
-
-    # Initialize extensions
     db.init_app(app)
     migrate.init_app(app, db)
+    login_manager.init_app(app)
 
-    # Register blueprints
+    login_manager.login_view = 'auth.login'
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User.query.get(int(user_id))
+
+    @app.before_request
+    def make_session_permanent():
+        session.permanent = True
+        session.modified = True  # Refresh session expiration time on each request
+        g.user = current_user
+
+    @app.route('/auth/status')
+    def status():
+        if current_user.is_authenticated:
+            return jsonify(logged_in=True, user={'email': current_user.email})
+        return jsonify(logged_in=False)
+
+    # Register the main blueprint
     from .routes import main as main_blueprint
     app.register_blueprint(main_blueprint)
+
+    # Register the auth blueprint
+    app.register_blueprint(auth, url_prefix='/auth')
+
+    # Simple test endpoint
+    @app.route('/test', methods=['GET'])
+    def test():
+        logging.info('Test endpoint hit')
+        return jsonify({"message": "Test endpoint is working"}), 200
+
+    @app.after_request
+    def after_request(response):
+        origin = request.headers.get('Origin')
+        
+        # Apply the Access-Control-Allow-Origin only once
+        if origin:
+            if request.path.startswith('/auth'):
+                # For login and authentication routes
+                response.headers['Access-Control-Allow-Origin'] = origin
+            else:
+                # For other routes, ensure not to duplicate
+                response.headers.setdefault('Access-Control-Allow-Origin', origin)
+        
+        response.headers['Access-Control-Allow-Credentials'] = 'true'
+        response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'
+        response.headers['Access-Control-Allow-Methods'] = 'GET,POST,PUT,DELETE,OPTIONS'
+        
+        return response
 
     return app
 
@@ -62,17 +148,19 @@ def concatenate_chunks(recording_id):
 
     return output_file
 
-# Route to handle chunk concatenation
-@app.route('/concatenate', methods=['POST'])
-def concatenate():
-    data = request.get_json()
-    recording_id = data['recording_id']
-    
-    # Call the concatenate_chunks function
-    output_file = concatenate_chunks(recording_id)
-    
-    return jsonify({'file_url': output_file})
+    # Route to handle chunk concatenation
+    @app.route('/concatenate', methods=['POST'])
+    def concatenate():
+        data = request.get_json()
+        recording_id = data['recording_id']
+        
+        # Call the concatenate_chunks function
+        output_file = concatenate_chunks(recording_id)
+        
+        return jsonify({'file_url': output_file})
 
+# The main entry point
 if __name__ == '__main__':
+    print(f"Starting Flask app from {__file__}")
     app = create_app()
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

@@ -1,0 +1,567 @@
+2024-08-13 23:41:52,416 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,422 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,426 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,431 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,435 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,440 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,444 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,449 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,454 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,459 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,464 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,468 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,473 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,477 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,482 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,487 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,491 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,496 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,501 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,505 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,510 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,516 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,521 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,526 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,530 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,535 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,540 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,544 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,549 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,554 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,559 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,564 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,568 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,573 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,578 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,582 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,586 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,591 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,595 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,599 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,604 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,608 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,613 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,620 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,625 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,629 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,633 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,637 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,641 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,645 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,648 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,652 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,656 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,660 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,664 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,669 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,673 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,677 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,682 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,686 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,690 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,694 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,699 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,703 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,708 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,712 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,716 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,720 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,725 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,729 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,734 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,739 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,743 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,748 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,752 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,757 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,761 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,767 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,771 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,776 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,780 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,784 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,788 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,792 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,796 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,799 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,803 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,807 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,812 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,817 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,821 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,825 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,843 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,851 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,857 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,862 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,870 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,875 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,879 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,885 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,889 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,894 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,898 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,901 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,905 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,910 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,914 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,918 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,922 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,926 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,930 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,935 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,940 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,944 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,949 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,953 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,958 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,962 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,966 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,971 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,975 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,979 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:52,989 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:52] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,008 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,013 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,020 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,025 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,029 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,034 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,038 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,042 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,047 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,051 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,055 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,059 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,063 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,067 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,071 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,076 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,080 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,086 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,092 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,104 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,108 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,112 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,117 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,122 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,126 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,131 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,135 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,140 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,144 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,148 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,152 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,157 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,189 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,194 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,198 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,202 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,208 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,212 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,217 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,222 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,226 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,230 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,234 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,238 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,243 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,247 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,251 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,255 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,259 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,263 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,266 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,271 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,276 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,280 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,285 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,289 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,293 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,297 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,301 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,305 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,309 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,313 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,319 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,323 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,327 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,336 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,341 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,345 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,349 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,353 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,357 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,362 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,367 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,372 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,376 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,381 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,385 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,390 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,394 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,399 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,404 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,409 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,413 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,419 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,424 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,428 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,432 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,436 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,440 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,446 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,450 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,454 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,458 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,463 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,467 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,471 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,476 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,480 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,484 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,488 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,492 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,496 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,500 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,505 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,509 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,513 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,520 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,525 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,529 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,535 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,540 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,544 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,549 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,553 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,557 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,561 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,565 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,569 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,573 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,577 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,581 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,585 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,590 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,595 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,599 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,604 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,613 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,618 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,622 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,627 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,636 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,641 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,646 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,650 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,654 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,659 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,663 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,669 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,674 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,678 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,682 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,686 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,691 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,696 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,702 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,709 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,714 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,719 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,725 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,730 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,735 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,741 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,747 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,753 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,760 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,766 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,772 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,777 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,782 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,787 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,791 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,796 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,802 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,807 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,811 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,816 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,821 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,826 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,830 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,834 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,838 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,843 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,847 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,851 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,856 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,860 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,865 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,870 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,875 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,880 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,884 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,889 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,894 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,899 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,904 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,910 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,920 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,925 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,931 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,936 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,959 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,970 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,975 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,985 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,990 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:41:53,995 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:41:53] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:42:02,809 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:42:02] "OPTIONS /auth/login HTTP/1.1" 200 -
+2024-08-13 23:42:02,886 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:42:02] "POST /auth/login HTTP/1.1" 200 -
+2024-08-13 23:42:02,929 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:42:02] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:42:02,932 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:42:02] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:42:05,999 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:42:05] "OPTIONS /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:42:06,017 - minutememo_app.app - INFO - Recording 317d5c2d-d3c9-4e66-8ffe-d85c00719d14 created for user 1
+2024-08-13 23:42:06,018 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:42:06] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
+2024-08-13 23:42:11,279 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:42:11] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-13 23:42:16,316 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:42:16] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-13 23:42:21,355 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:42:21] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-13 23:42:38,483 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:42:38] "OPTIONS /auth/login HTTP/1.1" 200 -
+2024-08-13 23:42:38,575 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:42:38] "POST /auth/login HTTP/1.1" 200 -
+2024-08-13 23:42:38,593 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:42:38] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:42:38,597 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:42:38] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:42:42,349 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:42:42] "OPTIONS /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:42:42,355 - minutememo_app.app - INFO - Recording 5376a4c0-7dea-4b9a-b7b4-70b14526f4d2 created for user 1
+2024-08-13 23:42:42,358 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:42:42] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
+2024-08-13 23:42:47,628 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:42:47] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-13 23:42:52,664 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:42:52] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-13 23:42:57,713 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:42:57] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-13 23:43:02,763 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:43:02] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-13 23:43:07,789 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:43:07] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-13 23:43:10,241 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:43:10] "OPTIONS /concatenate HTTP/1.1" 200 -
+2024-08-13 23:43:10,244 - minutememo_app.app - INFO - Received request to concatenate for recording_id: 5376a4c0-7dea-4b9a-b7b4-70b14526f4d2
+2024-08-13 23:43:10,252 - minutememo_app.app - INFO - Chunk files to concatenate: ['5376a4c0-7dea-4b9a-b7b4-70b14526f4d2_chunk_0.webm', '5376a4c0-7dea-4b9a-b7b4-70b14526f4d2_chunk_1.webm', '5376a4c0-7dea-4b9a-b7b4-70b14526f4d2_chunk_2.webm', '5376a4c0-7dea-4b9a-b7b4-70b14526f4d2_chunk_3.webm', '5376a4c0-7dea-4b9a-b7b4-70b14526f4d2_chunk_4.webm']
+2024-08-13 23:43:10,596 - minutememo_app.app - INFO - Concatenation successful: uploads/5376a4c0-7dea-4b9a-b7b4-70b14526f4d2.mp3
+2024-08-13 23:43:10,601 - minutememo_app.app - INFO - Database updated successfully for recording_id: 5376a4c0-7dea-4b9a-b7b4-70b14526f4d2
+2024-08-13 23:43:10,602 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:43:10] "POST /concatenate HTTP/1.1" 200 -
+2024-08-13 23:43:56,269 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:43:56] "OPTIONS /auth/login HTTP/1.1" 200 -
+2024-08-13 23:43:56,368 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:43:56] "POST /auth/login HTTP/1.1" 200 -
+2024-08-13 23:43:56,394 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:43:56] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:43:56,398 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:43:56] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:48:57,081 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:48:57] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:48:57,085 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:48:57] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:49:02,494 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:49:02] "OPTIONS /auth/login HTTP/1.1" 200 -
+2024-08-13 23:49:02,587 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:49:02] "POST /auth/login HTTP/1.1" 200 -
+2024-08-13 23:49:02,612 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:49:02] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:49:02,621 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:49:02] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:49:12,510 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:49:12] "OPTIONS /auth/login HTTP/1.1" 200 -
+2024-08-13 23:49:12,604 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:49:12] "POST /auth/login HTTP/1.1" 200 -
+2024-08-13 23:49:12,625 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:49:12] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:49:12,631 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:49:12] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:52:32,089 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:52:32] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:52:32,089 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:52:32] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:52:32,093 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:52:32] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:52:32,093 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:52:32] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:52:32,099 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:52:32] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:52:32,103 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:52:32] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:52:35,631 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:52:35] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:52:35,635 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:52:35] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:52:40,143 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:52:40] "OPTIONS /auth/login HTTP/1.1" 200 -
+2024-08-13 23:52:40,233 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:52:40] "POST /auth/login HTTP/1.1" 200 -
+2024-08-13 23:52:40,258 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:52:40] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:52:40,264 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:52:40] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:52:42,206 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:52:42] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:52:42,214 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:52:42] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:52:48,320 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:52:48] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:52:48,323 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:52:48] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:52:59,559 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:52:59] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:52:59,561 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:52:59] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:53:05,122 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:53:05] "OPTIONS /auth/login HTTP/1.1" 200 -
+2024-08-13 23:53:05,213 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:53:05] "POST /auth/login HTTP/1.1" 200 -
+2024-08-13 23:53:05,238 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:53:05] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:53:05,242 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:53:05] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:53:10,062 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:53:10] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:53:10,066 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:53:10] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:56:59,849 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:56:59] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:56:59,854 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:56:59] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:57:00,087 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:57:00] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:57:00,087 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:57:00] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:57:00,092 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:57:00] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:57:00,092 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:57:00] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:57:59,087 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:57:59] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:57:59,096 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:57:59] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:58:00,875 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:58:00] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:58:00,878 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:58:00] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:58:01,668 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:58:01] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:58:01,672 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:58:01] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:58:02,520 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:58:02] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:58:02,527 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:58:02] "GET /auth/status HTTP/1.1" 200 -
+2024-08-13 23:58:15,455 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:58:15] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:58:15,461 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:58:15] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:58:18,318 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:58:18] "OPTIONS /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:58:18,325 - minutememo_app.app - INFO - Recording f91fe370-8a18-44ab-bcaa-bd4b76a2fc7e created for user 1
+2024-08-13 23:58:18,326 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:58:18] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
+2024-08-13 23:58:23,595 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:58:23] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-13 23:58:28,635 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:58:28] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-13 23:58:33,678 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:58:33] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-13 23:58:38,720 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:58:38] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-13 23:58:43,761 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:58:43] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-13 23:58:48,140 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:58:48] "OPTIONS /concatenate HTTP/1.1" 200 -
+2024-08-13 23:58:48,168 - minutememo_app.app - INFO - Received request to concatenate for recording_id: f91fe370-8a18-44ab-bcaa-bd4b76a2fc7e
+2024-08-13 23:58:48,182 - minutememo_app.app - INFO - Chunk files to concatenate: ['f91fe370-8a18-44ab-bcaa-bd4b76a2fc7e_chunk_0.webm', 'f91fe370-8a18-44ab-bcaa-bd4b76a2fc7e_chunk_1.webm', 'f91fe370-8a18-44ab-bcaa-bd4b76a2fc7e_chunk_2.webm', 'f91fe370-8a18-44ab-bcaa-bd4b76a2fc7e_chunk_3.webm', 'f91fe370-8a18-44ab-bcaa-bd4b76a2fc7e_chunk_4.webm']
+2024-08-13 23:58:48,432 - minutememo_app.app - INFO - Concatenation successful: uploads/f91fe370-8a18-44ab-bcaa-bd4b76a2fc7e.mp3
+2024-08-13 23:58:48,436 - minutememo_app.app - INFO - Database updated successfully for recording_id: f91fe370-8a18-44ab-bcaa-bd4b76a2fc7e
+2024-08-13 23:58:48,437 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:58:48] "POST /concatenate HTTP/1.1" 200 -
+2024-08-13 23:58:56,739 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:58:56] "OPTIONS /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:58:56,747 - minutememo_app.app - INFO - Recording d977cb57-d027-4f4d-a12b-d76b18cced84 created for user 1
+2024-08-13 23:58:56,748 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:58:56] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
+2024-08-13 23:59:02,020 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:59:02] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-13 23:59:02,824 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:59:02] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:59:02,828 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:59:02] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:59:07,057 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:59:07] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-13 23:59:09,719 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:59:09] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:59:09,724 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:59:09] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-13 23:59:12,105 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:59:12] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-13 23:59:13,694 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:59:13] "OPTIONS /concatenate HTTP/1.1" 200 -
+2024-08-13 23:59:13,704 - minutememo_app.app - INFO - Received request to concatenate for recording_id: d977cb57-d027-4f4d-a12b-d76b18cced84
+2024-08-13 23:59:13,707 - minutememo_app.app - INFO - Chunk files to concatenate: ['d977cb57-d027-4f4d-a12b-d76b18cced84_chunk_0.webm', 'd977cb57-d027-4f4d-a12b-d76b18cced84_chunk_1.webm', 'd977cb57-d027-4f4d-a12b-d76b18cced84_chunk_2.webm']
+2024-08-13 23:59:13,927 - minutememo_app.app - INFO - Concatenation successful: uploads/d977cb57-d027-4f4d-a12b-d76b18cced84.mp3
+2024-08-13 23:59:13,935 - minutememo_app.app - INFO - Database updated successfully for recording_id: d977cb57-d027-4f4d-a12b-d76b18cced84
+2024-08-13 23:59:13,935 - werkzeug - INFO - 127.0.0.1 - - [13/Aug/2024 23:59:13] "POST /concatenate HTTP/1.1" 200 -
+2024-08-14 14:37:24,713 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:37:24] "GET /auth/status HTTP/1.1" 200 -
+2024-08-14 14:37:24,716 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:37:24] "GET /auth/status HTTP/1.1" 200 -
+2024-08-14 14:37:35,904 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:37:35] "[32mGET /api/recordings HTTP/1.1[0m" 302 -
+2024-08-14 14:37:35,905 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:37:35] "GET /auth/status HTTP/1.1" 200 -
+2024-08-14 14:37:35,907 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:37:35] "[32mGET /api/recordings HTTP/1.1[0m" 302 -
+2024-08-14 14:37:35,908 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:37:35] "GET /auth/status HTTP/1.1" 200 -
+2024-08-14 14:37:35,925 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:37:35] "[31m[1mGET /auth/login?next=/api/recordings HTTP/1.1[0m" 405 -
+2024-08-14 14:37:35,931 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:37:35] "[31m[1mGET /auth/login?next=/api/recordings HTTP/1.1[0m" 405 -
+2024-08-14 14:37:40,961 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:37:40] "GET /auth/status HTTP/1.1" 200 -
+2024-08-14 14:37:40,964 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:37:40] "GET /auth/status HTTP/1.1" 200 -
+2024-08-14 14:37:46,155 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:37:46] "OPTIONS /auth/login HTTP/1.1" 200 -
+2024-08-14 14:37:46,251 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:37:46] "POST /auth/login HTTP/1.1" 200 -
+2024-08-14 14:37:46,276 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:37:46] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-14 14:37:46,280 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:37:46] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-14 14:37:50,471 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:37:50] "OPTIONS /api/recordings HTTP/1.1" 200 -
+2024-08-14 14:37:50,480 - minutememo_app.app - INFO - Recording f477d842-f89c-4d2f-85d7-422ff0568c48 created for user 1
+2024-08-14 14:37:50,481 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:37:50] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
+2024-08-14 14:37:55,771 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:37:55] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-14 14:38:00,807 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:38:00] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-14 14:38:05,844 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:38:05] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-14 14:38:10,890 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:38:10] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-14 14:38:15,927 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:38:15] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-14 14:38:20,965 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:38:20] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-14 14:38:26,008 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:38:26] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-14 14:38:31,070 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:38:31] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-14 14:38:36,089 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:38:36] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-14 14:38:41,123 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:38:41] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-14 14:38:46,164 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:38:46] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-14 14:38:51,210 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:38:51] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-14 14:38:56,252 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:38:56] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-14 14:38:57,146 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:38:57] "OPTIONS /concatenate HTTP/1.1" 200 -
+2024-08-14 14:38:57,149 - minutememo_app.app - INFO - Received request to concatenate for recording_id: f477d842-f89c-4d2f-85d7-422ff0568c48
+2024-08-14 14:38:57,152 - minutememo_app.app - INFO - Chunk files to concatenate: ['f477d842-f89c-4d2f-85d7-422ff0568c48_chunk_0.webm', 'f477d842-f89c-4d2f-85d7-422ff0568c48_chunk_1.webm', 'f477d842-f89c-4d2f-85d7-422ff0568c48_chunk_2.webm', 'f477d842-f89c-4d2f-85d7-422ff0568c48_chunk_3.webm', 'f477d842-f89c-4d2f-85d7-422ff0568c48_chunk_4.webm', 'f477d842-f89c-4d2f-85d7-422ff0568c48_chunk_5.webm', 'f477d842-f89c-4d2f-85d7-422ff0568c48_chunk_6.webm', 'f477d842-f89c-4d2f-85d7-422ff0568c48_chunk_7.webm', 'f477d842-f89c-4d2f-85d7-422ff0568c48_chunk_8.webm', 'f477d842-f89c-4d2f-85d7-422ff0568c48_chunk_9.webm', 'f477d842-f89c-4d2f-85d7-422ff0568c48_chunk_10.webm', 'f477d842-f89c-4d2f-85d7-422ff0568c48_chunk_11.webm', 'f477d842-f89c-4d2f-85d7-422ff0568c48_chunk_12.webm']
+2024-08-14 14:38:58,206 - minutememo_app.app - INFO - Concatenation successful: uploads/f477d842-f89c-4d2f-85d7-422ff0568c48.mp3
+2024-08-14 14:38:58,211 - minutememo_app.app - INFO - Database updated successfully for recording_id: f477d842-f89c-4d2f-85d7-422ff0568c48
+2024-08-14 14:38:58,212 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:38:58] "POST /concatenate HTTP/1.1" 200 -
+2024-08-14 14:39:29,112 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:39:29] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-14 14:39:29,118 - werkzeug - INFO - 127.0.0.1 - - [14/Aug/2024 14:39:29] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-15 23:47:00,200 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:00] "GET /auth/status HTTP/1.1" 200 -
+2024-08-15 23:47:00,201 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:00] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-15 23:47:00,217 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:00] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-15 23:47:00,217 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:00] "GET /auth/status HTTP/1.1" 200 -
+2024-08-15 23:47:05,200 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:05] "GET /auth/status HTTP/1.1" 200 -
+2024-08-15 23:47:05,201 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:05] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-15 23:47:05,205 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:05] "GET /auth/status HTTP/1.1" 200 -
+2024-08-15 23:47:05,205 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:05] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-15 23:47:06,944 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:06] "OPTIONS /api/recordings HTTP/1.1" 200 -
+2024-08-15 23:47:06,961 - minutememo_app.app - INFO - Recording e1c1e6d2-c16d-4eb4-aacd-32a33d98f4c1 created for user 1
+2024-08-15 23:47:06,962 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:06] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
+2024-08-15 23:47:12,300 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:12] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-15 23:47:16,286 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:16] "OPTIONS /concatenate HTTP/1.1" 200 -
+2024-08-15 23:47:16,302 - minutememo_app.app - INFO - Received request to concatenate for recording_id: e1c1e6d2-c16d-4eb4-aacd-32a33d98f4c1
+2024-08-15 23:47:16,316 - minutememo_app.app - INFO - Chunk files to concatenate: ['e1c1e6d2-c16d-4eb4-aacd-32a33d98f4c1_chunk_0.webm']
+2024-08-15 23:47:16,992 - minutememo_app.app - INFO - Concatenation successful: uploads/e1c1e6d2-c16d-4eb4-aacd-32a33d98f4c1.mp3
+2024-08-15 23:47:16,995 - minutememo_app.app - INFO - Database updated successfully for recording_id: e1c1e6d2-c16d-4eb4-aacd-32a33d98f4c1
+2024-08-15 23:47:16,997 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:16] "POST /concatenate HTTP/1.1" 200 -
+2024-08-15 23:47:20,963 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:20] "GET /auth/status HTTP/1.1" 200 -
+2024-08-15 23:47:20,966 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:20] "GET /auth/status HTTP/1.1" 200 -
+2024-08-15 23:47:22,370 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:22] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-15 23:47:22,380 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:22] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-15 23:47:25,410 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:25] "GET /auth/status HTTP/1.1" 200 -
+2024-08-15 23:47:25,410 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:25] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-15 23:47:25,415 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:25] "GET /auth/status HTTP/1.1" 200 -
+2024-08-15 23:47:25,415 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:25] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-15 23:47:32,846 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:32] "GET /auth/status HTTP/1.1" 200 -
+2024-08-15 23:47:32,849 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:32] "GET /auth/status HTTP/1.1" 200 -
+2024-08-15 23:47:38,242 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:38] "OPTIONS /api/recordings HTTP/1.1" 200 -
+2024-08-15 23:47:38,253 - minutememo_app.app - INFO - Recording a6664d21-a0cd-44da-9da2-5682425a96ad created for user 1
+2024-08-15 23:47:38,255 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:38] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
+2024-08-15 23:47:43,515 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:43] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-15 23:47:48,556 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:48] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-15 23:47:53,603 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:53] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-15 23:47:58,636 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:47:58] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-15 23:48:03,673 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:48:03] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-15 23:48:08,716 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:48:08] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-15 23:48:13,756 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:48:13] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-15 23:48:17,349 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:48:17] "OPTIONS /concatenate HTTP/1.1" 200 -
+2024-08-15 23:48:17,363 - minutememo_app.app - INFO - Received request to concatenate for recording_id: a6664d21-a0cd-44da-9da2-5682425a96ad
+2024-08-15 23:48:17,366 - minutememo_app.app - INFO - Chunk files to concatenate: ['a6664d21-a0cd-44da-9da2-5682425a96ad_chunk_0.webm', 'a6664d21-a0cd-44da-9da2-5682425a96ad_chunk_1.webm', 'a6664d21-a0cd-44da-9da2-5682425a96ad_chunk_2.webm', 'a6664d21-a0cd-44da-9da2-5682425a96ad_chunk_3.webm', 'a6664d21-a0cd-44da-9da2-5682425a96ad_chunk_4.webm', 'a6664d21-a0cd-44da-9da2-5682425a96ad_chunk_5.webm', 'a6664d21-a0cd-44da-9da2-5682425a96ad_chunk_6.webm']
+2024-08-15 23:48:17,866 - minutememo_app.app - INFO - Concatenation successful: uploads/a6664d21-a0cd-44da-9da2-5682425a96ad.mp3
+2024-08-15 23:48:17,869 - minutememo_app.app - INFO - Database updated successfully for recording_id: a6664d21-a0cd-44da-9da2-5682425a96ad
+2024-08-15 23:48:17,870 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2024 23:48:17] "POST /concatenate HTTP/1.1" 200 -
+2024-08-16 07:23:59,165 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 07:23:59] "GET /auth/status HTTP/1.1" 200 -
+2024-08-16 07:23:59,171 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 07:23:59] "GET /auth/status HTTP/1.1" 200 -
+2024-08-16 07:35:06,627 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 07:35:06] "GET /auth/status HTTP/1.1" 200 -
+2024-08-16 07:35:06,635 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 07:35:06] "GET /auth/status HTTP/1.1" 200 -
+2024-08-16 07:35:14,955 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 07:35:14] "GET /auth/status HTTP/1.1" 200 -
+2024-08-16 07:35:14,960 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 07:35:14] "GET /auth/status HTTP/1.1" 200 -
+2024-08-16 07:35:14,974 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 07:35:14] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-16 07:35:14,980 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 07:35:14] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-16 13:54:23,831 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:54:23] "GET /auth/status HTTP/1.1" 200 -
+2024-08-16 13:54:23,958 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:54:23] "GET /auth/status HTTP/1.1" 200 -
+2024-08-16 13:54:23,959 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:54:23] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-16 13:54:23,974 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:54:23] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-16 13:54:50 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-16 13:54:50,160 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-16 13:54:50 INFO: [33mPress CTRL+C to quit[0m
+2024-08-16 13:54:50,160 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-08-16 13:54:59 INFO: 127.0.0.1 - - [16/Aug/2024 13:54:59] "OPTIONS / HTTP/1.1" 200 -
+2024-08-16 13:54:59,129 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:54:59] "OPTIONS / HTTP/1.1" 200 -
+2024-08-16 13:54:59 INFO: 127.0.0.1 - - [16/Aug/2024 13:54:59] "[32mGET / HTTP/1.1[0m" 302 -
+2024-08-16 13:54:59,142 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:54:59] "[32mGET / HTTP/1.1[0m" 302 -
+2024-08-16 13:54:59 INFO: 127.0.0.1 - - [16/Aug/2024 13:54:59] "OPTIONS /auth/login?next=/ HTTP/1.1" 200 -
+2024-08-16 13:54:59,145 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:54:59] "OPTIONS /auth/login?next=/ HTTP/1.1" 200 -
+2024-08-16 13:54:59 INFO: 127.0.0.1 - - [16/Aug/2024 13:54:59] "[31m[1mGET /auth/login?next=/ HTTP/1.1[0m" 405 -
+2024-08-16 13:54:59,148 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:54:59] "[31m[1mGET /auth/login?next=/ HTTP/1.1[0m" 405 -
+2024-08-16 13:55:02 INFO: 127.0.0.1 - - [16/Aug/2024 13:55:02] "GET /auth/status HTTP/1.1" 200 -
+2024-08-16 13:55:02,962 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:55:02] "GET /auth/status HTTP/1.1" 200 -
+2024-08-16 13:55:02 INFO: 127.0.0.1 - - [16/Aug/2024 13:55:02] "GET /auth/status HTTP/1.1" 200 -
+2024-08-16 13:55:02,965 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:55:02] "GET /auth/status HTTP/1.1" 200 -
+2024-08-16 13:55:02 INFO: 127.0.0.1 - - [16/Aug/2024 13:55:02] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-16 13:55:02,967 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:55:02] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-16 13:55:02 INFO: 127.0.0.1 - - [16/Aug/2024 13:55:02] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-16 13:55:02,971 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:55:02] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-16 13:55:05 INFO: 127.0.0.1 - - [16/Aug/2024 13:55:05] "[32mGET /auth/logout HTTP/1.1[0m" 302 -
+2024-08-16 13:55:05,995 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:55:05] "[32mGET /auth/logout HTTP/1.1[0m" 302 -
+2024-08-16 13:55:06 INFO: 127.0.0.1 - - [16/Aug/2024 13:55:06] "[31m[1mGET /auth/login HTTP/1.1[0m" 405 -
+2024-08-16 13:55:06,006 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:55:06] "[31m[1mGET /auth/login HTTP/1.1[0m" 405 -
+2024-08-16 13:55:09 INFO: 127.0.0.1 - - [16/Aug/2024 13:55:09] "GET /auth/status HTTP/1.1" 200 -
+2024-08-16 13:55:09,336 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:55:09] "GET /auth/status HTTP/1.1" 200 -
+2024-08-16 13:55:09 INFO: 127.0.0.1 - - [16/Aug/2024 13:55:09] "GET /auth/status HTTP/1.1" 200 -
+2024-08-16 13:55:09,338 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:55:09] "GET /auth/status HTTP/1.1" 200 -
+2024-08-16 13:55:12 INFO: 127.0.0.1 - - [16/Aug/2024 13:55:12] "GET /auth/status HTTP/1.1" 200 -
+2024-08-16 13:55:12,617 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:55:12] "GET /auth/status HTTP/1.1" 200 -
+2024-08-16 13:55:12 INFO: 127.0.0.1 - - [16/Aug/2024 13:55:12] "GET /auth/status HTTP/1.1" 200 -
+2024-08-16 13:55:12,619 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:55:12] "GET /auth/status HTTP/1.1" 200 -
+2024-08-16 13:55:17 INFO: 127.0.0.1 - - [16/Aug/2024 13:55:17] "OPTIONS /auth/login HTTP/1.1" 200 -
+2024-08-16 13:55:17,668 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:55:17] "OPTIONS /auth/login HTTP/1.1" 200 -
+2024-08-16 13:55:17 INFO: 127.0.0.1 - - [16/Aug/2024 13:55:17] "POST /auth/login HTTP/1.1" 200 -
+2024-08-16 13:55:17,766 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:55:17] "POST /auth/login HTTP/1.1" 200 -
+2024-08-16 13:55:17 INFO: 127.0.0.1 - - [16/Aug/2024 13:55:17] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-16 13:55:17,791 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:55:17] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-16 13:55:17 INFO: 127.0.0.1 - - [16/Aug/2024 13:55:17] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-16 13:55:17,799 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:55:17] "GET /api/recordings HTTP/1.1" 200 -
