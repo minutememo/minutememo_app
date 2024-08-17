@@ -565,3 +565,55 @@
 2024-08-16 13:55:17,791 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:55:17] "GET /api/recordings HTTP/1.1" 200 -
 2024-08-16 13:55:17 INFO: 127.0.0.1 - - [16/Aug/2024 13:55:17] "GET /api/recordings HTTP/1.1" 200 -
 2024-08-16 13:55:17,799 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2024 13:55:17] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-17 07:10:53 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-17 07:10:53,261 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-17 07:10:53 INFO: [33mPress CTRL+C to quit[0m
+2024-08-17 07:10:53,261 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-08-17 07:10:55 INFO: 127.0.0.1 - - [17/Aug/2024 07:10:55] "GET /auth/status HTTP/1.1" 200 -
+2024-08-17 07:10:55,406 - werkzeug - INFO - 127.0.0.1 - - [17/Aug/2024 07:10:55] "GET /auth/status HTTP/1.1" 200 -
+2024-08-17 07:10:55 INFO: 127.0.0.1 - - [17/Aug/2024 07:10:55] "GET /auth/status HTTP/1.1" 200 -
+2024-08-17 07:10:55,409 - werkzeug - INFO - 127.0.0.1 - - [17/Aug/2024 07:10:55] "GET /auth/status HTTP/1.1" 200 -
+2024-08-17 07:10:55 INFO: 127.0.0.1 - - [17/Aug/2024 07:10:55] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-17 07:10:55,415 - werkzeug - INFO - 127.0.0.1 - - [17/Aug/2024 07:10:55] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-17 07:10:55 INFO: 127.0.0.1 - - [17/Aug/2024 07:10:55] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-17 07:10:55,420 - werkzeug - INFO - 127.0.0.1 - - [17/Aug/2024 07:10:55] "GET /api/recordings HTTP/1.1" 200 -
+2024-08-17 07:10:59 INFO: 127.0.0.1 - - [17/Aug/2024 07:10:59] "OPTIONS /api/recordings HTTP/1.1" 200 -
+2024-08-17 07:10:59,164 - werkzeug - INFO - 127.0.0.1 - - [17/Aug/2024 07:10:59] "OPTIONS /api/recordings HTTP/1.1" 200 -
+2024-08-17 07:10:59 INFO: Recording a1c74857-2cc1-42fe-962c-e3c5eca59626 created for user 1
+2024-08-17 07:10:59,202 - minutememo_app.app - INFO - Recording a1c74857-2cc1-42fe-962c-e3c5eca59626 created for user 1
+2024-08-17 07:10:59 INFO: 127.0.0.1 - - [17/Aug/2024 07:10:59] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
+2024-08-17 07:10:59,203 - werkzeug - INFO - 127.0.0.1 - - [17/Aug/2024 07:10:59] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
+2024-08-17 07:11:04 INFO: 127.0.0.1 - - [17/Aug/2024 07:11:04] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-17 07:11:04,515 - werkzeug - INFO - 127.0.0.1 - - [17/Aug/2024 07:11:04] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-17 07:11:09 INFO: 127.0.0.1 - - [17/Aug/2024 07:11:09] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-17 07:11:09,554 - werkzeug - INFO - 127.0.0.1 - - [17/Aug/2024 07:11:09] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-17 07:11:14 INFO: 127.0.0.1 - - [17/Aug/2024 07:11:14] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-17 07:11:14,594 - werkzeug - INFO - 127.0.0.1 - - [17/Aug/2024 07:11:14] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-17 07:11:14 INFO: 127.0.0.1 - - [17/Aug/2024 07:11:14] "OPTIONS /concatenate HTTP/1.1" 200 -
+2024-08-17 07:11:14,975 - werkzeug - INFO - 127.0.0.1 - - [17/Aug/2024 07:11:14] "OPTIONS /concatenate HTTP/1.1" 200 -
+2024-08-17 07:11:14 INFO: Received request to concatenate for recording_id: a1c74857-2cc1-42fe-962c-e3c5eca59626
+2024-08-17 07:11:14,988 - minutememo_app.app - INFO - Received request to concatenate for recording_id: a1c74857-2cc1-42fe-962c-e3c5eca59626
+2024-08-17 07:11:15 INFO: Chunk files to concatenate: ['a1c74857-2cc1-42fe-962c-e3c5eca59626_chunk_0.webm', 'a1c74857-2cc1-42fe-962c-e3c5eca59626_chunk_1.webm', 'a1c74857-2cc1-42fe-962c-e3c5eca59626_chunk_2.webm']
+2024-08-17 07:11:15,006 - minutememo_app.app - INFO - Chunk files to concatenate: ['a1c74857-2cc1-42fe-962c-e3c5eca59626_chunk_0.webm', 'a1c74857-2cc1-42fe-962c-e3c5eca59626_chunk_1.webm', 'a1c74857-2cc1-42fe-962c-e3c5eca59626_chunk_2.webm']
+2024-08-17 07:11:15 INFO: Concatenation successful: uploads/a1c74857-2cc1-42fe-962c-e3c5eca59626.mp3
+2024-08-17 07:11:15,880 - minutememo_app.app - INFO - Concatenation successful: uploads/a1c74857-2cc1-42fe-962c-e3c5eca59626.mp3
+2024-08-17 07:11:15 INFO: Database updated successfully for recording_id: a1c74857-2cc1-42fe-962c-e3c5eca59626
+2024-08-17 07:11:15,890 - minutememo_app.app - INFO - Database updated successfully for recording_id: a1c74857-2cc1-42fe-962c-e3c5eca59626
+2024-08-17 07:11:15 INFO: 127.0.0.1 - - [17/Aug/2024 07:11:15] "POST /concatenate HTTP/1.1" 200 -
+2024-08-17 07:11:15,891 - werkzeug - INFO - 127.0.0.1 - - [17/Aug/2024 07:11:15] "POST /concatenate HTTP/1.1" 200 -
+2024-08-17 07:11:18 INFO: 127.0.0.1 - - [17/Aug/2024 07:11:18] "[32mGET /auth/logout HTTP/1.1[0m" 302 -
+2024-08-17 07:11:18,195 - werkzeug - INFO - 127.0.0.1 - - [17/Aug/2024 07:11:18] "[32mGET /auth/logout HTTP/1.1[0m" 302 -
+2024-08-17 07:11:18 INFO: 127.0.0.1 - - [17/Aug/2024 07:11:18] "[31m[1mGET /auth/login HTTP/1.1[0m" 405 -
+2024-08-17 07:11:18,202 - werkzeug - INFO - 127.0.0.1 - - [17/Aug/2024 07:11:18] "[31m[1mGET /auth/login HTTP/1.1[0m" 405 -
+2024-08-17 07:11:19 INFO: 127.0.0.1 - - [17/Aug/2024 07:11:19] "GET /auth/status HTTP/1.1" 200 -
+2024-08-17 07:11:19,645 - werkzeug - INFO - 127.0.0.1 - - [17/Aug/2024 07:11:19] "GET /auth/status HTTP/1.1" 200 -
+2024-08-17 07:11:19 INFO: 127.0.0.1 - - [17/Aug/2024 07:11:19] "GET /auth/status HTTP/1.1" 200 -
+2024-08-17 07:11:19,649 - werkzeug - INFO - 127.0.0.1 - - [17/Aug/2024 07:11:19] "GET /auth/status HTTP/1.1" 200 -
+2024-08-17 07:11:22 INFO: 127.0.0.1 - - [17/Aug/2024 07:11:22] "GET /auth/status HTTP/1.1" 200 -
+2024-08-17 07:11:22,905 - werkzeug - INFO - 127.0.0.1 - - [17/Aug/2024 07:11:22] "GET /auth/status HTTP/1.1" 200 -
+2024-08-17 07:11:26 INFO: 127.0.0.1 - - [17/Aug/2024 07:11:26] "GET /auth/status HTTP/1.1" 200 -
+2024-08-17 07:11:26,979 - werkzeug - INFO - 127.0.0.1 - - [17/Aug/2024 07:11:26] "GET /auth/status HTTP/1.1" 200 -
+2024-08-17 07:11:26 INFO: 127.0.0.1 - - [17/Aug/2024 07:11:26] "GET /auth/status HTTP/1.1" 200 -
+2024-08-17 07:11:26,982 - werkzeug - INFO - 127.0.0.1 - - [17/Aug/2024 07:11:26] "GET /auth/status HTTP/1.1" 200 -
