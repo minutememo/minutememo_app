@@ -50,8 +50,19 @@ def signup():
     db.session.add(new_user)
     db.session.commit()
 
-    logger.info('User created successfully: %s', email)
+    # Create a default meeting hub for the new user
+    default_hub = MeetingHub(
+        name="My Meeting Hub",
+        description="Default meeting hub",
+        company_id=new_user.id  # Assuming user id is the identifier for company or organization
+    )
+    db.session.add(default_hub)
+    db.session.commit()
+
+    logger.info('User and default meeting hub created successfully: %s', email)
     return jsonify({'message': 'User created successfully'}), 201
+
+
 # Route for user login
 @auth.route('/login', methods=['POST'])
 def login():
@@ -68,5 +79,7 @@ def login():
 @auth.route('/logout')
 @login_required
 def logout():
-    logout_user()
-    return redirect(url_for('auth.login'))
+    logout_user()  # This will clear the session on the server
+    response = jsonify({"message": "Logout successful"})
+    response.status_code = 200
+    return response

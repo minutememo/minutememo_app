@@ -5,7 +5,7 @@ import uuid
 from flask_cors import cross_origin
 import ffmpeg
 from werkzeug.security import generate_password_hash, check_password_hash
-from .models import User, db, Recording
+from .models import User, db, Recording, MeetingSession, MeetingHub, Company, Meeting
 from .extensions import db  # Import from extensions.py
 from flask_login import login_required, current_user
 from datetime import datetime
@@ -62,6 +62,20 @@ def create_recording():
             current_app.logger.error("Concatenation file name not provided")
             return jsonify({'status': 'error', 'message': 'Concatenation file name is required'}), 400
 
+        meeting_session_id = data.get('meeting_session_id')
+        if not meeting_session_id:
+            # Create a new meeting session if not provided
+            session_name = f"New Meeting Session {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')}"
+            new_session = MeetingSession(
+                name=session_name,
+                session_datetime=datetime.utcnow(),
+                meeting_id=None  # Update as needed to link to a meeting if required
+            )
+            db.session.add(new_session)
+            db.session.commit()
+            meeting_session_id = new_session.id
+            current_app.logger.info(f"Created new meeting session {meeting_session_id} with name '{session_name}'")
+
         user_id = current_user.id  # Assuming you're using Flask-Login
 
         # Create a new recording entry
@@ -71,12 +85,13 @@ def create_recording():
             file_name=file_name,
             concatenation_status=concatenation_status,
             concatenation_file_name=concatenation_file_name,
-            timestamp=datetime.utcnow()
+            timestamp=datetime.utcnow(),
+            meeting_session_id=meeting_session_id
         )
         db.session.add(new_recording)
         db.session.commit()
 
-        current_app.logger.info(f"Recording {recording_id} created for user {user_id}")
+        current_app.logger.info(f"Recording {recording_id} created for user {user_id} in session {meeting_session_id}")
 
         return jsonify({'status': 'success', 'recording': recording_id}), 201
     except Exception as e:
@@ -88,9 +103,15 @@ def create_recording():
 @login_required
 def get_user_recordings():
     try:
-        # Fetch all recordings for the logged-in user
+        # Fetch all recordings for the logged-in user, filtered by meeting hub if provided
         user_id = current_user.id
-        recordings = Recording.query.filter_by(user_id=user_id).all()
+        hub_id = request.args.get('hub_id')
+
+        query = Recording.query.filter_by(user_id=user_id)
+        if hub_id:
+            query = query.join(MeetingSession).filter(MeetingSession.meeting_hub_id == hub_id)
+
+        recordings = query.all()
 
         # Serialize the recordings to return as JSON
         recordings_data = [
@@ -227,25 +248,193 @@ def convert_to_mp3(webm_filepath, mp3_filepath):
         print(f"Conversion successful: {mp3_filepath}")
     except ffmpeg.Error as e:
         print(f"Error converting file: {e}")
-# Ensure ffmpeg is installed and accessible
-# You might need to install ffmpeg-python: pip install ffmpeg-python
-# Also, ensure that ffmpeg is installed on your system and accessible from the command line.
 
-# not being used below here
-#@main.route('/upload', methods=['POST'])
-#@cross_origin()  # Enable CORS for this specific route
-#def upload_audio():
-#    audio_file = request.files.get('audio_data')
-#    file_type = request.form.get('type', 'webm')
-#    if not audio_file:
-#        return jsonify({'error': 'No audio file provided'}), 400#
-#
-#    filename = f"{uuid.uuid4()}.{file_type}"
-#    filepath = os.path.join(UPLOAD_FOLDER, filename)
-#    audio_file.save(filepath)
+@main.route('/api/meetingsessions', methods=['GET', 'POST'])
+@login_required
+@cross_origin()
+def manage_meeting_sessions():
+    if request.method == 'GET':
+        try:
+            # Fetch all meeting sessions
+            meeting_sessions = MeetingSession.query.all()
+            sessions_data = [
+                {
+                    'id': session.id,
+                    'name': session.name,
+                    'session_datetime': session.session_datetime.strftime('%Y-%m-%d %H:%M:%S'),
+                    'meeting_id': session.meeting_id
+                } for session in meeting_sessions
+            ]
+            return jsonify({'status': 'success', 'meeting_sessions': sessions_data}), 200
+        except Exception as e:
+            current_app.logger.error(f"Error fetching meeting sessions: {str(e)}")
+            return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
+    elif request.method == 'POST':
+        try:
+            data = request.json
+            session_name = data.get('name', f"New Meeting Session {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')}")
+            meeting_id = data.get('meeting_id')
 
-    # Convert webm to mp3
-#   mp3_filepath = os.path.splitext(filepath)[0] + '.mp3'
-#    convert_to_mp3(filepath, mp3_filepath)
-#
- #   return jsonify({'message': 'File uploaded successfully', 'webm_filepath': filepath, 'mp3_filepath': mp3_filepath}), 200
+            new_session = MeetingSession(
+                name=session_name,
+                session_datetime=datetime.utcnow(),
+                meeting_id=meeting_id
+            )
+            db.session.add(new_session)
+            db.session.commit()
+
+            return jsonify({'status': 'success', 'meeting_session_id': new_session.id}), 201
+        except Exception as e:
+            db.session.rollback()
+            current_app.logger.error(f"Error creating meeting session: {str(e)}")
+            return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
+        
+@main.route('/api/meetinghubs', methods=['GET', 'POST'])
+@login_required
+def manage_meeting_hubs():
+    if request.method == 'GET':
+        try:
+            # Fetch all meeting hubs for the logged-in user
+            user_id = current_user.id
+            meeting_hubs = MeetingHub.query.filter(MeetingHub.users.any(id=user_id)).all()
+
+            # Serialize the meeting hubs to return as JSON
+            meeting_hubs_data = [
+                {
+                    'id': hub.id,
+                    'name': hub.name,
+                    'description': hub.description,
+                    'users': [user.email for user in hub.users]  # Assuming User model has an email attribute
+                } for hub in meeting_hubs
+            ]
+
+            return jsonify({'status': 'success', 'meeting_hubs': meeting_hubs_data}), 200
+        except Exception as e:
+            current_app.logger.error(f"Error fetching meeting hubs: {str(e)}")
+            return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
+
+    elif request.method == 'POST':
+        try:
+            data = request.json
+            name = data.get('name')
+            description = data.get('description', 'No description')
+
+            if not name:
+                return jsonify({'status': 'error', 'message': 'Name is required'}), 400
+
+            # Get the company_id from the current user
+            company_id = current_user.company_id
+            if not company_id:
+                return jsonify({'status': 'error', 'message': 'User does not belong to any company'}), 400
+
+            # Create a new meeting hub
+            new_hub = MeetingHub(
+                name=name,
+                description=description,
+                company_id=company_id  # Ensure the company_id is set
+            )
+            new_hub.users.append(current_user)  # Add the current user to the meeting hub
+            db.session.add(new_hub)
+            db.session.commit()
+
+            return jsonify({'status': 'success', 'meeting_hub_id': new_hub.id}), 201
+        except Exception as e:
+            db.session.rollback()
+            current_app.logger.error(f"Error creating meeting hub: {str(e)}")
+            return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
+
+@main.route('/api/company', methods=['GET', 'POST'])
+@login_required 
+def manage_company():
+    if request.method == 'GET':
+        try:
+            company = current_user.company
+            if company:
+                company_data = {
+                    'name': company.name,
+                    'address': company.address,
+                    'city': company.city,
+                    'state': company.state,
+                    'zip_code': company.zip_code,
+                    'country': company.country,
+                    'phone_number': company.phone_number,
+                }
+                return jsonify({'status': 'success', 'company': company_data}), 200
+            else:
+                return jsonify({'status': 'error', 'message': 'Company not found'}), 404
+        except Exception as e:
+            current_app.logger.error(f"Error fetching company: {str(e)}")
+            return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
+
+    elif request.method == 'POST':
+        try:
+            data = request.json
+            company = current_user.company
+
+            if company:
+                company.name = data.get('name', company.name)
+                company.address = data.get('address', company.address)
+                company.city = data.get('city', company.city)
+                company.state = data.get('state', company.state)
+                company.zip_code = data.get('zip_code', company.zip_code)
+                company.country = data.get('country', company.country)
+                company.phone_number = data.get('phone_number', company.phone_number)
+            else:
+                company = Company(
+                    name=data.get('name'),
+                    address=data.get('address'),
+                    city=data.get('city'),
+                    state=data.get('state'),
+                    zip_code=data.get('zip_code'),
+                    country=data.get('country'),
+                    phone_number=data.get('phone_number')
+                )
+                db.session.add(company)
+                current_user.company = company  # Link the company to the current user
+
+            db.session.commit()
+            return jsonify({'status': 'success', 'message': 'Company details updated successfully'}), 200
+        except Exception as e:
+            db.session.rollback()
+            current_app.logger.error(f"Error updating company: {str(e)}")
+            return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
+        
+
+@main.route('/api/meetings', methods=['POST'])
+@login_required
+@cross_origin()
+def create_meeting():
+    try:
+        data = request.json
+        meeting_name = data.get('name')
+        hub_id = data.get('hub_id')
+
+        if not meeting_name or not hub_id:
+            return jsonify({'status': 'error', 'message': 'Meeting name and hub ID are required'}), 400
+
+        # Create the meeting
+        new_meeting = Meeting(
+            name=meeting_name,
+            description=f"Meeting for {meeting_name}",
+            meeting_hub_id=hub_id
+        )
+        db.session.add(new_meeting)
+        db.session.commit()
+
+        # Create the meeting session linked to the meeting
+        session_name = f"{meeting_name} - {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')}"
+        new_session = MeetingSession(
+            name=session_name,
+            session_datetime=datetime.utcnow(),
+            meeting_id=new_meeting.id
+        )
+        db.session.add(new_session)
+        db.session.commit()
+
+        return jsonify({'status': 'success', 'meeting_session_id': new_session.id}), 201
+
+    except Exception as e:
+        db.session.rollback()
+        current_app.logger.error(f"Error creating meeting: {str(e)}")
+        return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500     
+        

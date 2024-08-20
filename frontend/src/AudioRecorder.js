@@ -1,17 +1,21 @@
-import React, { useContext, useEffect, useCallback } from 'react';
+import React, { useContext, useEffect, useCallback, useState } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import './styles.css';
 import { RecorderContext } from './RecorderContext';
+import { useUser } from './UserContext';
+import { FormControl } from 'react-bootstrap'; // Add this line
 
 axios.defaults.withCredentials = true; // Ensure credentials are included with every axios request
 
-const AudioRecorder = () => {
+const AudioRecorder = ({ selectedHub }) => {  // Accept selectedHub as a prop
+  const { user } = useUser(); // Get user from context
   const {
     recording, setRecording, mediaRecorderRef, audioChunksRef,
     canvasRef, audioCtxRef, sourceRef, animationFrameIdRef, chunkNumberRef,
-    recordingIdRef, streamRef, stopRef
+    recordingIdRef, streamRef, stopRef, meetingSessionId // Add meetingSessionId to context
   } = useContext(RecorderContext);
+  const [meetingName, setMeetingName] = useState("");
 
   const draw = useCallback((array) => {
     const canvas = canvasRef.current;
@@ -70,33 +74,49 @@ const AudioRecorder = () => {
 
     visualize();
   }, [recording, audioCtxRef, sourceRef, draw, animationFrameIdRef]);
-
+  
   const startRecording = async () => {
-    console.log("Recording started");
-    
+    if (!meetingName) {
+      alert("Please enter a meeting name before starting the recording.");
+      return;
+    }
+  
+    if (!selectedHub) {
+      alert("Please select a meeting hub before starting the recording.");
+      return;
+    }
+  
     recordingIdRef.current = uuidv4();
     chunkNumberRef.current = 0; // Reset chunk number
-    
+  
     try {
+      // Create the meeting and meeting session
+      const meetingResponse = await axios.post('http://localhost:5000/api/meetings', {
+        name: meetingName,
+        hub_id: selectedHub,
+      });
+  
+      const meetingSessionId = meetingResponse.data.meeting_session_id; // Retrieve the session ID
+  
       // Make an API call to create a new recording entry in the database
       const response = await axios.post('http://localhost:5000/api/recordings', {
-        recording_id: recordingIdRef.current, // Pass the generated recording ID
-        file_name: `${recordingIdRef.current}.webm`, // Use the same recording ID for the file name
-        concatenation_status: 'pending', // Set initial concatenation status to pending
-        concatenation_file_name: `${recordingIdRef.current}_list.txt`, // Use the same recording ID for the concatenation list file
+        recording_id: recordingIdRef.current,
+        file_name: `${recordingIdRef.current}.webm`,
+        concatenation_status: 'pending',
+        concatenation_file_name: `${recordingIdRef.current}_list.txt`,
+        meeting_session_id: meetingSessionId,
       });
   
       if (response.status === 201) {
         console.log('Recording entry created in the database.');
-
-        // Proceed with the recording if the entry was successfully created
+  
         navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
           audioCtxRef.current = new (window.AudioContext || window.webkitAudioContext)();
           sourceRef.current = audioCtxRef.current.createMediaStreamSource(stream);
           streamRef.current = stream;
-          stopRef.current = false;  // Reset stop flag
+          stopRef.current = false; // Reset stop flag
           startNewChunk();
-    
+  
           setRecording(true);
         });
       } else {
@@ -104,11 +124,17 @@ const AudioRecorder = () => {
       }
     } catch (error) {
       console.error('Error creating recording entry in the database:', error);
+  
+      if (error.response) {
+        console.error('Response data:', error.response.data);
+        console.error('Response status:', error.response.status);
+        console.error('Response headers:', error.response.headers);
+      }
     }
   };
 
   const startNewChunk = () => {
-    if (stopRef.current) return;  // Don't start new chunk if stopping
+    if (stopRef.current) return; // Don't start new chunk if stopping
 
     mediaRecorderRef.current = new MediaRecorder(streamRef.current);
 
@@ -134,7 +160,6 @@ const AudioRecorder = () => {
     formData.append('chunk', chunk, `chunk_${chunkNumberRef.current}.webm`);
     formData.append('chunk_number', chunkNumberRef.current);
     formData.append('recording_id', recordingIdRef.current);
-    console.log(`Uploading chunk ${chunkNumberRef.current} for recording ID ${recordingIdRef.current}`);
     chunkNumberRef.current++;
 
     axios.post('http://localhost:5000/upload_chunk', formData)
@@ -148,27 +173,22 @@ const AudioRecorder = () => {
 
   const concatenateChunks = async () => {
     try {
-        const response = await axios.post('http://localhost:5000/concatenate', {
-            recording_id: recordingIdRef.current // Ensure this value is correct and not null/undefined
-        }, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+      const response = await axios.post('http://localhost:5000/concatenate', {
+        recording_id: recordingIdRef.current,
+      });
 
-        if (response.status === 200) {
-            console.log('Concatenation successful:', response.data.file_url);
-        } else {
-            console.error('Concatenation failed:', response.data.message);
-        }
+      if (response.status === 200) {
+        console.log('Concatenation successful:', response.data.file_url);
+      } else {
+        console.error('Concatenation failed:', response.data.message);
+      }
     } catch (error) {
-        console.error('Error concatenating chunks:', error);
+      console.error('Error concatenating chunks:', error);
     }
   };
 
   const stopRecording = () => {
-    console.log("Recording stopped");
-    stopRef.current = true;  // Set stop flag
+    stopRef.current = true; // Set stop flag
     setRecording(false);
     if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
       mediaRecorderRef.current.stop();
@@ -180,13 +200,20 @@ const AudioRecorder = () => {
       streamRef.current.getTracks().forEach(track => track.stop());
     }
     cancelAnimationFrame(animationFrameIdRef.current);
-    
+
     concatenateChunks();
   };
 
   return (
     <div className="audio-recorder">
       <h1>Audio Recorder</h1>
+      <FormControl
+        type="text"
+        placeholder="Enter meeting name"
+        value={meetingName}
+        onChange={(e) => setMeetingName(e.target.value)}
+        disabled={recording}
+      />
       <div className="controls">
         <button onClick={startRecording} disabled={recording}>Start Recording</button>
         <button onClick={stopRecording} disabled={!recording}>Stop Recording</button>

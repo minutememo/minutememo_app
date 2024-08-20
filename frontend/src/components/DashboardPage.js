@@ -3,28 +3,30 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles.css'; // Assuming styles.css is in the src folder
 
-const DashboardPage = () => {
+const DashboardPage = ({ selectedHub }) => {
   const [recordings, setRecordings] = useState([]);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    // Fetch the user's recordings when the component mounts
-    const fetchRecordings = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/api/recordings');
-        if (response.status === 200) {
-          setRecordings(response.data.recordings);
-        } else {
-          setError('Failed to fetch recordings');
+    if (selectedHub) {
+      // Fetch the user's recordings for the selected meeting hub when the component mounts
+      const fetchRecordings = async () => {
+        try {
+          const response = await axios.get(`http://localhost:5000/api/recordings?hub_id=${selectedHub}`);
+          if (response.status === 200) {
+            setRecordings(response.data.recordings);
+          } else {
+            setError('Failed to fetch recordings');
+          }
+        } catch (err) {
+          setError('Error fetching recordings');
+          console.error(err);
         }
-      } catch (err) {
-        setError('Error fetching recordings');
-        console.error(err);
-      }
-    };
+      };
 
-    fetchRecordings();
-  }, []);
+      fetchRecordings();
+    }
+  }, [selectedHub]);
 
   return (
     <div className="dashboard">
