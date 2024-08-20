@@ -298,6 +298,9 @@ def manage_meeting_hubs():
             user_id = current_user.id
             meeting_hubs = MeetingHub.query.filter(MeetingHub.users.any(id=user_id)).all()
 
+            # Fetch the active hub for the user
+            active_hub_id = current_user.active_meeting_hub_id  # Assuming you have an active_meeting_hub_id column in the User model
+
             # Serialize the meeting hubs to return as JSON
             meeting_hubs_data = [
                 {
@@ -308,7 +311,11 @@ def manage_meeting_hubs():
                 } for hub in meeting_hubs
             ]
 
-            return jsonify({'status': 'success', 'meeting_hubs': meeting_hubs_data}), 200
+            return jsonify({
+                'status': 'success',
+                'meeting_hubs': meeting_hubs_data,
+                'active_hub_id': active_hub_id  # Include the active hub ID in the response
+            }), 200
         except Exception as e:
             current_app.logger.error(f"Error fetching meeting hubs: {str(e)}")
             return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
@@ -400,41 +407,83 @@ def manage_company():
             return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
         
 
-@main.route('/api/meetings', methods=['POST'])
+@main.route('/api/meetings', methods=['GET', 'POST'])
 @login_required
 @cross_origin()
-def create_meeting():
+def manage_meetings():
+    if request.method == 'GET':
+        try:
+            hub_id = request.args.get('hub_id')
+            if not hub_id:
+                return jsonify({'status': 'error', 'message': 'Hub ID is required'}), 400
+
+            # Fetch meetings for the given hub_id
+            meetings = Meeting.query.filter_by(meeting_hub_id=hub_id).all()
+
+            # Serialize the meetings to return as JSON
+            meetings_data = [
+                {
+                    'id': meeting.id,
+                    'name': meeting.name,
+                    'description': meeting.description
+                } for meeting in meetings
+            ]
+
+            return jsonify({'status': 'success', 'meetings': meetings_data}), 200
+        except Exception as e:
+            current_app.logger.error(f"Error fetching meetings: {str(e)}")
+            return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
+
+    elif request.method == 'POST':
+        try:
+            data = request.json
+            meeting_name = data.get('name')
+            hub_id = data.get('hub_id')
+
+            if not meeting_name or not hub_id:
+                return jsonify({'status': 'error', 'message': 'Meeting name and hub ID are required'}), 400
+
+            # Create the meeting
+            new_meeting = Meeting(
+                name=meeting_name,
+                description=f"Meeting for {meeting_name}",
+                meeting_hub_id=hub_id
+            )
+            db.session.add(new_meeting)
+            db.session.commit()
+
+            # Create the meeting session linked to the meeting
+            session_name = f"{meeting_name} - {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')}"
+            new_session = MeetingSession(
+                name=session_name,
+                session_datetime=datetime.utcnow(),
+                meeting_id=new_meeting.id
+            )
+            db.session.add(new_session)
+            db.session.commit()
+
+            return jsonify({'status': 'success', 'meeting_session_id': new_session.id}), 201
+
+        except Exception as e:
+            db.session.rollback()
+            current_app.logger.error(f"Error creating meeting: {str(e)}")
+            return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
+@main.route('/api/set_active_hub', methods=['POST'])
+@login_required
+def set_active_hub():
     try:
-        data = request.json
-        meeting_name = data.get('name')
-        hub_id = data.get('hub_id')
+        hub_id = request.json.get('hub_id')
+        if not hub_id:
+            return jsonify({"status": "error", "message": "hub_id is required"}), 400
 
-        if not meeting_name or not hub_id:
-            return jsonify({'status': 'error', 'message': 'Meeting name and hub ID are required'}), 400
+        hub = MeetingHub.query.get(hub_id)
+        if not hub:
+            return jsonify({"status": "error", "message": "Invalid hub_id"}), 404
 
-        # Create the meeting
-        new_meeting = Meeting(
-            name=meeting_name,
-            description=f"Meeting for {meeting_name}",
-            meeting_hub_id=hub_id
-        )
-        db.session.add(new_meeting)
+        current_user.active_meeting_hub_id = hub_id
         db.session.commit()
 
-        # Create the meeting session linked to the meeting
-        session_name = f"{meeting_name} - {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')}"
-        new_session = MeetingSession(
-            name=session_name,
-            session_datetime=datetime.utcnow(),
-            meeting_id=new_meeting.id
-        )
-        db.session.add(new_session)
-        db.session.commit()
-
-        return jsonify({'status': 'success', 'meeting_session_id': new_session.id}), 201
-
+        return jsonify({"status": "success"}), 200
     except Exception as e:
         db.session.rollback()
-        current_app.logger.error(f"Error creating meeting: {str(e)}")
-        return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500     
-        
+        return jsonify({"status": "error", "message": str(e)}), 500

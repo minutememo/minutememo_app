@@ -28,7 +28,10 @@ class User(UserMixin, db.Model):
     meeting_hubs = db.relationship('MeetingHub', secondary='user_meeting_hub', backref=db.backref('users', lazy=True))
     meetings = db.relationship('Meeting', secondary='user_meeting', backref=db.backref('users', lazy=True))
     meeting_sessions = db.relationship('MeetingSession', secondary='user_meeting_session', backref=db.backref('users', lazy=True))
-
+    
+    # Add this line for active meeting hub
+    active_meeting_hub_id = db.Column(db.Integer, db.ForeignKey('meeting_hub.id'), nullable=True)
+    
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
