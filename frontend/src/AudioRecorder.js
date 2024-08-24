@@ -8,7 +8,7 @@ import { FormControl } from 'react-bootstrap'; // Add this line
 
 axios.defaults.withCredentials = true; // Ensure credentials are included with every axios request
 
-const AudioRecorder = ({ selectedHub }) => {  // Accept selectedHub as a prop
+const AudioRecorder = ({ selectedHub, setSelectedHub }) => {  // Accept selectedHub as a prop
   const { user } = useUser(); // Get user from context
   const {
     recording, setRecording, mediaRecorderRef, audioChunksRef,
@@ -74,31 +74,80 @@ const AudioRecorder = ({ selectedHub }) => {  // Accept selectedHub as a prop
 
     visualize();
   }, [recording, audioCtxRef, sourceRef, draw, animationFrameIdRef]);
-  
+
   const startRecording = async () => {
+    console.log("Attempting to start recording...");
+    console.log("Meeting Name:", meetingName);
+    console.log("Selected Hub:", selectedHub);
+  
+    // Check if the meeting name is provided
     if (!meetingName) {
+      console.error("No meeting name provided. Please enter a meeting name before starting the recording.");
       alert("Please enter a meeting name before starting the recording.");
       return;
     }
   
+    // If selectedHub is not defined, attempt to fetch it using the same logic as in fetchMeetingHubs
     if (!selectedHub) {
-      alert("Please select a meeting hub before starting the recording.");
-      return;
+      console.warn("No selected hub found. Attempting to fetch active hub ID...");
+      
+      try {
+        const response = await axios.get('http://localhost:5000/api/meetinghubs');
+        console.log('API response received:', response);
+  
+        if (response.status === 200) {
+          const hubs = response.data.meeting_hubs || [];
+          console.log('Fetched meeting hubs:', hubs);
+  
+          if (hubs.length > 0) {
+            const activeHubId = parseInt(response.data.active_hub_id, 10) || hubs[0]?.id;
+            console.log('Active Hub ID from API:', activeHubId);
+  
+            // Set the active hub in state
+            setSelectedHub(activeHubId);
+            console.log('Selected hub state updated:', activeHubId);
+  
+            if (!activeHubId) {
+              console.error("No active hub found. Please select a meeting hub before starting the recording.");
+              alert("Please select a meeting hub before starting the recording.");
+              return;
+            }
+          } else {
+            console.error("No meeting hubs found. Cannot proceed with recording.");
+            alert("No meeting hubs found. Please create or select a hub before starting the recording.");
+            return;
+          }
+        } else {
+          console.error('Unexpected response status:', response.status);
+          alert("Unexpected error occurred while fetching meeting hubs.");
+          return;
+        }
+      } catch (err) {
+        console.error('Error fetching meeting hubs:', err);
+        alert("An error occurred while fetching meeting hubs. Please try again.");
+        return;
+      }
     }
   
+    // Initialize recording session
     recordingIdRef.current = uuidv4();
     chunkNumberRef.current = 0; // Reset chunk number
   
     try {
+      // Log the hub ID being used for the request
+      console.log('Using Selected Hub ID:', selectedHub);
+  
       // Create the meeting and meeting session
       const meetingResponse = await axios.post('http://localhost:5000/api/meetings', {
         name: meetingName,
         hub_id: selectedHub,
       });
   
-      const meetingSessionId = meetingResponse.data.meeting_session_id; // Retrieve the session ID
+      console.log('Meeting and session creation response:', meetingResponse);
   
-      // Make an API call to create a new recording entry in the database
+      const meetingSessionId = meetingResponse.data.meeting_session_id;
+      console.log('Created Meeting Session ID:', meetingSessionId);
+  
       const response = await axios.post('http://localhost:5000/api/recordings', {
         recording_id: recordingIdRef.current,
         file_name: `${recordingIdRef.current}.webm`,
@@ -107,8 +156,10 @@ const AudioRecorder = ({ selectedHub }) => {  // Accept selectedHub as a prop
         meeting_session_id: meetingSessionId,
       });
   
+      console.log('Recording entry creation response:', response);
+  
       if (response.status === 201) {
-        console.log('Recording entry created in the database.');
+        console.log('Recording entry successfully created in the database.');
   
         navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
           audioCtxRef.current = new (window.AudioContext || window.webkitAudioContext)();
@@ -118,12 +169,13 @@ const AudioRecorder = ({ selectedHub }) => {  // Accept selectedHub as a prop
           startNewChunk();
   
           setRecording(true);
+          console.log('Recording started successfully.');
         });
       } else {
         console.error('Failed to create recording entry in the database.');
       }
     } catch (error) {
-      console.error('Error creating recording entry in the database:', error);
+      console.error('Error encountered while creating recording entry in the database:', error);
   
       if (error.response) {
         console.error('Response data:', error.response.data);
@@ -173,19 +225,38 @@ const AudioRecorder = ({ selectedHub }) => {  // Accept selectedHub as a prop
 
   const concatenateChunks = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/concatenate', {
-        recording_id: recordingIdRef.current,
-      });
+        // Log the start of the concatenation process
+        console.log('Starting concatenation for recording ID:', recordingIdRef.current);
 
-      if (response.status === 200) {
-        console.log('Concatenation successful:', response.data.file_url);
-      } else {
-        console.error('Concatenation failed:', response.data.message);
-      }
+        // Send request to concatenate chunks
+        const response = await axios.post('http://localhost:5000/concatenate', {
+            recording_id: recordingIdRef.current,
+        });
+
+        if (response.status === 200) {
+            const audioUrl = response.data.file_url;
+            console.log('Concatenation successful. Audio file URL:', audioUrl);
+
+            // Log the PATCH request to update the recording with the audio_url
+            console.log(`Updating recording ${recordingIdRef.current} with audio URL: ${audioUrl}`);
+            await axios.patch(`http://localhost:5000/api/recordings/${recordingIdRef.current}`, {
+                audio_url: audioUrl,
+            });
+
+            console.log('Audio URL successfully stored in the database');
+        } else {
+            console.error('Concatenation failed. Message:', response.data.message);
+        }
     } catch (error) {
-      console.error('Error concatenating chunks:', error);
+        console.error('Error during concatenation or updating the recording:', error);
+
+        if (error.response) {
+            console.error('Response data:', error.response.data);
+            console.error('Response status:', error.response.status);
+            console.error('Response headers:', error.response.headers);
+        }
     }
-  };
+};
 
   const stopRecording = () => {
     stopRef.current = true; // Set stop flag

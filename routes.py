@@ -1,5 +1,5 @@
 #routes.py
-from flask import Blueprint, render_template, request, jsonify, current_app
+from flask import Blueprint, render_template, request, jsonify, current_app, send_from_directory
 import os
 import uuid
 from flask_cors import cross_origin
@@ -9,6 +9,7 @@ from .models import User, db, Recording, MeetingSession, MeetingHub, Company, Me
 from .extensions import db  # Import from extensions.py
 from flask_login import login_required, current_user
 from datetime import datetime
+
 
 
 
@@ -99,6 +100,43 @@ def create_recording():
         current_app.logger.error(f"Error creating recording: {str(e)}")
         return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
 
+@main.route('/api/recordings/<string:recording_id>', methods=['PATCH'])
+@login_required
+@cross_origin()
+def update_recording(recording_id):
+    try:
+        data = request.json
+
+        # Log the incoming data to see what is being received
+        current_app.logger.info(f"Received data for updating recording {recording_id}: {data}")
+
+        audio_url = data.get('audio_url')
+        if not audio_url:
+            current_app.logger.error("Audio URL is null or not provided")
+            return jsonify({'status': 'error', 'message': 'Audio URL is required'}), 400
+
+        # Find the recording by ID
+        recording = Recording.query.get_or_404(recording_id)
+        
+        # Log the current state of the recording before updating
+        current_app.logger.info(f"Current recording before update: {recording}")
+
+        # Find the associated meeting session by the recording's meeting_session_id
+        meeting_session = MeetingSession.query.get_or_404(recording.meeting_session_id)
+        
+        # Update the audio_url in the meeting session
+        meeting_session.audio_url = audio_url
+        db.session.commit()
+
+        # Log the updated state of the meeting session
+        current_app.logger.info(f"Meeting session after update: {meeting_session}")
+
+        return jsonify({'status': 'success', 'message': 'Meeting session updated successfully with audio URL'}), 200
+    except Exception as e:
+        db.session.rollback()
+        current_app.logger.error(f"Error updating meeting session: {str(e)}")
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
 @main.route('/api/recordings', methods=['GET'])
 @login_required
 def get_user_recordings():
@@ -159,9 +197,6 @@ def upload_chunk():
 def natural_sort_key(s):
     import re
     return [int(text) if text.isdigit() else text.lower() for text in re.split('([0-9]+)', s)]
-
-
-
 
 @main.route('/concatenate', methods=['POST'])
 @login_required
@@ -255,25 +290,38 @@ def convert_to_mp3(webm_filepath, mp3_filepath):
 def manage_meeting_sessions():
     if request.method == 'GET':
         try:
-            # Fetch all meeting sessions
-            meeting_sessions = MeetingSession.query.all()
+            hub_id = request.args.get('hub_id')
+            if not hub_id:
+                return jsonify({'status': 'error', 'message': 'Hub ID is required'}), 400
+
+            # Fetch all meeting sessions for the specified hub_id
+            meeting_sessions = (
+                MeetingSession.query.join(Meeting)
+                .filter(Meeting.meeting_hub_id == hub_id)
+                .all()
+            )
+
             sessions_data = [
                 {
                     'id': session.id,
                     'name': session.name,
                     'session_datetime': session.session_datetime.strftime('%Y-%m-%d %H:%M:%S'),
-                    'meeting_id': session.meeting_id
+                    'meeting_name': session.meeting.name  # Assuming MeetingSession has a relationship to Meeting
                 } for session in meeting_sessions
             ]
             return jsonify({'status': 'success', 'meeting_sessions': sessions_data}), 200
         except Exception as e:
             current_app.logger.error(f"Error fetching meeting sessions: {str(e)}")
             return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
+
     elif request.method == 'POST':
         try:
             data = request.json
             session_name = data.get('name', f"New Meeting Session {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')}")
             meeting_id = data.get('meeting_id')
+
+            if not meeting_id:
+                return jsonify({'status': 'error', 'message': 'Meeting ID is required'}), 400
 
             new_session = MeetingSession(
                 name=session_name,
@@ -414,27 +462,53 @@ def manage_meetings():
     if request.method == 'GET':
         try:
             hub_id = request.args.get('hub_id')
-            if not hub_id:
-                return jsonify({'status': 'error', 'message': 'Hub ID is required'}), 400
+            meeting_id = request.args.get('meeting_id')  # New parameter for meeting_id
 
-            # Fetch meetings for the given hub_id
-            meetings = Meeting.query.filter_by(meeting_hub_id=hub_id).all()
+            if meeting_id:
+                # Fetch meeting sessions for the given meeting_id
+                sessions = MeetingSession.query.filter_by(meeting_id=meeting_id).all()
 
-            # Serialize the meetings to return as JSON
-            meetings_data = [
-                {
-                    'id': meeting.id,
-                    'name': meeting.name,
-                    'description': meeting.description
-                } for meeting in meetings
-            ]
+                if not sessions:
+                    return jsonify({'status': 'error', 'message': 'No sessions found for this meeting ID'}), 404
 
-            return jsonify({'status': 'success', 'meetings': meetings_data}), 200
+                # Serialize the sessions to return as JSON
+                sessions_data = [
+                    {
+                        'id': session.id,
+                        'name': session.name,
+                        'session_datetime': session.session_datetime.isoformat()
+                    } for session in sessions
+                ]
+
+                return jsonify({'status': 'success', 'sessions': sessions_data}), 200
+
+            elif hub_id:
+                # Fetch meetings for the given hub_id
+                meetings = Meeting.query.filter_by(meeting_hub_id=hub_id).all()
+
+                if not meetings:
+                    return jsonify({'status': 'error', 'message': 'No meetings found for this hub ID'}), 404
+
+                # Serialize the meetings to return as JSON
+                meetings_data = [
+                    {
+                        'id': meeting.id,
+                        'name': meeting.name,
+                        'description': meeting.description,
+                        'is_recurring': meeting.is_recurring  # Assuming the Meeting model has an is_recurring attribute
+                    } for meeting in meetings
+                ]
+
+                return jsonify({'status': 'success', 'meetings': meetings_data}), 200
+            else:
+                return jsonify({'status': 'error', 'message': 'Hub ID or Meeting ID is required'}), 400
+
         except Exception as e:
-            current_app.logger.error(f"Error fetching meetings: {str(e)}")
+            current_app.logger.error(f"Error fetching meetings or sessions: {str(e)}")
             return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
 
     elif request.method == 'POST':
+        # Existing POST logic
         try:
             data = request.json
             meeting_name = data.get('name')
@@ -468,6 +542,33 @@ def manage_meetings():
             db.session.rollback()
             current_app.logger.error(f"Error creating meeting: {str(e)}")
             return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
+
+@main.route('/api/sessions/<int:session_id>', methods=['GET'])
+@login_required
+@cross_origin()
+def get_session(session_id):
+    try:
+        session = MeetingSession.query.get(session_id)
+        if not session:
+            return jsonify({'status': 'error', 'message': 'Session not found'}), 404
+
+        session_data = {
+            'id': session.id,
+            'name': session.name,
+            'session_datetime': session.session_datetime.isoformat(),
+            'audio_url': session.audio_url  # Assuming you have a column for the audio URL
+        }
+
+        return jsonify({'status': 'success', 'session': session_data}), 200
+    except Exception as e:
+        current_app.logger.error(f"Error fetching session: {str(e)}")
+        return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
+
+@main.route('/uploads/<path:filename>')
+def download_file(filename):
+    return send_from_directory('uploads', filename)
+
+
 @main.route('/api/set_active_hub', methods=['POST'])
 @login_required
 def set_active_hub():

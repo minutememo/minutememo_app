@@ -60,6 +60,7 @@ class MeetingSession(db.Model):
     agenda = db.Column(db.Text)
     notes = db.Column(db.Text)
     meeting_id = db.Column(db.Integer, db.ForeignKey('meeting.id'), nullable=True)
+    audio_url = db.Column(db.Text)  # Adding the audio_url column
     recordings = db.relationship('Recording', backref='meeting_session', lazy=True)
     action_items = db.relationship('ActionItem', backref='meeting_session', lazy=True)
 

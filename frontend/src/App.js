@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
 import { Container, Row, Col, Form, FormControl, Button, Navbar, Nav, Dropdown, Modal, Spinner } from 'react-bootstrap';
+import { MdDashboard, MdEvent, MdList, MdSettings } from 'react-icons/md'; // Importing icons
 import './styles.css';
 import AudioRecorder from './AudioRecorder';
 import { RecorderProvider } from './RecorderContext';
@@ -14,6 +15,9 @@ import SignupPage from './components/SignupPage';
 import UserEmailDisplay from './components/UserEmailDisplay';
 import LogoutButton from './components/LogoutButton';
 import axios from 'axios';
+import MeetingPage from './components/MeetingsPage'; // Adjust the path as necessary
+import MeetingSessionPage from './components/MeetingSessionPage'; // Import the new component
+
 
 axios.defaults.withCredentials = true; // Ensure cookies are sent with every request
 
@@ -27,6 +31,11 @@ const AppContent = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true); // Sidebar is collapsed by default
+
+  const toggleSidebar = () => {
+    setIsSidebarCollapsed(!isSidebarCollapsed);
+  };
 
   useEffect(() => {
     if (user) {
@@ -49,10 +58,6 @@ const AppContent = () => {
             if (hubs.length > 0) {
                 const activeHubId = parseInt(response.data.active_hub_id, 10) || hubs[0]?.id;
                 console.log('Active Hub ID from API:', activeHubId);
-
-                // Log the type of activeHubId and the IDs in the meetingHubs array
-                console.log('Type of activeHubId:', typeof activeHubId);
-                hubs.forEach(hub => console.log('Hub ID:', hub.id, 'Type:', typeof hub.id));
 
                 setMeetingHubs(hubs); // Set meeting hubs in state
                 setSelectedHub(activeHubId); // Set the active hub in state
@@ -92,6 +97,7 @@ const updateActiveHubName = (hubId, hubs = meetingHubs) => {
       setActiveHubName('No Meeting Hub Selected');
   }
 };
+
 const handleCreateHub = async () => {
   if (!newHubName.trim()) {
     alert("Please enter a hub name.");
@@ -171,13 +177,15 @@ const toggleDropdown = () => {
   setDropdownVisible(!dropdownVisible);
 };
 
-  return (
+return (
   <Router>
     {user ? (
       <>
         <Navbar bg="dark" variant="dark" className="mb-4">
           <Container fluid>
-            <Navbar.Brand as={NavLink} to="/">MinuteMemo</Navbar.Brand>
+            <Navbar.Brand as={NavLink} to="/">
+              <img src="/images/logo.svg" alt="Logo" style={{ height: '24px', marginRight: '10px' }} /> {/* Added logo */}
+            </Navbar.Brand>
             <Form className="d-flex">
               <FormControl
                 type="search"
@@ -188,10 +196,11 @@ const toggleDropdown = () => {
               <Button variant="outline-success">Search</Button>
             </Form>
 
-            {/* Meeting Hubs Dropdown */}
-            <Dropdown show={dropdownVisible} onToggle={toggleDropdown} onSelect={handleHubSelect}>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                {activeHubName} {/* Display the active hub name in the navbar */}
+            {/* Customized Hub Selector */}
+            <Dropdown show={dropdownVisible} onToggle={toggleDropdown} onSelect={handleHubSelect} className="hub-selector">
+              <Dropdown.Toggle as="div" className="hub-dropdown">
+                <span className="hub-name">{activeHubName}</span> 
+                <span className="caret"></span>
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
@@ -210,20 +219,35 @@ const toggleDropdown = () => {
             <LogoutButton /> {/* Show logout button if the user is logged in */}
           </Container>
         </Navbar>
-
         <Container fluid>
           <Row>
             <Col md={3} className="bg-light sidebar">
               <Nav defaultActiveKey="/" className="flex-column">
-                <NavLink to="/" className="nav-link">Dashboard</NavLink>
-                <NavLink to="/meetings" className="nav-link">Meetings</NavLink>
-                <NavLink to="/action-items" className="nav-link">Action Items</NavLink>
-                <NavLink to="/settings" className="nav-link">Settings</NavLink>
+                <NavLink to="/" className="nav-link">
+                  <MdDashboard className="icon" />
+                  <span className="link-text">Dashboard</span>
+                </NavLink>
+                <NavLink to="/meetings" className="nav-link">
+                  <MdEvent className="icon" />
+                  <span className="link-text">Meetings</span>
+                </NavLink>
+                <NavLink to="/action-items" className="nav-link">
+                  <MdList className="icon" />
+                  <span className="link-text">Action Items</span>
+                </NavLink>
+                <NavLink to="/settings" className="nav-link">
+                  <MdSettings className="icon" />
+                  <span className="link-text">Settings</span>
+                </NavLink>
               </Nav>
               <UserEmailDisplay /> {/* Display the user email here if logged in */}
-              <AudioRecorder /> {/* Display AudioRecorder only if user is logged in */}
+              <AudioRecorder selectedHub={selectedHub} setSelectedHub={setSelectedHub} /> {/* Display AudioRecorder */}
             </Col>
-            <Col md={9} className="content">
+          </Row>
+
+          {/* Move the .content Col out of the Row containing the sidebar */}
+          <Row>
+            <Col md={{ span: 9, offset: 3 }} className="content">
               {isLoading ? (
                 <Spinner animation="border" role="status">
                   <span className="visually-hidden">Loading...</span>
@@ -231,6 +255,8 @@ const toggleDropdown = () => {
               ) : (
                 <Routes>
                   <Route path="/" element={<DashboardPage selectedHub={selectedHub} />} />
+                  <Route path="/meetings/:meetingId" element={<MeetingsPage />} /> {/* Add this route */}
+                  <Route path="/sessions/:sessionId" element={<MeetingSessionPage />} /> {/* Add this route */}
                   <Route path="/meetings" element={<MeetingsPage />} />
                   <Route path="/action-items" element={<ActionItemsPage />} />
                   <Route path="/settings" element={<SettingsPage />} />
@@ -275,11 +301,11 @@ const toggleDropdown = () => {
 };
 
 const App = () => (
-<UserProvider>
-  <RecorderProvider>
-    <AppContent />
-  </RecorderProvider>
-</UserProvider>
+  <UserProvider>
+    <RecorderProvider>
+      <AppContent />
+    </RecorderProvider>
+  </UserProvider>
 );
 
 export default App;

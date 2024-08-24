@@ -5,18 +5,33 @@ html, body, #root, .container-fluid, .row {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  background-color: rgba(248, 245, 239, 0.2); /* Apply the semi-transparent background color to the body */
+}
+
+.container-fluid {
+  display: flex; /* Ensure flexbox layout */
+  height: 100%; /* Ensure the container takes up the full height of the screen */
 }
 
 .sidebar {
   padding: 20px;
-  background-color: #F7F5EF;
-  transition: width 0.3s;
-  width: 250px;
+  background-color: #F8F5EF;
+  width: 50px; /* Start with collapsed width */
   position: relative;
+  height: 100vh;
+  transition: width 0.3s ease; /* Smooth transition for width change */
+  overflow: hidden; /* Hide overflow when collapsed */
+  white-space: nowrap; /* Prevent text from wrapping */
 }
 
-.sidebar.collapsed {
-  width: 80px;
+.sidebar.expanded {
+  width: 250px; /* Width when expanded */
+}
+
+.sidebar .nav-link .icon {
+  font-size: 1.5rem; /* Increase the font size */
+  margin-right: 10px;
+  flex-shrink: 0;
 }
 
 .sidebar .nav-link {
@@ -24,8 +39,8 @@ html, body, #root, .container-fluid, .row {
   align-items: center;
   color: #18A04F;
   overflow: hidden;
-  padding: 10px 15px;
-  transition: background-color 0.3s, color 0.3s;
+  padding: 10px 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .sidebar .nav-link .icon {
@@ -34,7 +49,11 @@ html, body, #root, .container-fluid, .row {
 }
 
 .sidebar.collapsed .nav-link .link-text {
-  display: none;
+  display: none !important; /* Force hiding of text when collapsed */
+}
+
+.sidebar.collapsed .nav-link .icon {
+  margin-right: 0; /* Remove margin when sidebar is collapsed */
 }
 
 .sidebar.collapsed .nav-link::after {
@@ -47,7 +66,7 @@ html, body, #root, .container-fluid, .row {
   padding: 5px;
   border-radius: 3px;
   opacity: 0;
-  transition: opacity 0.3s, transform 0.3s;
+  transition: opacity 0.3s ease, transform 0.3s ease;
   pointer-events: none;
   transform: translateX(-10px);
 }
@@ -63,24 +82,55 @@ html, body, #root, .container-fluid, .row {
   border-radius: 4px;
 }
 
+.sidebar:hover {
+  width: 250px; /* Expand on hover */
+}
+
 .content {
+  display: flex;
+  justify-content: flex-start; /* Align content to the left */
   padding: 20px;
   height: calc(100% - 56px);
   overflow-y: auto;
   background-color: #FDFDFC;
+  width: calc(100% - 80px); /* Adjust width based on collapsed sidebar */
+  transition: width 0.3s ease, margin-left 0.3s ease; /* Smooth transition when sidebar collapses */
+}
+
+.sidebar.expanded + .content {
+  width: calc(100% - 250px); /* Adjust width based on expanded sidebar */
+}
+
+.sidebar.collapsed + .content {
+  margin-left: 80px; /* Adjust content margin when sidebar is collapsed */
 }
 
 .navbar, .btn-outline-success {
-  background-color: #18A04F !important;
-  border-color: #18A04F !important;
+  background-color: #F8F5EF !important; /* Same color as the sidebar */
+  height: 50px; /* Set the height of the navbar */
+  padding: 0; /* Remove any padding to ensure the height is exactly 50px */
+}
+
+.navbar-brand img {
+  height: 24px; /* Adjust the logo height */
+  margin-right: 10px;
+  margin-left: 35px;
+  margin-top: 10px;
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+  line-height: 30px; /* Vertically center the text and icons */
+  font-size: 1rem; /* Adjust font size if necessary */
 }
 
 .btn-outline-success {
   color: #fff;
 }
 
-.navbar-brand {
-  font-weight: 600;
+.navbar .form-control {
+  height: 30px; /* Match the form control height to the navbar */
+  font-size: 0.875rem; /* Adjust font size if needed */
 }
 
 .nav-link {
@@ -89,6 +139,26 @@ html, body, #root, .container-fluid, .row {
 
 .nav-link.active {
   font-weight: bold;
+}
+
+.hub-selector {
+  display: flex;
+  align-items: center;
+  color: #18A04F;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer; /* Add this line to show a hand cursor on hover */
+}
+
+
+.hub-selector .hub-name {
+  margin-left: 5px;
+}
+
+.hub-selector .caret {
+  margin-left: 5px;
+  font-size: 0.875rem;
+  color: #999;
 }
 
 /* Dropdown styles */
@@ -169,6 +239,10 @@ html, body, #root, .container-fluid, .row {
 /* Dashboard styles */
 .dashboard {
   padding: 20px;
+  margin-right: auto; /* Ensure the dashboard stays to the left */
+  max-width: 100%; /* Ensure it doesn't exceed its container */
+  background-color: #fff; /* Distinct background */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Slight shadow for visibility */
 }
 
 .dashboard h2 {
@@ -190,7 +264,7 @@ th, td {
 }
 
 th {
-  background-color: #F7F5EF;
+  background-color: #F8F5EF; /* Updated background color for headers */
   color: #333;
 }
 

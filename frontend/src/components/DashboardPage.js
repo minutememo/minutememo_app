@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import '../styles.css'; // Assuming styles.css is in the src folder
 
 const DashboardPage = ({ selectedHub }) => {
@@ -46,9 +47,6 @@ const DashboardPage = ({ selectedHub }) => {
 
   return (
     <div className="dashboard">
-      <h2>Dashboard</h2>
-      {error && <p className="error">{error}</p>}
-
       <h3>Meetings</h3>
       <table>
         <thead>
@@ -61,7 +59,11 @@ const DashboardPage = ({ selectedHub }) => {
         <tbody>
           {meetings.map(meeting => (
             <tr key={meeting.id}>
-              <td>{meeting.name}</td>
+              <td>
+                <Link to={`/meetings/${meeting.id}`}> {/* Link to the MeetingPage */}
+                  {meeting.name}
+                </Link>
+              </td>
               <td>{meeting.description}</td>
               <td>{meeting.is_recurring ? 'Yes' : 'No'}</td>
             </tr>
