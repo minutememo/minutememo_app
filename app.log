@@ -474,3 +474,149 @@ NameError: name 'send_from_directory' is not defined
 2024-08-24 07:40:52,401 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 07:40:52] "GET /api/sessions/20 HTTP/1.1" 200 -
 2024-08-24 07:40:52 INFO: 127.0.0.1 - - [24/Aug/2024 07:40:52] "GET /api/sessions/20 HTTP/1.1" 200 -
 2024-08-24 07:40:52,408 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 07:40:52] "GET /api/sessions/20 HTTP/1.1" 200 -
+2024-08-24 08:01:12 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-24 08:01:12,061 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-24 08:01:12 INFO: [33mPress CTRL+C to quit[0m
+2024-08-24 08:01:12,062 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-08-24 08:01:14 INFO: 127.0.0.1 - - [24/Aug/2024 08:01:14] "GET /auth/status HTTP/1.1" 200 -
+2024-08-24 08:01:14,235 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:01:14] "GET /auth/status HTTP/1.1" 200 -
+2024-08-24 08:01:14 INFO: 127.0.0.1 - - [24/Aug/2024 08:01:14] "GET /auth/status HTTP/1.1" 200 -
+2024-08-24 08:01:14,240 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:01:14] "GET /auth/status HTTP/1.1" 200 -
+2024-08-24 08:01:14 INFO: 127.0.0.1 - - [24/Aug/2024 08:01:14] "GET /api/sessions/20 HTTP/1.1" 200 -
+2024-08-24 08:01:14,281 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:01:14] "GET /api/sessions/20 HTTP/1.1" 200 -
+2024-08-24 08:01:14 INFO: 127.0.0.1 - - [24/Aug/2024 08:01:14] "GET /api/sessions/20 HTTP/1.1" 200 -
+2024-08-24 08:01:14,286 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:01:14] "GET /api/sessions/20 HTTP/1.1" 200 -
+2024-08-24 08:01:14 INFO: 127.0.0.1 - - [24/Aug/2024 08:01:14] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-24 08:01:14,296 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:01:14] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-24 08:01:14 INFO: 127.0.0.1 - - [24/Aug/2024 08:01:14] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-24 08:01:14,304 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:01:14] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-24 08:01:14 INFO: 127.0.0.1 - - [24/Aug/2024 08:01:14] "GET /api/sessions/20 HTTP/1.1" 200 -
+2024-08-24 08:01:14,308 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:01:14] "GET /api/sessions/20 HTTP/1.1" 200 -
+2024-08-24 08:01:14 INFO: 127.0.0.1 - - [24/Aug/2024 08:01:14] "GET /api/sessions/20 HTTP/1.1" 200 -
+2024-08-24 08:01:14,311 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:01:14] "GET /api/sessions/20 HTTP/1.1" 200 -
+2024-08-24 08:01:16 INFO: 127.0.0.1 - - [24/Aug/2024 08:01:16] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:01:16,259 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:01:16] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:01:16 INFO: 127.0.0.1 - - [24/Aug/2024 08:01:16] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:01:16,266 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:01:16] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:01:16 INFO: 127.0.0.1 - - [24/Aug/2024 08:01:16] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:01:16,271 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:01:16] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:01:16 INFO: 127.0.0.1 - - [24/Aug/2024 08:01:16] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:01:16,285 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:01:16] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:01:17 INFO: 127.0.0.1 - - [24/Aug/2024 08:01:17] "GET /api/meetings?meeting_id=18 HTTP/1.1" 200 -
+2024-08-24 08:01:17,647 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:01:17] "GET /api/meetings?meeting_id=18 HTTP/1.1" 200 -
+2024-08-24 08:01:17 INFO: 127.0.0.1 - - [24/Aug/2024 08:01:17] "GET /api/meetings?meeting_id=18 HTTP/1.1" 200 -
+2024-08-24 08:01:17,656 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:01:17] "GET /api/meetings?meeting_id=18 HTTP/1.1" 200 -
+2024-08-24 08:01:18 INFO: 127.0.0.1 - - [24/Aug/2024 08:01:18] "GET /api/sessions/21 HTTP/1.1" 200 -
+2024-08-24 08:01:18,446 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:01:18] "GET /api/sessions/21 HTTP/1.1" 200 -
+2024-08-24 08:01:18 INFO: 127.0.0.1 - - [24/Aug/2024 08:01:18] "GET /api/sessions/21 HTTP/1.1" 200 -
+2024-08-24 08:01:18,458 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:01:18] "GET /api/sessions/21 HTTP/1.1" 200 -
+2024-08-24 08:01:18 INFO: 127.0.0.1 - - [24/Aug/2024 08:01:18] "[35m[1mGET /uploads/6cc05e76-02af-4848-ace1-64e788bd3dca.mp3 HTTP/1.1[0m" 206 -
+2024-08-24 08:01:18,459 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:01:18] "[35m[1mGET /uploads/6cc05e76-02af-4848-ace1-64e788bd3dca.mp3 HTTP/1.1[0m" 206 -
+2024-08-24 08:02:47 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-24 08:02:47,872 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-24 08:02:47 INFO: [33mPress CTRL+C to quit[0m
+2024-08-24 08:02:47,872 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-08-24 08:02:50 INFO: 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /auth/status HTTP/1.1" 200 -
+2024-08-24 08:02:50 INFO: 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /api/sessions/21 HTTP/1.1" 200 -
+2024-08-24 08:02:50,224 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /auth/status HTTP/1.1" 200 -
+2024-08-24 08:02:50,226 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /api/sessions/21 HTTP/1.1" 200 -
+2024-08-24 08:02:50 INFO: 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-24 08:02:50,228 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-24 08:02:50 INFO: 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /auth/status HTTP/1.1" 200 -
+2024-08-24 08:02:50,230 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /auth/status HTTP/1.1" 200 -
+2024-08-24 08:02:50 INFO: 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /api/sessions/21 HTTP/1.1" 200 -
+2024-08-24 08:02:50,233 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /api/sessions/21 HTTP/1.1" 200 -
+2024-08-24 08:02:50 INFO: 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-24 08:02:50,235 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-24 08:02:50 INFO: 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /api/sessions/21 HTTP/1.1" 200 -
+2024-08-24 08:02:50,240 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /api/sessions/21 HTTP/1.1" 200 -
+2024-08-24 08:02:50 INFO: 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /api/sessions/21 HTTP/1.1" 200 -
+2024-08-24 08:02:50 INFO: 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-24 08:02:50,246 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /api/sessions/21 HTTP/1.1" 200 -
+2024-08-24 08:02:50,246 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-24 08:02:50 INFO: 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /api/sessions/21 HTTP/1.1" 200 -
+2024-08-24 08:02:50,251 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /api/sessions/21 HTTP/1.1" 200 -
+2024-08-24 08:02:50 INFO: 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-24 08:02:50,257 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-24 08:02:50 INFO: 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /api/sessions/21 HTTP/1.1" 200 -
+2024-08-24 08:02:50,257 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:02:50] "GET /api/sessions/21 HTTP/1.1" 200 -
+2024-08-24 08:02:50 INFO: 127.0.0.1 - - [24/Aug/2024 08:02:50] "[35m[1mGET /uploads/6cc05e76-02af-4848-ace1-64e788bd3dca.mp3 HTTP/1.1[0m" 206 -
+2024-08-24 08:02:50,262 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:02:50] "[35m[1mGET /uploads/6cc05e76-02af-4848-ace1-64e788bd3dca.mp3 HTTP/1.1[0m" 206 -
+2024-08-24 08:02:52 INFO: 127.0.0.1 - - [24/Aug/2024 08:02:52] "[35m[1mGET /uploads/6cc05e76-02af-4848-ace1-64e788bd3dca.mp3 HTTP/1.1[0m" 206 -
+2024-08-24 08:02:52,828 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:02:52] "[35m[1mGET /uploads/6cc05e76-02af-4848-ace1-64e788bd3dca.mp3 HTTP/1.1[0m" 206 -
+2024-08-24 08:02:53 INFO: 127.0.0.1 - - [24/Aug/2024 08:02:53] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:02:53,379 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:02:53] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:02:53 INFO: 127.0.0.1 - - [24/Aug/2024 08:02:53] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:02:53,386 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:02:53] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:02:53 INFO: 127.0.0.1 - - [24/Aug/2024 08:02:53] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:02:53,393 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:02:53] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:02:53 INFO: 127.0.0.1 - - [24/Aug/2024 08:02:53] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:02:53,408 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:02:53] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:02:54 INFO: 127.0.0.1 - - [24/Aug/2024 08:02:54] "GET /api/meetings?meeting_id=8 HTTP/1.1" 200 -
+2024-08-24 08:02:54,445 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:02:54] "GET /api/meetings?meeting_id=8 HTTP/1.1" 200 -
+2024-08-24 08:02:54 INFO: 127.0.0.1 - - [24/Aug/2024 08:02:54] "GET /api/meetings?meeting_id=8 HTTP/1.1" 200 -
+2024-08-24 08:02:54,454 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:02:54] "GET /api/meetings?meeting_id=8 HTTP/1.1" 200 -
+2024-08-24 08:03:03 INFO: 127.0.0.1 - - [24/Aug/2024 08:03:03] "OPTIONS /api/meetings HTTP/1.1" 200 -
+2024-08-24 08:03:03,266 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:03:03] "OPTIONS /api/meetings HTTP/1.1" 200 -
+2024-08-24 08:03:03 INFO: 127.0.0.1 - - [24/Aug/2024 08:03:03] "[35m[1mPOST /api/meetings HTTP/1.1[0m" 201 -
+2024-08-24 08:03:03,314 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:03:03] "[35m[1mPOST /api/meetings HTTP/1.1[0m" 201 -
+2024-08-24 08:03:03 INFO: 127.0.0.1 - - [24/Aug/2024 08:03:03] "OPTIONS /api/recordings HTTP/1.1" 200 -
+2024-08-24 08:03:03,320 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:03:03] "OPTIONS /api/recordings HTTP/1.1" 200 -
+2024-08-24 08:03:03 INFO: Recording 90deaa13-b2ef-46bb-b456-94cfa2f97bcf created for user 2 in session 22
+2024-08-24 08:03:03,330 - minutememo_app.app - INFO - Recording 90deaa13-b2ef-46bb-b456-94cfa2f97bcf created for user 2 in session 22
+2024-08-24 08:03:03 INFO: 127.0.0.1 - - [24/Aug/2024 08:03:03] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
+2024-08-24 08:03:03,331 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:03:03] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
+2024-08-24 08:03:08 INFO: 127.0.0.1 - - [24/Aug/2024 08:03:08] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-24 08:03:08,632 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:03:08] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-24 08:03:13 INFO: 127.0.0.1 - - [24/Aug/2024 08:03:13] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-24 08:03:13,673 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:03:13] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-24 08:03:18 INFO: 127.0.0.1 - - [24/Aug/2024 08:03:18] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-24 08:03:18,713 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:03:18] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-24 08:03:23 INFO: 127.0.0.1 - - [24/Aug/2024 08:03:23] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-24 08:03:23,754 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:03:23] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-24 08:03:28 INFO: 127.0.0.1 - - [24/Aug/2024 08:03:28] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-24 08:03:28,795 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:03:28] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-24 08:03:29 INFO: 127.0.0.1 - - [24/Aug/2024 08:03:29] "OPTIONS /concatenate HTTP/1.1" 200 -
+2024-08-24 08:03:29,859 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:03:29] "OPTIONS /concatenate HTTP/1.1" 200 -
+2024-08-24 08:03:29 INFO: Received request to concatenate for recording_id: 90deaa13-b2ef-46bb-b456-94cfa2f97bcf
+2024-08-24 08:03:29,865 - minutememo_app.app - INFO - Received request to concatenate for recording_id: 90deaa13-b2ef-46bb-b456-94cfa2f97bcf
+2024-08-24 08:03:29 INFO: Chunk files to concatenate: ['90deaa13-b2ef-46bb-b456-94cfa2f97bcf_chunk_0.webm', '90deaa13-b2ef-46bb-b456-94cfa2f97bcf_chunk_1.webm', '90deaa13-b2ef-46bb-b456-94cfa2f97bcf_chunk_2.webm', '90deaa13-b2ef-46bb-b456-94cfa2f97bcf_chunk_3.webm', '90deaa13-b2ef-46bb-b456-94cfa2f97bcf_chunk_4.webm']
+2024-08-24 08:03:29,884 - minutememo_app.app - INFO - Chunk files to concatenate: ['90deaa13-b2ef-46bb-b456-94cfa2f97bcf_chunk_0.webm', '90deaa13-b2ef-46bb-b456-94cfa2f97bcf_chunk_1.webm', '90deaa13-b2ef-46bb-b456-94cfa2f97bcf_chunk_2.webm', '90deaa13-b2ef-46bb-b456-94cfa2f97bcf_chunk_3.webm', '90deaa13-b2ef-46bb-b456-94cfa2f97bcf_chunk_4.webm']
+2024-08-24 08:03:30 INFO: Concatenation successful: uploads/90deaa13-b2ef-46bb-b456-94cfa2f97bcf.mp3
+2024-08-24 08:03:30,638 - minutememo_app.app - INFO - Concatenation successful: uploads/90deaa13-b2ef-46bb-b456-94cfa2f97bcf.mp3
+2024-08-24 08:03:30 INFO: Database updated successfully for recording_id: 90deaa13-b2ef-46bb-b456-94cfa2f97bcf
+2024-08-24 08:03:30,654 - minutememo_app.app - INFO - Database updated successfully for recording_id: 90deaa13-b2ef-46bb-b456-94cfa2f97bcf
+2024-08-24 08:03:30 INFO: 127.0.0.1 - - [24/Aug/2024 08:03:30] "POST /concatenate HTTP/1.1" 200 -
+2024-08-24 08:03:30,655 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:03:30] "POST /concatenate HTTP/1.1" 200 -
+2024-08-24 08:03:30 INFO: 127.0.0.1 - - [24/Aug/2024 08:03:30] "OPTIONS /api/recordings/90deaa13-b2ef-46bb-b456-94cfa2f97bcf HTTP/1.1" 200 -
+2024-08-24 08:03:30,661 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:03:30] "OPTIONS /api/recordings/90deaa13-b2ef-46bb-b456-94cfa2f97bcf HTTP/1.1" 200 -
+2024-08-24 08:03:30 INFO: Received data for updating recording 90deaa13-b2ef-46bb-b456-94cfa2f97bcf: {'audio_url': 'uploads/90deaa13-b2ef-46bb-b456-94cfa2f97bcf.mp3'}
+2024-08-24 08:03:30,664 - minutememo_app.app - INFO - Received data for updating recording 90deaa13-b2ef-46bb-b456-94cfa2f97bcf: {'audio_url': 'uploads/90deaa13-b2ef-46bb-b456-94cfa2f97bcf.mp3'}
+2024-08-24 08:03:30 INFO: Current recording before update: <Recording 90deaa13-b2ef-46bb-b456-94cfa2f97bcf>
+2024-08-24 08:03:30,685 - minutememo_app.app - INFO - Current recording before update: <Recording 90deaa13-b2ef-46bb-b456-94cfa2f97bcf>
+2024-08-24 08:03:30 INFO: Meeting session after update: <MeetingSession 22>
+2024-08-24 08:03:30,721 - minutememo_app.app - INFO - Meeting session after update: <MeetingSession 22>
+2024-08-24 08:03:30 INFO: 127.0.0.1 - - [24/Aug/2024 08:03:30] "PATCH /api/recordings/90deaa13-b2ef-46bb-b456-94cfa2f97bcf HTTP/1.1" 200 -
+2024-08-24 08:03:30,722 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:03:30] "PATCH /api/recordings/90deaa13-b2ef-46bb-b456-94cfa2f97bcf HTTP/1.1" 200 -
+2024-08-24 08:03:31 INFO: 127.0.0.1 - - [24/Aug/2024 08:03:31] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:03:31,079 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:03:31] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:03:31 INFO: 127.0.0.1 - - [24/Aug/2024 08:03:31] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:03:31,086 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:03:31] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:03:31 INFO: 127.0.0.1 - - [24/Aug/2024 08:03:31] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:03:31,100 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:03:31] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:03:31 INFO: 127.0.0.1 - - [24/Aug/2024 08:03:31] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:03:31,131 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:03:31] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-24 08:03:32 INFO: 127.0.0.1 - - [24/Aug/2024 08:03:32] "GET /api/meetings?meeting_id=19 HTTP/1.1" 200 -
+2024-08-24 08:03:32,265 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:03:32] "GET /api/meetings?meeting_id=19 HTTP/1.1" 200 -
+2024-08-24 08:03:32 INFO: 127.0.0.1 - - [24/Aug/2024 08:03:32] "GET /api/meetings?meeting_id=19 HTTP/1.1" 200 -
+2024-08-24 08:03:32,269 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:03:32] "GET /api/meetings?meeting_id=19 HTTP/1.1" 200 -
+2024-08-24 08:03:33 INFO: 127.0.0.1 - - [24/Aug/2024 08:03:33] "GET /api/sessions/22 HTTP/1.1" 200 -
+2024-08-24 08:03:33,491 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:03:33] "GET /api/sessions/22 HTTP/1.1" 200 -
+2024-08-24 08:03:33 INFO: 127.0.0.1 - - [24/Aug/2024 08:03:33] "GET /api/sessions/22 HTTP/1.1" 200 -
+2024-08-24 08:03:33 INFO: 127.0.0.1 - - [24/Aug/2024 08:03:33] "[35m[1mGET /uploads/90deaa13-b2ef-46bb-b456-94cfa2f97bcf.mp3 HTTP/1.1[0m" 206 -
+2024-08-24 08:03:33,498 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:03:33] "GET /api/sessions/22 HTTP/1.1" 200 -
+2024-08-24 08:03:33,498 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2024 08:03:33] "[35m[1mGET /uploads/90deaa13-b2ef-46bb-b456-94cfa2f97bcf.mp3 HTTP/1.1[0m" 206 -
