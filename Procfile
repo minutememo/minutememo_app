@@ -1,1 +1,1 @@
-web: gunicorn minutememo_app.app:app
+web: gunicorn minutememo_app.wsgi:app

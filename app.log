@@ -359,3 +359,111 @@ WHERE meeting_session.meeting_id = %(meeting_id_1)s]
 2024-08-27 23:22:50,496 - werkzeug - INFO - 127.0.0.1 - - [27/Aug/2024 23:22:50] "GET /api/company HTTP/1.1" 200 -
 2024-08-27 23:22:50 INFO: 127.0.0.1 - - [27/Aug/2024 23:22:50] "GET /api/company HTTP/1.1" 200 -
 2024-08-27 23:22:50,503 - werkzeug - INFO - 127.0.0.1 - - [27/Aug/2024 23:22:50] "GET /api/company HTTP/1.1" 200 -
+2024-08-27 23:41:44 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-27 23:41:44,985 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-27 23:41:44 INFO: [33mPress CTRL+C to quit[0m
+2024-08-27 23:41:44,985 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-08-27 23:44:30 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-27 23:44:30,059 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-27 23:44:30 INFO: [33mPress CTRL+C to quit[0m
+2024-08-27 23:44:30,059 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-08-27 23:56:40 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-27 23:56:40,549 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-27 23:56:40 INFO: [33mPress CTRL+C to quit[0m
+2024-08-27 23:56:40,550 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-08-27 23:56:45 ERROR: Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
+LINE 3: WHERE meeting_session.meeting_id = 'undefined'
+                                           ^
+
+[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url 
+FROM meeting_session 
+WHERE meeting_session.meeting_id = %(meeting_id_1)s]
+[parameters: {'meeting_id_1': 'undefined'}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2024-08-27 23:56:45,823 - minutememo_app.app - ERROR - Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
+LINE 3: WHERE meeting_session.meeting_id = 'undefined'
+                                           ^
+
+[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url 
+FROM meeting_session 
+WHERE meeting_session.meeting_id = %(meeting_id_1)s]
+[parameters: {'meeting_id_1': 'undefined'}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2024-08-27 23:56:45 INFO: 127.0.0.1 - - [27/Aug/2024 23:56:45] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
+2024-08-27 23:56:45,825 - werkzeug - INFO - 127.0.0.1 - - [27/Aug/2024 23:56:45] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
+2024-08-27 23:56:45 ERROR: Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
+LINE 3: WHERE meeting_session.meeting_id = 'undefined'
+                                           ^
+
+[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url 
+FROM meeting_session 
+WHERE meeting_session.meeting_id = %(meeting_id_1)s]
+[parameters: {'meeting_id_1': 'undefined'}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2024-08-27 23:56:45,846 - minutememo_app.app - ERROR - Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
+LINE 3: WHERE meeting_session.meeting_id = 'undefined'
+                                           ^
+
+[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url 
+FROM meeting_session 
+WHERE meeting_session.meeting_id = %(meeting_id_1)s]
+[parameters: {'meeting_id_1': 'undefined'}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2024-08-27 23:56:45 INFO: 127.0.0.1 - - [27/Aug/2024 23:56:45] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
+2024-08-27 23:56:45,847 - werkzeug - INFO - 127.0.0.1 - - [27/Aug/2024 23:56:45] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
+2024-08-27 23:56:46 INFO: 127.0.0.1 - - [27/Aug/2024 23:56:46] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-27 23:56:46,191 - werkzeug - INFO - 127.0.0.1 - - [27/Aug/2024 23:56:46] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-27 23:56:46 INFO: 127.0.0.1 - - [27/Aug/2024 23:56:46] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-27 23:56:46,197 - werkzeug - INFO - 127.0.0.1 - - [27/Aug/2024 23:56:46] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-27 23:56:46 INFO: 127.0.0.1 - - [27/Aug/2024 23:56:46] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-27 23:56:46,225 - werkzeug - INFO - 127.0.0.1 - - [27/Aug/2024 23:56:46] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-27 23:56:46 INFO: 127.0.0.1 - - [27/Aug/2024 23:56:46] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-27 23:56:46,235 - werkzeug - INFO - 127.0.0.1 - - [27/Aug/2024 23:56:46] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-27 23:56:47 INFO: 127.0.0.1 - - [27/Aug/2024 23:56:47] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-27 23:56:47,354 - werkzeug - INFO - 127.0.0.1 - - [27/Aug/2024 23:56:47] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-27 23:56:47 INFO: 127.0.0.1 - - [27/Aug/2024 23:56:47] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-27 23:56:47,355 - werkzeug - INFO - 127.0.0.1 - - [27/Aug/2024 23:56:47] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-27 23:56:47 INFO: 127.0.0.1 - - [27/Aug/2024 23:56:47] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-27 23:56:47,359 - werkzeug - INFO - 127.0.0.1 - - [27/Aug/2024 23:56:47] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-27 23:56:47 INFO: 127.0.0.1 - - [27/Aug/2024 23:56:47] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-27 23:56:47,360 - werkzeug - INFO - 127.0.0.1 - - [27/Aug/2024 23:56:47] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-27 23:56:48 INFO: 127.0.0.1 - - [27/Aug/2024 23:56:48] "GET /api/meetings?meeting_id=36 HTTP/1.1" 200 -
+2024-08-27 23:56:48,288 - werkzeug - INFO - 127.0.0.1 - - [27/Aug/2024 23:56:48] "GET /api/meetings?meeting_id=36 HTTP/1.1" 200 -
+2024-08-27 23:56:48 INFO: 127.0.0.1 - - [27/Aug/2024 23:56:48] "GET /api/meetings?meeting_id=36 HTTP/1.1" 200 -
+2024-08-27 23:56:48,294 - werkzeug - INFO - 127.0.0.1 - - [27/Aug/2024 23:56:48] "GET /api/meetings?meeting_id=36 HTTP/1.1" 200 -
+2024-08-27 23:56:49 INFO: 127.0.0.1 - - [27/Aug/2024 23:56:49] "GET /api/sessions/39 HTTP/1.1" 200 -
+2024-08-27 23:56:49,381 - werkzeug - INFO - 127.0.0.1 - - [27/Aug/2024 23:56:49] "GET /api/sessions/39 HTTP/1.1" 200 -
+2024-08-27 23:56:49 INFO: 127.0.0.1 - - [27/Aug/2024 23:56:49] "GET /api/sessions/39 HTTP/1.1" 200 -
+2024-08-27 23:56:49,387 - werkzeug - INFO - 127.0.0.1 - - [27/Aug/2024 23:56:49] "GET /api/sessions/39 HTTP/1.1" 200 -
+2024-08-27 23:56:49 INFO: 127.0.0.1 - - [27/Aug/2024 23:56:49] "[35m[1mGET /uploads/audio_recordings/575f064a-7ba8-44cb-991b-5f27489f73b6.mp3 HTTP/1.1[0m" 206 -
+2024-08-27 23:56:49,393 - werkzeug - INFO - 127.0.0.1 - - [27/Aug/2024 23:56:49] "[35m[1mGET /uploads/audio_recordings/575f064a-7ba8-44cb-991b-5f27489f73b6.mp3 HTTP/1.1[0m" 206 -
+2024-08-27 23:58:25 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-27 23:58:25,700 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-27 23:58:25 INFO: [33mPress CTRL+C to quit[0m
+2024-08-27 23:58:25,701 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-08-28 00:00:49 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-28 00:00:49,667 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-28 00:00:49 INFO: [33mPress CTRL+C to quit[0m
+2024-08-28 00:00:49,668 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-08-28 00:01:16 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-28 00:01:16,664 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-28 00:01:16 INFO: [33mPress CTRL+C to quit[0m
+2024-08-28 00:01:16,664 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-08-28 00:01:58 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-28 00:01:58,541 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-28 00:01:58 INFO: [33mPress CTRL+C to quit[0m
+2024-08-28 00:01:58,541 - werkzeug - INFO - [33mPress CTRL+C to quit[0m

@@ -9,9 +9,9 @@ from datetime import timedelta
 import re
 from logging.handlers import RotatingFileHandler
 import logging
-from .extensions import db  # Use absolute import
-from minutememo_app.models import Recording, User
-from .auth import auth
+from .extensions import *  # Use absolute import
+from .models import *
+from .auth import *
 
 # Initialize login manager
 login_manager = LoginManager()
