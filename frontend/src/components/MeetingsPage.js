@@ -7,11 +7,14 @@ const MeetingPage = () => {
   const [sessions, setSessions] = useState([]);
   const [error, setError] = useState('');
 
+  // Environment variable for backend URL
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+
   useEffect(() => {
     // Fetch sessions for the meeting
     const fetchSessions = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/meetings?meeting_id=${meetingId}`);
+        const response = await axios.get(`${backendUrl}/api/meetings?meeting_id=${meetingId}`);
         if (response.status === 200) {
           if (response.data.sessions.length > 0) {
             setSessions(response.data.sessions);
@@ -28,7 +31,7 @@ const MeetingPage = () => {
     };
 
     fetchSessions();
-  }, [meetingId]);
+  }, [meetingId, backendUrl]);
 
   return (
     <div className="meeting-page">

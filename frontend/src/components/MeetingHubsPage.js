@@ -7,11 +7,14 @@ const MeetingHubsPage = () => {
   const [meetingHubs, setMeetingHubs] = useState([]);
   const [error, setError] = useState('');
 
+  // Environment variable for backend URL
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+
   useEffect(() => {
     // Fetch the user's meeting hubs when the component mounts
     const fetchMeetingHubs = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/meetinghubs');
+        const response = await axios.get(`${backendUrl}/api/meetinghubs`);
         if (response.status === 200) {
           setMeetingHubs(response.data.meeting_hubs);
         } else {
@@ -24,7 +27,7 @@ const MeetingHubsPage = () => {
     };
 
     fetchMeetingHubs();
-  }, []);
+  }, [backendUrl]);
 
   return (
     <div className="meeting-hubs">

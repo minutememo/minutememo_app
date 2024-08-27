@@ -8,12 +8,15 @@ const DashboardPage = ({ selectedHub }) => {
   const [meetingSessions, setMeetingSessions] = useState([]);
   const [error, setError] = useState('');
 
+  // Environment variable for backend URL
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+
   useEffect(() => {
     if (selectedHub) {
       // Fetch the meetings for the selected meeting hub when the component mounts
       const fetchMeetings = async () => {
         try {
-          const response = await axios.get(`http://localhost:5000/api/meetings?hub_id=${selectedHub}`);
+          const response = await axios.get(`${backendUrl}/api/meetings?hub_id=${selectedHub}`);
           if (response.status === 200) {
             setMeetings(response.data.meetings);
           } else {
@@ -28,7 +31,7 @@ const DashboardPage = ({ selectedHub }) => {
       // Fetch the meeting sessions for the selected meeting hub when the component mounts
       const fetchMeetingSessions = async () => {
         try {
-          const response = await axios.get(`http://localhost:5000/api/meetingsessions?hub_id=${selectedHub}`);
+          const response = await axios.get(`${backendUrl}/api/meetingsessions?hub_id=${selectedHub}`);
           if (response.status === 200) {
             setMeetingSessions(response.data.meeting_sessions);
           } else {
@@ -43,7 +46,7 @@ const DashboardPage = ({ selectedHub }) => {
       fetchMeetings();
       fetchMeetingSessions();
     }
-  }, [selectedHub]);
+  }, [selectedHub, backendUrl]);
 
   return (
     <div className="dashboard">

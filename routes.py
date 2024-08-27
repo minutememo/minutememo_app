@@ -1,6 +1,8 @@
 #routes.py
-from flask import Blueprint, render_template, request, jsonify, current_app, send_from_directory
+from flask import Blueprint, render_template, request, jsonify, current_app, send_from_directory, redirect, url_for
 import os
+import boto3
+from botocore.exceptions import NoCredentialsError, ClientError
 import uuid
 from flask_cors import cross_origin
 import ffmpeg
@@ -11,19 +13,55 @@ from flask_login import login_required, current_user
 from datetime import datetime
 
 
-
-
-
 main = Blueprint('main', __name__)
 
-UPLOAD_FOLDER = 'uploads'
-if not os.path.exists(UPLOAD_FOLDER):
+# Load environment settings
+ENVIRONMENT = os.getenv('FLASK_ENV', 'development')
+UPLOAD_FOLDER = os.path.join('uploads', 'audio_recordings')
+USE_SPACES = os.getenv('USE_SPACES', 'false').lower() == 'true'
+
+# DigitalOcean Spaces configuration (only used if USE_SPACES is true)
+if USE_SPACES:
+    DO_SPACE_NAME = os.getenv('DO_SPACE_NAME')
+    DO_REGION = os.getenv('DO_REGION', 'nyc3')
+    DO_ENDPOINT_URL = f"https://{DO_REGION}.digitaloceanspaces.com"
+    DO_ACCESS_KEY = os.getenv('DO_ACCESS_KEY')
+    DO_SECRET_KEY = os.getenv('DO_SECRET_KEY')
+
+    # Initialize the boto3 client for DigitalOcean Spaces
+    s3_client = boto3.client('s3',
+                             region_name=DO_REGION,
+                             endpoint_url=DO_ENDPOINT_URL,
+                             aws_access_key_id=DO_ACCESS_KEY,
+                             aws_secret_access_key=DO_SECRET_KEY)
+
+if not USE_SPACES and not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
+
+def upload_file(file, file_key):
+    if USE_SPACES:
+        try:
+            file_key = f"audio_recordings/{file_key}"
+            s3_client.upload_fileobj(file, DO_SPACE_NAME, file_key)
+            file_url = f"{DO_ENDPOINT_URL}/{DO_SPACE_NAME}/{file_key}"
+            return file_url
+        except NoCredentialsError:
+            current_app.logger.error("Credentials not available for DigitalOcean Spaces")
+            raise
+        except ClientError as e:
+            current_app.logger.error(f"Error uploading file to DigitalOcean Spaces: {str(e)}")
+            raise
+    else:
+        # Save locally in the audio_recordings folder
+        file_path = os.path.join(UPLOAD_FOLDER, file_key)
+        file.save(file_path)
+        file_url = f"/uploads/audio_recordings/{file_key}"
+        return file_url
 
 @main.route('/')
 @login_required
 def home():
-    return render_template('index.html')
+    return render_template('index.html') 
 
 @main.route('/home_content')
 @login_required
@@ -35,70 +73,7 @@ def home_content():
 def settings_content():
     return render_template('settings_content.html')
 
-@main.route('/api/recordings', methods=['POST'])
-@login_required
-@cross_origin()
-def create_recording():
-    try:
-        data = request.json
 
-        if not data:
-            current_app.logger.error("No JSON data received")
-            return jsonify({'status': 'error', 'message': 'No data provided'}), 400
-
-        recording_id = data.get('recording_id')
-        if not recording_id:
-            current_app.logger.error("Recording ID not provided")
-            return jsonify({'status': 'error', 'message': 'Recording ID is required'}), 400
-
-        file_name = data.get('file_name')
-        if not file_name:
-            current_app.logger.error("File name not provided")
-            return jsonify({'status': 'error', 'message': 'File name is required'}), 400
-
-        concatenation_status = data.get('concatenation_status', 'pending')
-        concatenation_file_name = data.get('concatenation_file_name')
-
-        if not concatenation_file_name:
-            current_app.logger.error("Concatenation file name not provided")
-            return jsonify({'status': 'error', 'message': 'Concatenation file name is required'}), 400
-
-        meeting_session_id = data.get('meeting_session_id')
-        if not meeting_session_id:
-            # Create a new meeting session if not provided
-            session_name = f"New Meeting Session {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')}"
-            new_session = MeetingSession(
-                name=session_name,
-                session_datetime=datetime.utcnow(),
-                meeting_id=None  # Update as needed to link to a meeting if required
-            )
-            db.session.add(new_session)
-            db.session.commit()
-            meeting_session_id = new_session.id
-            current_app.logger.info(f"Created new meeting session {meeting_session_id} with name '{session_name}'")
-
-        user_id = current_user.id  # Assuming you're using Flask-Login
-
-        # Create a new recording entry
-        new_recording = Recording(
-            id=recording_id,
-            user_id=user_id,
-            file_name=file_name,
-            concatenation_status=concatenation_status,
-            concatenation_file_name=concatenation_file_name,
-            timestamp=datetime.utcnow(),
-            meeting_session_id=meeting_session_id
-        )
-        db.session.add(new_recording)
-        db.session.commit()
-
-        current_app.logger.info(f"Recording {recording_id} created for user {user_id} in session {meeting_session_id}")
-
-        return jsonify({'status': 'success', 'recording': recording_id}), 201
-    except Exception as e:
-        db.session.rollback()  # Rollback the session on error
-        current_app.logger.error(f"Error creating recording: {str(e)}")
-        return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
 
 @main.route('/api/recordings/<string:recording_id>', methods=['PATCH'])
 @login_required
@@ -171,33 +146,8 @@ def get_user_recordings():
 @login_required
 def profile_content():
     return render_template('profile_content.html')
-
-@main.route('/upload_chunk', methods=['POST'])
-@login_required
-@cross_origin()
-def upload_chunk():
-    chunk = request.files['chunk']
-    chunk_number = request.form['chunk_number']
-    recording_id = request.form['recording_id']
-    chunk_filename = f"{recording_id}_chunk_{chunk_number}.webm"
-    chunk_path = os.path.join(UPLOAD_FOLDER, chunk_filename)
-    chunk.save(chunk_path)
     
-    # Log the size of the saved chunk
-    chunk_size = os.path.getsize(chunk_path)
-    print(f"Chunk saved: {chunk_filename}, size: {chunk_size} bytes")
     
-    # Update the list file
-    list_file_path = os.path.join(UPLOAD_FOLDER, f"{recording_id}_list.txt")
-    with open(list_file_path, 'a') as list_file:
-        list_file.write(f"file '{os.path.abspath(chunk_path)}'\n")
-    
-    return jsonify({'status': 'success', 'chunk_key': chunk_filename})
-
-def natural_sort_key(s):
-    import re
-    return [int(text) if text.isdigit() else text.lower() for text in re.split('([0-9]+)', s)]
-
 @main.route('/concatenate', methods=['POST'])
 @login_required
 @cross_origin()
@@ -564,10 +514,117 @@ def get_session(session_id):
         current_app.logger.error(f"Error fetching session: {str(e)}")
         return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
 
-@main.route('/uploads/<path:filename>')
-def download_file(filename):
-    return send_from_directory('uploads', filename)
+@main.route('/api/recordings', methods=['POST'])
+@login_required
+@cross_origin()
+def create_recording():
+    try:
+        data = request.json
 
+        if not data:
+            current_app.logger.error("No JSON data received")
+            return jsonify({'status': 'error', 'message': 'No data provided'}), 400
+
+        recording_id = data.get('recording_id')
+        if not recording_id:
+            current_app.logger.error("Recording ID not provided")
+            return jsonify({'status': 'error', 'message': 'Recording ID is required'}), 400
+
+        file_name = data.get('file_name')
+        if not file_name:
+            current_app.logger.error("File name not provided")
+            return jsonify({'status': 'error', 'message': 'File name is required'}), 400
+
+        concatenation_status = data.get('concatenation_status', 'pending')
+        concatenation_file_name = data.get('concatenation_file_name')
+
+        if not concatenation_file_name:
+            current_app.logger.error("Concatenation file name not provided")
+            return jsonify({'status': 'error', 'message': 'Concatenation file name is required'}), 400
+
+        meeting_session_id = data.get('meeting_session_id')
+        if not meeting_session_id:
+            # Create a new meeting session if not provided
+            session_name = f"New Meeting Session {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')}"
+            new_session = MeetingSession(
+                name=session_name,
+                session_datetime=datetime.utcnow(),
+                meeting_id=None  # Update as needed to link to a meeting if required
+            )
+            db.session.add(new_session)
+            db.session.commit()
+            meeting_session_id = new_session.id
+            current_app.logger.info(f"Created new meeting session {meeting_session_id} with name '{session_name}'")
+
+        user_id = current_user.id  # Assuming you're using Flask-Login
+
+        # Create a new recording entry
+        new_recording = Recording(
+            id=recording_id,
+            user_id=user_id,
+            file_name=file_name,
+            concatenation_status=concatenation_status,
+            concatenation_file_name=concatenation_file_name,
+            timestamp=datetime.utcnow(),
+            meeting_session_id=meeting_session_id
+        )
+        db.session.add(new_recording)
+        db.session.commit()
+
+        current_app.logger.info(f"Recording {recording_id} created for user {user_id} in session {meeting_session_id}")
+
+        return jsonify({'status': 'success', 'recording': recording_id}), 201
+    except Exception as e:
+        db.session.rollback()  # Rollback the session on error
+        current_app.logger.error(f"Error creating recording: {str(e)}")
+        return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
+
+@main.route('/upload_chunk', methods=['POST'])
+@login_required
+def upload_chunk():
+    chunk = request.files['chunk']
+    chunk_number = request.form['chunk_number']
+    recording_id = request.form['recording_id']
+    chunk_filename = f"{recording_id}_chunk_{chunk_number}.webm"
+
+    try:
+        file_url = upload_file(chunk, chunk_filename)
+        current_app.logger.info(f"Chunk {chunk_number} uploaded successfully for recording {recording_id}")
+        return jsonify({'status': 'success', 'chunk_key': chunk_filename, 'file_url': file_url})
+    except Exception as e:
+        current_app.logger.error(f"Error uploading chunk: {str(e)}")
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+
+@main.route('/uploads/audio_recordings/<path:filename>')
+def download_file(filename):
+    if USE_SPACES:
+        try:
+            url = s3_client.generate_presigned_url('get_object',
+                                                   Params={'Bucket': DO_SPACE_NAME, 'Key': f"audio_recordings/{filename}"},
+                                                   ExpiresIn=3600)
+            current_app.logger.info(f"Generated presigned URL for {filename}")
+            return redirect(url)
+        except ClientError as e:
+            current_app.logger.error(f"Error generating presigned URL for {filename}: {str(e)}")
+            return jsonify({'status': 'error', 'message': 'File not found'}), 404
+    else:
+        try:
+            return send_from_directory(UPLOAD_FOLDER, filename)
+        except Exception as e:
+            current_app.logger.error(f"Error serving file {filename} from local storage: {str(e)}")
+            return jsonify({'status': 'error', 'message': 'File not found'}), 404
+    chunk = request.files['chunk']
+    chunk_number = request.form['chunk_number']
+    recording_id = request.form['recording_id']
+    chunk_filename = f"{recording_id}_chunk_{chunk_number}.webm"
+
+    try:
+        file_url = upload_file(chunk, chunk_filename)
+        return jsonify({'status': 'success', 'chunk_key': chunk_filename, 'file_url': file_url})
+    except Exception as e:
+        current_app.logger.error(f"Error uploading chunk: {str(e)}")
+        return jsonify({'status': 'error', 'message': str(e)}), 500
 
 @main.route('/api/set_active_hub', methods=['POST'])
 @login_required

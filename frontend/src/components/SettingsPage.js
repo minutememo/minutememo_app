@@ -14,11 +14,14 @@ const SettingsPage = () => {
   });
   const [message, setMessage] = useState('');
 
+  // Environment variable for backend URL
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+
   useEffect(() => {
     // Fetch the existing company details when the component mounts
     const fetchCompany = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/company');
+        const response = await axios.get(`${backendUrl}/api/company`);
         if (response.status === 200 && response.data.company) {
           setCompany(response.data.company);
         }
@@ -28,7 +31,7 @@ const SettingsPage = () => {
     };
 
     fetchCompany();
-  }, []);
+  }, [backendUrl]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -38,7 +41,7 @@ const SettingsPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/company', company);
+      const response = await axios.post(`${backendUrl}/api/company`, company);
       if (response.status === 200) {
         setMessage('Company details updated successfully.');
       } else {

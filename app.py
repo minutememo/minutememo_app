@@ -1,4 +1,3 @@
-#app.py
 import os
 import sys
 from flask import Flask, request, jsonify, session, g
@@ -13,7 +12,6 @@ import logging
 from .extensions import db  # Import db from extensions.py
 from .models import Recording, User
 from .auth import auth
-from datetime import timedelta
 
 # Initialize login manager
 login_manager = LoginManager()
@@ -44,9 +42,6 @@ migrate = Migrate()
 
 def create_app():
     app = Flask(__name__)
-    CORS(app, supports_credentials=True, resources={r"/*": {"origins": "http://localhost:3000"}})
-
-    logging.basicConfig(level=logging.DEBUG)
 
     # Load environment variables
     env = os.getenv('FLASK_ENV', 'development')
@@ -55,9 +50,14 @@ def create_app():
     else:
         load_dotenv('.env.development')
 
+    # Update CORS configuration based on environment
+    frontend_url = os.getenv('FRONTEND_URL', 'http://localhost:3000')
+    CORS(app, supports_credentials=True, resources={r"/*": {"origins": frontend_url}})
+
+    # Configure app
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL').replace("postgres://", "postgresql://")
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.secret_key = 'supersecretkey'  # Needed for session management
+    app.secret_key = os.getenv('SECRET_KEY', 'supersecretkey')  # Use env variable for secret key
     app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)  # Session lifetime
     app.config['REMEMBER_COOKIE_DURATION'] = timedelta(days=7)
     app.config['REMEMBER_COOKIE_SECURE'] = env == 'production'  # True if using HTTPS in production
@@ -148,7 +148,7 @@ def concatenate_chunks(recording_id):
 
     return output_file
 
-    # Route to handle chunk concatenation
+# Route to handle chunk concatenation
     @app.route('/concatenate', methods=['POST'])
     def concatenate():
         data = request.get_json()

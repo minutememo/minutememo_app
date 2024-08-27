@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import './styles.css';
 import { RecorderContext } from './RecorderContext';
 import { useUser } from './UserContext';
-import { FormControl } from 'react-bootstrap'; // Add this line
+import { FormControl } from 'react-bootstrap';
 
 axios.defaults.withCredentials = true; // Ensure credentials are included with every axios request
 
@@ -16,6 +16,9 @@ const AudioRecorder = ({ selectedHub, setSelectedHub }) => {  // Accept selected
     recordingIdRef, streamRef, stopRef, meetingSessionId // Add meetingSessionId to context
   } = useContext(RecorderContext);
   const [meetingName, setMeetingName] = useState("");
+
+  // Environment variable for backend URL
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
   const draw = useCallback((array) => {
     const canvas = canvasRef.current;
@@ -92,13 +95,12 @@ const AudioRecorder = ({ selectedHub, setSelectedHub }) => {  // Accept selected
       console.warn("No selected hub found. Attempting to fetch active hub ID...");
       
       try {
-        const response = await axios.get('http://localhost:5000/api/meetinghubs');
+        const response = await axios.get(`${backendUrl}/api/meetinghubs`);
         console.log('API response received:', response);
   
         if (response.status === 200) {
           const hubs = response.data.meeting_hubs || [];
           console.log('Fetched meeting hubs:', hubs);
-  
           if (hubs.length > 0) {
             const activeHubId = parseInt(response.data.active_hub_id, 10) || hubs[0]?.id;
             console.log('Active Hub ID from API:', activeHubId);
@@ -138,7 +140,7 @@ const AudioRecorder = ({ selectedHub, setSelectedHub }) => {  // Accept selected
       console.log('Using Selected Hub ID:', selectedHub);
   
       // Create the meeting and meeting session
-      const meetingResponse = await axios.post('http://localhost:5000/api/meetings', {
+      const meetingResponse = await axios.post(`${backendUrl}/api/meetings`, {
         name: meetingName,
         hub_id: selectedHub,
       });
@@ -148,7 +150,7 @@ const AudioRecorder = ({ selectedHub, setSelectedHub }) => {  // Accept selected
       const meetingSessionId = meetingResponse.data.meeting_session_id;
       console.log('Created Meeting Session ID:', meetingSessionId);
   
-      const response = await axios.post('http://localhost:5000/api/recordings', {
+      const response = await axios.post(`${backendUrl}/api/recordings`, {
         recording_id: recordingIdRef.current,
         file_name: `${recordingIdRef.current}.webm`,
         concatenation_status: 'pending',
@@ -214,7 +216,7 @@ const AudioRecorder = ({ selectedHub, setSelectedHub }) => {  // Accept selected
     formData.append('recording_id', recordingIdRef.current);
     chunkNumberRef.current++;
 
-    axios.post('http://localhost:5000/upload_chunk', formData)
+    axios.post(`${backendUrl}/upload_chunk`, formData)
       .then(response => {
         console.log(`Chunk ${chunkNumberRef.current - 1} uploaded successfully`);
       })
@@ -229,7 +231,7 @@ const AudioRecorder = ({ selectedHub, setSelectedHub }) => {  // Accept selected
         console.log('Starting concatenation for recording ID:', recordingIdRef.current);
 
         // Send request to concatenate chunks
-        const response = await axios.post('http://localhost:5000/concatenate', {
+        const response = await axios.post(`${backendUrl}/concatenate`, {
             recording_id: recordingIdRef.current,
         });
 
@@ -239,7 +241,7 @@ const AudioRecorder = ({ selectedHub, setSelectedHub }) => {  // Accept selected
 
             // Log the PATCH request to update the recording with the audio_url
             console.log(`Updating recording ${recordingIdRef.current} with audio URL: ${audioUrl}`);
-            await axios.patch(`http://localhost:5000/api/recordings/${recordingIdRef.current}`, {
+            await axios.patch(`${backendUrl}/api/recordings/${recordingIdRef.current}`, {
                 audio_url: audioUrl,
             });
 

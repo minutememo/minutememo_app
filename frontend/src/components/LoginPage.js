@@ -10,12 +10,15 @@ const LoginPage = () => {
   const { loginUser } = useUser();  // Use loginUser from UserContext
   const navigate = useNavigate();  // Initialize useNavigate
 
+  // Environment variable for backend URL
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setMessage('');
 
     try {
-      const response = await axios.post('http://localhost:5000/auth/login', {
+      const response = await axios.post(`${backendUrl}/auth/login`, {
         email,
         password,
       }, {

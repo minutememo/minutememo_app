@@ -18,7 +18,6 @@ import axios from 'axios';
 import MeetingPage from './components/MeetingsPage'; // Adjust the path as necessary
 import MeetingSessionPage from './components/MeetingSessionPage'; // Import the new component
 
-
 axios.defaults.withCredentials = true; // Ensure cookies are sent with every request
 
 const AppContent = () => {
@@ -32,6 +31,9 @@ const AppContent = () => {
   const [error, setError] = useState('');
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true); // Sidebar is collapsed by default
+
+  // Environment variable for backend URL
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
   const toggleSidebar = () => {
     setIsSidebarCollapsed(!isSidebarCollapsed);
@@ -48,7 +50,7 @@ const AppContent = () => {
     try {
         setIsLoading(true);
         console.log('Fetching meeting hubs from API...');
-        const response = await axios.get('http://localhost:5000/api/meetinghubs');
+        const response = await axios.get(`${backendUrl}/api/meetinghubs`);
         console.log('API response received:', response);
 
         if (response.status === 200) {
@@ -79,103 +81,104 @@ const AppContent = () => {
         console.log('Finished fetching meeting hubs.');
         setIsLoading(false);
     }
-};
+  };
 
-const updateActiveHubName = (hubId, hubs = meetingHubs) => {
-  console.log('updateActiveHubName called with hubId:', hubId);
+  const updateActiveHubName = (hubId, hubs = meetingHubs) => {
+    console.log('updateActiveHubName called with hubId:', hubId);
 
-  // Ensure hubId is compared as a number
-  const hub = hubs.find(hub => hub.id === parseInt(hubId, 10));
+    // Ensure hubId is compared as a number
+    const hub = hubs.find(hub => hub.id === parseInt(hubId, 10));
 
-  console.log('Meeting hubs array during updateActiveHubName:', hubs);
+    console.log('Meeting hubs array during updateActiveHubName:', hubs);
 
-  if (hub) {
-      console.log('Hub found in updateActiveHubName:', hub);
-      setActiveHubName(hub.name);
-  } else {
-      console.log('Hub not found in updateActiveHubName');
-      setActiveHubName('No Meeting Hub Selected');
-  }
-};
-
-const handleCreateHub = async () => {
-  if (!newHubName.trim()) {
-    alert("Please enter a hub name.");
-    return;
-  }
-
-  const tempHub = { id: `temp-${Date.now()}`, name: newHubName };
-  setMeetingHubs(prevHubs => [...prevHubs, tempHub]);
-  setSelectedHub(tempHub.id); // Temporarily select the new hub
-  setActiveHubName(tempHub.name); // Update the active hub name with the temporary name
-
-  try {
-    setIsLoading(true);
-    setError('');
-
-    const response = await axios.post('http://localhost:5000/api/meetinghubs', { name: newHubName });
-
-    if (response.status === 201 && response.data && response.data.meeting_hub) {
-      const createdHub = response.data.meeting_hub;
-      setMeetingHubs(prevHubs => prevHubs.map(hub => hub.id === tempHub.id ? createdHub : hub));
-      setSelectedHub(createdHub.id); // Select the newly created hub
-      setActiveHubName(createdHub.name); // Update the active hub name with the newly created hub
-      await setActiveHub(createdHub.id); // Store the active hub in the database
+    if (hub) {
+        console.log('Hub found in updateActiveHubName:', hub);
+        setActiveHubName(hub.name);
     } else {
-      setError('Failed to create meeting hub');
+        console.log('Hub not found in updateActiveHubName');
+        setActiveHubName('No Meeting Hub Selected');
+    }
+  };
+
+  const handleCreateHub = async () => {
+    if (!newHubName.trim()) {
+      alert("Please enter a hub name.");
+      return;
+    }
+
+    const tempHub = { id: `temp-${Date.now()}`, name: newHubName };
+    setMeetingHubs(prevHubs => [...prevHubs, tempHub]);
+    setSelectedHub(tempHub.id); // Temporarily select the new hub
+    setActiveHubName(tempHub.name); // Update the active hub name with the temporary name
+
+    try {
+      setIsLoading(true);
+      setError('');
+
+      const response = await axios.post(`${backendUrl}/api/meetinghubs`, { name: newHubName });
+
+      if (response.status === 201 && response.data && response.data.meeting_hub) {
+        const createdHub = response.data.meeting_hub;
+        setMeetingHubs(prevHubs => prevHubs.map(hub => hub.id === tempHub.id ? createdHub : hub));
+        setSelectedHub(createdHub.id); // Select the newly created hub
+        setActiveHubName(createdHub.name); // Update the active hub name with the newly created hub
+        await setActiveHub(createdHub.id); // Store the active hub in the database
+      } else {
+        setError('Failed to create meeting hub');
+        setMeetingHubs(prevHubs => prevHubs.filter(hub => hub.id !== tempHub.id)); // Remove the temporary hub
+        setActiveHubName('No Meeting Hub Selected');
+      }
+    } catch (err) {
+      console.error('Error creating meeting hub:', err);
+      setError('Error creating meeting hub');
       setMeetingHubs(prevHubs => prevHubs.filter(hub => hub.id !== tempHub.id)); // Remove the temporary hub
       setActiveHubName('No Meeting Hub Selected');
+    } finally {
+      setIsLoading(false);
+      setNewHubName(""); // Clear the input field after creation
+      setShowModal(false); // Close the modal after creation
     }
-  } catch (err) {
-    console.error('Error creating meeting hub:', err);
-    setError('Error creating meeting hub');
-    setMeetingHubs(prevHubs => prevHubs.filter(hub => hub.id !== tempHub.id)); // Remove the temporary hub
-    setActiveHubName('No Meeting Hub Selected');
-  } finally {
-    setIsLoading(false);
-    setNewHubName(""); // Clear the input field after creation
-    setShowModal(false); // Close the modal after creation
-  }
-};
+  };
 
-const handleHubSelect = async (hubId) => {
-  try {
-      console.log('handleHubSelect called with hubId:', hubId);
+  const handleHubSelect = async (hubId) => {
+    try {
+        console.log('handleHubSelect called with hubId:', hubId);
 
-      // Store the active hub in the backend
-      await setActiveHub(hubId);
+        // Store the active hub in the backend
+        await setActiveHub(hubId);
 
-      // Update the selected hub state
-      setSelectedHub(hubId);
-      console.log('selectedHub state updated:', hubId);
+        // Update the selected hub state
+        setSelectedHub(hubId);
+        console.log('selectedHub state updated:', hubId);
 
-      // Log current meetingHubs before updating the active hub name
-      console.log('Current meetingHubs array:', meetingHubs);
+        // Log current meetingHubs before updating the active hub name
+        console.log('Current meetingHubs array:', meetingHubs);
 
-      // Update the active hub name in the UI after the state is set
-      updateActiveHubName(hubId);
+        // Update the active hub name in the UI after the state is set
+        updateActiveHubName(hubId);
 
-      // Close the dropdown
-      setDropdownVisible(false);
-      console.log('Dropdown closed');
-  } catch (err) {
-      console.error('Error selecting hub:', err);
-  }
-};
+        // Close the dropdown
+        setDropdownVisible(false);
+        console.log('Dropdown closed');
+    } catch (err) {
+        console.error('Error selecting hub:', err);
+    }
+  };
 
-const setActiveHub = async (hubId) => {
-  try {
-      console.log('setActiveHub called with hubId:', hubId);
-      await axios.post('http://localhost:5000/api/set_active_hub', { hub_id: hubId });
-      console.log('Active hub set on the backend for hubId:', hubId);
-  } catch (err) {
-      console.error('Error setting active hub:', err);
-  }
-};
+  const setActiveHub = async (hubId) => {
+    try {
+        console.log('setActiveHub called with hubId:', hubId);
+        await axios.post(`${backendUrl}/api/set_active_hub`, { hub_id: hubId });
+        console.log('Active hub set on the backend for hubId:', hubId);
+    } catch (err) {
+        console.error('Error setting active hub:', err);
+    }
+  };
 
-const toggleDropdown = () => {
-  setDropdownVisible(!dropdownVisible);
-};
+  const toggleDropdown = () => {
+    setDropdownVisible(!dropdownVisible);
+  };
+
 
 return (
   <Router>

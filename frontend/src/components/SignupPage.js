@@ -8,6 +8,9 @@ const SignupPage = () => {
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
 
+  // Environment variable for backend URL
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+
   const handleSignup = async (event) => {
     event.preventDefault();
     setError('');
@@ -25,7 +28,7 @@ const SignupPage = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/auth/signup', {
+      const response = await axios.post(`${backendUrl}/auth/signup`, {
         email,
         password,
         password_confirmation: passwordConfirm,

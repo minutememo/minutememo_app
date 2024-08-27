@@ -1,7 +1,8 @@
 import axios from 'axios';
 
+// Use environment variable for base URL
 const apiClient = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000',
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json'
