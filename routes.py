@@ -55,8 +55,12 @@ def upload_file(file, file_key):
         # Save locally in the audio_recordings folder
         file_path = os.path.join(UPLOAD_FOLDER, file_key)
         file.save(file_path)
-        file_url = f"/uploads/audio_recordings/{file_key}"
+        file_url = f"{file_key}"
         return file_url
+
+def natural_sort_key(s):
+    import re
+    return [int(text) if text.isdigit() else text.lower() for text in re.split('([0-9]+)', s)]
 
 @main.route('/')
 @login_required
@@ -133,7 +137,7 @@ def get_user_recordings():
                 'file_name': rec.file_name,
                 'timestamp': rec.timestamp.strftime('%Y-%m-%d %H:%M:%S'),
                 'concatenation_status': rec.concatenation_status,
-                'file_url': f'/uploads/{rec.file_name}'  # Ensure this path matches your setup
+                'file_url': f'/uploads/audio_recordings/{rec.file_name}'  # Ensure this path matches your setup
             } for rec in recordings
         ]
 
@@ -161,6 +165,7 @@ def concatenate():
         recording_id = data['recording_id']
         current_app.logger.info(f"Received request to concatenate for recording_id: {recording_id}")
 
+        # Get a list of chunk files
         chunk_files = sorted(
             [f for f in os.listdir(UPLOAD_FOLDER) if f.startswith(recording_id) and f.endswith('.webm')],
             key=natural_sort_key
@@ -173,15 +178,19 @@ def concatenate():
         # Log chunk files to be concatenated
         current_app.logger.info(f"Chunk files to concatenate: {chunk_files}")
 
+        # Create the list file with paths of the chunks
         list_file_path = os.path.join(UPLOAD_FOLDER, f"{recording_id}_list.txt")
         
-        # Write chunk filenames to the list file
         with open(list_file_path, 'w') as f:
             for chunk in chunk_files:
-                f.write(f"file '{chunk}'\n")
+                # Write the correct path to the list file
+                f.write(f"file '{os.path.abspath(os.path.join(UPLOAD_FOLDER, chunk))}'\n")
 
+        # Define the final output file path
         final_output = os.path.join(UPLOAD_FOLDER, f"{recording_id}.webm")
         concatenation_status = 'success'
+
+        # Attempt to concatenate using FFmpeg
         try:
             (
                 ffmpeg
@@ -217,7 +226,7 @@ def concatenate():
             current_app.logger.error(f"Error updating the database: {e}")
             return jsonify({'status': 'error', 'message': f"Error updating the database: {str(e)}"}), 500
 
-        return jsonify({'status': 'success', 'file_url': mp3_filepath})
+        return jsonify({'status': 'success', 'file_url': f'/uploads/audio_recordings/{os.path.basename(mp3_filepath)}'})
     except Exception as e:
         current_app.logger.error(f"Error during concatenation: {e}")
         return jsonify({'status': 'error', 'message': str(e)}), 500
@@ -581,19 +590,25 @@ def create_recording():
 
 @main.route('/upload_chunk', methods=['POST'])
 @login_required
+@cross_origin()
 def upload_chunk():
     chunk = request.files['chunk']
     chunk_number = request.form['chunk_number']
     recording_id = request.form['recording_id']
     chunk_filename = f"{recording_id}_chunk_{chunk_number}.webm"
-
-    try:
-        file_url = upload_file(chunk, chunk_filename)
-        current_app.logger.info(f"Chunk {chunk_number} uploaded successfully for recording {recording_id}")
-        return jsonify({'status': 'success', 'chunk_key': chunk_filename, 'file_url': file_url})
-    except Exception as e:
-        current_app.logger.error(f"Error uploading chunk: {str(e)}")
-        return jsonify({'status': 'error', 'message': str(e)}), 500
+    chunk_path = os.path.join(UPLOAD_FOLDER, chunk_filename)
+    chunk.save(chunk_path)
+    
+    # Log the size of the saved chunk
+    chunk_size = os.path.getsize(chunk_path)
+    print(f"Chunk saved: {chunk_filename}, size: {chunk_size} bytes")
+    
+    # Update the list file
+    list_file_path = os.path.join(UPLOAD_FOLDER, f"{recording_id}_list.txt")
+    with open(list_file_path, 'a') as list_file:
+        list_file.write(f"file '{os.path.abspath(chunk_path)}'\n")
+    
+    return jsonify({'status': 'success', 'chunk_key': chunk_filename})
 
 
 @main.route('/uploads/audio_recordings/<path:filename>')
