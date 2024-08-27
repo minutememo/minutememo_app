@@ -57,7 +57,10 @@ def create_app():
     # Configure app
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL').replace("postgres://", "postgresql://")
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.secret_key = os.getenv('SECRET_KEY', 'supersecretkey')  # Use env variable for secret key
+
+    # Set the SECRET_KEY from the environment variable, with a fallback for development
+    app.secret_key = os.getenv('SECRET_KEY', 'supersecretkey')  # In production, replace 'supersecretkey' with a securely generated key
+
     app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)  # Session lifetime
     app.config['REMEMBER_COOKIE_DURATION'] = timedelta(days=7)
     app.config['REMEMBER_COOKIE_SECURE'] = env == 'production'  # True if using HTTPS in production
@@ -65,7 +68,6 @@ def create_app():
     app.config['SESSION_COOKIE_SECURE'] = env == 'production'  # True if using HTTPS in production
     app.config['SESSION_COOKIE_HTTPONLY'] = True
     app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'  # Prevent CSRF
-
     db.init_app(app)
     migrate.init_app(app, db)
     login_manager.init_app(app)
