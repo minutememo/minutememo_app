@@ -329,16 +329,23 @@ def manage_meeting_hubs():
 
     elif request.method == 'POST':
         try:
-            data = request.json
+            data = request.get_json()
+
+            if not data:
+                current_app.logger.error("No JSON payload provided in the request.")
+                return jsonify({'status': 'error', 'message': 'No data provided'}), 400
+
             name = data.get('name')
             description = data.get('description', 'No description')
 
             if not name:
+                current_app.logger.error("Hub name is missing in the request.")
                 return jsonify({'status': 'error', 'message': 'Name is required'}), 400
 
             # Get the company_id from the current user
             company_id = current_user.company_id
             if not company_id:
+                current_app.logger.error(f"User {current_user.id} does not belong to any company.")
                 return jsonify({'status': 'error', 'message': 'User does not belong to any company'}), 400
 
             # Create a new meeting hub
@@ -351,11 +358,16 @@ def manage_meeting_hubs():
             db.session.add(new_hub)
             db.session.commit()
 
+            # Log the successful creation of a new hub
+            current_app.logger.info(f"Meeting hub created with ID {new_hub.id} for user {current_user.id}.")
+
+            # Return the new hub ID
             return jsonify({'status': 'success', 'meeting_hub_id': new_hub.id}), 201
         except Exception as e:
             db.session.rollback()
             current_app.logger.error(f"Error creating meeting hub: {str(e)}")
             return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
+        
 
 @main.route('/api/company', methods=['GET', 'POST'])
 @login_required 

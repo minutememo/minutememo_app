@@ -100,38 +100,55 @@ const AppContent = () => {
     }
   };
 
+  let tempIdCounter = -1;
+
   const handleCreateHub = async () => {
     if (!newHubName.trim()) {
       alert("Please enter a hub name.");
       return;
     }
-
-    const tempHub = { id: `temp-${Date.now()}`, name: newHubName };
+  
+    // Use a smaller negative integer as a temporary ID
+    const tempHubId = tempIdCounter--;  // Decrement the counter for each new temporary ID
+    const tempHub = { id: tempHubId, name: newHubName };
     setMeetingHubs(prevHubs => [...prevHubs, tempHub]);
     setSelectedHub(tempHub.id); // Temporarily select the new hub
     setActiveHubName(tempHub.name); // Update the active hub name with the temporary name
-
+  
     try {
       setIsLoading(true);
       setError('');
-
-      const response = await axios.post(`${backendUrl}/api/meetinghubs`, { name: newHubName });
-
-      if (response.status === 201 && response.data && response.data.meeting_hub) {
-        const createdHub = response.data.meeting_hub;
-        setMeetingHubs(prevHubs => prevHubs.map(hub => hub.id === tempHub.id ? createdHub : hub));
-        setSelectedHub(createdHub.id); // Select the newly created hub
-        setActiveHubName(createdHub.name); // Update the active hub name with the newly created hub
-        await setActiveHub(createdHub.id); // Store the active hub in the database
+  
+      const baseURL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
+      const response = await axios.post(`${baseURL}/api/meetinghubs`, { name: newHubName });
+  
+      if (response.status === 201 && response.data && response.data.meeting_hub_id) {
+        const createdHubId = response.data.meeting_hub_id;
+        const createdHub = { id: createdHubId, name: newHubName };
+  
+        // Replace the temporary hub with the actual hub returned by the server
+        setMeetingHubs(prevHubs =>
+          prevHubs.map(hub => hub.id === tempHubId ? createdHub : hub)
+        );
+        setSelectedHub(createdHub.id);
+        setActiveHubName(createdHub.name);
+  
+        // Store the active hub in the database (if necessary)
+        await setActiveHub(createdHub.id);
+  
+        // Trigger the data fetching manually after hub creation, only if you have a valid ID
+        if (createdHubId > 0) {
+          // fetchMeetingsAndSessions(createdHub.id); // Uncomment this if needed
+        }
       } else {
         setError('Failed to create meeting hub');
-        setMeetingHubs(prevHubs => prevHubs.filter(hub => hub.id !== tempHub.id)); // Remove the temporary hub
+        setMeetingHubs(prevHubs => prevHubs.filter(hub => hub.id !== tempHubId)); // Remove the temporary hub
         setActiveHubName('No Meeting Hub Selected');
       }
     } catch (err) {
       console.error('Error creating meeting hub:', err);
       setError('Error creating meeting hub');
-      setMeetingHubs(prevHubs => prevHubs.filter(hub => hub.id !== tempHub.id)); // Remove the temporary hub
+      setMeetingHubs(prevHubs => prevHubs.filter(hub => hub.id !== tempHubId)); // Remove the temporary hub
       setActiveHubName('No Meeting Hub Selected');
     } finally {
       setIsLoading(false);
@@ -139,7 +156,7 @@ const AppContent = () => {
       setShowModal(false); // Close the modal after creation
     }
   };
-
+  
   const handleHubSelect = async (hubId) => {
     try {
         console.log('handleHubSelect called with hubId:', hubId);
