@@ -9,7 +9,7 @@ from datetime import timedelta
 import re
 from logging.handlers import RotatingFileHandler
 import logging
-from .extensions import db  # Import db from extensions.py
+from extensions import db  # Use absolute import
 from .models import Recording, User
 from .auth import auth
 
