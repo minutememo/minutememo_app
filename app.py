@@ -83,11 +83,17 @@ def create_app():
         session.permanent = True
         session.modified = True  # Refresh session expiration time on each request
         g.user = current_user
+        if current_user.is_authenticated:
+            logger.debug('Session for user %s is active and authenticated', current_user.email)
+        else:
+            logger.debug('No active session found, user is not authenticated')
 
     @app.route('/auth/status')
     def status():
         if current_user.is_authenticated:
+            logger.debug('Status check: user %s is authenticated', current_user.email)
             return jsonify(logged_in=True, user={'email': current_user.email})
+        logger.debug('Status check: user is not authenticated')
         return jsonify(logged_in=False)
 
     # Register the main blueprint

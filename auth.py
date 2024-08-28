@@ -69,11 +69,10 @@ def signup():
     return jsonify({'message': 'User created successfully'}), 201
 
 
-# Route for user login
 @auth.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'GET':
-        # Handle the GET request, likely redirect to a login page or return an error
+        logger.debug('Received GET request on login, returning 405 Method Not Allowed')
         return jsonify({"message": "Please use POST to log in"}), 405
 
     # Handle the POST request
@@ -81,10 +80,15 @@ def login():
     email = data.get('email')
     password = data.get('password')
 
+    logger.debug('Login attempt for email: %s', email)
+    
     user = User.query.filter_by(email=email).first()
     if user and user.check_password(password):
         login_user(user, remember=True)
+        logger.debug('Login successful for user: %s', email)
         return jsonify({"message": "Login successful"}), 200
+    
+    logger.warning('Login failed for email: %s', email)
     return jsonify({"message": "Invalid credentials"}), 401
 
 @auth.route('/logout')
