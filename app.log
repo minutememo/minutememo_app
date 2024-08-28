@@ -611,3 +611,15 @@ WHERE meeting_session.meeting_id = %(meeting_id_1)s]
  * Running on http://127.0.0.1:5000
 2024-08-28 07:45:01 INFO: [33mPress CTRL+C to quit[0m
 2024-08-28 07:45:01,588 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-08-28 07:53:41 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-28 07:53:41,006 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-28 07:53:41 INFO: [33mPress CTRL+C to quit[0m
+2024-08-28 07:53:41,006 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-08-28 07:55:01 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-28 07:55:01,705 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-28 07:55:01 INFO: [33mPress CTRL+C to quit[0m
+2024-08-28 07:55:01,705 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
