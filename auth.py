@@ -70,8 +70,13 @@ def signup():
 
 
 # Route for user login
-@auth.route('/login', methods=['POST'])
+@auth.route('/login', methods=['POST', 'GET'])
 def login():
+    if request.method == 'GET':
+        # Handle the GET request, likely redirect to a login page or return an error
+        return jsonify({"message": "Please use POST to log in"}), 405
+
+    # Handle the POST request
     data = request.get_json()
     email = data.get('email')
     password = data.get('password')

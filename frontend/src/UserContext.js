@@ -17,12 +17,15 @@ export const UserProvider = ({ children }) => {
     return savedUser ? JSON.parse(savedUser) : null;
   });
 
+  // Environment variable for backend URL
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+
   // Load user data when the component mounts
   useEffect(() => {
     const checkUserSession = async () => {
       try {
         console.log("Checking user session...");
-        const response = await axios.get('http://localhost:5000/auth/status', { withCredentials: true });
+        const response = await axios.get(`${backendUrl}/auth/status`, { withCredentials: true });
         console.log("Status response:", response.data);
         if (response.data.logged_in) {
           console.log("User is logged in, setting user context.");
@@ -41,7 +44,7 @@ export const UserProvider = ({ children }) => {
     };
 
     checkUserSession();
-  }, []);
+  }, [backendUrl]); // Dependency array includes backendUrl
 
   // Function to log in the user
   const loginUser = (userData) => {
@@ -54,7 +57,7 @@ export const UserProvider = ({ children }) => {
     console.log("Logging out user.");
     try {
       // Call the logout endpoint on the server to clear the session
-      await axios.get('http://localhost:5000/auth/logout', { withCredentials: true });
+      await axios.get(`${backendUrl}/auth/logout`, { withCredentials: true });
     } catch (error) {
       console.error('Error logging out:', error);
     } finally {
