@@ -467,3 +467,147 @@ WHERE meeting_session.meeting_id = %(meeting_id_1)s]
  * Running on http://127.0.0.1:5000
 2024-08-28 00:01:58 INFO: [33mPress CTRL+C to quit[0m
 2024-08-28 00:01:58,541 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-08-28 00:15:40 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-28 00:15:40,386 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-28 00:15:40 INFO: [33mPress CTRL+C to quit[0m
+2024-08-28 00:15:40,387 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-08-28 00:15:47 INFO: 127.0.0.1 - - [28/Aug/2024 00:15:47] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 00:15:47,108 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 00:15:47] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 00:15:47 INFO: 127.0.0.1 - - [28/Aug/2024 00:15:47] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 00:15:47,109 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 00:15:47] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 00:15:47 INFO: 127.0.0.1 - - [28/Aug/2024 00:15:47] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 00:15:47 INFO: 127.0.0.1 - - [28/Aug/2024 00:15:47] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 00:15:47,115 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 00:15:47] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 00:15:47,116 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 00:15:47] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 00:15:47 ERROR: Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
+LINE 3: WHERE meeting_session.meeting_id = 'undefined'
+                                           ^
+
+[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url 
+FROM meeting_session 
+WHERE meeting_session.meeting_id = %(meeting_id_1)s]
+[parameters: {'meeting_id_1': 'undefined'}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2024-08-28 00:15:47,503 - minutememo_app.app - ERROR - Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
+LINE 3: WHERE meeting_session.meeting_id = 'undefined'
+                                           ^
+
+[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url 
+FROM meeting_session 
+WHERE meeting_session.meeting_id = %(meeting_id_1)s]
+[parameters: {'meeting_id_1': 'undefined'}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2024-08-28 00:15:47 INFO: 127.0.0.1 - - [28/Aug/2024 00:15:47] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
+2024-08-28 00:15:47,506 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 00:15:47] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
+2024-08-28 00:15:47 ERROR: Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
+LINE 3: WHERE meeting_session.meeting_id = 'undefined'
+                                           ^
+
+[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url 
+FROM meeting_session 
+WHERE meeting_session.meeting_id = %(meeting_id_1)s]
+[parameters: {'meeting_id_1': 'undefined'}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2024-08-28 00:15:47,512 - minutememo_app.app - ERROR - Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
+LINE 3: WHERE meeting_session.meeting_id = 'undefined'
+                                           ^
+
+[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url 
+FROM meeting_session 
+WHERE meeting_session.meeting_id = %(meeting_id_1)s]
+[parameters: {'meeting_id_1': 'undefined'}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2024-08-28 00:15:47 INFO: 127.0.0.1 - - [28/Aug/2024 00:15:47] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
+2024-08-28 00:15:47,513 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 00:15:47] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
+2024-08-28 07:09:05 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-28 07:09:05,878 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-28 07:09:05 INFO: [33mPress CTRL+C to quit[0m
+2024-08-28 07:09:05,878 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-08-28 07:09:12 INFO: 127.0.0.1 - - [28/Aug/2024 07:09:12] "[32mGET / HTTP/1.1[0m" 302 -
+2024-08-28 07:09:12,346 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 07:09:12] "[32mGET / HTTP/1.1[0m" 302 -
+2024-08-28 07:09:12 INFO: 127.0.0.1 - - [28/Aug/2024 07:09:12] "[31m[1mGET /auth/login?next=/ HTTP/1.1[0m" 405 -
+2024-08-28 07:09:12,361 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 07:09:12] "[31m[1mGET /auth/login?next=/ HTTP/1.1[0m" 405 -
+2024-08-28 07:09:29 INFO: 127.0.0.1 - - [28/Aug/2024 07:09:29] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 07:09:29,315 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 07:09:29] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 07:09:29 INFO: 127.0.0.1 - - [28/Aug/2024 07:09:29] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 07:09:29,321 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 07:09:29] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 07:09:29 INFO: 127.0.0.1 - - [28/Aug/2024 07:09:29] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 07:09:29,344 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 07:09:29] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 07:09:29 INFO: 127.0.0.1 - - [28/Aug/2024 07:09:29] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 07:09:29,357 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 07:09:29] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 07:09:29 INFO: 127.0.0.1 - - [28/Aug/2024 07:09:29] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 07:09:29,363 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 07:09:29] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 07:09:29 INFO: 127.0.0.1 - - [28/Aug/2024 07:09:29] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 07:09:29,368 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 07:09:29] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 07:14:11 INFO: 127.0.0.1 - - [28/Aug/2024 07:14:11] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 07:14:11,269 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 07:14:11] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 07:14:11 INFO: 127.0.0.1 - - [28/Aug/2024 07:14:11] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 07:14:11,271 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 07:14:11] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 07:14:11 INFO: 127.0.0.1 - - [28/Aug/2024 07:14:11] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 07:14:11,278 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 07:14:11] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 07:14:11 INFO: 127.0.0.1 - - [28/Aug/2024 07:14:11] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 07:14:11,285 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 07:14:11] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 07:14:11 ERROR: Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
+LINE 3: WHERE meeting_session.meeting_id = 'undefined'
+                                           ^
+
+[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url 
+FROM meeting_session 
+WHERE meeting_session.meeting_id = %(meeting_id_1)s]
+[parameters: {'meeting_id_1': 'undefined'}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2024-08-28 07:14:11,651 - minutememo_app.app - ERROR - Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
+LINE 3: WHERE meeting_session.meeting_id = 'undefined'
+                                           ^
+
+[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url 
+FROM meeting_session 
+WHERE meeting_session.meeting_id = %(meeting_id_1)s]
+[parameters: {'meeting_id_1': 'undefined'}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2024-08-28 07:14:11 INFO: 127.0.0.1 - - [28/Aug/2024 07:14:11] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
+2024-08-28 07:14:11,653 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 07:14:11] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
+2024-08-28 07:14:11 ERROR: Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
+LINE 3: WHERE meeting_session.meeting_id = 'undefined'
+                                           ^
+
+[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url 
+FROM meeting_session 
+WHERE meeting_session.meeting_id = %(meeting_id_1)s]
+[parameters: {'meeting_id_1': 'undefined'}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2024-08-28 07:14:11,661 - minutememo_app.app - ERROR - Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
+LINE 3: WHERE meeting_session.meeting_id = 'undefined'
+                                           ^
+
+[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url 
+FROM meeting_session 
+WHERE meeting_session.meeting_id = %(meeting_id_1)s]
+[parameters: {'meeting_id_1': 'undefined'}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2024-08-28 07:14:11 INFO: 127.0.0.1 - - [28/Aug/2024 07:14:11] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
+2024-08-28 07:14:11,663 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 07:14:11] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
+2024-08-28 07:14:12 INFO: 127.0.0.1 - - [28/Aug/2024 07:14:12] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 07:14:12,401 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 07:14:12] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 07:14:12 INFO: 127.0.0.1 - - [28/Aug/2024 07:14:12] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 07:14:12 INFO: 127.0.0.1 - - [28/Aug/2024 07:14:12] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 07:14:12,410 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 07:14:12] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 07:14:12,410 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 07:14:12] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 07:14:12 INFO: 127.0.0.1 - - [28/Aug/2024 07:14:12] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 07:14:12,416 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 07:14:12] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 07:32:39 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-28 07:32:39,391 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-28 07:32:39 INFO: [33mPress CTRL+C to quit[0m
+2024-08-28 07:32:39,392 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-08-28 07:45:01 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-28 07:45:01,588 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-28 07:45:01 INFO: [33mPress CTRL+C to quit[0m
+2024-08-28 07:45:01,588 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
