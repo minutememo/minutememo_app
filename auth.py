@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify, current_app, redirect, url_for
-from .models import User, MeetingHub
+from models import User, MeetingHub
 import logging
-from .extensions import db
+from extensions import db
 from flask_login import login_user, logout_user, login_required
 import os
 

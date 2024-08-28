@@ -9,9 +9,9 @@ from datetime import timedelta
 import re
 from logging.handlers import RotatingFileHandler
 import logging
-from .extensions import *  # Use absolute import
-from .models import *
-from .auth import *
+from extensions import *  # Use absolute import
+from models import *
+from auth import *
 
 # Initialize login manager
 login_manager = LoginManager()
@@ -91,7 +91,7 @@ def create_app():
         return jsonify(logged_in=False)
 
     # Register the main blueprint
-    from .routes import main as main_blueprint
+    from routes import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
     # Register the auth blueprint

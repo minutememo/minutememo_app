@@ -7,8 +7,8 @@ import uuid
 from flask_cors import cross_origin
 import ffmpeg
 from werkzeug.security import generate_password_hash, check_password_hash
-from .models import User, db, Recording, MeetingSession, MeetingHub, Company, Meeting
-from .extensions import db  # Import from extensions.py
+from models import User, db, Recording, MeetingSession, MeetingHub, Company, Meeting
+from extensions import db  # Import from extensions.py
 from flask_login import login_required, current_user
 from datetime import datetime
 
