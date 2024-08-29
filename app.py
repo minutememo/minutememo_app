@@ -39,6 +39,8 @@ logging.getLogger().addHandler(file_handler)
 logging.getLogger().addHandler(console_handler)
 
 migrate = Migrate()
+frontend_url = "https://staging.minutememo.io"  # Your custom domain
+
 
 def create_app():
     app = Flask(__name__)
