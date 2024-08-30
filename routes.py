@@ -387,6 +387,7 @@ def manage_meeting_hubs():
 def manage_company():
     if request.method == 'GET':
         try:
+            logger.debug("Fetching company details for the current user")
             company = current_user.company
             if company:
                 company_data = {
@@ -398,19 +399,23 @@ def manage_company():
                     'country': company.country,
                     'phone_number': company.phone_number,
                 }
+                logger.info(f"Company details fetched successfully for user {current_user.email}")
                 return jsonify({'status': 'success', 'company': company_data}), 200
             else:
+                logger.warning(f"No company found for user {current_user.email}")
                 return jsonify({'status': 'error', 'message': 'Company not found'}), 404
         except Exception as e:
-            current_app.logger.error(f"Error fetching company: {str(e)}")
+            current_app.logger.error(f"Error fetching company details for user {current_user.email}: {str(e)}")
             return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
 
     elif request.method == 'POST':
         try:
             data = request.json
+            logger.debug(f"Received data to update company: {data}")
             company = current_user.company
 
             if company:
+                logger.debug(f"Updating existing company details for user {current_user.email}")
                 company.name = data.get('name', company.name)
                 company.address = data.get('address', company.address)
                 company.city = data.get('city', company.city)
@@ -419,6 +424,7 @@ def manage_company():
                 company.country = data.get('country', company.country)
                 company.phone_number = data.get('phone_number', company.phone_number)
             else:
+                logger.info(f"Creating a new company for user {current_user.email}")
                 company = Company(
                     name=data.get('name'),
                     address=data.get('address'),
@@ -432,10 +438,11 @@ def manage_company():
                 current_user.company = company  # Link the company to the current user
 
             db.session.commit()
+            logger.info(f"Company details updated successfully for user {current_user.email}")
             return jsonify({'status': 'success', 'message': 'Company details updated successfully'}), 200
         except Exception as e:
             db.session.rollback()
-            current_app.logger.error(f"Error updating company: {str(e)}")
+            current_app.logger.error(f"Error updating company details for user {current_user.email}: {str(e)}")
             return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
         
 
@@ -681,12 +688,14 @@ def set_active_hub():
             return jsonify({"status": "error", "message": "hub_id is required"}), 400
 
         # Check if the hub exists in the database
+        logger.debug(f"Querying database for hub_id: {hub_id}")
         hub = MeetingHub.query.get(hub_id)
         if not hub:
             logger.error(f"Invalid hub_id: {hub_id}")
             return jsonify({"status": "error", "message": "Invalid hub_id"}), 404
 
         # Update the active hub for the current user
+        logger.debug(f"Setting active hub to {hub_id} for user {current_user.email}")
         current_user.active_meeting_hub_id = hub_id
         db.session.commit()
 
