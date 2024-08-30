@@ -9,7 +9,7 @@ from datetime import timedelta
 import re
 from logging.handlers import RotatingFileHandler
 import logging
-from extensions import *  # Use absolute import
+from extensions import *
 from models import *
 from auth import *
 
@@ -69,7 +69,7 @@ def create_app():
     app.config['REMEMBER_COOKIE_HTTPONLY'] = True
     app.config['SESSION_COOKIE_SECURE'] = env == 'production'  # True if using HTTPS in production
     app.config['SESSION_COOKIE_HTTPONLY'] = True
-    app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'  # Prevent CSRF
+    app.config['SESSION_COOKIE_SAMESITE'] = 'None' if env == 'production' else 'Lax'  # 'None' for cross-domain, 'Lax' for local dev
     db.init_app(app)
     migrate.init_app(app, db)
     login_manager.init_app(app)
@@ -78,6 +78,7 @@ def create_app():
 
     @login_manager.user_loader
     def load_user(user_id):
+        logger.debug('Loading user with ID: %s', user_id)
         return User.query.get(int(user_id))
 
     @app.before_request
@@ -114,6 +115,8 @@ def create_app():
     @app.after_request
     def after_request(response):
         origin = request.headers.get('Origin')
+        
+        logger.debug('After request, Origin: %s', origin)
         
         # Apply the Access-Control-Allow-Origin only once
         if origin:

@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify, current_app, redirect, url_for
 from models import User, MeetingHub
 import logging
 from extensions import db
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 import os
 
 auth = Blueprint('auth', __name__)
@@ -94,6 +94,7 @@ def login():
 @auth.route('/logout')
 @login_required
 def logout():
+    logger.debug('User %s is logging out', current_user.email)
     logout_user()  # This will clear the session on the server
     response = jsonify({"message": "Logout successful"})
     response.status_code = 200
