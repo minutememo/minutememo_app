@@ -180,7 +180,7 @@ html, body, #root, .container-fluid, .row {
 .dropdown-menu {
   position: absolute;
   top: calc(100% + 10px); /* Ensure it appears below the trigger */
-  left: 0;
+  left: 100;
   z-index: 1000;
   display: block;
   min-width: 200px; /* Set a minimum width for the dropdown */

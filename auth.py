@@ -1,5 +1,5 @@
-from flask import Blueprint, request, jsonify, current_app, redirect, url_for
-from models import User, MeetingHub
+from flask import Blueprint, request, jsonify, current_app
+from models import User, Company, MeetingHub  # Ensure that Company is imported here
 import logging
 from extensions import db
 from flask_login import login_user, logout_user, login_required, current_user
@@ -56,17 +56,37 @@ def signup():
     db.session.add(new_user)
     db.session.commit()
 
-    # Create a default meeting hub for the new user
+    # Create a default company for the new user
+    default_company = Company(
+        name=f"{email}'s Company",  # You can customize the default company name
+        address="Default Address",
+        city="Default City",
+        state="Default State",
+        zip_code="00000",
+        country="Default Country",
+        phone_number="000-000-0000"
+    )
+    db.session.add(default_company)
+    db.session.commit()
+
+    # Link the company to the user
+    new_user.company_id = default_company.id
+    db.session.commit()
+
+    # Create a default meeting hub for the new user's company
     default_hub = MeetingHub(
         name="My Meeting Hub",
         description="Default meeting hub",
-        company_id=new_user.id  # Assuming user id is the identifier for company or organization
+        company_id=default_company.id
     )
     db.session.add(default_hub)
     db.session.commit()
 
-    logger.info('User and default meeting hub created successfully: %s', email)
-    return jsonify({'message': 'User created successfully'}), 201
+    # Log the user in automatically
+    login_user(new_user)
+
+    logger.info('User, company, and default meeting hub created and user logged in successfully: %s', email)
+    return jsonify({'message': 'User created and logged in successfully'}), 201
 
 
 @auth.route('/login', methods=['POST', 'GET'])

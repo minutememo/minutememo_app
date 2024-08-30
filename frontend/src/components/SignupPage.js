@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const SignupPage = () => {
   const [email, setEmail] = useState('');
@@ -7,8 +8,9 @@ const SignupPage = () => {
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
+  
+  const navigate = useNavigate();
 
-  // Environment variable for backend URL
   const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
   const handleSignup = async (event) => {
@@ -16,14 +18,8 @@ const SignupPage = () => {
     setError('');
     setMessage('');
 
-    console.log('Starting signup process');
-    console.log('Email:', email);
-    console.log('Password:', password);
-    console.log('Password Confirm:', passwordConfirm);
-
     if (password !== passwordConfirm) {
       setError('Passwords do not match');
-      console.error('Passwords do not match');
       return;
     }
 
@@ -40,15 +36,15 @@ const SignupPage = () => {
       });
 
       if (response && response.data) {
-        console.log('Signup successful', response.data);
-        setMessage('Signup successful! Please log in.');
-        // Optionally, you can redirect to the login page here
+        setMessage('Signup successful! You are now logged in.');
+
+        // Trigger a full page reload after navigating
+        navigate('/dashboard');  // Update this to the path of your dashboard or home page
+        window.location.reload(); // Force a full page reload
       } else {
         setError('Signup failed: Invalid response');
-        console.error('Signup failed: Invalid response');
       }
     } catch (error) {
-      console.error('Signup failed', error);
       setError('Signup failed: ' + (error.response?.data?.message || error.message));
     }
   };
