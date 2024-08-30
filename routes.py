@@ -86,9 +86,10 @@ def settings_content():
 @cross_origin()
 def update_recording(recording_id):
     try:
-        data = request.json
+        # Log entry into the function
+        current_app.logger.info(f"Entering update_recording function for recording_id: {recording_id}")
 
-        # Log the incoming data to see what is being received
+        data = request.json
         current_app.logger.info(f"Received data for updating recording {recording_id}: {data}")
 
         audio_url = data.get('audio_url')
@@ -96,27 +97,37 @@ def update_recording(recording_id):
             current_app.logger.error("Audio URL is null or not provided")
             return jsonify({'status': 'error', 'message': 'Audio URL is required'}), 400
 
-        # Find the recording by ID
+        # Log before fetching the recording
+        current_app.logger.info(f"Fetching Recording with ID: {recording_id}")
         recording = Recording.query.get_or_404(recording_id)
-        
+
         # Log the current state of the recording before updating
         current_app.logger.info(f"Current recording before update: {recording}")
 
-        # Find the associated meeting session by the recording's meeting_session_id
+        # Log before fetching the associated meeting session
+        current_app.logger.info(f"Fetching associated MeetingSession with ID: {recording.meeting_session_id}")
         meeting_session = MeetingSession.query.get_or_404(recording.meeting_session_id)
-        
+
+        # Log the current state of the meeting session before updating
+        current_app.logger.info(f"Current MeetingSession before update: {meeting_session}")
+
         # Update the audio_url in the meeting session
+        current_app.logger.info(f"Updating audio_url for MeetingSession ID: {meeting_session.id}")
         meeting_session.audio_url = audio_url
         db.session.commit()
 
         # Log the updated state of the meeting session
-        current_app.logger.info(f"Meeting session after update: {meeting_session}")
+        current_app.logger.info(f"MeetingSession after update: {meeting_session}")
 
         return jsonify({'status': 'success', 'message': 'Meeting session updated successfully with audio URL'}), 200
     except Exception as e:
+        # Log the error and rollback
         db.session.rollback()
-        current_app.logger.error(f"Error updating meeting session: {str(e)}")
+        current_app.logger.error(f"Error updating meeting session for recording_id {recording_id}: {str(e)}")
         return jsonify({'status': 'error', 'message': str(e)}), 500
+    finally:
+        # Log exiting the function
+        current_app.logger.info(f"Exiting update_recording function for recording_id: {recording_id}")
 
 @main.route('/api/recordings', methods=['GET'])
 @login_required
@@ -442,7 +453,7 @@ def manage_meetings():
                 sessions = MeetingSession.query.filter_by(meeting_id=meeting_id).all()
 
                 if not sessions:
-                    return jsonify({'status': 'error', 'message': 'No sessions found for this meeting ID'}), 404
+                    return jsonify({'status': 'success', 'sessions': []}), 200  # Return empty list if no sessions found
 
                 # Serialize the sessions to return as JSON
                 sessions_data = [
@@ -460,7 +471,8 @@ def manage_meetings():
                 meetings = Meeting.query.filter_by(meeting_hub_id=hub_id).all()
 
                 if not meetings:
-                    return jsonify({'status': 'error', 'message': 'No meetings found for this hub ID'}), 404
+                    current_app.logger.warning(f"No meetings found for hub_id: {hub_id}")
+                    return jsonify({'status': 'success', 'meetings': []}), 200  # Return empty list if no meetings found
 
                 # Serialize the meetings to return as JSON
                 meetings_data = [

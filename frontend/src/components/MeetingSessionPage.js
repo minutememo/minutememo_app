@@ -8,18 +8,20 @@ const MeetingSessionPage = () => {
   const [error, setError] = useState('');
   const audioRef = useRef(null);
 
+  const baseURL = process.env.REACT_APP_API_URL || '';
+
   useEffect(() => {
     // Fetch session details
     const fetchSession = async () => {
       try {
         console.log(`Fetching session details for session ID: ${sessionId}`);
-        const response = await axios.get(`http://localhost:5000/api/sessions/${sessionId}`);
+        const response = await axios.get(`${baseURL}/api/sessions/${sessionId}`);
         if (response.status === 200) {
           setSession(response.data.session);
           console.log('Session data received:', response.data.session);
 
           if (response.data.session.audio_url) {
-            console.log(`Audio file URL received: http://localhost:5000/${response.data.session.audio_url}`);
+            console.log(`Audio file URL received: ${baseURL}/${response.data.session.audio_url}`);
           } else {
             console.log('No audio file URL found in the session data.');
           }
@@ -34,7 +36,7 @@ const MeetingSessionPage = () => {
     };
 
     fetchSession();
-  }, [sessionId]);
+  }, [sessionId, baseURL]);
 
   const playAudio = () => {
     if (audioRef.current) {
@@ -73,7 +75,7 @@ const MeetingSessionPage = () => {
           <p>Date: {new Date(session.session_datetime).toLocaleString()}</p>
           {session.audio_url ? (
             <div>
-              <audio ref={audioRef} src={`http://localhost:5000/${session.audio_url}`} controls />
+              <audio ref={audioRef} src={`${baseURL}/${session.audio_url}`} controls />
               <div className="audio-controls">
                 <button onClick={playAudio}>Play</button>
                 <button onClick={pauseAudio}>Pause</button>

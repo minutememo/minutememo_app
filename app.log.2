@@ -1,0 +1,1031 @@
+2024-08-28 13:11:07 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-28 13:11:07,481 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-28 13:11:07 INFO: [33mPress CTRL+C to quit[0m
+2024-08-28 13:11:07,481 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-08-28 13:12:14 INFO: 127.0.0.1 - - [28/Aug/2024 13:12:14] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 13:12:14,294 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:12:14] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 13:12:14 INFO: 127.0.0.1 - - [28/Aug/2024 13:12:14] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 13:12:14,299 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:12:14] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 13:12:14 INFO: 127.0.0.1 - - [28/Aug/2024 13:12:14] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 13:12:14,306 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:12:14] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 13:12:14 INFO: 127.0.0.1 - - [28/Aug/2024 13:12:14] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 13:12:14,315 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:12:14] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 13:12:14 INFO: 127.0.0.1 - - [28/Aug/2024 13:12:14] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:12:14,317 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:12:14] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:12:14 INFO: 127.0.0.1 - - [28/Aug/2024 13:12:14] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 13:12:14,320 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:12:14] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 13:12:14 INFO: 127.0.0.1 - - [28/Aug/2024 13:12:14] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:12:14,321 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:12:14] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:12:14 INFO: 127.0.0.1 - - [28/Aug/2024 13:12:14] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 13:12:14,325 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:12:14] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 13:12:14 INFO: 127.0.0.1 - - [28/Aug/2024 13:12:14] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:12:14,332 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:12:14] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:12:14 INFO: 127.0.0.1 - - [28/Aug/2024 13:12:14] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:12:14,337 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:12:14] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:12:15 ERROR: Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
+LINE 3: WHERE meeting_session.meeting_id = 'undefined'
+                                           ^
+
+[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url 
+FROM meeting_session 
+WHERE meeting_session.meeting_id = %(meeting_id_1)s]
+[parameters: {'meeting_id_1': 'undefined'}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2024-08-28 13:12:15,739 - minutememo_app.app - ERROR - Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
+LINE 3: WHERE meeting_session.meeting_id = 'undefined'
+                                           ^
+
+[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url 
+FROM meeting_session 
+WHERE meeting_session.meeting_id = %(meeting_id_1)s]
+[parameters: {'meeting_id_1': 'undefined'}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2024-08-28 13:12:15 INFO: 127.0.0.1 - - [28/Aug/2024 13:12:15] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
+2024-08-28 13:12:15,741 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:12:15] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
+2024-08-28 13:12:15 ERROR: Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
+LINE 3: WHERE meeting_session.meeting_id = 'undefined'
+                                           ^
+
+[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url 
+FROM meeting_session 
+WHERE meeting_session.meeting_id = %(meeting_id_1)s]
+[parameters: {'meeting_id_1': 'undefined'}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2024-08-28 13:12:15,748 - minutememo_app.app - ERROR - Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
+LINE 3: WHERE meeting_session.meeting_id = 'undefined'
+                                           ^
+
+[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url 
+FROM meeting_session 
+WHERE meeting_session.meeting_id = %(meeting_id_1)s]
+[parameters: {'meeting_id_1': 'undefined'}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2024-08-28 13:12:15 INFO: 127.0.0.1 - - [28/Aug/2024 13:12:15] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
+2024-08-28 13:12:15,749 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:12:15] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
+2024-08-28 13:12:16 INFO: 127.0.0.1 - - [28/Aug/2024 13:12:16] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:12:16,213 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:12:16] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:12:16 INFO: 127.0.0.1 - - [28/Aug/2024 13:12:16] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:12:16,217 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:12:16] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:12:16 INFO: 127.0.0.1 - - [28/Aug/2024 13:12:16] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:12:16,217 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:12:16] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:12:16 INFO: 127.0.0.1 - - [28/Aug/2024 13:12:16] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:12:16,225 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:12:16] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:12:17 INFO: 127.0.0.1 - - [28/Aug/2024 13:12:17] "GET /api/company HTTP/1.1" 200 -
+2024-08-28 13:12:17,024 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:12:17] "GET /api/company HTTP/1.1" 200 -
+2024-08-28 13:12:17 INFO: 127.0.0.1 - - [28/Aug/2024 13:12:17] "GET /api/company HTTP/1.1" 200 -
+2024-08-28 13:12:17,033 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:12:17] "GET /api/company HTTP/1.1" 200 -
+2024-08-28 13:27:54 INFO: 127.0.0.1 - - [28/Aug/2024 13:27:54] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 13:27:54,598 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:27:54] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 13:27:54 INFO: 127.0.0.1 - - [28/Aug/2024 13:27:54] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 13:27:54,943 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:27:54] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 13:27:55 INFO: 127.0.0.1 - - [28/Aug/2024 13:27:55] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 13:27:55,506 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:27:55] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 13:27:56 INFO: 127.0.0.1 - - [28/Aug/2024 13:27:56] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 13:27:56,004 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:27:56] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 13:27:58 INFO: 127.0.0.1 - - [28/Aug/2024 13:27:58] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 13:27:58,203 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:27:58] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 13:27:58 INFO: 127.0.0.1 - - [28/Aug/2024 13:27:58] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 13:27:58,278 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:27:58] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 13:27:58 INFO: 127.0.0.1 - - [28/Aug/2024 13:27:58] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 13:27:58,378 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:27:58] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 13:27:58 INFO: 127.0.0.1 - - [28/Aug/2024 13:27:58] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:27:58,863 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:27:58] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:27:58 INFO: 127.0.0.1 - - [28/Aug/2024 13:27:58] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 13:27:58,874 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:27:58] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 13:27:58 INFO: 127.0.0.1 - - [28/Aug/2024 13:27:58] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:27:58,875 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:27:58] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:27:59 INFO: 127.0.0.1 - - [28/Aug/2024 13:27:59] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:27:59,217 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:27:59] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:27:59 INFO: 127.0.0.1 - - [28/Aug/2024 13:27:59] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:27:59,277 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:27:59] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:27:59 INFO: 127.0.0.1 - - [28/Aug/2024 13:27:59] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:27:59,372 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:27:59] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:27:59 INFO: 127.0.0.1 - - [28/Aug/2024 13:27:59] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 13:27:59,378 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:27:59] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 13:27:59 INFO: 127.0.0.1 - - [28/Aug/2024 13:27:59] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 13:27:59,575 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:27:59] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 13:27:59 INFO: 127.0.0.1 - - [28/Aug/2024 13:27:59] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:27:59,892 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:27:59] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:27:59 INFO: 127.0.0.1 - - [28/Aug/2024 13:27:59] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:27:59,995 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:27:59] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:28:00 INFO: 127.0.0.1 - - [28/Aug/2024 13:28:00] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 13:28:00,296 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 13:28:00] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 16:03:07 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 16:03:07,903 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 16:03:07 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 16:03:07,912 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 16:03:07 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 16:03:07,913 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 16:03:07 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 16:03:07,927 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 16:03:07 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 16:03:07 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 16:03:07,930 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 16:03:07,930 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 16:03:07 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 16:03:07,962 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 16:03:07 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 16:03:07,964 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 16:03:07 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 16:03:07,967 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 16:03:07 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 16:03:07,972 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 16:03:07 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 16:03:07 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 16:03:07,973 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 16:03:07,973 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 16:03:07 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 16:03:07,977 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetings?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 16:03:07 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 16:03:07,978 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:07] "GET /api/meetingsessions?hub_id=12 HTTP/1.1" 200 -
+2024-08-28 16:03:44 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:44] "GET /auth/logout HTTP/1.1" 200 -
+2024-08-28 16:03:44,027 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:44] "GET /auth/logout HTTP/1.1" 200 -
+2024-08-28 16:03:49 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:49] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 16:03:49,654 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:49] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 16:03:49 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:49] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 16:03:49,659 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:49] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 16:03:50 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:50] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 16:03:50,727 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:50] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 16:03:50 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:50] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 16:03:50,729 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:50] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 16:03:51 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:51] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 16:03:51,396 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:51] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 16:03:51 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:51] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 16:03:51,398 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:51] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 16:03:58 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:58] "OPTIONS /auth/login HTTP/1.1" 200 -
+2024-08-28 16:03:58,919 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:58] "OPTIONS /auth/login HTTP/1.1" 200 -
+2024-08-28 16:03:59 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:59] "POST /auth/login HTTP/1.1" 200 -
+2024-08-28 16:03:59,008 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:59] "POST /auth/login HTTP/1.1" 200 -
+2024-08-28 16:03:59 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:59] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 16:03:59,044 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:59] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 16:03:59 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:59] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 16:03:59,055 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:59] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 16:03:59 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:59] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 16:03:59,061 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:59] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 16:03:59 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:59] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 16:03:59,072 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:59] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 16:03:59 INFO: 127.0.0.1 - - [28/Aug/2024 16:03:59] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 16:03:59,089 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:03:59] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 16:05:18 INFO: 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 16:05:18,201 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 16:05:18 INFO: 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 16:05:18,203 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 16:05:18 INFO: 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 16:05:18,205 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 16:05:18 INFO: 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 16:05:18 INFO: 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 16:05:18,233 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 16:05:18,234 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 16:05:18 INFO: 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 16:05:18 INFO: 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 16:05:18,244 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 16:05:18,245 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 16:05:18 INFO: 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 16:05:18,256 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 16:05:18 INFO: 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 16:05:18,263 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 16:05:18 INFO: 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 16:05:18,277 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 16:05:18 INFO: 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 16:05:18,298 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 16:05:18 INFO: 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 16:05:18,316 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 16:05:18 INFO: 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 16:05:18,333 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 16:05:18] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 17:12:33 INFO: 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 17:12:33,536 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 17:12:33 INFO: 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 17:12:33,538 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 17:12:33 INFO: 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 17:12:33,541 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /auth/status HTTP/1.1" 200 -
+2024-08-28 17:12:33 INFO: 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 17:12:33,544 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 17:12:33 INFO: 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 17:12:33,550 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 17:12:33 INFO: 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 17:12:33,553 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 17:12:33 INFO: 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 17:12:33,555 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 17:12:33 INFO: 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 17:12:33 INFO: 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 17:12:33,564 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-28 17:12:33,565 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 17:12:33 INFO: 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 17:12:33,569 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 17:12:33 INFO: 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 17:12:33,575 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 17:12:33 INFO: 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 17:12:33,588 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 17:12:33 INFO: 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 17:12:33,603 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 17:12:33 INFO: 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-28 17:12:33,620 - werkzeug - INFO - 127.0.0.1 - - [28/Aug/2024 17:12:33] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:34 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-29 00:05:34,282 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-29 00:05:34 INFO: [33mPress CTRL+C to quit[0m
+2024-08-29 00:05:34,282 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-08-29 00:05:39 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:39] "GET /auth/status HTTP/1.1" 200 -
+2024-08-29 00:05:39,846 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:39] "GET /auth/status HTTP/1.1" 200 -
+2024-08-29 00:05:39 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:39] "GET /auth/status HTTP/1.1" 200 -
+2024-08-29 00:05:39,852 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:39] "GET /auth/status HTTP/1.1" 200 -
+2024-08-29 00:05:39 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:39] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:05:39,854 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:39] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:05:39 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:39] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:05:39,868 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:39] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:05:39 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:39] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:39,870 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:39] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:39 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:39] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:05:39,875 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:39] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:05:39 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:39] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:39,875 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:39] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:39 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:39] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:05:39,886 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:39] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:05:39 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:39] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:39,939 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:39] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:39 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:39] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:39,963 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:39] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:42 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:42] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:42,473 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:42] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:42 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:42] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:42,479 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:42] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:42 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:42] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:42,524 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:42] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:42 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:42] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:42,616 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:42] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /auth/status HTTP/1.1" 200 -
+2024-08-29 00:05:43,186 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /auth/status HTTP/1.1" 200 -
+2024-08-29 00:05:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:05:43,188 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:05:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /auth/status HTTP/1.1" 200 -
+2024-08-29 00:05:43,191 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /auth/status HTTP/1.1" 200 -
+2024-08-29 00:05:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:43,207 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:05:43,211 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:43,211 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:05:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:05:43,218 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:05:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:43,220 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:05:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:43,225 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:05:43,225 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:43,227 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:43,246 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:43,267 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:43,281 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:43] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:44 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:44] "GET /api/company HTTP/1.1" 200 -
+2024-08-29 00:05:44,444 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:44] "GET /api/company HTTP/1.1" 200 -
+2024-08-29 00:05:44 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:44] "GET /api/company HTTP/1.1" 200 -
+2024-08-29 00:05:44,451 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:44] "GET /api/company HTTP/1.1" 200 -
+2024-08-29 00:05:46 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:46] "GET /auth/logout HTTP/1.1" 200 -
+2024-08-29 00:05:46,537 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:46] "GET /auth/logout HTTP/1.1" 200 -
+2024-08-29 00:05:51 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:51] "OPTIONS /auth/login HTTP/1.1" 200 -
+2024-08-29 00:05:51,582 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:51] "OPTIONS /auth/login HTTP/1.1" 200 -
+2024-08-29 00:05:51 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:51] "POST /auth/login HTTP/1.1" 200 -
+2024-08-29 00:05:51,670 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:51] "POST /auth/login HTTP/1.1" 200 -
+2024-08-29 00:05:51 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:51] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:51,689 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:51] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:51 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:51] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:05:51 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:51] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:51,693 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:51] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:05:51,694 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:51] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:51 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:51] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:51,702 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:51] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:51 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:51] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:51,708 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:51] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:51 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:51] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:51,715 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:51] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:51 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:51] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:51,728 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:51] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:51 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:51] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:51,741 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:51] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:51 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:51] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:51,756 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:51] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:05:54 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:54] "GET /api/meetings?meeting_id=34 HTTP/1.1" 200 -
+2024-08-29 00:05:54,094 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:54] "GET /api/meetings?meeting_id=34 HTTP/1.1" 200 -
+2024-08-29 00:05:54 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:54] "GET /api/meetings?meeting_id=34 HTTP/1.1" 200 -
+2024-08-29 00:05:54,101 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:54] "GET /api/meetings?meeting_id=34 HTTP/1.1" 200 -
+2024-08-29 00:05:55 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:55] "GET /api/sessions/37 HTTP/1.1" 200 -
+2024-08-29 00:05:55,275 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:55] "GET /api/sessions/37 HTTP/1.1" 200 -
+2024-08-29 00:05:55 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:55] "GET /api/sessions/37 HTTP/1.1" 200 -
+2024-08-29 00:05:55,284 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:55] "GET /api/sessions/37 HTTP/1.1" 200 -
+2024-08-29 00:05:55 INFO: 127.0.0.1 - - [29/Aug/2024 00:05:55] "[35m[1mGET /uploads/audio_recordings/d6e4ab82-fd74-4922-85c9-5fbd213c984f.mp3 HTTP/1.1[0m" 206 -
+2024-08-29 00:05:55,290 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:05:55] "[35m[1mGET /uploads/audio_recordings/d6e4ab82-fd74-4922-85c9-5fbd213c984f.mp3 HTTP/1.1[0m" 206 -
+2024-08-29 00:23:39 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-29 00:23:39,800 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-29 00:23:39 INFO: [33mPress CTRL+C to quit[0m
+2024-08-29 00:23:39,803 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-08-29 00:23:43 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:43,893 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:43 DEBUG: Status check: user gaetan@minutememo.io is authenticated
+2024-08-29 00:23:43,894 - auth - DEBUG - Status check: user gaetan@minutememo.io is authenticated
+2024-08-29 00:23:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:43] "GET /auth/status HTTP/1.1" 200 -
+2024-08-29 00:23:43,894 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:43] "GET /auth/status HTTP/1.1" 200 -
+2024-08-29 00:23:43 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:43,895 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:43 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:43,898 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:43 DEBUG: Status check: user gaetan@minutememo.io is authenticated
+2024-08-29 00:23:43,898 - auth - DEBUG - Status check: user gaetan@minutememo.io is authenticated
+2024-08-29 00:23:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:43] "GET /auth/status HTTP/1.1" 200 -
+2024-08-29 00:23:43,899 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:43] "GET /auth/status HTTP/1.1" 200 -
+2024-08-29 00:23:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:43] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:23:43,904 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:43] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:23:43 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:43,906 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:43 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:43,910 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:43] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:23:43,912 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:43] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:23:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:43] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:23:43,914 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:43] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:23:43 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:43,915 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:43 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:43,917 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:43] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:23:43,918 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:43] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:23:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:43] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:23:43,918 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:43] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:23:43 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:43,921 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:43 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:43,923 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:43] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:23:43,925 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:43] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:23:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:43] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:23:43,951 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:43] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:23:43 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:43,954 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:43 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:43] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:23:43,967 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:43] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:23:47 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47,808 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47,810 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47 DEBUG: Status check: user gaetan@minutememo.io is authenticated
+2024-08-29 00:23:47,810 - auth - DEBUG - Status check: user gaetan@minutememo.io is authenticated
+2024-08-29 00:23:47 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /auth/status HTTP/1.1" 200 -
+2024-08-29 00:23:47,810 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /auth/status HTTP/1.1" 200 -
+2024-08-29 00:23:47 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:23:47,813 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47 DEBUG: Status check: user gaetan@minutememo.io is authenticated
+2024-08-29 00:23:47,814 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:23:47,814 - auth - DEBUG - Status check: user gaetan@minutememo.io is authenticated
+2024-08-29 00:23:47 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /auth/status HTTP/1.1" 200 -
+2024-08-29 00:23:47,816 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /auth/status HTTP/1.1" 200 -
+2024-08-29 00:23:47 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47,822 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47,830 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47,832 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:23:47 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:23:47,834 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:23:47,834 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:23:47 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47,839 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47,839 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:23:47 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:23:47,842 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:23:47,843 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:23:47 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47,847 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47,847 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:23:47,849 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:23:47 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:23:47,850 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-29 00:23:47 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47,852 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:23:47,855 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:23:47 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:23:47,857 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:23:47 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47,860 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:23:47,875 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:23:47 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47,878 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:23:47,891 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:23:47 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47,894 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-29 00:23:47 INFO: 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-29 00:23:47,913 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2024 00:23:47] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:53:27 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-30 06:53:27,907 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-30 06:53:27 INFO: [33mPress CTRL+C to quit[0m
+2024-08-30 06:53:27,907 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-08-30 06:54:32 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32,633 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32,647 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32 DEBUG: Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 06:54:32,647 - auth - DEBUG - Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 06:54:32 INFO: 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 06:54:32,653 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 06:54:32 INFO: 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:54:32,655 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:54:32 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32,667 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32 DEBUG: Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 06:54:32,668 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32,668 - auth - DEBUG - Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 06:54:32 INFO: 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 06:54:32,670 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 06:54:32 INFO: 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:54:32,672 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:54:32 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32,674 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32,676 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32 INFO: 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:54:32,680 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:54:32 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32,685 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32 INFO: 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:54:32,687 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:54:32 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32,691 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32 INFO: 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:54:32,696 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:54:32 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32,699 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32 INFO: 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:54:32,701 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:54:32 INFO: 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:54:32,707 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:54:32 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32,710 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32,719 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32 INFO: 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:54:32,725 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:54:32 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32 INFO: 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:54:32,729 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32,729 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:54:32 INFO: 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:54:32 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32,732 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:54:32,733 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32 INFO: 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:54:32,750 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:54:32 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32,752 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:32 INFO: 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:54:32,764 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:54:32] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:54:42 DEBUG: No active session found, user is not authenticated
+2024-08-30 06:54:42,887 - auth - DEBUG - No active session found, user is not authenticated
+2024-08-30 06:54:42 INFO: 127.0.0.1 - - [30/Aug/2024 06:54:42] "OPTIONS /api/meetings HTTP/1.1" 200 -
+2024-08-30 06:54:42,888 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:54:42] "OPTIONS /api/meetings HTTP/1.1" 200 -
+2024-08-30 06:54:42 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:42,893 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:42 INFO: 127.0.0.1 - - [30/Aug/2024 06:54:42] "[35m[1mPOST /api/meetings HTTP/1.1[0m" 201 -
+2024-08-30 06:54:42,936 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:54:42] "[35m[1mPOST /api/meetings HTTP/1.1[0m" 201 -
+2024-08-30 06:54:42 DEBUG: No active session found, user is not authenticated
+2024-08-30 06:54:42,946 - auth - DEBUG - No active session found, user is not authenticated
+2024-08-30 06:54:42 INFO: 127.0.0.1 - - [30/Aug/2024 06:54:42] "OPTIONS /api/recordings HTTP/1.1" 200 -
+2024-08-30 06:54:42,947 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:54:42] "OPTIONS /api/recordings HTTP/1.1" 200 -
+2024-08-30 06:54:42 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:42,952 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:42 INFO: Recording e1caf3b7-284b-4b00-af6f-33d03716617a created for user 2 in session 40
+2024-08-30 06:54:42,963 - minutememo_app.app - INFO - Recording e1caf3b7-284b-4b00-af6f-33d03716617a created for user 2 in session 40
+2024-08-30 06:54:42 INFO: 127.0.0.1 - - [30/Aug/2024 06:54:42] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
+2024-08-30 06:54:42,964 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:54:42] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
+2024-08-30 06:54:48 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:48,286 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:48 INFO: 127.0.0.1 - - [30/Aug/2024 06:54:48] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-30 06:54:48,290 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:54:48] "POST /upload_chunk HTTP/1.1" 200 -
+2024-08-30 06:54:49 DEBUG: No active session found, user is not authenticated
+2024-08-30 06:54:49,246 - auth - DEBUG - No active session found, user is not authenticated
+2024-08-30 06:54:49 INFO: 127.0.0.1 - - [30/Aug/2024 06:54:49] "OPTIONS /concatenate HTTP/1.1" 200 -
+2024-08-30 06:54:49,248 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:54:49] "OPTIONS /concatenate HTTP/1.1" 200 -
+2024-08-30 06:54:49 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:49,263 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:49 INFO: Received request to concatenate for recording_id: e1caf3b7-284b-4b00-af6f-33d03716617a
+2024-08-30 06:54:49,263 - minutememo_app.app - INFO - Received request to concatenate for recording_id: e1caf3b7-284b-4b00-af6f-33d03716617a
+2024-08-30 06:54:49 INFO: Chunk files to concatenate: ['e1caf3b7-284b-4b00-af6f-33d03716617a_chunk_0.webm']
+2024-08-30 06:54:49,265 - minutememo_app.app - INFO - Chunk files to concatenate: ['e1caf3b7-284b-4b00-af6f-33d03716617a_chunk_0.webm']
+2024-08-30 06:54:52 INFO: Concatenation successful: uploads/audio_recordings/e1caf3b7-284b-4b00-af6f-33d03716617a.mp3
+2024-08-30 06:54:52,546 - minutememo_app.app - INFO - Concatenation successful: uploads/audio_recordings/e1caf3b7-284b-4b00-af6f-33d03716617a.mp3
+2024-08-30 06:54:52 INFO: Database updated successfully for recording_id: e1caf3b7-284b-4b00-af6f-33d03716617a
+2024-08-30 06:54:52,560 - minutememo_app.app - INFO - Database updated successfully for recording_id: e1caf3b7-284b-4b00-af6f-33d03716617a
+2024-08-30 06:54:52 INFO: 127.0.0.1 - - [30/Aug/2024 06:54:52] "POST /concatenate HTTP/1.1" 200 -
+2024-08-30 06:54:52,561 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:54:52] "POST /concatenate HTTP/1.1" 200 -
+2024-08-30 06:54:52 DEBUG: No active session found, user is not authenticated
+2024-08-30 06:54:52,575 - auth - DEBUG - No active session found, user is not authenticated
+2024-08-30 06:54:52 INFO: 127.0.0.1 - - [30/Aug/2024 06:54:52] "OPTIONS /api/recordings/e1caf3b7-284b-4b00-af6f-33d03716617a HTTP/1.1" 200 -
+2024-08-30 06:54:52,576 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:54:52] "OPTIONS /api/recordings/e1caf3b7-284b-4b00-af6f-33d03716617a HTTP/1.1" 200 -
+2024-08-30 06:54:52 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:52,578 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:54:52 INFO: Received data for updating recording e1caf3b7-284b-4b00-af6f-33d03716617a: {'audio_url': '/uploads/audio_recordings/e1caf3b7-284b-4b00-af6f-33d03716617a.mp3'}
+2024-08-30 06:54:52,579 - minutememo_app.app - INFO - Received data for updating recording e1caf3b7-284b-4b00-af6f-33d03716617a: {'audio_url': '/uploads/audio_recordings/e1caf3b7-284b-4b00-af6f-33d03716617a.mp3'}
+2024-08-30 06:54:52 INFO: Current recording before update: <Recording e1caf3b7-284b-4b00-af6f-33d03716617a>
+2024-08-30 06:54:52,580 - minutememo_app.app - INFO - Current recording before update: <Recording e1caf3b7-284b-4b00-af6f-33d03716617a>
+2024-08-30 06:54:52 INFO: Meeting session after update: <MeetingSession 40>
+2024-08-30 06:54:52,584 - minutememo_app.app - INFO - Meeting session after update: <MeetingSession 40>
+2024-08-30 06:54:52 INFO: 127.0.0.1 - - [30/Aug/2024 06:54:52] "PATCH /api/recordings/e1caf3b7-284b-4b00-af6f-33d03716617a HTTP/1.1" 200 -
+2024-08-30 06:54:52,585 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:54:52] "PATCH /api/recordings/e1caf3b7-284b-4b00-af6f-33d03716617a HTTP/1.1" 200 -
+2024-08-30 06:55:19 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19,832 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19,832 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19 DEBUG: Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 06:55:19,833 - auth - DEBUG - Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 06:55:19 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 06:55:19,833 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 06:55:19 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:19,835 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:19 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19,837 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19 DEBUG: Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 06:55:19,837 - auth - DEBUG - Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 06:55:19 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 06:55:19,863 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 06:55:19 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19,870 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19,870 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19,871 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:19,877 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:19 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19,880 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:19 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:19,883 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:19,883 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:19 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19,888 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:19,892 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19,893 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:19 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:19,895 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:19 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19,896 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:19,901 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19,903 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:19 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:19 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:19,905 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:19,905 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:19 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19,910 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:19,923 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:19 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19,926 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:19,940 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:19 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19,943 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:19 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:19,959 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:19] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:20 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20,568 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20,568 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20 DEBUG: Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 06:55:20,569 - auth - DEBUG - Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 06:55:20 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 06:55:20,571 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 06:55:20 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:20,576 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:20 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20,576 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20 DEBUG: Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 06:55:20,577 - auth - DEBUG - Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 06:55:20 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 06:55:20,578 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 06:55:20 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20,580 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:20 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20,594 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:20,595 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20,595 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:20,599 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:20 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20,600 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20,604 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:20,605 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:20 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:20,606 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:20 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20,610 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20,613 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:20 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:20,623 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:20,623 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:20 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20,627 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:20,631 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:20 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:20,631 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:20 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20,633 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:20,651 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:20 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20,654 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:20,667 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:20 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20,671 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:20 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:20,685 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:20] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25,472 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25,474 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25 DEBUG: Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 06:55:25,474 - auth - DEBUG - Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 06:55:25 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 06:55:25,477 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 06:55:25 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:25,489 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25,490 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25 DEBUG: Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 06:55:25,491 - auth - DEBUG - Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 06:55:25 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 06:55:25,494 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 06:55:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25,497 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:25,502 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25,510 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25,522 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25,524 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:25,526 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:25 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:25,528 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25,531 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:25,535 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25,536 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:25 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:25,539 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 06:55:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25,540 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:25,542 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25,547 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:25,549 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:25 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:25,549 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25,552 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:25,566 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25,569 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:25,585 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25,594 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 06:55:25 INFO: 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 06:55:25,608 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 06:55:25] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 11:59:53 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-30 11:59:53,137 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-30 11:59:53 INFO: [33mPress CTRL+C to quit[0m
+2024-08-30 11:59:53,138 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-08-30 12:05:04 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-30 12:05:04,045 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-30 12:05:04 INFO: [33mPress CTRL+C to quit[0m
+2024-08-30 12:05:04,045 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-08-30 12:05:04 INFO:  * Restarting with stat
+2024-08-30 12:05:04,045 - werkzeug - INFO -  * Restarting with stat
+2024-08-30 12:05:04 WARNING:  * Debugger is active!
+2024-08-30 12:05:04,363 - werkzeug - WARNING -  * Debugger is active!
+2024-08-30 12:05:04 INFO:  * Debugger PIN: 121-174-326
+2024-08-30 12:05:04,373 - werkzeug - INFO -  * Debugger PIN: 121-174-326
+2024-08-30 12:06:15 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-30 12:06:15,081 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-30 12:06:15 INFO: [33mPress CTRL+C to quit[0m
+2024-08-30 12:06:15,081 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-08-30 12:06:22 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:22 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:22,778 - auth - DEBUG - Loading user with ID: 2
+2024-08-30 12:06:22,778 - auth - DEBUG - Loading user with ID: 2
+2024-08-30 12:06:23 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:23,127 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:23 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:23,132 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:23 DEBUG: Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 12:06:23,132 - auth - DEBUG - Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 12:06:23 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:23,132 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:23 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:23] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 12:06:23,136 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 12:06:23] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 12:06:23 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:23,139 - auth - DEBUG - Loading user with ID: 2
+2024-08-30 12:06:23 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:23,141 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:23 DEBUG: Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 12:06:23,142 - auth - DEBUG - Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 12:06:23 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:23,142 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:23 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:23] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 12:06:23,143 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 12:06:23] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 12:06:23 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:23,243 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:23 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:23] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 12:06:23,247 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 12:06:23] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 12:06:25 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:25,394 - auth - DEBUG - Loading user with ID: 2
+2024-08-30 12:06:25 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25,397 - auth - DEBUG - Loading user with ID: 2
+2024-08-30 12:06:25,397 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25 DEBUG: Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 12:06:25,398 - auth - DEBUG - Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 12:06:25 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:25,398 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25,398 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 12:06:25,399 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 12:06:25 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:25 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:25,400 - auth - DEBUG - Loading user with ID: 2
+2024-08-30 12:06:25,401 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25,402 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 12:06:25 DEBUG: Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 12:06:25,402 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 12:06:25,402 - auth - DEBUG - Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 12:06:25 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:25,403 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:25 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 12:06:25 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:25,404 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 12:06:25,404 - auth - DEBUG - Loading user with ID: 2
+2024-08-30 12:06:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25,406 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:25,408 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:25 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 12:06:25,409 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 12:06:25 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:25,410 - auth - DEBUG - Loading user with ID: 2
+2024-08-30 12:06:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25,412 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:25,423 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:25 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:25 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:25,424 - auth - DEBUG - Loading user with ID: 2
+2024-08-30 12:06:25 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 12:06:25,425 - auth - DEBUG - Loading user with ID: 2
+2024-08-30 12:06:25,425 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 12:06:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25,426 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25,426 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:25,428 - auth - DEBUG - Loading user with ID: 2
+2024-08-30 12:06:25 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:25,430 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:25 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 12:06:25,434 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 12:06:25 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:25,435 - auth - DEBUG - Loading user with ID: 2
+2024-08-30 12:06:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25,437 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:25,437 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:25 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 12:06:25,438 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 12:06:25 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:25,440 - auth - DEBUG - Loading user with ID: 2
+2024-08-30 12:06:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25,441 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:25,442 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:25 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 12:06:25,443 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 12:06:25 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:25,444 - auth - DEBUG - Loading user with ID: 2
+2024-08-30 12:06:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25,446 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:25,447 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:25 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 12:06:25,448 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 12:06:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25,453 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:25,455 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:25 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 12:06:25,456 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 12:06:25 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:25,458 - auth - DEBUG - Loading user with ID: 2
+2024-08-30 12:06:25 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25,458 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:25,458 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 12:06:25,465 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 12:06:25 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:25,480 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:25 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 12:06:25,480 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 12:06:25 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:25,482 - auth - DEBUG - Loading user with ID: 2
+2024-08-30 12:06:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25,483 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:25,492 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:25 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 12:06:25,492 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 12:06:25 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:25,493 - auth - DEBUG - Loading user with ID: 2
+2024-08-30 12:06:25 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25,494 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:25 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:25,507 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:25 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 12:06:25,507 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 12:06:25] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-08-30 12:06:34 DEBUG: No active session found, user is not authenticated
+2024-08-30 12:06:34,675 - auth - DEBUG - No active session found, user is not authenticated
+2024-08-30 12:06:34 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:34,676 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:34 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:34] "OPTIONS /api/set_active_hub HTTP/1.1" 200 -
+2024-08-30 12:06:34,677 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 12:06:34] "OPTIONS /api/set_active_hub HTTP/1.1" 200 -
+2024-08-30 12:06:34 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:34,683 - auth - DEBUG - Loading user with ID: 2
+2024-08-30 12:06:34 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:34,685 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:34 DEBUG: Received request to set active hub with hub_id: None
+2024-08-30 12:06:34,685 - routes - DEBUG - Received request to set active hub with hub_id: None
+2024-08-30 12:06:34 ERROR: hub_id is missing in the request
+2024-08-30 12:06:34,685 - routes - ERROR - hub_id is missing in the request
+2024-08-30 12:06:34 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:34,685 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:34 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:34] "[31m[1mPOST /api/set_active_hub HTTP/1.1[0m" 400 -
+2024-08-30 12:06:34,686 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 12:06:34] "[31m[1mPOST /api/set_active_hub HTTP/1.1[0m" 400 -
+2024-08-30 12:06:50 DEBUG: No active session found, user is not authenticated
+2024-08-30 12:06:50,037 - auth - DEBUG - No active session found, user is not authenticated
+2024-08-30 12:06:50 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:50,040 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:50 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:50] "OPTIONS /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 12:06:50,040 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 12:06:50] "OPTIONS /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 12:06:50 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:50,042 - auth - DEBUG - Loading user with ID: 2
+2024-08-30 12:06:50 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:50,044 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:50 INFO: Meeting hub created with ID 13 for user 2.
+2024-08-30 12:06:50,074 - minutememo_app.app - INFO - Meeting hub created with ID 13 for user 2.
+2024-08-30 12:06:50 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:50,074 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:50 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:50] "[35m[1mPOST /api/meetinghubs HTTP/1.1[0m" 201 -
+2024-08-30 12:06:50,076 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 12:06:50] "[35m[1mPOST /api/meetinghubs HTTP/1.1[0m" 201 -
+2024-08-30 12:06:50 DEBUG: No active session found, user is not authenticated
+2024-08-30 12:06:50,080 - auth - DEBUG - No active session found, user is not authenticated
+2024-08-30 12:06:50 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:50,081 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:50 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:50] "OPTIONS /api/set_active_hub HTTP/1.1" 200 -
+2024-08-30 12:06:50,082 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 12:06:50] "OPTIONS /api/set_active_hub HTTP/1.1" 200 -
+2024-08-30 12:06:50 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:50,084 - auth - DEBUG - Loading user with ID: 2
+2024-08-30 12:06:50 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:50,086 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:50 DEBUG: Received request to set active hub with hub_id: 13
+2024-08-30 12:06:50,086 - routes - DEBUG - Received request to set active hub with hub_id: 13
+2024-08-30 12:06:50 INFO: Successfully set active hub to 13 for user gaetan@minutememo.io
+2024-08-30 12:06:50,105 - routes - INFO - Successfully set active hub to 13 for user gaetan@minutememo.io
+2024-08-30 12:06:50 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:50,105 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:50 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:50] "POST /api/set_active_hub HTTP/1.1" 200 -
+2024-08-30 12:06:50,107 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2024 12:06:50] "POST /api/set_active_hub HTTP/1.1" 200 -
+2024-08-30 12:06:50 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:50 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:50,113 - auth - DEBUG - Loading user with ID: 2
+2024-08-30 12:06:50,114 - auth - DEBUG - Loading user with ID: 2
+2024-08-30 12:06:50 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:50 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:50,117 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:50,117 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:50 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:50,118 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-08-30 12:06:50 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:50 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:50] "[33mGET /api/meetings?hub_id=13 HTTP/1.1[0m" 404 -
+2024-08-30 12:06:50 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:50] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
+2024-08-30 12:06:50 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:50 DEBUG: Loading user with ID: 2
+2024-08-30 12:06:50 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:50 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:06:50 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:50 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:06:50 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:50] "[33mGET /api/meetings?hub_id=13 HTTP/1.1[0m" 404 -
+2024-08-30 12:06:50 INFO: 127.0.0.1 - - [30/Aug/2024 12:06:50] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
+2024-08-30 12:09:01 DEBUG: Loading user with ID: 2
+2024-08-30 12:09:01 DEBUG: Loading user with ID: 2
+2024-08-30 12:09:01 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:09:01 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:09:01 DEBUG: Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 12:09:01 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:09:01 INFO: 127.0.0.1 - - [30/Aug/2024 12:09:01] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 12:09:01 DEBUG: Loading user with ID: 2
+2024-08-30 12:09:01 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:09:01 INFO: 127.0.0.1 - - [30/Aug/2024 12:09:01] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 12:09:01 DEBUG: Loading user with ID: 2
+2024-08-30 12:09:01 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:09:01 DEBUG: Loading user with ID: 2
+2024-08-30 12:09:01 DEBUG: Loading user with ID: 2
+2024-08-30 12:09:01 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:09:01 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:09:01 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:09:01 DEBUG: Status check: user gaetan@minutememo.io is authenticated
+2024-08-30 12:09:01 INFO: 127.0.0.1 - - [30/Aug/2024 12:09:01] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 12:09:01 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:09:01 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:09:01 DEBUG: Loading user with ID: 2
+2024-08-30 12:09:01 INFO: 127.0.0.1 - - [30/Aug/2024 12:09:01] "GET /auth/status HTTP/1.1" 200 -
+2024-08-30 12:09:01 INFO: 127.0.0.1 - - [30/Aug/2024 12:09:01] "[33mGET /api/meetings?hub_id=13 HTTP/1.1[0m" 404 -
+2024-08-30 12:09:01 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:09:01 DEBUG: Loading user with ID: 2
+2024-08-30 12:09:01 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:09:01 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:09:01 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:09:01 INFO: 127.0.0.1 - - [30/Aug/2024 12:09:01] "[33mGET /api/meetings?hub_id=13 HTTP/1.1[0m" 404 -
+2024-08-30 12:09:01 INFO: 127.0.0.1 - - [30/Aug/2024 12:09:01] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 12:09:01 DEBUG: Loading user with ID: 2
+2024-08-30 12:09:01 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:09:01 DEBUG: Loading user with ID: 2
+2024-08-30 12:09:01 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:09:01 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:09:01 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:09:01 INFO: 127.0.0.1 - - [30/Aug/2024 12:09:01] "[33mGET /api/meetings?hub_id=13 HTTP/1.1[0m" 404 -
+2024-08-30 12:09:01 INFO: 127.0.0.1 - - [30/Aug/2024 12:09:01] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-08-30 12:09:01 DEBUG: Loading user with ID: 2
+2024-08-30 12:09:01 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:09:01 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:09:01 INFO: 127.0.0.1 - - [30/Aug/2024 12:09:01] "[33mGET /api/meetings?hub_id=13 HTTP/1.1[0m" 404 -
+2024-08-30 12:09:01 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:09:01 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:09:01 INFO: 127.0.0.1 - - [30/Aug/2024 12:09:01] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
+2024-08-30 12:09:01 DEBUG: Loading user with ID: 2
+2024-08-30 12:09:01 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:09:01 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:09:01 INFO: 127.0.0.1 - - [30/Aug/2024 12:09:01] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
+2024-08-30 12:09:01 DEBUG: Loading user with ID: 2
+2024-08-30 12:09:01 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:09:01 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:09:01 INFO: 127.0.0.1 - - [30/Aug/2024 12:09:01] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
+2024-08-30 12:09:01 DEBUG: Loading user with ID: 2
+2024-08-30 12:09:01 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-08-30 12:09:01 DEBUG: After request, Origin: http://localhost:3000
+2024-08-30 12:09:01 INFO: 127.0.0.1 - - [30/Aug/2024 12:09:01] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
