@@ -2,6 +2,7 @@
 from flask import Blueprint, render_template, request, jsonify, current_app, send_from_directory, redirect, url_for
 import os
 import boto3
+import logging
 from botocore.exceptions import NoCredentialsError, ClientError
 import uuid
 from flask_cors import cross_origin
@@ -14,6 +15,7 @@ from datetime import datetime
 
 
 main = Blueprint('main', __name__)
+logger = logging.getLogger(__name__)
 
 # Load environment settings
 ENVIRONMENT = os.getenv('FLASK_ENV', 'development')
@@ -657,18 +659,29 @@ def download_file(filename):
 @login_required
 def set_active_hub():
     try:
+        # Get hub_id from the request
         hub_id = request.json.get('hub_id')
+        logger.debug(f"Received request to set active hub with hub_id: {hub_id}")
+
+        # Check if hub_id is provided
         if not hub_id:
+            logger.error("hub_id is missing in the request")
             return jsonify({"status": "error", "message": "hub_id is required"}), 400
 
+        # Check if the hub exists in the database
         hub = MeetingHub.query.get(hub_id)
         if not hub:
+            logger.error(f"Invalid hub_id: {hub_id}")
             return jsonify({"status": "error", "message": "Invalid hub_id"}), 404
 
+        # Update the active hub for the current user
         current_user.active_meeting_hub_id = hub_id
         db.session.commit()
 
+        logger.info(f"Successfully set active hub to {hub_id} for user {current_user.email}")
         return jsonify({"status": "success"}), 200
     except Exception as e:
+        # Rollback the session in case of an error
         db.session.rollback()
+        logger.error(f"Error occurred while setting active hub: {str(e)}")
         return jsonify({"status": "error", "message": str(e)}), 500
