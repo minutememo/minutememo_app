@@ -14,6 +14,7 @@ import LoginPage from './components/LoginPage';
 import SignupPage from './components/SignupPage';
 import UserEmailDisplay from './components/UserEmailDisplay';
 import LogoutButton from './components/LogoutButton';
+import FileUpload from './components/FileUpload';  // Import FileUpload component
 import axios from 'axios';
 import MeetingPage from './components/MeetingsPage'; // Adjust the path as necessary
 import MeetingSessionPage from './components/MeetingSessionPage'; // Import the new component
@@ -199,127 +200,128 @@ const AppContent = () => {
   };
 
 
-return (
-  <Router>
-    {user ? (
-      <>
-        <Navbar bg="dark" variant="dark" className="mb-4">
+  return (
+    <Router>
+      {user ? (
+        <>
+          <Navbar bg="dark" variant="dark" className="mb-4">
+            <Container fluid>
+              <Navbar.Brand as={NavLink} to="/">
+                <img src="/images/logo.svg" alt="Logo" style={{ height: '24px', marginRight: '10px' }} />
+              </Navbar.Brand>
+              <Form className="d-flex">
+                <FormControl
+                  type="search"
+                  placeholder="Search"
+                  className="mr-2"
+                  aria-label="Search"
+                />
+                <Button variant="outline-success">Search</Button>
+              </Form>
+  
+              {/* Customized Hub Selector */}
+              <Dropdown show={dropdownVisible} onToggle={toggleDropdown} onSelect={handleHubSelect} className="hub-selector">
+                <Dropdown.Toggle as="div" className="hub-dropdown">
+                  <span className="hub-name">{activeHubName}</span>
+                  <span className="caret"></span>
+                </Dropdown.Toggle>
+  
+                <Dropdown.Menu>
+                  {meetingHubs.length > 0 ? meetingHubs.map(hub => (
+                    <Dropdown.Item key={hub?.id || `temp-${Date.now()}`} eventKey={hub?.id || null}>
+                      {hub?.name || 'Unnamed Hub'}
+                    </Dropdown.Item>
+                  )) : (
+                    <Dropdown.Item disabled>No hubs available</Dropdown.Item>
+                  )}
+                  <Dropdown.Divider />
+                  <Dropdown.Item onClick={() => setShowModal(true)}>Create New Hub</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+  
+              <LogoutButton /> {/* Show logout button if the user is logged in */}
+            </Container>
+          </Navbar>
           <Container fluid>
-            <Navbar.Brand as={NavLink} to="/">
-              <img src="/images/logo.svg" alt="Logo" style={{ height: '24px', marginRight: '10px' }} /> {/* Added logo */}
-            </Navbar.Brand>
-            <Form className="d-flex">
-              <FormControl
-                type="search"
-                placeholder="Search"
-                className="mr-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-success">Search</Button>
-            </Form>
-
-            {/* Customized Hub Selector */}
-            <Dropdown show={dropdownVisible} onToggle={toggleDropdown} onSelect={handleHubSelect} className="hub-selector">
-              <Dropdown.Toggle as="div" className="hub-dropdown">
-                <span className="hub-name">{activeHubName}</span> 
-                <span className="caret"></span>
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                {meetingHubs.length > 0 ? meetingHubs.map(hub => (
-                  <Dropdown.Item key={hub?.id || `temp-${Date.now()}`} eventKey={hub?.id || null}>
-                    {hub?.name || 'Unnamed Hub'}
-                  </Dropdown.Item>
-                )) : (
-                  <Dropdown.Item disabled>No hubs available</Dropdown.Item>
+            <Row>
+              <Col md={3} className="bg-light sidebar">
+                <Nav defaultActiveKey="/" className="flex-column">
+                  <NavLink to="/" className="nav-link">
+                    <MdDashboard className="icon" />
+                    <span className="link-text">Dashboard</span>
+                  </NavLink>
+                  <NavLink to="/meetings" className="nav-link">
+                    <MdEvent className="icon" />
+                    <span className="link-text">Meetings</span>
+                  </NavLink>
+                  <NavLink to="/action-items" className="nav-link">
+                    <MdList className="icon" />
+                    <span className="link-text">Action Items</span>
+                  </NavLink>
+                  <NavLink to="/settings" className="nav-link">
+                    <MdSettings className="icon" />
+                    <span className="link-text">Settings</span>
+                  </NavLink>
+                </Nav>
+                <UserEmailDisplay /> {/* Display the user email here if logged in */}
+                <AudioRecorder selectedHub={selectedHub} setSelectedHub={setSelectedHub} /> {/* Display AudioRecorder */}
+                <FileUpload /> {/* Display FileUpload in the sidebar */}
+              </Col>
+            </Row>
+  
+            {/* Move the .content Col out of the Row containing the sidebar */}
+            <Row>
+              <Col md={{ span: 9, offset: 3 }} className="content">
+                {isLoading ? (
+                  <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </Spinner>
+                ) : (
+                  <Routes>
+                    <Route path="/" element={<DashboardPage selectedHub={selectedHub} />} />
+                    <Route path="/meetings/:meetingId" element={<MeetingsPage />} /> {/* Add this route */}
+                    <Route path="/sessions/:sessionId" element={<MeetingSessionPage />} /> {/* Add this route */}
+                    <Route path="/meetings" element={<MeetingsPage />} />
+                    <Route path="/action-items" element={<ActionItemsPage />} />
+                    <Route path="/settings" element={<SettingsPage />} />
+                  </Routes>
                 )}
-                <Dropdown.Divider />
-                <Dropdown.Item onClick={() => setShowModal(true)}>Create New Hub</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-
-            <LogoutButton /> {/* Show logout button if the user is logged in */}
+                {error && <div className="error-message">{error}</div>}
+              </Col>
+            </Row>
           </Container>
-        </Navbar>
-        <Container fluid>
-          <Row>
-            <Col md={3} className="bg-light sidebar">
-              <Nav defaultActiveKey="/" className="flex-column">
-                <NavLink to="/" className="nav-link">
-                  <MdDashboard className="icon" />
-                  <span className="link-text">Dashboard</span>
-                </NavLink>
-                <NavLink to="/meetings" className="nav-link">
-                  <MdEvent className="icon" />
-                  <span className="link-text">Meetings</span>
-                </NavLink>
-                <NavLink to="/action-items" className="nav-link">
-                  <MdList className="icon" />
-                  <span className="link-text">Action Items</span>
-                </NavLink>
-                <NavLink to="/settings" className="nav-link">
-                  <MdSettings className="icon" />
-                  <span className="link-text">Settings</span>
-                </NavLink>
-              </Nav>
-              <UserEmailDisplay /> {/* Display the user email here if logged in */}
-              <AudioRecorder selectedHub={selectedHub} setSelectedHub={setSelectedHub} /> {/* Display AudioRecorder */}
-            </Col>
-          </Row>
-
-          {/* Move the .content Col out of the Row containing the sidebar */}
-          <Row>
-            <Col md={{ span: 9, offset: 3 }} className="content">
-              {isLoading ? (
-                <Spinner animation="border" role="status">
-                  <span className="visually-hidden">Loading...</span>
-                </Spinner>
-              ) : (
-                <Routes>
-                  <Route path="/" element={<DashboardPage selectedHub={selectedHub} />} />
-                  <Route path="/meetings/:meetingId" element={<MeetingsPage />} /> {/* Add this route */}
-                  <Route path="/sessions/:sessionId" element={<MeetingSessionPage />} /> {/* Add this route */}
-                  <Route path="/meetings" element={<MeetingsPage />} />
-                  <Route path="/action-items" element={<ActionItemsPage />} />
-                  <Route path="/settings" element={<SettingsPage />} />
-                </Routes>
-              )}
-              {error && <div className="error-message">{error}</div>}
-            </Col>
-          </Row>
-        </Container>
-
-        {/* Modal for Creating New Hub */}
-        <Modal show={showModal} onHide={() => setShowModal(false)}>
-          <Modal.Header closeButton>
-            <Modal.Title>Create New Meeting Hub</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <FormControl
-              type="text"
-              placeholder="Enter hub name"
-              value={newHubName}
-              onChange={(e) => setNewHubName(e.target.value)}
-            />
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={() => setShowModal(false)}>
-              Cancel
-            </Button>
-            <Button variant="primary" onClick={handleCreateHub} disabled={isLoading}>
-              {isLoading ? <Spinner animation="border" size="sm" /> : 'Create Hub'}
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </>
-    ) : (
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-      </Routes>
-    )}
-  </Router>
-);
+  
+          {/* Modal for Creating New Hub */}
+          <Modal show={showModal} onHide={() => setShowModal(false)}>
+            <Modal.Header closeButton>
+              <Modal.Title>Create New Meeting Hub</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <FormControl
+                type="text"
+                placeholder="Enter hub name"
+                value={newHubName}
+                onChange={(e) => setNewHubName(e.target.value)}
+              />
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={() => setShowModal(false)}>
+                Cancel
+              </Button>
+              <Button variant="primary" onClick={handleCreateHub} disabled={isLoading}>
+                {isLoading ? <Spinner animation="border" size="sm" /> : 'Create Hub'}
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        </>
+      ) : (
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+        </Routes>
+      )}
+    </Router>
+  );
 };
 
 const App = () => (
