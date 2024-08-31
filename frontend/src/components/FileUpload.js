@@ -18,9 +18,9 @@ const FileUpload = () => {
 
     // Configure AWS SDK with DigitalOcean Spaces credentials
     const s3 = new AWS.S3({
-      endpoint: new AWS.Endpoint('https://staging.minutememo.ams3.digitaloceanspaces.com'),
+      endpoint: new AWS.Endpoint('https://ams3.digitaloceanspaces.com'),
       accessKeyId: 'DO00QF6QTBALZBKCD4F2',
-      secretAccessKey: 'wRL2G59987diTbdbjOpKH148/xj3A08g4TeLyOP2ymM', // Replace with your actual secret access key
+      secretAccessKey: 'wRL2G59987diTbdbjOpKH148/xj3A08g4TeLyOP2ymM',
     });
 
     const params = {
@@ -31,9 +31,11 @@ const FileUpload = () => {
     };
 
     try {
+      console.log('Uploading file to S3 with params:', params);
       const data = await s3.upload(params).promise();
       setMessage(`File uploaded successfully at ${data.Location}`);
     } catch (err) {
+      console.error('Upload failed:', err);
       setMessage(`Failed to upload file: ${err.message}`);
     }
   };
