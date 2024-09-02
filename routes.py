@@ -6,11 +6,13 @@ from dotenv import load_dotenv
 import boto3
 from botocore.client import Config
 import logging
+import shutil
 from botocore.exceptions import ClientError
 import uuid
 from flask_cors import cross_origin
 import ffmpeg
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
 from models import User, db, Recording, MeetingSession, MeetingHub, Company, Meeting
 from extensions import db  # Import from extensions.py
 from flask_login import login_required, current_user
@@ -21,6 +23,7 @@ import traceback
 main = Blueprint('main', __name__)
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
+IS_LOCAL = os.getenv('FLASK_ENV') == 'development'
 
 
 # Load environment settings
@@ -29,6 +32,38 @@ SERVICE_ACCOUNT_JSON = os.path.join(os.path.dirname(__file__), 'config/staging-m
 BUCKET_NAME = 'staging-minutememo-audiofiles'
 storage_client = storage.Client.from_service_account_json(SERVICE_ACCOUNT_JSON) if ENVIRONMENT != 'development' else None
 UPLOAD_FOLDER = os.path.join('uploads', 'audio_recordings')
+
+BUCKET_NAME = 'staging-minutememo-audiofiles'
+
+def upload_file_to_gcs(local_path, gcs_path):
+    """Uploads a file to Google Cloud Storage."""
+    bucket = storage_client.bucket(BUCKET_NAME)
+    blob = bucket.blob(gcs_path)
+    blob.upload_from_filename(local_path)
+
+def download_chunks_from_gcs(bucket_name, chunk_files):
+    """Downloads chunk files from GCS and returns their local paths."""
+    temp_dir = os.path.join(UPLOAD_FOLDER, 'temp')
+    os.makedirs(temp_dir, exist_ok=True)
+    
+    local_paths = []
+    for chunk in chunk_files:
+        local_path = os.path.join(temp_dir, secure_filename(chunk))
+        blob = storage_client.bucket(bucket_name).blob(f'audio_recordings/{chunk}')
+        blob.download_to_filename(local_path)
+        local_paths.append(local_path)
+
+    return local_paths, temp_dir
+
+def list_gcs_chunks(bucket_name, recording_id):
+    """Lists chunk files for a recording ID in GCS."""
+    chunks = []
+    bucket = storage_client.bucket(bucket_name)
+    blobs = bucket.list_blobs(prefix=f'audio_recordings/{recording_id}_chunk')
+    for blob in blobs:
+        chunks.append(blob.name.split('/')[-1])  # Get only the filename
+    return chunks
+
 
 @main.route('/generate-presigned-url', methods=['GET'])
 @cross_origin()  # Enable CORS for this route
@@ -215,6 +250,13 @@ def profile_content():
 @cross_origin()
 def concatenate():
     try:
+        # Determine if we are running locally or in the cloud
+        running_locally = os.getenv('FLASK_ENV', 'development') == 'development'
+
+        if not running_locally and storage_client is None:
+            current_app.logger.error("Failed to initialize Google Cloud Storage client.")
+            return jsonify({'status': 'error', 'message': 'Failed to initialize Google Cloud Storage client'}), 500
+
         data = request.get_json()
         if not data or 'recording_id' not in data:
             current_app.logger.error("Missing recording_id in the request data")
@@ -223,34 +265,64 @@ def concatenate():
         recording_id = data['recording_id']
         current_app.logger.info(f"Received request to concatenate for recording_id: {recording_id}")
 
-        # Get a list of chunk files
-        chunk_files = sorted(
-            [f for f in os.listdir(UPLOAD_FOLDER) if f.startswith(recording_id) and f.endswith('.webm')],
-            key=natural_sort_key
-        )
+        if running_locally:
+            # Use local files when running locally
+            chunk_files = sorted(
+                [f for f in os.listdir(UPLOAD_FOLDER) if f.startswith(recording_id) and f.endswith('.webm')],
+                key=natural_sort_key
+            )
+            
+            if not chunk_files:
+                current_app.logger.error(f"No chunks found for recording_id: {recording_id}")
+                return jsonify({'status': 'error', 'message': 'No chunks found for the given recording_id'}), 400
 
-        if not chunk_files:
-            current_app.logger.error(f"No chunks found for recording_id: {recording_id}")
-            return jsonify({'status': 'error', 'message': 'No chunks found for the given recording_id'}), 400
+            # Log chunk files to be concatenated
+            current_app.logger.info(f"Chunk files to concatenate: {chunk_files}")
 
-        # Log chunk files to be concatenated
-        current_app.logger.info(f"Chunk files to concatenate: {chunk_files}")
+            # Create the list file with paths of the chunks
+            list_file_path = os.path.join(UPLOAD_FOLDER, f"{recording_id}_list.txt")
+            
+            with open(list_file_path, 'w') as f:
+                for chunk in chunk_files:
+                    # Write the correct path to the list file
+                    f.write(f"file '{os.path.abspath(os.path.join(UPLOAD_FOLDER, chunk))}'\n")
 
-        # Create the list file with paths of the chunks
-        list_file_path = os.path.join(UPLOAD_FOLDER, f"{recording_id}_list.txt")
-        
-        with open(list_file_path, 'w') as f:
-            for chunk in chunk_files:
-                # Write the correct path to the list file
-                f.write(f"file '{os.path.abspath(os.path.join(UPLOAD_FOLDER, chunk))}'\n")
+            # Log the contents of the list file
+            with open(list_file_path, 'r') as f:
+                current_app.logger.info(f"Contents of {list_file_path}:")
+                current_app.logger.info(f.read())
 
-        # Log the contents of the list file
-        with open(list_file_path, 'r') as f:
-            current_app.logger.info(f"Contents of {list_file_path}:")
-            current_app.logger.info(f.read())
+            # Define the final output file path
+            final_output = os.path.join(UPLOAD_FOLDER, f"{recording_id}.webm")
+        else:
+            # Use GCS when running in the cloud
+            chunk_files = sorted(
+                list_gcs_chunks(BUCKET_NAME, recording_id),
+                key=natural_sort_key
+            )
 
-        # Define the final output file path
-        final_output = os.path.join(UPLOAD_FOLDER, f"{recording_id}.webm")
+            if not chunk_files:
+                current_app.logger.error(f"No chunks found for recording_id: {recording_id}")
+                return jsonify({'status': 'error', 'message': 'No chunks found for the given recording_id'}), 400
+
+            # Download chunks to a temporary local directory
+            local_chunk_paths, temp_dir = download_chunks_from_gcs(BUCKET_NAME, chunk_files)
+
+            # Create the list file with paths of the chunks
+            list_file_path = os.path.join(temp_dir, f"{recording_id}_list.txt")
+            
+            with open(list_file_path, 'w') as f:
+                for local_chunk in local_chunk_paths:
+                    f.write(f"file '{local_chunk}'\n")
+
+            # Log the contents of the list file
+            with open(list_file_path, 'r') as f:
+                current_app.logger.info(f"Contents of {list_file_path}:")
+                current_app.logger.info(f.read())
+
+            # Define the final output file path
+            final_output = os.path.join(temp_dir, f"{recording_id}.webm")
+
         concatenation_status = 'success'
 
         # Attempt to concatenate using FFmpeg
@@ -272,6 +344,18 @@ def concatenate():
 
         current_app.logger.info(f"Concatenation successful: {mp3_filepath}")
 
+        if not running_locally:
+            try:
+                # Upload the final mp3 file back to GCS
+                upload_file_to_gcs(mp3_filepath, f"audio_recordings/{os.path.basename(mp3_filepath)}")
+
+                # Clean up the temporary local directory
+                shutil.rmtree(temp_dir)
+
+            except Exception as e:
+                current_app.logger.error(f"Error uploading the file to GCS: {e}")
+                return jsonify({'status': 'error', 'message': f"Error uploading the file to GCS: {str(e)}"}), 500
+
         try:
             # Update the recording in the database
             recording = Recording.query.filter_by(id=recording_id).first()
@@ -289,7 +373,7 @@ def concatenate():
             current_app.logger.error(f"Error updating the database: {e}")
             return jsonify({'status': 'error', 'message': f"Error updating the database: {str(e)}"}), 500
 
-        return jsonify({'status': 'success', 'file_url': f'/uploads/audio_recordings/{os.path.basename(mp3_filepath)}'})
+        return jsonify({'status': 'success', 'file_url': f'/uploads/audio_recordings/{os.path.basename(mp3_filepath)}' if running_locally else f"gs://{BUCKET_NAME}/audio_recordings/{os.path.basename(mp3_filepath)}"})
     except Exception as e:
         current_app.logger.error(f"Error during concatenation: {e}")
         return jsonify({'status': 'error', 'message': str(e)}), 500
