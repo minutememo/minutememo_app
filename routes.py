@@ -854,5 +854,5 @@ def set_active_hub():
 
 @main.route('/check_update')
 def check_update():
-        print(">>> laatste was op 2 september 2024 <<<")
-        return jsonify({"message": "laatste was op 2 september 2024"}), 200
+        print(">>> ffmpeg installed op heroku <<<")
+        return jsonify({"message": "ffmpeg installed op heroku4"}), 200
