@@ -694,34 +694,14 @@ def upload_chunk():
 
 @main.route('/uploads/audio_recordings/<path:filename>')
 def download_file(filename):
-    if USE_SPACES:
-        try:
-            url = s3_client.generate_presigned_url('get_object',
-                                                   Params={'Bucket': DO_SPACE_NAME, 'Key': f"audio_recordings/{filename}"},
-                                                   ExpiresIn=3600)
-            current_app.logger.info(f"Generated presigned URL for {filename}")
-            return redirect(url)
-        except ClientError as e:
-            current_app.logger.error(f"Error generating presigned URL for {filename}: {str(e)}")
-            return jsonify({'status': 'error', 'message': 'File not found'}), 404
-    else:
-        try:
-            return send_from_directory(UPLOAD_FOLDER, filename)
-        except Exception as e:
-            current_app.logger.error(f"Error serving file {filename} from local storage: {str(e)}")
-            return jsonify({'status': 'error', 'message': 'File not found'}), 404
-    chunk = request.files['chunk']
-    chunk_number = request.form['chunk_number']
-    recording_id = request.form['recording_id']
-    chunk_filename = f"{recording_id}_chunk_{chunk_number}.webm"
-
     try:
-        file_url = upload_file(chunk, chunk_filename)
-        return jsonify({'status': 'success', 'chunk_key': chunk_filename, 'file_url': file_url})
+        # Serve the file from the local directory
+        return send_from_directory(UPLOAD_FOLDER, filename)
     except Exception as e:
-        current_app.logger.error(f"Error uploading chunk: {str(e)}")
-        return jsonify({'status': 'error', 'message': str(e)}), 500
-
+        current_app.logger.error(f"Error serving file {filename} from local storage: {str(e)}")
+        return jsonify({'status': 'error', 'message': 'File not found'}), 404
+    
+    
 @main.route('/api/set_active_hub', methods=['POST'])
 @login_required
 def set_active_hub():
