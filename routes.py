@@ -216,75 +216,82 @@ def profile_content():
 def concatenate():
     try:
         data = request.get_json()
-        if not data or 'recording_id' not in data:
+        recording_id = data['recording_id']
+
+        if not recording_id:
             current_app.logger.error("Missing recording_id in the request data")
             return jsonify({'status': 'error', 'message': 'Missing recording_id'}), 400
 
-        recording_id = data['recording_id']
         current_app.logger.info(f"Received request to concatenate for recording_id: {recording_id}")
 
-        # Get a list of chunk files
-        chunk_files = sorted(
-            [f for f in os.listdir(UPLOAD_FOLDER) if f.startswith(recording_id) and f.endswith('.webm')],
-            key=natural_sort_key
-        )
-
-        if not chunk_files:
-            current_app.logger.error(f"No chunks found for recording_id: {recording_id}")
-            return jsonify({'status': 'error', 'message': 'No chunks found for the given recording_id'}), 400
-
-        # Log chunk files to be concatenated
-        current_app.logger.info(f"Chunk files to concatenate: {chunk_files}")
-
-        # Create the list file with paths of the chunks
-        list_file_path = os.path.join(UPLOAD_FOLDER, f"{recording_id}_list.txt")
-        
-        with open(list_file_path, 'w') as f:
-            for chunk in chunk_files:
-                # Write the correct path to the list file
-                f.write(f"file '{os.path.abspath(os.path.join(UPLOAD_FOLDER, chunk))}'\n")
-
-        # Define the final output file path
-        final_output = os.path.join(UPLOAD_FOLDER, f"{recording_id}.webm")
-        concatenation_status = 'success'
-
-        # Attempt to concatenate using FFmpeg
-        try:
-            (
-                ffmpeg
-                .input(list_file_path, format='concat', safe=0)
-                .output(final_output, c='copy')
-                .run()
+        if ENVIRONMENT in ['staging', 'production'] and storage_client:
+            # Handle Google Cloud Storage concatenation
+            # You may need to download chunks, concatenate locally, and then upload the result
+            # Or you could create a different process suitable for cloud storage
+            pass  # Add your cloud-based concatenation logic here
+        else:
+            # Local concatenation logic
+            chunk_files = sorted(
+                [f for f in os.listdir(UPLOAD_FOLDER) if f.startswith(recording_id) and f.endswith('.webm')],
+                key=natural_sort_key
             )
-        except ffmpeg.Error as e:
-            current_app.logger.error(f"Error concatenating files with ffmpeg: {e}")
-            concatenation_status = 'failed'
-            return jsonify({'status': 'error', 'message': f"Error concatenating files: {str(e)}"}), 500
 
-        # Convert the concatenated file to mp3
-        mp3_filepath = os.path.splitext(final_output)[0] + '.mp3'
-        convert_to_mp3(final_output, mp3_filepath)
+            if not chunk_files:
+                current_app.logger.error(f"No chunks found for recording_id: {recording_id}")
+                return jsonify({'status': 'error', 'message': 'No chunks found for the given recording_id'}), 400
 
-        current_app.logger.info(f"Concatenation successful: {mp3_filepath}")
+            # Log chunk files to be concatenated
+            current_app.logger.info(f"Chunk files to concatenate: {chunk_files}")
 
-        try:
-            # Update the recording in the database
-            recording = Recording.query.filter_by(id=recording_id).first()
-            if recording:
-                recording.file_name = os.path.basename(mp3_filepath)
-                recording.concatenation_status = concatenation_status
-                recording.concatenation_file_name = os.path.basename(list_file_path)
-                db.session.commit()
-                current_app.logger.info(f"Database updated successfully for recording_id: {recording_id}")
-            else:
-                current_app.logger.error(f"Recording not found in the database for recording_id: {recording_id}")
-                return jsonify({'status': 'error', 'message': 'Recording not found in the database'}), 404
-        except Exception as e:
-            db.session.rollback()
-            current_app.logger.error(f"Error updating the database: {e}")
-            return jsonify({'status': 'error', 'message': f"Error updating the database: {str(e)}"}), 500
+            # Create the list file with paths of the chunks
+            list_file_path = os.path.join(UPLOAD_FOLDER, f"{recording_id}_list.txt")
 
-        return jsonify({'status': 'success', 'file_url': f'/uploads/audio_recordings/{os.path.basename(mp3_filepath)}'})
+            with open(list_file_path, 'w') as f:
+                for chunk in chunk_files:
+                    # Write the correct path to the list file
+                    f.write(f"file '{os.path.abspath(os.path.join(UPLOAD_FOLDER, chunk))}'\n")
+
+            # Define the final output file path
+            final_output = os.path.join(UPLOAD_FOLDER, f"{recording_id}.webm")
+            concatenation_status = 'success'
+
+            # Attempt to concatenate using FFmpeg
+            try:
+                (
+                    ffmpeg
+                    .input(list_file_path, format='concat', safe=0)
+                    .output(final_output, c='copy')
+                    .run()
+                )
+            except ffmpeg.Error as e:
+                current_app.logger.error(f"Error concatenating files with ffmpeg: {e}")
+                concatenation_status = 'failed'
+                return jsonify({'status': 'error', 'message': f"Error concatenating files: {str(e)}"}), 500
+
+            # Convert the concatenated file to mp3
+            mp3_filepath = os.path.splitext(final_output)[0] + '.mp3'
+            convert_to_mp3(final_output, mp3_filepath)
+
+            current_app.logger.info(f"Concatenation successful: {mp3_filepath}")
+
+            try:
+                # Update the recording in the database
+                recording = Recording.query.filter_by(id=recording_id).first()
+                if recording:
+                    recording.file_name = os.path.basename(mp3_filepath)
+                    recording.concatenation_status = concatenation_status
+                    recording.concatenation_file_name = os.path.basename(list_file_path)
+                    db.session.commit()
+                    current_app.logger.info(f"Database updated successfully for recording_id: {recording_id}")
+                else:
+                    current_app.logger.error(f"Recording not found in the database for recording_id: {recording_id}")
+                    return jsonify({'status': 'error', 'message': 'Recording not found in the database'}), 404
+            except Exception as e:
+                db.session.rollback()
+                current_app.logger.error(f"Error updating the database: {e}")
+                return jsonify({'status': 'error', 'message': f"Error updating the database: {str(e)}"}), 500
+
+            return jsonify({'status': 'success', 'file_url': f'/uploads/audio_recordings/{os.path.basename(mp3_filepath)}'})
     except Exception as e:
         current_app.logger.error(f"Error during concatenation: {e}")
         return jsonify({'status': 'error', 'message': str(e)}), 500
@@ -672,25 +679,44 @@ def create_recording():
 @login_required
 @cross_origin()
 def upload_chunk():
-    chunk = request.files['chunk']
-    chunk_number = request.form['chunk_number']
-    recording_id = request.form['recording_id']
-    chunk_filename = f"{recording_id}_chunk_{chunk_number}.webm"
-    chunk_path = os.path.join(UPLOAD_FOLDER, chunk_filename)
-    
-    # Save the chunk to the filesystem
-    chunk.save(chunk_path)
-    
-    # Log the size of the saved chunk
-    chunk_size = os.path.getsize(chunk_path)
-    print(f"Chunk saved: {chunk_filename}, size: {chunk_size} bytes")
-    
-    # Update the list file with the new chunk path
-    list_file_path = os.path.join(UPLOAD_FOLDER, f"{recording_id}_list.txt")
-    with open(list_file_path, 'a') as list_file:  # 'a' mode for appending
-        list_file.write(f"file '{os.path.abspath(chunk_path)}'\n")
-    
-    return jsonify({'status': 'success', 'chunk_key': chunk_filename})
+    try:
+        chunk = request.files['chunk']
+        chunk_number = request.form['chunk_number']
+        recording_id = request.form['recording_id']
+        chunk_filename = f"{recording_id}_chunk_{chunk_number}.webm"
+        
+        if ENVIRONMENT in ['staging', 'production'] and storage_client:
+            # Upload chunk to Google Cloud Storage
+            file_key = f"{recording_id}_chunk_{chunk_number}.webm"
+            bucket = storage_client.bucket(BUCKET_NAME)
+            blob = bucket.blob(f"audio_recordings/{file_key}")
+            blob.upload_from_file(chunk)
+            
+            # Now, update the list file in the cloud
+            list_file_key = f"audio_recordings/{recording_id}_list.txt"
+            list_blob = bucket.blob(list_file_key)
+            if list_blob.exists():
+                list_blob_content = list_blob.download_as_text()
+                list_blob_content += f"file '{file_key}'\n"
+            else:
+                list_blob_content = f"file '{file_key}'\n"
+            list_blob.upload_from_string(list_blob_content)
+            
+            return jsonify({'status': 'success', 'chunk_key': file_key})
+        else:
+            # Save chunk locally
+            chunk_path = os.path.join(UPLOAD_FOLDER, chunk_filename)
+            chunk.save(chunk_path)
+            
+            # Update the list file locally
+            list_file_path = os.path.join(UPLOAD_FOLDER, f"{recording_id}_list.txt")
+            with open(list_file_path, 'a') as list_file:
+                list_file.write(f"file '{os.path.abspath(chunk_path)}'\n")
+            
+            return jsonify({'status': 'success', 'chunk_key': chunk_filename})
+    except Exception as e:
+        current_app.logger.error(f"Error uploading chunk: {str(e)}")
+        return jsonify({'status': 'error', 'message': str(e)}), 500
 
 
 @main.route('/uploads/audio_recordings/<path:filename>')
