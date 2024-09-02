@@ -1,9 +1,12 @@
 #routes.py
 from flask import Blueprint, render_template, request, jsonify, current_app, send_from_directory, redirect, url_for
 import os
+from google.cloud import storage
+from dotenv import load_dotenv
 import boto3
+from botocore.client import Config
 import logging
-from botocore.exceptions import NoCredentialsError, ClientError
+from botocore.exceptions import ClientError
 import uuid
 from flask_cors import cross_origin
 import ffmpeg
@@ -11,54 +14,97 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from models import User, db, Recording, MeetingSession, MeetingHub, Company, Meeting
 from extensions import db  # Import from extensions.py
 from flask_login import login_required, current_user
-from datetime import datetime
+from datetime import datetime, timedelta
+import traceback
 
 
 main = Blueprint('main', __name__)
 logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.DEBUG)
+
 
 # Load environment settings
 ENVIRONMENT = os.getenv('FLASK_ENV', 'development')
+SERVICE_ACCOUNT_JSON = os.path.join(os.path.dirname(__file__), 'config/staging-minutememo-b158f267478b.json')
+BUCKET_NAME = 'staging-minutememo-audiofiles'
+storage_client = storage.Client.from_service_account_json(SERVICE_ACCOUNT_JSON)
 UPLOAD_FOLDER = os.path.join('uploads', 'audio_recordings')
-USE_SPACES = os.getenv('USE_SPACES', 'false').lower() == 'true'
 
-# DigitalOcean Spaces configuration (only used if USE_SPACES is true)
-if USE_SPACES:
-    DO_SPACE_NAME = os.getenv('DO_SPACE_NAME')
-    DO_REGION = os.getenv('DO_REGION', 'nyc3')
-    DO_ENDPOINT_URL = f"https://{DO_REGION}.digitaloceanspaces.com"
-    DO_ACCESS_KEY = os.getenv('DO_ACCESS_KEY')
-    DO_SECRET_KEY = os.getenv('DO_SECRET_KEY')
 
-    # Initialize the boto3 client for DigitalOcean Spaces
-    s3_client = boto3.client('s3',
-                             region_name=DO_REGION,
-                             endpoint_url=DO_ENDPOINT_URL,
-                             aws_access_key_id=DO_ACCESS_KEY,
-                             aws_secret_access_key=DO_SECRET_KEY)
+@main.route('/generate-presigned-url', methods=['GET'])
+@cross_origin()  # Enable CORS for this route
+def generate_presigned_url_route():
+    try:
+        logging.info("Request received to generate presigned URL.")
+        logging.debug(f"Request headers: {request.headers}")
+        logging.debug(f"Request args: {request.args}")
 
-if not USE_SPACES and not os.path.exists(UPLOAD_FOLDER):
-    os.makedirs(UPLOAD_FOLDER)
+        # Retrieve fileName and fileType from the request arguments
+        file_name = request.args.get('fileName')
+        file_type = request.args.get('fileType')
+
+        if not file_name or not file_type:
+            logging.error("File name or file type is missing.")
+            return jsonify({"error": "File name and file type are required."}), 400
+
+        logging.info(f"Generating presigned URL for file: {file_name} with type: {file_type}")
+
+        # Generate the presigned URL
+        url = generate_presigned_url(file_name, file_type)
+        logging.info(f"Presigned URL generated: {url}")
+
+        return jsonify({'url': url})
+
+    except Exception as e:
+        logging.error("An error occurred while generating the presigned URL.")
+        logging.error(f"Error: {e}")
+        logging.error(traceback.format_exc())
+        return jsonify({"error": str(e)}), 500
+
+def generate_presigned_url(file_name, file_type):
+    # Initialize the Google Cloud Storage client
+    bucket = storage_client.bucket(BUCKET_NAME)
+    
+    # Create a blob object from the file name
+    blob = bucket.blob(f"audio_recordings/{file_name}")
+
+    # Set the expiration time for the presigned URL (15 minutes)
+    expiration_time = timedelta(minutes=15)
+
+    # Generate a presigned URL for the blob
+    url = blob.generate_signed_url(
+        version="v4",
+        expiration=expiration_time,
+        method="PUT",
+        content_type=file_type
+    )
+
+    return url
+
 
 def upload_file(file, file_key):
-    if USE_SPACES:
-        try:
-            file_key = f"audio_recordings/{file_key}"
-            s3_client.upload_fileobj(file, DO_SPACE_NAME, file_key)
-            file_url = f"{DO_ENDPOINT_URL}/{DO_SPACE_NAME}/{file_key}"
-            return file_url
-        except NoCredentialsError:
-            current_app.logger.error("Credentials not available for DigitalOcean Spaces")
-            raise
-        except ClientError as e:
-            current_app.logger.error(f"Error uploading file to DigitalOcean Spaces: {str(e)}")
-            raise
-    else:
-        # Save locally in the audio_recordings folder
-        file_path = os.path.join(UPLOAD_FOLDER, file_key)
-        file.save(file_path)
-        file_url = f"{file_key}"
+    try:
+        file_key = secure_filename(f"audio_recordings/{file_key}")
+        
+        # Get the bucket
+        bucket = storage_client.bucket(BUCKET_NAME)
+        
+        # Create a blob object from the file key
+        blob = bucket.blob(file_key)
+        
+        # Upload the file to Google Cloud Storage
+        blob.upload_from_file(file, content_type=file.content_type)
+        
+        # Make the file publicly accessible (optional)
+        blob.make_public()
+        
+        # Generate the file URL
+        file_url = blob.public_url
         return file_url
+
+    except Exception as e:
+        current_app.logger.error(f"Error uploading file to Google Cloud Storage: {str(e)}")
+        raise
 
 def natural_sort_key(s):
     import re
@@ -381,6 +427,8 @@ def manage_meeting_hubs():
             current_app.logger.error(f"Error creating meeting hub: {str(e)}")
             return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
         
+
+
 
 @main.route('/api/company', methods=['GET', 'POST'])
 @login_required 
@@ -706,3 +754,9 @@ def set_active_hub():
         db.session.rollback()
         logger.error(f"Error occurred while setting active hub: {str(e)}")
         return jsonify({"status": "error", "message": str(e)}), 500
+        
+
+@main.route('/check_update')
+def check_update():
+        print(">>> laatste was op 2 september 2024 <<<")
+        return jsonify({"message": "laatste was op 2 september 2024"}), 200

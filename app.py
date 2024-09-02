@@ -47,6 +47,8 @@ def create_app():
 
     # Load environment variables
     env = os.getenv('FLASK_ENV', 'development')
+
+    print(">>> To see if we update. <<<")
     if env == 'production':
         load_dotenv('.env.production')
     else:
@@ -119,13 +121,8 @@ def create_app():
         logger.debug('After request, Origin: %s', origin)
         
         # Apply the Access-Control-Allow-Origin only once
-        if origin:
-            if request.path.startswith('/auth'):
-                # For login and authentication routes
-                response.headers['Access-Control-Allow-Origin'] = origin
-            else:
-                # For other routes, ensure not to duplicate
-                response.headers.setdefault('Access-Control-Allow-Origin', origin)
+        if origin and 'Access-Control-Allow-Origin' not in response.headers:
+            response.headers['Access-Control-Allow-Origin'] = origin
         
         response.headers['Access-Control-Allow-Credentials'] = 'true'
         response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'

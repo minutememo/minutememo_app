@@ -19,7 +19,6 @@ import axios from 'axios';
 import MeetingPage from './components/MeetingsPage'; // Adjust the path as necessary
 import MeetingSessionPage from './components/MeetingSessionPage'; // Import the new component
 
-axios.defaults.withCredentials = true; // Ensure cookies are sent with every request
 
 const AppContent = () => {
   const { user } = useUser(); // Get user from the context

@@ -1,10 +1,10 @@
-// src/components/FileUpload.js
 import React, { useState } from 'react';
-import AWS from 'aws-sdk';
+import axios from 'axios';
 
 const FileUpload = () => {
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
@@ -16,27 +16,49 @@ const FileUpload = () => {
       return;
     }
 
-    // Configure AWS SDK with DigitalOcean Spaces credentials
-    const s3 = new AWS.S3({
-      endpoint: new AWS.Endpoint('https://ams3.digitaloceanspaces.com'),
-      accessKeyId: 'DO00QF6QTBALZBKCD4F2',
-      secretAccessKey: 'wRL2G59987diTbdbjOpKH148/xj3A08g4TeLyOP2ymM',
-    });
-
-    const params = {
-      Bucket: 'staging.minutememo', // Your bucket name
-      Key: `audio_recordings/${file.name}`, // File path in the bucket
-      Body: file,
-      ACL: 'public-read', // Optional: This makes the file public
-    };
+    setIsLoading(true);
+    setMessage('');
 
     try {
-      console.log('Uploading file to S3 with params:', params);
-      const data = await s3.upload(params).promise();
-      setMessage(`File uploaded successfully at ${data.Location}`);
+      console.log('Requesting presigned URL for file:', file.name);
+
+      // Request a presigned URL from the server
+      const response = await axios.get('http://localhost:5000/generate-presigned-url', {
+        params: {
+          fileName: file.name,
+          fileType: file.type,
+        },
+      });
+
+      const { url } = response.data;
+      console.log('Presigned URL received:', url);
+
+      // Configure the PUT request to the presigned URL
+      const options = {
+        headers: {
+          'Content-Type': file.type,
+        },
+      };
+
+      console.log('Uploading file to Google Cloud Storage...');
+      // Upload the file to Google Cloud Storage using the presigned URL
+      await axios.put(url, file, options);
+
+      console.log('File uploaded successfully.');
+      setMessage('File uploaded successfully.');
     } catch (err) {
       console.error('Upload failed:', err);
+
+      // Check if the error is a CORS issue
+      if (err.response) {
+        console.error('Response data:', err.response.data);
+        console.error('Response status:', err.response.status);
+        console.error('Response headers:', err.response.headers);
+      }
+
       setMessage(`Failed to upload file: ${err.message}`);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -44,7 +66,9 @@ const FileUpload = () => {
     <div>
       <h3>Upload a File</h3>
       <input type="file" onChange={handleFileChange} />
-      <button onClick={handleUpload}>Upload</button>
+      <button onClick={handleUpload} disabled={isLoading}>
+        {isLoading ? 'Uploading...' : 'Upload'}
+      </button>
       {message && <p>{message}</p>}
     </div>
   );

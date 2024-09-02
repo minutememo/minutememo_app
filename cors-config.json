@@ -1,0 +1,8 @@
+  [
+    {
+      "origin": ["http://localhost:3000", "https://staging.minutememo.io"],
+      "method": ["GET", "HEAD", "PUT", "POST", "DELETE", "OPTIONS"],
+      "maxAgeSeconds": 3600,
+      "responseHeader": ["Content-Type", "Authorization", "Content-Length", "X-Requested-With"]
+    }
+  ]

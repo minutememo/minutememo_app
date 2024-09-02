@@ -1,4 +1,4 @@
 uploads/
 frontend/node_modules/
-
-s
+venv/
+/config/service-account.json
