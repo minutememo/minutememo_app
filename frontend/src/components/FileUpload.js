@@ -6,6 +6,9 @@ const FileUpload = () => {
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  // Get the API base URL from environment variables
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
+
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
   };
@@ -23,7 +26,7 @@ const FileUpload = () => {
       console.log('Requesting presigned URL for file:', file.name);
 
       // Request a presigned URL from the server
-      const response = await axios.get('http://localhost:5000/generate-presigned-url', {
+      const response = await axios.get(`${apiBaseUrl}/generate-presigned-url`, {
         params: {
           fileName: file.name,
           fileType: file.type,  // Ensure this matches the actual file type
