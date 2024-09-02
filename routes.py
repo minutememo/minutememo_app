@@ -701,7 +701,7 @@ def download_file(filename):
         current_app.logger.error(f"Error serving file {filename} from local storage: {str(e)}")
         return jsonify({'status': 'error', 'message': 'File not found'}), 404
     
-    
+
 @main.route('/api/set_active_hub', methods=['POST'])
 @login_required
 def set_active_hub():
