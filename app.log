@@ -168,3 +168,211 @@
 2024-09-02 23:24:06,313 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
 2024-09-02 23:24:06,319 - auth - DEBUG - After request, Origin: None
 2024-09-02 23:24:06,321 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 23:24:06] "[35m[1mGET /uploads/audio_recordings/49cd20b4-5937-4651-8365-6c97cb8a9c95.mp3 HTTP/1.1[0m" 206 -
+2024-09-02 23:33:27 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-09-02 23:33:27,939 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-09-02 23:33:27 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-09-02 23:33:27,980 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-09-02 23:33:27 INFO: [33mPress CTRL+C to quit[0m
+2024-09-02 23:33:27,981 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-09-02 23:33:30 DEBUG: Loading user with ID: 2
+2024-09-02 23:33:30 DEBUG: Loading user with ID: 2
+2024-09-02 23:33:30,895 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 23:33:30 DEBUG: Loading user with ID: 2
+2024-09-02 23:33:30,895 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 23:33:30,897 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 23:33:30 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:30,960 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:30 DEBUG: Status check: user gaetan@minutememo.io is authenticated
+2024-09-02 23:33:30,961 - auth - DEBUG - Status check: user gaetan@minutememo.io is authenticated
+2024-09-02 23:33:30 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 23:33:30,961 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 23:33:30 INFO: 127.0.0.1 - - [02/Sep/2024 23:33:30] "GET /auth/status HTTP/1.1" 200 -
+2024-09-02 23:33:30,962 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 23:33:30] "GET /auth/status HTTP/1.1" 200 -
+2024-09-02 23:33:30 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:30 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:30,963 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:30,963 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:30 DEBUG: Loading user with ID: 2
+2024-09-02 23:33:30,968 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 23:33:30 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:30 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 23:33:30,970 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:30 DEBUG: Status check: user gaetan@minutememo.io is authenticated
+2024-09-02 23:33:30,970 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 23:33:30,971 - auth - DEBUG - Status check: user gaetan@minutememo.io is authenticated
+2024-09-02 23:33:30 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 23:33:30,972 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 23:33:30 INFO: 127.0.0.1 - - [02/Sep/2024 23:33:30] "GET /api/sessions/59 HTTP/1.1" 200 -
+2024-09-02 23:33:30 INFO: 127.0.0.1 - - [02/Sep/2024 23:33:30] "GET /auth/status HTTP/1.1" 200 -
+2024-09-02 23:33:30,973 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 23:33:30] "GET /api/sessions/59 HTTP/1.1" 200 -
+2024-09-02 23:33:30,973 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 23:33:30] "GET /auth/status HTTP/1.1" 200 -
+2024-09-02 23:33:30 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 23:33:30,974 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 23:33:30 DEBUG: Loading user with ID: 2
+2024-09-02 23:33:30,975 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 23:33:30 INFO: 127.0.0.1 - - [02/Sep/2024 23:33:30] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-02 23:33:30,976 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 23:33:30] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-02 23:33:30 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:30,976 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:30 DEBUG: Loading user with ID: 2
+2024-09-02 23:33:30 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 23:33:30,977 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 23:33:30,978 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 23:33:30 INFO: 127.0.0.1 - - [02/Sep/2024 23:33:30] "GET /api/sessions/59 HTTP/1.1" 200 -
+2024-09-02 23:33:30 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:30,979 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 23:33:30] "GET /api/sessions/59 HTTP/1.1" 200 -
+2024-09-02 23:33:30,979 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:30 DEBUG: Loading user with ID: 2
+2024-09-02 23:33:30,986 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 23:33:30 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 23:33:30,987 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 23:33:30 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:30,988 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:30 INFO: 127.0.0.1 - - [02/Sep/2024 23:33:30] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-02 23:33:30,988 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 23:33:30] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-02 23:33:30 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 23:33:30,989 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 23:33:30 DEBUG: Loading user with ID: 2
+2024-09-02 23:33:30 INFO: 127.0.0.1 - - [02/Sep/2024 23:33:30] "GET /api/sessions/59 HTTP/1.1" 200 -
+2024-09-02 23:33:30,990 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 23:33:30,990 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 23:33:30] "GET /api/sessions/59 HTTP/1.1" 200 -
+2024-09-02 23:33:30 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:30,991 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:30 DEBUG: Loading user with ID: 2
+2024-09-02 23:33:30,993 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 23:33:30 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:30,994 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:30 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 23:33:30,995 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 23:33:30 DEBUG: Loading user with ID: 2
+2024-09-02 23:33:30 INFO: 127.0.0.1 - - [02/Sep/2024 23:33:30] "GET /api/sessions/59 HTTP/1.1" 200 -
+2024-09-02 23:33:30,997 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 23:33:30,997 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 23:33:30] "GET /api/sessions/59 HTTP/1.1" 200 -
+2024-09-02 23:33:30 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:30,998 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:30 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 23:33:30,998 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 23:33:30 INFO: 127.0.0.1 - - [02/Sep/2024 23:33:30] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-02 23:33:30,999 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 23:33:30] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-02 23:33:31 DEBUG: After request, Origin: None
+2024-09-02 23:33:31,001 - auth - DEBUG - After request, Origin: None
+2024-09-02 23:33:31 INFO: 127.0.0.1 - - [02/Sep/2024 23:33:31] "[35m[1mGET /uploads/audio_recordings/49cd20b4-5937-4651-8365-6c97cb8a9c95.mp3 HTTP/1.1[0m" 206 -
+2024-09-02 23:33:31,002 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 23:33:31] "[35m[1mGET /uploads/audio_recordings/49cd20b4-5937-4651-8365-6c97cb8a9c95.mp3 HTTP/1.1[0m" 206 -
+2024-09-02 23:33:31 DEBUG: Loading user with ID: 2
+2024-09-02 23:33:31,004 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 23:33:31 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:31,006 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:31 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 23:33:31,009 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 23:33:31 INFO: 127.0.0.1 - - [02/Sep/2024 23:33:31] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-02 23:33:31,009 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 23:33:31] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-02 23:33:34 DEBUG: No active session found, user is not authenticated
+2024-09-02 23:33:34,496 - auth - DEBUG - No active session found, user is not authenticated
+2024-09-02 23:33:34 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 23:33:34,497 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 23:33:34 INFO: 127.0.0.1 - - [02/Sep/2024 23:33:34] "OPTIONS /api/meetings HTTP/1.1" 200 -
+2024-09-02 23:33:34,499 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 23:33:34] "OPTIONS /api/meetings HTTP/1.1" 200 -
+2024-09-02 23:33:34 DEBUG: Loading user with ID: 2
+2024-09-02 23:33:34,503 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 23:33:34 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:34,507 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:34 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 23:33:34,551 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 23:33:34 INFO: 127.0.0.1 - - [02/Sep/2024 23:33:34] "[35m[1mPOST /api/meetings HTTP/1.1[0m" 201 -
+2024-09-02 23:33:34,552 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 23:33:34] "[35m[1mPOST /api/meetings HTTP/1.1[0m" 201 -
+2024-09-02 23:33:34 DEBUG: No active session found, user is not authenticated
+2024-09-02 23:33:34,558 - auth - DEBUG - No active session found, user is not authenticated
+2024-09-02 23:33:34 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 23:33:34,559 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 23:33:34 INFO: 127.0.0.1 - - [02/Sep/2024 23:33:34] "OPTIONS /api/recordings HTTP/1.1" 200 -
+2024-09-02 23:33:34,559 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 23:33:34] "OPTIONS /api/recordings HTTP/1.1" 200 -
+2024-09-02 23:33:34 DEBUG: Loading user with ID: 2
+2024-09-02 23:33:34,562 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 23:33:34 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:34,565 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:34 INFO: Recording b8281405-2c6b-4a0c-a829-a4ab845d2f38 created for user 2 in session 60
+2024-09-02 23:33:34,575 - minutememo_app.app - INFO - Recording b8281405-2c6b-4a0c-a829-a4ab845d2f38 created for user 2 in session 60
+2024-09-02 23:33:34 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 23:33:34,575 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 23:33:34 INFO: 127.0.0.1 - - [02/Sep/2024 23:33:34] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
+2024-09-02 23:33:34,576 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 23:33:34] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
+2024-09-02 23:33:39 DEBUG: Loading user with ID: 2
+2024-09-02 23:33:39,837 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 23:33:39 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:39,841 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:39 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 23:33:39,845 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 23:33:39 INFO: 127.0.0.1 - - [02/Sep/2024 23:33:39] "POST /upload_chunk HTTP/1.1" 200 -
+2024-09-02 23:33:39,847 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 23:33:39] "POST /upload_chunk HTTP/1.1" 200 -
+2024-09-02 23:33:44 DEBUG: Loading user with ID: 2
+2024-09-02 23:33:44,879 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 23:33:44 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:44,887 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:44 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 23:33:44,889 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 23:33:44 INFO: 127.0.0.1 - - [02/Sep/2024 23:33:44] "POST /upload_chunk HTTP/1.1" 200 -
+2024-09-02 23:33:44,891 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 23:33:44] "POST /upload_chunk HTTP/1.1" 200 -
+2024-09-02 23:33:46 DEBUG: No active session found, user is not authenticated
+2024-09-02 23:33:46,012 - auth - DEBUG - No active session found, user is not authenticated
+2024-09-02 23:33:46 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 23:33:46,013 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 23:33:46 INFO: 127.0.0.1 - - [02/Sep/2024 23:33:46] "OPTIONS /concatenate HTTP/1.1" 200 -
+2024-09-02 23:33:46,013 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 23:33:46] "OPTIONS /concatenate HTTP/1.1" 200 -
+2024-09-02 23:33:46 DEBUG: Loading user with ID: 2
+2024-09-02 23:33:46,025 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 23:33:46 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:46,027 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:46 INFO: Received request to concatenate for recording_id: b8281405-2c6b-4a0c-a829-a4ab845d2f38
+2024-09-02 23:33:46,028 - minutememo_app.app - INFO - Received request to concatenate for recording_id: b8281405-2c6b-4a0c-a829-a4ab845d2f38
+2024-09-02 23:33:46 INFO: Chunk files to concatenate: ['b8281405-2c6b-4a0c-a829-a4ab845d2f38_chunk_0.webm', 'b8281405-2c6b-4a0c-a829-a4ab845d2f38_chunk_1.webm']
+2024-09-02 23:33:46,028 - minutememo_app.app - INFO - Chunk files to concatenate: ['b8281405-2c6b-4a0c-a829-a4ab845d2f38_chunk_0.webm', 'b8281405-2c6b-4a0c-a829-a4ab845d2f38_chunk_1.webm']
+2024-09-02 23:33:46 INFO: Contents of uploads/audio_recordings/b8281405-2c6b-4a0c-a829-a4ab845d2f38_list.txt:
+2024-09-02 23:33:46,028 - minutememo_app.app - INFO - Contents of uploads/audio_recordings/b8281405-2c6b-4a0c-a829-a4ab845d2f38_list.txt:
+2024-09-02 23:33:46 INFO: file '/Users/gaetanbuelinckx/minutememo_app/uploads/audio_recordings/b8281405-2c6b-4a0c-a829-a4ab845d2f38_chunk_0.webm'
+file '/Users/gaetanbuelinckx/minutememo_app/uploads/audio_recordings/b8281405-2c6b-4a0c-a829-a4ab845d2f38_chunk_1.webm'
+
+2024-09-02 23:33:46,028 - minutememo_app.app - INFO - file '/Users/gaetanbuelinckx/minutememo_app/uploads/audio_recordings/b8281405-2c6b-4a0c-a829-a4ab845d2f38_chunk_0.webm'
+file '/Users/gaetanbuelinckx/minutememo_app/uploads/audio_recordings/b8281405-2c6b-4a0c-a829-a4ab845d2f38_chunk_1.webm'
+
+2024-09-02 23:33:46 INFO: Concatenation successful: uploads/audio_recordings/b8281405-2c6b-4a0c-a829-a4ab845d2f38.mp3
+2024-09-02 23:33:46,287 - minutememo_app.app - INFO - Concatenation successful: uploads/audio_recordings/b8281405-2c6b-4a0c-a829-a4ab845d2f38.mp3
+2024-09-02 23:33:46 INFO: Database updated successfully for recording_id: b8281405-2c6b-4a0c-a829-a4ab845d2f38
+2024-09-02 23:33:46,302 - minutememo_app.app - INFO - Database updated successfully for recording_id: b8281405-2c6b-4a0c-a829-a4ab845d2f38
+2024-09-02 23:33:46 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 23:33:46,302 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 23:33:46 INFO: 127.0.0.1 - - [02/Sep/2024 23:33:46] "POST /concatenate HTTP/1.1" 200 -
+2024-09-02 23:33:46,303 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 23:33:46] "POST /concatenate HTTP/1.1" 200 -
+2024-09-02 23:33:46 DEBUG: No active session found, user is not authenticated
+2024-09-02 23:33:46,310 - auth - DEBUG - No active session found, user is not authenticated
+2024-09-02 23:33:46 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 23:33:46,310 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 23:33:46 INFO: 127.0.0.1 - - [02/Sep/2024 23:33:46] "OPTIONS /api/recordings/b8281405-2c6b-4a0c-a829-a4ab845d2f38 HTTP/1.1" 200 -
+2024-09-02 23:33:46,310 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 23:33:46] "OPTIONS /api/recordings/b8281405-2c6b-4a0c-a829-a4ab845d2f38 HTTP/1.1" 200 -
+2024-09-02 23:33:46 DEBUG: Loading user with ID: 2
+2024-09-02 23:33:46,312 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 23:33:46 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:46,313 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 23:33:46 INFO: Entering update_recording function for recording_id: b8281405-2c6b-4a0c-a829-a4ab845d2f38
+2024-09-02 23:33:46,314 - minutememo_app.app - INFO - Entering update_recording function for recording_id: b8281405-2c6b-4a0c-a829-a4ab845d2f38
+2024-09-02 23:33:46 INFO: Received data for updating recording b8281405-2c6b-4a0c-a829-a4ab845d2f38: {'audio_url': '/uploads/audio_recordings/b8281405-2c6b-4a0c-a829-a4ab845d2f38.mp3'}
+2024-09-02 23:33:46,314 - minutememo_app.app - INFO - Received data for updating recording b8281405-2c6b-4a0c-a829-a4ab845d2f38: {'audio_url': '/uploads/audio_recordings/b8281405-2c6b-4a0c-a829-a4ab845d2f38.mp3'}
+2024-09-02 23:33:46 INFO: Fetching Recording with ID: b8281405-2c6b-4a0c-a829-a4ab845d2f38
+2024-09-02 23:33:46,314 - minutememo_app.app - INFO - Fetching Recording with ID: b8281405-2c6b-4a0c-a829-a4ab845d2f38
+2024-09-02 23:33:46 INFO: Current recording before update: <Recording b8281405-2c6b-4a0c-a829-a4ab845d2f38>
+2024-09-02 23:33:46,317 - minutememo_app.app - INFO - Current recording before update: <Recording b8281405-2c6b-4a0c-a829-a4ab845d2f38>
+2024-09-02 23:33:46 INFO: Fetching associated MeetingSession with ID: 60
+2024-09-02 23:33:46,317 - minutememo_app.app - INFO - Fetching associated MeetingSession with ID: 60
+2024-09-02 23:33:46 INFO: Current MeetingSession before update: <MeetingSession 60>
+2024-09-02 23:33:46,318 - minutememo_app.app - INFO - Current MeetingSession before update: <MeetingSession 60>
+2024-09-02 23:33:46 INFO: Updating audio_url for MeetingSession ID: 60
+2024-09-02 23:33:46,318 - minutememo_app.app - INFO - Updating audio_url for MeetingSession ID: 60
+2024-09-02 23:33:46 INFO: MeetingSession after update: <MeetingSession 60>
+2024-09-02 23:33:46,322 - minutememo_app.app - INFO - MeetingSession after update: <MeetingSession 60>
+2024-09-02 23:33:46 INFO: Exiting update_recording function for recording_id: b8281405-2c6b-4a0c-a829-a4ab845d2f38
+2024-09-02 23:33:46,322 - minutememo_app.app - INFO - Exiting update_recording function for recording_id: b8281405-2c6b-4a0c-a829-a4ab845d2f38
+2024-09-02 23:33:46 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 23:33:46,322 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 23:33:46 INFO: 127.0.0.1 - - [02/Sep/2024 23:33:46] "PATCH /api/recordings/b8281405-2c6b-4a0c-a829-a4ab845d2f38 HTTP/1.1" 200 -
+2024-09-02 23:33:46,323 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 23:33:46] "PATCH /api/recordings/b8281405-2c6b-4a0c-a829-a4ab845d2f38 HTTP/1.1" 200 -

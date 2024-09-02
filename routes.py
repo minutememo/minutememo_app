@@ -216,82 +216,80 @@ def profile_content():
 def concatenate():
     try:
         data = request.get_json()
-        recording_id = data['recording_id']
-
-        if not recording_id:
+        if not data or 'recording_id' not in data:
             current_app.logger.error("Missing recording_id in the request data")
             return jsonify({'status': 'error', 'message': 'Missing recording_id'}), 400
 
+        recording_id = data['recording_id']
         current_app.logger.info(f"Received request to concatenate for recording_id: {recording_id}")
 
-        if ENVIRONMENT in ['staging', 'production'] and storage_client:
-            # Handle Google Cloud Storage concatenation
-            # You may need to download chunks, concatenate locally, and then upload the result
-            # Or you could create a different process suitable for cloud storage
-            pass  # Add your cloud-based concatenation logic here
-        else:
-            # Local concatenation logic
-            chunk_files = sorted(
-                [f for f in os.listdir(UPLOAD_FOLDER) if f.startswith(recording_id) and f.endswith('.webm')],
-                key=natural_sort_key
+        # Get a list of chunk files
+        chunk_files = sorted(
+            [f for f in os.listdir(UPLOAD_FOLDER) if f.startswith(recording_id) and f.endswith('.webm')],
+            key=natural_sort_key
+        )
+
+        if not chunk_files:
+            current_app.logger.error(f"No chunks found for recording_id: {recording_id}")
+            return jsonify({'status': 'error', 'message': 'No chunks found for the given recording_id'}), 400
+
+        # Log chunk files to be concatenated
+        current_app.logger.info(f"Chunk files to concatenate: {chunk_files}")
+
+        # Create the list file with paths of the chunks
+        list_file_path = os.path.join(UPLOAD_FOLDER, f"{recording_id}_list.txt")
+        
+        with open(list_file_path, 'w') as f:
+            for chunk in chunk_files:
+                # Write the correct path to the list file
+                f.write(f"file '{os.path.abspath(os.path.join(UPLOAD_FOLDER, chunk))}'\n")
+
+        # Log the contents of the list file
+        with open(list_file_path, 'r') as f:
+            current_app.logger.info(f"Contents of {list_file_path}:")
+            current_app.logger.info(f.read())
+
+        # Define the final output file path
+        final_output = os.path.join(UPLOAD_FOLDER, f"{recording_id}.webm")
+        concatenation_status = 'success'
+
+        # Attempt to concatenate using FFmpeg
+        try:
+            (
+                ffmpeg
+                .input(list_file_path, format='concat', safe=0)
+                .output(final_output, c='copy')
+                .run()
             )
+        except ffmpeg.Error as e:
+            current_app.logger.error(f"Error concatenating files with ffmpeg: {e}")
+            concatenation_status = 'failed'
+            return jsonify({'status': 'error', 'message': f"Error concatenating files: {str(e)}"}), 500
 
-            if not chunk_files:
-                current_app.logger.error(f"No chunks found for recording_id: {recording_id}")
-                return jsonify({'status': 'error', 'message': 'No chunks found for the given recording_id'}), 400
+        # Convert the concatenated file to mp3
+        mp3_filepath = os.path.splitext(final_output)[0] + '.mp3'
+        convert_to_mp3(final_output, mp3_filepath)
 
-            # Log chunk files to be concatenated
-            current_app.logger.info(f"Chunk files to concatenate: {chunk_files}")
+        current_app.logger.info(f"Concatenation successful: {mp3_filepath}")
 
-            # Create the list file with paths of the chunks
-            list_file_path = os.path.join(UPLOAD_FOLDER, f"{recording_id}_list.txt")
+        try:
+            # Update the recording in the database
+            recording = Recording.query.filter_by(id=recording_id).first()
+            if recording:
+                recording.file_name = os.path.basename(mp3_filepath)
+                recording.concatenation_status = concatenation_status
+                recording.concatenation_file_name = os.path.basename(list_file_path)
+                db.session.commit()
+                current_app.logger.info(f"Database updated successfully for recording_id: {recording_id}")
+            else:
+                current_app.logger.error(f"Recording not found in the database for recording_id: {recording_id}")
+                return jsonify({'status': 'error', 'message': 'Recording not found in the database'}), 404
+        except Exception as e:
+            db.session.rollback()
+            current_app.logger.error(f"Error updating the database: {e}")
+            return jsonify({'status': 'error', 'message': f"Error updating the database: {str(e)}"}), 500
 
-            with open(list_file_path, 'w') as f:
-                for chunk in chunk_files:
-                    # Write the correct path to the list file
-                    f.write(f"file '{os.path.abspath(os.path.join(UPLOAD_FOLDER, chunk))}'\n")
-
-            # Define the final output file path
-            final_output = os.path.join(UPLOAD_FOLDER, f"{recording_id}.webm")
-            concatenation_status = 'success'
-
-            # Attempt to concatenate using FFmpeg
-            try:
-                (
-                    ffmpeg
-                    .input(list_file_path, format='concat', safe=0)
-                    .output(final_output, c='copy')
-                    .run()
-                )
-            except ffmpeg.Error as e:
-                current_app.logger.error(f"Error concatenating files with ffmpeg: {e}")
-                concatenation_status = 'failed'
-                return jsonify({'status': 'error', 'message': f"Error concatenating files: {str(e)}"}), 500
-
-            # Convert the concatenated file to mp3
-            mp3_filepath = os.path.splitext(final_output)[0] + '.mp3'
-            convert_to_mp3(final_output, mp3_filepath)
-
-            current_app.logger.info(f"Concatenation successful: {mp3_filepath}")
-
-            try:
-                # Update the recording in the database
-                recording = Recording.query.filter_by(id=recording_id).first()
-                if recording:
-                    recording.file_name = os.path.basename(mp3_filepath)
-                    recording.concatenation_status = concatenation_status
-                    recording.concatenation_file_name = os.path.basename(list_file_path)
-                    db.session.commit()
-                    current_app.logger.info(f"Database updated successfully for recording_id: {recording_id}")
-                else:
-                    current_app.logger.error(f"Recording not found in the database for recording_id: {recording_id}")
-                    return jsonify({'status': 'error', 'message': 'Recording not found in the database'}), 404
-            except Exception as e:
-                db.session.rollback()
-                current_app.logger.error(f"Error updating the database: {e}")
-                return jsonify({'status': 'error', 'message': f"Error updating the database: {str(e)}"}), 500
-
-            return jsonify({'status': 'success', 'file_url': f'/uploads/audio_recordings/{os.path.basename(mp3_filepath)}'})
+        return jsonify({'status': 'success', 'file_url': f'/uploads/audio_recordings/{os.path.basename(mp3_filepath)}'})
     except Exception as e:
         current_app.logger.error(f"Error during concatenation: {e}")
         return jsonify({'status': 'error', 'message': str(e)}), 500
