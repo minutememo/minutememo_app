@@ -32,7 +32,6 @@ UPLOAD_FOLDER = os.path.join('uploads', 'audio_recordings')
 
 
 @main.route('/generate-presigned-url', methods=['GET'])
-@cross_origin()  # Enable CORS for this route
 def generate_presigned_url_route():
     try:
         logging.info("Request received to generate presigned URL.")

@@ -6,7 +6,6 @@ import { RecorderContext } from './RecorderContext';
 import { useUser } from './UserContext';
 import { FormControl } from 'react-bootstrap';
 
-axios.defaults.withCredentials = true; // Ensure credentials are included with every axios request
 
 const AudioRecorder = ({ selectedHub, setSelectedHub }) => {  // Accept selectedHub as a prop
   const { user } = useUser(); // Get user from context

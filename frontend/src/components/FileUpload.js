@@ -26,8 +26,9 @@ const FileUpload = () => {
       const response = await axios.get('http://localhost:5000/generate-presigned-url', {
         params: {
           fileName: file.name,
-          fileType: file.type,
+          fileType: file.type,  // Ensure this matches the actual file type
         },
+        withCredentials: false, // Disable credentials for this specific request
       });
 
       const { url } = response.data;
@@ -36,8 +37,9 @@ const FileUpload = () => {
       // Configure the PUT request to the presigned URL
       const options = {
         headers: {
-          'Content-Type': file.type,
+          'Content-Type': file.type,  // Ensure this matches the content-type in the presigned URL
         },
+        withCredentials: false, // Disable credentials for this specific request
       };
 
       console.log('Uploading file to Google Cloud Storage...');
@@ -49,11 +51,13 @@ const FileUpload = () => {
     } catch (err) {
       console.error('Upload failed:', err);
 
-      // Check if the error is a CORS issue
+      // Check if the error is a CORS issue or another network error
       if (err.response) {
         console.error('Response data:', err.response.data);
         console.error('Response status:', err.response.status);
         console.error('Response headers:', err.response.headers);
+      } else {
+        console.error('No response received, network error might have occurred.');
       }
 
       setMessage(`Failed to upload file: ${err.message}`);
