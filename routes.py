@@ -27,11 +27,11 @@ logging.basicConfig(level=logging.DEBUG)
 ENVIRONMENT = os.getenv('FLASK_ENV', 'development')
 SERVICE_ACCOUNT_JSON = os.path.join(os.path.dirname(__file__), 'config/staging-minutememo-b158f267478b.json')
 BUCKET_NAME = 'staging-minutememo-audiofiles'
-storage_client = storage.Client.from_service_account_json(SERVICE_ACCOUNT_JSON)
+storage_client = storage.Client.from_service_account_json(SERVICE_ACCOUNT_JSON) if ENVIRONMENT != 'development' else None
 UPLOAD_FOLDER = os.path.join('uploads', 'audio_recordings')
 
-
 @main.route('/generate-presigned-url', methods=['GET'])
+@cross_origin()  # Enable CORS for this route
 def generate_presigned_url_route():
     try:
         logging.info("Request received to generate presigned URL.")
@@ -677,15 +677,17 @@ def upload_chunk():
     recording_id = request.form['recording_id']
     chunk_filename = f"{recording_id}_chunk_{chunk_number}.webm"
     chunk_path = os.path.join(UPLOAD_FOLDER, chunk_filename)
+    
+    # Save the chunk to the filesystem
     chunk.save(chunk_path)
     
     # Log the size of the saved chunk
     chunk_size = os.path.getsize(chunk_path)
     print(f"Chunk saved: {chunk_filename}, size: {chunk_size} bytes")
     
-    # Update the list file
+    # Update the list file with the new chunk path
     list_file_path = os.path.join(UPLOAD_FOLDER, f"{recording_id}_list.txt")
-    with open(list_file_path, 'a') as list_file:
+    with open(list_file_path, 'a') as list_file:  # 'a' mode for appending
         list_file.write(f"file '{os.path.abspath(chunk_path)}'\n")
     
     return jsonify({'status': 'success', 'chunk_key': chunk_filename})
@@ -694,10 +696,17 @@ def upload_chunk():
 @main.route('/uploads/audio_recordings/<path:filename>')
 def download_file(filename):
     try:
-        # Serve the file from the local directory
-        return send_from_directory(UPLOAD_FOLDER, filename)
+        if ENVIRONMENT == 'development':
+            # Serve the file from the local directory
+            return send_from_directory(UPLOAD_FOLDER, filename)
+        else:
+            # Generate a signed URL to download the file from Google Cloud Storage
+            bucket = storage_client.bucket(BUCKET_NAME)
+            blob = bucket.blob(f"audio_recordings/{filename}")
+            url = blob.generate_signed_url(expiration=timedelta(minutes=15))
+            return redirect(url)
     except Exception as e:
-        current_app.logger.error(f"Error serving file {filename} from local storage: {str(e)}")
+        logger.error(f"Error serving file {filename}: {str(e)}")
         return jsonify({'status': 'error', 'message': 'File not found'}), 404
     
 
