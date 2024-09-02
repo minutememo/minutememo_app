@@ -483,3 +483,125 @@ Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
 2024-09-02 22:37:01,331 - auth - DEBUG - After request, Origin: http://localhost:3000
 2024-09-02 22:37:01 INFO: 127.0.0.1 - - [02/Sep/2024 22:37:01] "GET /generate-presigned-url?fileName=9315b037-3fee-4103-8952-70337038ec20.mp3&fileType=audio/mpeg HTTP/1.1" 200 -
 2024-09-02 22:37:01,331 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 22:37:01] "GET /generate-presigned-url?fileName=9315b037-3fee-4103-8952-70337038ec20.mp3&fileType=audio/mpeg HTTP/1.1" 200 -
+2024-09-02 22:52:51 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-09-02 22:52:51,697 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-09-02 22:52:51 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-09-02 22:52:51,746 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-09-02 22:52:51 INFO: [33mPress CTRL+C to quit[0m
+2024-09-02 22:52:51,746 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-09-02 22:52:53 DEBUG: Loading user with ID: 2
+2024-09-02 22:52:53,148 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 22:52:53 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 22:52:53,203 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 22:52:53 DEBUG: Status check: user gaetan@minutememo.io is authenticated
+2024-09-02 22:52:53,203 - auth - DEBUG - Status check: user gaetan@minutememo.io is authenticated
+2024-09-02 22:52:53 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 22:52:53,204 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 22:52:53 INFO: 127.0.0.1 - - [02/Sep/2024 22:52:53] "GET /auth/status HTTP/1.1" 200 -
+2024-09-02 22:52:53,204 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 22:52:53] "GET /auth/status HTTP/1.1" 200 -
+2024-09-02 22:52:53 DEBUG: Loading user with ID: 2
+2024-09-02 22:52:53,206 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 22:52:53 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 22:52:53,207 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 22:52:53 DEBUG: Status check: user gaetan@minutememo.io is authenticated
+2024-09-02 22:52:53,207 - auth - DEBUG - Status check: user gaetan@minutememo.io is authenticated
+2024-09-02 22:52:53 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 22:52:53,207 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 22:52:53 INFO: 127.0.0.1 - - [02/Sep/2024 22:52:53] "GET /auth/status HTTP/1.1" 200 -
+2024-09-02 22:52:53,208 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 22:52:53] "GET /auth/status HTTP/1.1" 200 -
+2024-09-02 22:52:53 DEBUG: Loading user with ID: 2
+2024-09-02 22:52:53,216 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 22:52:53 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 22:52:53,226 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 22:52:53 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 22:52:53,239 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 22:52:53 INFO: 127.0.0.1 - - [02/Sep/2024 22:52:53] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-02 22:52:53,240 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 22:52:53] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-02 22:52:53 DEBUG: Loading user with ID: 2
+2024-09-02 22:52:53,242 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 22:52:53 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 22:52:53,244 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 22:52:53 DEBUG: Loading user with ID: 2
+2024-09-02 22:52:53,249 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 22:52:53 DEBUG: Loading user with ID: 2
+2024-09-02 22:52:53,249 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 22:52:53 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 22:52:53,254 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 22:52:53 INFO: 127.0.0.1 - - [02/Sep/2024 22:52:53] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-02 22:52:53,254 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 22:52:53] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-02 22:52:53 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 22:52:53,274 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 22:52:53 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 22:52:53,279 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 22:52:53 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 22:52:53,279 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 22:52:53 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 22:52:53 INFO: 127.0.0.1 - - [02/Sep/2024 22:52:53] "GET /api/meetingsessions?hub_id=19 HTTP/1.1" 200 -
+2024-09-02 22:52:53,281 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 22:52:53,281 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 22:52:53] "GET /api/meetingsessions?hub_id=19 HTTP/1.1" 200 -
+2024-09-02 22:52:53 INFO: 127.0.0.1 - - [02/Sep/2024 22:52:53] "GET /api/meetings?hub_id=19 HTTP/1.1" 200 -
+2024-09-02 22:52:53,284 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 22:52:53] "GET /api/meetings?hub_id=19 HTTP/1.1" 200 -
+2024-09-02 22:52:53 DEBUG: Loading user with ID: 2
+2024-09-02 22:52:53 DEBUG: Loading user with ID: 2
+2024-09-02 22:52:53,287 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 22:52:53,289 - auth - DEBUG - Loading user with ID: 2
+2024-09-02 22:52:53 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 22:52:53 DEBUG: Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 22:52:53,293 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 22:52:53,294 - auth - DEBUG - Session for user gaetan@minutememo.io is active and authenticated
+2024-09-02 22:52:53 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 22:52:53,300 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 22:52:53 INFO: 127.0.0.1 - - [02/Sep/2024 22:52:53] "GET /api/meetings?hub_id=19 HTTP/1.1" 200 -
+2024-09-02 22:52:53,304 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 22:52:53] "GET /api/meetings?hub_id=19 HTTP/1.1" 200 -
+2024-09-02 22:52:53 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 22:52:53,306 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 22:52:53 INFO: 127.0.0.1 - - [02/Sep/2024 22:52:53] "GET /api/meetingsessions?hub_id=19 HTTP/1.1" 200 -
+2024-09-02 22:52:53,310 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 22:52:53] "GET /api/meetingsessions?hub_id=19 HTTP/1.1" 200 -
+2024-09-02 22:52:57 DEBUG: No active session found, user is not authenticated
+2024-09-02 22:52:57,910 - auth - DEBUG - No active session found, user is not authenticated
+2024-09-02 22:52:57 INFO: Request received to generate presigned URL.
+2024-09-02 22:52:57,911 - root - INFO - Request received to generate presigned URL.
+2024-09-02 22:52:57 DEBUG: Request headers: Host: localhost:5000
+Connection: keep-alive
+Sec-Ch-Ua: "Chromium";v="128", "Not;A=Brand";v="24", "Google Chrome";v="128"
+Accept: application/json, text/plain, */*
+Sec-Ch-Ua-Mobile: ?0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36
+Sec-Ch-Ua-Platform: "macOS"
+Origin: http://localhost:3000
+Sec-Fetch-Site: same-site
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+
+
+2024-09-02 22:52:57,911 - root - DEBUG - Request headers: Host: localhost:5000
+Connection: keep-alive
+Sec-Ch-Ua: "Chromium";v="128", "Not;A=Brand";v="24", "Google Chrome";v="128"
+Accept: application/json, text/plain, */*
+Sec-Ch-Ua-Mobile: ?0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36
+Sec-Ch-Ua-Platform: "macOS"
+Origin: http://localhost:3000
+Sec-Fetch-Site: same-site
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+
+
+2024-09-02 22:52:57 DEBUG: Request args: ImmutableMultiDict([('fileName', '9315b037-3fee-4103-8952-70337038ec20.webm'), ('fileType', 'video/webm')])
+2024-09-02 22:52:57,911 - root - DEBUG - Request args: ImmutableMultiDict([('fileName', '9315b037-3fee-4103-8952-70337038ec20.webm'), ('fileType', 'video/webm')])
+2024-09-02 22:52:57 INFO: Generating presigned URL for file: 9315b037-3fee-4103-8952-70337038ec20.webm with type: video/webm
+2024-09-02 22:52:57,912 - root - INFO - Generating presigned URL for file: 9315b037-3fee-4103-8952-70337038ec20.webm with type: video/webm
+2024-09-02 22:52:57 INFO: Presigned URL generated: https://storage.googleapis.com/staging-minutememo-audiofiles/audio_recordings/9315b037-3fee-4103-8952-70337038ec20.webm?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=storage-access%40staging-minutememo.iam.gserviceaccount.com%2F20240902%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20240902T205257Z&X-Goog-Expires=900&X-Goog-SignedHeaders=content-type%3Bhost&X-Goog-Signature=00c1283b8dc8a61e8497f57fba8dac003f72e71c5c3254b2ed91c0f49f6adb17fa464b218c8128e52466c4486ff3d01767f65f609067028cc86669d4a74e79fe15c54c01adc19bfc200b77535e55b9cf2d43db3741082933ec8a3bdb599d45482ea828d8e01fb10f52c06b31d13d430fc25beea953b8420d548d6a5bf7785eff7e59a773df215d1a87f7496d9e25fe3f528aa423e5f7e1b30e42e85ca37ac1dec1a38791f3da1a6d082fd43a4130c2b255ac06466abf41f9ba5996d44b7e35f4160e0e509caa10d0fe2ba2255e0336277df5ea169736daadaef6edc9d8692df818a0508c1f34a7011be976c6ff4c8f8d1cbcae191ccf8fab78acecec67ff4770
+2024-09-02 22:52:57,959 - root - INFO - Presigned URL generated: https://storage.googleapis.com/staging-minutememo-audiofiles/audio_recordings/9315b037-3fee-4103-8952-70337038ec20.webm?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=storage-access%40staging-minutememo.iam.gserviceaccount.com%2F20240902%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20240902T205257Z&X-Goog-Expires=900&X-Goog-SignedHeaders=content-type%3Bhost&X-Goog-Signature=00c1283b8dc8a61e8497f57fba8dac003f72e71c5c3254b2ed91c0f49f6adb17fa464b218c8128e52466c4486ff3d01767f65f609067028cc86669d4a74e79fe15c54c01adc19bfc200b77535e55b9cf2d43db3741082933ec8a3bdb599d45482ea828d8e01fb10f52c06b31d13d430fc25beea953b8420d548d6a5bf7785eff7e59a773df215d1a87f7496d9e25fe3f528aa423e5f7e1b30e42e85ca37ac1dec1a38791f3da1a6d082fd43a4130c2b255ac06466abf41f9ba5996d44b7e35f4160e0e509caa10d0fe2ba2255e0336277df5ea169736daadaef6edc9d8692df818a0508c1f34a7011be976c6ff4c8f8d1cbcae191ccf8fab78acecec67ff4770
+2024-09-02 22:52:57 DEBUG: After request, Origin: http://localhost:3000
+2024-09-02 22:52:57,959 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-02 22:52:57 INFO: 127.0.0.1 - - [02/Sep/2024 22:52:57] "GET /generate-presigned-url?fileName=9315b037-3fee-4103-8952-70337038ec20.webm&fileType=video/webm HTTP/1.1" 200 -
+2024-09-02 22:52:57,960 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2024 22:52:57] "GET /generate-presigned-url?fileName=9315b037-3fee-4103-8952-70337038ec20.webm&fileType=video/webm HTTP/1.1" 200 -
