@@ -266,7 +266,7 @@ def concatenate():
         current_app.logger.info(f"Received request to concatenate for recording_id: {recording_id}")
 
         if running_locally:
-            # Use local files when running locally
+            # Local processing
             chunk_files = sorted(
                 [f for f in os.listdir(UPLOAD_FOLDER) if f.startswith(recording_id) and f.endswith('.webm')],
                 key=natural_sort_key
@@ -276,26 +276,16 @@ def concatenate():
                 current_app.logger.error(f"No chunks found for recording_id: {recording_id}")
                 return jsonify({'status': 'error', 'message': 'No chunks found for the given recording_id'}), 400
 
-            # Log chunk files to be concatenated
-            current_app.logger.info(f"Chunk files to concatenate: {chunk_files}")
-
-            # Create the list file with paths of the chunks
             list_file_path = os.path.join(UPLOAD_FOLDER, f"{recording_id}_list.txt")
             
             with open(list_file_path, 'w') as f:
                 for chunk in chunk_files:
-                    # Write the correct path to the list file
                     f.write(f"file '{os.path.abspath(os.path.join(UPLOAD_FOLDER, chunk))}'\n")
 
-            # Log the contents of the list file
-            with open(list_file_path, 'r') as f:
-                current_app.logger.info(f"Contents of {list_file_path}:")
-                current_app.logger.info(f.read())
-
-            # Define the final output file path
             final_output = os.path.join(UPLOAD_FOLDER, f"{recording_id}.webm")
+        
         else:
-            # Use GCS when running in the cloud
+            # Cloud processing
             chunk_files = sorted(
                 list_gcs_chunks(BUCKET_NAME, recording_id),
                 key=natural_sort_key
@@ -305,22 +295,22 @@ def concatenate():
                 current_app.logger.error(f"No chunks found for recording_id: {recording_id}")
                 return jsonify({'status': 'error', 'message': 'No chunks found for the given recording_id'}), 400
 
-            # Download chunks to a temporary local directory
-            local_chunk_paths, temp_dir = download_chunks_from_gcs(BUCKET_NAME, chunk_files)
+            # Create and upload list file to GCS
+            list_file_name = f"{recording_id}_list.txt"
+            list_file_gcs_path = f"audio_recordings/{list_file_name}"
 
-            # Create the list file with paths of the chunks
-            list_file_path = os.path.join(temp_dir, f"{recording_id}_list.txt")
+            # Write the list file locally before uploading
+            local_list_file_path = os.path.join(tempfile.gettempdir(), list_file_name)
+            with open(local_list_file_path, 'w') as f:
+                for chunk in chunk_files:
+                    f.write(f"file 'audio_recordings/{chunk}'\n")
             
-            with open(list_file_path, 'w') as f:
-                for local_chunk in local_chunk_paths:
-                    f.write(f"file '{local_chunk}'\n")
+            upload_file_to_gcs(local_list_file_path, list_file_gcs_path)
 
-            # Log the contents of the list file
-            with open(list_file_path, 'r') as f:
-                current_app.logger.info(f"Contents of {list_file_path}:")
-                current_app.logger.info(f.read())
+            # Download chunks and the list file to a temporary directory
+            local_chunk_paths, temp_dir = download_chunks_from_gcs(BUCKET_NAME, chunk_files)
+            list_file_path = os.path.join(temp_dir, list_file_name)
 
-            # Define the final output file path
             final_output = os.path.join(temp_dir, f"{recording_id}.webm")
 
         concatenation_status = 'success'
@@ -338,7 +328,7 @@ def concatenate():
             concatenation_status = 'failed'
             return jsonify({'status': 'error', 'message': f"Error concatenating files: {str(e)}"}), 500
 
-        # Convert the concatenated file to mp3
+        # Convert to MP3
         mp3_filepath = os.path.splitext(final_output)[0] + '.mp3'
         convert_to_mp3(final_output, mp3_filepath)
 
@@ -348,16 +338,13 @@ def concatenate():
             try:
                 # Upload the final mp3 file back to GCS
                 upload_file_to_gcs(mp3_filepath, f"audio_recordings/{os.path.basename(mp3_filepath)}")
-
-                # Clean up the temporary local directory
                 shutil.rmtree(temp_dir)
-
             except Exception as e:
                 current_app.logger.error(f"Error uploading the file to GCS: {e}")
                 return jsonify({'status': 'error', 'message': f"Error uploading the file to GCS: {str(e)}"}), 500
 
+        # Update the recording in the database
         try:
-            # Update the recording in the database
             recording = Recording.query.filter_by(id=recording_id).first()
             if recording:
                 recording.file_name = os.path.basename(mp3_filepath)
