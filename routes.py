@@ -310,7 +310,7 @@ def concatenate():
 
             # Download chunks and the list file to a temporary directory
             local_chunk_paths, temp_dir = download_chunks_from_gcs(BUCKET_NAME, chunk_files)
-            list_file_path = os.path.join(temp_dir, list_file_name)
+            list_file_path = os.path.join(UPLOAD_FOLDER, list_file_name)
 
             final_output = os.path.join(temp_dir, f"{recording_id}.webm")
 
