@@ -39,7 +39,7 @@ BUCKET_NAME = 'staging-minutememo-audiofiles'
 def upload_file_to_gcs(local_path, gcs_path):
     """Uploads a file to Google Cloud Storage."""
     bucket = storage_client.bucket(BUCKET_NAME)
-    blob = bucket.blob(gcs_path)
+    blob = bucket.blob(f"audio_recordings/{gcs_path}")  # Always use this path structure
     blob.upload_from_filename(local_path)
 
 def download_chunks_from_gcs(bucket_name, chunk_files):
@@ -64,6 +64,8 @@ def list_gcs_chunks(bucket_name, recording_id):
     for blob in blobs:
         chunks.append(blob.name.split('/')[-1])  # Get only the filename
     return chunks
+
+
 
 
 @main.route('/generate-presigned-url', methods=['GET'])
@@ -277,6 +279,7 @@ def concatenate():
                 current_app.logger.error(f"No chunks found for recording_id: {recording_id}")
                 return jsonify({'status': 'error', 'message': 'No chunks found for the given recording_id'}), 400
 
+            # The list file is in the /uploads/audio_recordings/ folder
             list_file_path = os.path.join(UPLOAD_FOLDER, f"{recording_id}_list.txt")
             
             with open(list_file_path, 'w') as f:
@@ -296,7 +299,7 @@ def concatenate():
                 current_app.logger.error(f"No chunks found for recording_id: {recording_id}")
                 return jsonify({'status': 'error', 'message': 'No chunks found for the given recording_id'}), 400
 
-            # Create and upload list file to GCS
+            # Create and upload list file to GCS in the /audio_recordings/ directory
             list_file_name = f"{recording_id}_list.txt"
             list_file_gcs_path = f"audio_recordings/{list_file_name}"
 
@@ -306,11 +309,14 @@ def concatenate():
                 for chunk in chunk_files:
                     f.write(f"file 'audio_recordings/{chunk}'\n")
             
+            # Upload the list file to GCS under /audio_recordings/
             upload_file_to_gcs(local_list_file_path, list_file_gcs_path)
 
             # Download chunks and the list file to a temporary directory
             local_chunk_paths, temp_dir = download_chunks_from_gcs(BUCKET_NAME, chunk_files)
-            list_file_path = os.path.join(UPLOAD_FOLDER, list_file_name)
+            
+            # Now, the list file should point to the same location in the cloud, i.e., /audio_recordings/
+            list_file_path = os.path.join(temp_dir, list_file_name)
 
             final_output = os.path.join(temp_dir, f"{recording_id}.webm")
 
@@ -337,7 +343,7 @@ def concatenate():
 
         if not running_locally:
             try:
-                # Upload the final mp3 file back to GCS
+                # Upload the final mp3 file back to GCS in the /audio_recordings/ directory
                 upload_file_to_gcs(mp3_filepath, f"audio_recordings/{os.path.basename(mp3_filepath)}")
                 shutil.rmtree(temp_dir)
             except Exception as e:
