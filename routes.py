@@ -299,46 +299,52 @@ def concatenate():
                 current_app.logger.error(f"No chunks found for recording_id: {recording_id}")
                 return jsonify({'status': 'error', 'message': 'No chunks found for the given recording_id'}), 400
 
-            # Create a temporary list file for FFmpeg concatenation
+            # Create and upload list file to GCS directly in audio_recordings/
             list_file_name = f"{recording_id}_list.txt"
-            local_list_file_path = os.path.join(tempfile.gettempdir(), list_file_name)
+            list_file_gcs_path = f"audio_recordings/{list_file_name}"
 
-            # Write the chunk paths (audio_recordings/) to the list file
+            # Write the chunk paths (audio_recordings/) directly to the list file
+            local_list_file_path = os.path.join(UPLOAD_FOLDER, list_file_name)  # Storing in GCS path
             with open(local_list_file_path, 'w') as f:
                 for chunk in chunk_files:
                     f.write(f"file 'audio_recordings/{chunk}'\n")
             
             # Upload the list file to GCS
-            list_file_gcs_path = f"audio_recordings/{list_file_name}"
             upload_file_to_gcs(local_list_file_path, list_file_gcs_path)
 
-            # Download chunks and list file from GCS to a temporary directory for concatenation
-            local_chunk_paths, temp_dir = download_chunks_from_gcs(BUCKET_NAME, chunk_files)
-            
-            # Set the local list file path for FFmpeg
-            list_file_path = local_list_file_path  # List file stored in temp directory
-
-            # Define the output file for concatenation in the temp directory
-            final_output = os.path.join(temp_dir, f"{recording_id}.webm")
+            final_output_gcs = f"audio_recordings/{recording_id}.webm"
 
         concatenation_status = 'success'
 
         # Attempt to concatenate using FFmpeg
         try:
-            (
-                ffmpeg
-                .input(list_file_path, format='concat', safe=0)
-                .output(final_output, c='copy')
-                .run()
-            )
+            if running_locally:
+                # Local FFmpeg execution using the local file system
+                (
+                    ffmpeg
+                    .input(list_file_path, format='concat', safe=0)
+                    .output(final_output, c='copy')
+                    .run()
+                )
+            else:
+                # In the cloud: download the chunks from GCS and concatenate them using local FFmpeg
+                local_chunk_paths, _ = download_chunks_from_gcs(BUCKET_NAME, chunk_files)
+
+                # Concatenate the files locally using the list file
+                (
+                    ffmpeg
+                    .input(local_list_file_path, format='concat', safe=0)
+                    .output(final_output_gcs, c='copy')
+                    .run()
+                )
         except ffmpeg.Error as e:
             current_app.logger.error(f"Error concatenating files with ffmpeg: {e}")
             concatenation_status = 'failed'
             return jsonify({'status': 'error', 'message': f"Error concatenating files: {str(e)}"}), 500
 
         # Convert the concatenated file to mp3
-        mp3_filepath = os.path.splitext(final_output)[0] + '.mp3'
-        convert_to_mp3(final_output, mp3_filepath)
+        mp3_filepath = os.path.splitext(final_output if running_locally else final_output_gcs)[0] + '.mp3'
+        convert_to_mp3(final_output if running_locally else final_output_gcs, mp3_filepath)
 
         current_app.logger.info(f"Concatenation successful: {mp3_filepath}")
 
@@ -346,9 +352,6 @@ def concatenate():
             try:
                 # Upload the final mp3 file back to GCS
                 upload_file_to_gcs(mp3_filepath, f"audio_recordings/{os.path.basename(mp3_filepath)}")
-
-                # Clean up the temporary directory
-                shutil.rmtree(temp_dir)
             except Exception as e:
                 current_app.logger.error(f"Error uploading the file to GCS: {e}")
                 return jsonify({'status': 'error', 'message': f"Error uploading the file to GCS: {str(e)}"}), 500
