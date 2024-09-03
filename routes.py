@@ -44,7 +44,7 @@ def upload_file_to_gcs(local_path, gcs_path):
 
 def download_chunks_from_gcs(bucket_name, chunk_files):
     """Downloads chunk files from GCS and returns their local paths."""
-    temp_dir = os.path.join(UPLOAD_FOLDER, 'temp')
+    temp_dir = os.path.join(UPLOAD_FOLDER)
     os.makedirs(temp_dir, exist_ok=True)
     
     local_paths = []
