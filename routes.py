@@ -269,7 +269,7 @@ def concatenate():
         current_app.logger.info(f"Received request to concatenate for recording_id: {recording_id}")
 
         if running_locally:
-            # Local processing
+            # Local processing (referencing local files)
             chunk_files = sorted(
                 [f for f in os.listdir(UPLOAD_FOLDER) if f.startswith(recording_id) and f.endswith('.webm')],
                 key=natural_sort_key
@@ -279,7 +279,7 @@ def concatenate():
                 current_app.logger.error(f"No chunks found for recording_id: {recording_id}")
                 return jsonify({'status': 'error', 'message': 'No chunks found for the given recording_id'}), 400
 
-            # Create the list file locally
+            # Create the list file locally in the local uploads/audio_recordings directory
             list_file_path = os.path.join(UPLOAD_FOLDER, f"{recording_id}_list.txt")
             
             with open(list_file_path, 'w') as f:
@@ -289,7 +289,7 @@ def concatenate():
             final_output = os.path.join(UPLOAD_FOLDER, f"{recording_id}.webm")
         
         else:
-            # Cloud processing with Google Cloud Storage (GCS)
+            # Cloud processing (Google Cloud Storage references ONLY audio_recordings/)
             chunk_files = sorted(
                 list_gcs_chunks(BUCKET_NAME, recording_id),
                 key=natural_sort_key
@@ -299,25 +299,26 @@ def concatenate():
                 current_app.logger.error(f"No chunks found for recording_id: {recording_id}")
                 return jsonify({'status': 'error', 'message': 'No chunks found for the given recording_id'}), 400
 
-            # Create the list file locally before uploading
+            # Create a temporary list file for FFmpeg concatenation
             list_file_name = f"{recording_id}_list.txt"
             local_list_file_path = os.path.join(tempfile.gettempdir(), list_file_name)
+
+            # Write the chunk paths (audio_recordings/) to the list file
             with open(local_list_file_path, 'w') as f:
                 for chunk in chunk_files:
-                    # In the cloud, we're referring to files in 'audio_recordings/' in GCS
                     f.write(f"file 'audio_recordings/{chunk}'\n")
             
-            # Upload the list file to GCS under /audio_recordings/
+            # Upload the list file to GCS
             list_file_gcs_path = f"audio_recordings/{list_file_name}"
             upload_file_to_gcs(local_list_file_path, list_file_gcs_path)
 
-            # Download the list file and chunks to a temporary directory for concatenation
+            # Download chunks and list file from GCS to a temporary directory for concatenation
             local_chunk_paths, temp_dir = download_chunks_from_gcs(BUCKET_NAME, chunk_files)
             
-            # Reference the local list file
-            list_file_path = os.path.join(temp_dir, list_file_name)
+            # Set the local list file path for FFmpeg
+            list_file_path = local_list_file_path  # List file stored in temp directory
 
-            # Define the output path for concatenation in temp_dir
+            # Define the output file for concatenation in the temp directory
             final_output = os.path.join(temp_dir, f"{recording_id}.webm")
 
         concatenation_status = 'success'
@@ -346,7 +347,7 @@ def concatenate():
                 # Upload the final mp3 file back to GCS
                 upload_file_to_gcs(mp3_filepath, f"audio_recordings/{os.path.basename(mp3_filepath)}")
 
-                # Clean up the temporary local directory
+                # Clean up the temporary directory
                 shutil.rmtree(temp_dir)
             except Exception as e:
                 current_app.logger.error(f"Error uploading the file to GCS: {e}")
