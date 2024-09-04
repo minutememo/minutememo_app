@@ -304,7 +304,7 @@ def concatenate():
             list_file_gcs_path = f"audio_recordings/{list_file_name}"
 
             # Write the chunk paths (audio_recordings/) directly to the list file
-            local_list_file_path = os.path.join(UPLOAD_FOLDER, list_file_name)  # Storing in GCS path
+            local_list_file_path = os.path.join(tempfile.gettempdir(), list_file_name)  # Create it in temp dir
             with open(local_list_file_path, 'w') as f:
                 for chunk in chunk_files:
                     f.write(f"file 'audio_recordings/{chunk}'\n")
@@ -312,6 +312,7 @@ def concatenate():
             # Upload the list file to GCS
             upload_file_to_gcs(local_list_file_path, list_file_gcs_path)
 
+            # Ensure FFmpeg refers directly to GCS paths or temporarily downloaded paths
             final_output_gcs = f"audio_recordings/{recording_id}.webm"
 
         concatenation_status = 'success'
