@@ -342,7 +342,7 @@ def concatenate():
                 # Use signed URLs for FFmpeg in cloud
                 (
                     ffmpeg
-                    .input(list_file_path, format='concat', safe=0)
+                    .input(list_file_path, format='concat', safe=0, allowed_protocols='file,https')
                     .output(final_output_gcs, c='copy')
                     .run()
                 )
