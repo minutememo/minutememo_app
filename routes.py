@@ -253,7 +253,6 @@ def profile_content():
 @cross_origin()
 def concatenate():
     try:
-        # Determine if we are running locally or in the cloud
         running_locally = os.getenv('FLASK_ENV', 'development') == 'development'
 
         if not running_locally and storage_client is None:
@@ -269,7 +268,6 @@ def concatenate():
         current_app.logger.info(f"Received request to concatenate for recording_id: {recording_id}")
 
         if running_locally:
-            # Local processing (referencing local files)
             chunk_files = sorted(
                 [f for f in os.listdir(UPLOAD_FOLDER) if f.startswith(recording_id) and f.endswith('.webm')],
                 key=natural_sort_key
@@ -279,17 +277,15 @@ def concatenate():
                 current_app.logger.error(f"No chunks found for recording_id: {recording_id}")
                 return jsonify({'status': 'error', 'message': 'No chunks found for the given recording_id'}), 400
 
-            # Create the list file locally in the local uploads/audio_recordings directory
             list_file_path = os.path.join(UPLOAD_FOLDER, f"{recording_id}_list.txt")
-            
             with open(list_file_path, 'w') as f:
                 for chunk in chunk_files:
                     f.write(f"file '{os.path.abspath(os.path.join(UPLOAD_FOLDER, chunk))}'\n")
 
             final_output = os.path.join(UPLOAD_FOLDER, f"{recording_id}.webm")
-        
+
         else:
-            # Cloud processing (directly on Google Cloud Storage)
+            # Use GCS
             chunk_files = sorted(
                 list_gcs_chunks(BUCKET_NAME, recording_id),
                 key=natural_sort_key
@@ -299,23 +295,26 @@ def concatenate():
                 current_app.logger.error(f"No chunks found for recording_id: {recording_id}")
                 return jsonify({'status': 'error', 'message': 'No chunks found for the given recording_id'}), 400
 
-            # Create and upload list file to GCS directly in audio_recordings/
-            list_file_name = f"{recording_id}_list.txt"
-            list_file_gcs_path = f"audio_recordings/{list_file_name}"
+            # Generate signed URLs for the chunk files
+            signed_urls = []
+            for chunk in chunk_files:
+                blob = storage_client.bucket(BUCKET_NAME).blob(f"audio_recordings/{chunk}")
+                signed_url = blob.generate_signed_url(expiration=timedelta(minutes=30))
+                signed_urls.append(signed_url)
 
-            # Write the list file directly to GCS
-            list_blob = storage_client.bucket(BUCKET_NAME).blob(list_file_gcs_path)
-            list_content = "\n".join([f"file 'gs://{BUCKET_NAME}/audio_recordings/{chunk}'" for chunk in chunk_files])
-            list_blob.upload_from_string(list_content)
+            # Create the list file with signed URLs
+            list_file_path = os.path.join(tempfile.gettempdir(), f"{recording_id}_list.txt")
+            with open(list_file_path, 'w') as f:
+                for signed_url in signed_urls:
+                    f.write(f"file '{signed_url}'\n")
 
             final_output_gcs = f"gs://{BUCKET_NAME}/audio_recordings/{recording_id}.webm"
 
         concatenation_status = 'success'
 
-        # Attempt to concatenate using FFmpeg
         try:
             if running_locally:
-                # Local FFmpeg execution using the local file system
+                # Local FFmpeg
                 (
                     ffmpeg
                     .input(list_file_path, format='concat', safe=0)
@@ -323,10 +322,10 @@ def concatenate():
                     .run()
                 )
             else:
-                # In the cloud: concatenate using the list file stored in GCS directly
+                # Use signed URLs for FFmpeg in cloud
                 (
                     ffmpeg
-                    .input(list_blob.generate_signed_url(expiration=timedelta(minutes=15)), format='concat', safe=0)
+                    .input(list_file_path, format='concat', safe=0)
                     .output(final_output_gcs, c='copy')
                     .run()
                 )
@@ -335,27 +334,23 @@ def concatenate():
             concatenation_status = 'failed'
             return jsonify({'status': 'error', 'message': f"Error concatenating files: {str(e)}"}), 500
 
-        # Convert the concatenated file to mp3
-        mp3_filepath = os.path.splitext(final_output_gcs)[0] + '.mp3'
-        convert_to_mp3(final_output_gcs, mp3_filepath)
+        mp3_filepath = os.path.splitext(final_output if running_locally else final_output_gcs)[0] + '.mp3'
+        convert_to_mp3(final_output if running_locally else final_output_gcs, mp3_filepath)
 
         current_app.logger.info(f"Concatenation successful: {mp3_filepath}")
 
         if not running_locally:
             try:
-                # Upload the final mp3 file back to GCS
                 upload_file_to_gcs(mp3_filepath, f"audio_recordings/{os.path.basename(mp3_filepath)}")
             except Exception as e:
                 current_app.logger.error(f"Error uploading the file to GCS: {e}")
                 return jsonify({'status': 'error', 'message': f"Error uploading the file to GCS: {str(e)}"}), 500
 
-        # Update the recording in the database
         try:
             recording = Recording.query.filter_by(id=recording_id).first()
             if recording:
                 recording.file_name = os.path.basename(mp3_filepath)
                 recording.concatenation_status = concatenation_status
-                recording.concatenation_file_name = os.path.basename(list_file_name)
                 db.session.commit()
                 current_app.logger.info(f"Database updated successfully for recording_id: {recording_id}")
             else:
