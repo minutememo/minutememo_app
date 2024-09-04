@@ -12,6 +12,7 @@ import logging
 from extensions import *
 from models import *
 from auth import *
+from celery_app import celery
 
 # Initialize login manager
 login_manager = LoginManager()
