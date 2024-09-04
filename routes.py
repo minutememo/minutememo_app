@@ -289,7 +289,7 @@ def concatenate():
             final_output = os.path.join(UPLOAD_FOLDER, f"{recording_id}.webm")
         
         else:
-            # Cloud processing (Google Cloud Storage references ONLY audio_recordings/)
+            # Cloud processing (directly on Google Cloud Storage)
             chunk_files = sorted(
                 list_gcs_chunks(BUCKET_NAME, recording_id),
                 key=natural_sort_key
@@ -303,17 +303,12 @@ def concatenate():
             list_file_name = f"{recording_id}_list.txt"
             list_file_gcs_path = f"audio_recordings/{list_file_name}"
 
-            # Write the chunk paths (audio_recordings/) directly to the list file
-            local_list_file_path = os.path.join(tempfile.gettempdir(), list_file_name)  # Create it in temp dir
-            with open(local_list_file_path, 'w') as f:
-                for chunk in chunk_files:
-                    f.write(f"file 'audio_recordings/{chunk}'\n")
-            
-            # Upload the list file to GCS
-            upload_file_to_gcs(local_list_file_path, list_file_gcs_path)
+            # Write the list file directly to GCS
+            list_blob = storage_client.bucket(BUCKET_NAME).blob(list_file_gcs_path)
+            list_content = "\n".join([f"file 'gs://{BUCKET_NAME}/audio_recordings/{chunk}'" for chunk in chunk_files])
+            list_blob.upload_from_string(list_content)
 
-            # Ensure FFmpeg refers directly to GCS paths or temporarily downloaded paths
-            final_output_gcs = f"audio_recordings/{recording_id}.webm"
+            final_output_gcs = f"gs://{BUCKET_NAME}/audio_recordings/{recording_id}.webm"
 
         concatenation_status = 'success'
 
@@ -328,13 +323,10 @@ def concatenate():
                     .run()
                 )
             else:
-                # In the cloud: download the chunks from GCS and concatenate them using local FFmpeg
-                local_chunk_paths, _ = download_chunks_from_gcs(BUCKET_NAME, chunk_files)
-
-                # Concatenate the files locally using the list file
+                # In the cloud: concatenate using the list file stored in GCS directly
                 (
                     ffmpeg
-                    .input(local_list_file_path, format='concat', safe=0)
+                    .input(list_blob.generate_signed_url(expiration=timedelta(minutes=15)), format='concat', safe=0)
                     .output(final_output_gcs, c='copy')
                     .run()
                 )
@@ -344,8 +336,8 @@ def concatenate():
             return jsonify({'status': 'error', 'message': f"Error concatenating files: {str(e)}"}), 500
 
         # Convert the concatenated file to mp3
-        mp3_filepath = os.path.splitext(final_output if running_locally else final_output_gcs)[0] + '.mp3'
-        convert_to_mp3(final_output if running_locally else final_output_gcs, mp3_filepath)
+        mp3_filepath = os.path.splitext(final_output_gcs)[0] + '.mp3'
+        convert_to_mp3(final_output_gcs, mp3_filepath)
 
         current_app.logger.info(f"Concatenation successful: {mp3_filepath}")
 
@@ -363,7 +355,7 @@ def concatenate():
             if recording:
                 recording.file_name = os.path.basename(mp3_filepath)
                 recording.concatenation_status = concatenation_status
-                recording.concatenation_file_name = os.path.basename(list_file_path)
+                recording.concatenation_file_name = os.path.basename(list_file_name)
                 db.session.commit()
                 current_app.logger.info(f"Database updated successfully for recording_id: {recording_id}")
             else:
