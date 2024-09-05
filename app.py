@@ -12,7 +12,7 @@ import logging
 from extensions import *
 from models import *
 from auth import *
-from celery_app import make_celery
+from celery_factory import make_celery
 
 # Initialize login manager
 login_manager = LoginManager()
@@ -42,34 +42,6 @@ logging.getLogger().addHandler(console_handler)
 migrate = Migrate()
 frontend_url = "https://staging.minutememo.io"  # Your custom domain
 
-def make_celery(app):
-    # Get the Redis URL from the environment variable set by Heroku
-    redis_url = os.getenv('REDIS_URL')  # Heroku provides this automatically
-
-    # Create the Celery application with the Flask app's name
-    celery = make_celery(app.import_name, broker=redis_url)
-
-    # Update Celery config from the Flask app's config
-    celery.conf.update(app.config)
-
-    # Set result backend and other Celery configurations
-    celery.conf.update(
-        result_backend=redis_url,  # Redis will be used as the result backend
-        task_serializer='json',
-        accept_content=['json'],
-        result_serializer='json',
-        timezone='UTC',
-        enable_utc=True,
-    )
-
-    # Enable the Flask app context in the Celery task
-    class ContextTask(celery.Task):
-        def __call__(self, *args, **kwargs):
-            with app.app_context():
-                return self.run(*args, **kwargs)
-
-    celery.Task = ContextTask
-    return celery
 
 def create_app():
     app = Flask(__name__)
@@ -104,8 +76,10 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
     login_manager.init_app(app)
-
     login_manager.login_view = 'auth.login'
+
+    celery = make_celery(app)
+
 
     @login_manager.user_loader
     def load_user(user_id):

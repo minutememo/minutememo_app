@@ -1,10 +1,9 @@
 from celery import Celery
-from app import create_app
 import os
 
 def make_celery(app):
     # Get the Redis URL from the environment variable set by Heroku
-    redis_url = os.getenv('REDIS_URL', 'redis://localhost:6379/0')  # Fallback to local Redis
+    redis_url = os.getenv('REDIS_URL')
 
     # Create the Celery application with the Flask app's name
     celery = Celery(app.import_name, broker=redis_url)
@@ -14,7 +13,7 @@ def make_celery(app):
 
     # Set result backend and other Celery configurations
     celery.conf.update(
-        result_backend=redis_url,  # Redis will be used as the result backend
+        result_backend=redis_url,
         task_serializer='json',
         accept_content=['json'],
         result_serializer='json',
@@ -22,7 +21,6 @@ def make_celery(app):
         enable_utc=True,
     )
 
-    # Enable the Flask app context in the Celery task
     class ContextTask(celery.Task):
         def __call__(self, *args, **kwargs):
             with app.app_context():
@@ -30,9 +28,3 @@ def make_celery(app):
 
     celery.Task = ContextTask
     return celery
-
-# Create the Flask app
-app = create_app()
-
-# Initialize Celery with the Flask app
-celery = make_celery(app)
