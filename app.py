@@ -16,7 +16,7 @@ from celery_app import make_celery
 
 # Initialize login manager
 login_manager = LoginManager()
-celery = make_celery(app)  # Initialize Celery with Flask app context
+celery = None  # Initialize Celery with Flask app context
 # Setup logging
 logging.basicConfig(filename='app.log', level=logging.DEBUG, 
                     format='%(asctime)s %(levelname)s: %(message)s',
@@ -47,7 +47,7 @@ def make_celery(app):
     redis_url = os.getenv('REDIS_URL')  # Heroku provides this automatically
 
     # Create the Celery application with the Flask app's name
-    celery = Celery(app.import_name, broker=redis_url)
+    celery = make_celery(app.import_name, broker=redis_url)
 
     # Update Celery config from the Flask app's config
     celery.conf.update(app.config)
