@@ -213,3 +213,5 @@
 2024-09-04 14:48:09,076 - auth - DEBUG - After request, Origin: http://localhost:3000
 2024-09-04 14:48:09 INFO: 127.0.0.1 - - [04/Sep/2024 14:48:09] "GET /auth/status HTTP/1.1" 200 -
 2024-09-04 14:48:09,076 - werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 14:48:09] "GET /auth/status HTTP/1.1" 200 -
+2024-09-05 23:41:20 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-09-05 23:41:20,213 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.

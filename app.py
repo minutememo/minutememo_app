@@ -16,7 +16,6 @@ from celery_factory import make_celery
 
 # Initialize login manager
 login_manager = LoginManager()
-celery = None  # Initialize Celery with Flask app context
 # Setup logging
 logging.basicConfig(filename='app.log', level=logging.DEBUG, 
                     format='%(asctime)s %(levelname)s: %(message)s',
@@ -41,6 +40,8 @@ logging.getLogger().addHandler(console_handler)
 
 migrate = Migrate()
 frontend_url = "https://staging.minutememo.io"  # Your custom domain
+
+celery = None
 
 
 def create_app():

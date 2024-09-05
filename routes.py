@@ -20,6 +20,7 @@ from extensions import db  # Import from extensions.py
 from flask_login import login_required, current_user
 from datetime import datetime, timedelta
 import traceback
+from app import celery
 
 
 main = Blueprint('main', __name__)
