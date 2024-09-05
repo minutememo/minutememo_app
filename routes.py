@@ -1,4 +1,5 @@
 #routes.py
+import celery
 from flask import Blueprint, render_template, request, jsonify, current_app, send_from_directory, redirect, url_for
 import os
 import tempfile
@@ -273,7 +274,7 @@ def concatenate():
                 [f for f in os.listdir(UPLOAD_FOLDER) if f.startswith(recording_id) and f.endswith('.webm')],
                 key=natural_sort_key
             )
-            
+
             if not chunk_files:
                 current_app.logger.error(f"No chunks found for recording_id: {recording_id}")
                 return jsonify({'status': 'error', 'message': 'No chunks found for the given recording_id'}), 400
@@ -304,87 +305,73 @@ def concatenate():
 
             current_app.logger.info(f"Chunk files found in GCS for recording_id {recording_id}: {chunk_files}")
 
-            # Generate signed URLs for the chunk files
-            signed_urls = []
-            for chunk in chunk_files:
-                blob = storage_client.bucket(BUCKET_NAME).blob(f"audio_recordings/{chunk}")
-                signed_url = blob.generate_signed_url(expiration=timedelta(minutes=30))
-                signed_urls.append(signed_url)
+            # Use Celery to handle the task asynchronously
+            task = concat_chunks_celery.delay(recording_id, chunk_files)
+            return jsonify({'status': 'success', 'task_id': task.id})
 
-            current_app.logger.info(f"Signed URLs generated for chunk files: {signed_urls}")
-
-            # Create the list file with signed URLs
-            list_file_path = os.path.join(tempfile.gettempdir(), f"{recording_id}_list.txt")
-            with open(list_file_path, 'w') as f:
-                for signed_url in signed_urls:
-                    f.write(f"file '{signed_url}'\n")
-
-            # Log the path to the list file in the temp directory
-            current_app.logger.info(f"List file with signed URLs created at: {list_file_path}")
-
-            final_output_gcs = f"gs://{BUCKET_NAME}/audio_recordings/{recording_id}.webm"
-
-        concatenation_status = 'success'
-
-        try:
-            if running_locally:
-                current_app.logger.info(f"Running FFmpeg locally with list file {list_file_path}")
-                # Local FFmpeg
-                (
-                    ffmpeg
-                    .input(list_file_path, format='concat', safe=0)
-                    .output(final_output, c='copy')
-                    .run()
-                )
-                current_app.logger.info(f"Local concatenation output at {final_output}")
-            else:
-                current_app.logger.info(f"Running FFmpeg in cloud with list file {list_file_path}")
-                # Use signed URLs for FFmpeg in cloud
-                (
-                    ffmpeg
-                    .input(list_file_path, format='concat', safe=0, allowed_protocols='file,https')
-                    .output(final_output_gcs, c='copy')
-                    .run()
-                )
-                current_app.logger.info(f"Cloud concatenation output at {final_output_gcs}")
-        except ffmpeg.Error as e:
-            current_app.logger.error(f"Error concatenating files with ffmpeg: {e.stderr.decode('utf-8')}")
-            concatenation_status = 'failed'
-            return jsonify({'status': 'error', 'message': f"Error concatenating files: {str(e)}"}), 500
-
-        # Convert to MP3
-        mp3_filepath = os.path.splitext(final_output if running_locally else final_output_gcs)[0] + '.mp3'
-        convert_to_mp3(final_output if running_locally else final_output_gcs, mp3_filepath)
-        current_app.logger.info(f"MP3 conversion successful. File saved at {mp3_filepath}")
-
-        if not running_locally:
-            try:
-                upload_file_to_gcs(mp3_filepath, f"audio_recordings/{os.path.basename(mp3_filepath)}")
-                current_app.logger.info(f"MP3 file uploaded to GCS at audio_recordings/{os.path.basename(mp3_filepath)}")
-            except Exception as e:
-                current_app.logger.error(f"Error uploading the file to GCS: {e}")
-                return jsonify({'status': 'error', 'message': f"Error uploading the file to GCS: {str(e)}"}), 500
-
-        # Update the recording in the database
-        try:
-            recording = Recording.query.filter_by(id=recording_id).first()
-            if recording:
-                recording.file_name = os.path.basename(mp3_filepath)
-                recording.concatenation_status = concatenation_status
-                db.session.commit()
-                current_app.logger.info(f"Database updated successfully for recording_id: {recording_id}")
-            else:
-                current_app.logger.error(f"Recording not found in the database for recording_id: {recording_id}")
-                return jsonify({'status': 'error', 'message': 'Recording not found in the database'}), 404
-        except Exception as e:
-            db.session.rollback()
-            current_app.logger.error(f"Error updating the database: {e}")
-            return jsonify({'status': 'error', 'message': f"Error updating the database: {str(e)}"}), 500
-
-        return jsonify({'status': 'success', 'file_url': f'/uploads/audio_recordings/{os.path.basename(mp3_filepath)}' if running_locally else f"gs://{BUCKET_NAME}/audio_recordings/{os.path.basename(mp3_filepath)}"})
     except Exception as e:
         current_app.logger.error(f"Error during concatenation: {e}")
         return jsonify({'status': 'error', 'message': str(e)}), 500
+
+
+@celery.task(bind=True)
+def concat_chunks_celery(self, recording_id, chunk_files):
+    """Celery task for concatenating chunks in the cloud using GCS and FFmpeg."""
+    try:
+        # Generate signed URLs for the chunk files
+        signed_urls = []
+        for chunk in chunk_files:
+            blob = storage_client.bucket(BUCKET_NAME).blob(f"audio_recordings/{chunk}")
+            signed_url = blob.generate_signed_url(expiration=timedelta(minutes=30))
+            signed_urls.append(signed_url)
+
+        current_app.logger.info(f"Signed URLs generated for chunk files: {signed_urls}")
+
+        # Create the list file with signed URLs
+        list_file_path = os.path.join(tempfile.gettempdir(), f"{recording_id}_list.txt")
+        with open(list_file_path, 'w') as f:
+            for signed_url in signed_urls:
+                f.write(f"file '{signed_url}'\n")
+
+        # Log the path to the list file in the temp directory
+        current_app.logger.info(f"List file with signed URLs created at: {list_file_path}")
+
+        final_output_gcs = f"gs://{BUCKET_NAME}/audio_recordings/{recording_id}.webm"
+
+        # Use FFmpeg to concatenate chunks in the cloud
+        (
+            ffmpeg
+            .input(list_file_path, format='concat', safe=0, allowed_protocols='file,https')
+            .output(final_output_gcs, c='copy')
+            .run()
+        )
+        current_app.logger.info(f"Cloud concatenation output at {final_output_gcs}")
+
+        # Convert to MP3
+        mp3_filepath = os.path.splitext(final_output_gcs)[0] + '.mp3'
+        convert_to_mp3(final_output_gcs, mp3_filepath)
+
+        # Upload MP3 to GCS
+        upload_file_to_gcs(mp3_filepath, f"audio_recordings/{os.path.basename(mp3_filepath)}")
+        current_app.logger.info(f"MP3 file uploaded to GCS at audio_recordings/{os.path.basename(mp3_filepath)}")
+
+        # Update the recording in the database
+        recording = Recording.query.filter_by(id=recording_id).first()
+        if recording:
+            recording.file_name = os.path.basename(mp3_filepath)
+            recording.concatenation_status = 'success'
+            db.session.commit()
+            current_app.logger.info(f"Database updated successfully for recording_id: {recording_id}")
+        else:
+            current_app.logger.error(f"Recording not found in the database for recording_id: {recording_id}")
+            return {'status': 'error', 'message': 'Recording not found in the database'}
+
+        return {'status': 'success', 'file_url': f"gs://{BUCKET_NAME}/audio_recordings/{os.path.basename(mp3_filepath)}"}
+
+    except Exception as e:
+        current_app.logger.error(f"Error concatenating chunks: {e}")
+        self.update_state(state='FAILURE', meta={'error': str(e)})
+        raise e
     
 def convert_to_mp3(webm_filepath, mp3_filepath):
     try:
