@@ -78,6 +78,7 @@ def create_app():
     login_manager.init_app(app)
     login_manager.login_view = 'auth.login'
 
+    global celery
     celery = make_celery(app)
 
 
