@@ -3,7 +3,7 @@ import os
 
 def make_celery(app):
     # Get the Redis URL from the environment variable set by Heroku
-    redis_url = os.getenv('REDIS_URL')  # Heroku provides this automatically
+    redis_url = os.getenv('REDIS_URL', 'redis://localhost:6379/0')  # Fallback to local Redis
 
     # Create the Celery application with the Flask app's name
     celery = Celery(app.import_name, broker=redis_url)

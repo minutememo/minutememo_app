@@ -12,11 +12,11 @@ import logging
 from extensions import *
 from models import *
 from auth import *
-from celery_app import Celery
+from celery_app import make_celery
 
 # Initialize login manager
 login_manager = LoginManager()
-
+celery = make_celery(app)  # Initialize Celery with Flask app context
 # Setup logging
 logging.basicConfig(filename='app.log', level=logging.DEBUG, 
                     format='%(asctime)s %(levelname)s: %(message)s',
