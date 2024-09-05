@@ -1,4 +1,5 @@
 from celery import Celery
+from app import create_app
 import os
 
 def make_celery(app):
@@ -29,3 +30,9 @@ def make_celery(app):
 
     celery.Task = ContextTask
     return celery
+
+# Create the Flask app
+app = create_app()
+
+# Initialize Celery with the Flask app
+celery = make_celery(app)
