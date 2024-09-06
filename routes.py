@@ -30,13 +30,31 @@ IS_LOCAL = os.getenv('FLASK_ENV') == 'development'
 
 
 # Load environment settings
+# Load environment settings
 ENVIRONMENT = os.getenv('FLASK_ENV', 'development')
-SERVICE_ACCOUNT_JSON = os.path.join(os.path.dirname(__file__), 'config/staging-minutememo-b158f267478b.json')
 BUCKET_NAME = 'staging-minutememo-audiofiles'
-storage_client = storage.Client.from_service_account_json(SERVICE_ACCOUNT_JSON) if ENVIRONMENT != 'development' else None
 UPLOAD_FOLDER = os.path.join('uploads', 'audio_recordings')
 
-BUCKET_NAME = 'staging-minutememo-audiofiles'
+if ENVIRONMENT != 'development':
+    # Use environment variables for Google Cloud credentials
+    credentials_info = {
+        "type": os.getenv('GOOGLE_CLOUD_TYPE'),
+        "project_id": os.getenv('GOOGLE_CLOUD_PROJECT_ID'),
+        "private_key_id": os.getenv('GOOGLE_CLOUD_PRIVATE_KEY_ID'),
+        "private_key": os.getenv('GOOGLE_CLOUD_PRIVATE_KEY').replace("\\n", "\n"),
+        "client_email": os.getenv('GOOGLE_CLOUD_CLIENT_EMAIL'),
+        "client_id": os.getenv('GOOGLE_CLOUD_CLIENT_ID'),
+        "auth_uri": os.getenv('GOOGLE_CLOUD_AUTH_URI'),
+        "token_uri": os.getenv('GOOGLE_CLOUD_TOKEN_URI'),
+        "auth_provider_x509_cert_url": os.getenv('GOOGLE_CLOUD_AUTH_PROVIDER_X509_CERT_URL'),
+        "client_x509_cert_url": os.getenv('GOOGLE_CLOUD_CLIENT_X509_CERT_URL')
+    }
+    # Initialize Google Cloud Storage client with credentials
+    credentials = service_account.Credentials.from_service_account_info(credentials_info)
+    storage_client = storage.Client(credentials=credentials)
+else:
+    # For development environment, set storage_client to None
+    storage_client = None
 
 def upload_file_to_gcs(local_path, gcs_path):
     """Uploads a file to Google Cloud Storage."""
