@@ -419,3 +419,14 @@
 2024-09-06 20:53:10 INFO: 127.0.0.1 - - [06/Sep/2024 20:53:10] "PATCH /api/recordings/f330c701-bc31-46d9-be66-d31a6eb816fb HTTP/1.1" 200 -
 2024-09-06 20:53:10,683 - werkzeug - INFO - 127.0.0.1 - - [06/Sep/2024 20:53:10] "PATCH /api/recordings/f330c701-bc31-46d9-be66-d31a6eb816fb HTTP/1.1" 200 -
 2024-09-06 20:53:10,683 - werkzeug - INFO - 127.0.0.1 - - [06/Sep/2024 20:53:10] "PATCH /api/recordings/f330c701-bc31-46d9-be66-d31a6eb816fb HTTP/1.1" 200 -
+2024-09-06 22:03:32 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-09-06 22:03:32,149 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-09-06 22:03:32 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-09-06 22:03:32,233 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-09-06 22:03:32,233 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-09-06 22:03:32 INFO: [33mPress CTRL+C to quit[0m
+2024-09-06 22:03:32,234 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-09-06 22:03:32,234 - werkzeug - INFO - [33mPress CTRL+C to quit[0m

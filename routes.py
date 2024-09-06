@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, request, jsonify, current_app, sen
 import os
 import tempfile
 from google.cloud import storage
+from google.oauth2 import service_account
 from dotenv import load_dotenv
 import boto3
 from botocore.client import Config
@@ -84,9 +85,6 @@ def list_gcs_chunks(bucket_name, recording_id):
     for blob in blobs:
         chunks.append(blob.name.split('/')[-1])  # Get only the filename
     return chunks
-
-
-
 
 @main.route('/generate-presigned-url', methods=['GET'])
 @cross_origin()  # Enable CORS for this route
