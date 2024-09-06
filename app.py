@@ -14,6 +14,9 @@ from models import *
 from auth import *
 from celery_factory import make_celery
 
+celery = None
+
+
 # Initialize login manager
 login_manager = LoginManager()
 # Setup logging
@@ -41,7 +44,6 @@ logging.getLogger().addHandler(console_handler)
 migrate = Migrate()
 frontend_url = "https://staging.minutememo.io"  # Your custom domain
 
-celery = None
 
 
 def create_app():
@@ -74,6 +76,9 @@ def create_app():
     app.config['SESSION_COOKIE_SECURE'] = env == 'production'  # True if using HTTPS in production
     app.config['SESSION_COOKIE_HTTPONLY'] = True
     app.config['SESSION_COOKIE_SAMESITE'] = 'None' if env == 'production' else 'Lax'  # 'None' for cross-domain, 'Lax' for local dev
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+    app.config['CELERY_BROKER_URL'] = os.getenv('REDIS_URL', 'redis://localhost:6379/0')  # Use your Redis URL here
+    app.config['CELERY_RESULT_BACKEND'] = os.getenv('REDIS_URL', 'redis://localhost:6379/0')  # Use the same or different backend if needed
     db.init_app(app)
     migrate.init_app(app, db)
     login_manager.init_app(app)
@@ -109,7 +114,6 @@ def create_app():
     # Register the main blueprint
     from routes import main as main_blueprint
     app.register_blueprint(main_blueprint)
-
     # Register the auth blueprint
     app.register_blueprint(auth, url_prefix='/auth')
 

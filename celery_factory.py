@@ -4,15 +4,23 @@ import os
 # Set Redis URL from environment variables with a fallback to localhost
 redis_url = os.getenv('REDIS_URL', 'redis://localhost:6379/0')
 
-# Initialize the Celery application
-app = Celery('minutememo', broker=redis_url, backend=redis_url)
+# Initialize a default Celery application
+def init_celery():
+    """
+    Initialize a basic Celery instance using Redis as the broker and backend.
+    
+    This is a standalone instance without Flask context.
+    """
+    celery = Celery('minutememo', broker=redis_url, backend=redis_url)
+    celery.conf.update(
+        task_serializer='json',
+        accept_content=['json'],
+        result_serializer='json',
+    )
+    return celery
 
-# Update Celery configuration
-app.conf.update(
-    task_serializer='json',
-    accept_content=['json'],
-    result_serializer='json',
-)
+# Call the init_celery function to create the app-level Celery instance
+celery_app = init_celery()
 
 def make_celery(flask_app):
     """
