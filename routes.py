@@ -105,27 +105,13 @@ def generate_presigned_url_route():
 
 
 def generate_presigned_url(file_name, file_type):
+    # Ensure BUCKET_NAME is fetched from environment variables
+    bucket_name = os.getenv('BUCKET_NAME')
+    
+    if not bucket_name:
+        raise ValueError("Bucket name not set in environment variables.")
+
     # Initialize the Google Cloud Storage client with credentials
-    storage_client = storage.Client(credentials=credentials)
-
-    # Specify the bucket name
-    bucket = storage_client.bucket(BUCKET_NAME)
-
-    # Create a blob object from the file name
-    blob = bucket.blob(f"audio_recordings/{file_name}")
-
-    # Set the expiration time for the presigned URL (15 minutes)
-    expiration_time = timedelta(minutes=15)
-
-    # Generate a presigned URL for the blob
-    url = blob.generate_signed_url(
-        version="v4",
-        expiration=expiration_time,
-        method="PUT",
-        content_type=file_type
-    )
-
-    return url
 
 
 def upload_file(file, file_key):
