@@ -117,6 +117,7 @@ def generate_presigned_url(file_name, file_type):
 def upload_file(file, file_key):
     try:
         file_key = secure_filename(f"audio_recordings/{file_key}")
+
         
         # Get the bucket
         bucket = storage_client.bucket(BUCKET_NAME)
