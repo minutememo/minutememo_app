@@ -14,7 +14,7 @@ def init_celery():
     
     This is a standalone instance without Flask context.
     """
-    celery = Celery('minutememo', broker=redis_url, backend=redis_url, include=['routes'])
+    celery = Celery('minutememo', broker=redis_url, backend=redis_url)
     celery.conf.update(
         task_serializer='json',
         accept_content=['json'],
@@ -22,6 +22,11 @@ def init_celery():
         timezone='UTC',
         enable_utc=True,
     )
+
+    # Import tasks after initializing celery to avoid circular import issues
+    from routes import concatenate_cloud  # Import specific tasks from routes
+    celery.tasks.register(concatenate_cloud)  # Register task manually
+
     return celery
 
 # Call the init_celery function to create the app-level Celery instance
