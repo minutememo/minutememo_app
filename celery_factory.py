@@ -1,8 +1,11 @@
 from celery import Celery
 import os
 
-# Set Redis URL from environment variables
-redis_url = os.getenv('REDIS_URL', 'redis://localhost:6379/0')
+# Set Redis URL from environment variables, using the primary Redis URL.
+redis_url = os.getenv('REDIS_URL')
+
+if not redis_url:
+    raise ValueError("REDIS_URL environment variable not set.")
 
 def init_celery():
     """
@@ -34,9 +37,6 @@ def make_celery(flask_app):
         A Celery instance configured with the Flask app context.
     """
     # Use the Redis URL for both broker and backend
-    redis_url = os.getenv('REDIS_URL', 'redis://localhost:6379/0')
-
-    # Create a new Celery instance with Redis as the broker and backend
     celery = Celery(flask_app.import_name, broker=redis_url, backend=redis_url)
 
     # Update the Celery configuration using the Flask app's config
