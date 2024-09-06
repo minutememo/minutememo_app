@@ -1,5 +1,4 @@
 from celery import Celery
-from routes import concatenate_cloud
 import os
 
 # Set Redis URL from environment variables, using the primary Redis URL.

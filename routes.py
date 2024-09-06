@@ -345,6 +345,7 @@ def concatenate_status(task_id):
 # Celery task for cloud-based concatenation
 @celery_app.task(bind=True)
 def concatenate_cloud(self, recording_id):
+    from flask import current_app  # Import current_app here to avoid circular imports
     try:
         # Cloud processing using GCS
         chunk_files = sorted(
