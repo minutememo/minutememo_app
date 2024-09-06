@@ -19,6 +19,7 @@ from extensions import db  # Import from extensions.py
 from flask_login import login_required, current_user
 from datetime import datetime, timedelta
 import traceback
+from app import credentials
 
 
 main = Blueprint('main', __name__)
@@ -98,10 +99,14 @@ def generate_presigned_url_route():
         logging.error(traceback.format_exc())
         return jsonify({"error": str(e)}), 500
 
+
 def generate_presigned_url(file_name, file_type):
-    # Initialize the Google Cloud Storage client
+    # Initialize the Google Cloud Storage client with credentials
+    storage_client = storage.Client(credentials=credentials)
+
+    # Specify the bucket name
     bucket = storage_client.bucket(BUCKET_NAME)
-    
+
     # Create a blob object from the file name
     blob = bucket.blob(f"audio_recordings/{file_name}")
 

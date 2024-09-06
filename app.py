@@ -13,6 +13,32 @@ from extensions import *
 from models import *
 from auth import *
 from celery_factory import make_celery
+from google.oauth2 import service_account
+
+
+# Load environment variables based on FLASK_ENV
+env = os.getenv('FLASK_ENV', 'development')
+if env == 'production':
+    load_dotenv('.env.production')
+else:
+    load_dotenv('.env.development')
+
+
+credentials_info = {
+    "type": os.getenv('GOOGLE_CLOUD_TYPE'),
+    "project_id": os.getenv('GOOGLE_CLOUD_PROJECT_ID'),
+    "private_key_id": os.getenv('GOOGLE_CLOUD_PRIVATE_KEY_ID'),
+    "private_key": os.getenv('GOOGLE_CLOUD_PRIVATE_KEY').replace("\\n", "\n"),
+    "client_email": os.getenv('GOOGLE_CLOUD_CLIENT_EMAIL'),
+    "client_id": os.getenv('GOOGLE_CLOUD_CLIENT_ID'),
+    "auth_uri": os.getenv('GOOGLE_CLOUD_AUTH_URI'),
+    "token_uri": os.getenv('GOOGLE_CLOUD_TOKEN_URI'),
+    "auth_provider_x509_cert_url": os.getenv('GOOGLE_CLOUD_AUTH_PROVIDER_X509_CERT_URL'),
+    "client_x509_cert_url": os.getenv('GOOGLE_CLOUD_CLIENT_X509_CERT_URL')
+}
+
+credentials = service_account.Credentials.from_service_account_info(credentials_info)
+
 
 celery = None
 
@@ -53,10 +79,6 @@ def create_app():
     env = os.getenv('FLASK_ENV', 'development')
 
     print(">>> To see if we update. <<<")
-    if env == 'production':
-        load_dotenv('.env.production')
-    else:
-        load_dotenv('.env.development')
 
     # Update CORS configuration based on environment
     frontend_url = os.getenv('FRONTEND_URL', 'http://localhost:3000')
@@ -76,17 +98,18 @@ def create_app():
     app.config['SESSION_COOKIE_SECURE'] = env == 'production'  # True if using HTTPS in production
     app.config['SESSION_COOKIE_HTTPONLY'] = True
     app.config['SESSION_COOKIE_SAMESITE'] = 'None' if env == 'production' else 'Lax'  # 'None' for cross-domain, 'Lax' for local dev
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
     app.config['CELERY_BROKER_URL'] = os.getenv('REDIS_URL', 'redis://localhost:6379/0')  # Use your Redis URL here
     app.config['CELERY_RESULT_BACKEND'] = os.getenv('REDIS_URL', 'redis://localhost:6379/0')  # Use the same or different backend if needed
+    
+    # Database initialization
     db.init_app(app)
     migrate.init_app(app, db)
     login_manager.init_app(app)
     login_manager.login_view = 'auth.login'
 
+    # Initialize Celery
     global celery
     celery = make_celery(app)
-
 
     @login_manager.user_loader
     def load_user(user_id):
