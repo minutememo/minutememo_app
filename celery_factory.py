@@ -1,4 +1,5 @@
 from celery import Celery
+from routes import concatenate_cloud
 import os
 
 # Set Redis URL from environment variables, using the primary Redis URL.
@@ -13,7 +14,7 @@ def init_celery():
     
     This is a standalone instance without Flask context.
     """
-    celery = Celery('minutememo', broker=redis_url, backend=redis_url)
+    celery = Celery('minutememo', broker=redis_url, backend=redis_url, include=['routes'])
     celery.conf.update(
         task_serializer='json',
         accept_content=['json'],
