@@ -58,24 +58,29 @@ def make_celery(flask_app):
 
 # Example Celery task for concatenation
 @celery_app.task(bind=True)
-def process_concatenation(self, recording_id):
+def process_concatenation(self, recording_id, signed_urls, output_file):
     """
-    This task will be used for cloud-based audio concatenation.
+    This task handles cloud-based audio concatenation using FFmpeg.
+
+    Args:
+        recording_id (str): The ID of the recording being concatenated.
+        signed_urls (list): A list of signed URLs for the chunks.
+        output_file (str): The path for the concatenated output in GCS.
+
+    Returns:
+        dict: Status of the concatenation process.
     """
 
     try:
-        # Add code here to handle cloud-based concatenation using FFmpeg, GCS, etc.
-        # You would retrieve chunks from GCS, concatenate them using FFmpeg, 
-        # and then upload the final file back to GCS.
+        # Placeholder for actual concatenation logic using FFmpeg
         print(f"Processing concatenation for recording ID: {recording_id}")
         
-        # Placeholder for actual logic
-        # Call your function here to handle concatenation
-        result = run_concatenation_cloud(recording_id)
+        # Run the concatenation logic (update this with actual code)
+        result = run_concatenation_cloud(signed_urls, output_file)
 
         # Once done, return result or success status
         return {'status': 'success', 'result': result}
     except Exception as e:
-        # Handle exceptions
+        # Handle exceptions and retry up to 3 times
         self.retry(exc=e, countdown=60, max_retries=3)
         return {'status': 'failed', 'error': str(e)}

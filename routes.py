@@ -23,9 +23,6 @@ from app import credentials
 from celery.result import AsyncResult
 from celery_factory import celery_app
 
-
-
-
 main = Blueprint('main', __name__)
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
@@ -118,7 +115,7 @@ def upload_file(file, file_key):
     try:
         file_key = secure_filename(f"audio_recordings/{file_key}")
 
-        
+
         # Get the bucket
         bucket = storage_client.bucket(BUCKET_NAME)
         
