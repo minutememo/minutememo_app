@@ -98,9 +98,9 @@ def create_app():
     app.config['SESSION_COOKIE_SECURE'] = env == 'production'  # True if using HTTPS in production
     app.config['SESSION_COOKIE_HTTPONLY'] = True
     app.config['SESSION_COOKIE_SAMESITE'] = 'None' if env == 'production' else 'Lax'  # 'None' for cross-domain, 'Lax' for local dev
-    app.config['CELERY_BROKER_URL'] = os.getenv('REDIS_URL', 'redis://localhost:6379/0')  # Use your Redis URL here
-    app.config['CELERY_RESULT_BACKEND'] = os.getenv('REDIS_URL', 'redis://localhost:6379/0')  # Use the same or different backend if needed
-    
+    app.config['CELERY_BROKER_URL'] = os.getenv('REDIS_URL')  # Ensure Redis URL is set in the environment
+    app.config['CELERY_RESULT_BACKEND'] = os.getenv('REDIS_URL')
+        
     # Database initialization
     db.init_app(app)
     migrate.init_app(app, db)
