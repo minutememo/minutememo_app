@@ -4,7 +4,6 @@ import os
 # Set Redis URL from environment variables with a fallback to localhost
 redis_url = os.getenv('REDIS_URL', 'redis://localhost:6379/0')
 
-# Initialize a default Celery application
 def init_celery():
     """
     Initialize a basic Celery instance using Redis as the broker and backend.
@@ -16,6 +15,8 @@ def init_celery():
         task_serializer='json',
         accept_content=['json'],
         result_serializer='json',
+        timezone='UTC',
+        enable_utc=True,
     )
     return celery
 
@@ -32,7 +33,7 @@ def make_celery(flask_app):
     Returns:
         A Celery instance configured with the Flask app context.
     """
-    # Use the same Redis URL for both broker and backend
+    # Use the Redis URL for both broker and backend
     redis_url = os.getenv('REDIS_URL', 'redis://localhost:6379/0')
 
     # Create a new Celery instance with Redis as the broker and backend
@@ -54,3 +55,27 @@ def make_celery(flask_app):
     celery.Task = ContextTask
 
     return celery
+
+# Example Celery task for concatenation
+@celery_app.task(bind=True)
+def process_concatenation(self, recording_id):
+    """
+    This task will be used for cloud-based audio concatenation.
+    """
+
+    try:
+        # Add code here to handle cloud-based concatenation using FFmpeg, GCS, etc.
+        # You would retrieve chunks from GCS, concatenate them using FFmpeg, 
+        # and then upload the final file back to GCS.
+        print(f"Processing concatenation for recording ID: {recording_id}")
+        
+        # Placeholder for actual logic
+        # Call your function here to handle concatenation
+        result = run_concatenation_cloud(recording_id)
+
+        # Once done, return result or success status
+        return {'status': 'success', 'result': result}
+    except Exception as e:
+        # Handle exceptions
+        self.retry(exc=e, countdown=60, max_retries=3)
+        return {'status': 'failed', 'error': str(e)}
