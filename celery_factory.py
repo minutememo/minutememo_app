@@ -1,7 +1,7 @@
 from celery import Celery
 import os
 
-# Set Redis URL from environment variables with a fallback to localhost
+# Set Redis URL from environment variables
 redis_url = os.getenv('REDIS_URL', 'redis://localhost:6379/0')
 
 def init_celery():
@@ -11,18 +11,6 @@ def init_celery():
     This is a standalone instance without Flask context.
     """
     celery = Celery('minutememo', broker=redis_url, backend=redis_url)
-
-    # Check if Redis URL is using SSL and configure accordingly
-    if redis_url.startswith('rediss://'):
-        celery.conf.update(
-            broker_use_ssl={
-                'ssl_cert_reqs': 'CERT_NONE'  # Adjust this to use 'CERT_REQUIRED' if you have valid SSL certs
-            },
-            result_backend_use_ssl={
-                'ssl_cert_reqs': 'CERT_NONE'  # Same adjustment for result backend if needed
-            }
-        )
-
     celery.conf.update(
         task_serializer='json',
         accept_content=['json'],
@@ -50,17 +38,6 @@ def make_celery(flask_app):
 
     # Create a new Celery instance with Redis as the broker and backend
     celery = Celery(flask_app.import_name, broker=redis_url, backend=redis_url)
-
-    # Check if Redis URL is using SSL and configure accordingly
-    if redis_url.startswith('rediss://'):
-        celery.conf.update(
-            broker_use_ssl={
-                'ssl_cert_reqs': 'CERT_NONE'  # Adjust this to use 'CERT_REQUIRED' if you have valid SSL certs
-            },
-            result_backend_use_ssl={
-                'ssl_cert_reqs': 'CERT_NONE'  # Same adjustment for result backend if needed
-            }
-        )
 
     # Update the Celery configuration using the Flask app's config
     celery.conf.update(flask_app.config)
