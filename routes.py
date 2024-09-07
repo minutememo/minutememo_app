@@ -345,69 +345,71 @@ def concatenate_status(task_id):
 # Celery task for cloud-based concatenation
 @celery_app.task(bind=True)
 def concatenate_cloud(self, recording_id):
-    from flask import current_app  # Import current_app here to avoid circular imports
-    try:
-        # Cloud processing using GCS
-        chunk_files = sorted(
-            list_gcs_chunks(BUCKET_NAME, recording_id),
-            key=natural_sort_key
-        )
-
-        if not chunk_files:
-            current_app.logger.error(f"No chunks found for recording_id: {recording_id}")
-            return {'status': 'error', 'message': 'No chunks found for the given recording_id'}
-
-        current_app.logger.info(f"Chunk files found in GCS for recording_id {recording_id}: {chunk_files}")
-
-        # Generate signed URLs for the chunk files
-        signed_urls = []
-        for chunk in chunk_files:
-            blob = storage_client.bucket(BUCKET_NAME).blob(f"audio_recordings/{chunk}")
-            signed_url = blob.generate_signed_url(expiration=timedelta(minutes=30))
-            signed_urls.append(signed_url)
-
-        current_app.logger.info(f"Signed URLs generated for chunk files: {signed_urls}")
-
-        # Create the list file with signed URLs
-        list_file_path = os.path.join(tempfile.gettempdir(), f"{recording_id}_list.txt")
-        with open(list_file_path, 'w') as f:
-            for signed_url in signed_urls:
-                f.write(f"file '{signed_url}'\n")
-
-        final_output_gcs = f"gs://{BUCKET_NAME}/audio_recordings/{recording_id}.webm"
-
+    from app import create_app  # Ensure app is created to push the context
+    app = create_app()  # This creates an application instance
+    with app.app_context():  # Push the application context
         try:
-            current_app.logger.info(f"Running FFmpeg in cloud with list file {list_file_path}")
-            # Use signed URLs for FFmpeg in cloud
-            (
-                ffmpeg
-                .input(list_file_path, format='concat', safe=0, allowed_protocols='file,https')
-                .output(final_output_gcs, c='copy')
-                .run()
+            # Cloud processing using GCS
+            chunk_files = sorted(
+                list_gcs_chunks(BUCKET_NAME, recording_id),
+                key=natural_sort_key
             )
-            current_app.logger.info(f"Cloud concatenation output at {final_output_gcs}")
-        except ffmpeg.Error as e:
-            current_app.logger.error(f"Error concatenating files with ffmpeg: {e.stderr.decode('utf-8')}")
-            return {'status': 'error', 'message': f"Error concatenating files: {str(e)}"}
 
-        # Convert to MP3
-        mp3_filepath = os.path.splitext(final_output_gcs)[0] + '.mp3'
-        convert_to_mp3(final_output_gcs, mp3_filepath)
-        current_app.logger.info(f"MP3 conversion successful. File saved at {mp3_filepath}")
+            if not chunk_files:
+                current_app.logger.error(f"No chunks found for recording_id: {recording_id}")
+                return {'status': 'error', 'message': 'No chunks found for the given recording_id'}
 
-        # Upload MP3 to GCS
-        try:
-            upload_file_to_gcs(mp3_filepath, f"audio_recordings/{os.path.basename(mp3_filepath)}")
-            current_app.logger.info(f"MP3 file uploaded to GCS at audio_recordings/{os.path.basename(mp3_filepath)}")
+            current_app.logger.info(f"Chunk files found in GCS for recording_id {recording_id}: {chunk_files}")
+
+            # Generate signed URLs for the chunk files
+            signed_urls = []
+            for chunk in chunk_files:
+                blob = storage_client.bucket(BUCKET_NAME).blob(f"audio_recordings/{chunk}")
+                signed_url = blob.generate_signed_url(expiration=timedelta(minutes=30))
+                signed_urls.append(signed_url)
+
+            current_app.logger.info(f"Signed URLs generated for chunk files: {signed_urls}")
+
+            # Create the list file with signed URLs
+            list_file_path = os.path.join(tempfile.gettempdir(), f"{recording_id}_list.txt")
+            with open(list_file_path, 'w') as f:
+                for signed_url in signed_urls:
+                    f.write(f"file '{signed_url}'\n")
+
+            final_output_gcs = f"gs://{BUCKET_NAME}/audio_recordings/{recording_id}.webm"
+
+            try:
+                current_app.logger.info(f"Running FFmpeg in cloud with list file {list_file_path}")
+                # Use signed URLs for FFmpeg in cloud
+                (
+                    ffmpeg
+                    .input(list_file_path, format='concat', safe=0, allowed_protocols='file,https')
+                    .output(final_output_gcs, c='copy')
+                    .run()
+                )
+                current_app.logger.info(f"Cloud concatenation output at {final_output_gcs}")
+            except ffmpeg.Error as e:
+                current_app.logger.error(f"Error concatenating files with ffmpeg: {e.stderr.decode('utf-8')}")
+                return {'status': 'error', 'message': f"Error concatenating files: {str(e)}"}
+
+            # Convert to MP3
+            mp3_filepath = os.path.splitext(final_output_gcs)[0] + '.mp3'
+            convert_to_mp3(final_output_gcs, mp3_filepath)
+            current_app.logger.info(f"MP3 conversion successful. File saved at {mp3_filepath}")
+
+            # Upload MP3 to GCS
+            try:
+                upload_file_to_gcs(mp3_filepath, f"audio_recordings/{os.path.basename(mp3_filepath)}")
+                current_app.logger.info(f"MP3 file uploaded to GCS at audio_recordings/{os.path.basename(mp3_filepath)}")
+            except Exception as e:
+                current_app.logger.error(f"Error uploading the file to GCS: {e}")
+                return {'status': 'error', 'message': f"Error uploading the file to GCS: {str(e)}"}
+
+            return {'status': 'success', 'file_url': f"gs://{BUCKET_NAME}/audio_recordings/{os.path.basename(mp3_filepath)}"}
+
         except Exception as e:
-            current_app.logger.error(f"Error uploading the file to GCS: {e}")
-            return {'status': 'error', 'message': f"Error uploading the file to GCS: {str(e)}"}
-
-        return {'status': 'success', 'file_url': f"gs://{BUCKET_NAME}/audio_recordings/{os.path.basename(mp3_filepath)}"}
-
-    except Exception as e:
-        current_app.logger.error(f"Error during cloud concatenation: {e}")
-        return {'status': 'error', 'message': str(e)}
+            current_app.logger.error(f"Error during cloud concatenation: {e}")
+            return {'status': 'error', 'message': str(e)}
     
 def convert_to_mp3(webm_filepath, mp3_filepath):
     try:
