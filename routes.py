@@ -346,6 +346,7 @@ def concatenate_status(task_id):
 @celery_app.task(bind=True)
 def concatenate_cloud(self, recording_id):
     from app import create_app  # Ensure app is created to push the context
+    import requests
     app = create_app()  # This creates an application instance
     with app.app_context():  # Push the application context
         try:
@@ -361,29 +362,36 @@ def concatenate_cloud(self, recording_id):
 
             current_app.logger.info(f"Chunk files found in GCS for recording_id {recording_id}: {chunk_files}")
 
-            # Generate signed URLs for the chunk files
-            signed_urls = []
-            for chunk in chunk_files:
+            # Download chunk files locally
+            temp_dir = tempfile.mkdtemp()
+            local_chunk_paths = []
+            for idx, chunk in enumerate(chunk_files):
                 blob = storage_client.bucket(BUCKET_NAME).blob(f"audio_recordings/{chunk}")
                 signed_url = blob.generate_signed_url(expiration=timedelta(minutes=30))
-                signed_urls.append(signed_url)
 
-            current_app.logger.info(f"Signed URLs generated for chunk files: {signed_urls}")
+                # Download the file
+                local_path = os.path.join(temp_dir, f"chunk_{idx}.webm")
+                response = requests.get(signed_url)
+                with open(local_path, 'wb') as f:
+                    f.write(response.content)
+                local_chunk_paths.append(local_path)
 
-            # Create the list file with signed URLs
-            list_file_path = os.path.join(tempfile.gettempdir(), f"{recording_id}_list.txt")
+            current_app.logger.info(f"Downloaded chunk files to: {local_chunk_paths}")
+
+            # Create the list file for FFmpeg
+            list_file_path = os.path.join(temp_dir, f"{recording_id}_list.txt")
             with open(list_file_path, 'w') as f:
-                for signed_url in signed_urls:
-                    f.write(f"file '{signed_url}'\n")
+                for local_path in local_chunk_paths:
+                    f.write(f"file '{local_path}'\n")
 
             final_output_gcs = f"gs://{BUCKET_NAME}/audio_recordings/{recording_id}.webm"
 
             try:
                 current_app.logger.info(f"Running FFmpeg in cloud with list file {list_file_path}")
-                # Use signed URLs for FFmpeg in cloud
+                # Use local files for FFmpeg
                 (
                     ffmpeg
-                    .input(list_file_path, format='concat', safe=0)  # Removed 'allowed_protocols' as FFmpeg doesn't support it
+                    .input(list_file_path, format='concat', safe=0)
                     .output(final_output_gcs, c='copy')
                     .run()
                 )
@@ -411,18 +419,9 @@ def concatenate_cloud(self, recording_id):
         except Exception as e:
             current_app.logger.error(f"Error during cloud concatenation: {e}")
             return {'status': 'error', 'message': str(e)}
-    
-def convert_to_mp3(webm_filepath, mp3_filepath):
-    try:
-        (
-            ffmpeg
-            .input(webm_filepath)
-            .output(mp3_filepath, codec='libmp3lame', qscale=2)
-            .run()
-        )
-        print(f"Conversion successful: {mp3_filepath}")
-    except ffmpeg.Error as e:
-        print(f"Error converting file: {e}")
+        finally:
+            # Clean up local files
+            shutil.rmtree(temp_dir)
 
 @main.route('/api/meetingsessions', methods=['GET', 'POST'])
 @login_required
