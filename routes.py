@@ -383,14 +383,15 @@ def concatenate_cloud(self, recording_id):
                 # Use signed URLs for FFmpeg in cloud
                 (
                     ffmpeg
-                    .input(list_file_path, format='concat', safe=0, allowed_protocols='file,https')
+                    .input(list_file_path, format='concat', safe=0)  # Removed 'allowed_protocols' as FFmpeg doesn't support it
                     .output(final_output_gcs, c='copy')
                     .run()
                 )
                 current_app.logger.info(f"Cloud concatenation output at {final_output_gcs}")
             except ffmpeg.Error as e:
-                current_app.logger.error(f"Error concatenating files with ffmpeg: {e.stderr.decode('utf-8')}")
-                return {'status': 'error', 'message': f"Error concatenating files: {str(e)}"}
+                stderr_output = e.stderr.decode('utf-8') if e.stderr else 'No error output'
+                current_app.logger.error(f"Error concatenating files with ffmpeg: {stderr_output}")
+                return {'status': 'error', 'message': f"Error concatenating files: {stderr_output}"}
 
             # Convert to MP3
             mp3_filepath = os.path.splitext(final_output_gcs)[0] + '.mp3'
