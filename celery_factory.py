@@ -22,6 +22,8 @@ def init_celery():
         enable_utc=True,
     )
 
+    # Autodiscover tasks to ensure Celery knows about the tasks in routes
+    celery.autodiscover_tasks(['routes'])
 
     return celery
 
@@ -72,15 +74,12 @@ def process_concatenation(self, recording_id, signed_urls, output_file):
     Returns:
         dict: Status of the concatenation process.
     """
-
     try:
         # Placeholder for actual concatenation logic using FFmpeg
         print(f"Processing concatenation for recording ID: {recording_id}")
         
-        # Move the import inside the function to avoid circular import
-        from routes import run_concatenation_cloud
-        
         # Run the concatenation logic (update this with actual code)
+        from routes import run_concatenation_cloud
         result = run_concatenation_cloud(signed_urls, output_file)
 
         # Once done, return result or success status

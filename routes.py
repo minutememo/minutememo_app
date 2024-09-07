@@ -408,7 +408,7 @@ def concatenate_cloud(self, recording_id):
     except Exception as e:
         current_app.logger.error(f"Error during cloud concatenation: {e}")
         return {'status': 'error', 'message': str(e)}
-
+    
 def convert_to_mp3(webm_filepath, mp3_filepath):
     try:
         (
