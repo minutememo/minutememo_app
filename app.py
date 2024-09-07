@@ -12,7 +12,6 @@ import logging
 from extensions import *
 from models import *
 from auth import *
-from celery_factory import make_celery
 from google.oauth2 import service_account
 
 
@@ -38,9 +37,6 @@ credentials_info = {
 }
 
 credentials = service_account.Credentials.from_service_account_info(credentials_info)
-
-
-celery = None
 
 
 # Initialize login manager
@@ -71,81 +67,64 @@ migrate = Migrate()
 frontend_url = "https://staging.minutememo.io"  # Your custom domain
 
 
-
 def create_app():
     app = Flask(__name__)
 
-    # Load environment variables
+    # Load environment variables and configure the app
     env = os.getenv('FLASK_ENV', 'development')
-
-    print(">>> To see if we update. <<<")
-
-    # Update CORS configuration based on environment
     frontend_url = os.getenv('FRONTEND_URL', 'http://localhost:3000')
     CORS(app, supports_credentials=True, resources={r"/*": {"origins": frontend_url}})
 
-    # Configure app
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL').replace("postgres://", "postgresql://")
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-    # Set the SECRET_KEY from the environment variable, with a fallback for development
-    app.secret_key = os.getenv('SECRET_KEY', 'supersecretkey')  # In production, replace 'supersecretkey' with a securely generated key
-
-    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)  # Session lifetime
+    app.secret_key = os.getenv('SECRET_KEY', 'supersecretkey')
+    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)
     app.config['REMEMBER_COOKIE_DURATION'] = timedelta(days=7)
-    app.config['REMEMBER_COOKIE_SECURE'] = env == 'production'  # True if using HTTPS in production
+    app.config['REMEMBER_COOKIE_SECURE'] = env == 'production'
     app.config['REMEMBER_COOKIE_HTTPONLY'] = True
-    app.config['SESSION_COOKIE_SECURE'] = env == 'production'  # True if using HTTPS in production
+    app.config['SESSION_COOKIE_SECURE'] = env == 'production'
     app.config['SESSION_COOKIE_HTTPONLY'] = True
-    app.config['SESSION_COOKIE_SAMESITE'] = 'None' if env == 'production' else 'Lax'  # 'None' for cross-domain, 'Lax' for local dev
-    app.config['CELERY_BROKER_URL'] = os.getenv('REDIS_URL')  # Ensure Redis URL is set in the environment
+    app.config['SESSION_COOKIE_SAMESITE'] = 'None' if env == 'production' else 'Lax'
+    app.config['CELERY_BROKER_URL'] = os.getenv('REDIS_URL')
     app.config['CELERY_RESULT_BACKEND'] = os.getenv('REDIS_URL')
-        
-    # Database initialization
+
+    # Database and login setup
     db.init_app(app)
     migrate.init_app(app, db)
     login_manager.init_app(app)
     login_manager.login_view = 'auth.login'
 
-    # Initialize Celery
+    # Initialize Celery here to avoid circular imports
+    from celery_factory import make_celery
     global celery
     celery = make_celery(app)
 
     @login_manager.user_loader
     def load_user(user_id):
-        logger.debug('Loading user with ID: %s', user_id)
         return User.query.get(int(user_id))
 
     @app.before_request
     def make_session_permanent():
         session.permanent = True
-        session.modified = True  # Refresh session expiration time on each request
+        session.modified = True
         g.user = current_user
-        if current_user.is_authenticated:
-            logger.debug('Session for user %s is active and authenticated', current_user.email)
-        else:
-            logger.debug('No active session found, user is not authenticated')
 
     @app.route('/auth/status')
     def status():
         if current_user.is_authenticated:
-            logger.debug('Status check: user %s is authenticated', current_user.email)
             return jsonify(logged_in=True, user={'email': current_user.email})
-        logger.debug('Status check: user is not authenticated')
         return jsonify(logged_in=False)
 
-    # Register the main blueprint
+    # Register blueprints
     from routes import main as main_blueprint
     app.register_blueprint(main_blueprint)
-    # Register the auth blueprint
     app.register_blueprint(auth, url_prefix='/auth')
 
-    # Simple test endpoint
     @app.route('/test', methods=['GET'])
     def test():
         logging.info('Test endpoint hit')
         return jsonify({"message": "Test endpoint is working"}), 200
-
+    
     @app.after_request
     def after_request(response):
         origin = request.headers.get('Origin')
@@ -161,6 +140,8 @@ def create_app():
         response.headers['Access-Control-Allow-Methods'] = 'GET,POST,PUT,DELETE,OPTIONS,PATCH'
         
         return response
+
+    
 
     return app
 
@@ -190,7 +171,7 @@ def concatenate_chunks(recording_id):
 
     return output_file
 
-# Route to handle chunk concatenation
+    # Route to handle chunk concatenation
     @app.route('/concatenate', methods=['POST'])
     def concatenate():
         data = request.get_json()

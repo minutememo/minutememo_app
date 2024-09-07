@@ -22,10 +22,6 @@ def init_celery():
         enable_utc=True,
     )
 
-    # Import tasks after initializing celery to avoid circular import issues
-    from routes import concatenate_cloud  # Import specific tasks from routes
-    celery.tasks.register(concatenate_cloud)  # Register task manually
-
     return celery
 
 # Call the init_celery function to create the app-level Celery instance
@@ -79,6 +75,9 @@ def process_concatenation(self, recording_id, signed_urls, output_file):
     try:
         # Placeholder for actual concatenation logic using FFmpeg
         print(f"Processing concatenation for recording ID: {recording_id}")
+        
+        # Move the import inside the function to avoid circular import
+        from routes import run_concatenation_cloud
         
         # Run the concatenation logic (update this with actual code)
         result = run_concatenation_cloud(signed_urls, output_file)
