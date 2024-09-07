@@ -22,7 +22,7 @@ from datetime import datetime, timedelta
 import traceback
 from app import credentials
 from celery.result import AsyncResult
-from celery_factory import celery_app
+from celery_factory import celery_app  # Import the initialized Celery app
 
 main = Blueprint('main', __name__)
 logger = logging.getLogger(__name__)

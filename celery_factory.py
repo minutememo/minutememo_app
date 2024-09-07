@@ -22,6 +22,7 @@ def init_celery():
         enable_utc=True,
     )
 
+
     return celery
 
 # Call the init_celery function to create the app-level Celery instance
