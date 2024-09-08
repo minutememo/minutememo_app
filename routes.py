@@ -403,7 +403,7 @@ def concatenate_cloud(self, recording_id):
                 return {'status': 'error', 'message': f"Error concatenating files: {stderr_output}"}
 
             # Upload the concatenated WebM file to GCS
-            final_output_gcs = f"audio_recordings/{recording_id}.webm"
+            final_output_gcs = f"{recording_id}.webm"
             try:
                 upload_file_to_gcs(local_output_path, final_output_gcs)
                 current_app.logger.info(f"WebM file uploaded to GCS at {final_output_gcs}")
