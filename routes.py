@@ -350,6 +350,8 @@ def concatenate_cloud(self, recording_id):
     app = create_app()  # This creates an application instance
     with app.app_context():  # Push the application context
         try:
+            current_app.logger.info(f"Starting cloud concatenation task for recording_id: {recording_id}")
+
             # Cloud processing using GCS
             chunk_files = sorted(
                 list_gcs_chunks(BUCKET_NAME, recording_id),
@@ -370,14 +372,19 @@ def concatenate_cloud(self, recording_id):
                 blob = storage_client.bucket(BUCKET_NAME).blob(f"audio_recordings/{chunk}")
                 signed_url = blob.generate_signed_url(expiration=timedelta(minutes=30))
 
+                # Log signed URL for debugging
+                current_app.logger.info(f"Generated signed URL for chunk {idx}: {signed_url}")
+
                 # Download the file
                 local_path = os.path.join(temp_dir, f"chunk_{idx}.webm")
                 response = requests.get(signed_url)
                 with open(local_path, 'wb') as f:
                     f.write(response.content)
                 local_chunk_paths.append(local_path)
+                current_app.logger.info(f"Downloaded chunk {idx} to {local_path}")
 
-            current_app.logger.info(f"Downloaded chunk files to: {local_chunk_paths}")
+            # Log all local chunk paths
+            current_app.logger.info(f"Downloaded chunk files: {local_chunk_paths}")
 
             # Create the list file for FFmpeg
             list_file_path = os.path.join(temp_dir, f"{recording_id}_list.txt")
@@ -385,11 +392,13 @@ def concatenate_cloud(self, recording_id):
                 for local_path in local_chunk_paths:
                     f.write(f"file '{local_path}'\n")
 
+            current_app.logger.info(f"Created FFmpeg list file at {list_file_path}")
+
             # Create a local output path for the concatenated file
             local_output_path = os.path.join(temp_dir, f"{recording_id}.webm")
 
             try:
-                current_app.logger.info(f"Running FFmpeg in cloud with list file {list_file_path}")
+                current_app.logger.info(f"Running FFmpeg concatenation for {recording_id}")
                 # Use local files for FFmpeg
                 (
                     ffmpeg
@@ -407,6 +416,7 @@ def concatenate_cloud(self, recording_id):
             # Upload the concatenated WebM file to GCS
             final_output_gcs = f"audio_recordings/{recording_id}.webm"
             try:
+                current_app.logger.info(f"Uploading WebM file to GCS at {final_output_gcs}")
                 upload_file_to_gcs(local_output_path, final_output_gcs)
                 current_app.logger.info(f"WebM file uploaded to GCS at {final_output_gcs}")
             except Exception as e:
@@ -435,6 +445,7 @@ def concatenate_cloud(self, recording_id):
             # Upload the MP3 file to GCS
             final_mp3_output_gcs = f"audio_recordings/{recording_id}.mp3"
             try:
+                current_app.logger.info(f"Uploading MP3 file to GCS at {final_mp3_output_gcs}")
                 upload_file_to_gcs(mp3_output_path, final_mp3_output_gcs)
                 current_app.logger.info(f"MP3 file uploaded to GCS at {final_mp3_output_gcs}")
             except Exception as e:
@@ -443,6 +454,7 @@ def concatenate_cloud(self, recording_id):
                 return {'status': 'error', 'message': f"Error uploading the MP3 file to GCS: {str(e)}"}
 
             # Update concatenation status to success
+            current_app.logger.info(f"Updating concatenation status to success for recording_id: {recording_id}")
             update_concatenation_status(recording_id, "success")
             current_app.logger.info(f"Concatenation status updated to success for recording_id: {recording_id}")
 
@@ -458,7 +470,9 @@ def concatenate_cloud(self, recording_id):
             return {'status': 'error', 'message': str(e)}
         finally:
             # Clean up local files
+            current_app.logger.info(f"Cleaning up local files for recording_id: {recording_id}")
             shutil.rmtree(temp_dir)
+            current_app.logger.info(f"Cleanup completed for recording_id: {recording_id}")
 
 
 @main.route('/api/meetingsessions', methods=['GET', 'POST'])
