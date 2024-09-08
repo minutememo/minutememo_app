@@ -171,7 +171,20 @@ def home_content():
 def settings_content():
     return render_template('settings_content.html')
 
+def update_concatenation_status(recording_id, status):
+    try:
+        # Assuming Recording is the model where you store status
+        recording = db.session.query(Recording).filter_by(id=recording_id).first()
 
+        if recording:
+            recording.status = status
+            db.session.commit()
+            current_app.logger.info(f"Concatenation status for {recording_id} updated to {status}")
+        else:
+            current_app.logger.error(f"Recording with ID {recording_id} not found")
+    except Exception as e:
+        db.session.rollback()  # Rollback in case of error
+        current_app.logger.error(f"Failed to update status for recording {recording_id}: {str(e)}")
 
 @main.route('/api/recordings/<string:recording_id>', methods=['PATCH'])
 @login_required
@@ -443,7 +456,7 @@ def concatenate_cloud(self, recording_id):
                 return {'status': 'error', 'message': f"Error converting to MP3: {stderr_output}"}
 
             # Upload the MP3 file to GCS
-            final_mp3_output_gcs = f"audio_recordings/{recording_id}.mp3"
+            final_mp3_output_gcs = f"{recording_id}.mp3"
             try:
                 current_app.logger.info(f"Uploading MP3 file to GCS at {final_mp3_output_gcs}")
                 upload_file_to_gcs(mp3_output_path, final_mp3_output_gcs)
