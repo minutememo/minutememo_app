@@ -343,7 +343,7 @@ def concatenate_status(task_id):
     return jsonify(response)
 
 # Celery task for cloud-based concatenation
-@celery_app.task(bind=True)
+@c@celery_app.task(bind=True)
 def concatenate_cloud(self, recording_id):
     from app import create_app  # Ensure app is created to push the context
     import requests
@@ -403,7 +403,7 @@ def concatenate_cloud(self, recording_id):
                 return {'status': 'error', 'message': f"Error concatenating files: {stderr_output}"}
 
             # Upload the concatenated WebM file to GCS
-            final_output_gcs = f"{recording_id}.webm"
+            final_output_gcs = f"audio_recordings/{recording_id}.webm"
             try:
                 upload_file_to_gcs(local_output_path, final_output_gcs)
                 current_app.logger.info(f"WebM file uploaded to GCS at {final_output_gcs}")
@@ -411,7 +411,37 @@ def concatenate_cloud(self, recording_id):
                 current_app.logger.error(f"Error uploading the file to GCS: {e}")
                 return {'status': 'error', 'message': f"Error uploading the file to GCS: {str(e)}"}
 
-            return {'status': 'success', 'file_url': f"gs://{BUCKET_NAME}/{final_output_gcs}"}
+            # Now convert the WebM file to MP3
+            mp3_output_path = os.path.join(temp_dir, f"{recording_id}.mp3")
+            try:
+                current_app.logger.info(f"Converting {local_output_path} to MP3")
+                # Convert to MP3 using FFmpeg
+                (
+                    ffmpeg
+                    .input(local_output_path)
+                    .output(mp3_output_path, format='mp3')
+                    .run()
+                )
+                current_app.logger.info(f"MP3 conversion successful. File saved at {mp3_output_path}")
+            except ffmpeg.Error as e:
+                stderr_output = e.stderr.decode('utf-8') if e.stderr else 'No error output'
+                current_app.logger.error(f"Error converting to MP3: {stderr_output}")
+                return {'status': 'error', 'message': f"Error converting to MP3: {stderr_output}"}
+
+            # Upload the MP3 file to GCS
+            final_mp3_output_gcs = f"audio_recordings/{recording_id}.mp3"
+            try:
+                upload_file_to_gcs(mp3_output_path, final_mp3_output_gcs)
+                current_app.logger.info(f"MP3 file uploaded to GCS at {final_mp3_output_gcs}")
+            except Exception as e:
+                current_app.logger.error(f"Error uploading the MP3 file to GCS: {e}")
+                return {'status': 'error', 'message': f"Error uploading the MP3 file to GCS: {str(e)}"}
+
+            return {
+                'status': 'success',
+                'webm_file_url': f"gs://{BUCKET_NAME}/{final_output_gcs}",
+                'mp3_file_url': f"gs://{BUCKET_NAME}/{final_mp3_output_gcs}"
+            }
 
         except Exception as e:
             current_app.logger.error(f"Error during cloud concatenation: {e}")
@@ -419,6 +449,7 @@ def concatenate_cloud(self, recording_id):
         finally:
             # Clean up local files
             shutil.rmtree(temp_dir)
+
 
 @main.route('/api/meetingsessions', methods=['GET', 'POST'])
 @login_required
