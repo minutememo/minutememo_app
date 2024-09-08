@@ -429,7 +429,7 @@ def concatenate_cloud(self, recording_id):
                 return {'status': 'error', 'message': f"Error converting to MP3: {stderr_output}"}
 
             # Upload the MP3 file to GCS
-            final_mp3_output_gcs = f"audio_recordings/{recording_id}.mp3"
+            final_mp3_output_gcs = f"{recording_id}.mp3"
             try:
                 upload_file_to_gcs(mp3_output_path, final_mp3_output_gcs)
                 current_app.logger.info(f"MP3 file uploaded to GCS at {final_mp3_output_gcs}")
