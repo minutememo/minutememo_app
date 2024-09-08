@@ -343,7 +343,7 @@ def concatenate_status(task_id):
     return jsonify(response)
 
 # Celery task for cloud-based concatenation
-@c@celery_app.task(bind=True)
+@celery_app.task(bind=True)
 def concatenate_cloud(self, recording_id):
     from app import create_app  # Ensure app is created to push the context
     import requests
