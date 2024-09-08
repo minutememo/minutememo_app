@@ -384,7 +384,8 @@ def concatenate_cloud(self, recording_id):
                 for local_path in local_chunk_paths:
                     f.write(f"file '{local_path}'\n")
 
-            final_output_gcs = f"gs://{BUCKET_NAME}/audio_recordings/{recording_id}.webm"
+            # Create a local output path for the concatenated file
+            local_output_path = os.path.join(temp_dir, f"{recording_id}.webm")
 
             try:
                 current_app.logger.info(f"Running FFmpeg in cloud with list file {list_file_path}")
@@ -392,29 +393,25 @@ def concatenate_cloud(self, recording_id):
                 (
                     ffmpeg
                     .input(list_file_path, format='concat', safe=0)
-                    .output(final_output_gcs, c='copy')
+                    .output(local_output_path, c='copy')
                     .run()
                 )
-                current_app.logger.info(f"Cloud concatenation output at {final_output_gcs}")
+                current_app.logger.info(f"Cloud concatenation output saved at {local_output_path}")
             except ffmpeg.Error as e:
                 stderr_output = e.stderr.decode('utf-8') if e.stderr else 'No error output'
                 current_app.logger.error(f"Error concatenating files with ffmpeg: {stderr_output}")
                 return {'status': 'error', 'message': f"Error concatenating files: {stderr_output}"}
 
-            # Convert to MP3
-            mp3_filepath = os.path.splitext(final_output_gcs)[0] + '.mp3'
-            convert_to_mp3(final_output_gcs, mp3_filepath)
-            current_app.logger.info(f"MP3 conversion successful. File saved at {mp3_filepath}")
-
-            # Upload MP3 to GCS
+            # Upload the concatenated WebM file to GCS
+            final_output_gcs = f"audio_recordings/{recording_id}.webm"
             try:
-                upload_file_to_gcs(mp3_filepath, f"audio_recordings/{os.path.basename(mp3_filepath)}")
-                current_app.logger.info(f"MP3 file uploaded to GCS at audio_recordings/{os.path.basename(mp3_filepath)}")
+                upload_file_to_gcs(local_output_path, final_output_gcs)
+                current_app.logger.info(f"WebM file uploaded to GCS at {final_output_gcs}")
             except Exception as e:
                 current_app.logger.error(f"Error uploading the file to GCS: {e}")
                 return {'status': 'error', 'message': f"Error uploading the file to GCS: {str(e)}"}
 
-            return {'status': 'success', 'file_url': f"gs://{BUCKET_NAME}/audio_recordings/{os.path.basename(mp3_filepath)}"}
+            return {'status': 'success', 'file_url': f"gs://{BUCKET_NAME}/{final_output_gcs}"}
 
         except Exception as e:
             current_app.logger.error(f"Error during cloud concatenation: {e}")
