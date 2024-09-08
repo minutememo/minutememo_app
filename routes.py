@@ -358,6 +358,7 @@ def concatenate_cloud(self, recording_id):
 
             if not chunk_files:
                 current_app.logger.error(f"No chunks found for recording_id: {recording_id}")
+                update_concatenation_status(recording_id, "error")
                 return {'status': 'error', 'message': 'No chunks found for the given recording_id'}
 
             current_app.logger.info(f"Chunk files found in GCS for recording_id {recording_id}: {chunk_files}")
@@ -400,6 +401,7 @@ def concatenate_cloud(self, recording_id):
             except ffmpeg.Error as e:
                 stderr_output = e.stderr.decode('utf-8') if e.stderr else 'No error output'
                 current_app.logger.error(f"Error concatenating files with ffmpeg: {stderr_output}")
+                update_concatenation_status(recording_id, "error")
                 return {'status': 'error', 'message': f"Error concatenating files: {stderr_output}"}
 
             # Upload the concatenated WebM file to GCS
@@ -409,6 +411,7 @@ def concatenate_cloud(self, recording_id):
                 current_app.logger.info(f"WebM file uploaded to GCS at {final_output_gcs}")
             except Exception as e:
                 current_app.logger.error(f"Error uploading the file to GCS: {e}")
+                update_concatenation_status(recording_id, "error")
                 return {'status': 'error', 'message': f"Error uploading the file to GCS: {str(e)}"}
 
             # Now convert the WebM file to MP3
@@ -426,16 +429,22 @@ def concatenate_cloud(self, recording_id):
             except ffmpeg.Error as e:
                 stderr_output = e.stderr.decode('utf-8') if e.stderr else 'No error output'
                 current_app.logger.error(f"Error converting to MP3: {stderr_output}")
+                update_concatenation_status(recording_id, "error")
                 return {'status': 'error', 'message': f"Error converting to MP3: {stderr_output}"}
 
             # Upload the MP3 file to GCS
-            final_mp3_output_gcs = f"{recording_id}.mp3"
+            final_mp3_output_gcs = f"audio_recordings/{recording_id}.mp3"
             try:
                 upload_file_to_gcs(mp3_output_path, final_mp3_output_gcs)
                 current_app.logger.info(f"MP3 file uploaded to GCS at {final_mp3_output_gcs}")
             except Exception as e:
                 current_app.logger.error(f"Error uploading the MP3 file to GCS: {e}")
+                update_concatenation_status(recording_id, "error")
                 return {'status': 'error', 'message': f"Error uploading the MP3 file to GCS: {str(e)}"}
+
+            # Update concatenation status to success
+            update_concatenation_status(recording_id, "success")
+            current_app.logger.info(f"Concatenation status updated to success for recording_id: {recording_id}")
 
             return {
                 'status': 'success',
@@ -445,6 +454,7 @@ def concatenate_cloud(self, recording_id):
 
         except Exception as e:
             current_app.logger.error(f"Error during cloud concatenation: {e}")
+            update_concatenation_status(recording_id, "error")
             return {'status': 'error', 'message': str(e)}
         finally:
             # Clean up local files
