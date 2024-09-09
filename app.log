@@ -126,3 +126,121 @@
  * Running on http://127.0.0.1:5000
 2024-09-07 07:28:45 INFO: [33mPress CTRL+C to quit[0m
 2024-09-07 07:28:45,249 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-09-08 23:08:35 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-09-08 23:08:35,494 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-09-08 23:08:36 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-09-08 23:08:36,036 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-09-08 23:08:36 INFO: [33mPress CTRL+C to quit[0m
+2024-09-08 23:08:36,036 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:08:49,032 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /auth/status HTTP/1.1" 200 -
+2024-09-08 23:08:49,033 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /auth/status HTTP/1.1" 200 -
+2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:08:49,035 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /auth/status HTTP/1.1" 200 -
+2024-09-08 23:08:49,036 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /auth/status HTTP/1.1" 200 -
+2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:08:49,038 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /auth/status HTTP/1.1" 200 -
+2024-09-08 23:08:49,038 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /auth/status HTTP/1.1" 200 -
+2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:08:49,040 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /auth/status HTTP/1.1" 200 -
+2024-09-08 23:08:49,041 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /auth/status HTTP/1.1" 200 -
+2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:08:49,096 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-08 23:08:49,097 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:08:49,107 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-08 23:08:49,108 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:08:49,117 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-08 23:08:49,118 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:08:49,130 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-09-08 23:08:49,131 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:08:49,136 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-09-08 23:08:49,137 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:08:49,141 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-09-08 23:08:49,143 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:08:49,152 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-09-08 23:08:49,153 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:08:49,158 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-09-08 23:08:49,159 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:08:49,173 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-09-08 23:08:49,174 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:08:49,203 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-09-08 23:08:49,203 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:08:49,225 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-09-08 23:08:49,226 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-09-08 23:08:54 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:08:54,604 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:08:54 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:54] "OPTIONS /api/meetings HTTP/1.1" 200 -
+2024-09-08 23:08:54,606 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:54] "OPTIONS /api/meetings HTTP/1.1" 200 -
+2024-09-08 23:08:54 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:08:54,650 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:08:54 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:54] "[35m[1mPOST /api/meetings HTTP/1.1[0m" 201 -
+2024-09-08 23:08:54,652 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:54] "[35m[1mPOST /api/meetings HTTP/1.1[0m" 201 -
+2024-09-08 23:08:54 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:08:54,658 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:08:54 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:54] "OPTIONS /api/recordings HTTP/1.1" 200 -
+2024-09-08 23:08:54,659 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:54] "OPTIONS /api/recordings HTTP/1.1" 200 -
+2024-09-08 23:08:54 INFO: Recording 4840d0e2-1b07-4fee-ad76-6d59985b75b6 created for user 2 in session 81
+2024-09-08 23:08:54,673 - app - INFO - Recording 4840d0e2-1b07-4fee-ad76-6d59985b75b6 created for user 2 in session 81
+2024-09-08 23:08:54 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:08:54,674 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:08:54 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:54] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
+2024-09-08 23:08:54,674 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:54] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
+2024-09-08 23:08:59 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:08:59,949 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:08:59 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:59] "POST /upload_chunk HTTP/1.1" 200 -
+2024-09-08 23:08:59,953 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:59] "POST /upload_chunk HTTP/1.1" 200 -
+2024-09-08 23:09:04 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:09:04,987 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:09:04 INFO: 127.0.0.1 - - [08/Sep/2024 23:09:04] "POST /upload_chunk HTTP/1.1" 200 -
+2024-09-08 23:09:04,988 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:09:04] "POST /upload_chunk HTTP/1.1" 200 -
+2024-09-08 23:09:10 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:09:10,028 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:09:10 INFO: 127.0.0.1 - - [08/Sep/2024 23:09:10] "POST /upload_chunk HTTP/1.1" 200 -
+2024-09-08 23:09:10,029 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:09:10] "POST /upload_chunk HTTP/1.1" 200 -
+2024-09-08 23:09:14 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:09:14,991 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:09:14 INFO: 127.0.0.1 - - [08/Sep/2024 23:09:14] "OPTIONS /concatenate HTTP/1.1" 200 -
+2024-09-08 23:09:14,992 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:09:14] "OPTIONS /concatenate HTTP/1.1" 200 -
+2024-09-08 23:09:15 INFO: Received request to concatenate for recording_id: 4840d0e2-1b07-4fee-ad76-6d59985b75b6
+2024-09-08 23:09:15,004 - app - INFO - Received request to concatenate for recording_id: 4840d0e2-1b07-4fee-ad76-6d59985b75b6
+2024-09-08 23:09:15 INFO: Local chunk files for recording_id 4840d0e2-1b07-4fee-ad76-6d59985b75b6: ['4840d0e2-1b07-4fee-ad76-6d59985b75b6_chunk_0.webm', '4840d0e2-1b07-4fee-ad76-6d59985b75b6_chunk_1.webm', '4840d0e2-1b07-4fee-ad76-6d59985b75b6_chunk_2.webm']
+2024-09-08 23:09:15,005 - app - INFO - Local chunk files for recording_id 4840d0e2-1b07-4fee-ad76-6d59985b75b6: ['4840d0e2-1b07-4fee-ad76-6d59985b75b6_chunk_0.webm', '4840d0e2-1b07-4fee-ad76-6d59985b75b6_chunk_1.webm', '4840d0e2-1b07-4fee-ad76-6d59985b75b6_chunk_2.webm']
+2024-09-08 23:09:15 INFO: List file created at: uploads/audio_recordings/4840d0e2-1b07-4fee-ad76-6d59985b75b6_list.txt
+2024-09-08 23:09:15,006 - app - INFO - List file created at: uploads/audio_recordings/4840d0e2-1b07-4fee-ad76-6d59985b75b6_list.txt
+2024-09-08 23:09:15 INFO: Running FFmpeg locally with list file uploads/audio_recordings/4840d0e2-1b07-4fee-ad76-6d59985b75b6_list.txt
+2024-09-08 23:09:15,006 - app - INFO - Running FFmpeg locally with list file uploads/audio_recordings/4840d0e2-1b07-4fee-ad76-6d59985b75b6_list.txt
+2024-09-08 23:09:15 INFO: Local concatenation output at uploads/audio_recordings/4840d0e2-1b07-4fee-ad76-6d59985b75b6.webm
+2024-09-08 23:09:15,637 - app - INFO - Local concatenation output at uploads/audio_recordings/4840d0e2-1b07-4fee-ad76-6d59985b75b6.webm
+2024-09-08 23:09:15 ERROR: Error during concatenation: name 'convert_to_mp3' is not defined
+2024-09-08 23:09:15,638 - app - ERROR - Error during concatenation: name 'convert_to_mp3' is not defined
+2024-09-08 23:09:15 DEBUG: After request, Origin: http://localhost:3000
+2024-09-08 23:09:15,638 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-08 23:09:15 INFO: 127.0.0.1 - - [08/Sep/2024 23:09:15] "[35m[1mPOST /concatenate HTTP/1.1[0m" 500 -
+2024-09-08 23:09:15,640 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:09:15] "[35m[1mPOST /concatenate HTTP/1.1[0m" 500 -
