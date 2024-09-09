@@ -2,3 +2,5 @@ uploads/
 frontend/node_modules/
 venv/
 /config/service-account.jsonconfig/staging-minutememo-b158f267478b.json
+.env.development
+.env.production
