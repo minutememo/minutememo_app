@@ -31,7 +31,9 @@ class User(UserMixin, db.Model):
     
     # Add this line for active meeting hub
     active_meeting_hub_id = db.Column(db.Integer, db.ForeignKey('meeting_hub.id'), nullable=True)
-    
+    user_type = db.Column(db.String(20), nullable=False, default='internal')  # 'internal' or 'external'
+    internal_user_role = db.Column(db.String(20), nullable=True)  # 'super_admin', 'admin', 'lite_admin'
+
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
