@@ -13,6 +13,8 @@ from extensions import *
 from models import *
 from auth import *
 from google.oauth2 import service_account
+from super_admin import super_admin_bp
+
 
 
 # Load environment variables based on FLASK_ENV
@@ -119,6 +121,7 @@ def create_app():
     from routes import main as main_blueprint
     app.register_blueprint(main_blueprint)
     app.register_blueprint(auth, url_prefix='/auth')
+    app.register_blueprint(super_admin_bp)
 
     @app.route('/test', methods=['GET'])
     def test():
