@@ -20,7 +20,7 @@ from extensions import db  # Import from extensions.py
 from flask_login import login_required, current_user
 from datetime import datetime, timedelta
 import traceback
-from app import credentials
+#from app import credentials
 from celery.result import AsyncResult
 from celery_factory import celery_app  # Import the initialized Celery app
 
