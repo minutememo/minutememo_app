@@ -678,6 +678,34 @@ def manage_company():
             db.session.rollback()
             current_app.logger.error(f"Error updating company details for user {current_user.email}: {str(e)}")
             return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
+
+
+# Add this new route for fetching all companies
+@main.route('/api/companies', methods=['GET'])
+@login_required
+def get_all_companies():
+    if current_user.internal_user_role != 'super_admin':
+        return jsonify({'status': 'error', 'message': 'Unauthorized access'}), 403
+
+    try:
+        companies = Company.query.all()
+        companies_data = [
+            {
+                'id': company.id,
+                'name': company.name,
+                'address': company.address,
+                'city': company.city,
+                'state': company.state,
+                'zip_code': company.zip_code,
+                'country': company.country,
+                'phone_number': company.phone_number,
+            } for company in companies
+        ]
+        logger.info(f"Super admin {current_user.email} fetched all companies successfully")
+        return jsonify({'status': 'success', 'companies': companies_data}), 200
+    except Exception as e:
+        logger.error(f"Error fetching all companies for super admin {current_user.email}: {str(e)}")
+        return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
         
 
 @main.route('/api/meetings', methods=['GET', 'POST'])

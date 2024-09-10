@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify, current_app
-from models import User, Company, MeetingHub  # Ensure that Company is imported here
+from models import User, Company, MeetingHub
 import logging
 from extensions import db
 from flask_login import login_user, logout_user, login_required, current_user
@@ -15,6 +15,22 @@ if env == 'production':
 else:
     logger.setLevel(logging.DEBUG)
 
+# Route for checking authentication status and user role
+@auth.route('/status', methods=['GET'])
+def status():
+    if current_user.is_authenticated:
+        logger.debug(f"User {current_user.email} is authenticated with role: {current_user.internal_user_role}")
+        return jsonify({
+            "logged_in": True,
+            "user": {
+                "email": current_user.email,
+                "internal_user_role": current_user.internal_user_role  # Return the user's role
+            }
+        }), 200
+    else:
+        logger.debug("User is not authenticated")
+        return jsonify({"logged_in": False}), 200
+
 # Route for user signup
 @auth.route('/signup', methods=['POST', 'OPTIONS'])
 def signup():
@@ -22,7 +38,6 @@ def signup():
 
     if request.method == 'OPTIONS':
         logger.debug('Handling CORS preflight request')
-        # Handle CORS preflight request
         response = current_app.make_default_options_response()
         response.headers['Access-Control-Allow-Origin'] = request.headers.get('Origin')
         response.headers['Access-Control-Allow-Credentials'] = 'true'
@@ -39,7 +54,7 @@ def signup():
     password_confirmation = data.get('password_confirmation')
 
     if not email or not password or not password_confirmation:
-        logger.warning('Missing email, password or password confirmation')
+        logger.warning('Missing email, password, or password confirmation')
         return jsonify({'message': 'Email, password, and password confirmation are required'}), 400
 
     if password != password_confirmation:
@@ -48,7 +63,7 @@ def signup():
 
     user_exists = User.query.filter_by(email=email).first()
     if user_exists:
-        logger.warning('Email is already in use: %s', email)
+        logger.warning(f"Email is already in use: {email}")
         return jsonify({'message': 'Email is already in use'}), 400
 
     new_user = User(email=email)
@@ -58,7 +73,7 @@ def signup():
 
     # Create a default company for the new user
     default_company = Company(
-        name=f"{email}'s Company",  # You can customize the default company name
+        name=f"{email}'s Company",
         address="Default Address",
         city="Default City",
         state="Default State",
@@ -85,37 +100,44 @@ def signup():
     # Log the user in automatically
     login_user(new_user)
 
-    logger.info('User, company, and default meeting hub created and user logged in successfully: %s', email)
+    logger.info(f"User, company, and default meeting hub created and user logged in successfully: {email}")
     return jsonify({'message': 'User created and logged in successfully'}), 201
 
-
-@auth.route('/login', methods=['POST', 'GET'])
+# Route for user login
+@auth.route('/login', methods=['POST'])
 def login():
-    if request.method == 'GET':
-        logger.debug('Received GET request on login, returning 405 Method Not Allowed')
-        return jsonify({"message": "Please use POST to log in"}), 405
-
-    # Handle the POST request
     data = request.get_json()
     email = data.get('email')
     password = data.get('password')
 
-    logger.debug('Login attempt for email: %s', email)
+    logger.debug(f"Login attempt for email: {email}")
     
     user = User.query.filter_by(email=email).first()
+
+    if user:
+        logger.debug(f"User found: {user.email} with role: {user.internal_user_role}")
+    else:
+        logger.debug(f"User with email {email} not found")
+
     if user and user.check_password(password):
         login_user(user, remember=True)
-        logger.debug('Login successful for user: %s', email)
-        return jsonify({"message": "Login successful"}), 200
+        logger.debug(f"Login successful for user: {user.email} with role: {user.internal_user_role}")
+        
+        # Return the user's internal role
+        return jsonify({
+            "message": "Login successful",
+            "internal_user_role": user.internal_user_role  # Return user's role for frontend checks
+        }), 200
     
-    logger.warning('Login failed for email: %s', email)
+    logger.warning(f"Login failed for email: {email}")
     return jsonify({"message": "Invalid credentials"}), 401
 
+# Route for user logout
 @auth.route('/logout')
 @login_required
 def logout():
-    logger.debug('User %s is logging out', current_user.email)
-    logout_user()  # This will clear the session on the server
+    logger.debug(f"User {current_user.email} is logging out")
+    logout_user()  # This clears the session on the server
     response = jsonify({"message": "Logout successful"})
     response.status_code = 200
     return response

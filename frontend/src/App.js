@@ -21,6 +21,7 @@ import MeetingSessionPage from './components/MeetingSessionPage'; // Import the 
 
 
 
+
 axios.defaults.withCredentials = true; // Ensure cookies are sent with every request
 
 const AppContent = () => {

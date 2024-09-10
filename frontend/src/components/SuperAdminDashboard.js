@@ -1,34 +1,50 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useUser } from '../UserContext';  // Import the user context hook
 
 const SuperAdminDashboard = () => {
   const [companies, setCompanies] = useState([]);
   const [selectedCompany, setSelectedCompany] = useState(null);
   const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
+  const { user } = useUser() || {};  // Safely destructure user, handle null case
   const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
   useEffect(() => {
+    if (!user || user.internal_user_role !== 'super_admin') {
+      console.log("User not found or not super_admin, redirecting to login...");
+      navigate('/superadmin/login');
+      return;
+    }
+
     const fetchCompanies = async () => {
       try {
-        const response = await axios.get(`${backendUrl}/api/companies`);
+        console.log("Fetching companies...");
+        const response = await axios.get(`${backendUrl}/api/companies`, { withCredentials: true });
         setCompanies(response.data.companies);
       } catch (err) {
-        console.error('Error fetching companies', err);
+        console.error('Error fetching companies:', err);
       }
     };
 
     fetchCompanies();
-  }, []);
+  }, [backendUrl, navigate, user]);
 
   const handleCompanyClick = async (companyId) => {
     try {
-      const response = await axios.get(`${backendUrl}/api/companies/${companyId}/users`);
+      console.log(`Fetching users for company ${companyId}...`);
+      const response = await axios.get(`${backendUrl}/api/companies/${companyId}/users`, { withCredentials: true });
       setSelectedCompany(companyId);
       setUsers(response.data.users);
     } catch (err) {
-      console.error('Error fetching users for company', err);
+      console.error('Error fetching users for company:', err);
     }
   };
+
+  if (!user) {
+    return <p>Loading...</p>;  // Show a loading message if the user is not loaded yet
+  }
 
   return (
     <div className="admin-dashboard">

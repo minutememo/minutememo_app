@@ -1,256 +1,207 @@
-2024-09-07 06:50:56,753 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:50:56,757 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:50:56] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
-2024-09-07 06:51:02,393 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:02,395 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:02] "OPTIONS /api/set_active_hub HTTP/1.1" 200 -
-2024-09-07 06:51:02,399 - routes - DEBUG - Received request to set active hub with hub_id: 10
-2024-09-07 06:51:02,400 - routes - DEBUG - Querying database for hub_id: 10
-2024-09-07 06:51:02,402 - routes - DEBUG - Setting active hub to 10 for user gaetan@minutememo.io
-2024-09-07 06:51:02,405 - routes - INFO - Successfully set active hub to 10 for user gaetan@minutememo.io
-2024-09-07 06:51:02,405 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:02,406 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:02] "POST /api/set_active_hub HTTP/1.1" 200 -
-2024-09-07 06:51:02,415 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:02,416 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:02] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
-2024-09-07 06:51:02,430 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:02,431 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:02] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
-2024-09-07 06:51:05,131 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:05,134 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:05] "GET /api/meetings?meeting_id=31 HTTP/1.1" 200 -
-2024-09-07 06:51:05,139 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:05,140 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:05] "GET /api/meetings?meeting_id=31 HTTP/1.1" 200 -
-2024-09-07 06:51:05,806 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:05,807 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:05] "GET /api/sessions/34 HTTP/1.1" 200 -
-2024-09-07 06:51:05,811 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:05,813 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:05] "GET /api/sessions/34 HTTP/1.1" 200 -
-2024-09-07 06:51:07,277 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:07,279 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:07] "GET /api/meetings?meeting_id=31 HTTP/1.1" 200 -
-2024-09-07 06:51:07,284 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:07,286 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:07] "GET /api/meetings?meeting_id=31 HTTP/1.1" 200 -
-2024-09-07 06:51:08,136 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:08,140 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:08] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
-2024-09-07 06:51:08,146 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:08,148 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:08] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
-2024-09-07 06:51:08,161 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:08,161 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:08] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
-2024-09-07 06:51:08,182 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:08,183 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:08] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
-2024-09-07 06:51:08,949 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:08,950 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:08] "GET /api/meetings?meeting_id=6 HTTP/1.1" 200 -
-2024-09-07 06:51:08,954 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:08,955 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:08] "GET /api/meetings?meeting_id=6 HTTP/1.1" 200 -
-2024-09-07 06:51:09,608 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:09,610 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:09] "GET /api/sessions/9 HTTP/1.1" 200 -
-2024-09-07 06:51:09,613 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:09,615 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:09] "GET /api/sessions/9 HTTP/1.1" 200 -
-2024-09-07 06:51:10,141 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:10,146 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:10] "GET /api/meetings?meeting_id=6 HTTP/1.1" 200 -
-2024-09-07 06:51:10,152 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:10,152 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:10] "GET /api/meetings?meeting_id=6 HTTP/1.1" 200 -
-2024-09-07 06:51:10,399 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:10,407 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:10] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
-2024-09-07 06:51:10,415 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:10,416 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:10] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
-2024-09-07 06:51:10,423 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:10,424 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:10] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
-2024-09-07 06:51:10,444 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:10,444 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:10] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
-2024-09-07 06:51:15,712 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:15,713 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:15] "GET /api/meetings?meeting_id=37 HTTP/1.1" 200 -
-2024-09-07 06:51:15,719 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:15,720 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:15] "GET /api/meetings?meeting_id=37 HTTP/1.1" 200 -
-2024-09-07 06:51:16,494 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:16,494 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:16] "GET /api/sessions/40 HTTP/1.1" 200 -
-2024-09-07 06:51:16,499 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:16,500 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:16] "GET /api/sessions/40 HTTP/1.1" 200 -
-2024-09-07 06:51:16,513 - auth - DEBUG - After request, Origin: None
-2024-09-07 06:51:16,515 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:16] "[35m[1mGET /uploads/audio_recordings/e1caf3b7-284b-4b00-af6f-33d03716617a.mp3 HTTP/1.1[0m" 206 -
-2024-09-07 06:51:20,405 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:20,406 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:20] "OPTIONS /api/meetings HTTP/1.1" 200 -
-2024-09-07 06:51:20,436 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:20,436 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:20] "[35m[1mPOST /api/meetings HTTP/1.1[0m" 201 -
-2024-09-07 06:51:20,440 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:20,440 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:20] "OPTIONS /api/recordings HTTP/1.1" 200 -
-2024-09-07 06:51:20,450 - app - INFO - Recording 64befb93-e31c-422c-9fcc-93c60193228d created for user 2 in session 80
-2024-09-07 06:51:20,450 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:20,450 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:20] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
-2024-09-07 06:51:25,760 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:25,762 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:25] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-07 06:51:28,199 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:28,202 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:28] "OPTIONS /concatenate HTTP/1.1" 200 -
-2024-09-07 06:51:28,226 - app - INFO - Received request to concatenate for recording_id: 64befb93-e31c-422c-9fcc-93c60193228d
-2024-09-07 06:51:28,227 - app - INFO - Local chunk files for recording_id 64befb93-e31c-422c-9fcc-93c60193228d: ['64befb93-e31c-422c-9fcc-93c60193228d_chunk_0.webm']
-2024-09-07 06:51:28,227 - app - INFO - List file created at: uploads/audio_recordings/64befb93-e31c-422c-9fcc-93c60193228d_list.txt
-2024-09-07 06:51:28,227 - app - INFO - Running FFmpeg locally with list file uploads/audio_recordings/64befb93-e31c-422c-9fcc-93c60193228d_list.txt
-2024-09-07 06:51:28,689 - app - INFO - Local concatenation output at uploads/audio_recordings/64befb93-e31c-422c-9fcc-93c60193228d.webm
-2024-09-07 06:51:28,843 - app - INFO - MP3 conversion successful. File saved at uploads/audio_recordings/64befb93-e31c-422c-9fcc-93c60193228d.mp3
-2024-09-07 06:51:28,843 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:28,845 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:28] "POST /concatenate HTTP/1.1" 200 -
-2024-09-07 06:51:28,848 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:28,849 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:28] "OPTIONS /api/recordings/64befb93-e31c-422c-9fcc-93c60193228d HTTP/1.1" 200 -
-2024-09-07 06:51:28,852 - app - INFO - Entering update_recording function for recording_id: 64befb93-e31c-422c-9fcc-93c60193228d
-2024-09-07 06:51:28,852 - app - INFO - Received data for updating recording 64befb93-e31c-422c-9fcc-93c60193228d: {'audio_url': '/uploads/audio_recordings/64befb93-e31c-422c-9fcc-93c60193228d.mp3'}
-2024-09-07 06:51:28,852 - app - INFO - Fetching Recording with ID: 64befb93-e31c-422c-9fcc-93c60193228d
-2024-09-07 06:51:28,857 - app - INFO - Current recording before update: <Recording 64befb93-e31c-422c-9fcc-93c60193228d>
-2024-09-07 06:51:28,857 - app - INFO - Fetching associated MeetingSession with ID: 80
-2024-09-07 06:51:28,858 - app - INFO - Current MeetingSession before update: <MeetingSession 80>
-2024-09-07 06:51:28,858 - app - INFO - Updating audio_url for MeetingSession ID: 80
-2024-09-07 06:51:28,861 - app - INFO - MeetingSession after update: <MeetingSession 80>
-2024-09-07 06:51:28,861 - app - INFO - Exiting update_recording function for recording_id: 64befb93-e31c-422c-9fcc-93c60193228d
-2024-09-07 06:51:28,861 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-07 06:51:28,862 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2024 06:51:28] "PATCH /api/recordings/64befb93-e31c-422c-9fcc-93c60193228d HTTP/1.1" 200 -
-2024-09-07 06:58:51 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-07 06:58:51,421 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-07 06:59:35 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-07 06:59:35,119 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-07 07:01:34 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-07 07:01:34,081 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-07 07:01:51 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-07 07:01:51,881 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-07 07:01:51 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2024-09-10 13:07:28,266 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:07:28,268 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:07:28] "GET /auth/status HTTP/1.1" 200 -
+2024-09-10 13:07:28,272 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:07:28,275 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:07:28] "GET /auth/status HTTP/1.1" 200 -
+2024-09-10 13:07:35,812 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:07:35,815 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:07:35] "OPTIONS /auth/login HTTP/1.1" 200 -
+2024-09-10 13:07:35,816 - auth - DEBUG - Login attempt for email: gaetan@minutememo.io
+2024-09-10 13:07:35,818 - auth - DEBUG - User found: gaetan@minutememo.io with role: super_admin
+2024-09-10 13:07:35,900 - auth - DEBUG - Login successful for user: gaetan@minutememo.io with role: super_admin
+2024-09-10 13:07:35,900 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:07:35,901 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:07:35] "POST /auth/login HTTP/1.1" 200 -
+2024-09-10 13:07:35,918 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:07:35,920 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:07:35] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:07:35,925 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:07:35,926 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:07:35] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:07:38,194 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:07:38,195 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:07:38] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:07:38,195 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:07:38,200 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:07:38] "GET /auth/status HTTP/1.1" 200 -
+2024-09-10 13:07:38,200 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:07:38,203 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:07:38] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:07:38,207 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:07:38,228 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:07:38] "GET /auth/status HTTP/1.1" 200 -
+2024-09-10 13:11:32,550 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:11:32,552 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:11:32] "OPTIONS /auth/login HTTP/1.1" 200 -
+2024-09-10 13:11:32,553 - auth - DEBUG - Login attempt for email: gaetan@minutememo.io
+2024-09-10 13:11:32,575 - auth - DEBUG - User found: gaetan@minutememo.io with role: super_admin
+2024-09-10 13:11:32,651 - auth - DEBUG - Login successful for user: gaetan@minutememo.io with role: super_admin
+2024-09-10 13:11:32,651 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:11:32,653 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:11:32] "POST /auth/login HTTP/1.1" 200 -
+2024-09-10 13:11:32,667 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:11:32,668 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:11:32] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:11:32,672 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:11:32,690 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:11:32] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:11:39,935 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:11:39,944 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:11:39] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:11:39,953 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:11:39,968 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:11:39,975 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:11:39] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:11:39,976 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:11:39] "GET /auth/status HTTP/1.1" 200 -
+2024-09-10 13:11:40,004 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:11:40,007 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:11:40] "GET /auth/status HTTP/1.1" 200 -
+2024-09-10 13:16:51,252 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:51,254 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:51] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-10 13:16:51,271 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:51,275 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:51] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-09-10 13:16:51,276 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:51,279 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:51] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-10 13:16:51,280 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:51,281 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:51] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-09-10 13:16:51,288 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:51,289 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:51] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-10 13:16:51,296 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:51,296 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:51,298 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:51] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-09-10 13:16:51,298 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:51] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-09-10 13:16:51,300 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:51,305 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:51] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-10 13:16:51,308 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:51,311 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:51] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-09-10 13:16:51,313 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:51,314 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:51] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-10 13:16:51,322 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:51,324 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:51] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-10 13:16:51,334 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:51,336 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:51] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-09-10 13:16:51,336 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:51,338 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:51] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-10 13:16:51,339 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:51,341 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:51] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-09-10 13:16:51,342 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:51,345 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:51] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-09-10 13:16:51,351 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:51,353 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:51] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-10 13:16:51,363 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:51,364 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:51] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-10 13:16:51,371 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:51,372 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:51] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-09-10 13:16:51,395 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:51,397 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:51] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-09-10 13:16:51,414 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:51,415 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:51] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-09-10 13:16:51,434 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:51,435 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:51] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-09-10 13:16:58,636 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:58,637 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:58] "OPTIONS /auth/login HTTP/1.1" 200 -
+2024-09-10 13:16:58,638 - auth - DEBUG - Login attempt for email: gaetan@minutememo.io
+2024-09-10 13:16:58,640 - auth - DEBUG - User found: gaetan@minutememo.io with role: super_admin
+2024-09-10 13:16:58,801 - auth - DEBUG - Login successful for user: gaetan@minutememo.io with role: super_admin
+2024-09-10 13:16:58,801 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:58,803 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:58] "POST /auth/login HTTP/1.1" 200 -
+2024-09-10 13:16:58,845 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:58,846 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:58] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:16:58,851 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:16:58,852 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:16:58] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:17:00,361 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:00,363 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:00] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:17:00,365 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:00,369 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:00] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:17:00,375 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:00,375 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:00] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:17:01,219 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:01,220 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:01] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:17:01,224 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:01,228 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:01] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:17:01,234 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:01,235 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:01] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:17:01,944 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:01,945 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:01] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:17:01,947 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:01,948 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:01] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:17:01,953 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:01,954 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:01] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:17:08,323 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:08,324 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:08] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-10 13:17:08,336 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:08,338 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:08] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-09-10 13:17:08,341 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:08,344 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:08] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-10 13:17:08,344 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:08,353 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:08] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-09-10 13:17:08,367 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:08,368 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:08] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-10 13:17:08,377 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:08,378 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:08] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-09-10 13:17:08,406 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:08,407 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:08] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-09-10 13:17:09,198 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:09,199 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:09] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-10 13:17:09,212 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:09,215 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:09] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-09-10 13:17:09,221 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:09,221 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:09,224 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:09] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-10 13:17:09,225 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:09] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
+2024-09-10 13:17:09,233 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:09,234 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:09] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-10 13:17:09,241 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:09,242 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:09] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-09-10 13:17:09,260 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:09,261 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:09] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
+2024-09-10 13:17:35,226 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:17:35,227 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:17:35] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:24:33,993 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:24:33,996 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:24:33] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:24:33,998 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:24:33,998 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:24:33] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:24:34,002 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:24:34,003 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:24:34] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:25:59,059 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:25:59,061 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:25:59] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:25:59,064 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:25:59,066 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:25:59] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:25:59,089 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:25:59,089 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:25:59] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:29:13,618 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:29:13,620 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:29:13] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:29:13,622 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:29:13,625 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:29:13] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:29:13,644 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:29:13,645 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:29:13] "[33mGET /api/companies HTTP/1.1[0m" 404 -
+2024-09-10 13:29:31 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-09-10 13:29:31,343 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-09-10 13:29:31 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5000
-2024-09-07 07:01:51,936 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2024-09-10 13:29:31,410 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5000
-2024-09-07 07:01:51 INFO: [33mPress CTRL+C to quit[0m
-2024-09-07 07:01:51,936 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2024-09-07 07:27:20 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-07 07:27:20,448 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-07 07:27:20 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-07 07:27:20,546 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-07 07:27:20 INFO: [33mPress CTRL+C to quit[0m
-2024-09-07 07:27:20,546 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2024-09-07 07:28:45 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-07 07:28:45,174 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-07 07:28:45 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-07 07:28:45,249 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-07 07:28:45 INFO: [33mPress CTRL+C to quit[0m
-2024-09-07 07:28:45,249 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2024-09-08 23:08:35 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-08 23:08:35,494 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-08 23:08:36 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-08 23:08:36,036 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-08 23:08:36 INFO: [33mPress CTRL+C to quit[0m
-2024-09-08 23:08:36,036 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:08:49,032 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /auth/status HTTP/1.1" 200 -
-2024-09-08 23:08:49,033 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /auth/status HTTP/1.1" 200 -
-2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:08:49,035 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /auth/status HTTP/1.1" 200 -
-2024-09-08 23:08:49,036 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /auth/status HTTP/1.1" 200 -
-2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:08:49,038 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /auth/status HTTP/1.1" 200 -
-2024-09-08 23:08:49,038 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /auth/status HTTP/1.1" 200 -
-2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:08:49,040 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /auth/status HTTP/1.1" 200 -
-2024-09-08 23:08:49,041 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /auth/status HTTP/1.1" 200 -
-2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:08:49,096 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-08 23:08:49,097 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:08:49,107 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-08 23:08:49,108 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:08:49,117 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-08 23:08:49,118 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:08:49,130 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
-2024-09-08 23:08:49,131 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
-2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:08:49,136 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
-2024-09-08 23:08:49,137 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
-2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:08:49,141 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
-2024-09-08 23:08:49,143 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
-2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:08:49,152 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
-2024-09-08 23:08:49,153 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
-2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:08:49,158 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
-2024-09-08 23:08:49,159 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetings?hub_id=10 HTTP/1.1" 200 -
-2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:08:49,173 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
-2024-09-08 23:08:49,174 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
-2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:08:49,203 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
-2024-09-08 23:08:49,203 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
-2024-09-08 23:08:49 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:08:49,225 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:08:49 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
-2024-09-08 23:08:49,226 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:49] "GET /api/meetingsessions?hub_id=10 HTTP/1.1" 200 -
-2024-09-08 23:08:54 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:08:54,604 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:08:54 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:54] "OPTIONS /api/meetings HTTP/1.1" 200 -
-2024-09-08 23:08:54,606 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:54] "OPTIONS /api/meetings HTTP/1.1" 200 -
-2024-09-08 23:08:54 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:08:54,650 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:08:54 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:54] "[35m[1mPOST /api/meetings HTTP/1.1[0m" 201 -
-2024-09-08 23:08:54,652 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:54] "[35m[1mPOST /api/meetings HTTP/1.1[0m" 201 -
-2024-09-08 23:08:54 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:08:54,658 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:08:54 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:54] "OPTIONS /api/recordings HTTP/1.1" 200 -
-2024-09-08 23:08:54,659 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:54] "OPTIONS /api/recordings HTTP/1.1" 200 -
-2024-09-08 23:08:54 INFO: Recording 4840d0e2-1b07-4fee-ad76-6d59985b75b6 created for user 2 in session 81
-2024-09-08 23:08:54,673 - app - INFO - Recording 4840d0e2-1b07-4fee-ad76-6d59985b75b6 created for user 2 in session 81
-2024-09-08 23:08:54 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:08:54,674 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:08:54 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:54] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
-2024-09-08 23:08:54,674 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:54] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
-2024-09-08 23:08:59 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:08:59,949 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:08:59 INFO: 127.0.0.1 - - [08/Sep/2024 23:08:59] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-08 23:08:59,953 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:08:59] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-08 23:09:04 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:09:04,987 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:09:04 INFO: 127.0.0.1 - - [08/Sep/2024 23:09:04] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-08 23:09:04,988 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:09:04] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-08 23:09:10 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:09:10,028 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:09:10 INFO: 127.0.0.1 - - [08/Sep/2024 23:09:10] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-08 23:09:10,029 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:09:10] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-08 23:09:14 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:09:14,991 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:09:14 INFO: 127.0.0.1 - - [08/Sep/2024 23:09:14] "OPTIONS /concatenate HTTP/1.1" 200 -
-2024-09-08 23:09:14,992 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:09:14] "OPTIONS /concatenate HTTP/1.1" 200 -
-2024-09-08 23:09:15 INFO: Received request to concatenate for recording_id: 4840d0e2-1b07-4fee-ad76-6d59985b75b6
-2024-09-08 23:09:15,004 - app - INFO - Received request to concatenate for recording_id: 4840d0e2-1b07-4fee-ad76-6d59985b75b6
-2024-09-08 23:09:15 INFO: Local chunk files for recording_id 4840d0e2-1b07-4fee-ad76-6d59985b75b6: ['4840d0e2-1b07-4fee-ad76-6d59985b75b6_chunk_0.webm', '4840d0e2-1b07-4fee-ad76-6d59985b75b6_chunk_1.webm', '4840d0e2-1b07-4fee-ad76-6d59985b75b6_chunk_2.webm']
-2024-09-08 23:09:15,005 - app - INFO - Local chunk files for recording_id 4840d0e2-1b07-4fee-ad76-6d59985b75b6: ['4840d0e2-1b07-4fee-ad76-6d59985b75b6_chunk_0.webm', '4840d0e2-1b07-4fee-ad76-6d59985b75b6_chunk_1.webm', '4840d0e2-1b07-4fee-ad76-6d59985b75b6_chunk_2.webm']
-2024-09-08 23:09:15 INFO: List file created at: uploads/audio_recordings/4840d0e2-1b07-4fee-ad76-6d59985b75b6_list.txt
-2024-09-08 23:09:15,006 - app - INFO - List file created at: uploads/audio_recordings/4840d0e2-1b07-4fee-ad76-6d59985b75b6_list.txt
-2024-09-08 23:09:15 INFO: Running FFmpeg locally with list file uploads/audio_recordings/4840d0e2-1b07-4fee-ad76-6d59985b75b6_list.txt
-2024-09-08 23:09:15,006 - app - INFO - Running FFmpeg locally with list file uploads/audio_recordings/4840d0e2-1b07-4fee-ad76-6d59985b75b6_list.txt
-2024-09-08 23:09:15 INFO: Local concatenation output at uploads/audio_recordings/4840d0e2-1b07-4fee-ad76-6d59985b75b6.webm
-2024-09-08 23:09:15,637 - app - INFO - Local concatenation output at uploads/audio_recordings/4840d0e2-1b07-4fee-ad76-6d59985b75b6.webm
-2024-09-08 23:09:15 ERROR: Error during concatenation: name 'convert_to_mp3' is not defined
-2024-09-08 23:09:15,638 - app - ERROR - Error during concatenation: name 'convert_to_mp3' is not defined
-2024-09-08 23:09:15 DEBUG: After request, Origin: http://localhost:3000
-2024-09-08 23:09:15,638 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-08 23:09:15 INFO: 127.0.0.1 - - [08/Sep/2024 23:09:15] "[35m[1mPOST /concatenate HTTP/1.1[0m" 500 -
-2024-09-08 23:09:15,640 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2024 23:09:15] "[35m[1mPOST /concatenate HTTP/1.1[0m" 500 -
-2024-09-09 13:29:30 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-09 13:29:30,591 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-09 13:29:31 ERROR: Error: Directory migrations already exists and is not empty
-2024-09-09 13:29:31,128 - flask_migrate - ERROR - Error: Directory migrations already exists and is not empty
-2024-09-09 13:29:59 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-09 13:29:59,754 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-09 13:30:10 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-09 13:30:10,674 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-09 13:31:57 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-09 13:31:57,129 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-09-10 13:29:31 INFO: [33mPress CTRL+C to quit[0m
+2024-09-10 13:29:31,410 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-09-10 13:29:32 INFO: Super admin gaetan@minutememo.io fetched all companies successfully
+2024-09-10 13:29:32,833 - routes - INFO - Super admin gaetan@minutememo.io fetched all companies successfully
+2024-09-10 13:29:32 DEBUG: After request, Origin: http://localhost:3000
+2024-09-10 13:29:32,834 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:29:32 INFO: 127.0.0.1 - - [10/Sep/2024 13:29:32] "GET /api/companies HTTP/1.1" 200 -
+2024-09-10 13:29:32,836 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:29:32] "GET /api/companies HTTP/1.1" 200 -
+2024-09-10 13:29:32 INFO: Super admin gaetan@minutememo.io fetched all companies successfully
+2024-09-10 13:29:32,841 - routes - INFO - Super admin gaetan@minutememo.io fetched all companies successfully
+2024-09-10 13:29:32 DEBUG: After request, Origin: http://localhost:3000
+2024-09-10 13:29:32,842 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:29:32 INFO: 127.0.0.1 - - [10/Sep/2024 13:29:32] "GET /api/companies HTTP/1.1" 200 -
+2024-09-10 13:29:32,842 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:29:32] "GET /api/companies HTTP/1.1" 200 -
+2024-09-10 13:29:32 INFO: Super admin gaetan@minutememo.io fetched all companies successfully
+2024-09-10 13:29:32,847 - routes - INFO - Super admin gaetan@minutememo.io fetched all companies successfully
+2024-09-10 13:29:32 DEBUG: After request, Origin: http://localhost:3000
+2024-09-10 13:29:32,847 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:29:32 INFO: 127.0.0.1 - - [10/Sep/2024 13:29:32] "GET /api/companies HTTP/1.1" 200 -
+2024-09-10 13:29:32,848 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:29:32] "GET /api/companies HTTP/1.1" 200 -
+2024-09-10 13:29:36 DEBUG: After request, Origin: http://localhost:3000
+2024-09-10 13:29:36,631 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:29:36 INFO: 127.0.0.1 - - [10/Sep/2024 13:29:36] "[33mGET /api/companies/10/users HTTP/1.1[0m" 404 -
+2024-09-10 13:29:36,634 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:29:36] "[33mGET /api/companies/10/users HTTP/1.1[0m" 404 -
+2024-09-10 13:29:37 DEBUG: After request, Origin: http://localhost:3000
+2024-09-10 13:29:37,806 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:29:37 INFO: 127.0.0.1 - - [10/Sep/2024 13:29:37] "[33mGET /api/companies/11/users HTTP/1.1[0m" 404 -
+2024-09-10 13:29:37,807 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:29:37] "[33mGET /api/companies/11/users HTTP/1.1[0m" 404 -
+2024-09-10 13:29:38 DEBUG: After request, Origin: http://localhost:3000
+2024-09-10 13:29:38,810 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:29:38 INFO: 127.0.0.1 - - [10/Sep/2024 13:29:38] "[33mGET /api/companies/14/users HTTP/1.1[0m" 404 -
+2024-09-10 13:29:38,811 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:29:38] "[33mGET /api/companies/14/users HTTP/1.1[0m" 404 -
+2024-09-10 13:29:41 DEBUG: After request, Origin: http://localhost:3000
+2024-09-10 13:29:41,443 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:29:41 INFO: 127.0.0.1 - - [10/Sep/2024 13:29:41] "[33mGET /api/companies/12/users HTTP/1.1[0m" 404 -
+2024-09-10 13:29:41,445 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:29:41] "[33mGET /api/companies/12/users HTTP/1.1[0m" 404 -
+2024-09-10 13:29:42 DEBUG: After request, Origin: http://localhost:3000
+2024-09-10 13:29:42,170 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-10 13:29:42 INFO: 127.0.0.1 - - [10/Sep/2024 13:29:42] "[33mGET /api/companies/9/users HTTP/1.1[0m" 404 -
+2024-09-10 13:29:42,172 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2024 13:29:42] "[33mGET /api/companies/9/users HTTP/1.1[0m" 404 -
