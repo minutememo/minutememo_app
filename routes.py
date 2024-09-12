@@ -15,7 +15,8 @@ from flask_cors import cross_origin
 import ffmpeg
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
-from models import User, db, Recording, MeetingSession, MeetingHub, Company, Meeting
+from decorators import subscription_required
+from models import User, db, Recording, MeetingSession, MeetingHub, Company, Meeting, Subscription
 from extensions import db  # Import from extensions.py
 from flask_login import login_required, current_user
 from datetime import datetime, timedelta
@@ -163,10 +164,12 @@ def home():
 
 @main.route('/home_content')
 @login_required
+@subscription_required
 def home_content():
     return render_template('home_content.html')
 
 @main.route('/settings_content')
+@subscription_required
 @login_required
 def settings_content():
     return render_template('settings_content.html')
@@ -339,6 +342,20 @@ def concatenate():
     except Exception as e:
         current_app.logger.error(f"Error during concatenation: {e}")
         return jsonify({'status': 'error', 'message': str(e)}), 500
+    
+def convert_to_mp3(webm_filepath, mp3_filepath):
+    try:
+        (
+            ffmpeg
+            .input(webm_filepath)
+            .output(mp3_filepath, codec='libmp3lame', qscale=2)
+            .run()
+        )
+        print(f"Conversion successful: {mp3_filepath}")
+    except ffmpeg.Error as e:
+        print(f"Error converting file: {e}")
+
+
 
 # Check Celery task status route
 @main.route('/concatenate-status/<task_id>', methods=['GET'])
@@ -354,6 +371,8 @@ def concatenate_status(task_id):
         response = {'state': task_result.state, 'status': task_result.info}
 
     return jsonify(response)
+
+
 
 # Celery task for cloud-based concatenation
 @celery_app.task(bind=True)
@@ -681,16 +700,30 @@ def manage_company():
 
 
 # Add this new route for fetching all companies
+# Add this new route for fetching all companies with subscription details
 @main.route('/api/companies', methods=['GET'])
 @login_required
 def get_all_companies():
     if current_user.internal_user_role != 'super_admin':
+        logger.warning(f"Unauthorized access attempt by {current_user.email}")
         return jsonify({'status': 'error', 'message': 'Unauthorized access'}), 403
 
     try:
         companies = Company.query.all()
-        companies_data = [
-            {
+        companies_data = []
+        for company in companies:
+            # Fetch the first subscription for the company, if it exists
+            subscription = Subscription.query.filter_by(company_id=company.id).first()
+
+            subscription_data = {
+                'plan_name': subscription.plan_name if subscription else 'No Subscription',
+                'status': subscription.status if subscription else 'None',
+                'price': subscription.price if subscription else 0,
+                'start_date': subscription.start_date.strftime('%Y-%m-%d') if subscription else None,
+                'end_date': subscription.end_date.strftime('%Y-%m-%d') if subscription and subscription.end_date else 'Ongoing'
+            } if subscription else {}
+
+            company_data = {
                 'id': company.id,
                 'name': company.name,
                 'address': company.address,
@@ -699,14 +732,64 @@ def get_all_companies():
                 'zip_code': company.zip_code,
                 'country': company.country,
                 'phone_number': company.phone_number,
-            } for company in companies
-        ]
+                'subscription': subscription_data  # Add the subscription data
+            }
+            companies_data.append(company_data)
+
         logger.info(f"Super admin {current_user.email} fetched all companies successfully")
         return jsonify({'status': 'success', 'companies': companies_data}), 200
+
     except Exception as e:
         logger.error(f"Error fetching all companies for super admin {current_user.email}: {str(e)}")
         return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
         
+@main.route('/api/companies/<int:company_id>/users', methods=['GET'])
+@login_required
+def get_company_users(company_id):
+    if current_user.internal_user_role != 'super_admin':
+        return jsonify({'status': 'error', 'message': 'Unauthorized access'}), 403
+
+    try:
+        company = Company.query.get(company_id)
+        if not company:
+            return jsonify({'status': 'error', 'message': 'Company not found'}), 404
+
+        users = User.query.filter_by(company_id=company.id).all()
+        subscriptions = Subscription.query.filter_by(company_id=company.id).all()  # Fetch subscriptions
+
+        # Serialize user data
+        users_data = [
+            {
+                'id': user.id,
+                'first_name': user.first_name,
+                'last_name': user.last_name,
+                'email': user.email,
+                'user_type': user.user_type,
+                'internal_user_role': user.internal_user_role
+            } for user in users
+        ]
+
+        # Serialize subscription data
+        subscription_data = [
+            {
+                'plan_name': sub.plan_name,
+                'status': sub.status,
+                'price': sub.price,
+                'billing_cycle': sub.billing_cycle,
+                'start_date': sub.start_date.strftime('%Y-%m-%d'),
+                'end_date': sub.end_date.strftime('%Y-%m-%d') if sub.end_date else 'Ongoing',
+                'is_active': sub.is_active
+            } for sub in subscriptions
+        ]
+
+        return jsonify({
+            'status': 'success',
+            'users': users_data,
+            'subscriptions': subscription_data
+        }), 200
+    except Exception as e:
+        logger.error(f"Error fetching users and subscriptions for company {company_id}: {str(e)}")
+        return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500      
 
 @main.route('/api/meetings', methods=['GET', 'POST'])
 @login_required
@@ -982,3 +1065,52 @@ def set_active_hub():
 def check_update():
         print(">>> ffmpeg installed op heroku <<<")
         return jsonify({"message": "ffmpeg installed op heroku4"}), 200
+
+@main.route('/api/subscription-status', methods=['GET'])
+@login_required
+def check_subscription_status():
+    try:
+        company = current_user.company
+        if not company:
+            return jsonify({'is_active': False, 'is_empty': True}), 404
+
+        active_subscription = Subscription.query.filter_by(company_id=company.id, status='active').first()
+
+        if active_subscription:
+            return jsonify({'is_active': True, 'is_empty': False}), 200
+        else:
+            return jsonify({'is_active': False, 'is_empty': False}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@main.route('/api/subscription-plans', methods=['GET'])
+@login_required
+def get_subscription_plans():
+    # Assuming you have predefined subscription plans
+    subscription_plans = [
+        {'plan_name': 'Basic Plan', 'price': 50.00, 'billing_cycle': 'monthly', 'max_users': 10},
+        {'plan_name': 'Pro Plan', 'price': 100.00, 'billing_cycle': 'yearly', 'max_users': 50},
+        {'plan_name': 'Enterprise Plan', 'price': 250.00, 'billing_cycle': 'yearly', 'max_users': 100},
+    ]
+    
+    return jsonify({'status': 'success', 'plans': subscription_plans}), 200
+
+@main.route('/api/subscriptions/<int:subscription_id>', methods=['PATCH'])
+@login_required
+def update_subscription(subscription_id):
+    if current_user.internal_user_role != 'super_admin':
+        return jsonify({'status': 'error', 'message': 'Unauthorized access'}), 403
+
+    try:
+        subscription = Subscription.query.get(subscription_id)
+        if not subscription:
+            return jsonify({'status': 'error', 'message': 'Subscription not found'}), 404
+
+        data = request.json
+        subscription.status = data.get('status', subscription.status)
+        db.session.commit()
+
+        return jsonify({'status': 'success', 'subscription': subscription.status}), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'status': 'error', 'message': str(e)}), 500

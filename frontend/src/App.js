@@ -18,6 +18,8 @@ import FileUpload from './components/FileUpload';  // Import FileUpload componen
 import axios from 'axios';
 import MeetingPage from './components/MeetingsPage'; // Adjust the path as necessary
 import MeetingSessionPage from './components/MeetingSessionPage'; // Import the new component
+import SubscribePage from './components/SubscribePage'; // Create this component
+
 
 
 
@@ -321,6 +323,7 @@ const AppContent = () => {
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/subscribe" element={<SubscribePage />} />
         </Routes>
       )}
     </Router>

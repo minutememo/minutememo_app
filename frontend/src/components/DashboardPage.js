@@ -1,18 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import '../styles.css'; // Assuming styles.css is in the src folder
 
 const DashboardPage = ({ selectedHub }) => {
   const [meetings, setMeetings] = useState([]);
   const [meetingSessions, setMeetingSessions] = useState([]);
   const [error, setError] = useState('');
+  const [subscriptionActive, setSubscriptionActive] = useState(false); // State to track subscription status
+  const [subscriptionEmpty, setSubscriptionEmpty] = useState(false); // State to track empty subscription
+  const navigate = useNavigate();
 
   // Environment variable for backend URL
   const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
   useEffect(() => {
-    if (selectedHub) {
+    // Check subscription status
+    const checkSubscriptionStatus = async () => {
+      try {
+        const response = await axios.get(`${backendUrl}/api/subscription-status`, { withCredentials: true });
+        if (response.status === 200) {
+          if (response.data.is_active) {
+            setSubscriptionActive(true); // Set subscription to active
+          } else if (response.data.is_empty) {
+            setSubscriptionEmpty(true); // Set subscription to empty
+          } else {
+            setSubscriptionActive(false); // Handle inactive subscription
+            navigate('/subscribe'); // Redirect to subscription page if inactive
+          }
+        } else {
+          setError('Failed to fetch subscription status');
+        }
+      } catch (err) {
+        setError('Error checking subscription status');
+        console.error(err);
+      }
+    };
+
+    checkSubscriptionStatus();
+  }, [backendUrl, navigate]);
+
+  useEffect(() => {
+    if (selectedHub && subscriptionActive) {
       // Fetch the meetings for the selected meeting hub when the component mounts
       const fetchMeetings = async () => {
         try {
@@ -46,11 +75,25 @@ const DashboardPage = ({ selectedHub }) => {
       fetchMeetings();
       fetchMeetingSessions();
     }
-  }, [selectedHub, backendUrl]);
+  }, [selectedHub, backendUrl, subscriptionActive]);
+
+  if (subscriptionEmpty) {
+    return (
+      <div className="dashboard">
+        <h3>No Subscription Found</h3>
+        <p>Please <Link to="/subscribe">subscribe</Link> to access your dashboard.</p>
+      </div>
+    );
+  }
+
+  if (!subscriptionActive) {
+    return <p>Checking subscription status...</p>; // Display message while checking subscription
+  }
 
   return (
     <div className="dashboard">
       <h3>Meetings</h3>
+      {error && <p className="error-message">{error}</p>}
       <table>
         <thead>
           <tr>

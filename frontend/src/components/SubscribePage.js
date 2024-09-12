@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './SubscribePage.css'; // Import the styles for the modal
+import '../styles.css';
 
 const SubscribePage = () => {
   // Prevent scrolling when the modal is active

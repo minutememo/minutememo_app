@@ -16,6 +16,11 @@ class Company(db.Model):
     country = db.Column(db.String(64))
     phone_number = db.Column(db.String(20))
     users = db.relationship('User', backref='company', lazy=True)
+    
+    # Added relationship for subscription
+    subscriptions = db.relationship('Subscription', backref='company', lazy=True)
+    payments = db.relationship('Payment', backref='company', lazy=True)  # Payments relationship
+
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -40,12 +45,49 @@ class User(UserMixin, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+
+class Subscription(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    company_id = db.Column(db.Integer, db.ForeignKey('company.id'), nullable=False)  # Link to the Company
+    plan_name = db.Column(db.String(64), nullable=False)  # Subscription plan name
+    price = db.Column(db.Float, nullable=False)  # Price of the subscription
+    billing_cycle = db.Column(db.String(20), nullable=False)  # e.g., 'monthly', 'yearly'
+    max_users = db.Column(db.Integer, nullable=False)  # Maximum number of users allowed in the subscription
+    status = db.Column(db.String(20), nullable=False, default='active')  # Subscription status
+    start_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)  # When the subscription started
+    end_date = db.Column(db.DateTime, nullable=True)  # Nullable if the subscription is ongoing
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.utcnow)
+
+    # Relationship to Payments
+    payments = db.relationship('Payment', backref='subscription', lazy=True)
+
+    @property
+    def is_active(self):
+        """Check if the subscription is currently active."""
+        if self.status != 'active':
+            return False
+        if self.end_date and self.end_date < datetime.utcnow():
+            return False
+        return True
+
+class Payment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    company_id = db.Column(db.Integer, db.ForeignKey('company.id'), nullable=False)
+    subscription_id = db.Column(db.Integer, db.ForeignKey('subscription.id'), nullable=False)  # Link to the Subscription
+    amount = db.Column(db.Float, nullable=False)  # Amount paid
+    payment_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    payment_method = db.Column(db.String(50), nullable=False)  # e.g., 'credit card', 'bank transfer'
+    status = db.Column(db.String(20), nullable=False, default='successful')  # Payment status (e.g., successful, failed)
+
+
 class MeetingHub(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
     description = db.Column(db.String(256))
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'), nullable=False)
     meetings = db.relationship('Meeting', backref='meeting_hub', lazy=True)
+
 
 class Meeting(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -54,6 +96,7 @@ class Meeting(db.Model):
     meeting_hub_id = db.Column(db.Integer, db.ForeignKey('meeting_hub.id'), nullable=False)
     is_recurring = db.Column(db.Boolean, default=False)
     meeting_sessions = db.relationship('MeetingSession', backref='meeting', lazy=True)
+
 
 class MeetingSession(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -66,6 +109,7 @@ class MeetingSession(db.Model):
     recordings = db.relationship('Recording', backref='meeting_session', lazy=True)
     action_items = db.relationship('ActionItem', backref='meeting_session', lazy=True)
 
+
 class ActionItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.Text, nullable=False)
@@ -73,6 +117,7 @@ class ActionItem(db.Model):
     due_date = db.Column(db.DateTime)
     completed = db.Column(db.Boolean, default=False)
     meeting_session_id = db.Column(db.Integer, db.ForeignKey('meeting_session.id'), nullable=False)
+
 
 class Recording(db.Model):
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, unique=True, nullable=False)
@@ -82,6 +127,7 @@ class Recording(db.Model):
     concatenation_status = db.Column(db.String(10), nullable=False)
     concatenation_file_name = db.Column(db.String(256), nullable=False)
     meeting_session_id = db.Column(db.Integer, db.ForeignKey('meeting_session.id'), nullable=False)
+
 
 # Junction table to manage many-to-many relationship between User and MeetingHub
 user_meeting_hub = db.Table('user_meeting_hub',
