@@ -324,6 +324,7 @@ const AppContent = () => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/subscribe" element={<SubscribePage />} />
+          <Route path="/" element={<DashboardPage />} />
         </Routes>
       )}
     </Router>

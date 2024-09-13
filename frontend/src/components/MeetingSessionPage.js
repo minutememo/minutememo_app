@@ -6,6 +6,8 @@ const MeetingSessionPage = () => {
   const { sessionId } = useParams(); // Get session ID from the URL
   const [session, setSession] = useState(null);
   const [error, setError] = useState('');
+  const [transcription, setTranscription] = useState('');  // State for transcription result
+  const [isTranscribing, setIsTranscribing] = useState(false); // State for transcribing status
   const audioRef = useRef(null);
 
   const baseURL = process.env.REACT_APP_API_URL || '';
@@ -66,6 +68,31 @@ const MeetingSessionPage = () => {
     }
   };
 
+  const handleTranscription = async () => {
+    setIsTranscribing(true); // Start transcribing
+    console.log(`Starting transcription for session ID: ${sessionId}`);
+    
+    try {
+      console.log(`Sending request to transcribe audio for session ID: ${sessionId}`);
+      const response = await axios.post(`${baseURL}/api/transcribe/${sessionId}`);
+      
+      if (response.status === 200) {
+        console.log(`Transcription successful for session ID: ${sessionId}`);
+        console.log('Transcription response:', response.data);
+        setTranscription(response.data.transcription);  // Store the transcription result
+      } else {
+        console.error(`Transcription failed with status ${response.status} for session ID: ${sessionId}`);
+        setError('Failed to transcribe the audio.');
+      }
+    } catch (err) {
+      console.error(`Error occurred during transcription for session ID: ${sessionId}`, err);
+      setError('Error transcribing the audio.');
+    } finally {
+      console.log(`Transcription process finished for session ID: ${sessionId}`);
+      setIsTranscribing(false); // Stop loading
+    }
+  };
+
   return (
     <div className="session-page">
       {error && <p className="error-message">{error}</p>}
@@ -82,6 +109,19 @@ const MeetingSessionPage = () => {
                 <button onClick={skipBackward}>-10s</button>
                 <button onClick={skipForward}>+10s</button>
               </div>
+
+              {/* Transcription Button */}
+              <button onClick={handleTranscription} disabled={isTranscribing}>
+                {isTranscribing ? 'Transcribing...' : 'Transcribe Audio'}
+              </button>
+
+              {/* Display Transcription Result */}
+              {transcription && (
+                <div className="transcription">
+                  <h3>Transcription:</h3>
+                  <p>{transcription}</p>
+                </div>
+              )}
             </div>
           ) : (
             <p>No audio recording available.</p>

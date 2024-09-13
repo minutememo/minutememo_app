@@ -24,6 +24,10 @@ import traceback
 #from app import credentials
 from celery.result import AsyncResult
 from celery_factory import celery_app  # Import the initialized Celery app
+from openai import OpenAI
+import openai
+import requests
+
 
 main = Blueprint('main', __name__)
 logger = logging.getLogger(__name__)
@@ -1114,3 +1118,97 @@ def update_subscription(subscription_id):
     except Exception as e:
         db.session.rollback()
         return jsonify({'status': 'error', 'message': str(e)}), 500
+
+
+@main.route('/api/transcribe/<int:session_id>', methods=['POST'])
+@login_required
+def transcribe(session_id):
+    try:
+        current_app.logger.info(f"Received transcription request for session ID: {session_id}")
+
+        # Log the current user making the request
+        current_app.logger.info(f"User {current_user.email} is requesting transcription for session ID: {session_id}")
+
+        # Fetch the audio URL from the database
+        session = MeetingSession.query.get_or_404(session_id)
+        current_app.logger.info(f"Fetched session for session ID {session_id}: {session}")
+
+        if not session or not session.audio_url:
+            current_app.logger.error(f"No audio URL found for session ID: {session_id}")
+            return jsonify({'error': 'No audio file found for this session'}), 404
+
+        # Generate the full audio URL using url_for
+        filename = session.audio_url.split('/')[-1]
+        audio_url = url_for('main.download_file', filename=filename, _external=True)
+        current_app.logger.info(f"Audio URL for session ID {session_id}: {audio_url}")
+
+        # Begin the transcription process
+        current_app.logger.info(f"Starting transcription process for session ID {session_id} with audio URL {audio_url}")
+        transcription_result = transcribe_audio(audio_url)
+
+        if not transcription_result:
+            current_app.logger.error(f"Transcription failed for session ID {session_id}")
+            return jsonify({'error': 'Failed to transcribe audio'}), 500
+
+        # Log the success of the transcription
+        current_app.logger.info(f"Transcription completed successfully for session ID {session_id}")
+
+        return jsonify({'transcription': transcription_result}), 200
+
+    except Exception as e:
+        # Log any exception that occurred during the transcription process
+        current_app.logger.exception(f"An error occurred during transcription for session ID {session_id}: {str(e)}")
+        return jsonify({'error': 'An error occurred during transcription'}), 500
+
+def transcribe_audio(audio_url):
+    try:
+        import os
+        import tempfile
+        import requests
+        from flask import current_app
+        from openai import OpenAI
+        
+        # Initialize the OpenAI client
+        client = OpenAI()
+
+        # Log the audio URL
+        current_app.logger.info(f"Transcribing audio from URL: {audio_url}")
+
+        # Download or load the audio file
+        audio_response = requests.get(audio_url)
+        if audio_response.status_code != 200:
+            current_app.logger.error(f"Failed to download audio file from {audio_url}. Status code: {audio_response.status_code}")
+            return None
+
+        audio_data = audio_response.content
+
+        # Save the audio data to a temporary file
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as temp_audio_file:
+            temp_audio_file.write(audio_data)
+            temp_audio_file_path = temp_audio_file.name
+
+        current_app.logger.info(f"Temporary audio file created at {temp_audio_file_path}")
+
+        # Use the OpenAI Whisper API through client.audio.transcriptions.create
+        # Use the new transcription method
+        with open(temp_audio_file_path, "rb") as audio_file:
+            transcription = client.audio.transcriptions.create(
+                model="whisper-1",
+                file=audio_file,
+            )
+
+        # Directly access the 'text' attribute
+        transcription_text = transcription.text
+        current_app.logger.info(f"Transcription result: {transcription_text}")
+
+        # Clean up the temporary file
+        os.remove(temp_audio_file_path)
+        current_app.logger.info(f"Temporary audio file deleted: {temp_audio_file_path}")
+
+        return transcription_text
+
+    except Exception as e:
+        current_app.logger.error(f"Error during transcription process: {str(e)}")
+        return None
+        current_app.logger.error(f"Error during transcription process: {str(e)}")
+        return None

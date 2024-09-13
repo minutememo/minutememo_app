@@ -14,7 +14,7 @@ const SubscribePage = () => {
     <div className="subscription-modal">
       <div className="modal-content">
         <h1>This is the subscription page</h1>
-        <p>Please subscribe to continue using the service.</p>
+        <p>Please subscribe to continue using the service blablabla.</p>
       </div>
     </div>
   );
