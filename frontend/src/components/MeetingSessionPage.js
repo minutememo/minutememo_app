@@ -13,19 +13,22 @@ const MeetingSessionPage = () => {
   const baseURL = process.env.REACT_APP_API_URL || '';
 
   useEffect(() => {
-    // Fetch session details
+    // Fetch session details and transcription
     const fetchSession = async () => {
       try {
         console.log(`Fetching session details for session ID: ${sessionId}`);
         const response = await axios.get(`${baseURL}/api/sessions/${sessionId}`);
         if (response.status === 200) {
-          setSession(response.data.session);
-          console.log('Session data received:', response.data.session);
-
-          if (response.data.session.audio_url) {
-            console.log(`Audio file URL received: ${baseURL}/${response.data.session.audio_url}`);
-          } else {
-            console.log('No audio file URL found in the session data.');
+          const sessionData = response.data.session;
+          setSession(sessionData);
+          
+          // Log transcription data
+          console.log('Transcription data:', sessionData.transcription);
+          
+          setTranscription(sessionData.transcription || ''); // Set transcription if available
+          console.log('Session data received:', sessionData);
+          if (sessionData.transcription) {
+            console.log('Transcription loaded from session:', sessionData.transcription);
           }
         } else {
           setError('Failed to fetch session.');
@@ -36,37 +39,9 @@ const MeetingSessionPage = () => {
         console.error('Error fetching session:', err);
       }
     };
-
+  
     fetchSession();
   }, [sessionId, baseURL]);
-
-  const playAudio = () => {
-    if (audioRef.current) {
-      console.log('Playing audio:', audioRef.current.src);
-      audioRef.current.play();
-    }
-  };
-
-  const pauseAudio = () => {
-    if (audioRef.current) {
-      console.log('Pausing audio:', audioRef.current.src);
-      audioRef.current.pause();
-    }
-  };
-
-  const skipForward = () => {
-    if (audioRef.current) {
-      console.log('Skipping forward 10 seconds in audio:', audioRef.current.src);
-      audioRef.current.currentTime += 10;
-    }
-  };
-
-  const skipBackward = () => {
-    if (audioRef.current) {
-      console.log('Skipping backward 10 seconds in audio:', audioRef.current.src);
-      audioRef.current.currentTime -= 10;
-    }
-  };
 
   const handleTranscription = async () => {
     setIsTranscribing(true); // Start transcribing
@@ -78,8 +53,8 @@ const MeetingSessionPage = () => {
       
       if (response.status === 200) {
         console.log(`Transcription successful for session ID: ${sessionId}`);
-        console.log('Transcription response:', response.data);
         setTranscription(response.data.transcription);  // Store the transcription result
+        console.log('Transcription:', response.data.transcription);
       } else {
         console.error(`Transcription failed with status ${response.status} for session ID: ${sessionId}`);
         setError('Failed to transcribe the audio.');
@@ -100,28 +75,29 @@ const MeetingSessionPage = () => {
         <div>
           <h2>{session.name}</h2>
           <p>Date: {new Date(session.session_datetime).toLocaleString()}</p>
+
+          {/* Display Transcription Result */}
+          {transcription && (
+            <div className="transcription">
+              <h3>Transcription:</h3>
+              <p>{transcription}</p>
+            </div>
+          )}
+
           {session.audio_url ? (
             <div>
               <audio ref={audioRef} src={`${baseURL}/${session.audio_url}`} controls />
               <div className="audio-controls">
-                <button onClick={playAudio}>Play</button>
-                <button onClick={pauseAudio}>Pause</button>
-                <button onClick={skipBackward}>-10s</button>
-                <button onClick={skipForward}>+10s</button>
+                <button onClick={() => audioRef.current.play()}>Play</button>
+                <button onClick={() => audioRef.current.pause()}>Pause</button>
+                <button onClick={() => (audioRef.current.currentTime -= 10)}>-10s</button>
+                <button onClick={() => (audioRef.current.currentTime += 10)}>+10s</button>
               </div>
 
               {/* Transcription Button */}
               <button onClick={handleTranscription} disabled={isTranscribing}>
                 {isTranscribing ? 'Transcribing...' : 'Transcribe Audio'}
               </button>
-
-              {/* Display Transcription Result */}
-              {transcription && (
-                <div className="transcription">
-                  <h3>Transcription:</h3>
-                  <p>{transcription}</p>
-                </div>
-              )}
             </div>
           ) : (
             <p>No audio recording available.</p>

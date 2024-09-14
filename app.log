@@ -1,740 +1,576 @@
-2024-09-13 17:11:59,101 - app - ERROR - Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
+2024-09-13 23:11:15,940 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:11:15,943 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:11:15] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:12:34,387 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:12:34,407 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:12:34] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-13 23:12:34,423 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:12:34,424 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:12:34] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:12:34,425 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:12:34,429 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:12:34] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-13 23:12:34,434 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:12:34,435 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:12:34,438 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:12:34] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-13 23:12:34,438 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:12:34] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:12:34,443 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:12:34,446 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:12:34] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-13 23:12:34,449 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:12:34,450 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:12:34] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:14:07,944 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:14:07,947 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:14:07] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-13 23:14:07,950 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:14:07,951 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:14:07] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:14:07,951 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:14:07,953 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:14:07] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-13 23:14:07,972 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:14:07,978 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:14:07] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-13 23:14:07,992 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:14:07,993 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:14:07,993 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:14:07] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-13 23:14:07,995 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:14:07] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:14:08,016 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:14:08,017 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:14:08] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:15:06,575 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:15:06,577 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:15:06] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-13 23:15:06,582 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:15:06,587 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:15:06,622 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:15:06] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:15:06,623 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:15:06] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-13 23:15:06,658 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:15:06,659 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:15:06] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-13 23:15:06,671 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:15:06,672 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:15:06] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-13 23:15:06,675 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:15:06,676 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:15:06] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:15:06,687 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:15:06,689 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:15:06] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:15:11,453 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:15:11,462 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:15:11] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-13 23:15:11,516 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:15:11,516 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:15:11,518 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:15:11] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:15:11,518 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:15:11] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-13 23:15:11,530 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:15:11,531 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:15:11,532 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:15:11] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-13 23:15:11,532 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:15:11] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:15:11,540 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:15:11,542 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:15:11] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-13 23:15:11,547 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:15:11,549 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:15:11] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:18:48,087 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:18:48,091 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:18:48] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-13 23:18:48,134 - auth - DEBUG - After request, Origin: None
+2024-09-13 23:18:48,135 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:18:48,141 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:18:48] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
+2024-09-13 23:18:48,142 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:18:48] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-13 23:19:02,796 - auth - DEBUG - After request, Origin: None
+2024-09-13 23:19:02,799 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:19:02] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
+2024-09-13 23:34:28,847 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:34:28,850 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:34:28] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-13 23:34:28,855 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:34:28,858 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:34:28,858 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:34:28] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:34:28,860 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:34:28] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-13 23:34:28,881 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:34:28,882 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:34:28,882 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:34:28] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-13 23:34:28,884 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:34:28] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:34:28,913 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:34:28,929 - auth - DEBUG - After request, Origin: None
+2024-09-13 23:34:28,929 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:34:28] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-13 23:34:28,930 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:34:28] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
+2024-09-13 23:34:28,941 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:34:28,942 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:34:28] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:36:38,832 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:36:38,833 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:36:38,838 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:36:38] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-13 23:36:38,838 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:36:38] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:36:38,848 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:36:38,851 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:36:38] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-13 23:36:38,855 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:36:38,856 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:36:38] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-13 23:36:38,861 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:36:38,862 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:36:38,863 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:36:38] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-13 23:36:38,864 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:36:38] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:36:38,879 - auth - DEBUG - After request, Origin: None
+2024-09-13 23:36:38,880 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:36:38] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
+2024-09-13 23:36:38,906 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:36:38,907 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:36:38] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:37:38,811 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:37:38,824 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:37:38] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-13 23:37:38,832 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:37:38,833 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:37:38,833 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:37:38] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:37:38,834 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:37:38] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-13 23:37:38,852 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:37:38,853 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:37:38] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-13 23:37:38,878 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:37:38,880 - auth - DEBUG - After request, Origin: None
+2024-09-13 23:37:38,881 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:37:38] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-13 23:37:38,882 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:37:38] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
+2024-09-13 23:37:38,890 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:37:38,891 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:37:38] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:37:38,898 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:37:38,899 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:37:38] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:41:03,087 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:41:03,105 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:41:03] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-13 23:41:03,133 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:41:03,134 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:41:03] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:41:03,136 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:41:03,149 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:41:03] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-13 23:41:03,178 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:41:03,178 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:41:03] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-13 23:41:03,195 - auth - DEBUG - After request, Origin: None
+2024-09-13 23:41:03,198 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:41:03,198 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:41:03] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
+2024-09-13 23:41:03,199 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:41:03] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-13 23:41:03,202 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:41:03,203 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:41:03] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:41:03,212 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:41:03,214 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:41:03] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-13 23:41:22,271 - auth - DEBUG - After request, Origin: None
+2024-09-13 23:41:22,274 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:41:22] "GET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1" 200 -
+2024-09-13 23:41:25,919 - routes - DEBUG - Fetching company details for the current user
+2024-09-13 23:41:25,959 - routes - INFO - Company details fetched successfully for user gaetan@minutememo.io
+2024-09-13 23:41:25,960 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:41:25,960 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:41:25] "GET /api/company HTTP/1.1" 200 -
+2024-09-13 23:41:25,963 - routes - DEBUG - Fetching company details for the current user
+2024-09-13 23:41:25,964 - routes - INFO - Company details fetched successfully for user gaetan@minutememo.io
+2024-09-13 23:41:25,964 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:41:25,966 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:41:25] "GET /api/company HTTP/1.1" 200 -
+2024-09-13 23:41:28,844 - app - ERROR - Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
 LINE 3: WHERE meeting_session.meeting_id = 'undefined'
                                            ^
 
-[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url 
+[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url, meeting_session.transcription AS meeting_session_transcription 
 FROM meeting_session 
 WHERE meeting_session.meeting_id = %(meeting_id_1)s]
 [parameters: {'meeting_id_1': 'undefined'}]
 (Background on this error at: https://sqlalche.me/e/20/9h9h)
-2024-09-13 17:11:59,105 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:11:59,106 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:11:59] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
-2024-09-13 17:11:59,110 - app - ERROR - Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
+2024-09-13 23:41:28,845 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:41:28,849 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:41:28] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
+2024-09-13 23:41:28,857 - app - ERROR - Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
 LINE 3: WHERE meeting_session.meeting_id = 'undefined'
                                            ^
 
-[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url 
+[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url, meeting_session.transcription AS meeting_session_transcription 
 FROM meeting_session 
 WHERE meeting_session.meeting_id = %(meeting_id_1)s]
 [parameters: {'meeting_id_1': 'undefined'}]
 (Background on this error at: https://sqlalche.me/e/20/9h9h)
-2024-09-13 17:11:59,110 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:11:59,111 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:11:59] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
-2024-09-13 17:11:59,780 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:11:59,781 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:11:59] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-13 17:11:59,786 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:11:59,787 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:11:59] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-13 17:11:59,813 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:11:59,814 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:11:59] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
-2024-09-13 17:11:59,821 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:11:59,822 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:11:59] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
-2024-09-13 17:12:02,770 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:02,771 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:02] "GET /api/meetings?meeting_id=83 HTTP/1.1" 200 -
-2024-09-13 17:12:02,776 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:02,779 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:02] "GET /api/meetings?meeting_id=83 HTTP/1.1" 200 -
-2024-09-13 17:12:03,739 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:03,741 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:03] "GET /api/sessions/86 HTTP/1.1" 200 -
-2024-09-13 17:12:03,747 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:03,749 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:03] "GET /api/sessions/86 HTTP/1.1" 200 -
-2024-09-13 17:12:03,752 - auth - DEBUG - After request, Origin: None
-2024-09-13 17:12:03,753 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:03] "[35m[1mGET /uploads/audio_recordings/8deace66-b369-4399-ba8c-316c633af520.mp3 HTTP/1.1[0m" 206 -
-2024-09-13 17:12:06,360 - auth - DEBUG - After request, Origin: None
-2024-09-13 17:12:06,362 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:06] "[35m[1mGET /uploads/audio_recordings/8deace66-b369-4399-ba8c-316c633af520.mp3 HTTP/1.1[0m" 206 -
-2024-09-13 17:12:19,798 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:19,801 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:19] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-13 17:12:19,812 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:19,814 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:19] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
-2024-09-13 17:12:19,821 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:19,822 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:19] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-13 17:12:19,824 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:19,825 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:19] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
-2024-09-13 17:12:26,642 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:26,643 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:26] "OPTIONS /api/meetings HTTP/1.1" 200 -
-2024-09-13 17:12:26,738 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:26,739 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:26] "[35m[1mPOST /api/meetings HTTP/1.1[0m" 201 -
-2024-09-13 17:12:26,743 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:26,744 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:26] "OPTIONS /api/recordings HTTP/1.1" 200 -
-2024-09-13 17:12:26,758 - app - INFO - Recording 4b6eb8f0-d3d7-4258-aa95-2e562e38e69e created for user 2 in session 87
-2024-09-13 17:12:26,759 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:26,759 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:26] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
-2024-09-13 17:12:32,178 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:32,179 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:32] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-13 17:12:37,220 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:37,221 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:37] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-13 17:12:42,249 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:42,251 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:42] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-13 17:12:47,396 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:47,397 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:47] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-13 17:12:51,948 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:51,967 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:51] "OPTIONS /concatenate HTTP/1.1" 200 -
-2024-09-13 17:12:51,996 - app - INFO - Received request to concatenate for recording_id: 4b6eb8f0-d3d7-4258-aa95-2e562e38e69e
-2024-09-13 17:12:51,999 - app - INFO - Local chunk files for recording_id 4b6eb8f0-d3d7-4258-aa95-2e562e38e69e: ['4b6eb8f0-d3d7-4258-aa95-2e562e38e69e_chunk_0.webm', '4b6eb8f0-d3d7-4258-aa95-2e562e38e69e_chunk_1.webm', '4b6eb8f0-d3d7-4258-aa95-2e562e38e69e_chunk_2.webm', '4b6eb8f0-d3d7-4258-aa95-2e562e38e69e_chunk_3.webm']
-2024-09-13 17:12:51,999 - app - INFO - List file created at: uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e_list.txt
-2024-09-13 17:12:51,999 - app - INFO - Running FFmpeg locally with list file uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e_list.txt
-2024-09-13 17:12:53,032 - app - INFO - Local concatenation output at uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.webm
-2024-09-13 17:12:53,259 - app - INFO - MP3 conversion successful. File saved at uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 17:12:53,259 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:53,261 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:53] "POST /concatenate HTTP/1.1" 200 -
-2024-09-13 17:12:53,271 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:53,272 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:53] "OPTIONS /api/recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e HTTP/1.1" 200 -
-2024-09-13 17:12:53,280 - app - INFO - Entering update_recording function for recording_id: 4b6eb8f0-d3d7-4258-aa95-2e562e38e69e
-2024-09-13 17:12:53,280 - app - INFO - Received data for updating recording 4b6eb8f0-d3d7-4258-aa95-2e562e38e69e: {'audio_url': '/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3'}
-2024-09-13 17:12:53,280 - app - INFO - Fetching Recording with ID: 4b6eb8f0-d3d7-4258-aa95-2e562e38e69e
-2024-09-13 17:12:53,298 - app - INFO - Current recording before update: <Recording 4b6eb8f0-d3d7-4258-aa95-2e562e38e69e>
-2024-09-13 17:12:53,299 - app - INFO - Fetching associated MeetingSession with ID: 87
-2024-09-13 17:12:53,300 - app - INFO - Current MeetingSession before update: <MeetingSession 87>
-2024-09-13 17:12:53,300 - app - INFO - Updating audio_url for MeetingSession ID: 87
-2024-09-13 17:12:53,311 - app - INFO - MeetingSession after update: <MeetingSession 87>
-2024-09-13 17:12:53,311 - app - INFO - Exiting update_recording function for recording_id: 4b6eb8f0-d3d7-4258-aa95-2e562e38e69e
-2024-09-13 17:12:53,312 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:53,312 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:53] "PATCH /api/recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e HTTP/1.1" 200 -
-2024-09-13 17:12:56,253 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:56,257 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:56] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-13 17:12:56,279 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:56,285 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:56,322 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:56] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-13 17:12:56,322 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:56] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:12:56,335 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:56,336 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:56] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-13 17:12:56,343 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:56,343 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:56,343 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:56,344 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:56] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-13 17:12:56,344 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:56] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
-2024-09-13 17:12:56,345 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:56] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:12:56,358 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:56,359 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:56] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:12:56,378 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:56,379 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:56] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
-2024-09-13 17:12:57,324 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:57,326 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:57] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
-2024-09-13 17:12:57,334 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:57,335 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:57] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
-2024-09-13 17:12:58,193 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:58,193 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:58] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:12:58,204 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:12:58,211 - auth - DEBUG - After request, Origin: None
-2024-09-13 17:12:58,212 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:58] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
-2024-09-13 17:12:58,213 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:12:58] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:13:00,750 - auth - DEBUG - After request, Origin: None
-2024-09-13 17:13:00,752 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:13:00] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
-2024-09-13 17:13:01,682 - app - INFO - Received transcription request for session ID: 87
-2024-09-13 17:13:01,683 - app - INFO - User gaetan@minutememo.io is requesting transcription for session ID: 87
-2024-09-13 17:13:01,687 - app - INFO - Fetched session for session ID 87: <MeetingSession 87>
-2024-09-13 17:13:01,687 - app - INFO - Audio URL for session ID 87: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 17:13:01,687 - app - INFO - Starting transcription process for session ID 87 with audio URL http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 17:13:01,687 - app - INFO - Transcribing audio from URL: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 17:13:01,687 - app - INFO - OpenAI API Key set successfully.
-2024-09-13 17:13:01,687 - app - INFO - OpenAI Library Version: 1.45.0
-2024-09-13 17:13:01,687 - app - INFO - Loading audio file from local path: uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 17:13:01,689 - app - INFO - Temporary audio file created at /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmppqj_6dle.mp3
-2024-09-13 17:13:01,689 - app - INFO - Sending audio file to OpenAI Whisper API for transcription.
-2024-09-13 17:13:01,689 - app - ERROR - Error during transcription process: 
+2024-09-13 23:41:28,857 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:41:28,858 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:41:28] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
+2024-09-13 23:41:29,716 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:41:29,718 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:41:29] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-13 23:41:29,728 - app - INFO - Fetching meeting sessions for hub ID: 13
+2024-09-13 23:41:29,728 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:41:29,730 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:41:29,730 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:41:29] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-13 23:41:29,733 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:41:29] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
+2024-09-13 23:41:29,740 - app - INFO - Session ID: 41, Name: Monday morning huddle - 2024-08-30 10:14:56, Transcription: No transcription available
+2024-09-13 23:41:29,741 - app - INFO - Session ID: 42, Name: test voor url - 2024-08-30 11:00:36, Transcription: No transcription available
+2024-09-13 23:41:29,741 - app - INFO - Session ID: 49, Name: test - 2024-09-02 13:30:30, Transcription: No transcription available
+2024-09-13 23:41:29,741 - app - INFO - Session ID: 86, Name: Test voor audio - 2024-09-12 13:25:24, Transcription: No transcription available
+2024-09-13 23:41:29,741 - app - INFO - Session ID: 87, Name: test voor transcriptie - 2024-09-13 15:12:26, Transcription: Wat zeg je daar jongen? Ik zeg jongen! Ja! Weet je wat papa gaat maken voor jou? Harvey, weet je wat papa gaat maken voor jou? Wat? Fish sticks? Met list? En?
+2024-09-13 23:41:29,762 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:41:29,764 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:41:29] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
+2024-09-13 23:41:34,492 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:41:34,493 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:41:34] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-13 23:41:34,499 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:41:34,500 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:41:34] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-13 23:41:35,620 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:41:35,621 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:41:35] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-13 23:41:35,625 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-13 23:41:35,627 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:41:35] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-13 23:41:35,639 - auth - DEBUG - After request, Origin: None
+2024-09-13 23:41:35,640 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 23:41:35] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
+2024-09-14 06:59:18,303 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 06:59:18,309 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "GET /api/sessions/84 HTTP/1.1" 200 -
+2024-09-14 06:59:18,314 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 06:59:18,314 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 06:59:18,315 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "GET /api/sessions/84 HTTP/1.1" 200 -
+2024-09-14 06:59:18,316 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 06:59:18,359 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 06:59:18,360 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 06:59:18,361 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 06:59:18,361 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 06:59:18,367 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 06:59:18,369 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 06:59:18,375 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 06:59:18,376 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 06:59:18,383 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 06:59:18,384 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 06:59:18,390 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 06:59:18,392 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 06:59:18,401 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 06:59:18,405 - auth - DEBUG - After request, Origin: None
+2024-09-14 06:59:18,405 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 06:59:18,406 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
+2024-09-14 06:59:18,428 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 06:59:18,429 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 06:59:18,441 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 06:59:18,443 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 06:59:18,454 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 06:59:18,456 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 06:59:18,459 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 06:59:18,463 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 06:59:18,463 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 06:59:18,464 - auth - DEBUG - After request, Origin: None
+2024-09-14 06:59:18,465 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 06:59:18,468 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
+2024-09-14 06:59:18,477 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 06:59:18,480 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 06:59:18,491 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 06:59:18,491 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 06:59:18,493 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 06:59:18,494 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "GET /api/sessions/84 HTTP/1.1" 200 -
+2024-09-14 06:59:18,528 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 06:59:18,530 - auth - DEBUG - After request, Origin: None
+2024-09-14 06:59:18,531 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "GET /api/sessions/84 HTTP/1.1" 200 -
+2024-09-14 06:59:18,531 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "[35m[1mGET /uploads/audio_recordings/60ae0c39-7251-49ae-98ba-4fd626bf46b0.mp3 HTTP/1.1[0m" 206 -
+2024-09-14 06:59:18,534 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 06:59:18,535 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 06:59:18,546 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 06:59:18,547 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 06:59:18] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 07:00:39,893 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:00:39,896 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:00:39] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:00:39,902 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:00:39,903 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:00:39] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:00:39,904 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:00:39,906 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:00:39] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 07:00:39,917 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:00:39,919 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:00:39] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:00:39,920 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:00:39,922 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:00:39] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 07:00:39,926 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:00:39,928 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:00:39] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:00:39,931 - auth - DEBUG - After request, Origin: None
+2024-09-14 07:00:39,934 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:00:39] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
+2024-09-14 07:00:39,942 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:00:39,943 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:00:39] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 07:01:52,351 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:01:52,357 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:01:52,360 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:01:52] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 07:01:52,365 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:01:52] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:01:52,375 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:01:52,377 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:01:52] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:01:52,383 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:01:52,386 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:01:52] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:01:52,392 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:01:52,393 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:01:52,393 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:01:52] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 07:01:52,395 - auth - DEBUG - After request, Origin: None
+2024-09-14 07:01:52,395 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:01:52] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:01:52,398 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:01:52] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
+2024-09-14 07:01:52,413 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:01:52,416 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:01:52] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 07:01:59,605 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:01:59,608 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:01:59] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 07:01:59,649 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:01:59,652 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:01:59,655 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:01:59] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 07:01:59,656 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:01:59] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:01:59,673 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:01:59,675 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:01:59] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:01:59,675 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:01:59,676 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:01:59] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 07:01:59,679 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:01:59,680 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:01:59] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:01:59,686 - app - INFO - Fetching meeting sessions for hub ID: 13
+2024-09-14 07:01:59,687 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:01:59,688 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:01:59,689 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:01:59] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
+2024-09-14 07:01:59,689 - app - INFO - Session ID: 41, Name: Monday morning huddle - 2024-08-30 10:14:56, Transcription: No transcription available
+2024-09-14 07:01:59,690 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:01:59] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:01:59,690 - app - INFO - Session ID: 42, Name: test voor url - 2024-08-30 11:00:36, Transcription: No transcription available
+2024-09-14 07:01:59,690 - app - INFO - Session ID: 49, Name: test - 2024-09-02 13:30:30, Transcription: No transcription available
+2024-09-14 07:01:59,690 - app - INFO - Session ID: 86, Name: Test voor audio - 2024-09-12 13:25:24, Transcription: No transcription available
+2024-09-14 07:01:59,691 - app - INFO - Session ID: 87, Name: test voor transcriptie - 2024-09-13 15:12:26, Transcription: Wat zeg je daar jongen? Ik zeg jongen! Ja! Weet je wat papa gaat maken voor jou? Harvey, weet je wat papa gaat maken voor jou? Wat? Fish sticks? Met list? En?
+2024-09-14 07:01:59,695 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:01:59,696 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:01:59] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
+2024-09-14 07:05:57,884 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:05:57,890 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:05:57] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-14 07:05:57,913 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:05:57,914 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:05:57] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-14 07:06:01,411 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:06:01,417 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:06:01] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:06:01,445 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:06:01,446 - auth - DEBUG - After request, Origin: None
+2024-09-14 07:06:01,447 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:06:01] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:06:01,453 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:06:01] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
+2024-09-14 07:06:05,254 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:06:05,256 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:06:05] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:06:05,268 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:06:05,268 - app - INFO - Fetching meeting sessions for hub ID: 13
+2024-09-14 07:06:05,269 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:06:05,269 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:06:05] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
+2024-09-14 07:06:05,270 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:06:05] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:06:05,270 - app - INFO - Session ID: 41, Name: Monday morning huddle - 2024-08-30 10:14:56, Transcription: No transcription available
+2024-09-14 07:06:05,270 - app - INFO - Session ID: 42, Name: test voor url - 2024-08-30 11:00:36, Transcription: No transcription available
+2024-09-14 07:06:05,270 - app - INFO - Session ID: 49, Name: test - 2024-09-02 13:30:30, Transcription: No transcription available
+2024-09-14 07:06:05,271 - app - INFO - Session ID: 86, Name: Test voor audio - 2024-09-12 13:25:24, Transcription: No transcription available
+2024-09-14 07:06:05,271 - app - INFO - Session ID: 87, Name: test voor transcriptie - 2024-09-13 15:12:26, Transcription: Wat zeg je daar jongen? Ik zeg jongen! Ja! Weet je wat papa gaat maken voor jou? Harvey, weet je wat papa gaat maken voor jou? Wat? Fish sticks? Met list? En?
+2024-09-14 07:06:05,276 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:06:05,284 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:06:05] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
+2024-09-14 07:11:16,576 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:11:16,579 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:11:16] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-14 07:11:16,676 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:11:16,705 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:11:16] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-14 07:11:17,749 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:11:17,750 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:11:17] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:11:17,755 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:11:17,755 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:11:17] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:11:17,761 - auth - DEBUG - After request, Origin: None
+2024-09-14 07:11:17,762 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:11:17] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
+2024-09-14 07:13:24,826 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:13:24,830 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:13:24] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:13:24,916 - app - INFO - Fetching meeting sessions for hub ID: 13
+2024-09-14 07:13:24,954 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:13:24,954 - app - INFO - Session ID: 41, Name: Monday morning huddle - 2024-08-30 10:14:56, Transcription: No transcription available
+2024-09-14 07:13:24,955 - app - INFO - Session ID: 42, Name: test voor url - 2024-08-30 11:00:36, Transcription: No transcription available
+2024-09-14 07:13:24,955 - app - INFO - Session ID: 49, Name: test - 2024-09-02 13:30:30, Transcription: No transcription available
+2024-09-14 07:13:24,955 - app - INFO - Session ID: 86, Name: Test voor audio - 2024-09-12 13:25:24, Transcription: No transcription available
+2024-09-14 07:13:24,955 - app - INFO - Session ID: 87, Name: test voor transcriptie - 2024-09-13 15:12:26, Transcription: Wat zeg je daar jongen? Ik zeg jongen! Ja! Weet je wat papa gaat maken voor jou? Harvey, weet je wat papa gaat maken voor jou? Wat? Fish sticks? Met list? En?
+2024-09-14 07:13:24,956 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:13:24] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
+2024-09-14 07:13:24,960 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:13:24,962 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:13:24,962 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:13:24] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:13:24,963 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:13:24] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
+2024-09-14 07:13:29,735 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:13:29,737 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:13:29] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-14 07:13:29,741 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:13:29,742 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:13:29] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-14 07:13:31,677 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:13:31,682 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:13:31] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:13:31,692 - auth - DEBUG - After request, Origin: None
+2024-09-14 07:13:31,693 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:13:31,693 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:13:31] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
+2024-09-14 07:13:31,694 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:13:31] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:15:30,503 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:15:30,507 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:15:30] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:15:30,520 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:15:30,522 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:15:30] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:15:30,525 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:15:30,526 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:15:30] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 07:15:30,538 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:15:30,540 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:15:30] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 07:15:30,540 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:15:30,542 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:15:30] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:15:30,546 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:15:30,548 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:15:30] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:15:30,558 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:15:30,559 - auth - DEBUG - After request, Origin: None
+2024-09-14 07:15:30,560 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:15:30] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 07:15:30,560 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:15:30] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
+2024-09-14 07:15:31,645 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:15:31,645 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:15:31] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:15:31,662 - app - INFO - Fetching meeting sessions for hub ID: 13
+2024-09-14 07:15:31,671 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:15:31,673 - app - INFO - Session ID: 41, Name: Monday morning huddle - 2024-08-30 10:14:56, Transcription: No transcription available
+2024-09-14 07:15:31,673 - app - INFO - Session ID: 42, Name: test voor url - 2024-08-30 11:00:36, Transcription: No transcription available
+2024-09-14 07:15:31,673 - app - INFO - Session ID: 49, Name: test - 2024-09-02 13:30:30, Transcription: No transcription available
+2024-09-14 07:15:31,673 - app - INFO - Session ID: 86, Name: Test voor audio - 2024-09-12 13:25:24, Transcription: No transcription available
+2024-09-14 07:15:31,673 - app - INFO - Session ID: 87, Name: test voor transcriptie - 2024-09-13 15:12:26, Transcription: Wat zeg je daar jongen? Ik zeg jongen! Ja! Weet je wat papa gaat maken voor jou? Harvey, weet je wat papa gaat maken voor jou? Wat? Fish sticks? Met list? En?
+2024-09-14 07:15:31,676 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:15:31,676 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:15:31] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
+2024-09-14 07:15:31,678 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:15:31] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:15:31,686 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:15:31,687 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:15:31] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
+2024-09-14 07:15:54,446 - app - ERROR - Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
+LINE 3: WHERE meeting_session.meeting_id = 'undefined'
+                                           ^
 
-You tried to access openai.Audio, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.
+[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url, meeting_session.transcription AS meeting_session_transcription 
+FROM meeting_session 
+WHERE meeting_session.meeting_id = %(meeting_id_1)s]
+[parameters: {'meeting_id_1': 'undefined'}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2024-09-14 07:15:54,446 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:15:54,448 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:15:54] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
+2024-09-14 07:15:54,459 - app - ERROR - Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
+LINE 3: WHERE meeting_session.meeting_id = 'undefined'
+                                           ^
 
-You can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. 
+[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url, meeting_session.transcription AS meeting_session_transcription 
+FROM meeting_session 
+WHERE meeting_session.meeting_id = %(meeting_id_1)s]
+[parameters: {'meeting_id_1': 'undefined'}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2024-09-14 07:15:54,459 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:15:54,461 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:15:54] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
+2024-09-14 07:15:54,841 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:15:54,844 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:15:54] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:15:54,859 - app - INFO - Fetching meeting sessions for hub ID: 13
+2024-09-14 07:15:54,859 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:15:54,863 - app - INFO - Session ID: 41, Name: Monday morning huddle - 2024-08-30 10:14:56, Transcription: No transcription available
+2024-09-14 07:15:54,864 - app - INFO - Session ID: 42, Name: test voor url - 2024-08-30 11:00:36, Transcription: No transcription available
+2024-09-14 07:15:54,864 - app - INFO - Session ID: 49, Name: test - 2024-09-02 13:30:30, Transcription: No transcription available
+2024-09-14 07:15:54,864 - app - INFO - Session ID: 86, Name: Test voor audio - 2024-09-12 13:25:24, Transcription: No transcription available
+2024-09-14 07:15:54,865 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:15:54] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
+2024-09-14 07:15:54,865 - app - INFO - Session ID: 87, Name: test voor transcriptie - 2024-09-13 15:12:26, Transcription: Wat zeg je daar jongen? Ik zeg jongen! Ja! Weet je wat papa gaat maken voor jou? Harvey, weet je wat papa gaat maken voor jou? Wat? Fish sticks? Met list? En?
+2024-09-14 07:15:54,870 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:15:54,871 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:15:54,871 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:15:54] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
+2024-09-14 07:15:54,872 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:15:54] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:15:56,701 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:15:56,702 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:15:56] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-14 07:15:56,707 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:15:56,709 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:15:56] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-14 07:15:59,482 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:15:59,484 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:15:59] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:15:59,494 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:15:59,496 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:15:59] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:16:17,756 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:16:17,761 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:16:17] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:16:17,767 - app - INFO - Fetching meeting sessions for hub ID: 13
+2024-09-14 07:16:17,768 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:16:17,768 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:16:17,770 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:16:17] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:16:17,770 - app - INFO - Session ID: 41, Name: Monday morning huddle - 2024-08-30 10:14:56, Transcription: No transcription available
+2024-09-14 07:16:17,771 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:16:17] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
+2024-09-14 07:16:17,771 - app - INFO - Session ID: 42, Name: test voor url - 2024-08-30 11:00:36, Transcription: No transcription available
+2024-09-14 07:16:17,771 - app - INFO - Session ID: 49, Name: test - 2024-09-02 13:30:30, Transcription: No transcription available
+2024-09-14 07:16:17,771 - app - INFO - Session ID: 86, Name: Test voor audio - 2024-09-12 13:25:24, Transcription: No transcription available
+2024-09-14 07:16:17,771 - app - INFO - Session ID: 87, Name: test voor transcriptie - 2024-09-13 15:12:26, Transcription: Wat zeg je daar jongen? Ik zeg jongen! Ja! Weet je wat papa gaat maken voor jou? Harvey, weet je wat papa gaat maken voor jou? Wat? Fish sticks? Met list? En?
+2024-09-14 07:16:17,775 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:16:17,776 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:16:17] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
+2024-09-14 07:16:19,656 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:16:19,662 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:16:19] "GET /api/meetings?meeting_id=46 HTTP/1.1" 200 -
+2024-09-14 07:16:19,673 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:16:19,678 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:16:19] "GET /api/meetings?meeting_id=46 HTTP/1.1" 200 -
+2024-09-14 07:16:26,152 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:16:26,155 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:16:26] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:16:26,161 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:16:26,162 - app - INFO - Fetching meeting sessions for hub ID: 13
+2024-09-14 07:16:26,163 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:16:26,163 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:16:26] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
+2024-09-14 07:16:26,164 - app - INFO - Session ID: 41, Name: Monday morning huddle - 2024-08-30 10:14:56, Transcription: No transcription available
+2024-09-14 07:16:26,165 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:16:26] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:16:26,165 - app - INFO - Session ID: 42, Name: test voor url - 2024-08-30 11:00:36, Transcription: No transcription available
+2024-09-14 07:16:26,165 - app - INFO - Session ID: 49, Name: test - 2024-09-02 13:30:30, Transcription: No transcription available
+2024-09-14 07:16:26,166 - app - INFO - Session ID: 86, Name: Test voor audio - 2024-09-12 13:25:24, Transcription: No transcription available
+2024-09-14 07:16:26,166 - app - INFO - Session ID: 87, Name: test voor transcriptie - 2024-09-13 15:12:26, Transcription: Wat zeg je daar jongen? Ik zeg jongen! Ja! Weet je wat papa gaat maken voor jou? Harvey, weet je wat papa gaat maken voor jou? Wat? Fish sticks? Met list? En?
+2024-09-14 07:16:26,172 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:16:26,173 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:16:26] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
+2024-09-14 07:16:50,904 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:16:50,906 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:16:50] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-14 07:16:50,911 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:16:50,912 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:16:50] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-14 07:16:51,772 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:16:51,773 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:16:51] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:16:51,781 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:16:51,783 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:16:51] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:16:51,789 - auth - DEBUG - After request, Origin: None
+2024-09-14 07:16:51,790 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:16:51] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
+2024-09-14 07:19:07,057 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:19:07,062 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:19:07] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:19:07,069 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:19:07,069 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:19:07,070 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:19:07] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:19:07,070 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:19:07] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 07:19:07,083 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:19:07,085 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:19:07,085 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:19:07] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:19:07,085 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:19:07] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 07:19:07,092 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:19:07,094 - auth - DEBUG - After request, Origin: None
+2024-09-14 07:19:07,095 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:19:07] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:19:07,096 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:19:07] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
+2024-09-14 07:19:07,107 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:19:07,108 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:19:07] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 07:23:08,658 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:23:08,661 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:23:08] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:23:08,671 - app - INFO - Fetching meeting sessions for hub ID: 13
+2024-09-14 07:23:08,684 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:23:08,689 - app - INFO - Session ID: 41, Name: Monday morning huddle - 2024-08-30 10:14:56, Transcription: No transcription available
+2024-09-14 07:23:08,690 - app - INFO - Session ID: 42, Name: test voor url - 2024-08-30 11:00:36, Transcription: No transcription available
+2024-09-14 07:23:08,690 - app - INFO - Session ID: 49, Name: test - 2024-09-02 13:30:30, Transcription: No transcription available
+2024-09-14 07:23:08,690 - app - INFO - Session ID: 86, Name: Test voor audio - 2024-09-12 13:25:24, Transcription: No transcription available
+2024-09-14 07:23:08,690 - app - INFO - Session ID: 87, Name: test voor transcriptie - 2024-09-13 15:12:26, Transcription: Wat zeg je daar jongen? Ik zeg jongen! Ja! Weet je wat papa gaat maken voor jou? Harvey, weet je wat papa gaat maken voor jou? Wat? Fish sticks? Met list? En?
+2024-09-14 07:23:08,699 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:23:08,707 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:23:08] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
+2024-09-14 07:23:08,708 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:23:08,708 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:23:08] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
+2024-09-14 07:23:08,716 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:23:08] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:25:16,944 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:25:16,948 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:25:16] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:25:16,949 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:25:16,951 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:25:16] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 07:25:16,955 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:25:16,957 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:25:16] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:25:16,974 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:25:16,977 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:25:16,977 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:25:16] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:25:16,979 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:25:16] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 07:25:16,986 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:25:16,992 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:25:16,993 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:25:16] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:25:16,994 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:25:16] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
+2024-09-14 07:25:16,995 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:25:17,001 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:25:17] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 07:25:17,126 - app - INFO - Fetching meeting sessions for hub ID: 13
+2024-09-14 07:25:17,142 - app - INFO - Session ID: 41, Name: Monday morning huddle - 2024-08-30 10:14:56, Transcription: No transcription available
+2024-09-14 07:25:17,142 - app - INFO - Session ID: 42, Name: test voor url - 2024-08-30 11:00:36, Transcription: No transcription available
+2024-09-14 07:25:17,142 - app - INFO - Session ID: 49, Name: test - 2024-09-02 13:30:30, Transcription: No transcription available
+2024-09-14 07:25:17,142 - app - INFO - Session ID: 86, Name: Test voor audio - 2024-09-12 13:25:24, Transcription: No transcription available
+2024-09-14 07:25:17,142 - app - INFO - Session ID: 87, Name: test voor transcriptie - 2024-09-13 15:12:26, Transcription: Wat zeg je daar jongen? Ik zeg jongen! Ja! Weet je wat papa gaat maken voor jou? Harvey, weet je wat papa gaat maken voor jou? Wat? Fish sticks? Met list? En?
+2024-09-14 07:25:17,146 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:25:17,149 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:25:17] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
+2024-09-14 07:27:32,692 - app - INFO - Fetching meeting sessions for hub ID: 13
+2024-09-14 07:27:32,698 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:27:32,700 - app - INFO - Session ID: 41, Name: Monday morning huddle - 2024-08-30 10:14:56, Transcription: No transcription available
+2024-09-14 07:27:32,701 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:27:32] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
+2024-09-14 07:27:32,701 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:27:32,701 - app - INFO - Session ID: 42, Name: test voor url - 2024-08-30 11:00:36, Transcription: No transcription available
+2024-09-14 07:27:32,702 - app - INFO - Session ID: 49, Name: test - 2024-09-02 13:30:30, Transcription: No transcription available
+2024-09-14 07:27:32,702 - app - INFO - Session ID: 86, Name: Test voor audio - 2024-09-12 13:25:24, Transcription: No transcription available
+2024-09-14 07:27:32,702 - app - INFO - Session ID: 87, Name: test voor transcriptie - 2024-09-13 15:12:26, Transcription: Wat zeg je daar jongen? Ik zeg jongen! Ja! Weet je wat papa gaat maken voor jou? Harvey, weet je wat papa gaat maken voor jou? Wat? Fish sticks? Met list? En?
+2024-09-14 07:27:32,703 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:27:32] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:27:32,705 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:27:32,711 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:27:32] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
+2024-09-14 07:28:42,122 - app - ERROR - Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
+LINE 3: WHERE meeting_session.meeting_id = 'undefined'
+                                           ^
 
-Alternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`
+[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url, meeting_session.transcription AS meeting_session_transcription 
+FROM meeting_session 
+WHERE meeting_session.meeting_id = %(meeting_id_1)s]
+[parameters: {'meeting_id_1': 'undefined'}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2024-09-14 07:28:42,123 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:28:42,125 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:28:42] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
+2024-09-14 07:28:42,131 - app - ERROR - Error fetching meetings or sessions: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "undefined"
+LINE 3: WHERE meeting_session.meeting_id = 'undefined'
+                                           ^
 
-A detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742
-
-2024-09-13 17:13:01,689 - app - ERROR - Transcription failed for session ID 87
-2024-09-13 17:13:01,689 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:13:01,690 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:13:01] "[35m[1mPOST /api/transcribe/87 HTTP/1.1[0m" 500 -
-2024-09-13 17:27:07 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-13 17:27:07,285 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-13 17:27:07 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-13 17:27:07,578 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-13 17:27:07 INFO: [33mPress CTRL+C to quit[0m
-2024-09-13 17:27:07,578 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2024-09-13 17:27:12 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:27:12,638 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:27:12 INFO: 127.0.0.1 - - [13/Sep/2024 17:27:12] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:27:12,640 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:27:12] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:27:12 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:27:12,644 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:27:12 INFO: 127.0.0.1 - - [13/Sep/2024 17:27:12] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:27:12,645 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:27:12] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:27:12 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:27:12,647 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:27:12 INFO: 127.0.0.1 - - [13/Sep/2024 17:27:12] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:27:12,649 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:27:12] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:27:12 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:27:12,668 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:27:12 INFO: 127.0.0.1 - - [13/Sep/2024 17:27:12] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:27:12,669 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:27:12] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:27:12 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:27:12,680 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:27:12 INFO: 127.0.0.1 - - [13/Sep/2024 17:27:12] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:27:12,685 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:27:12] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:27:12 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:27:12,689 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:27:12 DEBUG: After request, Origin: None
-2024-09-13 17:27:12,690 - auth - DEBUG - After request, Origin: None
-2024-09-13 17:27:12 INFO: 127.0.0.1 - - [13/Sep/2024 17:27:12] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:27:12,691 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:27:12] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:27:12 INFO: 127.0.0.1 - - [13/Sep/2024 17:27:12] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
-2024-09-13 17:27:12,691 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:27:12] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
-2024-09-13 17:27:12 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:27:12,700 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:27:12 INFO: 127.0.0.1 - - [13/Sep/2024 17:27:12] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:27:12,700 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:27:12] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:27:13 INFO: Received transcription request for session ID: 87
-2024-09-13 17:27:13,565 - app - INFO - Received transcription request for session ID: 87
-2024-09-13 17:27:13 INFO: User gaetan@minutememo.io is requesting transcription for session ID: 87
-2024-09-13 17:27:13,565 - app - INFO - User gaetan@minutememo.io is requesting transcription for session ID: 87
-2024-09-13 17:27:13 INFO: Fetched session for session ID 87: <MeetingSession 87>
-2024-09-13 17:27:13,568 - app - INFO - Fetched session for session ID 87: <MeetingSession 87>
-2024-09-13 17:27:13 INFO: Audio URL for session ID 87: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 17:27:13,569 - app - INFO - Audio URL for session ID 87: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 17:27:13 INFO: Starting transcription process for session ID 87 with audio URL http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 17:27:13,569 - app - INFO - Starting transcription process for session ID 87 with audio URL http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 17:27:13 ERROR: Error during transcription process: name 'OpenAI' is not defined
-2024-09-13 17:27:13,569 - app - ERROR - Error during transcription process: name 'OpenAI' is not defined
-2024-09-13 17:27:13 ERROR: Transcription failed for session ID 87
-2024-09-13 17:27:13,570 - app - ERROR - Transcription failed for session ID 87
-2024-09-13 17:27:13 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:27:13,571 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:27:13 INFO: 127.0.0.1 - - [13/Sep/2024 17:27:13] "[35m[1mPOST /api/transcribe/87 HTTP/1.1[0m" 500 -
-2024-09-13 17:27:13,573 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:27:13] "[35m[1mPOST /api/transcribe/87 HTTP/1.1[0m" 500 -
-2024-09-13 17:29:05 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-13 17:29:05,036 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-13 17:29:05 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-13 17:29:05,326 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-13 17:29:05 INFO: [33mPress CTRL+C to quit[0m
-2024-09-13 17:29:05,327 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2024-09-13 17:31:10 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:31:10,799 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:31:10 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:10] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:10,801 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:10] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:10 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:31:10,806 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:31:10 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:10] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:10,809 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:10] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:10 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:31:10,811 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:31:10 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:10] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:31:10,812 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:10] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:31:10 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:31:10,823 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:31:10 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:10] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:10,824 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:10] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:10 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:31:10,824 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:31:10 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:10] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:31:10,826 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:10] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:31:10 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:31:10,830 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:31:10 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:10] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:10,833 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:10] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:10 DEBUG: After request, Origin: None
-2024-09-13 17:31:10,848 - auth - DEBUG - After request, Origin: None
-2024-09-13 17:31:10 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:10] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
-2024-09-13 17:31:10,852 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:10] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
-2024-09-13 17:31:10 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:31:10,870 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:31:10 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:10] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:31:10,873 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:10] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:31:11 INFO: Received transcription request for session ID: 87
-2024-09-13 17:31:11,612 - app - INFO - Received transcription request for session ID: 87
-2024-09-13 17:31:11 INFO: User gaetan@minutememo.io is requesting transcription for session ID: 87
-2024-09-13 17:31:11,612 - app - INFO - User gaetan@minutememo.io is requesting transcription for session ID: 87
-2024-09-13 17:31:11 INFO: Fetched session for session ID 87: <MeetingSession 87>
-2024-09-13 17:31:11,614 - app - INFO - Fetched session for session ID 87: <MeetingSession 87>
-2024-09-13 17:31:11 INFO: Audio URL for session ID 87: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 17:31:11,614 - app - INFO - Audio URL for session ID 87: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 17:31:11 INFO: Starting transcription process for session ID 87 with audio URL http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 17:31:11,614 - app - INFO - Starting transcription process for session ID 87 with audio URL http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 17:31:11 DEBUG: load_ssl_context verify=True cert=None trust_env=True http2=False
-2024-09-13 17:31:11,618 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
-2024-09-13 17:31:11 DEBUG: load_verify_locations cafile='/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2024-09-13 17:31:11,619 - httpx - DEBUG - load_verify_locations cafile='/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2024-09-13 17:31:11 INFO: Transcribing audio from URL: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 17:31:11,640 - app - INFO - Transcribing audio from URL: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 17:31:11 ERROR: Error during transcription process: name 'openai' is not defined
-2024-09-13 17:31:11,640 - app - ERROR - Error during transcription process: name 'openai' is not defined
-2024-09-13 17:31:11 ERROR: Transcription failed for session ID 87
-2024-09-13 17:31:11,640 - app - ERROR - Transcription failed for session ID 87
-2024-09-13 17:31:11 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:31:11,640 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:31:11 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:11] "[35m[1mPOST /api/transcribe/87 HTTP/1.1[0m" 500 -
-2024-09-13 17:31:11,641 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:11] "[35m[1mPOST /api/transcribe/87 HTTP/1.1[0m" 500 -
-2024-09-13 17:31:48 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-13 17:31:48,630 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-13 17:31:48 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-13 17:31:48,946 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-13 17:31:48 INFO: [33mPress CTRL+C to quit[0m
-2024-09-13 17:31:48,946 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2024-09-13 17:31:51 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:31:51,783 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:31:51 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:51] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:51,786 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:51] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:51 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:31:51,791 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:31:51 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:51] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:51,792 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:51] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:51 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:31:51,802 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:31:51 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:51] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:31:51,804 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:51] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:31:51 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:31:51,819 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:31:51 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:51] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:51,821 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:51] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:51 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:31:51,821 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:31:51 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:51] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:31:51,823 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:51] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:31:51 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:31:51,827 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:31:51 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:51] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:51,833 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:51] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:51 DEBUG: After request, Origin: None
-2024-09-13 17:31:51,835 - auth - DEBUG - After request, Origin: None
-2024-09-13 17:31:51 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:51] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
-2024-09-13 17:31:51,837 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:51] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
-2024-09-13 17:31:51 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:31:51,840 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:31:51 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:51] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:31:51,841 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:51] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:31:52 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:31:52,713 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:31:52 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:52] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:52,715 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:52] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:52 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:31:52,726 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:31:52 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:52] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:31:52,729 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:52] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:31:52 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:31:52,755 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:31:52 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:52] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:52,756 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:52] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:52 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:31:52,759 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:31:52 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:52] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:31:52,760 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:52] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:31:52 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:31:52,772 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:31:52 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:52] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:52,773 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:52] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:52 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:31:52,787 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:31:52 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:52] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:31:52,789 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:52] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 17:31:52 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:31:52,808 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:31:52 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:52] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:52,809 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:52] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 17:31:53 INFO: Received transcription request for session ID: 87
-2024-09-13 17:31:53,566 - app - INFO - Received transcription request for session ID: 87
-2024-09-13 17:31:53 INFO: User gaetan@minutememo.io is requesting transcription for session ID: 87
-2024-09-13 17:31:53,566 - app - INFO - User gaetan@minutememo.io is requesting transcription for session ID: 87
-2024-09-13 17:31:53 INFO: Fetched session for session ID 87: <MeetingSession 87>
-2024-09-13 17:31:53,567 - app - INFO - Fetched session for session ID 87: <MeetingSession 87>
-2024-09-13 17:31:53 INFO: Audio URL for session ID 87: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 17:31:53,567 - app - INFO - Audio URL for session ID 87: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 17:31:53 INFO: Starting transcription process for session ID 87 with audio URL http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 17:31:53,568 - app - INFO - Starting transcription process for session ID 87 with audio URL http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 17:31:53 DEBUG: load_ssl_context verify=True cert=None trust_env=True http2=False
-2024-09-13 17:31:53,569 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
-2024-09-13 17:31:53 DEBUG: load_verify_locations cafile='/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2024-09-13 17:31:53,570 - httpx - DEBUG - load_verify_locations cafile='/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2024-09-13 17:31:53 INFO: Transcribing audio from URL: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 17:31:53,592 - app - INFO - Transcribing audio from URL: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 17:31:53 ERROR: Error during transcription process: name 'openai' is not defined
-2024-09-13 17:31:53,592 - app - ERROR - Error during transcription process: name 'openai' is not defined
-2024-09-13 17:31:53 ERROR: Transcription failed for session ID 87
-2024-09-13 17:31:53,592 - app - ERROR - Transcription failed for session ID 87
-2024-09-13 17:31:53 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 17:31:53,592 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 17:31:53 INFO: 127.0.0.1 - - [13/Sep/2024 17:31:53] "[35m[1mPOST /api/transcribe/87 HTTP/1.1[0m" 500 -
-2024-09-13 17:31:53,593 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 17:31:53] "[35m[1mPOST /api/transcribe/87 HTTP/1.1[0m" 500 -
-2024-09-13 18:37:15 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-13 18:37:15,743 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-13 18:37:16 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-13 18:37:16,073 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-13 18:37:16 INFO: [33mPress CTRL+C to quit[0m
-2024-09-13 18:37:16,073 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2024-09-13 18:37:24 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:37:24,309 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:37:24 INFO: 127.0.0.1 - - [13/Sep/2024 18:37:24] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:37:24,311 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:37:24] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:37:24 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:37:24,313 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:37:24 INFO: 127.0.0.1 - - [13/Sep/2024 18:37:24] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:37:24,314 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:37:24] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:37:24 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:37:24,317 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:37:24 INFO: 127.0.0.1 - - [13/Sep/2024 18:37:24] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:37:24,319 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:37:24] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:37:24 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:37:24,326 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:37:24 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:37:24,327 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:37:24 INFO: 127.0.0.1 - - [13/Sep/2024 18:37:24] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:37:24,327 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:37:24] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:37:24 INFO: 127.0.0.1 - - [13/Sep/2024 18:37:24] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:37:24,327 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:37:24] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:37:24 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:37:24,384 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:37:24 DEBUG: After request, Origin: None
-2024-09-13 18:37:24 INFO: 127.0.0.1 - - [13/Sep/2024 18:37:24] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:37:24,394 - auth - DEBUG - After request, Origin: None
-2024-09-13 18:37:24,394 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:37:24] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:37:24 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:37:24 INFO: 127.0.0.1 - - [13/Sep/2024 18:37:24] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
-2024-09-13 18:37:24,395 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:37:24,395 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:37:24] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
-2024-09-13 18:37:24 INFO: 127.0.0.1 - - [13/Sep/2024 18:37:24] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:37:24,397 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:37:24] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:37:25 INFO: Received transcription request for session ID: 87
-2024-09-13 18:37:25,289 - app - INFO - Received transcription request for session ID: 87
-2024-09-13 18:37:25 INFO: User gaetan@minutememo.io is requesting transcription for session ID: 87
-2024-09-13 18:37:25,289 - app - INFO - User gaetan@minutememo.io is requesting transcription for session ID: 87
-2024-09-13 18:37:25 INFO: Fetched session for session ID 87: <MeetingSession 87>
-2024-09-13 18:37:25,290 - app - INFO - Fetched session for session ID 87: <MeetingSession 87>
-2024-09-13 18:37:25 INFO: Audio URL for session ID 87: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:37:25,291 - app - INFO - Audio URL for session ID 87: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:37:25 INFO: Starting transcription process for session ID 87 with audio URL http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:37:25,291 - app - INFO - Starting transcription process for session ID 87 with audio URL http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:37:25 INFO: Transcribing audio from URL: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:37:25,291 - app - INFO - Transcribing audio from URL: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:37:25 ERROR: Error during transcription process: name 'openai' is not defined
-2024-09-13 18:37:25,291 - app - ERROR - Error during transcription process: name 'openai' is not defined
-2024-09-13 18:37:25 ERROR: Transcription failed for session ID 87
-2024-09-13 18:37:25,291 - app - ERROR - Transcription failed for session ID 87
-2024-09-13 18:37:25 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:37:25,292 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:37:25 INFO: 127.0.0.1 - - [13/Sep/2024 18:37:25] "[35m[1mPOST /api/transcribe/87 HTTP/1.1[0m" 500 -
-2024-09-13 18:37:25,293 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:37:25] "[35m[1mPOST /api/transcribe/87 HTTP/1.1[0m" 500 -
-2024-09-13 18:38:10 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-13 18:38:10,403 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-13 18:38:10 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-13 18:38:10,700 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-13 18:38:10 INFO: [33mPress CTRL+C to quit[0m
-2024-09-13 18:38:10,700 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2024-09-13 18:38:13 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:38:13,848 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:38:13 INFO: 127.0.0.1 - - [13/Sep/2024 18:38:13] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:38:13,850 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:38:13] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:38:13 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:38:13,855 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:38:13 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:38:13 INFO: 127.0.0.1 - - [13/Sep/2024 18:38:13] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:38:13,855 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:38:13,856 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:38:13] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:38:13 INFO: 127.0.0.1 - - [13/Sep/2024 18:38:13] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:38:13,856 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:38:13] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:38:13 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:38:13,866 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:38:13 INFO: 127.0.0.1 - - [13/Sep/2024 18:38:13] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:38:13,866 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:38:13] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:38:13 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:38:13,870 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:38:13 INFO: 127.0.0.1 - - [13/Sep/2024 18:38:13] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:38:13,872 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:38:13] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:38:13 DEBUG: After request, Origin: None
-2024-09-13 18:38:13,875 - auth - DEBUG - After request, Origin: None
-2024-09-13 18:38:13 INFO: 127.0.0.1 - - [13/Sep/2024 18:38:13] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
-2024-09-13 18:38:13,876 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:38:13] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
-2024-09-13 18:38:13 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:38:13,898 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:38:13 INFO: 127.0.0.1 - - [13/Sep/2024 18:38:13] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:38:13,898 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:38:13] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:38:13 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:38:13,908 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:38:13 INFO: 127.0.0.1 - - [13/Sep/2024 18:38:13] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:38:13,909 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:38:13] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:38:14 INFO: Received transcription request for session ID: 87
-2024-09-13 18:38:14,538 - app - INFO - Received transcription request for session ID: 87
-2024-09-13 18:38:14 INFO: User gaetan@minutememo.io is requesting transcription for session ID: 87
-2024-09-13 18:38:14,539 - app - INFO - User gaetan@minutememo.io is requesting transcription for session ID: 87
-2024-09-13 18:38:14 INFO: Fetched session for session ID 87: <MeetingSession 87>
-2024-09-13 18:38:14,540 - app - INFO - Fetched session for session ID 87: <MeetingSession 87>
-2024-09-13 18:38:14 INFO: Audio URL for session ID 87: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:38:14,541 - app - INFO - Audio URL for session ID 87: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:38:14 INFO: Starting transcription process for session ID 87 with audio URL http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:38:14,542 - app - INFO - Starting transcription process for session ID 87 with audio URL http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:38:14 INFO: Transcribing audio from URL: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:38:14,542 - app - INFO - Transcribing audio from URL: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:38:14 INFO: OpenAI API Key set successfully.
-2024-09-13 18:38:14,542 - app - INFO - OpenAI API Key set successfully.
-2024-09-13 18:38:14 INFO: OpenAI Library Version: 1.45.0
-2024-09-13 18:38:14,542 - app - INFO - OpenAI Library Version: 1.45.0
-2024-09-13 18:38:14 INFO: Loading audio file from local path: uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:38:14,542 - app - INFO - Loading audio file from local path: uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:38:14 INFO: Temporary audio file created at /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmpfngiir_6.mp3
-2024-09-13 18:38:14,544 - app - INFO - Temporary audio file created at /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmpfngiir_6.mp3
-2024-09-13 18:38:14 INFO: Sending audio file to OpenAI Whisper API for transcription.
-2024-09-13 18:38:14,544 - app - INFO - Sending audio file to OpenAI Whisper API for transcription.
-2024-09-13 18:38:14 ERROR: Error during transcription process: 
-
-You tried to access openai.Audio, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.
-
-You can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. 
-
-Alternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`
-
-A detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742
-
-2024-09-13 18:38:14,544 - app - ERROR - Error during transcription process: 
-
-You tried to access openai.Audio, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.
-
-You can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. 
-
-Alternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`
-
-A detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742
-
-2024-09-13 18:38:14 ERROR: Transcription failed for session ID 87
-2024-09-13 18:38:14,544 - app - ERROR - Transcription failed for session ID 87
-2024-09-13 18:38:14 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:38:14,544 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:38:14 INFO: 127.0.0.1 - - [13/Sep/2024 18:38:14] "[35m[1mPOST /api/transcribe/87 HTTP/1.1[0m" 500 -
-2024-09-13 18:38:14,545 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:38:14] "[35m[1mPOST /api/transcribe/87 HTTP/1.1[0m" 500 -
-2024-09-13 18:41:13 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-13 18:41:13,880 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-13 18:41:14 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-13 18:41:14,230 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-13 18:41:14 INFO: [33mPress CTRL+C to quit[0m
-2024-09-13 18:41:14,230 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2024-09-13 18:41:17 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:41:17,726 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:41:17 INFO: 127.0.0.1 - - [13/Sep/2024 18:41:17] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:41:17,729 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:41:17] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:41:17 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:41:17 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:41:17,732 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:41:17,732 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:41:17 INFO: 127.0.0.1 - - [13/Sep/2024 18:41:17] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:41:17,733 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:41:17] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:41:17 INFO: 127.0.0.1 - - [13/Sep/2024 18:41:17] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:41:17,733 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:41:17] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:41:17 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:41:17 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:41:17,744 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:41:17,745 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:41:17 INFO: 127.0.0.1 - - [13/Sep/2024 18:41:17] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:41:17,745 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:41:17] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:41:17 INFO: 127.0.0.1 - - [13/Sep/2024 18:41:17] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:41:17,745 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:41:17] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:41:17 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:41:17,751 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:41:17 INFO: 127.0.0.1 - - [13/Sep/2024 18:41:17] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:41:17,759 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:41:17] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:41:17 DEBUG: After request, Origin: None
-2024-09-13 18:41:17,764 - auth - DEBUG - After request, Origin: None
-2024-09-13 18:41:17 INFO: 127.0.0.1 - - [13/Sep/2024 18:41:17] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
-2024-09-13 18:41:17,765 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:41:17] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
-2024-09-13 18:41:17 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:41:17,783 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:41:17 INFO: 127.0.0.1 - - [13/Sep/2024 18:41:17] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:41:17,784 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:41:17] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:41:18 INFO: Received transcription request for session ID: 87
-2024-09-13 18:41:18,452 - app - INFO - Received transcription request for session ID: 87
-2024-09-13 18:41:18 INFO: User gaetan@minutememo.io is requesting transcription for session ID: 87
-2024-09-13 18:41:18,452 - app - INFO - User gaetan@minutememo.io is requesting transcription for session ID: 87
-2024-09-13 18:41:18 INFO: Fetched session for session ID 87: <MeetingSession 87>
-2024-09-13 18:41:18,455 - app - INFO - Fetched session for session ID 87: <MeetingSession 87>
-2024-09-13 18:41:18 INFO: Audio URL for session ID 87: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:41:18,455 - app - INFO - Audio URL for session ID 87: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:41:18 INFO: Starting transcription process for session ID 87 with audio URL http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:41:18,455 - app - INFO - Starting transcription process for session ID 87 with audio URL http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:41:18 DEBUG: load_ssl_context verify=True cert=None trust_env=True http2=False
-2024-09-13 18:41:18,459 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
-2024-09-13 18:41:18 DEBUG: load_verify_locations cafile='/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2024-09-13 18:41:18,459 - httpx - DEBUG - load_verify_locations cafile='/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2024-09-13 18:41:18 INFO: Transcribing audio from URL: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:41:18,480 - app - INFO - Transcribing audio from URL: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:41:18 DEBUG: Starting new HTTP connection (1): localhost:5000
-2024-09-13 18:41:18,484 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:5000
-2024-09-13 18:41:18 DEBUG: After request, Origin: None
-2024-09-13 18:41:18,486 - auth - DEBUG - After request, Origin: None
-2024-09-13 18:41:18 INFO: 127.0.0.1 - - [13/Sep/2024 18:41:18] "GET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1" 200 -
-2024-09-13 18:41:18,486 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:41:18] "GET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1" 200 -
-2024-09-13 18:41:18 DEBUG: http://localhost:5000 "GET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/11" 200 159788
-2024-09-13 18:41:18,487 - urllib3.connectionpool - DEBUG - http://localhost:5000 "GET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/11" 200 159788
-2024-09-13 18:41:18 INFO: Temporary audio file created at /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmpfewwgrts.mp3
-2024-09-13 18:41:18,488 - app - INFO - Temporary audio file created at /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmpfewwgrts.mp3
-2024-09-13 18:41:18 DEBUG: Request options: {'method': 'post', 'url': '/audio/transcriptions', 'headers': {'Content-Type': 'multipart/form-data'}, 'files': [('file', SerializationIterator(index=0, iterator=SerializationIterator(index=0, iterator=<_io.BufferedReader name='/var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmpfewwgrts.mp3'>)))], 'json_data': {'model': 'whisper-1'}}
-2024-09-13 18:41:18,489 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/audio/transcriptions', 'headers': {'Content-Type': 'multipart/form-data'}, 'files': [('file', SerializationIterator(index=0, iterator=SerializationIterator(index=0, iterator=<_io.BufferedReader name='/var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmpfewwgrts.mp3'>)))], 'json_data': {'model': 'whisper-1'}}
-2024-09-13 18:41:18 DEBUG: Sending HTTP Request: POST https://api.openai.com/v1/audio/transcriptions
-2024-09-13 18:41:18,512 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/audio/transcriptions
-2024-09-13 18:41:18 DEBUG: connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
-2024-09-13 18:41:18,512 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
-2024-09-13 18:41:18 DEBUG: connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x107520e90>
-2024-09-13 18:41:18,561 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x107520e90>
-2024-09-13 18:41:18 DEBUG: start_tls.started ssl_context=<ssl.SSLContext object at 0x107483650> server_hostname='api.openai.com' timeout=5.0
-2024-09-13 18:41:18,562 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x107483650> server_hostname='api.openai.com' timeout=5.0
-2024-09-13 18:41:18 DEBUG: start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x1075201d0>
-2024-09-13 18:41:18,612 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x1075201d0>
-2024-09-13 18:41:18 DEBUG: send_request_headers.started request=<Request [b'POST']>
-2024-09-13 18:41:18,612 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2024-09-13 18:41:18 DEBUG: send_request_headers.complete
-2024-09-13 18:41:18,612 - httpcore.http11 - DEBUG - send_request_headers.complete
-2024-09-13 18:41:18 DEBUG: send_request_body.started request=<Request [b'POST']>
-2024-09-13 18:41:18,612 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2024-09-13 18:41:18 DEBUG: send_request_body.complete
-2024-09-13 18:41:18,689 - httpcore.http11 - DEBUG - send_request_body.complete
-2024-09-13 18:41:18 DEBUG: receive_response_headers.started request=<Request [b'POST']>
-2024-09-13 18:41:18,689 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2024-09-13 18:41:20 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 13 Sep 2024 16:41:20 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'minute-memo'), (b'openai-processing-ms', b'725'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=15552000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'50'), (b'x-ratelimit-remaining-requests', b'49'), (b'x-ratelimit-reset-requests', b'1.2s'), (b'x-request-id', b'req_4e1bc9a846257f214bad36a957487e12'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=CLB_NmMAxLjLH8fnc8FD5mFo1ztpY5wil4Hlz6UJp0U-1726245680-1.0.1.1-jqZg7KdGy5KbtHbbX8PtKp439Tnb6nDnBg8NQLE8zs4af.xOKjM20OdIs5nFYG9C5iVp0GtWEjkDbbgEJW85nQ; path=/; expires=Fri, 13-Sep-24 17:11:20 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=WMQM0CKXd1q_fLMw2kj6sAZrbe8n5e3EV6bxJjPiNME-1726245680211-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8c2995838afbb715-BRU'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
-2024-09-13 18:41:20,222 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 13 Sep 2024 16:41:20 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'minute-memo'), (b'openai-processing-ms', b'725'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=15552000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'50'), (b'x-ratelimit-remaining-requests', b'49'), (b'x-ratelimit-reset-requests', b'1.2s'), (b'x-request-id', b'req_4e1bc9a846257f214bad36a957487e12'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=CLB_NmMAxLjLH8fnc8FD5mFo1ztpY5wil4Hlz6UJp0U-1726245680-1.0.1.1-jqZg7KdGy5KbtHbbX8PtKp439Tnb6nDnBg8NQLE8zs4af.xOKjM20OdIs5nFYG9C5iVp0GtWEjkDbbgEJW85nQ; path=/; expires=Fri, 13-Sep-24 17:11:20 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=WMQM0CKXd1q_fLMw2kj6sAZrbe8n5e3EV6bxJjPiNME-1726245680211-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8c2995838afbb715-BRU'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
-2024-09-13 18:41:20 INFO: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
-2024-09-13 18:41:20,227 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
-2024-09-13 18:41:20 DEBUG: receive_response_body.started request=<Request [b'POST']>
-2024-09-13 18:41:20,229 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2024-09-13 18:41:20 DEBUG: receive_response_body.complete
-2024-09-13 18:41:20,234 - httpcore.http11 - DEBUG - receive_response_body.complete
-2024-09-13 18:41:20 DEBUG: response_closed.started
-2024-09-13 18:41:20,238 - httpcore.http11 - DEBUG - response_closed.started
-2024-09-13 18:41:20 DEBUG: response_closed.complete
-2024-09-13 18:41:20,238 - httpcore.http11 - DEBUG - response_closed.complete
-2024-09-13 18:41:20 DEBUG: HTTP Response: POST https://api.openai.com/v1/audio/transcriptions "200 OK" Headers([('date', 'Fri, 13 Sep 2024 16:41:20 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'minute-memo'), ('openai-processing-ms', '725'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=15552000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '50'), ('x-ratelimit-remaining-requests', '49'), ('x-ratelimit-reset-requests', '1.2s'), ('x-request-id', 'req_4e1bc9a846257f214bad36a957487e12'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=CLB_NmMAxLjLH8fnc8FD5mFo1ztpY5wil4Hlz6UJp0U-1726245680-1.0.1.1-jqZg7KdGy5KbtHbbX8PtKp439Tnb6nDnBg8NQLE8zs4af.xOKjM20OdIs5nFYG9C5iVp0GtWEjkDbbgEJW85nQ; path=/; expires=Fri, 13-Sep-24 17:11:20 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=WMQM0CKXd1q_fLMw2kj6sAZrbe8n5e3EV6bxJjPiNME-1726245680211-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8c2995838afbb715-BRU'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
-2024-09-13 18:41:20,238 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/audio/transcriptions "200 OK" Headers([('date', 'Fri, 13 Sep 2024 16:41:20 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'minute-memo'), ('openai-processing-ms', '725'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=15552000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '50'), ('x-ratelimit-remaining-requests', '49'), ('x-ratelimit-reset-requests', '1.2s'), ('x-request-id', 'req_4e1bc9a846257f214bad36a957487e12'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=CLB_NmMAxLjLH8fnc8FD5mFo1ztpY5wil4Hlz6UJp0U-1726245680-1.0.1.1-jqZg7KdGy5KbtHbbX8PtKp439Tnb6nDnBg8NQLE8zs4af.xOKjM20OdIs5nFYG9C5iVp0GtWEjkDbbgEJW85nQ; path=/; expires=Fri, 13-Sep-24 17:11:20 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=WMQM0CKXd1q_fLMw2kj6sAZrbe8n5e3EV6bxJjPiNME-1726245680211-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8c2995838afbb715-BRU'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
-2024-09-13 18:41:20 DEBUG: request_id: req_4e1bc9a846257f214bad36a957487e12
-2024-09-13 18:41:20,239 - openai._base_client - DEBUG - request_id: req_4e1bc9a846257f214bad36a957487e12
-2024-09-13 18:41:20 ERROR: Error during transcription process: 'Transcription' object has no attribute 'get'
-2024-09-13 18:41:20,239 - app - ERROR - Error during transcription process: 'Transcription' object has no attribute 'get'
-2024-09-13 18:41:20 ERROR: Transcription failed for session ID 87
-2024-09-13 18:41:20,240 - app - ERROR - Transcription failed for session ID 87
-2024-09-13 18:41:20 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:41:20,240 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:41:20 INFO: 127.0.0.1 - - [13/Sep/2024 18:41:20] "[35m[1mPOST /api/transcribe/87 HTTP/1.1[0m" 500 -
-2024-09-13 18:41:20,249 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:41:20] "[35m[1mPOST /api/transcribe/87 HTTP/1.1[0m" 500 -
-2024-09-13 18:45:49 DEBUG: close.started
-2024-09-13 18:45:49,554 - httpcore.connection - DEBUG - close.started
-2024-09-13 18:45:49 DEBUG: close.complete
-2024-09-13 18:45:49,556 - httpcore.connection - DEBUG - close.complete
-2024-09-13 18:45:52 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-13 18:45:52,391 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-13 18:45:52 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-13 18:45:52,737 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-13 18:45:52 INFO: [33mPress CTRL+C to quit[0m
-2024-09-13 18:45:52,737 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2024-09-13 18:45:55 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:45:55,866 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:45:55 INFO: 127.0.0.1 - - [13/Sep/2024 18:45:55] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:45:55,872 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:45:55] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:45:55 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:45:55,887 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:45:55 INFO: 127.0.0.1 - - [13/Sep/2024 18:45:55] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:45:55,894 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:45:55] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:45:55 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:45:55,955 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:45:55 INFO: 127.0.0.1 - - [13/Sep/2024 18:45:55] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:45:55,957 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:45:55] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:45:55 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:45:55,968 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:45:55 INFO: 127.0.0.1 - - [13/Sep/2024 18:45:55] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:45:55,968 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:45:55] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:45:55 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:45:55,972 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:45:55 INFO: 127.0.0.1 - - [13/Sep/2024 18:45:55] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:45:55 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:45:55,974 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:45:55] "GET /api/sessions/87 HTTP/1.1" 200 -
-2024-09-13 18:45:55,974 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:45:55 INFO: 127.0.0.1 - - [13/Sep/2024 18:45:55] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:45:55,975 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:45:55] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:45:55 DEBUG: After request, Origin: None
-2024-09-13 18:45:55,982 - auth - DEBUG - After request, Origin: None
-2024-09-13 18:45:55 INFO: 127.0.0.1 - - [13/Sep/2024 18:45:55] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
-2024-09-13 18:45:55,983 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:45:55] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -
-2024-09-13 18:45:56 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:45:56,051 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:45:56 INFO: 127.0.0.1 - - [13/Sep/2024 18:45:56] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:45:56,053 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:45:56] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-13 18:45:57 INFO: Received transcription request for session ID: 87
-2024-09-13 18:45:57,076 - app - INFO - Received transcription request for session ID: 87
-2024-09-13 18:45:57 INFO: User gaetan@minutememo.io is requesting transcription for session ID: 87
-2024-09-13 18:45:57,076 - app - INFO - User gaetan@minutememo.io is requesting transcription for session ID: 87
-2024-09-13 18:45:57 INFO: Fetched session for session ID 87: <MeetingSession 87>
-2024-09-13 18:45:57,078 - app - INFO - Fetched session for session ID 87: <MeetingSession 87>
-2024-09-13 18:45:57 INFO: Audio URL for session ID 87: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:45:57,078 - app - INFO - Audio URL for session ID 87: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:45:57 INFO: Starting transcription process for session ID 87 with audio URL http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:45:57,078 - app - INFO - Starting transcription process for session ID 87 with audio URL http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:45:57 DEBUG: load_ssl_context verify=True cert=None trust_env=True http2=False
-2024-09-13 18:45:57,081 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
-2024-09-13 18:45:57 DEBUG: load_verify_locations cafile='/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2024-09-13 18:45:57,082 - httpx - DEBUG - load_verify_locations cafile='/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2024-09-13 18:45:57 INFO: Transcribing audio from URL: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:45:57,101 - app - INFO - Transcribing audio from URL: http://localhost:5000/uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3
-2024-09-13 18:45:57 DEBUG: Starting new HTTP connection (1): localhost:5000
-2024-09-13 18:45:57,104 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:5000
-2024-09-13 18:45:57 DEBUG: After request, Origin: None
-2024-09-13 18:45:57,106 - auth - DEBUG - After request, Origin: None
-2024-09-13 18:45:57 INFO: 127.0.0.1 - - [13/Sep/2024 18:45:57] "GET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1" 200 -
-2024-09-13 18:45:57,106 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:45:57] "GET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1" 200 -
-2024-09-13 18:45:57 DEBUG: http://localhost:5000 "GET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/11" 200 159788
-2024-09-13 18:45:57,107 - urllib3.connectionpool - DEBUG - http://localhost:5000 "GET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/11" 200 159788
-2024-09-13 18:45:57 INFO: Temporary audio file created at /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmpg9e_zt35.mp3
-2024-09-13 18:45:57,108 - app - INFO - Temporary audio file created at /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmpg9e_zt35.mp3
-2024-09-13 18:45:57 DEBUG: Request options: {'method': 'post', 'url': '/audio/transcriptions', 'headers': {'Content-Type': 'multipart/form-data'}, 'files': [('file', SerializationIterator(index=0, iterator=SerializationIterator(index=0, iterator=<_io.BufferedReader name='/var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmpg9e_zt35.mp3'>)))], 'json_data': {'model': 'whisper-1'}}
-2024-09-13 18:45:57,109 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/audio/transcriptions', 'headers': {'Content-Type': 'multipart/form-data'}, 'files': [('file', SerializationIterator(index=0, iterator=SerializationIterator(index=0, iterator=<_io.BufferedReader name='/var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmpg9e_zt35.mp3'>)))], 'json_data': {'model': 'whisper-1'}}
-2024-09-13 18:45:57 DEBUG: Sending HTTP Request: POST https://api.openai.com/v1/audio/transcriptions
-2024-09-13 18:45:57,131 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/audio/transcriptions
-2024-09-13 18:45:57 DEBUG: connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
-2024-09-13 18:45:57,132 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
-2024-09-13 18:46:03 DEBUG: connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x1244848c0>
-2024-09-13 18:46:03,312 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x1244848c0>
-2024-09-13 18:46:03 DEBUG: start_tls.started ssl_context=<ssl.SSLContext object at 0x1243d13d0> server_hostname='api.openai.com' timeout=5.0
-2024-09-13 18:46:03,313 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x1243d13d0> server_hostname='api.openai.com' timeout=5.0
-2024-09-13 18:46:03 DEBUG: start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x124447da0>
-2024-09-13 18:46:03,680 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x124447da0>
-2024-09-13 18:46:03 DEBUG: send_request_headers.started request=<Request [b'POST']>
-2024-09-13 18:46:03,690 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2024-09-13 18:46:03 DEBUG: send_request_headers.complete
-2024-09-13 18:46:03,695 - httpcore.http11 - DEBUG - send_request_headers.complete
-2024-09-13 18:46:03 DEBUG: send_request_body.started request=<Request [b'POST']>
-2024-09-13 18:46:03,697 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2024-09-13 18:46:03 DEBUG: send_request_body.complete
-2024-09-13 18:46:03,759 - httpcore.http11 - DEBUG - send_request_body.complete
-2024-09-13 18:46:03 DEBUG: receive_response_headers.started request=<Request [b'POST']>
-2024-09-13 18:46:03,759 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2024-09-13 18:46:04 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 13 Sep 2024 16:46:04 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'minute-memo'), (b'openai-processing-ms', b'757'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=15552000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'50'), (b'x-ratelimit-remaining-requests', b'49'), (b'x-ratelimit-reset-requests', b'1.2s'), (b'x-request-id', b'req_bab69198fb2c6cb32f768ead1a164b69'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=pCY7rF2ApHvwcf33WnLvTV8cjuHwEdlpS1gSftiJlx4-1726245964-1.0.1.1-GQmbjDR0X4JSfCYIk6eF5NH5V5yXLJRqEhooFfvzpZBc5Mxla6Fs1hvsHaS0GGqFjsWi6Aqp3y9bjMc46Xb_OQ; path=/; expires=Fri, 13-Sep-24 17:16:04 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=mjNUuU957oZ27dSFaKDcR4hLQUsRWwte_bwWQ9tBw5M-1726245964925-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8c299c793cd4b71d-BRU'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
-2024-09-13 18:46:04,958 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 13 Sep 2024 16:46:04 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'minute-memo'), (b'openai-processing-ms', b'757'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=15552000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'50'), (b'x-ratelimit-remaining-requests', b'49'), (b'x-ratelimit-reset-requests', b'1.2s'), (b'x-request-id', b'req_bab69198fb2c6cb32f768ead1a164b69'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=pCY7rF2ApHvwcf33WnLvTV8cjuHwEdlpS1gSftiJlx4-1726245964-1.0.1.1-GQmbjDR0X4JSfCYIk6eF5NH5V5yXLJRqEhooFfvzpZBc5Mxla6Fs1hvsHaS0GGqFjsWi6Aqp3y9bjMc46Xb_OQ; path=/; expires=Fri, 13-Sep-24 17:16:04 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=mjNUuU957oZ27dSFaKDcR4hLQUsRWwte_bwWQ9tBw5M-1726245964925-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8c299c793cd4b71d-BRU'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
-2024-09-13 18:46:04 INFO: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
-2024-09-13 18:46:04,961 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
-2024-09-13 18:46:04 DEBUG: receive_response_body.started request=<Request [b'POST']>
-2024-09-13 18:46:04,961 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2024-09-13 18:46:04 DEBUG: receive_response_body.complete
-2024-09-13 18:46:04,962 - httpcore.http11 - DEBUG - receive_response_body.complete
-2024-09-13 18:46:04 DEBUG: response_closed.started
-2024-09-13 18:46:04,962 - httpcore.http11 - DEBUG - response_closed.started
-2024-09-13 18:46:04 DEBUG: response_closed.complete
-2024-09-13 18:46:04,962 - httpcore.http11 - DEBUG - response_closed.complete
-2024-09-13 18:46:04 DEBUG: HTTP Response: POST https://api.openai.com/v1/audio/transcriptions "200 OK" Headers([('date', 'Fri, 13 Sep 2024 16:46:04 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'minute-memo'), ('openai-processing-ms', '757'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=15552000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '50'), ('x-ratelimit-remaining-requests', '49'), ('x-ratelimit-reset-requests', '1.2s'), ('x-request-id', 'req_bab69198fb2c6cb32f768ead1a164b69'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=pCY7rF2ApHvwcf33WnLvTV8cjuHwEdlpS1gSftiJlx4-1726245964-1.0.1.1-GQmbjDR0X4JSfCYIk6eF5NH5V5yXLJRqEhooFfvzpZBc5Mxla6Fs1hvsHaS0GGqFjsWi6Aqp3y9bjMc46Xb_OQ; path=/; expires=Fri, 13-Sep-24 17:16:04 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=mjNUuU957oZ27dSFaKDcR4hLQUsRWwte_bwWQ9tBw5M-1726245964925-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8c299c793cd4b71d-BRU'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
-2024-09-13 18:46:04,962 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/audio/transcriptions "200 OK" Headers([('date', 'Fri, 13 Sep 2024 16:46:04 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'minute-memo'), ('openai-processing-ms', '757'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=15552000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '50'), ('x-ratelimit-remaining-requests', '49'), ('x-ratelimit-reset-requests', '1.2s'), ('x-request-id', 'req_bab69198fb2c6cb32f768ead1a164b69'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=pCY7rF2ApHvwcf33WnLvTV8cjuHwEdlpS1gSftiJlx4-1726245964-1.0.1.1-GQmbjDR0X4JSfCYIk6eF5NH5V5yXLJRqEhooFfvzpZBc5Mxla6Fs1hvsHaS0GGqFjsWi6Aqp3y9bjMc46Xb_OQ; path=/; expires=Fri, 13-Sep-24 17:16:04 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=mjNUuU957oZ27dSFaKDcR4hLQUsRWwte_bwWQ9tBw5M-1726245964925-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8c299c793cd4b71d-BRU'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
-2024-09-13 18:46:04 DEBUG: request_id: req_bab69198fb2c6cb32f768ead1a164b69
-2024-09-13 18:46:04,963 - openai._base_client - DEBUG - request_id: req_bab69198fb2c6cb32f768ead1a164b69
-2024-09-13 18:46:04 INFO: Transcription result: Wat zeg je daar jongen? Ik zeg jongen! Ja! Weet je wat papa gaat maken voor jou? Harvey, weet je wat papa gaat maken voor jou? Wat? Fish sticks? Met list? En?
-2024-09-13 18:46:04,964 - app - INFO - Transcription result: Wat zeg je daar jongen? Ik zeg jongen! Ja! Weet je wat papa gaat maken voor jou? Harvey, weet je wat papa gaat maken voor jou? Wat? Fish sticks? Met list? En?
-2024-09-13 18:46:04 INFO: Temporary audio file deleted: /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmpg9e_zt35.mp3
-2024-09-13 18:46:04,965 - app - INFO - Temporary audio file deleted: /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmpg9e_zt35.mp3
-2024-09-13 18:46:04 INFO: Transcription completed successfully for session ID 87
-2024-09-13 18:46:04,967 - app - INFO - Transcription completed successfully for session ID 87
-2024-09-13 18:46:04 DEBUG: After request, Origin: http://localhost:3000
-2024-09-13 18:46:04,968 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-13 18:46:05 INFO: 127.0.0.1 - - [13/Sep/2024 18:46:05] "POST /api/transcribe/87 HTTP/1.1" 200 -
-2024-09-13 18:46:05,107 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2024 18:46:05] "POST /api/transcribe/87 HTTP/1.1" 200 -
-2024-09-13 20:09:33 DEBUG: close.started
-2024-09-13 20:09:33,186 - httpcore.connection - DEBUG - close.started
-2024-09-13 20:09:33 DEBUG: close.complete
-2024-09-13 20:09:33,189 - httpcore.connection - DEBUG - close.complete
+[SQL: SELECT meeting_session.id AS meeting_session_id, meeting_session.name AS meeting_session_name, meeting_session.session_datetime AS meeting_session_session_datetime, meeting_session.agenda AS meeting_session_agenda, meeting_session.notes AS meeting_session_notes, meeting_session.meeting_id AS meeting_session_meeting_id, meeting_session.audio_url AS meeting_session_audio_url, meeting_session.transcription AS meeting_session_transcription 
+FROM meeting_session 
+WHERE meeting_session.meeting_id = %(meeting_id_1)s]
+[parameters: {'meeting_id_1': 'undefined'}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2024-09-14 07:28:42,132 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:28:42,133 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:28:42] "[35m[1mGET /api/meetings?meeting_id=undefined HTTP/1.1[0m" 500 -
+2024-09-14 07:28:43,373 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:28:43,374 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:28:43] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:28:43,386 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:28:43,387 - app - INFO - Fetching meeting sessions for hub ID: 13
+2024-09-14 07:28:43,387 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:28:43,389 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:28:43] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-14 07:28:43,389 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:28:43] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
+2024-09-14 07:28:43,391 - app - INFO - Session ID: 41, Name: Monday morning huddle - 2024-08-30 10:14:56, Transcription: No transcription available
+2024-09-14 07:28:43,391 - app - INFO - Session ID: 42, Name: test voor url - 2024-08-30 11:00:36, Transcription: No transcription available
+2024-09-14 07:28:43,391 - app - INFO - Session ID: 49, Name: test - 2024-09-02 13:30:30, Transcription: No transcription available
+2024-09-14 07:28:43,391 - app - INFO - Session ID: 86, Name: Test voor audio - 2024-09-12 13:25:24, Transcription: No transcription available
+2024-09-14 07:28:43,391 - app - INFO - Session ID: 87, Name: test voor transcriptie - 2024-09-13 15:12:26, Transcription: Wat zeg je daar jongen? Ik zeg jongen! Ja! Weet je wat papa gaat maken voor jou? Harvey, weet je wat papa gaat maken voor jou? Wat? Fish sticks? Met list? En?
+2024-09-14 07:28:43,395 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:28:43,397 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:28:43] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
+2024-09-14 07:28:45,808 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:28:45,811 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:28:45] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-14 07:28:45,815 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:28:45,816 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:28:45] "GET /api/meetings?meeting_id=84 HTTP/1.1" 200 -
+2024-09-14 07:28:46,740 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:28:46,742 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:28:46] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:28:46,749 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 07:28:46,751 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:28:46] "GET /api/sessions/87 HTTP/1.1" 200 -
+2024-09-14 07:28:46,752 - auth - DEBUG - After request, Origin: None
+2024-09-14 07:28:46,753 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 07:28:46] "[35m[1mGET /uploads/audio_recordings/4b6eb8f0-d3d7-4258-aa95-2e562e38e69e.mp3 HTTP/1.1[0m" 206 -

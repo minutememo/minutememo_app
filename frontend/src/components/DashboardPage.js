@@ -115,48 +115,52 @@ const DashboardPage = ({ selectedHub }) => {
   // Normal dashboard content when the user is logged in and subscription is active
   return (
     <div className="dashboard">
-      <h3>Meetings</h3>
-      {error && <p className="error-message">{error}</p>}
-      <table>
-        <thead>
-          <tr>
-            <th>Meeting Name</th>
-            <th>Description</th>
-            <th>Is Recurring</th>
-          </tr>
-        </thead>
-        <tbody>
-          {meetings.map(meeting => (
-            <tr key={meeting.id}>
-              <td>
-                <Link to={`/meetings/${meeting.id}`}>{meeting.name}</Link>
-              </td>
-              <td>{meeting.description}</td>
-              <td>{meeting.is_recurring ? 'Yes' : 'No'}</td>
+      <div className="box-shadow-container">
+        <h3>Meetings</h3>
+        {error && <p className="error-message">{error}</p>}
+        <table>
+          <thead>
+            <tr>
+              <th>Meeting Name</th>
+              <th>Description</th>
+              <th>Is Recurring</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-
-      <h3>Meeting Sessions</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Session Name</th>
-            <th>Meeting Name</th>
-            <th>Date and Time</th>
-          </tr>
-        </thead>
-        <tbody>
-          {meetingSessions.map(session => (
-            <tr key={session.id}>
-              <td>{session.name}</td>
-              <td>{session.meeting_name}</td>
-              <td>{session.session_datetime}</td>
+          </thead>
+          <tbody>
+            {meetings.map(meeting => (
+              <tr key={meeting.id}>
+                <td>
+                  <Link to={`/meetings/${meeting.id}`}>{meeting.name}</Link>
+                </td>
+                <td>{meeting.description}</td>
+                <td>{meeting.is_recurring ? 'Yes' : 'No'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+  
+      <div className="box-shadow-container">
+        <h3>Meeting Sessions</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Session Name</th>
+              <th>Meeting Name</th>
+              <th>Date and Time</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {meetingSessions.map(session => (
+              <tr key={session.id}>
+                <td>{session.name}</td>
+                <td>{session.meeting_name}</td>
+                <td>{session.session_datetime}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

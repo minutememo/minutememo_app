@@ -521,6 +521,9 @@ def manage_meeting_sessions():
             if not hub_id:
                 return jsonify({'status': 'error', 'message': 'Hub ID is required'}), 400
 
+            # Logging the hub ID
+            current_app.logger.info(f"Fetching meeting sessions for hub ID: {hub_id}")
+            
             # Fetch all meeting sessions for the specified hub_id
             meeting_sessions = (
                 MeetingSession.query.join(Meeting)
@@ -528,13 +531,19 @@ def manage_meeting_sessions():
                 .all()
             )
 
+            # Logging details of each session fetched
+            for session in meeting_sessions:
+                current_app.logger.info(f"Session ID: {session.id}, Name: {session.name}, Transcription: {session.transcription or 'No transcription available'}")
+
             sessions_data = [
                 {
                     'id': session.id,
                     'name': session.name,
                     'session_datetime': session.session_datetime.strftime('%Y-%m-%d %H:%M:%S'),
-                    'meeting_name': session.meeting.name  # Assuming MeetingSession has a relationship to Meeting
-                } for session in meeting_sessions
+                    'meeting_name': session.meeting.name,
+                    'transcription': session.transcription  # Assuming the transcription is stored here
+                }
+                for session in meeting_sessions
             ]
             return jsonify({'status': 'success', 'meeting_sessions': sessions_data}), 200
         except Exception as e:
@@ -558,6 +567,8 @@ def manage_meeting_sessions():
             db.session.add(new_session)
             db.session.commit()
 
+            # Logging the creation of a new meeting session
+            current_app.logger.info(f"New meeting session created: {new_session.id} - {new_session.name}")
             return jsonify({'status': 'success', 'meeting_session_id': new_session.id}), 201
         except Exception as e:
             db.session.rollback()
@@ -897,7 +908,8 @@ def get_session(session_id):
             'id': session.id,
             'name': session.name,
             'session_datetime': session.session_datetime.isoformat(),
-            'audio_url': session.audio_url  # Assuming you have a column for the audio URL
+            'audio_url': session.audio_url,  # Assuming you have a column for the audio URL
+            'transcription': session.transcription  # Assuming the transcription is stored here
         }
 
         return jsonify({'status': 'success', 'session': session_data}), 200
@@ -1150,8 +1162,10 @@ def transcribe(session_id):
             current_app.logger.error(f"Transcription failed for session ID {session_id}")
             return jsonify({'error': 'Failed to transcribe audio'}), 500
 
-        # Log the success of the transcription
-        current_app.logger.info(f"Transcription completed successfully for session ID {session_id}")
+        # Store transcription in the database
+        session.transcription = transcription_result
+        db.session.commit()
+        current_app.logger.info(f"Transcription saved successfully for session ID {session_id}")
 
         return jsonify({'transcription': transcription_result}), 200
 
@@ -1190,7 +1204,6 @@ def transcribe_audio(audio_url):
         current_app.logger.info(f"Temporary audio file created at {temp_audio_file_path}")
 
         # Use the OpenAI Whisper API through client.audio.transcriptions.create
-        # Use the new transcription method
         with open(temp_audio_file_path, "rb") as audio_file:
             transcription = client.audio.transcriptions.create(
                 model="whisper-1",
