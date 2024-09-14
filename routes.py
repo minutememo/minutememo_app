@@ -386,6 +386,7 @@ def concatenate_status(task_id):
 
 
 # Celery task for cloud-based concatenation
+# Celery task for cloud-based concatenation
 @celery_app.task(bind=True)
 def concatenate_cloud(self, recording_id):
     from app import create_app  # Ensure app is created to push the context
