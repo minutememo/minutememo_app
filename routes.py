@@ -180,17 +180,20 @@ def settings_content():
 
 def update_concatenation_status(recording_id, status):
     try:
-        # Assuming Recording is the model where you store status
+        # Fetch the recording by the given recording_id from the Recording table
         recording = db.session.query(Recording).filter_by(id=recording_id).first()
 
         if recording:
-            recording.status = status
+            # Update the status field
+            recording.concatenation_status = status  # Assuming 'concatenation_status' is the correct field
             db.session.commit()
             current_app.logger.info(f"Concatenation status for {recording_id} updated to {status}")
         else:
+            # Log if the recording was not found
             current_app.logger.error(f"Recording with ID {recording_id} not found")
     except Exception as e:
-        db.session.rollback()  # Rollback in case of error
+        # Rollback any changes if an error occurs
+        db.session.rollback()
         current_app.logger.error(f"Failed to update status for recording {recording_id}: {str(e)}")
 
 @main.route('/api/recordings/<string:recording_id>', methods=['PATCH'])
@@ -335,6 +338,10 @@ def concatenate():
             convert_to_mp3(final_output, mp3_filepath)
             current_app.logger.info(f"MP3 conversion successful. File saved at {mp3_filepath}")
 
+            # Update the database to reflect successful concatenation
+            update_concatenation_status(recording_id, 'success')
+            current_app.logger.info(f"Concatenation status updated to 'success' in the database for recording_id: {recording_id}")
+
             return jsonify({'status': 'success', 'file_url': f'/uploads/audio_recordings/{os.path.basename(mp3_filepath)}'})
         
         else:
@@ -358,7 +365,7 @@ def convert_to_mp3(webm_filepath, mp3_filepath):
         print(f"Conversion successful: {mp3_filepath}")
     except ffmpeg.Error as e:
         print(f"Error converting file: {e}")
-
+    
 
 
 # Check Celery task status route
@@ -511,7 +518,7 @@ def concatenate_cloud(self, recording_id):
             current_app.logger.info(f"Cleanup completed for recording_id: {recording_id}")
 
 
-@main.route('/api/meetingsessions', methods=['GET', 'POST'])
+@main.route('/api/meetingsessions', methods=['GET', 'POST', 'PATCH'])
 @login_required
 @cross_origin()
 def manage_meeting_sessions():
@@ -521,19 +528,13 @@ def manage_meeting_sessions():
             if not hub_id:
                 return jsonify({'status': 'error', 'message': 'Hub ID is required'}), 400
 
-            # Logging the hub ID
             current_app.logger.info(f"Fetching meeting sessions for hub ID: {hub_id}")
             
-            # Fetch all meeting sessions for the specified hub_id
             meeting_sessions = (
                 MeetingSession.query.join(Meeting)
                 .filter(Meeting.meeting_hub_id == hub_id)
                 .all()
             )
-
-            # Logging details of each session fetched
-            for session in meeting_sessions:
-                current_app.logger.info(f"Session ID: {session.id}, Name: {session.name}, Transcription: {session.transcription or 'No transcription available'}")
 
             sessions_data = [
                 {
@@ -541,13 +542,40 @@ def manage_meeting_sessions():
                     'name': session.name,
                     'session_datetime': session.session_datetime.strftime('%Y-%m-%d %H:%M:%S'),
                     'meeting_name': session.meeting.name,
-                    'transcription': session.transcription  # Assuming the transcription is stored here
+                    'transcription': session.transcription,
+                    'audio_url': session.audio_url  # Include audio URL if it exists
                 }
                 for session in meeting_sessions
             ]
             return jsonify({'status': 'success', 'meeting_sessions': sessions_data}), 200
         except Exception as e:
             current_app.logger.error(f"Error fetching meeting sessions: {str(e)}")
+            return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
+
+    elif request.method == 'PATCH':
+        try:
+            data = request.get_json()
+            recording_id = data.get('recording_id')
+            audio_url = data.get('audio_url')
+
+            if not recording_id or not audio_url:
+                return jsonify({'status': 'error', 'message': 'Recording ID and audio URL are required'}), 400
+
+            # Fetch the meeting session by recording_id
+            session = MeetingSession.query.filter_by(id=recording_id).first()
+
+            if not session:
+                return jsonify({'status': 'error', 'message': 'Meeting session not found'}), 404
+
+            # Update the audio URL in the session
+            session.audio_url = audio_url
+            db.session.commit()
+
+            current_app.logger.info(f"Updated audio URL for recording_id {recording_id}: {audio_url}")
+
+            return jsonify({'status': 'success', 'message': 'Audio URL updated successfully'}), 200
+        except Exception as e:
+            current_app.logger.error(f"Error updating audio URL: {str(e)}")
             return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
 
     elif request.method == 'POST':
