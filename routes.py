@@ -502,15 +502,15 @@ def concatenate_cloud(self, recording_id):
                     current_app.logger.info(f"MP3 URL successfully updated in the database for recording_id: {recording_id}")
 
                     # Update the related meeting session with the MP3 URL
-                    current_app.logger.info(f"Updating MeetingSession with MP3 URL for recording_id: {recording_id}")
+                    current_app.logger.info(f"Updating MeetingSession with MP3 URL for meeting_session_id: {recording.meeting_session_id}")
                     meeting_session = db.session.query(MeetingSession).filter_by(id=recording.meeting_session_id).first()
                     if meeting_session:
                         meeting_session.audio_url = f"gs://{BUCKET_NAME}/{final_mp3_output_gcs}"
                         db.session.commit()
-                        current_app.logger.info(f"MP3 URL successfully updated in the MeetingSession for recording_id: {recording_id}")
+                        current_app.logger.info(f"MP3 URL successfully updated in the MeetingSession for meeting_session_id: {recording.meeting_session_id}")
                     else:
-                        current_app.logger.error(f"MeetingSession not found for recording_id: {recording_id}")
-                        return {'status': 'error', 'message': f"MeetingSession not found for recording_id: {recording_id}"}
+                        current_app.logger.error(f"MeetingSession not found for meeting_session_id: {recording.meeting_session_id}")
+                        return {'status': 'error', 'message': f"MeetingSession not found for meeting_session_id: {recording.meeting_session_id}"}
 
                 else:
                     current_app.logger.error(f"Recording not found for recording_id: {recording_id}")

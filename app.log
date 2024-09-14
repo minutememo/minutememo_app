@@ -535,3 +535,11 @@
 2024-09-14 21:32:02,539 - httpcore.connection - DEBUG - close.started
 2024-09-14 21:32:02 DEBUG: close.complete
 2024-09-14 21:32:02,539 - httpcore.connection - DEBUG - close.complete
+2024-09-14 22:12:40 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-09-14 22:12:40,115 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-09-14 22:12:40 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-09-14 22:12:40,418 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-09-14 22:12:40 INFO: [33mPress CTRL+C to quit[0m
+2024-09-14 22:12:40,419 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
