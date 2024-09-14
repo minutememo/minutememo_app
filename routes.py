@@ -386,7 +386,6 @@ def concatenate_status(task_id):
 
 
 # Celery task for cloud-based concatenation
-# Celery task for cloud-based concatenation
 @celery_app.task(bind=True)
 def concatenate_cloud(self, recording_id):
     from app import create_app  # Ensure app is created to push the context
@@ -501,6 +500,18 @@ def concatenate_cloud(self, recording_id):
                     recording.audio_url = f"gs://{BUCKET_NAME}/{final_mp3_output_gcs}"
                     db.session.commit()
                     current_app.logger.info(f"MP3 URL successfully updated in the database for recording_id: {recording_id}")
+
+                    # Update the related meeting session with the MP3 URL
+                    current_app.logger.info(f"Updating MeetingSession with MP3 URL for recording_id: {recording_id}")
+                    meeting_session = db.session.query(MeetingSession).filter_by(id=recording.meeting_session_id).first()
+                    if meeting_session:
+                        meeting_session.audio_url = f"gs://{BUCKET_NAME}/{final_mp3_output_gcs}"
+                        db.session.commit()
+                        current_app.logger.info(f"MP3 URL successfully updated in the MeetingSession for recording_id: {recording_id}")
+                    else:
+                        current_app.logger.error(f"MeetingSession not found for recording_id: {recording_id}")
+                        return {'status': 'error', 'message': f"MeetingSession not found for recording_id: {recording_id}"}
+
                 else:
                     current_app.logger.error(f"Recording not found for recording_id: {recording_id}")
                     return {'status': 'error', 'message': f"Recording not found for recording_id: {recording_id}"}
