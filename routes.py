@@ -491,6 +491,16 @@ def concatenate_cloud(self, recording_id):
                 current_app.logger.info(f"Uploading MP3 file to GCS at {final_mp3_output_gcs}")
                 upload_file_to_gcs(mp3_output_path, final_mp3_output_gcs)
                 current_app.logger.info(f"MP3 file uploaded to GCS at {final_mp3_output_gcs}")
+
+                # Update recording with MP3 URL
+                recording = db.session.query(Recording).filter_by(id=recording_id).first()
+                if recording:
+                    recording.audio_url = f"gs://{BUCKET_NAME}/{final_mp3_output_gcs}"
+                    db.session.commit()
+                    current_app.logger.info(f"MP3 URL updated in database for recording_id: {recording_id}")
+                else:
+                    current_app.logger.error(f"Recording not found for recording_id: {recording_id}")
+
             except Exception as e:
                 current_app.logger.error(f"Error uploading the MP3 file to GCS: {e}")
                 update_concatenation_status(recording_id, "error")
