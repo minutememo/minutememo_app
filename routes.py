@@ -386,6 +386,7 @@ def concatenate_status(task_id):
 
 
 # Celery task for cloud-based concatenation
+# Celery task for cloud-based concatenation
 @celery_app.task(bind=True)
 def concatenate_cloud(self, recording_id):
     from app import create_app  # Ensure app is created to push the context
@@ -422,6 +423,7 @@ def concatenate_cloud(self, recording_id):
                 # Download the file
                 local_path = os.path.join(temp_dir, f"chunk_{idx}.webm")
                 response = requests.get(signed_url)
+                current_app.logger.info(f"Downloading chunk {idx} from GCS, response status: {response.status_code}")
                 if response.status_code == 200:
                     with open(local_path, 'wb') as f:
                         f.write(response.content)
@@ -438,7 +440,6 @@ def concatenate_cloud(self, recording_id):
             with open(list_file_path, 'w') as f:
                 for local_path in local_chunk_paths:
                     f.write(f"file '{local_path}'\n")
-
             current_app.logger.info(f"FFmpeg list file created at {list_file_path}")
 
             # Run FFmpeg for concatenation
@@ -498,20 +499,20 @@ def concatenate_cloud(self, recording_id):
                 recording = db.session.query(Recording).filter_by(id=recording_id).first()
                 if recording:
                     recording.audio_url = f"gs://{BUCKET_NAME}/{final_mp3_output_gcs}"
+                    current_app.logger.info(f"MP3 URL to be stored in DB: gs://{BUCKET_NAME}/{final_mp3_output_gcs}")
                     db.session.commit()
                     current_app.logger.info(f"MP3 URL successfully updated in the database for recording_id: {recording_id}")
 
                     # Update the related meeting session with the MP3 URL
-                    current_app.logger.info(f"Updating MeetingSession with MP3 URL for meeting_session_id: {recording.meeting_session_id}")
+                    current_app.logger.info(f"Updating MeetingSession with MP3 URL for recording_id: {recording_id}")
                     meeting_session = db.session.query(MeetingSession).filter_by(id=recording.meeting_session_id).first()
                     if meeting_session:
                         meeting_session.audio_url = f"gs://{BUCKET_NAME}/{final_mp3_output_gcs}"
                         db.session.commit()
-                        current_app.logger.info(f"MP3 URL successfully updated in the MeetingSession for meeting_session_id: {recording.meeting_session_id}")
+                        current_app.logger.info(f"MP3 URL successfully updated in the MeetingSession for recording_id: {recording_id}")
                     else:
-                        current_app.logger.error(f"MeetingSession not found for meeting_session_id: {recording.meeting_session_id}")
-                        return {'status': 'error', 'message': f"MeetingSession not found for meeting_session_id: {recording.meeting_session_id}"}
-
+                        current_app.logger.error(f"MeetingSession not found for recording_id: {recording_id}")
+                        return {'status': 'error', 'message': f"MeetingSession not found for recording_id: {recording_id}"}
                 else:
                     current_app.logger.error(f"Recording not found for recording_id: {recording_id}")
                     return {'status': 'error', 'message': f"Recording not found for recording_id: {recording_id}"}
