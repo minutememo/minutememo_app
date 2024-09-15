@@ -960,56 +960,39 @@ def get_session(session_id):
         if not session:
             return jsonify({'status': 'error', 'message': 'Session not found'}), 404
 
-        # Prepare the session data to return
+        # Prepare the session data
         session_data = {
             'id': session.id,
             'name': session.name,
             'session_datetime': session.session_datetime.isoformat(),
-            'audio_url': None,  # Initialize as None; will set below if available
+            'audio_url': None,
             'transcription': session.transcription
         }
 
-        # Check if there's an audio URL associated with the session
+        # Handle audio URL
         if session.audio_url:
             if ENVIRONMENT != 'development':
-                # **Production Environment:** Generate a signed URL from GCS
-
-                # Create a blob object using the relative path directly
+                # Production: Generate signed URL from GCS
                 bucket = storage_client.bucket(BUCKET_NAME)
+                # Assuming session.audio_url stores relative path (e.g., 'audio_recordings/...')
                 blob = bucket.blob(session.audio_url)
 
-                # Log the attempt to generate the signed URL
-                current_app.logger.info(f"Attempting to generate signed URL for audio: {session.audio_url}")
-
-                # Generate the signed URL with a 15-minute expiration
+                current_app.logger.info(f"Generating signed URL for audio: {session.audio_url}")
                 signed_url = blob.generate_signed_url(expiration=timedelta(minutes=15))
 
-                # Log the generated signed URL
                 current_app.logger.info(f"Signed URL generated: {signed_url}")
-
-                # Assign the signed URL to the response data
                 session_data['audio_url'] = signed_url
-
             else:
-                # **Development Environment:** Serve the audio file locally
-
-                # Extract the filename from the relative path
-                filename = os.path.basename(session.audio_url)  # 'd61488a1-f92b-4444-ab80-80b43b416221.mp3'
-
-                # Generate the local URL for the audio file using the 'download_file' route
+                # Development: Serve the audio file locally
+                filename = os.path.basename(session.audio_url)
                 local_audio_url = url_for('main.download_file', filename=filename, _external=True)
-
-                # Log the local audio URL
                 current_app.logger.info(f"Local audio URL for session ID {session_id}: {local_audio_url}")
-
-                # Assign the local URL to the response data
                 session_data['audio_url'] = local_audio_url
 
         # Return the session data as JSON
         return jsonify({'status': 'success', 'session': session_data}), 200
 
     except Exception as e:
-        # Log the exception with traceback for easier debugging
         current_app.logger.error(f"Error fetching session: {str(e)}")
         current_app.logger.error(traceback.format_exc())
         return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500

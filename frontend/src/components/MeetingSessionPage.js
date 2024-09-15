@@ -15,13 +15,11 @@ const MeetingSessionPage = () => {
   useEffect(() => {
     const fetchSession = async () => {
       try {
-        console.log(`Fetching session details for session ID: ${sessionId}`);
         const response = await axios.get(`${backendUrl}/api/sessions/${sessionId}`);
         if (response.status === 200) {
           const sessionData = response.data.session;
           setSession(sessionData);
           setTranscription(sessionData.transcription || '');
-          console.log('Session data received:', sessionData);
         } else {
           setError('Failed to fetch session.');
         }
@@ -52,12 +50,10 @@ const MeetingSessionPage = () => {
     if (audioUrl.startsWith('/uploads')) {
       return `${backendUrl}${audioUrl}`;
     } else if (audioUrl.startsWith('gs://')) {
-      // Replace 'gs://' with 'https://storage.googleapis.com/'
       return audioUrl.replace('gs://', 'https://storage.googleapis.com/');
     } else if (audioUrl.includes('gs://')) {
-      // Extract the path after 'gs://' and construct the correct URL
       const gsIndex = audioUrl.indexOf('gs://');
-      const path = audioUrl.substring(gsIndex + 5); // Remove 'gs://'
+      const path = audioUrl.substring(gsIndex + 5);
       return `https://storage.googleapis.com/${path}`;
     } else {
       return decodeURIComponent(audioUrl);
@@ -91,6 +87,11 @@ const MeetingSessionPage = () => {
                 <button onClick={() => (audioRef.current.currentTime -= 10)}>-10s</button>
                 <button onClick={() => (audioRef.current.currentTime += 10)}>+10s</button>
               </div>
+
+              {/* Download Button */}
+              <a href={getAudioUrl(session.audio_url)} download>
+                <button>Download Audio</button>
+              </a>
 
               <button onClick={handleTranscription} disabled={isTranscribing}>
                 {isTranscribing ? 'Transcribing...' : 'Transcribe Audio'}
