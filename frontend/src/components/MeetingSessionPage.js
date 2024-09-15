@@ -10,7 +10,7 @@ const MeetingSessionPage = () => {
   const [isTranscribing, setIsTranscribing] = useState(false); // State for transcribing status
   const audioRef = useRef(null);
 
-  const baseURL = process.env.REACT_APP_API_URL || '';
+  const baseURL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
   useEffect(() => {
     // Fetch session details and transcription

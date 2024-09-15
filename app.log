@@ -543,3 +543,129 @@
  * Running on http://127.0.0.1:5000
 2024-09-14 22:12:40 INFO: [33mPress CTRL+C to quit[0m
 2024-09-14 22:12:40,419 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-09-14 22:44:10 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-09-14 22:44:10,714 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-09-14 22:44:11 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-09-14 22:44:11,043 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-09-14 22:44:11 INFO: [33mPress CTRL+C to quit[0m
+2024-09-14 22:44:11,043 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-09-14 22:44:31 DEBUG: After request, Origin: http://localhost:3000
+2024-09-14 22:44:31 DEBUG: After request, Origin: http://localhost:3000
+2024-09-14 22:44:31,653 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 22:44:31,655 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 22:44:31 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/sessions/90 HTTP/1.1" 200 -
+2024-09-14 22:44:31,663 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/sessions/90 HTTP/1.1" 200 -
+2024-09-14 22:44:31 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 22:44:31,663 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 22:44:31 DEBUG: After request, Origin: http://localhost:3000
+2024-09-14 22:44:31,670 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 22:44:31 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/sessions/90 HTTP/1.1" 200 -
+2024-09-14 22:44:31,671 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/sessions/90 HTTP/1.1" 200 -
+2024-09-14 22:44:31 DEBUG: After request, Origin: http://localhost:3000
+2024-09-14 22:44:31,677 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 22:44:31 DEBUG: After request, Origin: http://localhost:3000
+2024-09-14 22:44:31 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/sessions/90 HTTP/1.1" 200 -
+2024-09-14 22:44:31,683 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 22:44:31,683 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/sessions/90 HTTP/1.1" 200 -
+2024-09-14 22:44:31 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 22:44:31,684 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 22:44:31 DEBUG: After request, Origin: http://localhost:3000
+2024-09-14 22:44:31,714 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 22:44:31 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/sessions/90 HTTP/1.1" 200 -
+2024-09-14 22:44:31,715 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/sessions/90 HTTP/1.1" 200 -
+2024-09-14 22:44:31 DEBUG: After request, Origin: http://localhost:3000
+2024-09-14 22:44:31,721 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-14 22:44:31 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 22:44:31,722 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-14 22:44:31 DEBUG: After request, Origin: None
+2024-09-14 22:44:31,729 - auth - DEBUG - After request, Origin: None
+2024-09-14 22:44:31 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:31] "[35m[1mGET /uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3 HTTP/1.1[0m" 206 -
+2024-09-14 22:44:31,733 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:31] "[35m[1mGET /uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3 HTTP/1.1[0m" 206 -
+2024-09-14 22:44:34 DEBUG: After request, Origin: https://staging.minutememo.io
+2024-09-14 22:44:34,413 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
+2024-09-14 22:44:34 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:34] "OPTIONS /api/sessions/75 HTTP/1.1" 200 -
+2024-09-14 22:44:34,429 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:34] "OPTIONS /api/sessions/75 HTTP/1.1" 200 -
+2024-09-14 22:44:34 DEBUG: After request, Origin: https://staging.minutememo.io
+2024-09-14 22:44:34,441 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
+2024-09-14 22:44:34 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:34] "[32mGET /api/sessions/75 HTTP/1.1[0m" 302 -
+2024-09-14 22:44:34,442 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:34] "[32mGET /api/sessions/75 HTTP/1.1[0m" 302 -
+2024-09-14 22:44:34 DEBUG: After request, Origin: https://staging.minutememo.io
+2024-09-14 22:44:34,472 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
+2024-09-14 22:44:34 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:34] "OPTIONS /auth/login?next=/api/sessions/75 HTTP/1.1" 200 -
+2024-09-14 22:44:34,474 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:34] "OPTIONS /auth/login?next=/api/sessions/75 HTTP/1.1" 200 -
+2024-09-14 22:44:34 DEBUG: After request, Origin: https://staging.minutememo.io
+2024-09-14 22:44:34,480 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
+2024-09-14 22:44:34 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:34] "[31m[1mGET /auth/login?next=/api/sessions/75 HTTP/1.1[0m" 405 -
+2024-09-14 22:44:34,481 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:34] "[31m[1mGET /auth/login?next=/api/sessions/75 HTTP/1.1[0m" 405 -
+2024-09-15 06:50:39 DEBUG: After request, Origin: https://staging.minutememo.io
+2024-09-15 06:50:39,462 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
+2024-09-15 06:50:39 INFO: 127.0.0.1 - - [15/Sep/2024 06:50:39] "OPTIONS /api/sessions/77 HTTP/1.1" 200 -
+2024-09-15 06:50:39,468 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:50:39] "OPTIONS /api/sessions/77 HTTP/1.1" 200 -
+2024-09-15 06:50:39 DEBUG: After request, Origin: https://staging.minutememo.io
+2024-09-15 06:50:39,470 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
+2024-09-15 06:50:39 INFO: 127.0.0.1 - - [15/Sep/2024 06:50:39] "[32mGET /api/sessions/77 HTTP/1.1[0m" 302 -
+2024-09-15 06:50:39,470 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:50:39] "[32mGET /api/sessions/77 HTTP/1.1[0m" 302 -
+2024-09-15 06:50:39 DEBUG: After request, Origin: https://staging.minutememo.io
+2024-09-15 06:50:39,473 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
+2024-09-15 06:50:39 INFO: 127.0.0.1 - - [15/Sep/2024 06:50:39] "OPTIONS /auth/login?next=/api/sessions/77 HTTP/1.1" 200 -
+2024-09-15 06:50:39,474 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:50:39] "OPTIONS /auth/login?next=/api/sessions/77 HTTP/1.1" 200 -
+2024-09-15 06:50:39 DEBUG: After request, Origin: https://staging.minutememo.io
+2024-09-15 06:50:39,475 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
+2024-09-15 06:50:39 INFO: 127.0.0.1 - - [15/Sep/2024 06:50:39] "[31m[1mGET /auth/login?next=/api/sessions/77 HTTP/1.1[0m" 405 -
+2024-09-15 06:50:39,476 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:50:39] "[31m[1mGET /auth/login?next=/api/sessions/77 HTTP/1.1[0m" 405 -
+2024-09-15 06:55:22 DEBUG: After request, Origin: http://localhost:3000
+2024-09-15 06:55:22,789 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 06:55:22 INFO: 127.0.0.1 - - [15/Sep/2024 06:55:22] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-15 06:55:22,792 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:55:22] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-15 06:55:22 DEBUG: After request, Origin: http://localhost:3000
+2024-09-15 06:55:22,825 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 06:55:22 INFO: 127.0.0.1 - - [15/Sep/2024 06:55:22] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
+2024-09-15 06:55:22,828 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:55:22] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
+2024-09-15 06:55:22 DEBUG: After request, Origin: http://localhost:3000
+2024-09-15 06:55:22,880 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 06:55:22 INFO: 127.0.0.1 - - [15/Sep/2024 06:55:22] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-15 06:55:22,881 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:55:22] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-15 06:55:22 INFO: Fetching meeting sessions for hub ID: 13
+2024-09-15 06:55:22,885 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 13
+2024-09-15 06:55:22 DEBUG: After request, Origin: http://localhost:3000
+2024-09-15 06:55:22,898 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 06:55:22 INFO: 127.0.0.1 - - [15/Sep/2024 06:55:22] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
+2024-09-15 06:55:22,900 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:55:22] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
+2024-09-15 06:55:25 DEBUG: After request, Origin: http://localhost:3000
+2024-09-15 06:55:25,520 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 06:55:25 INFO: 127.0.0.1 - - [15/Sep/2024 06:55:25] "GET /api/meetings?meeting_id=87 HTTP/1.1" 200 -
+2024-09-15 06:55:25,524 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:55:25] "GET /api/meetings?meeting_id=87 HTTP/1.1" 200 -
+2024-09-15 06:55:25 DEBUG: After request, Origin: http://localhost:3000
+2024-09-15 06:55:25,545 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 06:55:25 INFO: 127.0.0.1 - - [15/Sep/2024 06:55:25] "GET /api/meetings?meeting_id=87 HTTP/1.1" 200 -
+2024-09-15 06:55:25,547 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:55:25] "GET /api/meetings?meeting_id=87 HTTP/1.1" 200 -
+2024-09-15 06:55:26 DEBUG: After request, Origin: http://localhost:3000
+2024-09-15 06:55:26,228 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 06:55:26 INFO: 127.0.0.1 - - [15/Sep/2024 06:55:26] "GET /api/sessions/90 HTTP/1.1" 200 -
+2024-09-15 06:55:26,233 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:55:26] "GET /api/sessions/90 HTTP/1.1" 200 -
+2024-09-15 06:55:26 DEBUG: After request, Origin: http://localhost:3000
+2024-09-15 06:55:26,238 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 06:55:26 INFO: 127.0.0.1 - - [15/Sep/2024 06:55:26] "GET /api/sessions/90 HTTP/1.1" 200 -
+2024-09-15 06:55:26,240 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:55:26] "GET /api/sessions/90 HTTP/1.1" 200 -
+2024-09-15 06:55:26 DEBUG: After request, Origin: None
+2024-09-15 06:55:26,244 - auth - DEBUG - After request, Origin: None
+2024-09-15 06:55:26 INFO: 127.0.0.1 - - [15/Sep/2024 06:55:26] "[35m[1mGET /uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3 HTTP/1.1[0m" 206 -
+2024-09-15 06:55:26,250 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:55:26] "[35m[1mGET /uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3 HTTP/1.1[0m" 206 -
+2024-09-15 06:58:29 DEBUG: After request, Origin: https://staging.minutememo.io
+2024-09-15 06:58:29,537 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
+2024-09-15 06:58:29 INFO: 127.0.0.1 - - [15/Sep/2024 06:58:29] "OPTIONS /api/sessions/77 HTTP/1.1" 200 -
+2024-09-15 06:58:29,539 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:58:29] "OPTIONS /api/sessions/77 HTTP/1.1" 200 -
+2024-09-15 06:58:29 DEBUG: After request, Origin: https://staging.minutememo.io
+2024-09-15 06:58:29,542 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
+2024-09-15 06:58:29 INFO: 127.0.0.1 - - [15/Sep/2024 06:58:29] "[32mGET /api/sessions/77 HTTP/1.1[0m" 302 -
+2024-09-15 06:58:29,543 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:58:29] "[32mGET /api/sessions/77 HTTP/1.1[0m" 302 -
+2024-09-15 06:58:29 DEBUG: After request, Origin: https://staging.minutememo.io
+2024-09-15 06:58:29,547 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
+2024-09-15 06:58:29 INFO: 127.0.0.1 - - [15/Sep/2024 06:58:29] "OPTIONS /auth/login?next=/api/sessions/77 HTTP/1.1" 200 -
+2024-09-15 06:58:29,551 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:58:29] "OPTIONS /auth/login?next=/api/sessions/77 HTTP/1.1" 200 -
+2024-09-15 06:58:29 DEBUG: After request, Origin: https://staging.minutememo.io
+2024-09-15 06:58:29,557 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
+2024-09-15 06:58:29 INFO: 127.0.0.1 - - [15/Sep/2024 06:58:29] "[31m[1mGET /auth/login?next=/api/sessions/77 HTTP/1.1[0m" 405 -
+2024-09-15 06:58:29,559 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:58:29] "[31m[1mGET /auth/login?next=/api/sessions/77 HTTP/1.1[0m" 405 -
