@@ -958,12 +958,19 @@ def get_session(session_id):
         if not session:
             return jsonify({'status': 'error', 'message': 'Session not found'}), 404
 
+        # If the session has an audio_url, generate a signed URL
+        if session.audio_url and ENVIRONMENT != 'development':
+            bucket = storage_client.bucket(BUCKET_NAME)
+            blob = bucket.blob(f"audio_recordings/{session.audio_url}")
+            signed_url = blob.generate_signed_url(expiration=timedelta(minutes=15))
+            session.audio_url = signed_url  # Use signed URL
+
         session_data = {
             'id': session.id,
             'name': session.name,
             'session_datetime': session.session_datetime.isoformat(),
-            'audio_url': session.audio_url,  # Assuming you have a column for the audio URL
-            'transcription': session.transcription  # Assuming the transcription is stored here
+            'audio_url': session.audio_url,  # Signed URL
+            'transcription': session.transcription
         }
 
         return jsonify({'status': 'success', 'session': session_data}), 200
