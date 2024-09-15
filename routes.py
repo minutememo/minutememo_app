@@ -1084,14 +1084,20 @@ def upload_chunk():
 def download_file(filename):
     try:
         if ENVIRONMENT == 'development':
-            # Serve the file from the local directory
+            # Serve the file from the local directory in development
             return send_from_directory(UPLOAD_FOLDER, filename)
         else:
-            # Generate a signed URL to download the file from Google Cloud Storage
+            # Check if the file has been made public
             bucket = storage_client.bucket(BUCKET_NAME)
             blob = bucket.blob(f"audio_recordings/{filename}")
-            url = blob.generate_signed_url(expiration=timedelta(minutes=15))
-            return redirect(url)
+            
+            # If file is public, use the public URL
+            if blob.exists() and blob.public_url:
+                return redirect(blob.public_url)
+            else:
+                # Generate a signed URL to download the file for private access
+                url = blob.generate_signed_url(expiration=timedelta(minutes=15))
+                return redirect(url)
     except Exception as e:
         logger.error(f"Error serving file {filename}: {str(e)}")
         return jsonify({'status': 'error', 'message': 'File not found'}), 404
