@@ -134,8 +134,8 @@ def generate_presigned_url(file_name, file_type):
 
 def upload_file(file, file_key):
     try:
+        # Ensure the file_key is secure and within the desired folder
         file_key = secure_filename(f"audio_recordings/{file_key}")
-
 
         # Get the bucket
         bucket = storage_client.bucket(BUCKET_NAME)
@@ -146,12 +146,12 @@ def upload_file(file, file_key):
         # Upload the file to Google Cloud Storage
         blob.upload_from_file(file, content_type=file.content_type)
         
-        # Make the file publicly accessible (optional)
-        blob.make_public()
+        # Do NOT make the blob public
+        # blob.make_public()  # Remove or comment out this line
         
-        # Generate the file URL
-        file_url = blob.public_url
-        return file_url
+        # Return the relative file path to store in the database
+        file_path = file_key  # e.g., 'audio_recordings/533de960-89ce-4b16-a809-7d502715d761.mp3'
+        return file_path
 
     except Exception as e:
         current_app.logger.error(f"Error uploading file to Google Cloud Storage: {str(e)}")
@@ -489,6 +489,7 @@ def concatenate_cloud(self, recording_id):
 
             # Upload the MP3 file to GCS
             final_mp3_output_gcs = f"{recording_id}.mp3"
+# Inside concatenate_cloud task, after uploading MP3 to GCS
             try:
                 current_app.logger.info(f"Uploading MP3 file to GCS at {final_mp3_output_gcs}")
                 upload_file_to_gcs(mp3_output_path, final_mp3_output_gcs)
@@ -498,8 +499,8 @@ def concatenate_cloud(self, recording_id):
                 current_app.logger.info(f"Updating database with MP3 URL for recording_id: {recording_id}")
                 recording = db.session.query(Recording).filter_by(id=recording_id).first()
                 if recording:
-                    recording.audio_url = f"gs://{BUCKET_NAME}/{final_mp3_output_gcs}"
-                    current_app.logger.info(f"MP3 URL to be stored in DB: gs://{BUCKET_NAME}/{final_mp3_output_gcs}")
+                    recording.audio_url = f"audio_recordings/{final_mp3_output_gcs}"  # Updated line
+                    current_app.logger.info(f"MP3 URL to be stored in DB: audio_recordings/{final_mp3_output_gcs}")
                     db.session.commit()
                     current_app.logger.info(f"MP3 URL successfully updated in the database for recording_id: {recording_id}")
 
@@ -507,7 +508,7 @@ def concatenate_cloud(self, recording_id):
                     current_app.logger.info(f"Updating MeetingSession with MP3 URL for recording_id: {recording_id}")
                     meeting_session = db.session.query(MeetingSession).filter_by(id=recording.meeting_session_id).first()
                     if meeting_session:
-                        meeting_session.audio_url = f"gs://{BUCKET_NAME}/{final_mp3_output_gcs}"
+                        meeting_session.audio_url = f"audio_recordings/{final_mp3_output_gcs}"  # Updated line
                         db.session.commit()
                         current_app.logger.info(f"MP3 URL successfully updated in the MeetingSession for recording_id: {recording_id}")
                     else:
@@ -954,36 +955,63 @@ def manage_meetings():
 @cross_origin()
 def get_session(session_id):
     try:
+        # Fetch the MeetingSession by ID
         session = MeetingSession.query.get(session_id)
         if not session:
             return jsonify({'status': 'error', 'message': 'Session not found'}), 404
 
-        # If the session has an audio_url, generate a signed URL
-        if session.audio_url and ENVIRONMENT != 'development':
-            bucket = storage_client.bucket(BUCKET_NAME)
-            blob = bucket.blob(f"audio_recordings/{session.audio_url}")
-            
-            # Log the attempt to generate the signed URL
-            current_app.logger.info(f"Attempting to generate signed URL for audio: {session.audio_url}")
-            
-            signed_url = blob.generate_signed_url(expiration=timedelta(minutes=15))
-            
-            # Log the generated signed URL
-            current_app.logger.info(f"Signed URL generated: {signed_url}")
-            
-            session.audio_url = signed_url  # Use signed URL
-
+        # Prepare the session data to return
         session_data = {
             'id': session.id,
             'name': session.name,
             'session_datetime': session.session_datetime.isoformat(),
-            'audio_url': session.audio_url,  # Signed URL
+            'audio_url': None,  # Initialize as None; will set below if available
             'transcription': session.transcription
         }
 
+        # Check if there's an audio URL associated with the session
+        if session.audio_url:
+            if ENVIRONMENT != 'development':
+                # **Production Environment:** Generate a signed URL from GCS
+
+                # Create a blob object using the relative path directly
+                bucket = storage_client.bucket(BUCKET_NAME)
+                blob = bucket.blob(session.audio_url)
+
+                # Log the attempt to generate the signed URL
+                current_app.logger.info(f"Attempting to generate signed URL for audio: {session.audio_url}")
+
+                # Generate the signed URL with a 15-minute expiration
+                signed_url = blob.generate_signed_url(expiration=timedelta(minutes=15))
+
+                # Log the generated signed URL
+                current_app.logger.info(f"Signed URL generated: {signed_url}")
+
+                # Assign the signed URL to the response data
+                session_data['audio_url'] = signed_url
+
+            else:
+                # **Development Environment:** Serve the audio file locally
+
+                # Extract the filename from the relative path
+                filename = os.path.basename(session.audio_url)  # 'd61488a1-f92b-4444-ab80-80b43b416221.mp3'
+
+                # Generate the local URL for the audio file using the 'download_file' route
+                local_audio_url = url_for('main.download_file', filename=filename, _external=True)
+
+                # Log the local audio URL
+                current_app.logger.info(f"Local audio URL for session ID {session_id}: {local_audio_url}")
+
+                # Assign the local URL to the response data
+                session_data['audio_url'] = local_audio_url
+
+        # Return the session data as JSON
         return jsonify({'status': 'success', 'session': session_data}), 200
+
     except Exception as e:
+        # Log the exception with traceback for easier debugging
         current_app.logger.error(f"Error fetching session: {str(e)}")
+        current_app.logger.error(traceback.format_exc())
         return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
 
 @main.route('/api/recordings', methods=['POST'])
@@ -1102,17 +1130,22 @@ def download_file(filename):
             # Serve the file from the local directory in development
             return send_from_directory(UPLOAD_FOLDER, filename)
         else:
-            # Check if the file has been made public
-            bucket = storage_client.bucket(BUCKET_NAME)
-            blob = bucket.blob(f"audio_recordings/{filename}")
-            
-            # If file is public, use the public URL
-            if blob.exists() and blob.public_url:
-                return redirect(blob.public_url)
-            else:
-                # Generate a signed URL to download the file for private access
-                url = blob.generate_signed_url(expiration=timedelta(minutes=15))
-                return redirect(url)
+            # **Production Environment:** Generate a signed URL for GCS
+
+            # Create a blob object using the relative path directly
+            blob = storage_client.bucket(BUCKET_NAME).blob(f"audio_recordings/{filename}")
+
+            if not blob.exists():
+                logger.error(f"File {filename} does not exist in GCS.")
+                return jsonify({'status': 'error', 'message': 'File not found'}), 404
+
+            # Generate the signed URL
+            signed_url = blob.generate_signed_url(expiration=timedelta(minutes=15))
+            logger.info(f"Signed URL for downloading file {filename}: {signed_url}")
+
+            # Redirect to the signed URL
+            return redirect(signed_url)
+
     except Exception as e:
         logger.error(f"Error serving file {filename}: {str(e)}")
         return jsonify({'status': 'error', 'message': 'File not found'}), 404

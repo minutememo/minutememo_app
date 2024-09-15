@@ -3,17 +3,16 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const MeetingSessionPage = () => {
-  const { sessionId } = useParams(); // Get session ID from the URL
+  const { sessionId } = useParams(); 
   const [session, setSession] = useState(null);
   const [error, setError] = useState('');
-  const [transcription, setTranscription] = useState('');  // State for transcription result
-  const [isTranscribing, setIsTranscribing] = useState(false); // State for transcribing status
+  const [transcription, setTranscription] = useState('');
+  const [isTranscribing, setIsTranscribing] = useState(false);
   const audioRef = useRef(null);
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
-  
+
   useEffect(() => {
-    // Fetch session details and transcription
     const fetchSession = async () => {
       try {
         console.log(`Fetching session details for session ID: ${sessionId}`);
@@ -21,50 +20,47 @@ const MeetingSessionPage = () => {
         if (response.status === 200) {
           const sessionData = response.data.session;
           setSession(sessionData);
-          
-          // Log transcription data
-          console.log('Transcription data:', sessionData.transcription);
-          
-          setTranscription(sessionData.transcription || ''); // Set transcription if available
+          setTranscription(sessionData.transcription || '');
           console.log('Session data received:', sessionData);
-          if (sessionData.transcription) {
-            console.log('Transcription loaded from session:', sessionData.transcription);
-          }
         } else {
           setError('Failed to fetch session.');
-          console.error('Failed to fetch session. Status:', response.status);
         }
       } catch (err) {
         setError('Error fetching session.');
-        console.error('Error fetching session:', err);
       }
     };
-  
     fetchSession();
   }, [sessionId, backendUrl]);
 
   const handleTranscription = async () => {
-    setIsTranscribing(true); // Start transcribing
-    console.log(`Starting transcription for session ID: ${sessionId}`);
-    
+    setIsTranscribing(true);
     try {
-      console.log(`Sending request to transcribe audio for session ID: ${sessionId}`);
       const response = await axios.post(`${backendUrl}/api/transcribe/${sessionId}`);
-      
       if (response.status === 200) {
-        console.log(`Transcription successful for session ID: ${sessionId}`);
-        setTranscription(response.data.transcription);  // Store the transcription result
-        console.log('Transcription:', response.data.transcription);
+        setTranscription(response.data.transcription);
       } else {
-        console.error(`Transcription failed with status ${response.status} for session ID: ${sessionId}`);
         setError('Failed to transcribe the audio.');
       }
     } catch (err) {
-      console.error(`Error occurred during transcription for session ID: ${sessionId}`, err);
       setError('Error transcribing the audio.');
     } finally {
-      console.log(`Transcription process finished for session ID: ${sessionId}`);
-      setIsTranscribing(false); // Stop loading
+      setIsTranscribing(false);
+    }
+  };
+
+  const getAudioUrl = (audioUrl) => {
+    if (audioUrl.startsWith('/uploads')) {
+      return `${backendUrl}${audioUrl}`;
+    } else if (audioUrl.startsWith('gs://')) {
+      // Replace 'gs://' with 'https://storage.googleapis.com/'
+      return audioUrl.replace('gs://', 'https://storage.googleapis.com/');
+    } else if (audioUrl.includes('gs://')) {
+      // Extract the path after 'gs://' and construct the correct URL
+      const gsIndex = audioUrl.indexOf('gs://');
+      const path = audioUrl.substring(gsIndex + 5); // Remove 'gs://'
+      return `https://storage.googleapis.com/${path}`;
+    } else {
+      return decodeURIComponent(audioUrl);
     }
   };
 
@@ -76,7 +72,6 @@ const MeetingSessionPage = () => {
           <h2>{session.name}</h2>
           <p>Date: {new Date(session.session_datetime).toLocaleString()}</p>
 
-          {/* Display Transcription Result */}
           {transcription && (
             <div className="transcription">
               <h3>Transcription:</h3>
@@ -86,10 +81,10 @@ const MeetingSessionPage = () => {
 
           {session.audio_url ? (
             <div>
-              {/* Log the URL being used for the audio file */}
-              {console.log(`Looking for audio file at: ${backendUrl}/${session.audio_url}`)}
+              {console.log(`Audio file URL: ${getAudioUrl(session.audio_url)}`)}
 
-              <audio ref={audioRef} src={`${backendUrl}/${session.audio_url}`} controls />
+              <audio ref={audioRef} src={getAudioUrl(session.audio_url)} controls />
+              
               <div className="audio-controls">
                 <button onClick={() => audioRef.current.play()}>Play</button>
                 <button onClick={() => audioRef.current.pause()}>Pause</button>
@@ -97,7 +92,6 @@ const MeetingSessionPage = () => {
                 <button onClick={() => (audioRef.current.currentTime += 10)}>+10s</button>
               </div>
 
-              {/* Transcription Button */}
               <button onClick={handleTranscription} disabled={isTranscribing}>
                 {isTranscribing ? 'Transcribing...' : 'Transcribe Audio'}
               </button>
