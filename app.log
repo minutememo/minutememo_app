@@ -1,671 +1,101 @@
-2024-09-14 21:22:58,644 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:22:58] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-14 21:22:58,680 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:22:58,684 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:22:58] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-14 21:22:58,693 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:22:58,701 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:22:58] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-14 21:22:58,705 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:22:58,706 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:22:58] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-14 21:22:58,713 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:22:58,715 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:22:58] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
-2024-09-14 21:22:58,715 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:22:58,716 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:22:58] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-14 21:22:58,716 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 13
-2024-09-14 21:22:58,727 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:22:58,727 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:22:58] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
-2024-09-14 21:23:00,200 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:23:00,203 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:23:00] "GET /api/meetings?meeting_id=85 HTTP/1.1" 200 -
-2024-09-14 21:23:00,218 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:23:00,219 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:23:00] "GET /api/meetings?meeting_id=85 HTTP/1.1" 200 -
-2024-09-14 21:23:01,322 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:23:01,323 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:23:01] "GET /api/sessions/88 HTTP/1.1" 200 -
-2024-09-14 21:23:01,328 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:23:01,332 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:23:01] "GET /api/sessions/88 HTTP/1.1" 200 -
-2024-09-14 21:23:01,338 - auth - DEBUG - After request, Origin: None
-2024-09-14 21:23:01,339 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:23:01] "[35m[1mGET /uploads/audio_recordings/24eb7f5f-1551-4677-93ae-223a8ebd5079.mp3 HTTP/1.1[0m" 206 -
-2024-09-14 21:23:08,545 - minutememo_app.app - INFO - Received transcription request for session ID: 88
-2024-09-14 21:23:08,545 - minutememo_app.app - INFO - User gaetan@minutememo.io is requesting transcription for session ID: 88
-2024-09-14 21:23:08,546 - minutememo_app.app - INFO - Fetched session for session ID 88: <MeetingSession 88>
-2024-09-14 21:23:08,546 - minutememo_app.app - INFO - Audio URL for session ID 88: http://localhost:5000/uploads/audio_recordings/24eb7f5f-1551-4677-93ae-223a8ebd5079.mp3
-2024-09-14 21:23:08,546 - minutememo_app.app - INFO - Starting transcription process for session ID 88 with audio URL http://localhost:5000/uploads/audio_recordings/24eb7f5f-1551-4677-93ae-223a8ebd5079.mp3
-2024-09-14 21:23:08,548 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
-2024-09-14 21:23:08,549 - httpx - DEBUG - load_verify_locations cafile='/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2024-09-14 21:23:08,568 - minutememo_app.app - INFO - Transcribing audio from URL: http://localhost:5000/uploads/audio_recordings/24eb7f5f-1551-4677-93ae-223a8ebd5079.mp3
-2024-09-14 21:23:08,572 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:5000
-2024-09-14 21:23:08,574 - auth - DEBUG - After request, Origin: None
-2024-09-14 21:23:08,575 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:23:08] "GET /uploads/audio_recordings/24eb7f5f-1551-4677-93ae-223a8ebd5079.mp3 HTTP/1.1" 200 -
-2024-09-14 21:23:08,575 - urllib3.connectionpool - DEBUG - http://localhost:5000 "GET /uploads/audio_recordings/24eb7f5f-1551-4677-93ae-223a8ebd5079.mp3 HTTP/11" 200 40364
-2024-09-14 21:23:08,577 - minutememo_app.app - INFO - Temporary audio file created at /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmpkyrm_ie2.mp3
-2024-09-14 21:23:08,579 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/audio/transcriptions', 'headers': {'Content-Type': 'multipart/form-data'}, 'files': [('file', SerializationIterator(index=0, iterator=SerializationIterator(index=0, iterator=<_io.BufferedReader name='/var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmpkyrm_ie2.mp3'>)))], 'json_data': {'model': 'whisper-1'}}
-2024-09-14 21:23:08,600 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/audio/transcriptions
-2024-09-14 21:23:08,600 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
-2024-09-14 21:23:08,667 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x115ba9040>
-2024-09-14 21:23:08,667 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x115afbcd0> server_hostname='api.openai.com' timeout=5.0
-2024-09-14 21:23:08,706 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x115ba8e30>
-2024-09-14 21:23:08,706 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2024-09-14 21:23:08,707 - httpcore.http11 - DEBUG - send_request_headers.complete
-2024-09-14 21:23:08,707 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2024-09-14 21:23:08,707 - httpcore.http11 - DEBUG - send_request_body.complete
-2024-09-14 21:23:08,707 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2024-09-14 21:23:10,284 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sat, 14 Sep 2024 19:23:10 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'36'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'minute-memo'), (b'openai-processing-ms', b'273'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=15552000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'50'), (b'x-ratelimit-remaining-requests', b'49'), (b'x-ratelimit-reset-requests', b'1.2s'), (b'x-request-id', b'req_5c875b1117c4e091bae19966a3c07693'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=_voHxS8KBx_b6Qyh27C0rZzrJRvGTKcLb0CoUvXExDw-1726341790-1.0.1.1-R9FwB23zkXYMcNM2MZOrbhGKM9DyAnngHG8SO9rPL3CgMC_otPAdsQ4UVF05dGsrxwXyI27KU_4bCntIimPa8g; path=/; expires=Sat, 14-Sep-24 19:53:10 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=E68C.X6ZpICYuVTe78ZvUbOymxva25D4UizhSllPW1M-1726341790302-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8c32bff3aa98b768-BRU'), (b'alt-svc', b'h3=":443"; ma=86400')])
-2024-09-14 21:23:10,286 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
-2024-09-14 21:23:10,287 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2024-09-14 21:23:10,288 - httpcore.http11 - DEBUG - receive_response_body.complete
-2024-09-14 21:23:10,288 - httpcore.http11 - DEBUG - response_closed.started
-2024-09-14 21:23:10,288 - httpcore.http11 - DEBUG - response_closed.complete
-2024-09-14 21:23:10,288 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/audio/transcriptions "200 OK" Headers([('date', 'Sat, 14 Sep 2024 19:23:10 GMT'), ('content-type', 'application/json'), ('content-length', '36'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'minute-memo'), ('openai-processing-ms', '273'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=15552000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '50'), ('x-ratelimit-remaining-requests', '49'), ('x-ratelimit-reset-requests', '1.2s'), ('x-request-id', 'req_5c875b1117c4e091bae19966a3c07693'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=_voHxS8KBx_b6Qyh27C0rZzrJRvGTKcLb0CoUvXExDw-1726341790-1.0.1.1-R9FwB23zkXYMcNM2MZOrbhGKM9DyAnngHG8SO9rPL3CgMC_otPAdsQ4UVF05dGsrxwXyI27KU_4bCntIimPa8g; path=/; expires=Sat, 14-Sep-24 19:53:10 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=E68C.X6ZpICYuVTe78ZvUbOymxva25D4UizhSllPW1M-1726341790302-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8c32bff3aa98b768-BRU'), ('alt-svc', 'h3=":443"; ma=86400')])
-2024-09-14 21:23:10,289 - openai._base_client - DEBUG - request_id: req_5c875b1117c4e091bae19966a3c07693
-2024-09-14 21:23:10,290 - minutememo_app.app - INFO - Transcription result: Thanks for watching.
-2024-09-14 21:23:10,290 - minutememo_app.app - INFO - Temporary audio file deleted: /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmpkyrm_ie2.mp3
-2024-09-14 21:23:10,302 - minutememo_app.app - INFO - Transcription saved successfully for session ID 88
-2024-09-14 21:23:10,302 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:23:10,303 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:23:10] "POST /api/transcribe/88 HTTP/1.1" 200 -
-2024-09-14 21:24:55 DEBUG: close.started
-2024-09-14 21:24:55,670 - httpcore.connection - DEBUG - close.started
-2024-09-14 21:24:55 DEBUG: close.complete
-2024-09-14 21:24:55,672 - httpcore.connection - DEBUG - close.complete
-2024-09-14 21:24:57 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-14 21:24:57,120 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-14 21:24:57 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-14 21:24:57,413 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-14 21:24:57 INFO: [33mPress CTRL+C to quit[0m
-2024-09-14 21:24:57,413 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2024-09-14 21:25:00 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:25:00,106 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:25:00 INFO: 127.0.0.1 - - [14/Sep/2024 21:25:00] "GET /api/sessions/88 HTTP/1.1" 200 -
-2024-09-14 21:25:00,107 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:25:00] "GET /api/sessions/88 HTTP/1.1" 200 -
-2024-09-14 21:25:00 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:25:00,112 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:25:00 INFO: 127.0.0.1 - - [14/Sep/2024 21:25:00] "GET /api/sessions/88 HTTP/1.1" 200 -
-2024-09-14 21:25:00,113 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:25:00] "GET /api/sessions/88 HTTP/1.1" 200 -
-2024-09-14 21:25:00 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:25:00,129 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:25:00 INFO: 127.0.0.1 - - [14/Sep/2024 21:25:00] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-14 21:25:00,130 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:25:00] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-14 21:25:00 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:25:00,139 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:25:00 INFO: 127.0.0.1 - - [14/Sep/2024 21:25:00] "GET /api/sessions/88 HTTP/1.1" 200 -
-2024-09-14 21:25:00,140 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:25:00] "GET /api/sessions/88 HTTP/1.1" 200 -
-2024-09-14 21:25:00 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:25:00,146 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:25:00 DEBUG: After request, Origin: None
-2024-09-14 21:25:00,147 - auth - DEBUG - After request, Origin: None
-2024-09-14 21:25:00 INFO: 127.0.0.1 - - [14/Sep/2024 21:25:00] "GET /api/sessions/88 HTTP/1.1" 200 -
-2024-09-14 21:25:00 INFO: 127.0.0.1 - - [14/Sep/2024 21:25:00] "[35m[1mGET /uploads/audio_recordings/24eb7f5f-1551-4677-93ae-223a8ebd5079.mp3 HTTP/1.1[0m" 206 -
-2024-09-14 21:25:00,149 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:25:00] "GET /api/sessions/88 HTTP/1.1" 200 -
-2024-09-14 21:25:00,149 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:25:00] "[35m[1mGET /uploads/audio_recordings/24eb7f5f-1551-4677-93ae-223a8ebd5079.mp3 HTTP/1.1[0m" 206 -
-2024-09-14 21:25:00 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:25:00,152 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:25:00 INFO: 127.0.0.1 - - [14/Sep/2024 21:25:00] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-14 21:25:00,153 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:25:00] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-14 21:25:00 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:25:00,164 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:25:00 INFO: 127.0.0.1 - - [14/Sep/2024 21:25:00] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-14 21:25:00,164 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:25:00] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-14 21:25:06 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:25:06,125 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:25:06 INFO: 127.0.0.1 - - [14/Sep/2024 21:25:06] "OPTIONS /api/meetings HTTP/1.1" 200 -
-2024-09-14 21:25:06,127 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:25:06] "OPTIONS /api/meetings HTTP/1.1" 200 -
-2024-09-14 21:25:06 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:25:06,166 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:25:06 INFO: 127.0.0.1 - - [14/Sep/2024 21:25:06] "[35m[1mPOST /api/meetings HTTP/1.1[0m" 201 -
-2024-09-14 21:25:06,167 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:25:06] "[35m[1mPOST /api/meetings HTTP/1.1[0m" 201 -
-2024-09-14 21:25:06 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:25:06,170 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:25:06 INFO: 127.0.0.1 - - [14/Sep/2024 21:25:06] "OPTIONS /api/recordings HTTP/1.1" 200 -
-2024-09-14 21:25:06,170 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:25:06] "OPTIONS /api/recordings HTTP/1.1" 200 -
-2024-09-14 21:25:06 INFO: Recording bcd72c4d-1432-4abf-bf3d-131084eaf30f created for user 2 in session 89
-2024-09-14 21:25:06,178 - minutememo_app.app - INFO - Recording bcd72c4d-1432-4abf-bf3d-131084eaf30f created for user 2 in session 89
-2024-09-14 21:25:06 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:25:06,178 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:25:06 INFO: 127.0.0.1 - - [14/Sep/2024 21:25:06] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
-2024-09-14 21:25:06,178 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:25:06] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
-2024-09-14 21:25:11 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:25:11,529 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:25:11 INFO: 127.0.0.1 - - [14/Sep/2024 21:25:11] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-14 21:25:11,531 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:25:11] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-14 21:25:16 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:25:16,567 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:25:16 INFO: 127.0.0.1 - - [14/Sep/2024 21:25:16] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-14 21:25:16,569 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:25:16] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-14 21:25:21 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:25:21,020 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:25:21 INFO: 127.0.0.1 - - [14/Sep/2024 21:25:21] "OPTIONS /concatenate HTTP/1.1" 200 -
-2024-09-14 21:25:21,022 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:25:21] "OPTIONS /concatenate HTTP/1.1" 200 -
-2024-09-14 21:25:21 INFO: Received request to concatenate for recording_id: bcd72c4d-1432-4abf-bf3d-131084eaf30f
-2024-09-14 21:25:21,074 - minutememo_app.app - INFO - Received request to concatenate for recording_id: bcd72c4d-1432-4abf-bf3d-131084eaf30f
-2024-09-14 21:25:21 INFO: Local chunk files for recording_id bcd72c4d-1432-4abf-bf3d-131084eaf30f: ['bcd72c4d-1432-4abf-bf3d-131084eaf30f_chunk_0.webm', 'bcd72c4d-1432-4abf-bf3d-131084eaf30f_chunk_1.webm']
-2024-09-14 21:25:21,104 - minutememo_app.app - INFO - Local chunk files for recording_id bcd72c4d-1432-4abf-bf3d-131084eaf30f: ['bcd72c4d-1432-4abf-bf3d-131084eaf30f_chunk_0.webm', 'bcd72c4d-1432-4abf-bf3d-131084eaf30f_chunk_1.webm']
-2024-09-14 21:25:21 INFO: List file created at: uploads/audio_recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f_list.txt
-2024-09-14 21:25:21,106 - minutememo_app.app - INFO - List file created at: uploads/audio_recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f_list.txt
-2024-09-14 21:25:21 INFO: Running FFmpeg locally with list file uploads/audio_recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f_list.txt
-2024-09-14 21:25:21,107 - minutememo_app.app - INFO - Running FFmpeg locally with list file uploads/audio_recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f_list.txt
-2024-09-14 21:25:21 INFO: Local concatenation output at uploads/audio_recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f.webm
-2024-09-14 21:25:21,663 - minutememo_app.app - INFO - Local concatenation output at uploads/audio_recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f.webm
-2024-09-14 21:25:21 INFO: MP3 conversion successful. File saved at uploads/audio_recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f.mp3
-2024-09-14 21:25:21,839 - minutememo_app.app - INFO - MP3 conversion successful. File saved at uploads/audio_recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f.mp3
-2024-09-14 21:25:21 INFO: Concatenation status for bcd72c4d-1432-4abf-bf3d-131084eaf30f updated to success
-2024-09-14 21:25:21,847 - minutememo_app.app - INFO - Concatenation status for bcd72c4d-1432-4abf-bf3d-131084eaf30f updated to success
-2024-09-14 21:25:21 INFO: Concatenation status updated to 'success' in the database for recording_id: bcd72c4d-1432-4abf-bf3d-131084eaf30f
-2024-09-14 21:25:21,847 - minutememo_app.app - INFO - Concatenation status updated to 'success' in the database for recording_id: bcd72c4d-1432-4abf-bf3d-131084eaf30f
-2024-09-14 21:25:21 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:25:21,847 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:25:21 INFO: 127.0.0.1 - - [14/Sep/2024 21:25:21] "POST /concatenate HTTP/1.1" 200 -
-2024-09-14 21:25:21,848 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:25:21] "POST /concatenate HTTP/1.1" 200 -
-2024-09-14 21:25:21 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:25:21,852 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:25:21 INFO: 127.0.0.1 - - [14/Sep/2024 21:25:21] "OPTIONS /api/recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f HTTP/1.1" 200 -
-2024-09-14 21:25:21,852 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:25:21] "OPTIONS /api/recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f HTTP/1.1" 200 -
-2024-09-14 21:25:21 INFO: Entering update_recording function for recording_id: bcd72c4d-1432-4abf-bf3d-131084eaf30f
-2024-09-14 21:25:21,855 - minutememo_app.app - INFO - Entering update_recording function for recording_id: bcd72c4d-1432-4abf-bf3d-131084eaf30f
-2024-09-14 21:25:21 INFO: Received data for updating recording bcd72c4d-1432-4abf-bf3d-131084eaf30f: {'audio_url': '/uploads/audio_recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f.mp3'}
-2024-09-14 21:25:21,855 - minutememo_app.app - INFO - Received data for updating recording bcd72c4d-1432-4abf-bf3d-131084eaf30f: {'audio_url': '/uploads/audio_recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f.mp3'}
-2024-09-14 21:25:21 INFO: Fetching Recording with ID: bcd72c4d-1432-4abf-bf3d-131084eaf30f
-2024-09-14 21:25:21,856 - minutememo_app.app - INFO - Fetching Recording with ID: bcd72c4d-1432-4abf-bf3d-131084eaf30f
-2024-09-14 21:25:21 INFO: Current recording before update: <Recording bcd72c4d-1432-4abf-bf3d-131084eaf30f>
-2024-09-14 21:25:21,858 - minutememo_app.app - INFO - Current recording before update: <Recording bcd72c4d-1432-4abf-bf3d-131084eaf30f>
-2024-09-14 21:25:21 INFO: Fetching associated MeetingSession with ID: 89
-2024-09-14 21:25:21,858 - minutememo_app.app - INFO - Fetching associated MeetingSession with ID: 89
-2024-09-14 21:25:21 INFO: Current MeetingSession before update: <MeetingSession 89>
-2024-09-14 21:25:21,859 - minutememo_app.app - INFO - Current MeetingSession before update: <MeetingSession 89>
-2024-09-14 21:25:21 INFO: Updating audio_url for MeetingSession ID: 89
-2024-09-14 21:25:21,859 - minutememo_app.app - INFO - Updating audio_url for MeetingSession ID: 89
-2024-09-14 21:25:21 INFO: MeetingSession after update: <MeetingSession 89>
-2024-09-14 21:25:21,870 - minutememo_app.app - INFO - MeetingSession after update: <MeetingSession 89>
-2024-09-14 21:25:21 INFO: Exiting update_recording function for recording_id: bcd72c4d-1432-4abf-bf3d-131084eaf30f
-2024-09-14 21:25:21,870 - minutememo_app.app - INFO - Exiting update_recording function for recording_id: bcd72c4d-1432-4abf-bf3d-131084eaf30f
-2024-09-14 21:25:21 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:25:21,870 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:25:21 INFO: 127.0.0.1 - - [14/Sep/2024 21:25:21] "PATCH /api/recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f HTTP/1.1" 200 -
-2024-09-14 21:25:21,870 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:25:21] "PATCH /api/recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f HTTP/1.1" 200 -
-2024-09-14 21:30:27 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-14 21:30:27,112 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-14 21:30:27 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-14 21:30:27,427 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-14 21:30:27 INFO: [33mPress CTRL+C to quit[0m
-2024-09-14 21:30:27,427 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2024-09-14 21:30:29 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:30:29,746 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:30:29 INFO: 127.0.0.1 - - [14/Sep/2024 21:30:29] "GET /api/sessions/88 HTTP/1.1" 200 -
-2024-09-14 21:30:29,750 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:30:29] "GET /api/sessions/88 HTTP/1.1" 200 -
-2024-09-14 21:30:29 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:30:29,756 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:30:29 INFO: 127.0.0.1 - - [14/Sep/2024 21:30:29] "GET /api/sessions/88 HTTP/1.1" 200 -
-2024-09-14 21:30:29,757 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:30:29] "GET /api/sessions/88 HTTP/1.1" 200 -
-2024-09-14 21:30:29 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:30:29,761 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:30:29 INFO: 127.0.0.1 - - [14/Sep/2024 21:30:29] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-14 21:30:29,762 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:30:29] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-14 21:30:29 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:30:29,776 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:30:29 INFO: 127.0.0.1 - - [14/Sep/2024 21:30:29] "GET /api/sessions/88 HTTP/1.1" 200 -
-2024-09-14 21:30:29,778 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:30:29] "GET /api/sessions/88 HTTP/1.1" 200 -
-2024-09-14 21:30:29 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:30:29,781 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:30:29 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:30:29 INFO: 127.0.0.1 - - [14/Sep/2024 21:30:29] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-14 21:30:29,782 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:30:29,782 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:30:29] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-14 21:30:29 INFO: 127.0.0.1 - - [14/Sep/2024 21:30:29] "GET /api/sessions/88 HTTP/1.1" 200 -
-2024-09-14 21:30:29,783 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:30:29] "GET /api/sessions/88 HTTP/1.1" 200 -
-2024-09-14 21:30:29 DEBUG: After request, Origin: None
-2024-09-14 21:30:29,793 - auth - DEBUG - After request, Origin: None
-2024-09-14 21:30:29 INFO: 127.0.0.1 - - [14/Sep/2024 21:30:29] "[35m[1mGET /uploads/audio_recordings/24eb7f5f-1551-4677-93ae-223a8ebd5079.mp3 HTTP/1.1[0m" 206 -
-2024-09-14 21:30:29,794 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:30:29] "[35m[1mGET /uploads/audio_recordings/24eb7f5f-1551-4677-93ae-223a8ebd5079.mp3 HTTP/1.1[0m" 206 -
-2024-09-14 21:30:29 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:30:29,799 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:30:29 INFO: 127.0.0.1 - - [14/Sep/2024 21:30:29] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-14 21:30:29,800 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:30:29] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-14 21:30:35 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:30:35,223 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:30:35 INFO: 127.0.0.1 - - [14/Sep/2024 21:30:35] "OPTIONS /api/meetings HTTP/1.1" 200 -
-2024-09-14 21:30:35,224 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:30:35] "OPTIONS /api/meetings HTTP/1.1" 200 -
-2024-09-14 21:30:35 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:30:35,329 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:30:35 INFO: 127.0.0.1 - - [14/Sep/2024 21:30:35] "[35m[1mPOST /api/meetings HTTP/1.1[0m" 201 -
-2024-09-14 21:30:35,330 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:30:35] "[35m[1mPOST /api/meetings HTTP/1.1[0m" 201 -
-2024-09-14 21:30:35 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:30:35,333 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:30:35 INFO: 127.0.0.1 - - [14/Sep/2024 21:30:35] "OPTIONS /api/recordings HTTP/1.1" 200 -
-2024-09-14 21:30:35,334 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:30:35] "OPTIONS /api/recordings HTTP/1.1" 200 -
-2024-09-14 21:30:35 INFO: Recording 0b7715ca-ab2e-48e0-9290-5ed49c64f8ee created for user 2 in session 90
-2024-09-14 21:30:35,341 - minutememo_app.app - INFO - Recording 0b7715ca-ab2e-48e0-9290-5ed49c64f8ee created for user 2 in session 90
-2024-09-14 21:30:35 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:30:35,342 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:30:35 INFO: 127.0.0.1 - - [14/Sep/2024 21:30:35] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
-2024-09-14 21:30:35,343 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:30:35] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
-2024-09-14 21:30:40 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:30:40,715 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:30:40 INFO: 127.0.0.1 - - [14/Sep/2024 21:30:40] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-14 21:30:40,719 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:30:40] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-14 21:30:45 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:30:45,755 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:30:45 INFO: 127.0.0.1 - - [14/Sep/2024 21:30:45] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-14 21:30:45,760 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:30:45] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-14 21:30:50 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:30:50,778 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:30:50 INFO: 127.0.0.1 - - [14/Sep/2024 21:30:50] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-14 21:30:50,780 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:30:50] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-14 21:30:55 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:30:55,813 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:30:55 INFO: 127.0.0.1 - - [14/Sep/2024 21:30:55] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-14 21:30:55,818 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:30:55] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-14 21:30:56 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:30:56,613 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:30:56 INFO: 127.0.0.1 - - [14/Sep/2024 21:30:56] "OPTIONS /concatenate HTTP/1.1" 200 -
-2024-09-14 21:30:56,614 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:30:56] "OPTIONS /concatenate HTTP/1.1" 200 -
-2024-09-14 21:30:56 INFO: Received request to concatenate for recording_id: 0b7715ca-ab2e-48e0-9290-5ed49c64f8ee
-2024-09-14 21:30:56,626 - minutememo_app.app - INFO - Received request to concatenate for recording_id: 0b7715ca-ab2e-48e0-9290-5ed49c64f8ee
-2024-09-14 21:30:56 INFO: Local chunk files for recording_id 0b7715ca-ab2e-48e0-9290-5ed49c64f8ee: ['0b7715ca-ab2e-48e0-9290-5ed49c64f8ee_chunk_0.webm', '0b7715ca-ab2e-48e0-9290-5ed49c64f8ee_chunk_1.webm', '0b7715ca-ab2e-48e0-9290-5ed49c64f8ee_chunk_2.webm', '0b7715ca-ab2e-48e0-9290-5ed49c64f8ee_chunk_3.webm']
-2024-09-14 21:30:56,628 - minutememo_app.app - INFO - Local chunk files for recording_id 0b7715ca-ab2e-48e0-9290-5ed49c64f8ee: ['0b7715ca-ab2e-48e0-9290-5ed49c64f8ee_chunk_0.webm', '0b7715ca-ab2e-48e0-9290-5ed49c64f8ee_chunk_1.webm', '0b7715ca-ab2e-48e0-9290-5ed49c64f8ee_chunk_2.webm', '0b7715ca-ab2e-48e0-9290-5ed49c64f8ee_chunk_3.webm']
-2024-09-14 21:30:56 INFO: List file created at: uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee_list.txt
-2024-09-14 21:30:56,628 - minutememo_app.app - INFO - List file created at: uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee_list.txt
-2024-09-14 21:30:56 INFO: Running FFmpeg locally with list file uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee_list.txt
-2024-09-14 21:30:56,628 - minutememo_app.app - INFO - Running FFmpeg locally with list file uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee_list.txt
-2024-09-14 21:30:56 INFO: Local concatenation output at uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.webm
-2024-09-14 21:30:56,917 - minutememo_app.app - INFO - Local concatenation output at uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.webm
-2024-09-14 21:30:57 INFO: MP3 conversion successful. File saved at uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3
-2024-09-14 21:30:57,155 - minutememo_app.app - INFO - MP3 conversion successful. File saved at uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3
-2024-09-14 21:30:57 INFO: Concatenation status for 0b7715ca-ab2e-48e0-9290-5ed49c64f8ee updated to success
-2024-09-14 21:30:57,175 - minutememo_app.app - INFO - Concatenation status for 0b7715ca-ab2e-48e0-9290-5ed49c64f8ee updated to success
-2024-09-14 21:30:57 INFO: Concatenation status updated to 'success' in the database for recording_id: 0b7715ca-ab2e-48e0-9290-5ed49c64f8ee
-2024-09-14 21:30:57,175 - minutememo_app.app - INFO - Concatenation status updated to 'success' in the database for recording_id: 0b7715ca-ab2e-48e0-9290-5ed49c64f8ee
-2024-09-14 21:30:57 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:30:57,175 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:30:57 INFO: 127.0.0.1 - - [14/Sep/2024 21:30:57] "POST /concatenate HTTP/1.1" 200 -
-2024-09-14 21:30:57,176 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:30:57] "POST /concatenate HTTP/1.1" 200 -
-2024-09-14 21:30:57 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:30:57,181 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:30:57 INFO: 127.0.0.1 - - [14/Sep/2024 21:30:57] "OPTIONS /api/recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee HTTP/1.1" 200 -
-2024-09-14 21:30:57,182 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:30:57] "OPTIONS /api/recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee HTTP/1.1" 200 -
-2024-09-14 21:30:57 INFO: Entering update_recording function for recording_id: 0b7715ca-ab2e-48e0-9290-5ed49c64f8ee
-2024-09-14 21:30:57,185 - minutememo_app.app - INFO - Entering update_recording function for recording_id: 0b7715ca-ab2e-48e0-9290-5ed49c64f8ee
-2024-09-14 21:30:57 INFO: Received data for updating recording 0b7715ca-ab2e-48e0-9290-5ed49c64f8ee: {'audio_url': '/uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3'}
-2024-09-14 21:30:57,185 - minutememo_app.app - INFO - Received data for updating recording 0b7715ca-ab2e-48e0-9290-5ed49c64f8ee: {'audio_url': '/uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3'}
-2024-09-14 21:30:57 INFO: Fetching Recording with ID: 0b7715ca-ab2e-48e0-9290-5ed49c64f8ee
-2024-09-14 21:30:57,185 - minutememo_app.app - INFO - Fetching Recording with ID: 0b7715ca-ab2e-48e0-9290-5ed49c64f8ee
-2024-09-14 21:30:57 INFO: Current recording before update: <Recording 0b7715ca-ab2e-48e0-9290-5ed49c64f8ee>
-2024-09-14 21:30:57,190 - minutememo_app.app - INFO - Current recording before update: <Recording 0b7715ca-ab2e-48e0-9290-5ed49c64f8ee>
-2024-09-14 21:30:57 INFO: Fetching associated MeetingSession with ID: 90
-2024-09-14 21:30:57,190 - minutememo_app.app - INFO - Fetching associated MeetingSession with ID: 90
-2024-09-14 21:30:57 INFO: Current MeetingSession before update: <MeetingSession 90>
-2024-09-14 21:30:57,191 - minutememo_app.app - INFO - Current MeetingSession before update: <MeetingSession 90>
-2024-09-14 21:30:57 INFO: Updating audio_url for MeetingSession ID: 90
-2024-09-14 21:30:57,191 - minutememo_app.app - INFO - Updating audio_url for MeetingSession ID: 90
-2024-09-14 21:30:57 INFO: MeetingSession after update: <MeetingSession 90>
-2024-09-14 21:30:57,195 - minutememo_app.app - INFO - MeetingSession after update: <MeetingSession 90>
-2024-09-14 21:30:57 INFO: Exiting update_recording function for recording_id: 0b7715ca-ab2e-48e0-9290-5ed49c64f8ee
-2024-09-14 21:30:57,195 - minutememo_app.app - INFO - Exiting update_recording function for recording_id: 0b7715ca-ab2e-48e0-9290-5ed49c64f8ee
-2024-09-14 21:30:57 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:30:57,195 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:30:57 INFO: 127.0.0.1 - - [14/Sep/2024 21:30:57] "PATCH /api/recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee HTTP/1.1" 200 -
-2024-09-14 21:30:57,196 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:30:57] "PATCH /api/recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee HTTP/1.1" 200 -
-2024-09-14 21:31:00 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:31:00,414 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:31:00 INFO: 127.0.0.1 - - [14/Sep/2024 21:31:00] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-14 21:31:00,416 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:31:00] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-14 21:31:00 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:31:00,433 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:31:00 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:31:00,440 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:31:00 INFO: 127.0.0.1 - - [14/Sep/2024 21:31:00] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
-2024-09-14 21:31:00,440 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:31:00] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
-2024-09-14 21:31:00 INFO: 127.0.0.1 - - [14/Sep/2024 21:31:00] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-14 21:31:00,441 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:31:00] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-14 21:31:00 INFO: Fetching meeting sessions for hub ID: 13
-2024-09-14 21:31:00,475 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 13
-2024-09-14 21:31:00 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:31:00,484 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:31:00 INFO: 127.0.0.1 - - [14/Sep/2024 21:31:00] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
-2024-09-14 21:31:00,485 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:31:00] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
-2024-09-14 21:31:01 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:31:01,974 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:31:01 INFO: 127.0.0.1 - - [14/Sep/2024 21:31:01] "GET /api/meetings?meeting_id=86 HTTP/1.1" 200 -
-2024-09-14 21:31:01,976 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:31:01] "GET /api/meetings?meeting_id=86 HTTP/1.1" 200 -
-2024-09-14 21:31:01 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:31:01,985 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:31:01 INFO: 127.0.0.1 - - [14/Sep/2024 21:31:01] "GET /api/meetings?meeting_id=86 HTTP/1.1" 200 -
-2024-09-14 21:31:01,986 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:31:01] "GET /api/meetings?meeting_id=86 HTTP/1.1" 200 -
-2024-09-14 21:31:03 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:31:03,301 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:31:03 INFO: 127.0.0.1 - - [14/Sep/2024 21:31:03] "GET /api/sessions/89 HTTP/1.1" 200 -
-2024-09-14 21:31:03,303 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:31:03] "GET /api/sessions/89 HTTP/1.1" 200 -
-2024-09-14 21:31:03 DEBUG: After request, Origin: None
-2024-09-14 21:31:03,315 - auth - DEBUG - After request, Origin: None
-2024-09-14 21:31:03 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:31:03,316 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:31:03 INFO: 127.0.0.1 - - [14/Sep/2024 21:31:03] "[35m[1mGET /uploads/audio_recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f.mp3 HTTP/1.1[0m" 206 -
-2024-09-14 21:31:03,316 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:31:03] "[35m[1mGET /uploads/audio_recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f.mp3 HTTP/1.1[0m" 206 -
-2024-09-14 21:31:03 INFO: 127.0.0.1 - - [14/Sep/2024 21:31:03] "GET /api/sessions/89 HTTP/1.1" 200 -
-2024-09-14 21:31:03,317 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:31:03] "GET /api/sessions/89 HTTP/1.1" 200 -
-2024-09-14 21:31:04 INFO: Received transcription request for session ID: 89
-2024-09-14 21:31:04,468 - minutememo_app.app - INFO - Received transcription request for session ID: 89
-2024-09-14 21:31:04 INFO: User gaetan@minutememo.io is requesting transcription for session ID: 89
-2024-09-14 21:31:04,469 - minutememo_app.app - INFO - User gaetan@minutememo.io is requesting transcription for session ID: 89
-2024-09-14 21:31:04 INFO: Fetched session for session ID 89: <MeetingSession 89>
-2024-09-14 21:31:04,470 - minutememo_app.app - INFO - Fetched session for session ID 89: <MeetingSession 89>
-2024-09-14 21:31:04 INFO: Audio URL for session ID 89: http://localhost:5000/uploads/audio_recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f.mp3
-2024-09-14 21:31:04,471 - minutememo_app.app - INFO - Audio URL for session ID 89: http://localhost:5000/uploads/audio_recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f.mp3
-2024-09-14 21:31:04 INFO: Starting transcription process for session ID 89 with audio URL http://localhost:5000/uploads/audio_recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f.mp3
-2024-09-14 21:31:04,471 - minutememo_app.app - INFO - Starting transcription process for session ID 89 with audio URL http://localhost:5000/uploads/audio_recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f.mp3
-2024-09-14 21:31:04 DEBUG: load_ssl_context verify=True cert=None trust_env=True http2=False
-2024-09-14 21:31:04,475 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
-2024-09-14 21:31:04 DEBUG: load_verify_locations cafile='/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2024-09-14 21:31:04,477 - httpx - DEBUG - load_verify_locations cafile='/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2024-09-14 21:31:04 INFO: Transcribing audio from URL: http://localhost:5000/uploads/audio_recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f.mp3
-2024-09-14 21:31:04,501 - minutememo_app.app - INFO - Transcribing audio from URL: http://localhost:5000/uploads/audio_recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f.mp3
-2024-09-14 21:31:04 DEBUG: Starting new HTTP connection (1): localhost:5000
-2024-09-14 21:31:04,506 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:5000
-2024-09-14 21:31:04 DEBUG: After request, Origin: None
-2024-09-14 21:31:04,508 - auth - DEBUG - After request, Origin: None
-2024-09-14 21:31:04 INFO: 127.0.0.1 - - [14/Sep/2024 21:31:04] "GET /uploads/audio_recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f.mp3 HTTP/1.1" 200 -
-2024-09-14 21:31:04,509 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:31:04] "GET /uploads/audio_recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f.mp3 HTTP/1.1" 200 -
-2024-09-14 21:31:04 DEBUG: http://localhost:5000 "GET /uploads/audio_recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f.mp3 HTTP/11" 200 80108
-2024-09-14 21:31:04,509 - urllib3.connectionpool - DEBUG - http://localhost:5000 "GET /uploads/audio_recordings/bcd72c4d-1432-4abf-bf3d-131084eaf30f.mp3 HTTP/11" 200 80108
-2024-09-14 21:31:04 INFO: Temporary audio file created at /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmp0jyg3xq6.mp3
-2024-09-14 21:31:04,511 - minutememo_app.app - INFO - Temporary audio file created at /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmp0jyg3xq6.mp3
-2024-09-14 21:31:04 DEBUG: Request options: {'method': 'post', 'url': '/audio/transcriptions', 'headers': {'Content-Type': 'multipart/form-data'}, 'files': [('file', SerializationIterator(index=0, iterator=SerializationIterator(index=0, iterator=<_io.BufferedReader name='/var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmp0jyg3xq6.mp3'>)))], 'json_data': {'model': 'whisper-1'}}
-2024-09-14 21:31:04,513 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/audio/transcriptions', 'headers': {'Content-Type': 'multipart/form-data'}, 'files': [('file', SerializationIterator(index=0, iterator=SerializationIterator(index=0, iterator=<_io.BufferedReader name='/var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmp0jyg3xq6.mp3'>)))], 'json_data': {'model': 'whisper-1'}}
-2024-09-14 21:31:04 DEBUG: Sending HTTP Request: POST https://api.openai.com/v1/audio/transcriptions
-2024-09-14 21:31:04,536 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/audio/transcriptions
-2024-09-14 21:31:04 DEBUG: connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
-2024-09-14 21:31:04,536 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
-2024-09-14 21:31:04 DEBUG: connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x112bd0ce0>
-2024-09-14 21:31:04,664 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x112bd0ce0>
-2024-09-14 21:31:04 DEBUG: start_tls.started ssl_context=<ssl.SSLContext object at 0x112b6bf50> server_hostname='api.openai.com' timeout=5.0
-2024-09-14 21:31:04,664 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x112b6bf50> server_hostname='api.openai.com' timeout=5.0
-2024-09-14 21:31:04 DEBUG: start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x1129cd3d0>
-2024-09-14 21:31:04,690 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x1129cd3d0>
-2024-09-14 21:31:04 DEBUG: send_request_headers.started request=<Request [b'POST']>
-2024-09-14 21:31:04,691 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2024-09-14 21:31:04 DEBUG: send_request_headers.complete
-2024-09-14 21:31:04,691 - httpcore.http11 - DEBUG - send_request_headers.complete
-2024-09-14 21:31:04 DEBUG: send_request_body.started request=<Request [b'POST']>
-2024-09-14 21:31:04,692 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2024-09-14 21:31:04 DEBUG: send_request_body.complete
-2024-09-14 21:31:04,692 - httpcore.http11 - DEBUG - send_request_body.complete
-2024-09-14 21:31:04 DEBUG: receive_response_headers.started request=<Request [b'POST']>
-2024-09-14 21:31:04,692 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2024-09-14 21:31:05 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sat, 14 Sep 2024 19:31:05 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'39'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'minute-memo'), (b'openai-processing-ms', b'286'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=15552000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'50'), (b'x-ratelimit-remaining-requests', b'49'), (b'x-ratelimit-reset-requests', b'1.2s'), (b'x-request-id', b'req_4f59731a4ff813cddd0ce4e243c7df25'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=EioPZd67_rv9Jt4m9DFUFBV5QIFBHmpFChGSRMGL_QU-1726342265-1.0.1.1-yCBXlo4kdgDX6opk2N6m_BswoThyMHRNT8G.lsvT4ujz1QCam8vt0IoBt.Vg2qkFacZFGyb4W3XUUoTobwDlXA; path=/; expires=Sat, 14-Sep-24 20:01:05 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=IEKuClJvOFUV_Y2v_Br6hzPmY6bURypOkVZHu8p7GFw-1726342265943-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8c32cb927f83b714-BRU'), (b'alt-svc', b'h3=":443"; ma=86400')])
-2024-09-14 21:31:05,941 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sat, 14 Sep 2024 19:31:05 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'39'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'minute-memo'), (b'openai-processing-ms', b'286'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=15552000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'50'), (b'x-ratelimit-remaining-requests', b'49'), (b'x-ratelimit-reset-requests', b'1.2s'), (b'x-request-id', b'req_4f59731a4ff813cddd0ce4e243c7df25'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=EioPZd67_rv9Jt4m9DFUFBV5QIFBHmpFChGSRMGL_QU-1726342265-1.0.1.1-yCBXlo4kdgDX6opk2N6m_BswoThyMHRNT8G.lsvT4ujz1QCam8vt0IoBt.Vg2qkFacZFGyb4W3XUUoTobwDlXA; path=/; expires=Sat, 14-Sep-24 20:01:05 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=IEKuClJvOFUV_Y2v_Br6hzPmY6bURypOkVZHu8p7GFw-1726342265943-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8c32cb927f83b714-BRU'), (b'alt-svc', b'h3=":443"; ma=86400')])
-2024-09-14 21:31:05 INFO: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
-2024-09-14 21:31:05,942 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
-2024-09-14 21:31:05 DEBUG: receive_response_body.started request=<Request [b'POST']>
-2024-09-14 21:31:05,942 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2024-09-14 21:31:05 DEBUG: receive_response_body.complete
-2024-09-14 21:31:05,942 - httpcore.http11 - DEBUG - receive_response_body.complete
-2024-09-14 21:31:05 DEBUG: response_closed.started
-2024-09-14 21:31:05,942 - httpcore.http11 - DEBUG - response_closed.started
-2024-09-14 21:31:05 DEBUG: response_closed.complete
-2024-09-14 21:31:05,943 - httpcore.http11 - DEBUG - response_closed.complete
-2024-09-14 21:31:05 DEBUG: HTTP Response: POST https://api.openai.com/v1/audio/transcriptions "200 OK" Headers([('date', 'Sat, 14 Sep 2024 19:31:05 GMT'), ('content-type', 'application/json'), ('content-length', '39'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'minute-memo'), ('openai-processing-ms', '286'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=15552000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '50'), ('x-ratelimit-remaining-requests', '49'), ('x-ratelimit-reset-requests', '1.2s'), ('x-request-id', 'req_4f59731a4ff813cddd0ce4e243c7df25'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=EioPZd67_rv9Jt4m9DFUFBV5QIFBHmpFChGSRMGL_QU-1726342265-1.0.1.1-yCBXlo4kdgDX6opk2N6m_BswoThyMHRNT8G.lsvT4ujz1QCam8vt0IoBt.Vg2qkFacZFGyb4W3XUUoTobwDlXA; path=/; expires=Sat, 14-Sep-24 20:01:05 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=IEKuClJvOFUV_Y2v_Br6hzPmY6bURypOkVZHu8p7GFw-1726342265943-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8c32cb927f83b714-BRU'), ('alt-svc', 'h3=":443"; ma=86400')])
-2024-09-14 21:31:05,943 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/audio/transcriptions "200 OK" Headers([('date', 'Sat, 14 Sep 2024 19:31:05 GMT'), ('content-type', 'application/json'), ('content-length', '39'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'minute-memo'), ('openai-processing-ms', '286'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=15552000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '50'), ('x-ratelimit-remaining-requests', '49'), ('x-ratelimit-reset-requests', '1.2s'), ('x-request-id', 'req_4f59731a4ff813cddd0ce4e243c7df25'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=EioPZd67_rv9Jt4m9DFUFBV5QIFBHmpFChGSRMGL_QU-1726342265-1.0.1.1-yCBXlo4kdgDX6opk2N6m_BswoThyMHRNT8G.lsvT4ujz1QCam8vt0IoBt.Vg2qkFacZFGyb4W3XUUoTobwDlXA; path=/; expires=Sat, 14-Sep-24 20:01:05 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=IEKuClJvOFUV_Y2v_Br6hzPmY6bURypOkVZHu8p7GFw-1726342265943-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8c32cb927f83b714-BRU'), ('alt-svc', 'h3=":443"; ma=86400')])
-2024-09-14 21:31:05 DEBUG: request_id: req_4f59731a4ff813cddd0ce4e243c7df25
-2024-09-14 21:31:05,943 - openai._base_client - DEBUG - request_id: req_4f59731a4ff813cddd0ce4e243c7df25
-2024-09-14 21:31:05 INFO: Transcription result: Thank you for watching.
-2024-09-14 21:31:05,944 - minutememo_app.app - INFO - Transcription result: Thank you for watching.
-2024-09-14 21:31:05 INFO: Temporary audio file deleted: /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmp0jyg3xq6.mp3
-2024-09-14 21:31:05,944 - minutememo_app.app - INFO - Temporary audio file deleted: /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmp0jyg3xq6.mp3
-2024-09-14 21:31:05 INFO: Transcription saved successfully for session ID 89
-2024-09-14 21:31:05,949 - minutememo_app.app - INFO - Transcription saved successfully for session ID 89
-2024-09-14 21:31:05 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:31:05,949 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:31:05 INFO: 127.0.0.1 - - [14/Sep/2024 21:31:05] "POST /api/transcribe/89 HTTP/1.1" 200 -
-2024-09-14 21:31:05,950 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:31:05] "POST /api/transcribe/89 HTTP/1.1" 200 -
-2024-09-14 21:31:10 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:31:10,539 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:31:10 INFO: 127.0.0.1 - - [14/Sep/2024 21:31:10] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-14 21:31:10,542 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:31:10] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-14 21:31:10 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:31:10 INFO: Fetching meeting sessions for hub ID: 13
-2024-09-14 21:31:10 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:31:10,550 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:31:10,550 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 13
-2024-09-14 21:31:10 INFO: 127.0.0.1 - - [14/Sep/2024 21:31:10] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
-2024-09-14 21:31:10,550 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:31:10,551 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:31:10] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
-2024-09-14 21:31:10 INFO: 127.0.0.1 - - [14/Sep/2024 21:31:10] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-14 21:31:10,552 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:31:10] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-14 21:31:10 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:31:10,557 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:31:10 INFO: 127.0.0.1 - - [14/Sep/2024 21:31:10] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
-2024-09-14 21:31:10,558 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:31:10] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
-2024-09-14 21:31:11 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:31:11,961 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:31:11 INFO: 127.0.0.1 - - [14/Sep/2024 21:31:11] "GET /api/meetings?meeting_id=87 HTTP/1.1" 200 -
-2024-09-14 21:31:11,962 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:31:11] "GET /api/meetings?meeting_id=87 HTTP/1.1" 200 -
-2024-09-14 21:31:11 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:31:11,966 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:31:11 INFO: 127.0.0.1 - - [14/Sep/2024 21:31:11] "GET /api/meetings?meeting_id=87 HTTP/1.1" 200 -
-2024-09-14 21:31:11,967 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:31:11] "GET /api/meetings?meeting_id=87 HTTP/1.1" 200 -
-2024-09-14 21:31:12 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:31:12,853 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:31:12 INFO: 127.0.0.1 - - [14/Sep/2024 21:31:12] "GET /api/sessions/90 HTTP/1.1" 200 -
-2024-09-14 21:31:12,854 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:31:12] "GET /api/sessions/90 HTTP/1.1" 200 -
-2024-09-14 21:31:12 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:31:12,863 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:31:12 INFO: 127.0.0.1 - - [14/Sep/2024 21:31:12] "GET /api/sessions/90 HTTP/1.1" 200 -
-2024-09-14 21:31:12,864 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:31:12] "GET /api/sessions/90 HTTP/1.1" 200 -
-2024-09-14 21:31:12 DEBUG: After request, Origin: None
-2024-09-14 21:31:12,865 - auth - DEBUG - After request, Origin: None
-2024-09-14 21:31:12 INFO: 127.0.0.1 - - [14/Sep/2024 21:31:12] "[35m[1mGET /uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3 HTTP/1.1[0m" 206 -
-2024-09-14 21:31:12,866 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:31:12] "[35m[1mGET /uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3 HTTP/1.1[0m" 206 -
-2024-09-14 21:31:13 INFO: Received transcription request for session ID: 90
-2024-09-14 21:31:13,603 - minutememo_app.app - INFO - Received transcription request for session ID: 90
-2024-09-14 21:31:13 INFO: User gaetan@minutememo.io is requesting transcription for session ID: 90
-2024-09-14 21:31:13,604 - minutememo_app.app - INFO - User gaetan@minutememo.io is requesting transcription for session ID: 90
-2024-09-14 21:31:13 INFO: Fetched session for session ID 90: <MeetingSession 90>
-2024-09-14 21:31:13,609 - minutememo_app.app - INFO - Fetched session for session ID 90: <MeetingSession 90>
-2024-09-14 21:31:13 INFO: Audio URL for session ID 90: http://localhost:5000/uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3
-2024-09-14 21:31:13,610 - minutememo_app.app - INFO - Audio URL for session ID 90: http://localhost:5000/uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3
-2024-09-14 21:31:13 INFO: Starting transcription process for session ID 90 with audio URL http://localhost:5000/uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3
-2024-09-14 21:31:13,610 - minutememo_app.app - INFO - Starting transcription process for session ID 90 with audio URL http://localhost:5000/uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3
-2024-09-14 21:31:13 DEBUG: load_ssl_context verify=True cert=None trust_env=True http2=False
-2024-09-14 21:31:13,611 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
-2024-09-14 21:31:13 DEBUG: load_verify_locations cafile='/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2024-09-14 21:31:13,613 - httpx - DEBUG - load_verify_locations cafile='/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2024-09-14 21:31:13 INFO: Transcribing audio from URL: http://localhost:5000/uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3
-2024-09-14 21:31:13,636 - minutememo_app.app - INFO - Transcribing audio from URL: http://localhost:5000/uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3
-2024-09-14 21:31:13 DEBUG: Starting new HTTP connection (1): localhost:5000
-2024-09-14 21:31:13,638 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:5000
-2024-09-14 21:31:13 DEBUG: After request, Origin: None
-2024-09-14 21:31:13,640 - auth - DEBUG - After request, Origin: None
-2024-09-14 21:31:13 INFO: 127.0.0.1 - - [14/Sep/2024 21:31:13] "GET /uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3 HTTP/1.1" 200 -
-2024-09-14 21:31:13,640 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:31:13] "GET /uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3 HTTP/1.1" 200 -
-2024-09-14 21:31:13 DEBUG: http://localhost:5000 "GET /uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3 HTTP/11" 200 159788
-2024-09-14 21:31:13,641 - urllib3.connectionpool - DEBUG - http://localhost:5000 "GET /uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3 HTTP/11" 200 159788
-2024-09-14 21:31:13 INFO: Temporary audio file created at /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmp_35gewt4.mp3
-2024-09-14 21:31:13,643 - minutememo_app.app - INFO - Temporary audio file created at /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmp_35gewt4.mp3
-2024-09-14 21:31:13 DEBUG: Request options: {'method': 'post', 'url': '/audio/transcriptions', 'headers': {'Content-Type': 'multipart/form-data'}, 'files': [('file', SerializationIterator(index=0, iterator=SerializationIterator(index=0, iterator=<_io.BufferedReader name='/var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmp_35gewt4.mp3'>)))], 'json_data': {'model': 'whisper-1'}}
-2024-09-14 21:31:13,643 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/audio/transcriptions', 'headers': {'Content-Type': 'multipart/form-data'}, 'files': [('file', SerializationIterator(index=0, iterator=SerializationIterator(index=0, iterator=<_io.BufferedReader name='/var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmp_35gewt4.mp3'>)))], 'json_data': {'model': 'whisper-1'}}
-2024-09-14 21:31:13 DEBUG: Sending HTTP Request: POST https://api.openai.com/v1/audio/transcriptions
-2024-09-14 21:31:13,644 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/audio/transcriptions
-2024-09-14 21:31:13 DEBUG: connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
-2024-09-14 21:31:13,644 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
-2024-09-14 21:31:13 DEBUG: connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x112bd3d70>
-2024-09-14 21:31:13,666 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x112bd3d70>
-2024-09-14 21:31:13 DEBUG: start_tls.started ssl_context=<ssl.SSLContext object at 0x112b6b950> server_hostname='api.openai.com' timeout=5.0
-2024-09-14 21:31:13,666 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x112b6b950> server_hostname='api.openai.com' timeout=5.0
-2024-09-14 21:31:13 DEBUG: start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x112bd3cb0>
-2024-09-14 21:31:13,683 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x112bd3cb0>
-2024-09-14 21:31:13 DEBUG: send_request_headers.started request=<Request [b'POST']>
-2024-09-14 21:31:13,683 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2024-09-14 21:31:13 DEBUG: send_request_headers.complete
-2024-09-14 21:31:13,684 - httpcore.http11 - DEBUG - send_request_headers.complete
-2024-09-14 21:31:13 DEBUG: send_request_body.started request=<Request [b'POST']>
-2024-09-14 21:31:13,684 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2024-09-14 21:31:13 DEBUG: send_request_body.complete
-2024-09-14 21:31:13,765 - httpcore.http11 - DEBUG - send_request_body.complete
-2024-09-14 21:31:13 DEBUG: receive_response_headers.started request=<Request [b'POST']>
-2024-09-14 21:31:13,766 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2024-09-14 21:31:14 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sat, 14 Sep 2024 19:31:14 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'39'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'minute-memo'), (b'openai-processing-ms', b'359'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=15552000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'50'), (b'x-ratelimit-remaining-requests', b'49'), (b'x-ratelimit-reset-requests', b'1.2s'), (b'x-request-id', b'req_f4029c1e633164a54861bfb4dbd80442'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=5Zu4.k_70UMHGsOCfRESS.jVrNmi.wUoINmALL7QyjM-1726342274-1.0.1.1-AYihGFSPNNsFYZBlK5LL0Lf6Ctzibs0FoR9n3TDo3.Y1OIRVlYD8dXv7w9iiuKR6n3XGOgKr6VN7w.j9KC476A; path=/; expires=Sat, 14-Sep-24 20:01:14 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=5WdjNStMGsXQ_U95bZmFdzxXIUV0gvnTGhs6_7QJqkg-1726342274434-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8c32cbcaac4ab70b-BRU'), (b'alt-svc', b'h3=":443"; ma=86400')])
-2024-09-14 21:31:14,446 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sat, 14 Sep 2024 19:31:14 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'39'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'minute-memo'), (b'openai-processing-ms', b'359'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=15552000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'50'), (b'x-ratelimit-remaining-requests', b'49'), (b'x-ratelimit-reset-requests', b'1.2s'), (b'x-request-id', b'req_f4029c1e633164a54861bfb4dbd80442'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=5Zu4.k_70UMHGsOCfRESS.jVrNmi.wUoINmALL7QyjM-1726342274-1.0.1.1-AYihGFSPNNsFYZBlK5LL0Lf6Ctzibs0FoR9n3TDo3.Y1OIRVlYD8dXv7w9iiuKR6n3XGOgKr6VN7w.j9KC476A; path=/; expires=Sat, 14-Sep-24 20:01:14 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=5WdjNStMGsXQ_U95bZmFdzxXIUV0gvnTGhs6_7QJqkg-1726342274434-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8c32cbcaac4ab70b-BRU'), (b'alt-svc', b'h3=":443"; ma=86400')])
-2024-09-14 21:31:14 INFO: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
-2024-09-14 21:31:14,446 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
-2024-09-14 21:31:14 DEBUG: receive_response_body.started request=<Request [b'POST']>
-2024-09-14 21:31:14,447 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2024-09-14 21:31:14 DEBUG: receive_response_body.complete
-2024-09-14 21:31:14,447 - httpcore.http11 - DEBUG - receive_response_body.complete
-2024-09-14 21:31:14 DEBUG: response_closed.started
-2024-09-14 21:31:14,447 - httpcore.http11 - DEBUG - response_closed.started
-2024-09-14 21:31:14 DEBUG: response_closed.complete
-2024-09-14 21:31:14,447 - httpcore.http11 - DEBUG - response_closed.complete
-2024-09-14 21:31:14 DEBUG: HTTP Response: POST https://api.openai.com/v1/audio/transcriptions "200 OK" Headers([('date', 'Sat, 14 Sep 2024 19:31:14 GMT'), ('content-type', 'application/json'), ('content-length', '39'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'minute-memo'), ('openai-processing-ms', '359'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=15552000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '50'), ('x-ratelimit-remaining-requests', '49'), ('x-ratelimit-reset-requests', '1.2s'), ('x-request-id', 'req_f4029c1e633164a54861bfb4dbd80442'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=5Zu4.k_70UMHGsOCfRESS.jVrNmi.wUoINmALL7QyjM-1726342274-1.0.1.1-AYihGFSPNNsFYZBlK5LL0Lf6Ctzibs0FoR9n3TDo3.Y1OIRVlYD8dXv7w9iiuKR6n3XGOgKr6VN7w.j9KC476A; path=/; expires=Sat, 14-Sep-24 20:01:14 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=5WdjNStMGsXQ_U95bZmFdzxXIUV0gvnTGhs6_7QJqkg-1726342274434-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8c32cbcaac4ab70b-BRU'), ('alt-svc', 'h3=":443"; ma=86400')])
-2024-09-14 21:31:14,447 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/audio/transcriptions "200 OK" Headers([('date', 'Sat, 14 Sep 2024 19:31:14 GMT'), ('content-type', 'application/json'), ('content-length', '39'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'minute-memo'), ('openai-processing-ms', '359'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=15552000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '50'), ('x-ratelimit-remaining-requests', '49'), ('x-ratelimit-reset-requests', '1.2s'), ('x-request-id', 'req_f4029c1e633164a54861bfb4dbd80442'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=5Zu4.k_70UMHGsOCfRESS.jVrNmi.wUoINmALL7QyjM-1726342274-1.0.1.1-AYihGFSPNNsFYZBlK5LL0Lf6Ctzibs0FoR9n3TDo3.Y1OIRVlYD8dXv7w9iiuKR6n3XGOgKr6VN7w.j9KC476A; path=/; expires=Sat, 14-Sep-24 20:01:14 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=5WdjNStMGsXQ_U95bZmFdzxXIUV0gvnTGhs6_7QJqkg-1726342274434-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8c32cbcaac4ab70b-BRU'), ('alt-svc', 'h3=":443"; ma=86400')])
-2024-09-14 21:31:14 DEBUG: request_id: req_f4029c1e633164a54861bfb4dbd80442
-2024-09-14 21:31:14,448 - openai._base_client - DEBUG - request_id: req_f4029c1e633164a54861bfb4dbd80442
-2024-09-14 21:31:14 INFO: Transcription result: Thank you for watching!
-2024-09-14 21:31:14,449 - minutememo_app.app - INFO - Transcription result: Thank you for watching!
-2024-09-14 21:31:14 INFO: Temporary audio file deleted: /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmp_35gewt4.mp3
-2024-09-14 21:31:14,449 - minutememo_app.app - INFO - Temporary audio file deleted: /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmp_35gewt4.mp3
-2024-09-14 21:31:14 INFO: Transcription saved successfully for session ID 90
-2024-09-14 21:31:14,452 - minutememo_app.app - INFO - Transcription saved successfully for session ID 90
-2024-09-14 21:31:14 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 21:31:14,452 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 21:31:14 INFO: 127.0.0.1 - - [14/Sep/2024 21:31:14] "POST /api/transcribe/90 HTTP/1.1" 200 -
-2024-09-14 21:31:14,453 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 21:31:14] "POST /api/transcribe/90 HTTP/1.1" 200 -
-2024-09-14 21:32:02 DEBUG: close.started
-2024-09-14 21:32:02,537 - httpcore.connection - DEBUG - close.started
-2024-09-14 21:32:02 DEBUG: close.complete
-2024-09-14 21:32:02,539 - httpcore.connection - DEBUG - close.complete
-2024-09-14 21:32:02 DEBUG: close.started
-2024-09-14 21:32:02,539 - httpcore.connection - DEBUG - close.started
-2024-09-14 21:32:02 DEBUG: close.complete
-2024-09-14 21:32:02,539 - httpcore.connection - DEBUG - close.complete
-2024-09-14 22:12:40 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-14 22:12:40,115 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-14 22:12:40 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-14 22:12:40,418 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-14 22:12:40 INFO: [33mPress CTRL+C to quit[0m
-2024-09-14 22:12:40,419 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2024-09-14 22:44:10 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-14 22:44:10,714 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-09-14 22:44:11 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-14 22:44:11,043 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2024-09-14 22:44:11 INFO: [33mPress CTRL+C to quit[0m
-2024-09-14 22:44:11,043 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2024-09-14 22:44:31 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 22:44:31 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 22:44:31,653 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 22:44:31,655 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 22:44:31 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/sessions/90 HTTP/1.1" 200 -
-2024-09-14 22:44:31,663 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/sessions/90 HTTP/1.1" 200 -
-2024-09-14 22:44:31 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-14 22:44:31,663 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-14 22:44:31 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 22:44:31,670 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 22:44:31 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/sessions/90 HTTP/1.1" 200 -
-2024-09-14 22:44:31,671 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/sessions/90 HTTP/1.1" 200 -
-2024-09-14 22:44:31 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 22:44:31,677 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 22:44:31 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 22:44:31 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/sessions/90 HTTP/1.1" 200 -
-2024-09-14 22:44:31,683 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 22:44:31,683 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/sessions/90 HTTP/1.1" 200 -
-2024-09-14 22:44:31 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-14 22:44:31,684 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-14 22:44:31 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 22:44:31,714 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 22:44:31 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/sessions/90 HTTP/1.1" 200 -
-2024-09-14 22:44:31,715 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/sessions/90 HTTP/1.1" 200 -
-2024-09-14 22:44:31 DEBUG: After request, Origin: http://localhost:3000
-2024-09-14 22:44:31,721 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-14 22:44:31 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-14 22:44:31,722 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:31] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-14 22:44:31 DEBUG: After request, Origin: None
-2024-09-14 22:44:31,729 - auth - DEBUG - After request, Origin: None
-2024-09-14 22:44:31 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:31] "[35m[1mGET /uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3 HTTP/1.1[0m" 206 -
-2024-09-14 22:44:31,733 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:31] "[35m[1mGET /uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3 HTTP/1.1[0m" 206 -
-2024-09-14 22:44:34 DEBUG: After request, Origin: https://staging.minutememo.io
-2024-09-14 22:44:34,413 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
-2024-09-14 22:44:34 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:34] "OPTIONS /api/sessions/75 HTTP/1.1" 200 -
-2024-09-14 22:44:34,429 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:34] "OPTIONS /api/sessions/75 HTTP/1.1" 200 -
-2024-09-14 22:44:34 DEBUG: After request, Origin: https://staging.minutememo.io
-2024-09-14 22:44:34,441 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
-2024-09-14 22:44:34 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:34] "[32mGET /api/sessions/75 HTTP/1.1[0m" 302 -
-2024-09-14 22:44:34,442 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:34] "[32mGET /api/sessions/75 HTTP/1.1[0m" 302 -
-2024-09-14 22:44:34 DEBUG: After request, Origin: https://staging.minutememo.io
-2024-09-14 22:44:34,472 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
-2024-09-14 22:44:34 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:34] "OPTIONS /auth/login?next=/api/sessions/75 HTTP/1.1" 200 -
-2024-09-14 22:44:34,474 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:34] "OPTIONS /auth/login?next=/api/sessions/75 HTTP/1.1" 200 -
-2024-09-14 22:44:34 DEBUG: After request, Origin: https://staging.minutememo.io
-2024-09-14 22:44:34,480 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
-2024-09-14 22:44:34 INFO: 127.0.0.1 - - [14/Sep/2024 22:44:34] "[31m[1mGET /auth/login?next=/api/sessions/75 HTTP/1.1[0m" 405 -
-2024-09-14 22:44:34,481 - werkzeug - INFO - 127.0.0.1 - - [14/Sep/2024 22:44:34] "[31m[1mGET /auth/login?next=/api/sessions/75 HTTP/1.1[0m" 405 -
-2024-09-15 06:50:39 DEBUG: After request, Origin: https://staging.minutememo.io
-2024-09-15 06:50:39,462 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
-2024-09-15 06:50:39 INFO: 127.0.0.1 - - [15/Sep/2024 06:50:39] "OPTIONS /api/sessions/77 HTTP/1.1" 200 -
-2024-09-15 06:50:39,468 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:50:39] "OPTIONS /api/sessions/77 HTTP/1.1" 200 -
-2024-09-15 06:50:39 DEBUG: After request, Origin: https://staging.minutememo.io
-2024-09-15 06:50:39,470 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
-2024-09-15 06:50:39 INFO: 127.0.0.1 - - [15/Sep/2024 06:50:39] "[32mGET /api/sessions/77 HTTP/1.1[0m" 302 -
-2024-09-15 06:50:39,470 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:50:39] "[32mGET /api/sessions/77 HTTP/1.1[0m" 302 -
-2024-09-15 06:50:39 DEBUG: After request, Origin: https://staging.minutememo.io
-2024-09-15 06:50:39,473 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
-2024-09-15 06:50:39 INFO: 127.0.0.1 - - [15/Sep/2024 06:50:39] "OPTIONS /auth/login?next=/api/sessions/77 HTTP/1.1" 200 -
-2024-09-15 06:50:39,474 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:50:39] "OPTIONS /auth/login?next=/api/sessions/77 HTTP/1.1" 200 -
-2024-09-15 06:50:39 DEBUG: After request, Origin: https://staging.minutememo.io
-2024-09-15 06:50:39,475 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
-2024-09-15 06:50:39 INFO: 127.0.0.1 - - [15/Sep/2024 06:50:39] "[31m[1mGET /auth/login?next=/api/sessions/77 HTTP/1.1[0m" 405 -
-2024-09-15 06:50:39,476 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:50:39] "[31m[1mGET /auth/login?next=/api/sessions/77 HTTP/1.1[0m" 405 -
-2024-09-15 06:55:22 DEBUG: After request, Origin: http://localhost:3000
-2024-09-15 06:55:22,789 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-15 06:55:22 INFO: 127.0.0.1 - - [15/Sep/2024 06:55:22] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-15 06:55:22,792 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:55:22] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-15 06:55:22 DEBUG: After request, Origin: http://localhost:3000
-2024-09-15 06:55:22,825 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-15 06:55:22 INFO: 127.0.0.1 - - [15/Sep/2024 06:55:22] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
-2024-09-15 06:55:22,828 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:55:22] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
-2024-09-15 06:55:22 DEBUG: After request, Origin: http://localhost:3000
-2024-09-15 06:55:22,880 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-15 06:55:22 INFO: 127.0.0.1 - - [15/Sep/2024 06:55:22] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-15 06:55:22,881 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:55:22] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-15 06:55:22 INFO: Fetching meeting sessions for hub ID: 13
-2024-09-15 06:55:22,885 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 13
-2024-09-15 06:55:22 DEBUG: After request, Origin: http://localhost:3000
-2024-09-15 06:55:22,898 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-15 06:55:22 INFO: 127.0.0.1 - - [15/Sep/2024 06:55:22] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
-2024-09-15 06:55:22,900 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:55:22] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
-2024-09-15 06:55:25 DEBUG: After request, Origin: http://localhost:3000
-2024-09-15 06:55:25,520 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-15 06:55:25 INFO: 127.0.0.1 - - [15/Sep/2024 06:55:25] "GET /api/meetings?meeting_id=87 HTTP/1.1" 200 -
-2024-09-15 06:55:25,524 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:55:25] "GET /api/meetings?meeting_id=87 HTTP/1.1" 200 -
-2024-09-15 06:55:25 DEBUG: After request, Origin: http://localhost:3000
-2024-09-15 06:55:25,545 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-15 06:55:25 INFO: 127.0.0.1 - - [15/Sep/2024 06:55:25] "GET /api/meetings?meeting_id=87 HTTP/1.1" 200 -
-2024-09-15 06:55:25,547 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:55:25] "GET /api/meetings?meeting_id=87 HTTP/1.1" 200 -
-2024-09-15 06:55:26 DEBUG: After request, Origin: http://localhost:3000
-2024-09-15 06:55:26,228 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-15 06:55:26 INFO: 127.0.0.1 - - [15/Sep/2024 06:55:26] "GET /api/sessions/90 HTTP/1.1" 200 -
-2024-09-15 06:55:26,233 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:55:26] "GET /api/sessions/90 HTTP/1.1" 200 -
-2024-09-15 06:55:26 DEBUG: After request, Origin: http://localhost:3000
-2024-09-15 06:55:26,238 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-15 06:55:26 INFO: 127.0.0.1 - - [15/Sep/2024 06:55:26] "GET /api/sessions/90 HTTP/1.1" 200 -
-2024-09-15 06:55:26,240 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:55:26] "GET /api/sessions/90 HTTP/1.1" 200 -
-2024-09-15 06:55:26 DEBUG: After request, Origin: None
-2024-09-15 06:55:26,244 - auth - DEBUG - After request, Origin: None
-2024-09-15 06:55:26 INFO: 127.0.0.1 - - [15/Sep/2024 06:55:26] "[35m[1mGET /uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3 HTTP/1.1[0m" 206 -
-2024-09-15 06:55:26,250 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:55:26] "[35m[1mGET /uploads/audio_recordings/0b7715ca-ab2e-48e0-9290-5ed49c64f8ee.mp3 HTTP/1.1[0m" 206 -
-2024-09-15 06:58:29 DEBUG: After request, Origin: https://staging.minutememo.io
-2024-09-15 06:58:29,537 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
-2024-09-15 06:58:29 INFO: 127.0.0.1 - - [15/Sep/2024 06:58:29] "OPTIONS /api/sessions/77 HTTP/1.1" 200 -
-2024-09-15 06:58:29,539 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:58:29] "OPTIONS /api/sessions/77 HTTP/1.1" 200 -
-2024-09-15 06:58:29 DEBUG: After request, Origin: https://staging.minutememo.io
-2024-09-15 06:58:29,542 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
-2024-09-15 06:58:29 INFO: 127.0.0.1 - - [15/Sep/2024 06:58:29] "[32mGET /api/sessions/77 HTTP/1.1[0m" 302 -
-2024-09-15 06:58:29,543 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:58:29] "[32mGET /api/sessions/77 HTTP/1.1[0m" 302 -
-2024-09-15 06:58:29 DEBUG: After request, Origin: https://staging.minutememo.io
-2024-09-15 06:58:29,547 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
-2024-09-15 06:58:29 INFO: 127.0.0.1 - - [15/Sep/2024 06:58:29] "OPTIONS /auth/login?next=/api/sessions/77 HTTP/1.1" 200 -
-2024-09-15 06:58:29,551 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:58:29] "OPTIONS /auth/login?next=/api/sessions/77 HTTP/1.1" 200 -
-2024-09-15 06:58:29 DEBUG: After request, Origin: https://staging.minutememo.io
-2024-09-15 06:58:29,557 - auth - DEBUG - After request, Origin: https://staging.minutememo.io
-2024-09-15 06:58:29 INFO: 127.0.0.1 - - [15/Sep/2024 06:58:29] "[31m[1mGET /auth/login?next=/api/sessions/77 HTTP/1.1[0m" 405 -
-2024-09-15 06:58:29,559 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 06:58:29] "[31m[1mGET /auth/login?next=/api/sessions/77 HTTP/1.1[0m" 405 -
+2024-09-15 07:26:59,663 - minutememo_app.app - INFO - Local chunk files for recording_id ddb23f5d-0b53-4a57-b63d-baefd8b7c761: ['ddb23f5d-0b53-4a57-b63d-baefd8b7c761_chunk_0.webm']
+2024-09-15 07:26:59,665 - minutememo_app.app - INFO - List file created at: uploads/audio_recordings/ddb23f5d-0b53-4a57-b63d-baefd8b7c761_list.txt
+2024-09-15 07:26:59,665 - minutememo_app.app - INFO - Running FFmpeg locally with list file uploads/audio_recordings/ddb23f5d-0b53-4a57-b63d-baefd8b7c761_list.txt
+2024-09-15 07:27:00,612 - minutememo_app.app - INFO - Local concatenation output at uploads/audio_recordings/ddb23f5d-0b53-4a57-b63d-baefd8b7c761.webm
+2024-09-15 07:27:00,743 - minutememo_app.app - INFO - MP3 conversion successful. File saved at uploads/audio_recordings/ddb23f5d-0b53-4a57-b63d-baefd8b7c761.mp3
+2024-09-15 07:27:00,768 - minutememo_app.app - INFO - Concatenation status for ddb23f5d-0b53-4a57-b63d-baefd8b7c761 updated to success
+2024-09-15 07:27:00,769 - minutememo_app.app - INFO - Concatenation status updated to 'success' in the database for recording_id: ddb23f5d-0b53-4a57-b63d-baefd8b7c761
+2024-09-15 07:27:00,769 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 07:27:00,770 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 07:27:00] "POST /concatenate HTTP/1.1" 200 -
+2024-09-15 07:27:00,777 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 07:27:00,777 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 07:27:00] "OPTIONS /api/recordings/ddb23f5d-0b53-4a57-b63d-baefd8b7c761 HTTP/1.1" 200 -
+2024-09-15 07:27:00,782 - minutememo_app.app - INFO - Entering update_recording function for recording_id: ddb23f5d-0b53-4a57-b63d-baefd8b7c761
+2024-09-15 07:27:00,783 - minutememo_app.app - INFO - Received data for updating recording ddb23f5d-0b53-4a57-b63d-baefd8b7c761: {'audio_url': '/uploads/audio_recordings/ddb23f5d-0b53-4a57-b63d-baefd8b7c761.mp3'}
+2024-09-15 07:27:00,783 - minutememo_app.app - INFO - Fetching Recording with ID: ddb23f5d-0b53-4a57-b63d-baefd8b7c761
+2024-09-15 07:27:00,790 - minutememo_app.app - INFO - Current recording before update: <Recording ddb23f5d-0b53-4a57-b63d-baefd8b7c761>
+2024-09-15 07:27:00,791 - minutememo_app.app - INFO - Fetching associated MeetingSession with ID: 91
+2024-09-15 07:27:00,792 - minutememo_app.app - INFO - Current MeetingSession before update: <MeetingSession 91>
+2024-09-15 07:27:00,792 - minutememo_app.app - INFO - Updating audio_url for MeetingSession ID: 91
+2024-09-15 07:27:00,799 - minutememo_app.app - INFO - MeetingSession after update: <MeetingSession 91>
+2024-09-15 07:27:00,799 - minutememo_app.app - INFO - Exiting update_recording function for recording_id: ddb23f5d-0b53-4a57-b63d-baefd8b7c761
+2024-09-15 07:27:00,799 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 07:27:00,800 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 07:27:00] "PATCH /api/recordings/ddb23f5d-0b53-4a57-b63d-baefd8b7c761 HTTP/1.1" 200 -
+2024-09-15 07:27:13,209 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 07:27:13,211 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 07:27:13] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-15 07:27:13,219 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 07:27:13,220 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 07:27:13] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-15 07:27:13,220 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 07:27:13,221 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 07:27:13] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-15 07:27:13,233 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 07:27:13,234 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 07:27:13,234 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 07:27:13] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-15 07:27:13,235 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 07:27:13] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-15 07:27:13,241 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 07:27:13,243 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 07:27:13] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-15 07:27:13,248 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 13
+2024-09-15 07:27:13,249 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 07:27:13,251 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 07:27:13] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
+2024-09-15 07:27:13,255 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 07:27:13,256 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 07:27:13] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-15 07:27:13,261 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 07:27:13,262 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 07:27:13] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
+2024-09-15 07:27:14,999 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 07:27:15,004 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 07:27:15] "GET /api/meetings?meeting_id=88 HTTP/1.1" 200 -
+2024-09-15 07:27:15,013 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 07:27:15,014 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 07:27:15] "GET /api/meetings?meeting_id=88 HTTP/1.1" 200 -
+2024-09-15 07:27:15,797 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 07:27:15,798 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 07:27:15] "GET /api/sessions/91 HTTP/1.1" 200 -
+2024-09-15 07:27:15,803 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 07:27:15,804 - auth - DEBUG - After request, Origin: None
+2024-09-15 07:27:15,805 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 07:27:15] "GET /api/sessions/91 HTTP/1.1" 200 -
+2024-09-15 07:27:15,805 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 07:27:15] "[35m[1mGET /uploads/audio_recordings/ddb23f5d-0b53-4a57-b63d-baefd8b7c761.mp3 HTTP/1.1[0m" 206 -
+2024-09-15 07:27:18,387 - minutememo_app.app - INFO - Received transcription request for session ID: 91
+2024-09-15 07:27:18,387 - minutememo_app.app - INFO - User gaetan@minutememo.io is requesting transcription for session ID: 91
+2024-09-15 07:27:18,389 - minutememo_app.app - INFO - Fetched session for session ID 91: <MeetingSession 91>
+2024-09-15 07:27:18,390 - minutememo_app.app - INFO - Audio URL for session ID 91: http://localhost:5000/uploads/audio_recordings/ddb23f5d-0b53-4a57-b63d-baefd8b7c761.mp3
+2024-09-15 07:27:18,390 - minutememo_app.app - INFO - Starting transcription process for session ID 91 with audio URL http://localhost:5000/uploads/audio_recordings/ddb23f5d-0b53-4a57-b63d-baefd8b7c761.mp3
+2024-09-15 07:27:18,395 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-09-15 07:27:18,398 - httpx - DEBUG - load_verify_locations cafile='/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-09-15 07:27:18,425 - minutememo_app.app - INFO - Transcribing audio from URL: http://localhost:5000/uploads/audio_recordings/ddb23f5d-0b53-4a57-b63d-baefd8b7c761.mp3
+2024-09-15 07:27:18,431 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:5000
+2024-09-15 07:27:18,434 - auth - DEBUG - After request, Origin: None
+2024-09-15 07:27:18,434 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 07:27:18] "GET /uploads/audio_recordings/ddb23f5d-0b53-4a57-b63d-baefd8b7c761.mp3 HTTP/1.1" 200 -
+2024-09-15 07:27:18,434 - urllib3.connectionpool - DEBUG - http://localhost:5000 "GET /uploads/audio_recordings/ddb23f5d-0b53-4a57-b63d-baefd8b7c761.mp3 HTTP/11" 200 40364
+2024-09-15 07:27:18,436 - minutememo_app.app - INFO - Temporary audio file created at /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmp3w9gzhgl.mp3
+2024-09-15 07:27:18,439 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/audio/transcriptions', 'headers': {'Content-Type': 'multipart/form-data'}, 'files': [('file', SerializationIterator(index=0, iterator=SerializationIterator(index=0, iterator=<_io.BufferedReader name='/var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmp3w9gzhgl.mp3'>)))], 'json_data': {'model': 'whisper-1'}}
+2024-09-15 07:27:18,460 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/audio/transcriptions
+2024-09-15 07:27:18,461 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2024-09-15 07:27:18,509 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x10d571d60>
+2024-09-15 07:27:18,509 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x10d4ff2d0> server_hostname='api.openai.com' timeout=5.0
+2024-09-15 07:27:18,530 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x10d51a8a0>
+2024-09-15 07:27:18,530 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-09-15 07:27:18,530 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-09-15 07:27:18,530 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-09-15 07:27:18,531 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-09-15 07:27:18,531 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-09-15 07:27:19,426 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sun, 15 Sep 2024 05:27:19 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'minute-memo'), (b'openai-processing-ms', b'437'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=15552000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'50'), (b'x-ratelimit-remaining-requests', b'49'), (b'x-ratelimit-reset-requests', b'1.2s'), (b'x-request-id', b'req_11b8097eaa16148975df1bd5861704ad'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=eJQI1V4T8vIgku2XWM45ZWEfwsiebSK6wxnAgfPaqSE-1726378039-1.0.1.1-ZDBVWtPEgG_ZHU4GidWu0g9i7BXvkngTT4DPbsmWxNP6sptk3tTVwxpVSjw.5Ilb0AaMyHxEw_ilS2C9uRxoGQ; path=/; expires=Sun, 15-Sep-24 05:57:19 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=Ea7HAViCWZCq87GVjHxjd70xJJKXnzeiW7xzpQAAeN8-1726378039469-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8c3634f5284fb70f-BRU'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-09-15 07:27:19,427 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-09-15 07:27:19,427 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-09-15 07:27:19,428 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-09-15 07:27:19,428 - httpcore.http11 - DEBUG - response_closed.started
+2024-09-15 07:27:19,428 - httpcore.http11 - DEBUG - response_closed.complete
+2024-09-15 07:27:19,428 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/audio/transcriptions "200 OK" Headers([('date', 'Sun, 15 Sep 2024 05:27:19 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'minute-memo'), ('openai-processing-ms', '437'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=15552000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '50'), ('x-ratelimit-remaining-requests', '49'), ('x-ratelimit-reset-requests', '1.2s'), ('x-request-id', 'req_11b8097eaa16148975df1bd5861704ad'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=eJQI1V4T8vIgku2XWM45ZWEfwsiebSK6wxnAgfPaqSE-1726378039-1.0.1.1-ZDBVWtPEgG_ZHU4GidWu0g9i7BXvkngTT4DPbsmWxNP6sptk3tTVwxpVSjw.5Ilb0AaMyHxEw_ilS2C9uRxoGQ; path=/; expires=Sun, 15-Sep-24 05:57:19 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=Ea7HAViCWZCq87GVjHxjd70xJJKXnzeiW7xzpQAAeN8-1726378039469-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8c3634f5284fb70f-BRU'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2024-09-15 07:27:19,428 - openai._base_client - DEBUG - request_id: req_11b8097eaa16148975df1bd5861704ad
+2024-09-15 07:27:19,429 - minutememo_app.app - INFO - Transcription result: Кхе-кхе. Тах-ку-ку. Тах-ку-ку.
+2024-09-15 07:27:19,429 - minutememo_app.app - INFO - Temporary audio file deleted: /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmp3w9gzhgl.mp3
+2024-09-15 07:27:19,439 - minutememo_app.app - INFO - Transcription saved successfully for session ID 91
+2024-09-15 07:27:19,439 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 07:27:19,440 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 07:27:19] "POST /api/transcribe/91 HTTP/1.1" 200 -
+2024-09-15 07:35:55,125 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 07:35:55,128 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 07:35:55] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-15 07:35:55,137 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 13
+2024-09-15 07:35:55,139 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 07:35:55,140 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 07:35:55,142 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 07:35:55] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-15 07:35:55,143 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 07:35:55] "GET /api/meetings?hub_id=13 HTTP/1.1" 200 -
+2024-09-15 07:35:55,149 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 07:35:55,151 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 07:35:55] "GET /api/meetingsessions?hub_id=13 HTTP/1.1" 200 -
+2024-09-15 07:36:59 DEBUG: close.started
+2024-09-15 07:36:59,400 - httpcore.connection - DEBUG - close.started
+2024-09-15 07:36:59 DEBUG: close.complete
+2024-09-15 07:36:59,402 - httpcore.connection - DEBUG - close.complete

@@ -10,14 +10,14 @@ const MeetingSessionPage = () => {
   const [isTranscribing, setIsTranscribing] = useState(false); // State for transcribing status
   const audioRef = useRef(null);
 
-  const baseURL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+  
   useEffect(() => {
     // Fetch session details and transcription
     const fetchSession = async () => {
       try {
         console.log(`Fetching session details for session ID: ${sessionId}`);
-        const response = await axios.get(`${baseURL}/api/sessions/${sessionId}`);
+        const response = await axios.get(`${backendUrl}/api/sessions/${sessionId}`);
         if (response.status === 200) {
           const sessionData = response.data.session;
           setSession(sessionData);
@@ -41,7 +41,7 @@ const MeetingSessionPage = () => {
     };
   
     fetchSession();
-  }, [sessionId, baseURL]);
+  }, [sessionId, backendUrl]);
 
   const handleTranscription = async () => {
     setIsTranscribing(true); // Start transcribing
@@ -49,7 +49,7 @@ const MeetingSessionPage = () => {
     
     try {
       console.log(`Sending request to transcribe audio for session ID: ${sessionId}`);
-      const response = await axios.post(`${baseURL}/api/transcribe/${sessionId}`);
+      const response = await axios.post(`${backendUrl}/api/transcribe/${sessionId}`);
       
       if (response.status === 200) {
         console.log(`Transcription successful for session ID: ${sessionId}`);
@@ -86,7 +86,10 @@ const MeetingSessionPage = () => {
 
           {session.audio_url ? (
             <div>
-              <audio ref={audioRef} src={`${baseURL}/${session.audio_url}`} controls />
+              {/* Log the URL being used for the audio file */}
+              {console.log(`Looking for audio file at: ${backendUrl}/${session.audio_url}`)}
+
+              <audio ref={audioRef} src={`${backendUrl}/${session.audio_url}`} controls />
               <div className="audio-controls">
                 <button onClick={() => audioRef.current.play()}>Play</button>
                 <button onClick={() => audioRef.current.pause()}>Pause</button>
