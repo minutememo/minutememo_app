@@ -487,29 +487,27 @@ def concatenate_cloud(self, recording_id):
                 update_concatenation_status(recording_id, "error")
                 return {'status': 'error', 'message': f"Error converting to MP3: {stderr_output}"}
 
-            final_mp3_output_gcs = f"audio_recordings/{recording_id}.mp3"
+            # Upload the MP3 file to GCS
+            final_mp3_output_gcs = f"{recording_id}.mp3"
             try:
                 current_app.logger.info(f"Uploading MP3 file to GCS at {final_mp3_output_gcs}")
                 upload_file_to_gcs(mp3_output_path, final_mp3_output_gcs)
                 current_app.logger.info(f"MP3 file successfully uploaded to GCS at {final_mp3_output_gcs}")
 
-                # Generate a presigned URL
-                bucket = storage_client.bucket(BUCKET_NAME)
-                blob = bucket.blob(final_mp3_output_gcs)
-                presigned_url = blob.generate_signed_url(expiration=timedelta(minutes=60))  # Presigned URL for 60 minutes
-                current_app.logger.info(f"Presigned URL generated for MP3: {presigned_url}")
-
-                # Update the recording with the presigned URL
+                # Update the recording with the MP3 URL
+                current_app.logger.info(f"Updating database with MP3 URL for recording_id: {recording_id}")
                 recording = db.session.query(Recording).filter_by(id=recording_id).first()
                 if recording:
-                    recording.audio_url = presigned_url  # Save the presigned URL in the audio_url field
+                    recording.audio_url = f"gs://{BUCKET_NAME}/{final_mp3_output_gcs}"
+                    current_app.logger.info(f"MP3 URL to be stored in DB: gs://{BUCKET_NAME}/{final_mp3_output_gcs}")
                     db.session.commit()
                     current_app.logger.info(f"MP3 URL successfully updated in the database for recording_id: {recording_id}")
 
-                    # Update the related meeting session with the presigned URL
+                    # Update the related meeting session with the MP3 URL
+                    current_app.logger.info(f"Updating MeetingSession with MP3 URL for recording_id: {recording_id}")
                     meeting_session = db.session.query(MeetingSession).filter_by(id=recording.meeting_session_id).first()
                     if meeting_session:
-                        meeting_session.audio_url = presigned_url
+                        meeting_session.audio_url = f"gs://{BUCKET_NAME}/{final_mp3_output_gcs}"
                         db.session.commit()
                         current_app.logger.info(f"MP3 URL successfully updated in the MeetingSession for recording_id: {recording_id}")
                     else:
