@@ -962,7 +962,15 @@ def get_session(session_id):
         if session.audio_url and ENVIRONMENT != 'development':
             bucket = storage_client.bucket(BUCKET_NAME)
             blob = bucket.blob(f"audio_recordings/{session.audio_url}")
+            
+            # Log the attempt to generate the signed URL
+            current_app.logger.info(f"Attempting to generate signed URL for audio: {session.audio_url}")
+            
             signed_url = blob.generate_signed_url(expiration=timedelta(minutes=15))
+            
+            # Log the generated signed URL
+            current_app.logger.info(f"Signed URL generated: {signed_url}")
+            
             session.audio_url = signed_url  # Use signed URL
 
         session_data = {

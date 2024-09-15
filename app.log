@@ -327,3 +327,47 @@
  * Running on http://127.0.0.1:5000
 2024-09-15 08:04:58 INFO: [33mPress CTRL+C to quit[0m
 2024-09-15 08:04:58,494 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-09-15 09:03:03 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-09-15 09:03:03,333 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-09-15 09:03:03 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-09-15 09:03:03,688 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-09-15 09:03:03 INFO: [33mPress CTRL+C to quit[0m
+2024-09-15 09:03:03,688 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-09-15 09:03:08 DEBUG: After request, Origin: http://localhost:3000
+2024-09-15 09:03:08,008 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 09:03:08 INFO: 127.0.0.1 - - [15/Sep/2024 09:03:08] "GET /api/sessions/92 HTTP/1.1" 200 -
+2024-09-15 09:03:08,011 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 09:03:08] "GET /api/sessions/92 HTTP/1.1" 200 -
+2024-09-15 09:03:08 DEBUG: After request, Origin: http://localhost:3000
+2024-09-15 09:03:08,014 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 09:03:08 DEBUG: After request, Origin: http://localhost:3000
+2024-09-15 09:03:08,014 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 09:03:08 INFO: 127.0.0.1 - - [15/Sep/2024 09:03:08] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-15 09:03:08,015 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 09:03:08] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-15 09:03:08 INFO: 127.0.0.1 - - [15/Sep/2024 09:03:08] "GET /api/sessions/92 HTTP/1.1" 200 -
+2024-09-15 09:03:08,015 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 09:03:08] "GET /api/sessions/92 HTTP/1.1" 200 -
+2024-09-15 09:03:08 DEBUG: After request, Origin: http://localhost:3000
+2024-09-15 09:03:08,023 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 09:03:08 DEBUG: After request, Origin: http://localhost:3000
+2024-09-15 09:03:08 INFO: 127.0.0.1 - - [15/Sep/2024 09:03:08] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-15 09:03:08,024 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 09:03:08,025 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 09:03:08] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-15 09:03:08 INFO: 127.0.0.1 - - [15/Sep/2024 09:03:08] "GET /api/sessions/92 HTTP/1.1" 200 -
+2024-09-15 09:03:08,025 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 09:03:08] "GET /api/sessions/92 HTTP/1.1" 200 -
+2024-09-15 09:03:08 DEBUG: After request, Origin: http://localhost:3000
+2024-09-15 09:03:08,041 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 09:03:08 INFO: 127.0.0.1 - - [15/Sep/2024 09:03:08] "GET /api/sessions/92 HTTP/1.1" 200 -
+2024-09-15 09:03:08,043 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 09:03:08] "GET /api/sessions/92 HTTP/1.1" 200 -
+2024-09-15 09:03:08 DEBUG: After request, Origin: None
+2024-09-15 09:03:08,048 - auth - DEBUG - After request, Origin: None
+2024-09-15 09:03:08 INFO: 127.0.0.1 - - [15/Sep/2024 09:03:08] "[35m[1mGET /uploads/audio_recordings/7452b9a7-3b84-44ab-98d8-e3cef2e385a5.mp3 HTTP/1.1[0m" 206 -
+2024-09-15 09:03:08 DEBUG: After request, Origin: http://localhost:3000
+2024-09-15 09:03:08,050 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 09:03:08] "[35m[1mGET /uploads/audio_recordings/7452b9a7-3b84-44ab-98d8-e3cef2e385a5.mp3 HTTP/1.1[0m" 206 -
+2024-09-15 09:03:08,051 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-15 09:03:08 INFO: 127.0.0.1 - - [15/Sep/2024 09:03:08] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-15 09:03:08,056 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 09:03:08] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-15 09:03:12 DEBUG: After request, Origin: None
+2024-09-15 09:03:12,203 - auth - DEBUG - After request, Origin: None
+2024-09-15 09:03:12 INFO: 127.0.0.1 - - [15/Sep/2024 09:03:12] "[35m[1mGET /uploads/audio_recordings/7452b9a7-3b84-44ab-98d8-e3cef2e385a5.mp3 HTTP/1.1[0m" 206 -
+2024-09-15 09:03:12,204 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2024 09:03:12] "[35m[1mGET /uploads/audio_recordings/7452b9a7-3b84-44ab-98d8-e3cef2e385a5.mp3 HTTP/1.1[0m" 206 -
