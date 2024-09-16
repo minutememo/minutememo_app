@@ -16,11 +16,13 @@ import ffmpeg
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from decorators import subscription_required
-from models import User, db, Recording, MeetingSession, MeetingHub, Company, Meeting, Subscription
+from models import User, db, Recording, MeetingSession, MeetingHub, Company, Meeting, Subscription, ActionItem
 from extensions import db  # Import from extensions.py
 from flask_login import login_required, current_user
 from datetime import datetime, timedelta
+from pydantic import BaseModel
 import traceback
+from typing import List
 #from app import credentials
 from celery.result import AsyncResult
 from celery_factory import celery_app  # Import the initialized Celery app
@@ -33,6 +35,14 @@ main = Blueprint('main', __name__)
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
 IS_LOCAL = os.getenv('FLASK_ENV') == 'development'
+
+class ActionPoint(BaseModel):
+    description: str
+    assigned_to: str
+    due_date: str  # Ensure date in 'YYYY-MM-DD' format
+
+class ActionPointsSchema(BaseModel):
+    action_items: List[ActionPoint]
 
 
 # Load environment settings
@@ -1316,3 +1326,48 @@ def transcribe_audio(audio_url):
         return None
         current_app.logger.error(f"Error during transcription process: {str(e)}")
         return None
+
+@main.route('/api/extract_action_points/<int:session_id>', methods=['POST'])
+def extract_action_points(session_id):
+    client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+    # Fetch the MeetingSession by ID
+    session = MeetingSession.query.get(session_id)
+    if not session:
+        return jsonify({'status': 'error', 'message': 'Session not found'}), 404
+
+    # Ensure transcription exists
+    if not session.transcription:
+        return jsonify({'status': 'error', 'message': 'No transcription available'}), 400
+
+    # Extract action points from the transcription using OpenAI
+    try:
+        completion = client.beta.chat.completions.parse(
+            model="gpt-4o-2024-08-06",
+            messages=[
+                {"role": "system", "content": "Extract action items from this meeting transcription, including who is assigned and due dates."},
+                {"role": "user", "content": session.transcription}
+            ],
+            response_format=ActionPointsSchema,
+        )
+
+        action_points = completion.choices[0].message.parsed
+
+        # Store action points in the database
+        for action in action_points.action_items:
+            due_date = datetime.strptime(action.due_date, '%Y-%m-%d') if action.due_date else None
+            action_item = ActionItem(
+                description=action.description,
+                assigned_to=action.assigned_to,
+                due_date=due_date,
+                meeting_session_id=session.id
+            )
+            db.session.add(action_item)
+
+        db.session.commit()
+
+        return jsonify({'status': 'success', 'message': 'Action items extracted and saved successfully'}), 200
+
+    except Exception as e:
+        current_app.logger.error(f"Error extracting action points: {str(e)}")
+        return jsonify({'status': 'error', 'message': 'Error extracting action points'}), 500

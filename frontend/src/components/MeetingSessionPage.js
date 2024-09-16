@@ -3,11 +3,13 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const MeetingSessionPage = () => {
-  const { sessionId } = useParams(); 
+  const { sessionId } = useParams();
   const [session, setSession] = useState(null);
   const [error, setError] = useState('');
   const [transcription, setTranscription] = useState('');
   const [isTranscribing, setIsTranscribing] = useState(false);
+  const [actionPoints, setActionPoints] = useState([]); // For storing action points
+  const [isExtracting, setIsExtracting] = useState(false); // For tracking extraction
   const audioRef = useRef(null);
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
@@ -46,17 +48,19 @@ const MeetingSessionPage = () => {
     }
   };
 
-  const getAudioUrl = (audioUrl) => {
-    if (audioUrl.startsWith('/uploads')) {
-      return `${backendUrl}${audioUrl}`;
-    } else if (audioUrl.startsWith('gs://')) {
-      return audioUrl.replace('gs://', 'https://storage.googleapis.com/');
-    } else if (audioUrl.includes('gs://')) {
-      const gsIndex = audioUrl.indexOf('gs://');
-      const path = audioUrl.substring(gsIndex + 5);
-      return `https://storage.googleapis.com/${path}`;
-    } else {
-      return decodeURIComponent(audioUrl);
+  const handleExtractActionPoints = async () => {
+    setIsExtracting(true);
+    try {
+      const response = await axios.post(`${backendUrl}/api/extract_action_points/${sessionId}`);
+      if (response.status === 200) {
+        setActionPoints(response.data.action_items);
+      } else {
+        setError('Failed to extract action points.');
+      }
+    } catch (err) {
+      setError('Error extracting action points.');
+    } finally {
+      setIsExtracting(false);
     }
   };
 
@@ -77,25 +81,31 @@ const MeetingSessionPage = () => {
 
           {session.audio_url ? (
             <div>
-              {console.log(`Audio file URL: ${getAudioUrl(session.audio_url)}`)}
-
-              <audio ref={audioRef} src={getAudioUrl(session.audio_url)} controls />
-              
-              <div className="audio-controls">
-                <button onClick={() => audioRef.current.play()}>Play</button>
-                <button onClick={() => audioRef.current.pause()}>Pause</button>
-                <button onClick={() => (audioRef.current.currentTime -= 10)}>-10s</button>
-                <button onClick={() => (audioRef.current.currentTime += 10)}>+10s</button>
-              </div>
-
-              {/* Download Button */}
-              <a href={getAudioUrl(session.audio_url)} download>
-                <button>Download Audio</button>
+              <audio ref={audioRef} src={session.audio_url} controls />
+              <a href={session.audio_url} download>
+                Download Audio
               </a>
 
               <button onClick={handleTranscription} disabled={isTranscribing}>
                 {isTranscribing ? 'Transcribing...' : 'Transcribe Audio'}
               </button>
+
+              <button onClick={handleExtractActionPoints} disabled={isExtracting}>
+                {isExtracting ? 'Extracting Action Points...' : 'Extract Action Points'}
+              </button>
+
+              {actionPoints.length > 0 && (
+                <div className="action-points">
+                  <h3>Action Points:</h3>
+                  <ul>
+                    {actionPoints.map((item, index) => (
+                      <li key={index}>
+                        <strong>{item.description}</strong> - Assigned to: {item.assigned_to}, Due Date: {item.due_date}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           ) : (
             <p>No audio recording available.</p>
