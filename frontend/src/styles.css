@@ -482,3 +482,69 @@ td {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Apply box-shadow */
   border-radius: 8px;
 }
+
+.session-page {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.action-points-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.action-points-table th, .action-points-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.action-points-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.action-points-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.action-points-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #45a049;
+}
+
+.error-message {
+  color: red;
+}
+
+.action-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.action-table th, .action-table td {
+  padding: 10px;
+  text-align: left;
+}
+
+.action-table th {
+  background-color: #f4f4f4;
+}

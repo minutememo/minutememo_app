@@ -9,7 +9,7 @@ const MeetingSessionPage = () => {
   const [transcription, setTranscription] = useState('');
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [actionPoints, setActionPoints] = useState([]); // For storing action points
-  const [isExtracting, setIsExtracting] = useState(false); // For tracking extraction
+  const [isExtracting, setIsExtracting] = useState(false); // For tracking extraction state
   const audioRef = useRef(null);
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
@@ -31,6 +31,25 @@ const MeetingSessionPage = () => {
     };
     fetchSession();
   }, [sessionId, backendUrl]);
+
+  // Fetch action points
+  const fetchActionPoints = async () => {
+    try {
+      const response = await axios.get(`${backendUrl}/api/sessions/${sessionId}/action_points`);
+      if (response.status === 200) {
+        setActionPoints(response.data.action_items);
+      } else {
+        setError('Failed to fetch action points.');
+      }
+    } catch (err) {
+      setError('Error fetching action points.');
+    }
+  };
+
+  // Fetch action points on component mount
+  useEffect(() => {
+    fetchActionPoints();
+  }, [sessionId]);
 
   const handleTranscription = async () => {
     setIsTranscribing(true);
@@ -73,7 +92,7 @@ const MeetingSessionPage = () => {
           <p>Date: {new Date(session.session_datetime).toLocaleString()}</p>
 
           {transcription && (
-            <div className="transcription">
+            <div className="transcription" style={{ maxHeight: '300px', overflowY: 'auto', border: '1px solid #ccc', padding: '10px' }}>
               <h3>Transcription:</h3>
               <p>{transcription}</p>
             </div>
@@ -94,17 +113,19 @@ const MeetingSessionPage = () => {
                 {isExtracting ? 'Extracting Action Points...' : 'Extract Action Points'}
               </button>
 
-              {actionPoints.length > 0 && (
+              {actionPoints && actionPoints.length > 0 ? (
                 <div className="action-points">
                   <h3>Action Points:</h3>
                   <ul>
                     {actionPoints.map((item, index) => (
                       <li key={index}>
-                        <strong>{item.description}</strong> - Assigned to: {item.assigned_to}, Due Date: {item.due_date}
+                        <strong>{item.description}</strong> - Assigned to: {item.assigned_to}
                       </li>
                     ))}
                   </ul>
                 </div>
+              ) : (
+                <p>No action points available.</p>
               )}
             </div>
           ) : (
