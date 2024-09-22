@@ -1267,7 +1267,7 @@ def transcribe(session_id):
 
         # Begin the transcription process
         current_app.logger.info(f"Starting transcription process for session ID {session_id} with audio URL {audio_url}")
-        transcription_result = transcribe_audio(audio_url)
+        transcription_result = transcribe_audio(session_id, audio_url)
 
         if not transcription_result:
             current_app.logger.error(f"Transcription failed for session ID {session_id}")
@@ -1285,21 +1285,22 @@ def transcribe(session_id):
         current_app.logger.exception(f"An error occurred during transcription for session ID {session_id}: {str(e)}")
         return jsonify({'error': 'An error occurred during transcription'}), 500
 
-def transcribe_audio(audio_url):
+def transcribe_audio(session_id, audio_url):
     try:
         import os
         import tempfile
         import requests
         from flask import current_app
         from openai import OpenAI
+        import json  # Import json to handle JSON responses if necessary
         
         # Initialize the OpenAI client
         client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-        # Log the audio URL
-        current_app.logger.info(f"Transcribing audio from URL: {audio_url}")
+        # Log the audio URL and session ID
+        current_app.logger.info(f"Transcribing audio for session ID {session_id} from URL: {audio_url}")
 
-        # Download or load the audio file
+        # Download the audio file
         audio_response = requests.get(audio_url)
         if audio_response.status_code != 200:
             current_app.logger.error(f"Failed to download audio file from {audio_url}. Status code: {audio_response.status_code}")
@@ -1314,27 +1315,26 @@ def transcribe_audio(audio_url):
 
         current_app.logger.info(f"Temporary audio file created at {temp_audio_file_path}")
 
-        # Use the OpenAI Whisper API through client.audio.transcriptions.create
+        # Use the OpenAI Whisper API to transcribe the audio, requesting plain text output
         with open(temp_audio_file_path, "rb") as audio_file:
             transcription = client.audio.transcriptions.create(
                 model="whisper-1",
                 file=audio_file,
+                response_format='text'  # Ask for plain text response
             )
 
-        # Directly access the 'text' attribute
-        transcription_text = transcription['text']
-        current_app.logger.info(f"Transcription result: {transcription_text}")
+        # transcription is now a string since we set `response_format='text'`
+        current_app.logger.info(f"Transcription result for session ID {session_id}: {transcription}")
 
         # Clean up the temporary file
         os.remove(temp_audio_file_path)
         current_app.logger.info(f"Temporary audio file deleted: {temp_audio_file_path}")
 
-        return transcription_text
+        return transcription  # Return the plain text transcription
 
     except Exception as e:
-        current_app.logger.error(f"Error during transcription process: {str(e)}")
+        current_app.logger.error(f"Error during transcription process for session ID {session_id}: {str(e)}")
         return None
-
 
 
 @main.route('/api/extract_action_points/<int:session_id>', methods=['POST'])
@@ -1384,42 +1384,71 @@ def extract_action_points(session_id):
             return jsonify({'status': 'error', 'message': 'Invalid structure returned from OpenAI'}), 400
 
         # Process 'explicit' and 'suggested' action points
+        action_items = []
+        sorting_id = 1  # Initialize sorting_id for ordering
+
         if 'explicit' in parsed_action_points:
             for action in parsed_action_points['explicit']:
+                # Extract and handle fields
                 assigned_to = action.get('assigned_to', 'Unassigned')  # Default to 'Unassigned' if missing
-                if not all([action.get('summary'), action.get('detailed_explanation')]):
+                summary = action.get('summary', 'No summary provided')
+                details = action.get('details', 'No details provided')
+                title = summary  # Set title to the summary
+
+                if not summary or not details:
                     logger.error(f"Missing required fields in action item: {action}")
                     return jsonify({'status': 'error', 'message': 'Missing required fields in response'}), 400
 
                 action_item = ActionItem(
-                    summary=action['summary'],
-                    description=action['detailed_explanation'],
+                    title=title,
+                    description=details,
                     assigned_to=assigned_to,
                     meeting_session_id=session.id,
-                    status="explicit"
+                    status="explicit",
+                    sorting_id=sorting_id  # Increment sorting_id
                 )
+                action_items.append(action_item)
                 db.session.add(action_item)
+                logger.debug(f"Added explicit action item to session {session_id}: {action_item}")
+                sorting_id += 1  # Increment sorting ID for next action
 
         if 'suggested' in parsed_action_points:
             for action in parsed_action_points['suggested']:
+                # Extract and handle fields
                 assigned_to = action.get('assigned_to', 'Unassigned')  # Default to 'Unassigned' if missing
-                if not all([action.get('summary'), action.get('detailed_explanation')]):
+                summary = action.get('summary', 'No summary provided')
+                details = action.get('details', 'No details provided')
+                title = summary  # Set title to the summary
+
+                if not summary or not details:
                     logger.error(f"Missing required fields in action item: {action}")
                     return jsonify({'status': 'error', 'message': 'Missing required fields in response'}), 400
 
                 action_item = ActionItem(
-                    summary=action['summary'],
-                    description=action['detailed_explanation'],
+                    title=title,
+                    description=details,
                     assigned_to=assigned_to,
                     meeting_session_id=session.id,
-                    status="suggested"
+                    status="suggested",
+                    sorting_id=sorting_id  # Increment sorting_id
                 )
+                action_items.append(action_item)
                 db.session.add(action_item)
+                logger.debug(f"Added suggested action item to session {session_id}: {action_item}")
+                sorting_id += 1  # Increment sorting ID for next action
 
         # Commit transaction
         try:
             db.session.commit()
             logger.info(f"Transaction committed successfully for session_id: {session_id}")
+
+            # Query back the action items just inserted for validation
+            committed_action_items = ActionItem.query.filter_by(meeting_session_id=session_id).all()
+            if not committed_action_items:
+                logger.error(f"No action items were found in the database after commit for session_id: {session_id}")
+            else:
+                logger.debug(f"Committed action items for session {session_id}: {committed_action_items}")
+
         except Exception as commit_error:
             logger.error(f"Transaction failed for session_id: {session_id}: {commit_error}")
             db.session.rollback()
@@ -1432,6 +1461,30 @@ def extract_action_points(session_id):
     except Exception as e:
         logger.error(f"Error extracting action points for session_id: {session_id}: {str(e)}")
         return jsonify({'status': 'error', 'message': 'Error extracting action points'}), 500
+
+@main.route('/api/update_action_point_title/<int:action_item_id>', methods=['PUT'])
+def update_action_point_title(action_item_id):
+    data = request.get_json()  # Get the data from the request
+    new_title = data.get('title')  # Extract the new title from the data
+
+    if not new_title:
+        return jsonify({'status': 'error', 'message': 'Title is required'}), 400
+
+    # Fetch the action item by ID
+    action_item = ActionItem.query.get(action_item_id)
+    if not action_item:
+        return jsonify({'status': 'error', 'message': 'Action item not found'}), 404
+
+    # Update the title
+    action_item.title = new_title
+
+    # Commit the changes to the database
+    try:
+        db.session.commit()
+        return jsonify({'status': 'success', 'message': 'Action item title updated successfully'}), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'status': 'error', 'message': 'Failed to update title'}), 500       
 
 @main.route('/api/sessions/<int:session_id>/action_points', methods=['GET'])
 def get_action_points(session_id):
@@ -1448,16 +1501,110 @@ def get_action_points(session_id):
         logger.error(f"No action items found for session_id: {session_id}")
         return jsonify({'status': 'error', 'message': 'No action items found'}), 404
 
-    # Serialize the action items
+    # Serialize the action items with sorting_id
     action_items_list = [
         {
+            'id': item.id,
+            'title': item.title,
             'description': item.description,
             'assigned_to': item.assigned_to,
             'due_date': item.due_date.strftime('%Y-%m-%d') if item.due_date else None,
-            'completed': item.completed
+            'completed': item.completed,
+            'sorting_id': item.sorting_id  # Use sorting_id instead of sort_id
         }
         for item in action_items
     ]
 
     logger.debug(f"Returning action points for session_id: {session_id}")
     return jsonify({'status': 'success', 'action_items': action_items_list}), 200
+
+
+from openai import OpenAI
+
+@main.route('/api/sessions/<int:session_id>/summarize', methods=['POST'])
+def summarize_session(session_id):
+    session = MeetingSession.query.get(session_id)
+    if not session or not session.transcription:
+        return jsonify({'status': 'error', 'message': 'Session not found or transcription is missing'}), 404
+
+    transcription_text = session.transcription
+
+    # Short summary prompt
+    short_summary_prompt = f"""
+    Summarize the core topics in a maximum of 5 bullet points. Sentences should be short and capture only the core ideas.
+
+    Use HTML for formatting:
+    <strong>This meeting was about:</strong>
+    <ul>
+        <li>.......</li>
+        <li>.......</li>
+        <li>.......</li>
+    </ul>
+
+    <strong>Action points:</strong>
+    <ul>
+        <li>.......</li>
+        <li>.......</li>
+        <li>.......</li>
+    </ul>
+    """
+
+    # Long summary prompt
+    long_summary_prompt = f"""
+    Summarize the meeting in detail, including sections and action points.
+
+    Use HTML for formatting:
+    <strong>Summary of this meeting:</strong>
+
+    <strong>Relevant topic:</strong>
+    <ul>
+        <li>.......</li>
+        <li>.......</li>
+        <li>.......</li>
+    </ul>
+
+    <strong>Action points:</strong>
+    <ul>
+        <li>.......</li>
+        <li>.......</li>
+        <li>.......</li>
+    </ul>
+    """
+
+
+    client = OpenAI()
+
+    # Short summary API call
+    short_summary_response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": short_summary_prompt + transcription_text}
+        ]
+    )
+
+    # Long summary API call
+    long_summary_response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": long_summary_prompt + transcription_text}
+        ]
+    )
+
+    # Extract summaries from responses correctly
+    short_summary = short_summary_response.choices[0].message.content
+    long_summary = long_summary_response.choices[0].message.content
+
+    # Save summaries to the session
+    session.short_summary = short_summary
+    session.long_summary = long_summary
+    db.session.commit()
+
+    return jsonify({
+        'status': 'success',
+        'short_summary': session.short_summary,
+        'long_summary': session.long_summary
+    }), 200
+
+    

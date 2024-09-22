@@ -109,16 +109,19 @@ class MeetingSession(db.Model):
     transcription = db.Column(db.Text)  # Field for storing the transcription
     recordings = db.relationship('Recording', backref='meeting_session', lazy=True)
     action_items = db.relationship('ActionItem', backref='meeting_session', lazy=True)
+    short_summary = db.Column(db.Text)  # Store short summary
+    long_summary = db.Column(db.Text)  # Store long summary
 
 class ActionItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    summary = db.Column(db.Text, nullable=False)  # Updated to Text field
+    title = db.Column(db.String(255), nullable=False)  # New field for action item title
     description = db.Column(db.Text, nullable=False)  # Detailed action point description
     assigned_to = db.Column(db.String(128))  # Who is responsible for the action
     due_date = db.Column(db.DateTime)  # Optional due date for the action
     completed = db.Column(db.Boolean, default=False)  # Completion status
     status = db.Column(db.String(50), nullable=False, default='explicit')  # explicit or suggested
     meeting_session_id = db.Column(db.Integer, db.ForeignKey('meeting_session.id'), nullable=False)  # Link to meeting session
+    sorting_id = db.Column(db.Integer, nullable=False)  # Sorting field
 
 
 class Recording(db.Model):
