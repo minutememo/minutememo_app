@@ -259,22 +259,44 @@ const AudioRecorder = ({ selectedHub, setSelectedHub }) => {  // Accept selected
     }
 };
 
-  const stopRecording = () => {
-    stopRef.current = true; // Set stop flag
-    setRecording(false);
-    if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
-      mediaRecorderRef.current.stop();
-    }
-    if (audioCtxRef.current) {
-      audioCtxRef.current.close();
-    }
-    if (streamRef.current) {
-      streamRef.current.getTracks().forEach(track => track.stop());
-    }
-    cancelAnimationFrame(animationFrameIdRef.current);
+const stopRecording = async () => {
+  stopRef.current = true; // Set stop flag
+  setRecording(false);
+  if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
+    mediaRecorderRef.current.stop();
+  }
+  if (audioCtxRef.current) {
+    audioCtxRef.current.close();
+  }
+  if (streamRef.current) {
+    streamRef.current.getTracks().forEach(track => track.stop());
+  }
+  cancelAnimationFrame(animationFrameIdRef.current);
 
-    concatenateChunks();
-  };
+  // After stopping recording, concatenate chunks
+  await concatenateChunks();
+
+  // Once concatenation is done, trigger transcription, summarization, and action point extraction
+  try {
+    // Assuming that concatenation updates the database with audio_url
+    const transcriptionResponse = await axios.post(`${backendUrl}/api/transcribe/${meetingSessionId}`);
+    if (transcriptionResponse.status === 200) {
+      console.log("Transcription successful:", transcriptionResponse.data);
+
+      // Once transcription is successful, trigger action points extraction
+      const actionPointsResponse = await axios.post(`${backendUrl}/api/extract_action_points/${meetingSessionId}`);
+      if (actionPointsResponse.status === 200) {
+        console.log("Action points extraction successful:", actionPointsResponse.data);
+      } else {
+        console.error("Error extracting action points:", actionPointsResponse.data);
+      }
+    } else {
+      console.error("Error during transcription:", transcriptionResponse.data);
+    }
+  } catch (error) {
+    console.error("Error during transcription or action point extraction:", error);
+  }
+};
 
   return (
     <div className="audio-recorder">

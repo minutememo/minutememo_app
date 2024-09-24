@@ -8,55 +8,54 @@ const MeetingSessionPage = () => {
   const [session, setSession] = useState(null);
   const [error, setError] = useState('');
   const [transcription, setTranscription] = useState('');
-  const [shortSummary, setShortSummary] = useState('');
-  const [longSummary, setLongSummary] = useState('');
   const [isSummarizing, setIsSummarizing] = useState(false);
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [actionPoints, setActionPoints] = useState([]);
   const [isExtracting, setIsExtracting] = useState(false);
-  const [isTranscriptionExpanded, setIsTranscriptionExpanded] = useState(false); // New state for collapsible transcription
+  const [isTranscriptionExpanded, setIsTranscriptionExpanded] = useState(false);
+  const [summaries, setSummaries] = useState({ short: '', long: '' }); // Store both summaries
   const audioRef = useRef(null);
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
   useEffect(() => {
-    const fetchSession = async () => {
+    const fetchSessionData = async () => {
       try {
-        const response = await axios.get(`${backendUrl}/api/sessions/${sessionId}`);
-        if (response.status === 200) {
-          const sessionData = response.data.session;
+        // Fetch session data
+        const sessionResponse = await axios.get(`${backendUrl}/api/sessions/${sessionId}`);
+        if (sessionResponse.status === 200) {
+          const sessionData = sessionResponse.data.session;
           setSession(sessionData);
           setTranscription(sessionData.transcription || '');
-          setShortSummary(sessionData.short_summary || '');
-          setLongSummary(sessionData.long_summary || '');
         } else {
           setError('Failed to fetch session.');
         }
+  
+        // Fetch summaries (short and long)
+        const summariesResponse = await axios.get(`${backendUrl}/api/sessions/${sessionId}/summaries`);
+        if (summariesResponse.status === 200) {
+          setSummaries({
+            short: summariesResponse.data.short_summary || 'No short summary available',
+            long: summariesResponse.data.long_summary || 'No long summary available',
+          });
+        } else {
+          setError('Failed to fetch summaries.');
+        }
+  
+        // Fetch action points
+        const actionPointsResponse = await axios.get(`${backendUrl}/api/sessions/${sessionId}/action_points`);
+        if (actionPointsResponse.status === 200) {
+          setActionPoints(actionPointsResponse.data.action_items);
+        } else {
+          setError('Failed to fetch action points.');
+        }
       } catch (err) {
-        setError('Error fetching session.');
+        setError('Error fetching data.');
       }
     };
-    fetchSession();
+  
+    fetchSessionData();
   }, [sessionId, backendUrl]);
-
-  // Fetch action points
-  const fetchActionPoints = async () => {
-    try {
-      const response = await axios.get(`${backendUrl}/api/sessions/${sessionId}/action_points`);
-      if (response.status === 200) {
-        setActionPoints(response.data.action_items);
-      } else {
-        setError('Failed to fetch action points.');
-      }
-    } catch (err) {
-      setError('Error fetching action points.');
-    }
-  };
-
-  // Fetch action points on component mount
-  useEffect(() => {
-    fetchActionPoints();
-  }, [sessionId]);
 
   // Function to handle reordering action points
   const handleReorder = (newOrder) => {
@@ -72,6 +71,40 @@ const MeetingSessionPage = () => {
     );
   };
 
+  // Function to handle updating action point title
+  const handleUpdateTitle = async (id, newTitle) => {
+    try {
+      const response = await axios.put(`${backendUrl}/api/sessions/${sessionId}/action_points/${id}`, { title: newTitle });
+      if (response.status === 200) {
+        setActionPoints(prevItems =>
+          prevItems.map(item =>
+            item.id === id ? { ...item, title: newTitle } : item
+          )
+        );
+      } else {
+        setError('Failed to update action point.');
+      }
+    } catch (err) {
+      setError('Error updating action point.');
+    }
+  };
+
+  // Function to handle adding a new action point
+  const handleAddActionPoint = async (title) => {
+    try {
+      const response = await axios.post(`${backendUrl}/api/sessions/${sessionId}/action_points`, { title });
+      if (response.status === 201) {
+        const newActionPoint = response.data.action_item;
+        setActionPoints(prevItems => [...prevItems, newActionPoint]);
+      } else {
+        setError('Failed to add action point.');
+      }
+    } catch (err) {
+      setError('Error adding action point.');
+    }
+  };
+
+  // Function to handle transcription
   const handleTranscription = async () => {
     setIsTranscribing(true);
     try {
@@ -88,30 +121,16 @@ const MeetingSessionPage = () => {
     }
   };
 
-  const handleExtractActionPoints = async () => {
-    setIsExtracting(true);
-    try {
-      const response = await axios.post(`${backendUrl}/api/extract_action_points/${sessionId}`);
-      if (response.status === 200) {
-        setActionPoints(response.data.action_items);
-      } else {
-        setError('Failed to extract action points.');
-      }
-    } catch (err) {
-      setError('Error extracting action points.');
-    } finally {
-      setIsExtracting(false);
-    }
-  };
-
   // Function to handle summarization
   const handleSummarize = async () => {
     setIsSummarizing(true);
     try {
       const response = await axios.post(`${backendUrl}/api/sessions/${sessionId}/summarize`);
       if (response.status === 200) {
-        setShortSummary(response.data.short_summary);
-        setLongSummary(response.data.long_summary);
+        setSummaries({
+          short: response.data.short_summary,
+          long: response.data.long_summary,
+        });
       } else {
         setError('Failed to summarize.');
       }
@@ -122,7 +141,29 @@ const MeetingSessionPage = () => {
     }
   };
 
-  // Toggle transcription expand/collapse
+  const handleExtractActionPoints = async () => {
+    setIsExtracting(true);
+    try {
+      // Call the backend to extract action points from the transcription
+      const response = await axios.post(`${backendUrl}/api/extract_action_points/${sessionId}`, {}, {
+        headers: { 'Content-Type': 'application/json' }
+      });
+  
+      if (response.status === 200) {
+        // Action points successfully extracted
+        console.log('Action points extracted successfully:', response.data);
+        setActionPoints(response.data.action_items);  // Assuming the response contains action items
+      } else {
+        setError('Failed to extract action points.');
+      }
+    } catch (err) {
+      setError('Error extracting action points.');
+    } finally {
+      setIsExtracting(false);
+    }
+  };
+
+  // Toggle transcription display
   const toggleTranscription = () => {
     setIsTranscriptionExpanded(!isTranscriptionExpanded);
   };
@@ -135,7 +176,6 @@ const MeetingSessionPage = () => {
           <h2>{session.name}</h2>
           <p>Date: {new Date(session.session_datetime).toLocaleString()}</p>
 
-          {/* Collapsible Transcription */}
           <div className="transcription-container">
             <button onClick={toggleTranscription}>
               {isTranscriptionExpanded ? 'Collapse Transcription' : 'Expand Transcription'}
@@ -159,35 +199,36 @@ const MeetingSessionPage = () => {
                 {isTranscribing ? 'Transcribing...' : 'Transcribe Audio'}
               </button>
 
+              <button onClick={handleSummarize} disabled={isSummarizing}>
+                {isSummarizing ? 'Summarizing...' : 'Generate Summaries'}
+              </button>
+
               <button onClick={handleExtractActionPoints} disabled={isExtracting}>
                 {isExtracting ? 'Extracting Action Points...' : 'Extract Action Points'}
               </button>
 
-              <button onClick={handleSummarize} disabled={isSummarizing}>
-                {isSummarizing ? 'Summarizing...' : 'Summarize'}
-              </button>
-
-              {/* Short Summary */}
-              {shortSummary && (
+              {/* Display Summaries */}
+              {summaries.short && (
                 <div>
-                  <h3>Short Summary:</h3>
-                  <div dangerouslySetInnerHTML={{ __html: shortSummary }} />  {/* Render HTML safely */}
+                  <h3>Short Summary</h3>
+                  <div dangerouslySetInnerHTML={{ __html: summaries.short }} />
                 </div>
               )}
 
-              {/* Long Summary */}
-              {longSummary && (
+              {summaries.long && (
                 <div>
-                  <h3>Long Summary:</h3>
-                  <div dangerouslySetInnerHTML={{ __html: longSummary }} />  {/* Render HTML safely */}
+                  <h3>Long Summary</h3>
+                  <div dangerouslySetInnerHTML={{ __html: summaries.long }} />
                 </div>
               )}
 
-              {/* Action Points */}
+              {/* Action Points Component */}
               <ActionPoints
                 actionPoints={actionPoints}
                 onReorder={handleReorder}
                 onToggleComplete={handleToggleComplete}
+                onUpdateTitle={handleUpdateTitle}
+                onAddActionPoint={handleAddActionPoint}
               />
             </div>
           ) : (

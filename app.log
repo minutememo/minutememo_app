@@ -1,245 +1,47 @@
-2024-09-22 07:33:36,803 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sun, 22 Sep 2024 05:33:36 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'minute-memo'), (b'openai-processing-ms', b'1278'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=15552000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'200000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'199732'), (b'x-ratelimit-reset-requests', b'8.64s'), (b'x-ratelimit-reset-tokens', b'80ms'), (b'x-request-id', b'req_28ba302880c6848fbcb0a30e82d30d60'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=Q0X_.PjCLCLCzmQcNZlNXbkQuwyH.x_sxB.YswPQyb4-1726983216-1.0.1.1-4vk9BmCvNihp4Xv6sHWPgfHVYiVVgHWANhlFjzKe9UylO.B4JK26jd5HAmfdBWBYiyVjiNUeECLRqYsJDOqDZg; path=/; expires=Sun, 22-Sep-24 06:03:36 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=FAEXVgaGA6VsAjy8_5DJ2c8pm_reKfcXx_RmlEJFwEE-1726983216840-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8c6febc79bb12e50-BRU'), (b'Content-Encoding', b'gzip')])
-2024-09-22 07:33:36,812 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2024-09-22 07:33:36,812 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2024-09-22 07:33:36,812 - httpcore.http11 - DEBUG - receive_response_body.complete
-2024-09-22 07:33:36,813 - httpcore.http11 - DEBUG - response_closed.started
-2024-09-22 07:33:36,813 - httpcore.http11 - DEBUG - response_closed.complete
-2024-09-22 07:33:36,813 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers([('date', 'Sun, 22 Sep 2024 05:33:36 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'minute-memo'), ('openai-processing-ms', '1278'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=15552000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '10000'), ('x-ratelimit-limit-tokens', '200000'), ('x-ratelimit-remaining-requests', '9999'), ('x-ratelimit-remaining-tokens', '199732'), ('x-ratelimit-reset-requests', '8.64s'), ('x-ratelimit-reset-tokens', '80ms'), ('x-request-id', 'req_28ba302880c6848fbcb0a30e82d30d60'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=Q0X_.PjCLCLCzmQcNZlNXbkQuwyH.x_sxB.YswPQyb4-1726983216-1.0.1.1-4vk9BmCvNihp4Xv6sHWPgfHVYiVVgHWANhlFjzKe9UylO.B4JK26jd5HAmfdBWBYiyVjiNUeECLRqYsJDOqDZg; path=/; expires=Sun, 22-Sep-24 06:03:36 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=FAEXVgaGA6VsAjy8_5DJ2c8pm_reKfcXx_RmlEJFwEE-1726983216840-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8c6febc79bb12e50-BRU'), ('content-encoding', 'gzip')])
-2024-09-22 07:33:36,813 - openai._base_client - DEBUG - request_id: req_28ba302880c6848fbcb0a30e82d30d60
-2024-09-22 07:33:36,817 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a helpful assistant.'}, {'role': 'user', 'content': '\n    Summarize the meeting in detail, including sections and action points.\n\n    Use HTML for formatting:\n    <strong>Summary of this meeting:</strong>\n\n    <strong>Relevant topic:</strong>\n    <ul>\n        <li>.......</li>\n        <li>.......</li>\n        <li>.......</li>\n    </ul>\n\n    <strong>Action points:</strong>\n    <ul>\n        <li>.......</li>\n        <li>.......</li>\n        <li>.......</li>\n    </ul>\n    In een geestelse omletje, morgens in de wochte, stonden die lagentjes, letjes op en heen, ik zag het maschinenstje, laaien aan het willetje, op de akkertuut, het magische zinwerk. Oké, dus. Dus, de bedoeling is dat we in de laatste week een spreef gaan organiseren waar we het team motiveren om zoveel mogelijk bierstof te kunnen halen in de laatste week. We hebben hiervoor een budget van 500 euro. We moeten nog goed nadenken over wat onze prijzen zullen zijn en dan moeten we zondagavond alles opzetten en dan maandag het team informeren.\n'}], 'model': 'gpt-4o-mini'}}
-2024-09-22 07:33:36,818 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
-2024-09-22 07:33:36,818 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2024-09-22 07:33:36,818 - httpcore.http11 - DEBUG - send_request_headers.complete
-2024-09-22 07:33:36,819 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2024-09-22 07:33:36,819 - httpcore.http11 - DEBUG - send_request_body.complete
-2024-09-22 07:33:36,819 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2024-09-22 07:33:38,272 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sun, 22 Sep 2024 05:33:38 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'minute-memo'), (b'openai-processing-ms', b'1128'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=15552000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'200000'), (b'x-ratelimit-remaining-requests', b'9998'), (b'x-ratelimit-remaining-tokens', b'199733'), (b'x-ratelimit-reset-requests', b'15.695s'), (b'x-ratelimit-reset-tokens', b'79ms'), (b'x-request-id', b'req_53a0fd15aee598b9a935acdbb36674c3'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8c6febd17f4d2e50-BRU'), (b'Content-Encoding', b'gzip')])
-2024-09-22 07:33:38,275 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2024-09-22 07:33:38,276 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2024-09-22 07:33:38,276 - httpcore.http11 - DEBUG - receive_response_body.complete
-2024-09-22 07:33:38,277 - httpcore.http11 - DEBUG - response_closed.started
-2024-09-22 07:33:38,277 - httpcore.http11 - DEBUG - response_closed.complete
-2024-09-22 07:33:38,277 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers({'date': 'Sun, 22 Sep 2024 05:33:38 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-expose-headers': 'X-Request-ID', 'openai-organization': 'minute-memo', 'openai-processing-ms': '1128', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=15552000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '200000', 'x-ratelimit-remaining-requests': '9998', 'x-ratelimit-remaining-tokens': '199733', 'x-ratelimit-reset-requests': '15.695s', 'x-ratelimit-reset-tokens': '79ms', 'x-request-id': 'req_53a0fd15aee598b9a935acdbb36674c3', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8c6febd17f4d2e50-BRU', 'content-encoding': 'gzip'})
-2024-09-22 07:33:38,278 - openai._base_client - DEBUG - request_id: req_53a0fd15aee598b9a935acdbb36674c3
-2024-09-22 07:33:38,302 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:38,304 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:38] "POST /api/sessions/99/summarize HTTP/1.1" 200 -
-2024-09-22 07:33:48,229 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:48,248 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:48] "OPTIONS /api/meetings HTTP/1.1" 200 -
-2024-09-22 07:33:48,736 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:48,744 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:48] "[35m[1mPOST /api/meetings HTTP/1.1[0m" 201 -
-2024-09-22 07:33:48,770 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:48,808 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:48] "OPTIONS /api/recordings HTTP/1.1" 200 -
-2024-09-22 07:33:48,847 - minutememo_app.app - INFO - Recording 6c69ae0a-3411-45ec-ad6c-adc83db2fb8f created for user 1 in session 100
-2024-09-22 07:33:48,847 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:48,848 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:48] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
-2024-09-22 07:33:53,352 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:53,353 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:53] "OPTIONS /concatenate HTTP/1.1" 200 -
-2024-09-22 07:33:53,356 - minutememo_app.app - INFO - Received request to concatenate for recording_id: 6c69ae0a-3411-45ec-ad6c-adc83db2fb8f
-2024-09-22 07:33:53,362 - minutememo_app.app - ERROR - No chunks found for recording_id: 6c69ae0a-3411-45ec-ad6c-adc83db2fb8f
-2024-09-22 07:33:53,362 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:53,372 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:53] "[31m[1mPOST /concatenate HTTP/1.1[0m" 400 -
-2024-09-22 07:33:55,141 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:55,142 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:55] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-22 07:33:55,149 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:55,149 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 3
-2024-09-22 07:33:55,150 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:55] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
-2024-09-22 07:33:55,151 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:55,152 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:55] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-22 07:33:55,161 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:55,162 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:55] "GET /api/meetingsessions?hub_id=3 HTTP/1.1" 200 -
-2024-09-22 07:33:56,136 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:56,138 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:56] "GET /api/meetings?meeting_id=97 HTTP/1.1" 200 -
-2024-09-22 07:33:56,143 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:56,144 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:56] "GET /api/meetings?meeting_id=97 HTTP/1.1" 200 -
-2024-09-22 07:33:56,926 - routes - DEBUG - Fetching action points for session_id: 100
-2024-09-22 07:33:56,931 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:56,931 - routes - ERROR - No action items found for session_id: 100
-2024-09-22 07:33:56,933 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:56,934 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:56] "GET /api/sessions/100 HTTP/1.1" 200 -
-2024-09-22 07:33:56,935 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:56] "[33mGET /api/sessions/100/action_points HTTP/1.1[0m" 404 -
-2024-09-22 07:33:56,937 - routes - DEBUG - Fetching action points for session_id: 100
-2024-09-22 07:33:56,940 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:56,940 - routes - ERROR - No action items found for session_id: 100
-2024-09-22 07:33:56,941 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:56,942 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:56] "GET /api/sessions/100 HTTP/1.1" 200 -
-2024-09-22 07:33:56,942 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:56] "[33mGET /api/sessions/100/action_points HTTP/1.1[0m" 404 -
-2024-09-22 07:33:58,785 - routes - DEBUG - Fetching action points for session_id: 100
-2024-09-22 07:33:58,789 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:58,791 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:58] "GET /api/sessions/100 HTTP/1.1" 200 -
-2024-09-22 07:33:58,791 - routes - ERROR - No action items found for session_id: 100
-2024-09-22 07:33:58,792 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:58,794 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:58] "[33mGET /api/sessions/100/action_points HTTP/1.1[0m" 404 -
-2024-09-22 07:33:58,797 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:58,799 - routes - DEBUG - Fetching action points for session_id: 100
-2024-09-22 07:33:58,800 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:58,800 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:58] "GET /api/sessions/100 HTTP/1.1" 200 -
-2024-09-22 07:33:58,801 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:58] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-22 07:33:58,801 - routes - ERROR - No action items found for session_id: 100
-2024-09-22 07:33:58,802 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:58,803 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:58] "[33mGET /api/sessions/100/action_points HTTP/1.1[0m" 404 -
-2024-09-22 07:33:58,808 - routes - DEBUG - Fetching action points for session_id: 100
-2024-09-22 07:33:58,809 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:58,809 - routes - ERROR - No action items found for session_id: 100
-2024-09-22 07:33:58,809 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:58,810 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:58] "GET /api/sessions/100 HTTP/1.1" 200 -
-2024-09-22 07:33:58,810 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:58] "[33mGET /api/sessions/100/action_points HTTP/1.1[0m" 404 -
-2024-09-22 07:33:58,813 - routes - DEBUG - Fetching action points for session_id: 100
-2024-09-22 07:33:58,814 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:58,815 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:58] "GET /api/sessions/100 HTTP/1.1" 200 -
-2024-09-22 07:33:58,816 - routes - ERROR - No action items found for session_id: 100
-2024-09-22 07:33:58,816 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:58,817 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:58] "[33mGET /api/sessions/100/action_points HTTP/1.1[0m" 404 -
-2024-09-22 07:33:58,819 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:58,819 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:58] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-22 07:33:58,827 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:58,828 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:58] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-22 07:33:59,415 - routes - DEBUG - Fetching action points for session_id: 100
-2024-09-22 07:33:59,446 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:59,447 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:59] "GET /api/sessions/100 HTTP/1.1" 200 -
-2024-09-22 07:33:59,449 - routes - ERROR - No action items found for session_id: 100
-2024-09-22 07:33:59,450 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:59,451 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:59,451 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:59] "[33mGET /api/sessions/100/action_points HTTP/1.1[0m" 404 -
-2024-09-22 07:33:59,451 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:59] "GET /api/sessions/100 HTTP/1.1" 200 -
-2024-09-22 07:33:59,453 - routes - DEBUG - Fetching action points for session_id: 100
-2024-09-22 07:33:59,455 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:59,455 - routes - ERROR - No action items found for session_id: 100
-2024-09-22 07:33:59,456 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:59,456 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:59] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-22 07:33:59,456 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:59] "[33mGET /api/sessions/100/action_points HTTP/1.1[0m" 404 -
-2024-09-22 07:33:59,462 - routes - DEBUG - Fetching action points for session_id: 100
-2024-09-22 07:33:59,477 - routes - ERROR - No action items found for session_id: 100
-2024-09-22 07:33:59,477 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:59,477 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:59,480 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:59] "[33mGET /api/sessions/100/action_points HTTP/1.1[0m" 404 -
-2024-09-22 07:33:59,480 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:59] "GET /api/sessions/100 HTTP/1.1" 200 -
-2024-09-22 07:33:59,486 - routes - DEBUG - Fetching action points for session_id: 100
-2024-09-22 07:33:59,488 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:59,489 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:59,489 - routes - ERROR - No action items found for session_id: 100
-2024-09-22 07:33:59,490 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:59] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-22 07:33:59,490 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:59,490 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:59] "GET /api/sessions/100 HTTP/1.1" 200 -
-2024-09-22 07:33:59,491 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:59] "[33mGET /api/sessions/100/action_points HTTP/1.1[0m" 404 -
-2024-09-22 07:33:59,499 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:33:59,500 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:33:59] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-22 07:34:00,016 - routes - DEBUG - Fetching action points for session_id: 100
-2024-09-22 07:34:00,019 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:00,022 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:00] "GET /api/sessions/100 HTTP/1.1" 200 -
-2024-09-22 07:34:00,022 - routes - ERROR - No action items found for session_id: 100
-2024-09-22 07:34:00,022 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:00,024 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:00] "[33mGET /api/sessions/100/action_points HTTP/1.1[0m" 404 -
-2024-09-22 07:34:00,027 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:00,026 - routes - DEBUG - Fetching action points for session_id: 100
-2024-09-22 07:34:00,028 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:00] "GET /api/sessions/100 HTTP/1.1" 200 -
-2024-09-22 07:34:00,029 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:00,029 - routes - ERROR - No action items found for session_id: 100
-2024-09-22 07:34:00,029 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:00,030 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:00] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-22 07:34:00,030 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:00] "[33mGET /api/sessions/100/action_points HTTP/1.1[0m" 404 -
-2024-09-22 07:34:00,037 - routes - DEBUG - Fetching action points for session_id: 100
-2024-09-22 07:34:00,038 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:00,039 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:00] "GET /api/sessions/100 HTTP/1.1" 200 -
-2024-09-22 07:34:00,039 - routes - ERROR - No action items found for session_id: 100
-2024-09-22 07:34:00,040 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:00,040 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:00,041 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:00] "[33mGET /api/sessions/100/action_points HTTP/1.1[0m" 404 -
-2024-09-22 07:34:00,041 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:00] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-22 07:34:00,044 - routes - DEBUG - Fetching action points for session_id: 100
-2024-09-22 07:34:00,045 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:00,047 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:00] "GET /api/sessions/100 HTTP/1.1" 200 -
-2024-09-22 07:34:00,047 - routes - ERROR - No action items found for session_id: 100
-2024-09-22 07:34:00,048 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:00,049 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:00] "[33mGET /api/sessions/100/action_points HTTP/1.1[0m" 404 -
-2024-09-22 07:34:00,052 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:00,052 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:00] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-22 07:34:05,645 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:05,647 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:05] "OPTIONS /api/meetings HTTP/1.1" 200 -
-2024-09-22 07:34:05,658 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:05,659 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:05] "[35m[1mPOST /api/meetings HTTP/1.1[0m" 201 -
-2024-09-22 07:34:05,661 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:05,661 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:05] "OPTIONS /api/recordings HTTP/1.1" 200 -
-2024-09-22 07:34:05,669 - minutememo_app.app - INFO - Recording 7d15c993-c563-4e98-9351-380ab794c756 created for user 1 in session 101
-2024-09-22 07:34:05,670 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:05,670 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:05] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
-2024-09-22 07:34:10,944 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:10,945 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:10] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-22 07:34:13,244 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:13,245 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:13] "OPTIONS /concatenate HTTP/1.1" 200 -
-2024-09-22 07:34:13,247 - minutememo_app.app - INFO - Received request to concatenate for recording_id: 7d15c993-c563-4e98-9351-380ab794c756
-2024-09-22 07:34:13,249 - minutememo_app.app - INFO - Local chunk files for recording_id 7d15c993-c563-4e98-9351-380ab794c756: ['7d15c993-c563-4e98-9351-380ab794c756_chunk_0.webm']
-2024-09-22 07:34:13,249 - minutememo_app.app - INFO - List file created at: uploads/audio_recordings/7d15c993-c563-4e98-9351-380ab794c756_list.txt
-2024-09-22 07:34:13,249 - minutememo_app.app - INFO - Running FFmpeg locally with list file uploads/audio_recordings/7d15c993-c563-4e98-9351-380ab794c756_list.txt
-2024-09-22 07:34:15,512 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:15,513 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:15] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-22 07:34:15,528 - httpcore.connection - DEBUG - close.started
-2024-09-22 07:34:15,530 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:15,530 - httpcore.connection - DEBUG - close.complete
-2024-09-22 07:34:15,531 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:15,534 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:15] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
-2024-09-22 07:34:15,534 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:15] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-22 07:34:15,581 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 3
-2024-09-22 07:34:15,593 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:15,594 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:15] "GET /api/meetingsessions?hub_id=3 HTTP/1.1" 200 -
-2024-09-22 07:34:16,199 - minutememo_app.app - INFO - Local concatenation output at uploads/audio_recordings/7d15c993-c563-4e98-9351-380ab794c756.webm
-2024-09-22 07:34:16,316 - minutememo_app.app - INFO - MP3 conversion successful. File saved at uploads/audio_recordings/7d15c993-c563-4e98-9351-380ab794c756.mp3
-2024-09-22 07:34:16,340 - minutememo_app.app - INFO - Concatenation status for 7d15c993-c563-4e98-9351-380ab794c756 updated to success
-2024-09-22 07:34:16,340 - minutememo_app.app - INFO - Concatenation status updated to 'success' in the database for recording_id: 7d15c993-c563-4e98-9351-380ab794c756
-2024-09-22 07:34:16,340 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:16,341 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:16] "POST /concatenate HTTP/1.1" 200 -
-2024-09-22 07:34:16,347 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:16,348 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:16] "OPTIONS /api/recordings/7d15c993-c563-4e98-9351-380ab794c756 HTTP/1.1" 200 -
-2024-09-22 07:34:16,350 - minutememo_app.app - INFO - Entering update_recording function for recording_id: 7d15c993-c563-4e98-9351-380ab794c756
-2024-09-22 07:34:16,350 - minutememo_app.app - INFO - Received data for updating recording 7d15c993-c563-4e98-9351-380ab794c756: {'audio_url': '/uploads/audio_recordings/7d15c993-c563-4e98-9351-380ab794c756.mp3'}
-2024-09-22 07:34:16,350 - minutememo_app.app - INFO - Fetching Recording with ID: 7d15c993-c563-4e98-9351-380ab794c756
-2024-09-22 07:34:16,352 - minutememo_app.app - INFO - Current recording before update: <Recording 7d15c993-c563-4e98-9351-380ab794c756>
-2024-09-22 07:34:16,352 - minutememo_app.app - INFO - Fetching associated MeetingSession with ID: 101
-2024-09-22 07:34:16,352 - minutememo_app.app - INFO - Current MeetingSession before update: <MeetingSession 101>
-2024-09-22 07:34:16,352 - minutememo_app.app - INFO - Updating audio_url for MeetingSession ID: 101
-2024-09-22 07:34:16,354 - minutememo_app.app - INFO - MeetingSession after update: <MeetingSession 101>
-2024-09-22 07:34:16,354 - minutememo_app.app - INFO - Exiting update_recording function for recording_id: 7d15c993-c563-4e98-9351-380ab794c756
-2024-09-22 07:34:16,354 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:16,355 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:16] "PATCH /api/recordings/7d15c993-c563-4e98-9351-380ab794c756 HTTP/1.1" 200 -
-2024-09-22 07:34:16,839 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:16,848 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:16] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-22 07:34:16,853 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:16,855 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:16] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-22 07:34:16,859 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:16,860 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:16] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-22 07:34:16,867 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:16,868 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:16] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-22 07:34:16,868 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:16,869 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:16] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-22 07:34:16,873 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:16,873 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 3
-2024-09-22 07:34:16,873 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:16,875 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:16] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-22 07:34:16,876 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:16] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
-2024-09-22 07:34:16,882 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:16,882 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:16] "GET /api/meetingsessions?hub_id=3 HTTP/1.1" 200 -
-2024-09-22 07:34:16,884 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:16,884 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:16] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-09-22 07:34:17,587 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:17,588 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:17] "GET /api/meetings?meeting_id=98 HTTP/1.1" 200 -
-2024-09-22 07:34:17,594 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:17,595 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:17] "GET /api/meetings?meeting_id=98 HTTP/1.1" 200 -
-2024-09-22 07:34:18,316 - routes - DEBUG - Fetching action points for session_id: 101
-2024-09-22 07:34:18,340 - minutememo_app.app - INFO - Local audio URL for session ID 101: http://localhost:5000/uploads/audio_recordings/7d15c993-c563-4e98-9351-380ab794c756.mp3
-2024-09-22 07:34:18,340 - routes - ERROR - No action items found for session_id: 101
-2024-09-22 07:34:18,340 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:18,340 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:18,341 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:18] "GET /api/sessions/101 HTTP/1.1" 200 -
-2024-09-22 07:34:18,341 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:18] "[33mGET /api/sessions/101/action_points HTTP/1.1[0m" 404 -
-2024-09-22 07:34:18,343 - routes - DEBUG - Fetching action points for session_id: 101
-2024-09-22 07:34:18,346 - auth - DEBUG - After request, Origin: None
-2024-09-22 07:34:18,347 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:18] "[35m[1mGET /uploads/audio_recordings/7d15c993-c563-4e98-9351-380ab794c756.mp3 HTTP/1.1[0m" 206 -
-2024-09-22 07:34:18,381 - minutememo_app.app - INFO - Local audio URL for session ID 101: http://localhost:5000/uploads/audio_recordings/7d15c993-c563-4e98-9351-380ab794c756.mp3
-2024-09-22 07:34:18,382 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:18,384 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:18] "GET /api/sessions/101 HTTP/1.1" 200 -
-2024-09-22 07:34:18,394 - routes - ERROR - No action items found for session_id: 101
-2024-09-22 07:34:18,394 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-22 07:34:18,395 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2024 07:34:18] "[33mGET /api/sessions/101/action_points HTTP/1.1[0m" 404 -
-2024-09-22 07:34:27 DEBUG: close.started
-2024-09-22 07:34:27,963 - httpcore.connection - DEBUG - close.started
-2024-09-22 07:34:27 DEBUG: close.complete
-2024-09-22 07:34:27,965 - httpcore.connection - DEBUG - close.complete
+2024-09-24 11:02:56,913 - werkzeug - INFO - 127.0.0.1 - - [24/Sep/2024 11:02:56] "OPTIONS /api/extract_action_points/104 HTTP/1.1" 200 -
+2024-09-24 11:02:56,923 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-09-24 11:02:56,924 - httpx - DEBUG - load_verify_locations cafile='/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2024-09-24 11:02:56,952 - routes - DEBUG - Starting action point extraction for session_id: 104
+2024-09-24 11:02:56,954 - routes - DEBUG - Sending transcription to OpenAI for extraction, session_id: 104
+2024-09-24 11:02:56,958 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': "\n                Extract action items from this meeting transcription, including who is assigned. Categorize them by 'explicit' or 'suggested'.\n                - Summarize the action item in 5 words.\n                - Provide a detailed explanation and expected outcome.\n                - Ensure output adheres to the defined JSON schema.\n                "}, {'role': 'user', 'content': 'So moving forward we will be reviewing our phone calls every week and you will be reviewing the ones of your peers. So what you will receive from me is an email that I still need to draft and in that email I will also send you a form link. One of my things is that I need to remind myself of sending you audio files every week so you can do the reviews.\n'}], 'model': 'gpt-4o-2024-08-06', 'response_format': {'type': 'json_object'}}}
+2024-09-24 11:02:56,975 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2024-09-24 11:02:56,975 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2024-09-24 11:02:57,020 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x10ac927b0>
+2024-09-24 11:02:57,020 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x10aaf5b50> server_hostname='api.openai.com' timeout=5.0
+2024-09-24 11:02:57,053 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x10ac928a0>
+2024-09-24 11:02:57,053 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-09-24 11:02:57,053 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-09-24 11:02:57,054 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-09-24 11:02:57,054 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-09-24 11:02:57,054 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-09-24 11:03:01,110 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Tue, 24 Sep 2024 09:03:01 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'minute-memo'), (b'openai-processing-ms', b'3829'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=15552000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'500'), (b'x-ratelimit-limit-tokens', b'30000'), (b'x-ratelimit-remaining-requests', b'499'), (b'x-ratelimit-remaining-tokens', b'29804'), (b'x-ratelimit-reset-requests', b'120ms'), (b'x-ratelimit-reset-tokens', b'392ms'), (b'x-request-id', b'req_40cb60074e1d660f4f83f5e402926335'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=.FEp6LO0q43ZX.TEs7XqXBD.lWx.n85OfBv2tvI4FfM-1727168581-1.0.1.1-e9h5dtG5cFz.zPi09JQjTK9H9cgcwX7Oy81r0DZzi3c2PJTkEtq9ENzs3.ilD8AXy8ZQsQ.hbRLD566ftrVOcQ; path=/; expires=Tue, 24-Sep-24 09:33:01 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=jZ6NcvjNdbUbOr.NyYnDVp8rWiMS_SzxTEqcjunqdAA-1727168581109-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8c819936ca81b720-BRU'), (b'Content-Encoding', b'gzip')])
+2024-09-24 11:03:01,114 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-09-24 11:03:01,115 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-09-24 11:03:01,116 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-09-24 11:03:01,116 - httpcore.http11 - DEBUG - response_closed.started
+2024-09-24 11:03:01,116 - httpcore.http11 - DEBUG - response_closed.complete
+2024-09-24 11:03:01,116 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers([('date', 'Tue, 24 Sep 2024 09:03:01 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'minute-memo'), ('openai-processing-ms', '3829'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=15552000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '500'), ('x-ratelimit-limit-tokens', '30000'), ('x-ratelimit-remaining-requests', '499'), ('x-ratelimit-remaining-tokens', '29804'), ('x-ratelimit-reset-requests', '120ms'), ('x-ratelimit-reset-tokens', '392ms'), ('x-request-id', 'req_40cb60074e1d660f4f83f5e402926335'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=.FEp6LO0q43ZX.TEs7XqXBD.lWx.n85OfBv2tvI4FfM-1727168581-1.0.1.1-e9h5dtG5cFz.zPi09JQjTK9H9cgcwX7Oy81r0DZzi3c2PJTkEtq9ENzs3.ilD8AXy8ZQsQ.hbRLD566ftrVOcQ; path=/; expires=Tue, 24-Sep-24 09:33:01 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=jZ6NcvjNdbUbOr.NyYnDVp8rWiMS_SzxTEqcjunqdAA-1727168581109-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8c819936ca81b720-BRU'), ('content-encoding', 'gzip')])
+2024-09-24 11:03:01,117 - openai._base_client - DEBUG - request_id: req_40cb60074e1d660f4f83f5e402926335
+2024-09-24 11:03:01,122 - routes - DEBUG - Received action points from OpenAI: {
+    "explicit": [
+        {
+            "summary": "Draft and send review email.",
+            "detailed_explanation": "The speaker needs to draft an email that will include a form link necessary for reviewing peers' phone calls. This task involves writing and sending out a comprehensive email to team members to initiate the weekly call review process.",
+            "assigned_to": "Speaker"
+        },
+        {
+            "summary": "Send weekly audio files.",
+            "detailed_explanation": "The speaker needs to send audio files every week to enable team members to conduct their peer reviews. This is crucial for the weekly review process and ensures everyone has the material needed to complete their evaluations.",
+            "assigned_to": "Speaker"
+        }
+    ],
+    "suggested": []
+}
+2024-09-24 11:03:01,122 - routes - DEBUG - Successfully parsed action points: {'explicit': [{'summary': 'Draft and send review email.', 'detailed_explanation': "The speaker needs to draft an email that will include a form link necessary for reviewing peers' phone calls. This task involves writing and sending out a comprehensive email to team members to initiate the weekly call review process.", 'assigned_to': 'Speaker'}, {'summary': 'Send weekly audio files.', 'detailed_explanation': 'The speaker needs to send audio files every week to enable team members to conduct their peer reviews. This is crucial for the weekly review process and ensures everyone has the material needed to complete their evaluations.', 'assigned_to': 'Speaker'}], 'suggested': []}
+2024-09-24 11:03:01,144 - routes - INFO - Action points saved for session_id: 104
+2024-09-24 11:03:01,147 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-24 11:03:01,148 - werkzeug - INFO - 127.0.0.1 - - [24/Sep/2024 11:03:01] "POST /api/extract_action_points/104 HTTP/1.1" 200 -
+2024-09-24 11:05:18 DEBUG: close.started
+2024-09-24 11:05:18,831 - httpcore.connection - DEBUG - close.started
+2024-09-24 11:05:18 DEBUG: close.complete
+2024-09-24 11:05:18,833 - httpcore.connection - DEBUG - close.complete

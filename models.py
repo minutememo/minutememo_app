@@ -114,15 +114,27 @@ class MeetingSession(db.Model):
 
 class ActionItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(255), nullable=False)  # New field for action item title
-    description = db.Column(db.Text, nullable=False)  # Detailed action point description
-    assigned_to = db.Column(db.String(128))  # Who is responsible for the action
-    due_date = db.Column(db.DateTime)  # Optional due date for the action
-    completed = db.Column(db.Boolean, default=False)  # Completion status
-    status = db.Column(db.String(50), nullable=False, default='explicit')  # explicit or suggested
-    meeting_session_id = db.Column(db.Integer, db.ForeignKey('meeting_session.id'), nullable=False)  # Link to meeting session
-    sorting_id = db.Column(db.Integer, nullable=False)  # Sorting field
+    title = db.Column(db.String(255), nullable=False)
+    description = db.Column(db.Text, nullable=False)
+    assigned_to = db.Column(db.String(128))
+    due_date = db.Column(db.DateTime)
+    completed = db.Column(db.Boolean, default=False)
+    status = db.Column(db.String(50), nullable=False, default='explicit')
+    meeting_session_id = db.Column(db.Integer, db.ForeignKey('meeting_session.id'), nullable=False)
+    sorting_id = db.Column(db.Integer, nullable=False)
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'description': self.description,
+            'assigned_to': self.assigned_to,
+            'due_date': self.due_date.isoformat() if self.due_date else None,
+            'completed': self.completed,
+            'status': self.status,
+            'meeting_session_id': self.meeting_session_id,
+            'sorting_id': self.sorting_id
+        }
 
 class Recording(db.Model):
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, unique=True, nullable=False)

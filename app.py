@@ -10,7 +10,7 @@ import re
 from logging.handlers import RotatingFileHandler
 import logging
 from extensions import *
-from models import *
+from models import Company, User, MeetingHub
 from auth import *
 from google.oauth2 import service_account
 from super_admin import super_admin_bp  # Ensure this is correct
