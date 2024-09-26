@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import ActionPoints from './ActionPoints';
+import '../styles.css'; // Assuming styles.css is in the src folder
+
 
 const MeetingSessionPage = () => {
   const { sessionId } = useParams();
@@ -189,51 +191,56 @@ const MeetingSessionPage = () => {
           </div>
 
           {session.audio_url ? (
-            <div>
-              <audio ref={audioRef} src={session.audio_url} controls />
-              <a href={session.audio_url} download>
-                Download Audio
-              </a>
+          <div>
+            <audio ref={audioRef} src={session.audio_url} controls />
+            <a href={session.audio_url} download>
+              Download Audio
+            </a>
 
-              <button onClick={handleTranscription} disabled={isTranscribing}>
-                {isTranscribing ? 'Transcribing...' : 'Transcribe Audio'}
-              </button>
+            <button onClick={handleTranscription} disabled={isTranscribing}>
+              {isTranscribing ? 'Transcribing...' : 'Transcribe Audio'}
+            </button>
 
-              <button onClick={handleSummarize} disabled={isSummarizing}>
-                {isSummarizing ? 'Summarizing...' : 'Generate Summaries'}
-              </button>
+            <button onClick={handleSummarize} disabled={isSummarizing}>
+              {isSummarizing ? 'Summarizing...' : 'Generate Summaries'}
+            </button>
 
-              <button onClick={handleExtractActionPoints} disabled={isExtracting}>
-                {isExtracting ? 'Extracting Action Points...' : 'Extract Action Points'}
-              </button>
+            <button onClick={handleExtractActionPoints} disabled={isExtracting}>
+              {isExtracting ? 'Extracting Action Points...' : 'Extract Action Points'}
+            </button>
 
-              {/* Display Summaries */}
-              {summaries.short && (
-                <div>
-                  <h3>Short Summary</h3>
+            {/* Display Summaries Side by Side */}
+            <div className="summary-wrapper">
+              <div className="summary-container">
+                <h3>Short Summary</h3>
+                {summaries.short ? (
                   <div dangerouslySetInnerHTML={{ __html: summaries.short }} />
-                </div>
-              )}
-
-              {summaries.long && (
-                <div>
-                  <h3>Long Summary</h3>
+                ) : (
+                  <p>No short summary available.</p>
+                )}
+              </div>
+              <div className="summary-container">
+                <h3>Long Summary</h3>
+                {summaries.long ? (
                   <div dangerouslySetInnerHTML={{ __html: summaries.long }} />
-                </div>
-              )}
-
-              {/* Action Points Component */}
-              <ActionPoints
-                actionPoints={actionPoints}
-                onReorder={handleReorder}
-                onToggleComplete={handleToggleComplete}
-                onUpdateTitle={handleUpdateTitle}
-                onAddActionPoint={handleAddActionPoint}
-              />
+                ) : (
+                  <p>No long summary available.</p>
+                )}
+              </div>
             </div>
-          ) : (
-            <p>No audio recording available.</p>
-          )}
+
+            {/* Action Points Component */}
+            <ActionPoints
+              actionPoints={actionPoints}
+              onReorder={handleReorder}
+              onToggleComplete={handleToggleComplete}
+              onUpdateTitle={handleUpdateTitle}
+              onAddActionPoint={handleAddActionPoint}
+            />
+          </div>
+        ) : (
+          <p>No audio recording available.</p>
+        )}
         </div>
       ) : (
         !error && <p>Loading session...</p>

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../styles.css'; // Assuming styles.css is in the src folder
+
 
 const LongSummary = ({ sessionId, backendUrl }) => {
   const [longSummary, setLongSummary] = useState('');
@@ -40,7 +42,7 @@ const LongSummary = ({ sessionId, backendUrl }) => {
   };
 
   return (
-    <div>
+    <div className="summary-container"> {/* Use the new summary-container class */}
       {error && <p className="error-message">{error}</p>}
       <h3>Long Summary:</h3>
       {longSummary ? (

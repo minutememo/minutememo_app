@@ -7,6 +7,8 @@ from sqlalchemy.dialects.postgresql import UUID
 from datetime import datetime
 
 class Company(db.Model):
+    __table_args__ = {'extend_existing': True}  # Prevent table redefinition error
+    
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
     address = db.Column(db.String(256))
@@ -15,6 +17,7 @@ class Company(db.Model):
     zip_code = db.Column(db.String(10))
     country = db.Column(db.String(64))
     phone_number = db.Column(db.String(20))
+    
     users = db.relationship('User', backref='company', lazy=True)
     
     # Added relationship for subscription
@@ -23,6 +26,8 @@ class Company(db.Model):
 
 
 class User(UserMixin, db.Model):
+    __table_args__ = {'extend_existing': True}  # Prevent table redefinition error
+
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(512), nullable=False)
@@ -47,6 +52,8 @@ class User(UserMixin, db.Model):
 
 
 class Subscription(db.Model):
+    __table_args__ = {'extend_existing': True}  # Prevent table redefinition error
+
     id = db.Column(db.Integer, primary_key=True)
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'), nullable=False)  # Link to the Company
     plan_name = db.Column(db.String(64), nullable=False)  # Subscription plan name
@@ -72,6 +79,8 @@ class Subscription(db.Model):
         return True
 
 class Payment(db.Model):
+    __table_args__ = {'extend_existing': True}  # Prevent table redefinition error
+
     id = db.Column(db.Integer, primary_key=True)
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'), nullable=False)
     subscription_id = db.Column(db.Integer, db.ForeignKey('subscription.id'), nullable=False)  # Link to the Subscription
@@ -82,6 +91,8 @@ class Payment(db.Model):
 
 
 class MeetingHub(db.Model):
+    __table_args__ = {'extend_existing': True}  # Prevent table redefinition error
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
     description = db.Column(db.String(256))
@@ -90,6 +101,8 @@ class MeetingHub(db.Model):
 
 
 class Meeting(db.Model):
+    __table_args__ = {'extend_existing': True}  # Prevent table redefinition error
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
     description = db.Column(db.String(256))
@@ -99,6 +112,8 @@ class Meeting(db.Model):
 
 
 class MeetingSession(db.Model):
+    __table_args__ = {'extend_existing': True}  # Prevent table redefinition error
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(256), nullable=False)
     session_datetime = db.Column(db.DateTime, nullable=False)
@@ -113,6 +128,8 @@ class MeetingSession(db.Model):
     long_summary = db.Column(db.Text)  # Store long summary
 
 class ActionItem(db.Model):
+    __table_args__ = {'extend_existing': True}  # Prevent table redefinition error
+
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
@@ -137,6 +154,8 @@ class ActionItem(db.Model):
         }
 
 class Recording(db.Model):
+    __table_args__ = {'extend_existing': True}  # Prevent table redefinition error
+
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, unique=True, nullable=False)
     file_name = db.Column(db.String(256), nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
@@ -149,17 +168,23 @@ class Recording(db.Model):
 # Junction table to manage many-to-many relationship between User and MeetingHub
 user_meeting_hub = db.Table('user_meeting_hub',
     db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
-    db.Column('meeting_hub_id', db.Integer, db.ForeignKey('meeting_hub.id'), primary_key=True)
+    db.Column('meeting_hub_id', db.Integer, db.ForeignKey('meeting_hub.id'), primary_key=True),
+    db.UniqueConstraint('user_id', 'meeting_hub_id'),
+    extend_existing=True,  # Apply extend_existing in the table_args
 )
 
 # Junction table to manage many-to-many relationship between User and Meeting
 user_meeting = db.Table('user_meeting',
     db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
-    db.Column('meeting_id', db.Integer, db.ForeignKey('meeting.id'), primary_key=True)
+    db.Column('meeting_id', db.Integer, db.ForeignKey('meeting.id'), primary_key=True),
+    db.UniqueConstraint('user_id', 'meeting_id'),
+    extend_existing=True,  # Apply extend_existing in the table_args
 )
 
 # Correct definition for the user_meeting_session table
 user_meeting_session = db.Table('user_meeting_session',
     db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
-    db.Column('meeting_session_id', db.Integer, db.ForeignKey('meeting_session.id'), primary_key=True)
+    db.Column('meeting_session_id', db.Integer, db.ForeignKey('meeting_session.id'), primary_key=True),
+    db.UniqueConstraint('user_id', 'meeting_session_id'),
+    extend_existing=True  # Apply extend_existing in the table_args
 )

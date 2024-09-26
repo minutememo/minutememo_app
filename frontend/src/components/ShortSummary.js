@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../styles.css'; // Assuming styles.css is in the src folder
+
 
 const ShortSummary = ({ sessionId, backendUrl }) => {
   const [shortSummary, setShortSummary] = useState('');
@@ -40,7 +42,7 @@ const ShortSummary = ({ sessionId, backendUrl }) => {
   };
 
   return (
-    <div>
+    <div className="summary-container"> {/* Apply transcription styling */}
       {error && <p className="error-message">{error}</p>}
       <h3>Short Summary:</h3>
       {shortSummary ? (

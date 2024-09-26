@@ -30,6 +30,7 @@ from openai import OpenAI
 import openai
 import requests
 import json
+from sqlalchemy.exc import SQLAlchemyError
 from typing import Optional
 
 
@@ -1355,64 +1356,125 @@ def extract_action_points(session_id):
         return jsonify({'status': 'error', 'message': 'No transcription available'}), 400
 
     try:
-        logger.debug(f"Sending transcription to OpenAI for extraction, session_id: {session_id}")
-        
-        completion = client.chat.completions.create(
+        logger.debug(f"Sending transcription to OpenAI for action item extraction with structured output, session_id: {session_id}")
+
+        # Define the structured response schema for action points
+        action_item_schema = {
+            "name": "action_item_schema",
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "action_items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "summary": {"type": "string", "description": "Summary of the action item"},
+                                "details": {"type": "string", "description": "Detailed explanation of the action item"},
+                                "assigned_to": {"type": "string", "description": "Person assigned to the action item"},
+                                "due_date": {"type": ["string", "null"], "description": "Due date of the action item in ISO format"},
+                                "completed": {"type": "boolean", "description": "Completion status of the action item"}
+                            },
+                            "required": ["summary", "details"]
+                        }
+                    }
+                },
+                "required": ["action_items"]
+            }
+        }
+
+        # Define the messages with system instructions and the transcription content
+        messages = [
+            {"role": "system", "content": "You are an AI that extracts action items from meeting transcriptions."},
+            {"role": "user", "content": session.transcription}
+        ]
+
+        # Call the OpenAI API with the structured response format
+        response = client.chat.completions.create(
             model="gpt-4o-2024-08-06",
-            messages=[
-                {"role": "system", "content": """
-                Extract action items from this meeting transcription, including who is assigned. Categorize them by 'explicit' or 'suggested'.
-                - Summarize the action item in 5 words.
-                - Provide a detailed explanation and expected outcome.
-                - Ensure output adheres to the defined JSON schema.
-                """},
-                {"role": "user", "content": session.transcription}
-            ],
-            response_format={"type": "json_object"}
+            messages=messages,
+            response_format={
+                "type": "json_schema",
+                "json_schema": action_item_schema
+            }
         )
 
-        action_points = completion.choices[0].message.content  # Extract content
-        logger.debug(f"Received action points from OpenAI: {action_points}")
+        # Log the full OpenAI response
+        logger.debug(f"Full OpenAI response: {response}")
 
-        # Parse the OpenAI response
-        parsed_action_points = json.loads(action_points)
-        logger.debug(f"Successfully parsed action points: {parsed_action_points}")
+        # Extract the action points from the content of the message
+        response_content = response.choices[0].message.content
+        logger.debug(f"Response content: {response_content}")
 
-        # Process and store action points
-        action_items = []
+        # Parse the content into a dictionary
+        action_points_data = json.loads(response_content)
+        action_items = action_points_data.get('action_items', [])
+        if not action_items:
+            logger.error("No action items found in the response")
+            return jsonify({'status': 'error', 'message': 'No action items found'}), 500
+
+        # Clear existing action points if any
+        existing_action_points = ActionItem.query.filter_by(meeting_session_id=session_id).all()
+        if existing_action_points:
+            logger.info(f"Deleting {len(existing_action_points)} existing action points for session {session_id}")
+            for action_item in existing_action_points:
+                db.session.delete(action_item)
+            db.session.commit()
+            logger.info(f"Existing action points deleted successfully for session {session_id}")
+
+        # Process and store the new action points
+        new_action_items = []
         sorting_id = 1  # Initialize sorting_id for ordering
 
-        for key in ['explicit', 'suggested']:
-            if key in parsed_action_points:
-                for action in parsed_action_points[key]:
-                    title = action.get('summary', 'No summary provided')
-                    details = action.get('details', 'No details provided')
-                    assigned_to = action.get('assigned_to', 'Unassigned')
+        for action in action_items:
+            title = action.get('summary', 'No summary provided')
+            details = action.get('details', 'No details provided')
+            assigned_to = action.get('assigned_to', 'Unassigned')
+            due_date = action.get('due_date')  # Due date might be parsed from the action items
+            completed = action.get('completed', False)
 
-                    if not title or not details:
-                        logger.error(f"Missing fields in action item: {action}")
-                        return jsonify({'status': 'error', 'message': 'Missing required fields'}), 400
+            # Convert due_date if present
+            due_date_obj = None
+            if due_date:
+                try:
+                    due_date_obj = datetime.fromisoformat(due_date)
+                except ValueError:
+                    logger.error(f"Invalid date format for due_date: {due_date}")
 
-                    action_item = ActionItem(
-                        title=title,
-                        description=details,
-                        assigned_to=assigned_to,
-                        meeting_session_id=session.id,
-                        status=key,
-                        sorting_id=sorting_id
-                    )
-                    action_items.append(action_item)
-                    db.session.add(action_item)
-                    sorting_id += 1
+            # Ensure required fields are present
+            if not title or not details:
+                logger.error(f"Missing fields in action item: {action}")
+                return jsonify({'status': 'error', 'message': 'Missing required fields'}), 400
 
+            # Store action points in the database
+            action_item = ActionItem(
+                title=title,
+                description=details,
+                assigned_to=assigned_to,
+                due_date=due_date_obj,
+                completed=completed,
+                status='explicit',  # Assuming all are explicit; you can modify if needed
+                meeting_session_id=session.id,
+                sorting_id=sorting_id
+            )
+            new_action_items.append(action_item)
+            db.session.add(action_item)
+            sorting_id += 1
+
+        # Commit to the database
         db.session.commit()
-        logger.info(f"Action points saved for session_id: {session_id}")
+        logger.info(f"Action points saved successfully for session_id: {session_id}")
 
-        return jsonify({'status': 'success', 'action_items': [ap.to_dict() for ap in action_items]}), 200
+        # Return the saved action items as a JSON response
+        return jsonify({
+            'status': 'success',
+            'action_items': [ap.to_dict() for ap in new_action_items]
+        }), 200
 
     except Exception as e:
         logger.error(f"Error extracting action points: {str(e)}")
         return jsonify({'status': 'error', 'message': 'Error extracting action points'}), 500
+
 
 @main.route('/api/update_action_point_title/<int:action_item_id>', methods=['PUT'])
 def update_action_point_title(action_item_id):
@@ -1559,159 +1621,7 @@ def summarize_session(session_id):
         'long_summary': session.long_summary
     }), 200
 
-@main.route('/api/process_recording/<int:session_id>', methods=['POST'])
-@login_required
-def process_recording(session_id):
-    try:
-        current_app.logger.info(f"Received processing request for session ID: {session_id}")
 
-        # Log the current user making the request
-        current_app.logger.info(f"User {current_user.email} is requesting processing for session ID: {session_id}")
-
-        # Fetch the session by ID
-        session = MeetingSession.query.get_or_404(session_id)
-        current_app.logger.info(f"Fetched session for session ID {session_id}: {session}")
-
-        if not session or not session.audio_url:
-            current_app.logger.error(f"No audio URL found for session ID: {session_id}")
-            return jsonify({'error': 'No audio file found for this session'}), 404
-
-        # Generate the full audio URL
-        filename = session.audio_url.split('/')[-1]
-        audio_url = url_for('main.download_file', filename=filename, _external=True)
-        current_app.logger.info(f"Audio URL for session ID {session_id}: {audio_url}")
-
-        # Step 1: Transcription using OpenAI Whisper
-        transcription_result = transcribe_audio(session_id, audio_url)
-
-        if not transcription_result:
-            current_app.logger.error(f"Transcription failed for session ID {session_id}")
-            return jsonify({'error': 'Failed to transcribe audio'}), 500
-
-        # Save the transcription in the session
-        session.transcription = transcription_result
-        current_app.logger.info(f"Transcription saved for session ID {session_id}")
-
-        # Step 2: Summarization using OpenAI GPT
-        summary_result = summarize_transcription(session.transcription)
-
-        if not summary_result:
-            current_app.logger.error(f"Summarization failed for session ID {session_id}")
-            return jsonify({'error': 'Failed to summarize transcription'}), 500
-
-        # Save the summary in the session
-        session.summary = summary_result
-        current_app.logger.info(f"Summary saved for session ID {session_id}")
-
-        # Step 3: Extract action points using OpenAI GPT
-        action_points_result = extract_action_points_from_transcription(session.transcription)
-
-        if not action_points_result:
-            current_app.logger.error(f"Action point extraction failed for session ID {session_id}")
-            return jsonify({'error': 'Failed to extract action points'}), 500
-
-        # Save the action points to the database
-        save_action_points(session_id, action_points_result)
-
-        # Commit the session with the transcription, summary, and action points
-        db.session.commit()
-        current_app.logger.info(f"All data saved successfully for session ID {session_id}")
-
-        return jsonify({
-            'status': 'success',
-            'transcription': transcription_result,
-            'summary': summary_result,
-            'action_points': action_points_result
-        }), 200
-
-    except Exception as e:
-        current_app.logger.exception(f"An error occurred during processing for session ID {session_id}: {str(e)}")
-        return jsonify({'error': 'An error occurred during processing'}), 500
-
-
-def summarize_transcription(transcription):
-    try:
-        client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-        current_app.logger.info(f"Sending transcription to OpenAI for summarization")
-
-        # Use GPT to summarize the transcription
-        completion = client.chat.completions.create(
-            model="gpt-4o-2024-08-06",
-            messages=[
-                {"role": "system", "content": "Summarize the following transcription in a concise manner."},
-                {"role": "user", "content": transcription}
-            ],
-            response_format={"type": "text"}
-        )
-
-        summary = completion.choices[0].message.content
-        current_app.logger.info(f"Summary result: {summary}")
-        return summary
-
-    except Exception as e:
-        current_app.logger.error(f"Error during summarization: {str(e)}")
-        return None
-
-
-def extract_action_points_from_transcription(transcription):
-    try:
-        client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-        current_app.logger.info(f"Sending transcription to OpenAI for action point extraction")
-
-        # Use GPT to extract action points
-        completion = client.chat.completions.create(
-            model="gpt-4o-2024-08-06",
-            messages=[
-                {"role": "system", "content": """
-                    Extract action items from this meeting transcription, including who is assigned.
-                    - Summarize the action item in 5 words.
-                    - Provide a detailed explanation and expected outcome.
-                    - Ensure output adheres to the defined JSON schema.
-                """},
-                {"role": "user", "content": transcription}
-            ],
-            response_format={"type": "json"}
-        )
-
-        action_points = completion.choices[0].message.content
-        current_app.logger.info(f"Action points extracted: {action_points}")
-        return json.loads(action_points)  # Return as a dictionary
-
-    except Exception as e:
-        current_app.logger.error(f"Error during action point extraction: {str(e)}")
-        return None
-
-
-def save_action_points(session_id, action_points):
-    sorting_id = 1
-
-    # Save 'explicit' action points
-    if 'explicit' in action_points:
-        for action in action_points['explicit']:
-            action_item = ActionItem(
-                title=action.get('summary', 'No summary provided'),
-                description=action.get('details', 'No details provided'),
-                assigned_to=action.get('assigned_to', 'Unassigned'),
-                meeting_session_id=session_id,
-                status='explicit',
-                sorting_id=sorting_id
-            )
-            db.session.add(action_item)
-            sorting_id += 1
-
-    # Save 'suggested' action points
-    if 'suggested' in action_points:
-        for action in action_points['suggested']:
-            action_item = ActionItem(
-                title=action.get('summary', 'No summary provided'),
-                description=action.get('details', 'No details provided'),
-                assigned_to=action.get('assigned_to', 'Unassigned'),
-                meeting_session_id=session_id,
-                status='suggested',
-                sorting_id=sorting_id
-            )
-            db.session.add(action_item)
-            sorting_id += 1
 
 @main.route('/api/sessions/<int:session_id>/action_points', methods=['POST'])
 @login_required

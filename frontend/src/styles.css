@@ -564,3 +564,35 @@ audio {
   top: 80px;
   transform: translateY(0);
 }
+
+/* =====================================================
+   14. Summary Styles
+   ===================================================== */
+   .summary-container {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+    white-space: pre-wrap; /* Preserve line breaks */
+    flex: 1; /* Allow the summaries to take up equal space */
+  }
+  
+  .summary-wrapper {
+    display: flex; /* Flexbox to align the summaries side by side */
+    gap: 20px; /* Add space between the two summaries */
+    margin-top: 20px;
+  }
+  
+  .transcription-container, .summary-container {
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
