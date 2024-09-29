@@ -73,11 +73,10 @@ const MeetingsPage = ({ selectedHub, onMeetingSelect }) => {
         if (response.status === 200 && response.data.sessions.length > 0) {
           setSessions(response.data.sessions);
         } else {
-          setError('No sessions found for this meeting.');
+          setSessions([]);  // Ensure sessions state is reset if no sessions found
         }
       } catch (err) {
-        console.error('Error fetching sessions:', err);
-        setError('Error fetching sessions.');
+        console.error('Error fetching sessions:', err); // Only log the error
       } finally {
         setLoading(false);
       }
@@ -148,31 +147,35 @@ const MeetingsPage = ({ selectedHub, onMeetingSelect }) => {
         </div>
       )}
 
-      {meetingId && sessions.length > 0 ? (
+      {meetingId && (
         <div className="box-shadow-container">
           <h3>Sessions</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Session Name</th>
-                <th>Date and Time</th>
-              </tr>
-            </thead>
-            <tbody>
-              {sessions.map(session => (
-                <tr key={session.id}>
-                  <td>
-                    <Link to={`/sessions/${session.id}`}>{session.name}</Link>
-                  </td>
-                  <td>{new Date(session.session_datetime).toLocaleString()}</td>
+
+          {sessions.length > 0 ? (
+            <table>
+              <thead>
+                <tr>
+                  <th>Session Name</th>
+                  <th>Date and Time</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {sessions.map(session => (
+                  <tr key={session.id}>
+                    <td>
+                      <Link to={`/sessions/${session.id}`}>{session.name}</Link>
+                    </td>
+                    <td>{new Date(session.session_datetime).toLocaleString()}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p>Start your first session here!</p> // Updated message for no sessions
+          )}
+
           <button onClick={handleStartNewSession}>Start New Session</button>
         </div>
-      ) : (
-        meetingId && !error && <p>No sessions found for this meeting.</p>
       )}
     </div>
   );

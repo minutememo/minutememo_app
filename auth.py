@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify, current_app
-from models import User, Company, MeetingHub
+from models import User, Company, MeetingHub, Subscription
 import logging
 from extensions import db
 from flask_login import login_user, logout_user, login_required, current_user
@@ -66,7 +66,8 @@ def signup():
         logger.warning(f"Email is already in use: {email}")
         return jsonify({'message': 'Email is already in use'}), 400
 
-    new_user = User(email=email)
+    # Create a new user and set the user_type to 'external' by default
+    new_user = User(email=email, user_type='external')
     new_user.set_password(password)
     db.session.add(new_user)
     db.session.commit()
@@ -97,10 +98,22 @@ def signup():
     db.session.add(default_hub)
     db.session.commit()
 
+    # Create an active subscription for the new company
+    default_subscription = Subscription(
+        company_id=default_company.id,
+        plan_name='Basic Plan',  # Assign a plan name or pass it dynamically if needed
+        price=50.00,  # Example price, adjust based on your actual subscription plan
+        billing_cycle='monthly',  # Example billing cycle
+        max_users=10,  # Example max users
+        status='active',  # Set the subscription to active
+    )
+    db.session.add(default_subscription)
+    db.session.commit()
+
     # Log the user in automatically
     login_user(new_user)
 
-    logger.info(f"User, company, and default meeting hub created and user logged in successfully: {email}")
+    logger.info(f"User, company, subscription, and default meeting hub created and user logged in successfully: {email}")
     return jsonify({'message': 'User created and logged in successfully'}), 201
 
 # Route for user login

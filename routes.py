@@ -947,13 +947,14 @@ def manage_meetings():
             return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
 
     elif request.method == 'POST':
-        # POST logic to create a new meeting and session
+        # POST logic to create a new meeting, optionally create a session if requested
         try:
             data = request.json
             meeting_name = data.get('name')
             hub_id = data.get('hub_id')
+            create_session_flag = data.get('create_session', False)  # Add a flag for session creation
 
-            current_app.logger.info(f"POST /api/meetings called with meeting_name: {meeting_name}, hub_id: {hub_id}")
+            current_app.logger.info(f"POST /api/meetings called with meeting_name: {meeting_name}, hub_id: {hub_id}, create_session: {create_session_flag}")
 
             if not meeting_name or not hub_id:
                 current_app.logger.error("Meeting name or hub ID is missing")
@@ -970,18 +971,22 @@ def manage_meetings():
 
             current_app.logger.info(f"Created new meeting with id: {new_meeting.id}")
 
-            # Create the first meeting session linked to the new meeting
-            session_name = f"{meeting_name} - {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')}"
-            new_session = MeetingSession(
-                name=session_name,
-                session_datetime=datetime.utcnow(),
-                meeting_id=new_meeting.id
-            )
-            db.session.add(new_session)
-            db.session.commit()
+            if create_session_flag:
+                # If the flag is true, create the first meeting session linked to the new meeting
+                session_name = f"{meeting_name} - {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')}"
+                new_session = MeetingSession(
+                    name=session_name,
+                    session_datetime=datetime.utcnow(),
+                    meeting_id=new_meeting.id
+                )
+                db.session.add(new_session)
+                db.session.commit()
 
-            current_app.logger.info(f"Created new meeting session with id: {new_session.id}")
-            return jsonify({'status': 'success', 'meeting_session_id': new_session.id}), 201
+                current_app.logger.info(f"Created new meeting session with id: {new_session.id}")
+                return jsonify({'status': 'success', 'meeting_id': new_meeting.id, 'meeting_session_id': new_session.id}), 201
+            else:
+                # Only create the meeting, no session
+                return jsonify({'status': 'success', 'meeting_id': new_meeting.id}), 201
 
         except Exception as e:
             db.session.rollback()

@@ -1,645 +1,777 @@
-2024-09-26 12:44:53,799 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:44:53,805 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:44:53] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:44:58,838 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:44:58,839 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:44:58] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:45:03,878 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:45:03,880 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:45:03] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:45:08,912 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:45:08,913 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:45:08] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:45:13,960 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:45:13,963 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:45:13] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:45:18,990 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:45:18,992 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:45:18] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:45:24,037 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:45:24,038 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:45:24] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:45:29,069 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:45:29,070 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:45:29] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:45:34,128 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:45:34,129 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:45:34] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:45:39,152 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:45:39,153 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:45:39] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:45:44,204 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:45:44,207 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:45:44] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:45:49,236 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:45:49,237 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:45:49] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:45:54,280 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:45:54,281 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:45:54] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:45:59,314 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:45:59,315 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:45:59] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:46:04,353 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:46:04,354 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:46:04] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:46:09,395 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:46:09,396 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:46:09] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:46:14,431 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:46:14,432 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:46:14] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:46:19,476 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:46:19,477 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:46:19] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:46:24,512 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:46:24,513 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:46:24] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:46:29,553 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:46:29,554 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:46:29] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:46:34,593 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:46:34,595 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:46:34] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:46:39,635 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:46:39,636 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:46:39] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:46:44,672 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:46:44,674 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:46:44] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:46:49,715 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:46:49,716 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:46:49] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:46:54,753 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:46:54,754 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:46:54] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:46:59,792 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:46:59,793 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:46:59] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:47:04,841 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:47:04,842 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:47:04] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:47:09,871 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:47:09,872 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:47:09] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:47:14,918 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:47:14,919 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:47:14] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:47:19,964 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:47:19,965 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:47:19] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:47:25,004 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:47:25,005 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:47:25] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:47:30,042 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:47:30,044 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:47:30] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:47:35,077 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:47:35,079 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:47:35] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:47:40,114 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:47:40,116 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:47:40] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:47:45,155 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:47:45,156 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:47:45] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:47:50,195 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:47:50,198 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:47:50] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:47:55,236 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:47:55,238 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:47:55] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:48:00,277 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:48:00,279 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:48:00] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:48:05,313 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:48:05,315 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:48:05] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:48:10,350 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:48:10,352 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:48:10] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:48:15,397 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:48:15,401 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:48:15] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:48:20,429 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:48:20,430 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:48:20] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:48:25,469 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:48:25,471 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:48:25] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:48:30,511 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:48:30,512 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:48:30] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:48:35,549 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:48:35,550 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:48:35] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:48:40,599 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:48:40,600 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:48:40] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:48:45,637 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:48:45,640 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:48:45] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:48:50,675 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:48:50,677 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:48:50] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:48:55,717 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:48:55,719 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:48:55] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:49:00,756 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:49:00,757 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:49:00] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:49:05,794 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:49:05,796 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:49:05] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:49:10,831 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:49:10,832 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:49:10] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:49:15,868 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:49:15,869 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:49:15] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:49:20,917 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:49:20,919 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:49:20] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:49:25,955 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:49:25,960 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:49:25] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:49:30,999 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:49:31,001 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:49:31] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:49:36,037 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:49:36,040 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:49:36] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:49:41,081 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:49:41,087 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:49:41] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:49:46,117 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:49:46,119 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:49:46] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:49:51,155 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:49:51,157 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:49:51] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:49:56,193 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:49:56,195 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:49:56] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:50:01,236 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:50:01,239 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:50:01] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:50:06,280 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:50:06,282 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:50:06] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:50:11,313 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:50:11,315 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:50:11] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:50:16,358 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:50:16,362 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:50:16] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:50:21,390 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:50:21,391 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:50:21] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:50:26,427 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:50:26,428 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:50:26] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:50:31,470 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:50:31,473 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:50:31] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:50:36,509 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:50:36,510 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:50:36] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:50:41,548 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:50:41,549 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:50:41] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:50:46,590 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:50:46,592 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:50:46] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:50:51,627 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:50:51,628 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:50:51] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:50:56,673 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:50:56,674 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:50:56] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:51:01,708 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:51:01,710 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:51:01] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:51:06,756 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:51:06,758 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:51:06] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:51:11,797 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:51:11,798 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:51:11] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:51:16,826 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:51:16,828 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:51:16] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:51:21,866 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:51:21,867 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:51:21] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:51:26,905 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:51:26,909 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:51:26] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:51:31,944 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:51:31,945 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:51:31] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:51:36,986 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:51:36,988 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:51:36] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:51:42,026 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:51:42,027 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:51:42] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:51:47,065 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:51:47,067 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:51:47] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:51:52,105 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:51:52,107 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:51:52] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:51:57,153 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:51:57,155 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:51:57] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:52:02,194 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:52:02,197 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:52:02] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:52:07,232 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:52:07,233 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:52:07] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:52:12,276 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:52:12,279 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:52:12] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:52:17,311 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:52:17,312 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:52:17] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:52:22,363 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:52:22,367 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:52:22] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:52:27,393 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:52:27,394 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:52:27] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:52:32,427 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:52:32,429 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:52:32] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:52:37,473 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:52:37,475 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:52:37] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:52:42,511 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:52:42,513 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:52:42] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:52:47,555 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:52:47,559 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:52:47] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:52:52,595 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:52:52,597 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:52:52] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:52:57,632 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:52:57,633 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:52:57] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:53:02,689 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:53:02,705 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:53:02] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:53:07,718 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:53:07,719 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:53:07] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:53:12,763 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:53:12,764 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:53:12] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:53:17,796 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:53:17,798 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:53:17] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:53:22,841 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:53:22,842 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:53:22] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:53:27,876 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:53:27,878 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:53:27] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:53:32,925 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:53:32,927 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:53:32] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:53:37,961 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:53:37,962 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:53:37] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:53:43,004 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:53:43,006 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:53:43] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:53:48,036 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:53:48,038 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:53:48] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:53:53,080 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:53:53,083 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:53:53] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:53:58,117 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:53:58,130 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:53:58] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:54:03,159 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:54:03,160 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:54:03] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:54:08,205 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:54:08,207 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:54:08] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:54:13,239 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:54:13,240 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:54:13] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:54:18,281 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:54:18,284 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:54:18] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:54:23,317 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:54:23,318 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:54:23] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:54:28,436 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:54:28,437 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:54:28] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:54:33,442 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:54:33,443 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:54:33] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:54:38,475 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:54:38,478 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:54:38] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:54:43,520 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:54:43,522 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:54:43] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:54:48,555 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:54:48,557 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:54:48] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:54:53,595 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:54:53,596 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:54:53] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:54:58,645 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:54:58,646 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:54:58] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:55:03,676 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:55:03,683 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:55:03] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:55:08,717 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:55:08,718 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:55:08] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:55:13,753 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:55:13,754 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:55:13] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:55:18,803 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:55:18,804 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:55:18] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:55:23,837 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:55:23,839 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:55:23] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:55:28,873 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:55:28,874 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:55:28] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:55:33,920 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:55:33,922 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:55:33] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:55:38,959 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:55:38,963 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:55:38] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:55:43,999 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:55:44,001 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:55:44] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:55:49,042 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:55:49,044 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:55:49] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:55:54,081 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:55:54,085 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:55:54] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:55:59,114 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:55:59,115 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:55:59] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:56:04,155 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:56:04,157 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:56:04] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:56:09,204 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:56:09,206 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:56:09] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:56:14,246 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:56:14,248 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:56:14] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:56:19,281 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:56:19,284 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:56:19] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:56:24,329 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:56:24,330 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:56:24] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:56:29,359 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:56:29,362 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:56:29] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:56:34,401 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:56:34,402 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:56:34] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:56:39,443 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:56:39,444 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:56:39] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:56:44,495 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:56:44,500 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:56:44] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:56:49,527 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:56:49,529 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:56:49] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:56:54,570 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:56:54,571 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:56:54] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:56:59,613 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:56:59,616 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:56:59] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:57:04,654 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:57:04,656 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:57:04] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:57:09,685 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:57:09,690 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:57:09] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:57:14,736 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:57:14,737 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:57:14] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:57:19,767 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:57:19,771 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:57:19] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:57:24,810 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:57:24,812 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:57:24] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:57:29,851 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:57:29,853 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:57:29] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:57:34,897 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:57:34,921 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:57:34] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:57:39,934 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:57:39,937 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:57:39] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:57:44,973 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:57:44,979 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:57:44] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:57:50,025 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:57:50,033 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:57:50] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:57:55,048 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:57:55,050 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:57:55] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:58:00,094 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:58:00,096 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:58:00] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:58:05,134 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:58:05,137 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:58:05] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:58:10,175 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:58:10,179 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:58:10] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:58:15,208 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:58:15,212 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:58:15] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:58:20,257 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:58:20,259 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:58:20] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:58:25,291 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:58:25,295 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:58:25] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:58:30,334 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:58:30,336 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:58:30] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:58:35,376 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:58:35,378 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:58:35] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:58:40,401 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:58:40,403 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:58:40] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:58:45,446 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:58:45,448 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:58:45] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:58:50,486 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:58:50,488 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:58:50] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:58:55,526 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:58:55,528 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:58:55] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:59:00,568 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:59:00,570 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:59:00] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:59:05,610 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:59:05,613 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:59:05] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:59:10,665 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:59:10,676 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:59:10] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:59:15,688 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:59:15,690 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:59:15] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:59:20,742 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:59:20,747 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:59:20] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:59:25,768 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:59:25,771 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:59:25] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:59:30,807 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:59:30,811 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:59:30] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:59:35,853 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:59:35,854 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:59:35] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:59:40,899 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:59:40,902 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:59:40] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:59:45,936 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:59:45,938 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:59:45] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:59:50,972 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:59:50,975 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:59:50] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 12:59:56,018 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 12:59:56,020 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 12:59:56] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:00:01,053 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:00:01,056 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:00:01] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:00:06,096 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:00:06,097 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:00:06] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:00:11,127 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:00:11,129 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:00:11] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:00:16,175 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:00:16,177 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:00:16] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:00:21,203 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:00:21,204 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:00:21] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:00:26,254 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:00:26,257 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:00:26] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:00:31,297 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:00:31,300 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:00:31] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:00:36,336 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:00:36,340 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:00:36] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:00:41,368 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:00:41,369 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:00:41] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:00:46,414 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:00:46,418 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:00:46] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:00:51,450 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:00:51,453 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:00:51] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:00:56,491 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:00:56,492 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:00:56] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:01:01,535 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:01:01,539 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:01:01] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:01:06,572 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:01:06,574 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:01:06] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:01:11,614 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:01:11,618 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:01:11] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:01:16,660 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:01:16,662 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:01:16] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:01:21,686 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:01:21,688 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:01:21] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:01:26,739 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:01:26,741 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:01:26] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:01:31,768 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:01:31,769 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:01:31] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:01:36,810 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:01:36,812 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:01:36] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:01:41,861 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:01:41,863 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:01:41] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:01:46,893 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:01:46,898 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:01:46] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:01:51,931 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:01:51,935 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:01:51] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:01:56,972 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:01:56,974 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:01:56] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:02:02,012 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:02:02,015 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:02:02] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:02:07,052 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:02:07,054 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:02:07] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:02:12,091 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:02:12,093 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:02:12] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:02:17,129 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:02:17,131 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:02:17] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:02:22,173 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:02:22,175 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:02:22] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:02:27,213 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:02:27,217 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:02:27] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:02:32,256 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:02:32,259 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:02:32] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:02:37,288 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:02:37,290 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:02:37] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:02:42,330 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:02:42,332 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:02:42] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:02:47,373 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:02:47,377 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:02:47] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:02:52,404 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:02:52,405 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:02:52] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:02:57,455 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:02:57,457 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:02:57] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:03:02,490 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:03:02,491 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:03:02] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:03:07,532 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:03:07,536 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:03:07] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:03:12,565 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:03:12,566 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:03:12] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:03:17,610 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:03:17,613 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:03:17] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:03:22,640 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:03:22,640 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:03:22] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:03:27,682 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:03:27,684 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:03:27] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:03:32,721 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:03:32,723 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:03:32] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:03:37,765 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:03:37,766 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:03:37] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:03:42,807 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:03:42,812 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:03:42] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:03:47,852 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:03:47,855 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:03:47] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:03:52,893 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:03:52,902 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:03:52] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:03:57,938 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:03:57,940 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:03:57] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:04:02,976 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:04:02,980 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:04:02] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:04:08,015 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:04:08,016 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:04:08] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:04:13,045 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:04:13,046 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:04:13] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:04:18,088 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:04:18,090 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:04:18] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:04:23,131 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:04:23,135 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:04:23] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:04:28,171 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:04:28,174 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:04:28] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:04:33,215 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:04:33,218 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:04:33] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:04:38,249 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:04:38,255 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:04:38] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:04:43,288 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:04:43,290 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:04:43] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:04:48,327 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:04:48,328 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:04:48] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:04:53,364 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:04:53,367 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:04:53] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:04:58,410 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:04:58,412 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:04:58] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:05:03,444 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:05:03,446 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:05:03] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:05:08,493 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:05:08,495 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:05:08] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:05:13,536 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:05:13,538 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:05:13] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:05:18,573 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:05:18,576 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:05:18] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:05:23,611 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:05:23,613 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:05:23] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:05:28,648 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:05:28,651 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:05:28] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:05:33,683 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:05:33,685 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:05:33] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:05:38,734 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:05:38,736 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:05:38] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:05:43,775 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:05:43,785 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:05:43] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:05:48,812 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:05:48,814 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:05:48] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:05:53,851 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:05:53,852 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:05:53] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:05:58,890 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:05:58,894 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:05:58] "POST /upload_chunk HTTP/1.1" 200 -
-2024-09-26 13:06:00,371 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:06:00,371 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:06:00] "OPTIONS /concatenate HTTP/1.1" 200 -
-2024-09-26 13:06:00,379 - minutememo_app.app - INFO - Received request to concatenate for recording_id: 91544f3b-5cf9-41a9-8db1-e99a126c8f0f
-2024-09-26 13:06:00,384 - minutememo_app.app - INFO - Local chunk files for recording_id 91544f3b-5cf9-41a9-8db1-e99a126c8f0f: ['91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_0.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_1.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_2.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_3.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_4.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_5.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_6.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_7.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_8.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_9.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_10.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_11.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_12.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_13.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_14.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_15.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_16.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_17.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_18.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_19.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_20.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_21.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_22.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_23.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_24.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_25.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_26.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_27.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_28.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_29.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_30.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_31.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_32.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_33.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_34.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_35.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_36.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_37.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_38.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_39.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_40.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_41.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_42.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_43.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_44.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_45.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_46.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_47.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_48.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_49.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_50.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_51.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_52.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_53.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_54.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_55.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_56.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_57.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_58.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_59.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_60.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_61.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_62.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_63.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_64.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_65.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_66.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_67.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_68.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_69.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_70.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_71.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_72.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_73.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_74.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_75.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_76.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_77.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_78.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_79.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_80.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_81.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_82.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_83.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_84.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_85.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_86.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_87.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_88.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_89.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_90.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_91.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_92.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_93.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_94.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_95.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_96.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_97.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_98.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_99.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_100.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_101.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_102.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_103.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_104.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_105.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_106.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_107.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_108.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_109.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_110.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_111.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_112.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_113.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_114.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_115.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_116.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_117.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_118.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_119.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_120.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_121.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_122.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_123.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_124.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_125.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_126.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_127.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_128.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_129.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_130.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_131.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_132.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_133.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_134.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_135.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_136.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_137.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_138.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_139.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_140.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_141.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_142.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_143.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_144.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_145.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_146.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_147.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_148.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_149.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_150.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_151.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_152.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_153.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_154.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_155.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_156.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_157.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_158.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_159.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_160.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_161.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_162.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_163.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_164.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_165.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_166.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_167.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_168.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_169.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_170.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_171.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_172.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_173.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_174.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_175.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_176.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_177.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_178.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_179.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_180.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_181.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_182.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_183.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_184.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_185.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_186.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_187.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_188.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_189.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_190.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_191.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_192.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_193.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_194.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_195.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_196.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_197.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_198.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_199.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_200.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_201.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_202.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_203.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_204.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_205.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_206.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_207.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_208.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_209.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_210.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_211.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_212.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_213.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_214.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_215.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_216.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_217.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_218.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_219.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_220.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_221.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_222.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_223.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_224.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_225.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_226.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_227.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_228.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_229.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_230.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_231.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_232.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_233.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_234.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_235.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_236.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_237.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_238.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_239.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_240.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_241.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_242.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_243.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_244.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_245.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_246.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_247.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_248.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_249.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_250.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_251.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_252.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_253.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_254.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_255.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_256.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_257.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_258.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_259.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_260.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_261.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_262.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_263.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_264.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_265.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_266.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_267.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_268.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_269.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_270.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_271.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_272.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_273.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_274.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_275.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_276.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_277.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_278.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_279.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_280.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_281.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_282.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_283.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_284.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_285.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_286.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_287.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_288.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_289.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_290.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_291.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_292.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_293.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_294.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_295.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_296.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_297.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_298.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_299.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_300.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_301.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_302.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_303.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_304.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_305.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_306.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_307.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_308.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_309.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_310.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_311.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_312.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_313.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_314.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_315.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_316.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_317.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_318.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_319.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_320.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_321.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_322.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_323.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_324.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_325.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_326.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_327.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_328.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_329.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_330.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_331.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_332.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_333.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_334.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_335.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_336.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_337.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_338.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_339.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_340.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_341.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_342.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_343.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_344.webm', '91544f3b-5cf9-41a9-8db1-e99a126c8f0f_chunk_345.webm']
-2024-09-26 13:06:00,390 - minutememo_app.app - INFO - List file created at: uploads/audio_recordings/91544f3b-5cf9-41a9-8db1-e99a126c8f0f_list.txt
-2024-09-26 13:06:00,390 - minutememo_app.app - INFO - Running FFmpeg locally with list file uploads/audio_recordings/91544f3b-5cf9-41a9-8db1-e99a126c8f0f_list.txt
-2024-09-26 13:06:01,575 - minutememo_app.app - INFO - Local concatenation output at uploads/audio_recordings/91544f3b-5cf9-41a9-8db1-e99a126c8f0f.webm
-2024-09-26 13:06:12,526 - minutememo_app.app - INFO - MP3 conversion successful. File saved at uploads/audio_recordings/91544f3b-5cf9-41a9-8db1-e99a126c8f0f.mp3
-2024-09-26 13:06:12,557 - minutememo_app.app - INFO - Concatenation status for 91544f3b-5cf9-41a9-8db1-e99a126c8f0f updated to success
-2024-09-26 13:06:12,557 - minutememo_app.app - INFO - Concatenation status updated to 'success' in the database for recording_id: 91544f3b-5cf9-41a9-8db1-e99a126c8f0f
-2024-09-26 13:06:12,558 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:06:12,559 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:06:12] "POST /concatenate HTTP/1.1" 200 -
-2024-09-26 13:06:12,565 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:06:12,566 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:06:12] "OPTIONS /api/recordings/91544f3b-5cf9-41a9-8db1-e99a126c8f0f HTTP/1.1" 200 -
-2024-09-26 13:06:12,583 - minutememo_app.app - INFO - Entering update_recording function for recording_id: 91544f3b-5cf9-41a9-8db1-e99a126c8f0f
-2024-09-26 13:06:12,583 - minutememo_app.app - INFO - Received data for updating recording 91544f3b-5cf9-41a9-8db1-e99a126c8f0f: {'audio_url': '/uploads/audio_recordings/91544f3b-5cf9-41a9-8db1-e99a126c8f0f.mp3'}
-2024-09-26 13:06:12,583 - minutememo_app.app - INFO - Fetching Recording with ID: 91544f3b-5cf9-41a9-8db1-e99a126c8f0f
-2024-09-26 13:06:12,602 - minutememo_app.app - INFO - Current recording before update: <Recording 91544f3b-5cf9-41a9-8db1-e99a126c8f0f>
-2024-09-26 13:06:12,603 - minutememo_app.app - INFO - Fetching associated MeetingSession with ID: 110
-2024-09-26 13:06:12,608 - minutememo_app.app - INFO - Current MeetingSession before update: <MeetingSession 110>
-2024-09-26 13:06:12,608 - minutememo_app.app - INFO - Updating audio_url for MeetingSession ID: 110
-2024-09-26 13:06:12,612 - minutememo_app.app - INFO - MeetingSession after update: <MeetingSession 110>
-2024-09-26 13:06:12,613 - minutememo_app.app - INFO - Exiting update_recording function for recording_id: 91544f3b-5cf9-41a9-8db1-e99a126c8f0f
-2024-09-26 13:06:12,613 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:06:12,613 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:06:12] "PATCH /api/recordings/91544f3b-5cf9-41a9-8db1-e99a126c8f0f HTTP/1.1" 200 -
-2024-09-26 13:06:12,618 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:06:12,619 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:06:12] "[33mPOST /api/transcribe/undefined HTTP/1.1[0m" 404 -
-2024-09-26 13:06:28,779 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:06:28,782 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:06:28] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-26 13:06:28,795 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
-2024-09-26 13:06:28,795 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 3
-2024-09-26 13:06:28,795 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
-2024-09-26 13:06:28,802 - minutememo_app.app - INFO - Successfully fetched 14 meetings for hub_id: 3
-2024-09-26 13:06:28,803 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:06:28,806 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:06:28] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
-2024-09-26 13:06:28,838 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:06:28,842 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:06:28] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-09-26 13:06:28,853 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:06:28,858 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:06:28] "GET /api/meetingsessions?hub_id=3 HTTP/1.1" 200 -
-2024-09-26 13:06:31,115 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: 107
-2024-09-26 13:06:31,115 - minutememo_app.app - INFO - Fetching meeting sessions for meeting_id: 107
-2024-09-26 13:06:31,119 - minutememo_app.app - INFO - Successfully fetched 1 sessions for meeting_id: 107
-2024-09-26 13:06:31,120 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:06:31,122 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:06:31] "GET /api/meetings?meeting_id=107 HTTP/1.1" 200 -
-2024-09-26 13:06:31,127 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: 107
-2024-09-26 13:06:31,127 - minutememo_app.app - INFO - Fetching meeting sessions for meeting_id: 107
-2024-09-26 13:06:31,128 - minutememo_app.app - INFO - Successfully fetched 1 sessions for meeting_id: 107
-2024-09-26 13:06:31,128 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:06:31,129 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:06:31] "GET /api/meetings?meeting_id=107 HTTP/1.1" 200 -
-2024-09-26 13:06:32,060 - minutememo_app.app - INFO - Local audio URL for session ID 110: http://localhost:5000/uploads/audio_recordings/91544f3b-5cf9-41a9-8db1-e99a126c8f0f.mp3
-2024-09-26 13:06:32,061 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:06:32,062 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:06:32] "GET /api/sessions/110 HTTP/1.1" 200 -
-2024-09-26 13:06:32,068 - minutememo_app.app - INFO - Local audio URL for session ID 110: http://localhost:5000/uploads/audio_recordings/91544f3b-5cf9-41a9-8db1-e99a126c8f0f.mp3
-2024-09-26 13:06:32,068 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:06:32,068 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:06:32,070 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:06:32] "GET /api/sessions/110/summaries HTTP/1.1" 200 -
-2024-09-26 13:06:32,071 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:06:32] "GET /api/sessions/110 HTTP/1.1" 200 -
-2024-09-26 13:06:32,073 - auth - DEBUG - After request, Origin: None
-2024-09-26 13:06:32,074 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:06:32] "[35m[1mGET /uploads/audio_recordings/91544f3b-5cf9-41a9-8db1-e99a126c8f0f.mp3 HTTP/1.1[0m" 206 -
-2024-09-26 13:06:32,076 - routes - DEBUG - Fetching action points for session_id: 110
-2024-09-26 13:06:32,083 - routes - INFO - No action items found for session_id: 110
-2024-09-26 13:06:32,083 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:06:32,089 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:06:32,095 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:06:32] "GET /api/sessions/110/summaries HTTP/1.1" 200 -
-2024-09-26 13:06:32,095 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:06:32] "GET /api/sessions/110/action_points HTTP/1.1" 200 -
-2024-09-26 13:06:32,099 - routes - DEBUG - Fetching action points for session_id: 110
-2024-09-26 13:06:32,106 - routes - INFO - No action items found for session_id: 110
-2024-09-26 13:06:32,109 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:06:32,110 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:06:32] "GET /api/sessions/110/action_points HTTP/1.1" 200 -
-2024-09-26 13:06:34,897 - minutememo_app.app - INFO - Received transcription request for session ID: 110
-2024-09-26 13:06:34,897 - minutememo_app.app - INFO - User test@test.com is requesting transcription for session ID: 110
-2024-09-26 13:06:34,898 - minutememo_app.app - INFO - Fetched session for session ID 110: <MeetingSession 110>
-2024-09-26 13:06:34,898 - minutememo_app.app - INFO - Audio URL for session ID 110: http://localhost:5000/uploads/audio_recordings/91544f3b-5cf9-41a9-8db1-e99a126c8f0f.mp3
-2024-09-26 13:06:34,898 - minutememo_app.app - INFO - Starting transcription process for session ID 110 with audio URL http://localhost:5000/uploads/audio_recordings/91544f3b-5cf9-41a9-8db1-e99a126c8f0f.mp3
-2024-09-26 13:06:34,909 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
-2024-09-26 13:06:34,914 - httpx - DEBUG - load_verify_locations cafile='/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2024-09-26 13:06:34,938 - minutememo_app.app - INFO - Transcribing audio for session ID 110 from URL: http://localhost:5000/uploads/audio_recordings/91544f3b-5cf9-41a9-8db1-e99a126c8f0f.mp3
-2024-09-26 13:06:34,944 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:5000
-2024-09-26 13:06:34,946 - auth - DEBUG - After request, Origin: None
-2024-09-26 13:06:34,947 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:06:34] "GET /uploads/audio_recordings/91544f3b-5cf9-41a9-8db1-e99a126c8f0f.mp3 HTTP/1.1" 200 -
-2024-09-26 13:06:34,947 - urllib3.connectionpool - DEBUG - http://localhost:5000 "GET /uploads/audio_recordings/91544f3b-5cf9-41a9-8db1-e99a126c8f0f.mp3 HTTP/11" 200 13785068
-2024-09-26 13:06:34,977 - minutememo_app.app - INFO - Temporary audio file created at /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmprjy35588.mp3
-2024-09-26 13:06:34,986 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/audio/transcriptions', 'headers': {'Content-Type': 'multipart/form-data'}, 'files': [('file', SerializationIterator(index=0, iterator=SerializationIterator(index=0, iterator=<_io.BufferedReader name='/var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmprjy35588.mp3'>)))], 'json_data': {'model': 'whisper-1', 'response_format': 'text'}}
-2024-09-26 13:06:35,006 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/audio/transcriptions
-2024-09-26 13:06:35,007 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
-2024-09-26 13:06:35,082 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x11135a9c0>
-2024-09-26 13:06:35,083 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x1113b37d0> server_hostname='api.openai.com' timeout=5.0
-2024-09-26 13:06:35,109 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x1113a8860>
-2024-09-26 13:06:35,109 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2024-09-26 13:06:35,109 - httpcore.http11 - DEBUG - send_request_headers.complete
-2024-09-26 13:06:35,109 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2024-09-26 13:06:36,920 - httpcore.http11 - DEBUG - send_request_body.complete
-2024-09-26 13:06:36,921 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2024-09-26 13:07:14,689 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 26 Sep 2024 11:07:14 GMT'), (b'Content-Type', b'text/plain; charset=utf-8'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'minute-memo'), (b'openai-processing-ms', b'36391'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'500'), (b'x-ratelimit-remaining-requests', b'499'), (b'x-ratelimit-reset-requests', b'120ms'), (b'x-request-id', b'req_a308ef730e5fd72471171cae5128a378'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=lWD9Xfa3dR0Md8UKx9Wc2skyKKfOP8MJRttBrP_1hKI-1727348834-1.0.1.1-BRdGGkyXIcfQsV2cAEgb2Smz74Soea1b6aL8RqeOYkYYrtopSbXkNAEMZHOQ_yQfxiazxQv9H_mduX6Zf5H8tQ; path=/; expires=Thu, 26-Sep-24 11:37:14 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=Qejv.ITnAsNYQ70eB5LcJNS7TxUizTEX0VThjESlIxA-1727348834656-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8c92c911ff25ba5a-BRU'), (b'Content-Encoding', b'gzip')])
-2024-09-26 13:07:14,696 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
-2024-09-26 13:07:14,697 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2024-09-26 13:07:14,699 - httpcore.http11 - DEBUG - receive_response_body.complete
-2024-09-26 13:07:14,699 - httpcore.http11 - DEBUG - response_closed.started
-2024-09-26 13:07:14,699 - httpcore.http11 - DEBUG - response_closed.complete
-2024-09-26 13:07:14,699 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/audio/transcriptions "200 OK" Headers([('date', 'Thu, 26 Sep 2024 11:07:14 GMT'), ('content-type', 'text/plain; charset=utf-8'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'minute-memo'), ('openai-processing-ms', '36391'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '500'), ('x-ratelimit-remaining-requests', '499'), ('x-ratelimit-reset-requests', '120ms'), ('x-request-id', 'req_a308ef730e5fd72471171cae5128a378'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=lWD9Xfa3dR0Md8UKx9Wc2skyKKfOP8MJRttBrP_1hKI-1727348834-1.0.1.1-BRdGGkyXIcfQsV2cAEgb2Smz74Soea1b6aL8RqeOYkYYrtopSbXkNAEMZHOQ_yQfxiazxQv9H_mduX6Zf5H8tQ; path=/; expires=Thu, 26-Sep-24 11:37:14 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=Qejv.ITnAsNYQ70eB5LcJNS7TxUizTEX0VThjESlIxA-1727348834656-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8c92c911ff25ba5a-BRU'), ('content-encoding', 'gzip')])
-2024-09-26 13:07:14,700 - openai._base_client - DEBUG - request_id: req_a308ef730e5fd72471171cae5128a378
-2024-09-26 13:07:14,700 - openai._response - DEBUG - Could not read JSON from response data due to <class 'json.decoder.JSONDecodeError'> - Expecting value: line 1 column 1 (char 0)
-2024-09-26 13:07:14,701 - minutememo_app.app - INFO - Transcription result for session ID 110: Es ist eine Geschichte, die von Morikow beruflich ist. Morikow-Männer. Das ist spannend. Ich habe selber eine Brust. Er hat eine Brust. Er hat eine Brust. Er hat eine Brust. Er hat eine Brust. Er hat eine Brust. Ein시llmänner. Sie behandeln Molly. Sie behandeln Molly. Seine Auntinients haben eine Brust, Seine Auntinients haben eine Brust, Seine Auntinients haben eine Brust, Seine Auntinnients haben eine Brust, seine Eltern haben eine Brust, Seine Eltern haben eine Brust, seine Eltern haben eine Brust, seine Eltern haben eine Brust. Seine Eltern haben eine Brust. Seine Eltern haben eine Brust. Seine Eltern haben eine Brust. Seine Eltern haben eine Brust. Das Beste, was wir wollen... Das Beste, was wir wollen... Schätzen. Weissen Herr,  Checklist Checklist Möder Möder Absch antioxidant ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2024-09-26 21:27:59,550 - minutememo_app.app - INFO - Transcription result for session ID 110: Er is nog een verhaal over de besmettingen van het Morgenhof. Morgenhof, mannen. Alsjeblieft, ze pakken me zo'n teken. Ik heb ze even aan de brug gestopt. Hij heeft zo'n teken, dat hij bij ons is. Ja. Ik zie het haar, en hij heeft een draaiboek. Ja. Er zit een pooi in, met tattoos. En je neemt dat op. Ik zie dat er wat in deze teken moet komen. Ja. Dat is bij het Morgenhof. Gewoon beschetsen. Dit is New Business Partners. De deels die daarin zitten. Dat is Soms. Het kanaal. De website. En de post. En dan zijn we met Dealsource. Dat zijn de directe flows die binnenkomen. Dat zijn de flows van GronKlus en Gert. Dat is heel te laat. Heel te laat. En dan heb je Gert. Die hebben een nieuwe plaats. Er stond gisteren nog twintig kamers. Dat is in contact met Dealsource. Dat had ik al, want er zit geen tussen met mij. Al twintig is dat. Dat is al een jaar. Ik heb er net een nieuwe. Dus daar zit de discrepatie in. Ik denk dat we niet iedere keer eens moeten spreken en dat we in het eigen woord niet trekken. In gewoon situaties. In bepaalde timestamps. Het is al heel jong, maar er zijn... Weet je iets? Er zijn twee pistes. Kijken wie heeft het eerst aangebracht, of kijken wie heeft die geclosed. Dat is een piste, eventueel. Ik ga het even bespreken, jongens. Ik denk dat we binnenkomen via de website. Dat is newbusinessdirect. Die is niet meer geclosed. Dat is in ieder geval een journal. Wat goed zou geweest zijn, goed eventueel geclosed. Komt X aan van de tijd. Die tijd moet je hier vastleggen. Een journal trekt je via een andere partij. Niet zo zwaar. Een journal is dat dan wel. Waar zit dan newbusinessdirect of newbusinesspartners? Als we niet weten wat de persoons van de maanden had. Het is in bepaalde tijden. Wanneer valt iemand op die partij? Wanneer is het originele doel? Wanneer valt het? Uiteindelijk als een partner tekent bij een klant. Omgekeerd. Excuus. Klanten tekenen bij een partner. Die zijn niet per se op de hoogte dat ze bij Mitrax tekenen, of wat? Niet altijd. Dan is het partner geen partner. De tijd vind ik het minst relevanter. Je studeert de dagen of zelfs de maanden. Het is wel iedereen die mee investeert. Er is hier altijd iemand aan het denken. Als je een partnership zet, moet je testen. Je moet met mensen bekijken hoe je dat aanbrengt. Bij Dama had ik een contact gehad met partners. Dat betekent dat die klanten niet meer op de hoogte zijn. Ze weten dat Mitrax het probleem is. Als je rechtstreeks staat met Mitrax. Dan is het zo dat er geen commissie is. Dan zit er nog een meester aan de gang. Die dacht dat hij dat heel even zou spelen. Dat was een vertrampeling. Dat was de eerste keer dat ik dat begreep. Dit gaat verholpen worden met een partnerbetaalbedrijf. Dus alle contacten zouden via het partnerbetaalbedrijf kunnen komen. Of niet? Op het domein. Het zou niet zwaar verholpen zijn. Dat is het geval. Ik heb er tijdens gedachten met Thomas. Ik weet wat belangrijk is aan de contractorigine van een openbaring. Hoe je een deal origineel kan bouwen. Omdat het een groot bedrijf is. En als het dan een overlap is. Zoals die drie, vier, vijf per maand. Dan moet je vooral bedienen. Proberen achter te houden waarom dat zij het wel kunnen doen. En waarom wij niet. Terwijl er bijeenkomt dat fysiek aanwezig. Taal. Dat is waarvoor we moeten beslissen. Soms heb je een verzekeringsportaal toegestaan. Of je had een schuldbevolking te maken. Wat een eigen verzekering. Dan is het zeker dat dat niet zwaar is. Misschien is dat iets anders. Dan kan je er ook iets van aanleven. Dat wordt wel belangrijk. Die passie voor de informatie. Dat is het meest van waarde aan die hele oefening. Want als zij aan de buurt treedt. Wat zou dat zijn? Dat is het meeste. Die van die drie voortschrijver. Die is zelf door de buurt verhandeld geweest. En nog geen week later had het al meer. Die is op de hoogste hoogte gestaan. Via dat verhouding. 20 jaar. Of dezelfde maand. Of in 2010. Of in 2010. Of in 2010. Daarmee dat ik de timing... Ik was niet voldoende verwacht. Ik ben wel goed in het fysieke te doen. Ik kwam uit de tegenstelling van wat ze hier stonden op dat moment. Zo mocht je die van die drie voortschrijvers aan de ene kant geven. De rest hoort gisteren gewoon met dat principe. Ja. Voor mij het logische is... Voor mij het logische is dat... Dat is niet interessant. Dat je degenen die de deal closed... Afhankelijk als een partner, zonder dat hij bij wijze van spreken vernoemd wordt, is geclosed. Dan is de partner die ze geclosed heeft. Want als we gaan kijken naar de deal source dan ook. Dan moeten we... Als er dan een lead terug binnenkomt. Een deal source was partner. Dan moeten ze terugsturen naar partner. Als ze ooit een keer geregistreerd is geweest bij de partner. Of omgekeerd. Omgekeerd als er een partner deal source is. En die komt dan... Bij ons deal source eerst. En dan komt hij bij de partner. Dan zeggen we niet. Moeten we niet op werk. Dat genereert geen gezonde... Omdat... Het is te zien welke regels dat we kiezen. Afhankelijk. Als ze zeggen dat deal source de regel is. Bijvoorbeeld. Maar ja. Dit is hoe dat bij ons... Wij hebben ook veel met partners gewerkt. Vroeger bij Lightbeat. We hadden altijd gevechten met elkaar. Maar met dat grote probleem. Dat partner verkocht Lightspeed. Lightspeed. Ze wisten dat was Lightspeed. Dan gingen ze online aan kijken. Kwamen ze bij ons terecht. Dan kwamen ze bij ons in de final terecht. We hebben een Team New Business Direct. We hebben een SDR's. Die willen qualifiëren. Die willen closen. En zo verder. Dus wat doen zij? In principe zien ze dat al geregistreerd. Het is ook een partner. Als ze het zelf moeten doen. Dan is het eigenlijk... Dan is het een deal niet voor hun. Maar het is een deal voor de partner. Eigenlijk. Dan hebben ze effort gedaan voor niets. Zoals we zeggen. Hoe doe je dat? Als je... Die klant is ooit... Die man is ooit klant geweest. Zoals voorbeeld. Via onze New Business Direct bij ons. En die komt voor het tweede object. Een heel een partner bij ons. Dat is Existing Business. Het is een discussie partner of Existing Business. Maar het is niet een discussie dat we moeten doen. Dat is alles van New Business Direct. Juist. In principe, ja. De partner die het aanraad vindt bij ons. Dan hebben we daar een issue. Dat die contact moet worden. Dan gaan we naar toekomst. Dan gaan we naar open. En die hand trekt door. En die hand gaat op een of andere manier. Of de mentor student is of niet. Aan New Business Direct. In dat geval... Het is altijd aanraad. Het is altijd aanraad. In dat geval zou hij dan terug moeten keren naar de partner. Waarom? Nee hé. Als hij bij ons geregistreerd staat als partner... Ik heb vier partners. Soms in hetzelfde ontwerp. Maar in een gif van u dat terugkomt. Ik betaal die mensen met heel veel plezier. Kom, zie dit. En boxen ze dat niet op met prijs ofzo? Kan het dan niet zijn dat ze... Want u geeft dan overal dezelfde prijs voor ons zelf. Ik geef overal hetzelfde. Dat komt niet van New Business Direct toe. Ik geef alleen maar van een 10 euro cent. Ja. Want het is één kant die de commissie bedacht. Dus dan moet je dan vragen... Wat is het aandeel voor de linespeed? Die levering snap ik. Maar hier geef je één minuut uit. Want die regels gingen meteen. Vooral ook omdat er gekort ging geven. En dan hingen de partners onder onze prijs. En wij hingen dan onder die prijs enzovoort. Dus er moesten duidelijke regels zijn. In New Business Direct zou altijd iets hoger zijn dan anders. Voor verlies doe je toch minder of niet? Voor schotsen moet je de bijstand doen. Ja. Maar voor globale prijzen, bankprijzen enzovoort, in het normale tegen, is New Business Direct goed. Het is één kant die de commissie bedacht. Tuurlijk, maar het voorschot houdt vaak wel de strakke kant op. Ja. Wacht tien à acht maanden. Oké, misschien is mijn voorbeeld dan irrelevant. Maar voor mij eigenlijk... Probeer het. Probeer je te snappen. Ja. Ik ben van principe die klootzakken... Omgekeerd ook, ja. Als je binnenkomt, doe je zo'n klootzak door. En dan komt dat nieuwe business binnen. Dan klootz je hem daar wel. Komt hij later in de business of niet? Ja. Dus dat moet je ook doen. En die klootzak... Het is niet omdat die partner één jaar niet aanrijdt. Niet. En dat is zowat uit Londen. En die klootzak komt achter de ronde van de partner. Twee weken later bij ons. Bij Steeks. Hij wordt hier toevallig zelf geklootst. En die partner zegt, hij is er niet. Ga niet verder. Ja, maar dan is hij... Je kunt zelfs zien waar hij zich afzet. Het is gewoon midden. Het is een hele andere etappe voor mij. Ik wil gewoon... Het is dan niet dat met de vraag dat ik stelde... Zeggen ze, we gaan Maitrex gebruiken. Want stel dat ze dat gebruiken. Komen ze misschien bij ons terecht. Komen ze dan terecht bij onze... En New Business Direct. Doen zij misschien een betere prijs? Bij zo'n spreken. Voor hetzelfde voertuig. Ja. Meestal zouden ze dat voorschunnen. Ja, maar ze zouden dat proberen te voorkomen. Want uiteindelijk gaan ze misschien wel... Ja, snap je? Dat kan een ene concurrent tussen partners en ons verzwijgen. Het ene kan maar juist aan je voordeel komen. In de partner is dat meer goed dan aan de rest. Ja, maar dat wil ook de relaties met de partner ook behouden. Als ze eerst bij de partner komen... Ja. Als ze eerst bij de partner komen, gaat dat normaal gezien altijd juist zijn. En dat is ook ook een voorschunst. Als de partner de rest van de tijd bij ons komt, en je zo'n globaal tovertarief vindt, maar wel of nauwelijks die nieuwe objecten 5% meer voorschunnen. Ja. Dan draai je uit in de schuwen. En dan moet 0% commissie gaan, en dan zit je alweer op die prijs in. En met 1 miljoen euro kan 20% zo veruitdraaien, waardoor je je motiveren kan draaien, maar met gasteninvaluus. Dus dan moet je een keer werken, dat moet je weten. Ja. Ja, een paar miljoen commissie dat je wenst. Hoe duurde dat zorgen voor de eigenaar? Dat is het mogelijkste valkuil die ik zou voorzien. Maar voor de rest ben ik wel akkoord. Degene die het laatst geclosed, waar het naartoe gaat. Dat maakt sens. En we zullen wel zien... Ik weet niet wat jij ervan denkt, maar we zullen wel zien wat het dan... Ik vind dat het juist gaat houden. Ja. Dat die die het laatst geclosed heeft... Ik denk dat dat de functie van die die het voorstelt, of betaalbaar is, of wat dan ook, ontvangt. Degene die het niet wil. Dat zou daar een ruzieparkje op zijn. Zou je hem van je ouders afwachten, of van je concurrent, als die je dit voorstelt? First come, first served. Het zou hier eigenlijk twee keuzes zijn, die je zou de kans hebben. Maar dat is niet de betaling, echt op zijn plek, die je niet wil zien. Ik geef het gewoon mee, omdat... Het werkt hier anders, maar ik weet uit ervaring, dat was echt... Ik had heel veel museumen te pakken, dus het was... Op het einde, toen ik daar nog zat bij Lightspeed, was het van... Wij zijn geen partners, we zitten in concurrentie met elkaar. Partners zetten ons mee, mogen iets registreren, bijzonder ontwikkelen. Dat was anders, maar dat leefde daar, die concurrentie. Het is dat ook... Ik weet niet, de partners... De partners meeluisteren op je merken, niet op de één kant. Correct. Ja. Ik heb onderdaag één partner, die werkt op de één kant. Oké. Dat zijn schools. Van dienst en dossiers. Hoe moet ik hiermee dat dat hoort staan, want daarvoor heb ik... De klant van onze vliegtuig, die zit thuis bij zijn garage. Ah, oké. Zij willen die garage kiezen, zodat we niet alstublieft die mond schijven. Ja. Profi's schelen, of profi's te doen, schelen ze wel in contact met de één kant. Dus als je alstublieft heel concreet gaat, op zijn assigned questions dat hij geboekt heeft, waarin je zegt, het is wel een manier om dat te doen, dan is het wel een manier om dat te doen. Ja. Zij willen die garage kiezen. En als die werknemers komen, dan is het een kwestie van daarop, of de partners... In Frankrijk, of de herbergers, de aanbrengers, die werken wel op de ene kant. Ja. Ja. Maar volgens mij... We hebben ook geen commissie, maar we brengen wel dat dossier. Ja. In Frankrijk wordt het geïnvesteerd op 80. Dat is ook helemaal... Dat zijn onze partners, om dat op mijn bord te leggen, dat we kunnen doen. En ik heb ook in het Center Team een smoothie voor de team. Maar hier kan het gewoon worden. Conferenties. Oké. Maar... En eigenlijk hebben we wel concurrenties, maar die van ons zijn zeker z'n eigen klassen. En je merkt, als je die performance stuurt, hoe dat naar je terugstapt. Ja. Als je die naar je rechtstreeks probeert, dan mag je het zeker ook openen met je persoonlijke rechtstreeks. Want dat is alles. Ja. Ik heb nog niet z'n advisors in die constellatie. Ja, dan moet je de facturering onder de deur houden met een goeie vriendin. En die vriendin kan die stoos nemen. Dus dan ga je een klein en ander dossier doen. Het volgende dossier... Het is voor ons als eender terechtgekomen. Ja, dat kan niet heel goed zijn. Maar als je dat niet voor ons... En je hebt dat niet voor je verkocht gekregen, je hebt een klasse gekregen, dan is het met een raad. Maar de kost is dan minder. Dus de commissie die je doet, dan pak je niet die komende dossier. Je moet ook wel vrij zijn om dat nieuw te starten aan een bevrijdende reuropractie. En je kan dat gewoon met ons van de euro 1 zien. Dus heel goed om zo goed tegen een gerechtstrijd zijn te doen. Maar bon, je zal zien, ik denk wel, en ja, potcoma, dat is iets waar je wel makkelijk wat manager loopt. Maar ik denk dat het inderdaad minder vatbaar is voor... Ik vind het wel als je business direct eerst de kans hebt gehad om op een klant te werken. En binnen een reële tijd, en nu misschien ik langskijk, is dat wel... Het was binnen drie maanden diezelfde kant van het programma, hetzelfde recht, word je klootzak aan een partner. Wil je ernaast staan waar je je klootzak houdt? Ja, ik denk dat dat wel correct is. En is dat dan niet de aardigste fysieke aanwezigheid? Is dat omdat je iets voelt dat je hebt aangezegd en alleen dat je je vragen stelt? Ja. Dat ging je te kort. Ja. Is het nu je persoon of van de klant? Nee, het is van de klant. Je weet dat je partner gewoon als hij duurder is, als het blijkt dat het zo'n 20% voorschot is bij die partner, dat je er uit die 20% gaat, dan moet je er wel mee bezig zijn. Het is niet zo dat je je partner gaat zijn op dat moment. Je moet er wel mee bezig met zijn. Ja, in principe kon je je klootzak niet doen als je een partner hebt. Je weet dat als je eerst zegt dat het moeilijk is om verder te praten, dan moet je een half uur duren om je wapen te pakken. Je moet er wel mee bezig zijn als je je partner hebt. Het is dus zo dat je in je wapen moet zitten en je wapen moet zitten en je wapen moet zitten en je wapen moet zitten en  wapen moet zitten when you finish in de station are there for them are there for you to care for you very quickly answer for you this is past place is relation to space in your brain to care for you very quickly answer for you this is relation to space in your brain to care for you very quickly answer for you this is relation to space in your brain to care for you very quickly answer for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you very quickly answer for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this is relation to space in your brain to care for you this
 
-2024-09-26 13:07:14,703 - minutememo_app.app - INFO - Temporary audio file deleted: /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmprjy35588.mp3
-2024-09-26 13:07:14,714 - minutememo_app.app - INFO - Transcription saved successfully for session ID 110
-2024-09-26 13:07:14,719 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-09-26 13:07:14,720 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:07:14] "POST /api/transcribe/110 HTTP/1.1" 200 -
-2024-09-26 13:36:33,447 - minutememo_app.app - INFO - Received transcription request for session ID: 110
-2024-09-26 13:36:33,449 - minutememo_app.app - INFO - User test@test.com is requesting transcription for session ID: 110
-2024-09-26 13:36:33,451 - minutememo_app.app - INFO - Fetched session for session ID 110: <MeetingSession 110>
-2024-09-26 13:36:33,452 - minutememo_app.app - INFO - Audio URL for session ID 110: http://localhost:5000/uploads/audio_recordings/91544f3b-5cf9-41a9-8db1-e99a126c8f0f.mp3
-2024-09-26 13:36:33,452 - minutememo_app.app - INFO - Starting transcription process for session ID 110 with audio URL http://localhost:5000/uploads/audio_recordings/91544f3b-5cf9-41a9-8db1-e99a126c8f0f.mp3
-2024-09-26 13:36:33,457 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
-2024-09-26 13:36:33,463 - httpx - DEBUG - load_verify_locations cafile='/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2024-09-26 13:36:33,488 - minutememo_app.app - INFO - Transcribing audio for session ID 110 from URL: http://localhost:5000/uploads/audio_recordings/91544f3b-5cf9-41a9-8db1-e99a126c8f0f.mp3
-2024-09-26 13:36:33,491 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:5000
-2024-09-26 13:36:33,493 - auth - DEBUG - After request, Origin: None
-2024-09-26 13:36:33,494 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 13:36:33] "GET /uploads/audio_recordings/91544f3b-5cf9-41a9-8db1-e99a126c8f0f.mp3 HTTP/1.1" 200 -
-2024-09-26 13:36:33,494 - urllib3.connectionpool - DEBUG - http://localhost:5000 "GET /uploads/audio_recordings/91544f3b-5cf9-41a9-8db1-e99a126c8f0f.mp3 HTTP/11" 200 13785068
-2024-09-26 13:36:33,531 - minutememo_app.app - INFO - Temporary audio file created at /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmp_uj7u7rj.mp3
-2024-09-26 13:36:33,533 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/audio/transcriptions', 'headers': {'Content-Type': 'multipart/form-data'}, 'files': [('file', SerializationIterator(index=0, iterator=SerializationIterator(index=0, iterator=<_io.BufferedReader name='/var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmp_uj7u7rj.mp3'>)))], 'json_data': {'model': 'whisper-1', 'response_format': 'text'}}
-2024-09-26 13:36:33,533 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/audio/transcriptions
-2024-09-26 13:36:33,534 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
-2024-09-26 13:36:33,589 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x11135b290>
-2024-09-26 13:36:33,589 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x1113d9ad0> server_hostname='api.openai.com' timeout=5.0
-2024-09-26 13:36:33,614 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x11135bd10>
-2024-09-26 13:36:33,614 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2024-09-26 13:36:33,614 - httpcore.http11 - DEBUG - send_request_headers.complete
-2024-09-26 13:36:33,614 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2024-09-26 13:36:35,209 - httpcore.http11 - DEBUG - send_request_body.complete
-2024-09-26 13:36:35,211 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2024-09-26 13:38:19,358 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 26 Sep 2024 11:38:19 GMT'), (b'Content-Type', b'text/plain; charset=utf-8'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'minute-memo'), (b'openai-processing-ms', b'97759'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'500'), (b'x-ratelimit-remaining-requests', b'499'), (b'x-ratelimit-reset-requests', b'120ms'), (b'x-request-id', b'req_069b9836ed74594ab067ed5a19d3ce07'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=vXhnqsgxwP.Sn0Ro6aAMqfPfbNfHzojk9KJUY48LUdE-1727350699-1.0.1.1-ixKbb3RtLyIBnveyQ1nMD0T.xpiA3xcHNaxPhWLKWS0nQjJIoLCJocnoVEPOYH4PCO.SOw16HPyBX_oIVywnPw; path=/; expires=Thu, 26-Sep-24 12:08:19 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=.f9gxrSG0dGD5PfbCxzpvVdnzGsAWttRb6DFy8p2peA-1727350699434-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8c92f4fabede74fa-BRU'), (b'Content-Encoding', b'gzip')])
-2024-09-26 13:38:19,361 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
-2024-09-26 13:38:19,362 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2024-09-26 13:38:19,471 - httpcore.http11 - DEBUG - receive_response_body.complete
-2024-09-26 13:38:19,471 - httpcore.http11 - DEBUG - response_closed.started
-2024-09-26 13:38:19,472 - httpcore.http11 - DEBUG - response_closed.complete
-2024-09-26 13:38:19,472 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/audio/transcriptions "200 OK" Headers([('date', 'Thu, 26 Sep 2024 11:38:19 GMT'), ('content-type', 'text/plain; charset=utf-8'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'minute-memo'), ('openai-processing-ms', '97759'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '500'), ('x-ratelimit-remaining-requests', '499'), ('x-ratelimit-reset-requests', '120ms'), ('x-request-id', 'req_069b9836ed74594ab067ed5a19d3ce07'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=vXhnqsgxwP.Sn0Ro6aAMqfPfbNfHzojk9KJUY48LUdE-1727350699-1.0.1.1-ixKbb3RtLyIBnveyQ1nMD0T.xpiA3xcHNaxPhWLKWS0nQjJIoLCJocnoVEPOYH4PCO.SOw16HPyBX_oIVywnPw; path=/; expires=Thu, 26-Sep-24 12:08:19 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=.f9gxrSG0dGD5PfbCxzpvVdnzGsAWttRb6DFy8p2peA-1727350699434-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8c92f4fabede74fa-BRU'), ('content-encoding', 'gzip')])
-2024-09-26 13:38:19,473 - openai._base_client - DEBUG - request_id: req_069b9836ed74594ab067ed5a19d3ce07
-2024-09-26 13:38:19,474 - openai._response - DEBUG - Could not read JSON from response data due to <class 'json.decoder.JSONDecodeError'> - Expecting value: line 1 column 1 (char 0)
+2024-09-26 21:27:59,562 - minutememo_app.app - INFO - Temporary audio file deleted: /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmp6txd8qq5.mp3
+2024-09-26 21:27:59,596 - minutememo_app.app - INFO - Transcription saved successfully for session ID 110
+2024-09-26 21:27:59,596 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 21:27:59,598 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 21:27:59] "POST /api/transcribe/110 HTTP/1.1" 200 -
+2024-09-26 22:03:34,192 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: None
+2024-09-26 22:03:34,193 - minutememo_app.app - ERROR - Hub ID or Meeting ID not provided
+2024-09-26 22:03:34,193 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:34,196 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:34] "[31m[1mGET /api/meetings HTTP/1.1[0m" 400 -
+2024-09-26 22:03:34,207 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: None
+2024-09-26 22:03:34,207 - minutememo_app.app - ERROR - Hub ID or Meeting ID not provided
+2024-09-26 22:03:34,207 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:34,210 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:34] "[31m[1mGET /api/meetings HTTP/1.1[0m" 400 -
+2024-09-26 22:03:44,527 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: None
+2024-09-26 22:03:44,527 - minutememo_app.app - ERROR - Hub ID or Meeting ID not provided
+2024-09-26 22:03:44,527 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:44,529 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:44] "[31m[1mGET /api/meetings HTTP/1.1[0m" 400 -
+2024-09-26 22:03:44,533 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: None
+2024-09-26 22:03:44,533 - minutememo_app.app - ERROR - Hub ID or Meeting ID not provided
+2024-09-26 22:03:44,533 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:44,534 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:44] "[31m[1mGET /api/meetings HTTP/1.1[0m" 400 -
+2024-09-26 22:03:45,661 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:45,663 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:45] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-26 22:03:45,669 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-26 22:03:45,669 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-26 22:03:45,670 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 3
+2024-09-26 22:03:45,676 - minutememo_app.app - INFO - Successfully fetched 14 meetings for hub_id: 3
+2024-09-26 22:03:45,676 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:45,678 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:45] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-26 22:03:45,680 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:45,685 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:45] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-26 22:03:45,693 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:45,694 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:45] "GET /api/meetingsessions?hub_id=3 HTTP/1.1" 200 -
+2024-09-26 22:03:51,645 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:51,647 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:51] "OPTIONS /api/set_active_hub HTTP/1.1" 200 -
+2024-09-26 22:03:51,652 - routes - DEBUG - Received request to set active hub with hub_id: 2
+2024-09-26 22:03:51,652 - routes - DEBUG - Querying database for hub_id: 2
+2024-09-26 22:03:51,655 - routes - DEBUG - Setting active hub to 2 for user test@test.com
+2024-09-26 22:03:51,683 - routes - INFO - Successfully set active hub to 2 for user test@test.com
+2024-09-26 22:03:51,683 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:51,684 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:51] "POST /api/set_active_hub HTTP/1.1" 200 -
+2024-09-26 22:03:51,694 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 2
+2024-09-26 22:03:51,694 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 2, meeting_id: None
+2024-09-26 22:03:51,695 - minutememo_app.app - INFO - Fetching meetings for hub_id: 2
+2024-09-26 22:03:51,696 - minutememo_app.app - INFO - Successfully fetched 1 meetings for hub_id: 2
+2024-09-26 22:03:51,696 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:51,696 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:51,697 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:51] "GET /api/meetings?hub_id=2 HTTP/1.1" 200 -
+2024-09-26 22:03:51,697 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:51] "GET /api/meetingsessions?hub_id=2 HTTP/1.1" 200 -
+2024-09-26 22:03:53,411 - routes - DEBUG - Received request to set active hub with hub_id: 7
+2024-09-26 22:03:53,413 - routes - DEBUG - Querying database for hub_id: 7
+2024-09-26 22:03:53,413 - routes - DEBUG - Setting active hub to 7 for user test@test.com
+2024-09-26 22:03:53,420 - routes - INFO - Successfully set active hub to 7 for user test@test.com
+2024-09-26 22:03:53,420 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:53,421 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:53] "POST /api/set_active_hub HTTP/1.1" 200 -
+2024-09-26 22:03:53,430 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 7, meeting_id: None
+2024-09-26 22:03:53,431 - minutememo_app.app - INFO - Fetching meetings for hub_id: 7
+2024-09-26 22:03:53,431 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 7
+2024-09-26 22:03:53,431 - minutememo_app.app - WARNING - No meetings found for hub_id: 7
+2024-09-26 22:03:53,431 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:53,434 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:53] "GET /api/meetings?hub_id=7 HTTP/1.1" 200 -
+2024-09-26 22:03:53,437 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:53,438 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:53] "GET /api/meetingsessions?hub_id=7 HTTP/1.1" 200 -
+2024-09-26 22:03:55,138 - routes - DEBUG - Received request to set active hub with hub_id: 6
+2024-09-26 22:03:55,138 - routes - DEBUG - Querying database for hub_id: 6
+2024-09-26 22:03:55,139 - routes - DEBUG - Setting active hub to 6 for user test@test.com
+2024-09-26 22:03:55,144 - routes - INFO - Successfully set active hub to 6 for user test@test.com
+2024-09-26 22:03:55,144 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:55,146 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:55] "POST /api/set_active_hub HTTP/1.1" 200 -
+2024-09-26 22:03:55,155 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 6, meeting_id: None
+2024-09-26 22:03:55,155 - minutememo_app.app - INFO - Fetching meetings for hub_id: 6
+2024-09-26 22:03:55,155 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 6
+2024-09-26 22:03:55,156 - minutememo_app.app - WARNING - No meetings found for hub_id: 6
+2024-09-26 22:03:55,156 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:55,158 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:55] "GET /api/meetings?hub_id=6 HTTP/1.1" 200 -
+2024-09-26 22:03:55,163 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:55,164 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:55] "GET /api/meetingsessions?hub_id=6 HTTP/1.1" 200 -
+2024-09-26 22:03:57,216 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:57,217 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:57] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-26 22:03:57,254 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:57,259 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:57] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-26 22:03:57,296 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:57,297 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:57] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-26 22:03:57,304 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:57,304 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 6, meeting_id: None
+2024-09-26 22:03:57,308 - minutememo_app.app - INFO - Fetching meetings for hub_id: 6
+2024-09-26 22:03:57,310 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:57] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-26 22:03:57,311 - minutememo_app.app - WARNING - No meetings found for hub_id: 6
+2024-09-26 22:03:57,312 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:57,313 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:57,314 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:57] "GET /api/meetings?hub_id=6 HTTP/1.1" 200 -
+2024-09-26 22:03:57,317 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:57] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-26 22:03:57,413 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 6
+2024-09-26 22:03:57,421 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:03:57,422 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:03:57] "GET /api/meetingsessions?hub_id=6 HTTP/1.1" 200 -
+2024-09-26 22:04:00,240 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:04:00,242 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:04:00] "OPTIONS /api/set_active_hub HTTP/1.1" 200 -
+2024-09-26 22:04:00,245 - routes - DEBUG - Received request to set active hub with hub_id: 24
+2024-09-26 22:04:00,246 - routes - DEBUG - Querying database for hub_id: 24
+2024-09-26 22:04:00,246 - routes - DEBUG - Setting active hub to 24 for user test@test.com
+2024-09-26 22:04:00,253 - routes - INFO - Successfully set active hub to 24 for user test@test.com
+2024-09-26 22:04:00,253 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:04:00,255 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:04:00] "POST /api/set_active_hub HTTP/1.1" 200 -
+2024-09-26 22:04:00,277 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 24, meeting_id: None
+2024-09-26 22:04:00,283 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 24
+2024-09-26 22:04:00,284 - minutememo_app.app - INFO - Fetching meetings for hub_id: 24
+2024-09-26 22:04:00,286 - minutememo_app.app - WARNING - No meetings found for hub_id: 24
+2024-09-26 22:04:00,288 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:04:00,290 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:04:00,293 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:04:00] "GET /api/meetingsessions?hub_id=24 HTTP/1.1" 200 -
+2024-09-26 22:04:00,297 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:04:00] "GET /api/meetings?hub_id=24 HTTP/1.1" 200 -
+2024-09-26 22:04:03,193 - routes - DEBUG - Received request to set active hub with hub_id: 2
+2024-09-26 22:04:03,194 - routes - DEBUG - Querying database for hub_id: 2
+2024-09-26 22:04:03,201 - routes - DEBUG - Setting active hub to 2 for user test@test.com
+2024-09-26 22:04:03,218 - routes - INFO - Successfully set active hub to 2 for user test@test.com
+2024-09-26 22:04:03,218 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:04:03,223 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:04:03] "POST /api/set_active_hub HTTP/1.1" 200 -
+2024-09-26 22:04:03,241 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 2, meeting_id: None
+2024-09-26 22:04:03,241 - minutememo_app.app - INFO - Fetching meetings for hub_id: 2
+2024-09-26 22:04:03,242 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 2
+2024-09-26 22:04:03,242 - minutememo_app.app - INFO - Successfully fetched 1 meetings for hub_id: 2
+2024-09-26 22:04:03,242 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:04:03,249 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:04:03] "GET /api/meetings?hub_id=2 HTTP/1.1" 200 -
+2024-09-26 22:04:03,256 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:04:03,258 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:04:03] "GET /api/meetingsessions?hub_id=2 HTTP/1.1" 200 -
+2024-09-26 22:04:05,076 - routes - DEBUG - Received request to set active hub with hub_id: 3
+2024-09-26 22:04:05,076 - routes - DEBUG - Querying database for hub_id: 3
+2024-09-26 22:04:05,077 - routes - DEBUG - Setting active hub to 3 for user test@test.com
+2024-09-26 22:04:05,081 - routes - INFO - Successfully set active hub to 3 for user test@test.com
+2024-09-26 22:04:05,081 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:04:05,082 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:04:05] "POST /api/set_active_hub HTTP/1.1" 200 -
+2024-09-26 22:04:05,092 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-26 22:04:05,092 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-26 22:04:05,092 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 3
+2024-09-26 22:04:05,093 - minutememo_app.app - INFO - Successfully fetched 14 meetings for hub_id: 3
+2024-09-26 22:04:05,093 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:04:05,095 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:04:05] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-26 22:04:05,106 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:04:05,107 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:04:05] "GET /api/meetingsessions?hub_id=3 HTTP/1.1" 200 -
+2024-09-26 22:04:24,482 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: 107
+2024-09-26 22:04:24,483 - minutememo_app.app - INFO - Fetching meeting sessions for meeting_id: 107
+2024-09-26 22:04:24,484 - minutememo_app.app - INFO - Successfully fetched 1 sessions for meeting_id: 107
+2024-09-26 22:04:24,485 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:04:24,490 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:04:24] "GET /api/meetings?meeting_id=107 HTTP/1.1" 200 -
+2024-09-26 22:04:24,493 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: 107
+2024-09-26 22:04:24,493 - minutememo_app.app - INFO - Fetching meeting sessions for meeting_id: 107
+2024-09-26 22:04:24,499 - minutememo_app.app - INFO - Successfully fetched 1 sessions for meeting_id: 107
+2024-09-26 22:04:24,500 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:04:24,500 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:04:24] "GET /api/meetings?meeting_id=107 HTTP/1.1" 200 -
+2024-09-26 22:08:53,896 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: 107
+2024-09-26 22:08:53,897 - minutememo_app.app - INFO - Fetching meeting sessions for meeting_id: 107
+2024-09-26 22:08:53,901 - minutememo_app.app - INFO - Successfully fetched 1 sessions for meeting_id: 107
+2024-09-26 22:08:53,901 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:08:53,902 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:08:53] "GET /api/meetings?meeting_id=107 HTTP/1.1" 200 -
+2024-09-26 22:14:33,459 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: 107
+2024-09-26 22:14:33,460 - minutememo_app.app - INFO - Fetching meeting sessions for meeting_id: 107
+2024-09-26 22:14:33,464 - minutememo_app.app - INFO - Successfully fetched 1 sessions for meeting_id: 107
+2024-09-26 22:14:33,464 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:14:33,466 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:14:33] "GET /api/meetings?meeting_id=107 HTTP/1.1" 200 -
+2024-09-26 22:14:33,474 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: 107
+2024-09-26 22:14:33,474 - minutememo_app.app - INFO - Fetching meeting sessions for meeting_id: 107
+2024-09-26 22:14:33,476 - minutememo_app.app - INFO - Successfully fetched 1 sessions for meeting_id: 107
+2024-09-26 22:14:33,477 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:14:33,479 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:14:33] "GET /api/meetings?meeting_id=107 HTTP/1.1" 200 -
+2024-09-26 22:37:52,057 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:37:52,060 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:37:52] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-26 22:37:52,072 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-26 22:37:52,072 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-26 22:37:52,074 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 3
+2024-09-26 22:37:52,077 - minutememo_app.app - INFO - Successfully fetched 14 meetings for hub_id: 3
+2024-09-26 22:37:52,079 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:37:52,080 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:37:52] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-26 22:37:52,086 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:37:52,088 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:37:52] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-26 22:37:52,091 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:37:52,092 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:37:52] "GET /api/meetingsessions?hub_id=3 HTTP/1.1" 200 -
+2024-09-26 22:37:52,625 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: None
+2024-09-26 22:37:52,625 - minutememo_app.app - ERROR - Hub ID or Meeting ID not provided
+2024-09-26 22:37:52,625 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:37:52,627 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:37:52] "[31m[1mGET /api/meetings HTTP/1.1[0m" 400 -
+2024-09-26 22:37:52,631 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: None
+2024-09-26 22:37:52,631 - minutememo_app.app - ERROR - Hub ID or Meeting ID not provided
+2024-09-26 22:37:52,631 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:37:52,633 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:37:52] "[31m[1mGET /api/meetings HTTP/1.1[0m" 400 -
+2024-09-26 22:38:13,887 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: None
+2024-09-26 22:38:13,889 - minutememo_app.app - ERROR - Hub ID or Meeting ID not provided
+2024-09-26 22:38:13,889 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:38:13,891 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:38:13] "[31m[1mGET /api/meetings HTTP/1.1[0m" 400 -
+2024-09-26 22:38:13,894 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: None
+2024-09-26 22:38:13,894 - minutememo_app.app - ERROR - Hub ID or Meeting ID not provided
+2024-09-26 22:38:13,895 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:38:13,897 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:38:13] "[31m[1mGET /api/meetings HTTP/1.1[0m" 400 -
+2024-09-26 22:38:13,898 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:38:13,899 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:38:13] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-26 22:38:13,918 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: None
+2024-09-26 22:38:13,918 - minutememo_app.app - ERROR - Hub ID or Meeting ID not provided
+2024-09-26 22:38:13,918 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:38:13,920 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:38:13] "[31m[1mGET /api/meetings HTTP/1.1[0m" 400 -
+2024-09-26 22:38:13,924 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: None
+2024-09-26 22:38:13,924 - minutememo_app.app - ERROR - Hub ID or Meeting ID not provided
+2024-09-26 22:38:13,924 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:38:13,926 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:38:13] "[31m[1mGET /api/meetings HTTP/1.1[0m" 400 -
+2024-09-26 22:38:13,927 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:38:13,928 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:38:13] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-26 22:38:13,940 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:38:13,941 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:38:13] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-26 22:38:49,767 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:38:49,770 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:38:49] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-26 22:38:49,781 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 3
+2024-09-26 22:38:49,781 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-26 22:38:49,782 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:38:49,782 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-26 22:38:49,784 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:38:49] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-26 22:38:49,785 - minutememo_app.app - INFO - Successfully fetched 14 meetings for hub_id: 3
+2024-09-26 22:38:49,785 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:38:49,786 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:38:49] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-26 22:38:49,795 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:38:49,797 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:38:49] "GET /api/meetingsessions?hub_id=3 HTTP/1.1" 200 -
+2024-09-26 22:38:51,263 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: 107
+2024-09-26 22:38:51,264 - minutememo_app.app - INFO - Fetching meeting sessions for meeting_id: 107
+2024-09-26 22:38:51,266 - minutememo_app.app - INFO - Successfully fetched 1 sessions for meeting_id: 107
+2024-09-26 22:38:51,267 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:38:51,268 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:38:51] "GET /api/meetings?meeting_id=107 HTTP/1.1" 200 -
+2024-09-26 22:38:51,271 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: 107
+2024-09-26 22:38:51,271 - minutememo_app.app - INFO - Fetching meeting sessions for meeting_id: 107
+2024-09-26 22:38:51,273 - minutememo_app.app - INFO - Successfully fetched 1 sessions for meeting_id: 107
+2024-09-26 22:38:51,273 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:38:51,274 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:38:51] "GET /api/meetings?meeting_id=107 HTTP/1.1" 200 -
+2024-09-26 22:38:56,307 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:38:56,312 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:38:56] "OPTIONS /api/meetings HTTP/1.1" 200 -
+2024-09-26 22:38:56,318 - minutememo_app.app - INFO - POST /api/meetings called with meeting_name: test, hub_id: 3
+2024-09-26 22:38:56,352 - minutememo_app.app - INFO - Created new meeting with id: 108
+2024-09-26 22:38:56,381 - minutememo_app.app - INFO - Created new meeting session with id: 111
+2024-09-26 22:38:56,381 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:38:56,384 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:38:56] "[35m[1mPOST /api/meetings HTTP/1.1[0m" 201 -
+2024-09-26 22:38:56,388 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:38:56,389 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:38:56] "OPTIONS /api/recordings HTTP/1.1" 200 -
+2024-09-26 22:38:56,409 - minutememo_app.app - INFO - Recording e371617c-376d-4172-80f0-6320a090e4cf created for user 1 in session 111
+2024-09-26 22:38:56,409 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:38:56,410 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:38:56] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
+2024-09-26 22:39:01,755 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:39:01,757 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:39:01] "POST /upload_chunk HTTP/1.1" 200 -
+2024-09-26 22:39:04,641 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:39:04,644 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:39:04] "OPTIONS /concatenate HTTP/1.1" 200 -
+2024-09-26 22:39:04,661 - minutememo_app.app - INFO - Received request to concatenate for recording_id: e371617c-376d-4172-80f0-6320a090e4cf
+2024-09-26 22:39:04,662 - minutememo_app.app - INFO - Local chunk files for recording_id e371617c-376d-4172-80f0-6320a090e4cf: ['e371617c-376d-4172-80f0-6320a090e4cf_chunk_0.webm']
+2024-09-26 22:39:04,664 - minutememo_app.app - INFO - List file created at: uploads/audio_recordings/e371617c-376d-4172-80f0-6320a090e4cf_list.txt
+2024-09-26 22:39:04,664 - minutememo_app.app - INFO - Running FFmpeg locally with list file uploads/audio_recordings/e371617c-376d-4172-80f0-6320a090e4cf_list.txt
+2024-09-26 22:39:05,312 - minutememo_app.app - INFO - Local concatenation output at uploads/audio_recordings/e371617c-376d-4172-80f0-6320a090e4cf.webm
+2024-09-26 22:39:05,433 - minutememo_app.app - INFO - MP3 conversion successful. File saved at uploads/audio_recordings/e371617c-376d-4172-80f0-6320a090e4cf.mp3
+2024-09-26 22:39:05,442 - minutememo_app.app - INFO - Concatenation status for e371617c-376d-4172-80f0-6320a090e4cf updated to success
+2024-09-26 22:39:05,443 - minutememo_app.app - INFO - Concatenation status updated to 'success' in the database for recording_id: e371617c-376d-4172-80f0-6320a090e4cf
+2024-09-26 22:39:05,443 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:39:05,444 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:39:05] "POST /concatenate HTTP/1.1" 200 -
+2024-09-26 22:39:05,447 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:39:05,448 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:39:05] "OPTIONS /api/recordings/e371617c-376d-4172-80f0-6320a090e4cf HTTP/1.1" 200 -
+2024-09-26 22:39:05,451 - minutememo_app.app - INFO - Entering update_recording function for recording_id: e371617c-376d-4172-80f0-6320a090e4cf
+2024-09-26 22:39:05,451 - minutememo_app.app - INFO - Received data for updating recording e371617c-376d-4172-80f0-6320a090e4cf: {'audio_url': '/uploads/audio_recordings/e371617c-376d-4172-80f0-6320a090e4cf.mp3'}
+2024-09-26 22:39:05,451 - minutememo_app.app - INFO - Fetching Recording with ID: e371617c-376d-4172-80f0-6320a090e4cf
+2024-09-26 22:39:05,457 - minutememo_app.app - INFO - Current recording before update: <Recording e371617c-376d-4172-80f0-6320a090e4cf>
+2024-09-26 22:39:05,457 - minutememo_app.app - INFO - Fetching associated MeetingSession with ID: 111
+2024-09-26 22:39:05,458 - minutememo_app.app - INFO - Current MeetingSession before update: <MeetingSession 111>
+2024-09-26 22:39:05,458 - minutememo_app.app - INFO - Updating audio_url for MeetingSession ID: 111
+2024-09-26 22:39:05,467 - minutememo_app.app - INFO - MeetingSession after update: <MeetingSession 111>
+2024-09-26 22:39:05,467 - minutememo_app.app - INFO - Exiting update_recording function for recording_id: e371617c-376d-4172-80f0-6320a090e4cf
+2024-09-26 22:39:05,468 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:39:05,469 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:39:05] "PATCH /api/recordings/e371617c-376d-4172-80f0-6320a090e4cf HTTP/1.1" 200 -
+2024-09-26 22:39:05,472 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-26 22:39:05,473 - werkzeug - INFO - 127.0.0.1 - - [26/Sep/2024 22:39:05] "[33mPOST /api/transcribe/undefined HTTP/1.1[0m" 404 -
+2024-09-27 07:48:21,168 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:48:21,171 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:48:21] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 07:48:21,193 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:48:21,207 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:48:21] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 07:48:21,229 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:48:21,230 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:48:21] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 07:48:24,968 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:48:24,969 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:48:24] "OPTIONS /api/meetings HTTP/1.1" 200 -
+2024-09-27 07:48:24,976 - minutememo_app.app - INFO - POST /api/meetings called with meeting_name: test, hub_id: 3
+2024-09-27 07:48:25,021 - minutememo_app.app - INFO - Created new meeting with id: 109
+2024-09-27 07:48:25,037 - minutememo_app.app - INFO - Created new meeting session with id: 112
+2024-09-27 07:48:25,037 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:48:25,038 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:48:25] "[35m[1mPOST /api/meetings HTTP/1.1[0m" 201 -
+2024-09-27 07:48:25,041 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:48:25,043 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:48:25] "OPTIONS /api/recordings HTTP/1.1" 200 -
+2024-09-27 07:48:25,057 - minutememo_app.app - INFO - Recording 6afc860c-fbe0-4299-bee8-dd15acf381b4 created for user 1 in session 112
+2024-09-27 07:48:25,057 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:48:25,058 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:48:25] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
+2024-09-27 07:48:30,386 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:48:30,390 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:48:30] "POST /upload_chunk HTTP/1.1" 200 -
+2024-09-27 07:48:35,413 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:48:35,414 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:48:35] "POST /upload_chunk HTTP/1.1" 200 -
+2024-09-27 07:48:39,716 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:48:39,719 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:48:39] "OPTIONS /concatenate HTTP/1.1" 200 -
+2024-09-27 07:48:39,731 - minutememo_app.app - INFO - Received request to concatenate for recording_id: 6afc860c-fbe0-4299-bee8-dd15acf381b4
+2024-09-27 07:48:39,733 - minutememo_app.app - INFO - Local chunk files for recording_id 6afc860c-fbe0-4299-bee8-dd15acf381b4: ['6afc860c-fbe0-4299-bee8-dd15acf381b4_chunk_0.webm', '6afc860c-fbe0-4299-bee8-dd15acf381b4_chunk_1.webm']
+2024-09-27 07:48:39,733 - minutememo_app.app - INFO - List file created at: uploads/audio_recordings/6afc860c-fbe0-4299-bee8-dd15acf381b4_list.txt
+2024-09-27 07:48:39,733 - minutememo_app.app - INFO - Running FFmpeg locally with list file uploads/audio_recordings/6afc860c-fbe0-4299-bee8-dd15acf381b4_list.txt
+2024-09-27 07:48:40,014 - minutememo_app.app - INFO - Local concatenation output at uploads/audio_recordings/6afc860c-fbe0-4299-bee8-dd15acf381b4.webm
+2024-09-27 07:48:40,195 - minutememo_app.app - INFO - MP3 conversion successful. File saved at uploads/audio_recordings/6afc860c-fbe0-4299-bee8-dd15acf381b4.mp3
+2024-09-27 07:48:40,214 - minutememo_app.app - INFO - Concatenation status for 6afc860c-fbe0-4299-bee8-dd15acf381b4 updated to success
+2024-09-27 07:48:40,214 - minutememo_app.app - INFO - Concatenation status updated to 'success' in the database for recording_id: 6afc860c-fbe0-4299-bee8-dd15acf381b4
+2024-09-27 07:48:40,215 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:48:40,216 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:48:40] "POST /concatenate HTTP/1.1" 200 -
+2024-09-27 07:48:40,220 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:48:40,220 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:48:40] "OPTIONS /api/recordings/6afc860c-fbe0-4299-bee8-dd15acf381b4 HTTP/1.1" 200 -
+2024-09-27 07:48:40,224 - minutememo_app.app - INFO - Entering update_recording function for recording_id: 6afc860c-fbe0-4299-bee8-dd15acf381b4
+2024-09-27 07:48:40,224 - minutememo_app.app - INFO - Received data for updating recording 6afc860c-fbe0-4299-bee8-dd15acf381b4: {'audio_url': '/uploads/audio_recordings/6afc860c-fbe0-4299-bee8-dd15acf381b4.mp3'}
+2024-09-27 07:48:40,224 - minutememo_app.app - INFO - Fetching Recording with ID: 6afc860c-fbe0-4299-bee8-dd15acf381b4
+2024-09-27 07:48:40,226 - minutememo_app.app - INFO - Current recording before update: <Recording 6afc860c-fbe0-4299-bee8-dd15acf381b4>
+2024-09-27 07:48:40,226 - minutememo_app.app - INFO - Fetching associated MeetingSession with ID: 112
+2024-09-27 07:48:40,228 - minutememo_app.app - INFO - Current MeetingSession before update: <MeetingSession 112>
+2024-09-27 07:48:40,228 - minutememo_app.app - INFO - Updating audio_url for MeetingSession ID: 112
+2024-09-27 07:48:40,229 - minutememo_app.app - INFO - MeetingSession after update: <MeetingSession 112>
+2024-09-27 07:48:40,229 - minutememo_app.app - INFO - Exiting update_recording function for recording_id: 6afc860c-fbe0-4299-bee8-dd15acf381b4
+2024-09-27 07:48:40,229 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:48:40,231 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:48:40] "PATCH /api/recordings/6afc860c-fbe0-4299-bee8-dd15acf381b4 HTTP/1.1" 200 -
+2024-09-27 07:48:40,234 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:48:40,235 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:48:40] "[33mPOST /api/transcribe/undefined HTTP/1.1[0m" 404 -
+2024-09-27 07:54:55,184 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:54:55,189 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:54:55] "OPTIONS /api/meetings HTTP/1.1" 200 -
+2024-09-27 07:54:55,205 - minutememo_app.app - INFO - POST /api/meetings called with meeting_name: test, hub_id: 3
+2024-09-27 07:54:55,218 - minutememo_app.app - INFO - Created new meeting with id: 110
+2024-09-27 07:54:55,226 - minutememo_app.app - INFO - Created new meeting session with id: 113
+2024-09-27 07:54:55,227 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:54:55,228 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:54:55] "[35m[1mPOST /api/meetings HTTP/1.1[0m" 201 -
+2024-09-27 07:54:55,231 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:54:55,232 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:54:55] "OPTIONS /api/recordings HTTP/1.1" 200 -
+2024-09-27 07:54:55,240 - minutememo_app.app - INFO - Recording 62efceb3-4a3a-48e3-943f-231338a8661e created for user 1 in session 113
+2024-09-27 07:54:55,241 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:54:55,241 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:54:55] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
+2024-09-27 07:55:00,520 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:55:00,522 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:55:00] "POST /upload_chunk HTTP/1.1" 200 -
+2024-09-27 07:55:05,554 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:55:05,573 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:55:05] "POST /upload_chunk HTTP/1.1" 200 -
+2024-09-27 07:55:10,590 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:55:10,591 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:55:10] "POST /upload_chunk HTTP/1.1" 200 -
+2024-09-27 07:55:22,770 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:55:22,772 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:55:22] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 07:55:22,812 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:55:22,814 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:55:22] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 07:55:23,268 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:55:23,289 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:55:23] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 07:55:27,837 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:55:27,838 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:55:27] "OPTIONS /api/meetings HTTP/1.1" 200 -
+2024-09-27 07:55:27,857 - minutememo_app.app - INFO - POST /api/meetings called with meeting_name: test, hub_id: 3
+2024-09-27 07:55:27,863 - minutememo_app.app - INFO - Created new meeting with id: 111
+2024-09-27 07:55:27,868 - minutememo_app.app - INFO - Created new meeting session with id: 114
+2024-09-27 07:55:27,868 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:55:27,869 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:55:27] "[35m[1mPOST /api/meetings HTTP/1.1[0m" 201 -
+2024-09-27 07:55:27,872 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:55:27,873 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:55:27] "OPTIONS /api/recordings HTTP/1.1" 200 -
+2024-09-27 07:55:27,878 - minutememo_app.app - INFO - Recording a4a56cd4-f8fe-4757-b38e-1574851b9e9d created for user 1 in session 114
+2024-09-27 07:55:27,878 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:55:27,878 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:55:27] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
+2024-09-27 07:55:33,188 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:55:33,191 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:55:33] "POST /upload_chunk HTTP/1.1" 200 -
+2024-09-27 07:55:38,225 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:55:38,227 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:55:38] "POST /upload_chunk HTTP/1.1" 200 -
+2024-09-27 07:55:51,699 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:55:51,701 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:55:51] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 07:55:51,720 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:55:51,721 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:55:51] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 07:55:51,734 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 07:55:51,736 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 07:55:51] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 11:52:10,067 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:52:10,087 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:52:10] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 11:52:10,093 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:52:10,094 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:52:10] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 11:52:10,104 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:52:10,106 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:52:10] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 11:52:10,110 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:52:10,112 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:52:10] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 11:52:10,115 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:52:10,117 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:52:10] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 11:52:10,119 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-27 11:52:10,120 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 3
+2024-09-27 11:52:10,120 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:52:10,121 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-27 11:52:10,123 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:52:10] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 11:52:10,125 - minutememo_app.app - INFO - Successfully fetched 18 meetings for hub_id: 3
+2024-09-27 11:52:10,125 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:52:10,127 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:52:10] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 11:52:10,136 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:52:10,138 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:52:10] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 11:52:10,149 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:52:10,150 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:52:10] "GET /api/meetingsessions?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 11:55:12,775 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: None
+2024-09-27 11:55:12,780 - minutememo_app.app - ERROR - Hub ID or Meeting ID not provided
+2024-09-27 11:55:12,781 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:55:12,783 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:55:12] "[31m[1mGET /api/meetings HTTP/1.1[0m" 400 -
+2024-09-27 11:55:12,789 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: None
+2024-09-27 11:55:12,789 - minutememo_app.app - ERROR - Hub ID or Meeting ID not provided
+2024-09-27 11:55:12,789 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:55:12,832 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:55:12] "[31m[1mGET /api/meetings HTTP/1.1[0m" 400 -
+2024-09-27 11:55:13,499 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:55:13,502 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:55:13] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 11:55:13,508 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-27 11:55:13,508 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 3
+2024-09-27 11:55:13,509 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-27 11:55:13,510 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:55:13,511 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:55:13] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 11:55:13,512 - minutememo_app.app - INFO - Successfully fetched 18 meetings for hub_id: 3
+2024-09-27 11:55:13,512 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:55:13,513 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:55:13] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 11:55:13,527 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:55:13,528 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:55:13] "GET /api/meetingsessions?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 11:55:14,431 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: None
+2024-09-27 11:55:14,432 - minutememo_app.app - ERROR - Hub ID or Meeting ID not provided
+2024-09-27 11:55:14,432 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:55:14,433 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:55:14] "[31m[1mGET /api/meetings HTTP/1.1[0m" 400 -
+2024-09-27 11:55:14,437 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: None
+2024-09-27 11:55:14,437 - minutememo_app.app - ERROR - Hub ID or Meeting ID not provided
+2024-09-27 11:55:14,437 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:55:14,438 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:55:14] "[31m[1mGET /api/meetings HTTP/1.1[0m" 400 -
+2024-09-27 11:55:14,956 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:55:14,957 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:55:14] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 11:55:14,965 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-27 11:55:14,966 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 3
+2024-09-27 11:55:14,966 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-27 11:55:14,967 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:55:14,970 - minutememo_app.app - INFO - Successfully fetched 18 meetings for hub_id: 3
+2024-09-27 11:55:14,970 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:55:14,971 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:55:14] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 11:55:14,972 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:55:14] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 11:55:14,984 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:55:14,986 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:55:14] "GET /api/meetingsessions?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 11:55:53,969 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: None
+2024-09-27 11:55:53,970 - minutememo_app.app - ERROR - Hub ID or Meeting ID not provided
+2024-09-27 11:55:53,971 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:55:53,972 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:55:53] "[31m[1mGET /api/meetings HTTP/1.1[0m" 400 -
+2024-09-27 11:55:53,983 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: None
+2024-09-27 11:55:53,984 - minutememo_app.app - ERROR - Hub ID or Meeting ID not provided
+2024-09-27 11:55:53,984 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:55:53,985 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:55:53] "[31m[1mGET /api/meetings HTTP/1.1[0m" 400 -
+2024-09-27 11:58:20,802 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:58:20,805 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:58:20] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 11:58:20,814 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-27 11:58:20,815 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-27 11:58:20,816 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 3
+2024-09-27 11:58:20,817 - minutememo_app.app - INFO - Successfully fetched 18 meetings for hub_id: 3
+2024-09-27 11:58:20,817 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:58:20,818 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:58:20,820 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:58:20] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 11:58:20,821 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:58:20] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 11:58:20,834 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 11:58:20,835 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 11:58:20] "GET /api/meetingsessions?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 12:00:24,435 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:00:24,437 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:00:24] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:00:24,454 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:00:24,455 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:00:24] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:00:24,470 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:00:24,472 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:00:24] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:09:15,702 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:09:15,705 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:09:15] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:09:15,719 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:09:15,721 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:09:15] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:09:15,734 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:09:15,735 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:09:15] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:19:56,931 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:19:56,933 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:19:56] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:19:56,947 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:19:56,948 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:19:56] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:19:56,959 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:19:56,960 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:19:56] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:20:33,270 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:20:33,272 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:20:33] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:20:33,284 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:20:33,286 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:20:33] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:20:33,297 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:20:33,298 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:20:33] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:22:12,037 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:22:12,039 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:22:12] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:22:12,054 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:22:12,055 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:22:12] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:22:12,067 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:22:12,068 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:22:12] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:23:59,540 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:23:59,542 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:23:59] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:23:59,561 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:23:59,562 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:23:59] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:23:59,585 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:23:59,585 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:23:59] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:24:25,178 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:24:25,182 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:24:25] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 12:24:25,190 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-27 12:24:25,191 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 3
+2024-09-27 12:24:25,191 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-27 12:24:25,191 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:24:25,193 - minutememo_app.app - INFO - Successfully fetched 18 meetings for hub_id: 3
+2024-09-27 12:24:25,194 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:24:25] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 12:24:25,194 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:24:25,196 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:24:25] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 12:24:25,206 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:24:25,207 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:24:25] "GET /api/meetingsessions?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 12:24:27,813 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:24:27,814 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:24:27] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 12:24:27,828 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:24:27,828 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:24:27,837 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:24:27] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 12:24:27,838 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:24:27] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:24:27,848 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:24:27,849 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:24:27] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 12:24:27,852 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:24:27,856 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-27 12:24:27,856 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:24:27,857 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 3
+2024-09-27 12:24:27,857 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:24:27] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:24:27,857 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-27 12:24:27,859 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:24:27] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 12:24:27,862 - minutememo_app.app - INFO - Successfully fetched 18 meetings for hub_id: 3
+2024-09-27 12:24:27,864 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:24:27,866 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:24:27] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 12:24:27,876 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:24:27,878 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:24:27] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:24:27,884 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:24:27,885 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:24:27] "GET /api/meetingsessions?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 12:27:13,924 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:27:13,926 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:27:13] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:27:13,938 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:27:13,939 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:27:13] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:27:13,949 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:27:13,951 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:27:13] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:27:28,487 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:27:28,493 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:27:28] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:27:28,503 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:27:28,505 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:27:28] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:27:28,525 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:27:28,526 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:27:28] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:28:42,852 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:28:42,856 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:28:42] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:28:42,871 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:28:42,872 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:28:42] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:28:42,908 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:28:42,909 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:28:42] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 12:28:47,842 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:28:47,843 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:28:47] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 12:28:47,881 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-27 12:28:47,882 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 3
+2024-09-27 12:28:47,882 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-27 12:28:47,908 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:28:47,909 - minutememo_app.app - INFO - Successfully fetched 18 meetings for hub_id: 3
+2024-09-27 12:28:47,910 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:28:47] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 12:28:47,910 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:28:47,912 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:28:47] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 12:28:47,925 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 12:28:47,926 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 12:28:47] "GET /api/meetingsessions?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 16:35:11,354 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 16:35:11,362 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 16:35:11] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 16:35:11,376 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 16:35:11,377 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 16:35:11] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 16:35:11,383 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 16:35:11,384 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 16:35:11] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 16:35:11,389 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 16:35:11,390 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 16:35:11] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 16:35:11,396 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 16:35:11,397 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 16:35:11] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 21:40:20,482 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 21:40:20,484 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 21:40:20] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 21:40:20,498 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 21:40:20,500 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 21:40:20] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 21:40:20,526 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 21:40:20,527 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 21:40:20] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 21:48:22,774 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 21:48:22,776 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 21:48:22] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 21:48:22,799 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 21:48:22,800 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 21:48:22] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 21:48:22,821 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 21:48:22,822 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 21:48:22] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 21:48:28,317 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 21:48:28,318 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 21:48:28] "OPTIONS /api/set_active_hub HTTP/1.1" 200 -
+2024-09-27 21:48:28,327 - routes - DEBUG - Received request to set active hub with hub_id: 3
+2024-09-27 21:48:28,328 - routes - DEBUG - Querying database for hub_id: 3
+2024-09-27 21:48:28,331 - routes - DEBUG - Setting active hub to 3 for user test@test.com
+2024-09-27 21:48:28,347 - routes - INFO - Successfully set active hub to 3 for user test@test.com
+2024-09-27 21:48:28,348 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 21:48:28,349 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 21:48:28] "POST /api/set_active_hub HTTP/1.1" 200 -
+2024-09-27 21:48:31,589 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 21:48:31,591 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 21:48:31] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 21:48:31,595 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 21:48:31,597 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-27 21:48:31,597 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 3
+2024-09-27 21:48:31,598 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-27 21:48:31,598 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 21:48:31] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 21:48:31,601 - minutememo_app.app - INFO - Successfully fetched 18 meetings for hub_id: 3
+2024-09-27 21:48:31,602 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 21:48:31,603 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 21:48:31] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 21:48:31,622 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 21:48:31,623 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 21:48:31] "GET /api/meetingsessions?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 21:48:34,495 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 21:48:34,497 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 21:48:34] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 21:48:34,504 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 21:48:34,504 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 21:48:34,505 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 21:48:34] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 21:48:34,506 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 21:48:34] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 21:48:34,515 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 21:48:34,517 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 21:48:34] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 21:48:34,519 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 21:48:34,521 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 21:48:34,522 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 21:48:34] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 21:48:34,524 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-27 21:48:34,525 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 3
+2024-09-27 21:48:34,526 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 21:48:34] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 21:48:34,526 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-27 21:48:34,528 - minutememo_app.app - INFO - Successfully fetched 18 meetings for hub_id: 3
+2024-09-27 21:48:34,529 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 21:48:34,533 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 21:48:34] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 21:48:34,538 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 21:48:34,540 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 21:48:34] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 21:48:34,547 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 21:48:34,548 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 21:48:34] "GET /api/meetingsessions?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 22:07:45,374 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:07:45,381 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:07:45] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 22:07:45,390 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:07:45,390 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:07:45,391 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:07:45] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 22:07:45,391 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:07:45] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 22:07:45,409 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:07:45,410 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:07:45] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 22:07:45,433 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-27 22:07:45,434 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-27 22:07:45,435 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 3
+2024-09-27 22:07:45,437 - minutememo_app.app - INFO - Successfully fetched 18 meetings for hub_id: 3
+2024-09-27 22:07:45,439 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:07:45,440 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:07:45,440 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:07:45,445 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:07:45] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 22:07:45,460 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:07:45] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 22:07:45,483 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:07:45] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 22:07:45,541 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:07:45,542 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:07:45] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 22:07:45,545 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:07:45,573 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:07:45] "GET /api/meetingsessions?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 22:23:38,410 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:23:38,413 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:23:38] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 22:23:38,429 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:23:38,430 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:23:38] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 22:23:38,441 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:23:38,443 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:23:38] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-09-27 22:23:38,507 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-27 22:23:38,507 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-27 22:23:38,509 - minutememo_app.app - INFO - Successfully fetched 18 meetings for hub_id: 3
+2024-09-27 22:23:38,510 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:23:38,510 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:23:38] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 22:23:38,513 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-27 22:23:38,514 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-27 22:23:38,514 - minutememo_app.app - INFO - Successfully fetched 18 meetings for hub_id: 3
+2024-09-27 22:23:38,514 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:23:38,516 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:23:38] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 22:24:28,776 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:28,780 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:28] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 22:24:28,787 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-27 22:24:28,787 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-27 22:24:28,788 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:28,789 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 3
+2024-09-27 22:24:28,789 - minutememo_app.app - INFO - Successfully fetched 18 meetings for hub_id: 3
+2024-09-27 22:24:28,789 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:28] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 22:24:28,790 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:28,792 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:28] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 22:24:28,807 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:28,808 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:28] "GET /api/meetingsessions?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 22:24:30,786 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-27 22:24:30,787 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: 111
+2024-09-27 22:24:30,789 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-27 22:24:30,789 - minutememo_app.app - INFO - Fetching meeting sessions for meeting_id: 111
+2024-09-27 22:24:30,792 - minutememo_app.app - INFO - Successfully fetched 18 meetings for hub_id: 3
+2024-09-27 22:24:30,792 - minutememo_app.app - INFO - Successfully fetched 1 sessions for meeting_id: 111
+2024-09-27 22:24:30,792 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:30,793 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:30,795 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:30] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 22:24:30,795 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:30] "GET /api/meetings?meeting_id=111 HTTP/1.1" 200 -
+2024-09-27 22:24:30,799 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-27 22:24:30,799 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: 111
+2024-09-27 22:24:30,799 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-27 22:24:30,799 - minutememo_app.app - INFO - Fetching meeting sessions for meeting_id: 111
+2024-09-27 22:24:30,800 - minutememo_app.app - INFO - Successfully fetched 18 meetings for hub_id: 3
+2024-09-27 22:24:30,800 - minutememo_app.app - INFO - Successfully fetched 1 sessions for meeting_id: 111
+2024-09-27 22:24:30,800 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:30,801 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:30,803 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:30] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 22:24:30,804 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:30] "GET /api/meetings?meeting_id=111 HTTP/1.1" 200 -
+2024-09-27 22:24:31,946 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:31,948 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:31] "GET /api/sessions/114 HTTP/1.1" 200 -
+2024-09-27 22:24:31,955 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:31,958 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:31] "GET /api/sessions/114 HTTP/1.1" 200 -
+2024-09-27 22:24:31,960 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:31,962 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:31] "GET /api/sessions/114/summaries HTTP/1.1" 200 -
+2024-09-27 22:24:31,966 - routes - DEBUG - Fetching action points for session_id: 114
+2024-09-27 22:24:32,005 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:32,009 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:32] "GET /api/sessions/114/summaries HTTP/1.1" 200 -
+2024-09-27 22:24:32,057 - routes - INFO - No action items found for session_id: 114
+2024-09-27 22:24:32,057 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:32,058 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:32] "GET /api/sessions/114/action_points HTTP/1.1" 200 -
+2024-09-27 22:24:32,060 - routes - DEBUG - Fetching action points for session_id: 114
+2024-09-27 22:24:32,096 - routes - INFO - No action items found for session_id: 114
+2024-09-27 22:24:32,096 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:32,097 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:32] "GET /api/sessions/114/action_points HTTP/1.1" 200 -
+2024-09-27 22:24:34,292 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:34,296 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:34] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 22:24:34,301 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-27 22:24:34,302 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 3
+2024-09-27 22:24:34,302 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-27 22:24:34,302 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:34,304 - minutememo_app.app - INFO - Successfully fetched 18 meetings for hub_id: 3
+2024-09-27 22:24:34,305 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:34] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 22:24:34,305 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:34,308 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:34] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 22:24:34,321 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:34,323 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:34] "GET /api/meetingsessions?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 22:24:36,799 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-27 22:24:36,800 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: 107
+2024-09-27 22:24:36,800 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-27 22:24:36,801 - minutememo_app.app - INFO - Fetching meeting sessions for meeting_id: 107
+2024-09-27 22:24:36,804 - minutememo_app.app - INFO - Successfully fetched 18 meetings for hub_id: 3
+2024-09-27 22:24:36,805 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:36,806 - minutememo_app.app - INFO - Successfully fetched 1 sessions for meeting_id: 107
+2024-09-27 22:24:36,807 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:36,807 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:36] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 22:24:36,810 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:36] "GET /api/meetings?meeting_id=107 HTTP/1.1" 200 -
+2024-09-27 22:24:36,816 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-27 22:24:36,816 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-27 22:24:36,817 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: 107
+2024-09-27 22:24:36,818 - minutememo_app.app - INFO - Successfully fetched 18 meetings for hub_id: 3
+2024-09-27 22:24:36,818 - minutememo_app.app - INFO - Fetching meeting sessions for meeting_id: 107
+2024-09-27 22:24:36,818 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:36,821 - minutememo_app.app - INFO - Successfully fetched 1 sessions for meeting_id: 107
+2024-09-27 22:24:36,821 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:36] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 22:24:36,822 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:36,823 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:36] "GET /api/meetings?meeting_id=107 HTTP/1.1" 200 -
+2024-09-27 22:24:40,241 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:40,243 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:40] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 22:24:40,248 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-27 22:24:40,249 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:40,249 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-27 22:24:40,250 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 3
+2024-09-27 22:24:40,251 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:40] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-09-27 22:24:40,252 - minutememo_app.app - INFO - Successfully fetched 18 meetings for hub_id: 3
+2024-09-27 22:24:40,252 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:40,254 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:40] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 22:24:40,263 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:40,265 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:40] "GET /api/meetingsessions?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 22:24:42,271 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: 106
+2024-09-27 22:24:42,272 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-27 22:24:42,274 - minutememo_app.app - INFO - Fetching meeting sessions for meeting_id: 106
+2024-09-27 22:24:42,275 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-27 22:24:42,279 - minutememo_app.app - INFO - Successfully fetched 18 meetings for hub_id: 3
+2024-09-27 22:24:42,280 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:42,281 - minutememo_app.app - INFO - Successfully fetched 1 sessions for meeting_id: 106
+2024-09-27 22:24:42,281 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:42] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 22:24:42,282 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:42,295 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:42] "GET /api/meetings?meeting_id=106 HTTP/1.1" 200 -
+2024-09-27 22:24:42,302 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 3, meeting_id: None
+2024-09-27 22:24:42,302 - minutememo_app.app - INFO - Fetching meetings for hub_id: 3
+2024-09-27 22:24:42,306 - minutememo_app.app - INFO - Successfully fetched 18 meetings for hub_id: 3
+2024-09-27 22:24:42,306 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:42,307 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: 106
+2024-09-27 22:24:42,307 - minutememo_app.app - INFO - Fetching meeting sessions for meeting_id: 106
+2024-09-27 22:24:42,308 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:42] "GET /api/meetings?hub_id=3 HTTP/1.1" 200 -
+2024-09-27 22:24:42,308 - minutememo_app.app - INFO - Successfully fetched 1 sessions for meeting_id: 106
+2024-09-27 22:24:42,308 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:42,309 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:42] "GET /api/meetings?meeting_id=106 HTTP/1.1" 200 -
+2024-09-27 22:24:46,455 - minutememo_app.app - INFO - Local audio URL for session ID 109: http://localhost:5000/uploads/audio_recordings/dde8c677-67f2-4468-9f61-4a63ab841fd8.mp3
+2024-09-27 22:24:46,455 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:46,457 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:46] "GET /api/sessions/109 HTTP/1.1" 200 -
+2024-09-27 22:24:46,460 - minutememo_app.app - INFO - Local audio URL for session ID 109: http://localhost:5000/uploads/audio_recordings/dde8c677-67f2-4468-9f61-4a63ab841fd8.mp3
+2024-09-27 22:24:46,460 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:46,462 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:46] "GET /api/sessions/109 HTTP/1.1" 200 -
+2024-09-27 22:24:46,470 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:46,472 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:46] "GET /api/sessions/109/summaries HTTP/1.1" 200 -
+2024-09-27 22:24:46,477 - auth - DEBUG - After request, Origin: None
+2024-09-27 22:24:46,479 - routes - DEBUG - Fetching action points for session_id: 109
+2024-09-27 22:24:46,480 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:46,481 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:46] "[35m[1mGET /uploads/audio_recordings/dde8c677-67f2-4468-9f61-4a63ab841fd8.mp3 HTTP/1.1[0m" 206 -
+2024-09-27 22:24:46,483 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:46] "GET /api/sessions/109/summaries HTTP/1.1" 200 -
+2024-09-27 22:24:46,484 - routes - DEBUG - Returning action points for session_id: 109
+2024-09-27 22:24:46,485 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-09-27 22:24:46,487 - werkzeug - INFO - 127.0.0.1 - - [27/Sep/2024 22:24:46] "GET /api/sessions/109/action_points HTTP/1.1" 200 -

@@ -2,56 +2,52 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles.css';
-import { useUser } from '../UserContext'; // Import useUser from UserContext
+import { useUser } from '../UserContext';
 
 const DashboardPage = ({ selectedHub }) => {
   const { user } = useUser(); // Get the user context
   const [meetings, setMeetings] = useState([]);
   const [meetingSessions, setMeetingSessions] = useState([]);
   const [error, setError] = useState('');
-  const [subscriptionActive, setSubscriptionActive] = useState(false); // Track subscription status
-  const [subscriptionEmpty, setSubscriptionEmpty] = useState(false); // Track empty subscription
-  const [isLoading, setIsLoading] = useState(true); // Track loading state
+  const [subscriptionActive, setSubscriptionActive] = useState(false);
+  const [subscriptionEmpty, setSubscriptionEmpty] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [newMeetingName, setNewMeetingName] = useState(''); // For the new meeting input
+  const [isCreatingMeeting, setIsCreatingMeeting] = useState(false); // Track the creation process
   const navigate = useNavigate();
 
-  // Environment variable for backend URL
   const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
-  // Check subscription status if the user is logged in
   useEffect(() => {
     if (user) {
       const checkSubscriptionStatus = async () => {
         try {
-          setIsLoading(true); // Start loading
+          setIsLoading(true);
           const response = await axios.get(`${backendUrl}/api/subscription-status`, { withCredentials: true });
           if (response.status === 200) {
             if (response.data.is_active) {
-              setSubscriptionActive(true); // Subscription is active
+              setSubscriptionActive(true);
             } else if (response.data.is_empty) {
-              setSubscriptionEmpty(true); // Subscription is empty
+              setSubscriptionEmpty(true);
             } else {
-              setSubscriptionActive(false); // Subscription is inactive
-              navigate('/subscribe'); // Redirect to subscription page if inactive
+              setSubscriptionActive(false);
+              navigate('/subscribe');
             }
           } else {
             setError('Failed to fetch subscription status');
           }
         } catch (err) {
           setError('Error checking subscription status');
-          console.error(err);
         } finally {
-          setIsLoading(false); // Stop loading after the check is complete
+          setIsLoading(false);
         }
       };
-
       checkSubscriptionStatus();
     } else {
-      // If no user is logged in, stop loading and don't perform any subscription checks
       setIsLoading(false);
     }
   }, [user, backendUrl, navigate]);
 
-  // Fetch meetings and meeting sessions if the subscription is active and a hub is selected
   useEffect(() => {
     if (selectedHub && subscriptionActive) {
       const fetchMeetings = async () => {
@@ -64,7 +60,6 @@ const DashboardPage = ({ selectedHub }) => {
           }
         } catch (err) {
           setError('Error fetching meetings');
-          console.error(err);
         }
       };
 
@@ -78,7 +73,6 @@ const DashboardPage = ({ selectedHub }) => {
           }
         } catch (err) {
           setError('Error fetching meeting sessions');
-          console.error(err);
         }
       };
 
@@ -87,34 +81,71 @@ const DashboardPage = ({ selectedHub }) => {
     }
   }, [selectedHub, backendUrl, subscriptionActive]);
 
-  // Return early if no user is logged in
+  const handleCreateMeeting = async () => {
+    if (!newMeetingName || !selectedHub) {
+      setError('Please provide a meeting name and select a hub.');
+      return;
+    }
+
+    setIsCreatingMeeting(true);
+
+    try {
+      const response = await axios.post(`${backendUrl}/api/meetings`, {
+        name: newMeetingName,
+        hub_id: selectedHub,
+      });
+      if (response.status === 201) {
+        setMeetings((prevMeetings) => [...prevMeetings, { id: response.data.meeting_session_id, name: newMeetingName }]);
+        setNewMeetingName(''); // Clear the input after successful creation
+      } else {
+        setError('Failed to create a new meeting');
+      }
+    } catch (err) {
+      setError('Error creating a new meeting');
+    } finally {
+      setIsCreatingMeeting(false);
+    }
+  };
+
   if (!user) {
     return <p>Please log in to access your dashboard.</p>;
   }
 
-  // Return a loading message while checking subscription status
   if (isLoading) {
     return <p>Checking subscription status...</p>;
   }
 
-  // If subscription is empty, show the message but not the subscription page
   if (subscriptionEmpty) {
     return (
       <div className="dashboard">
         <h3>No Subscription Found</h3>
-        <p>Please <Link to="/subscribe">subscribe</Link> to access your dashboard.</p>
+        <p>
+          Please <Link to="/subscribe">subscribe</Link> to access your dashboard.
+        </p>
       </div>
     );
   }
 
-  // If the subscription is inactive, show a message indicating that it's inactive
   if (!subscriptionActive) {
     return <p>Your subscription is inactive. Please <Link to="/subscribe">subscribe</Link> to continue.</p>;
   }
 
-  // Normal dashboard content when the user is logged in and subscription is active
   return (
     <div className="dashboard">
+      <div className="box-shadow-container">
+        <h3>Create a New Meeting</h3>
+        <input
+          type="text"
+          placeholder="Enter meeting name"
+          value={newMeetingName}
+          onChange={(e) => setNewMeetingName(e.target.value)}
+        />
+        <button onClick={handleCreateMeeting} disabled={isCreatingMeeting}>
+          {isCreatingMeeting ? 'Creating...' : 'Create Meeting'}
+        </button>
+        {error && <p className="error-message">{error}</p>}
+      </div>
+
       <div className="box-shadow-container">
         <h3>Meetings</h3>
         {error && <p className="error-message">{error}</p>}
@@ -127,7 +158,7 @@ const DashboardPage = ({ selectedHub }) => {
             </tr>
           </thead>
           <tbody>
-            {meetings.map(meeting => (
+            {meetings.map((meeting) => (
               <tr key={meeting.id}>
                 <td>
                   <Link to={`/meetings/${meeting.id}`}>{meeting.name}</Link>
@@ -139,7 +170,7 @@ const DashboardPage = ({ selectedHub }) => {
           </tbody>
         </table>
       </div>
-  
+
       <div className="box-shadow-container">
         <h3>Meeting Sessions</h3>
         <table>
@@ -151,7 +182,7 @@ const DashboardPage = ({ selectedHub }) => {
             </tr>
           </thead>
           <tbody>
-            {meetingSessions.map(session => (
+            {meetingSessions.map((session) => (
               <tr key={session.id}>
                 <td>{session.name}</td>
                 <td>{session.meeting_name}</td>
