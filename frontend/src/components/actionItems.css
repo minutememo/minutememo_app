@@ -1,48 +1,76 @@
+/* Styles for the task list and task items */
 .task-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .task-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    margin: 5px 0;
-    border-bottom: 1px solid #eaeaea;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  
-  .task-item.completed {
-    background-color: #d4edda;
-  }
-  
-  .task-left {
-    display: flex;
-    align-items: center;
-  }
-  
-  .task-left input {
-    margin-right: 10px;
-  }
-  
-  .task-details {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .task-summary {
-    font-size: 0.9em;
-    color: #555;
-  }
-  
-  .task-item-error {
-    color: red;
-    padding: 10px;
-  }
-  .task-title {
-    margin-left: 10px;
-  }
+  margin-top: 20px;
+}
+
+.task-item {
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer; /* Change cursor to indicate it's clickable */
+}
+
+.task-item:hover {
+  background-color: #f1f1f1; /* Lighten background on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+}
+
+.task-item.dragging {
+  background-color: #e0ffe0; /* Lighter green during dragging */
+}
+
+.task-item.completed {
+  text-decoration: line-through;
+  color: #666;
+}
+
+.task-left {
+  display: flex;
+  align-items: center;
+}
+
+.task-details {
+  margin-left: 10px;
+  flex-grow: 1;
+}
+
+.task-title {
+  font-weight: 600;
+  color: #333;
+}
+
+.edit-input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Modal styling */
+.action-item-modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.action-item-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.modal-content h2 {
+  margin-bottom: 10px;
+}
+
+.modal-content p {
+  margin: 5px 0;
+}

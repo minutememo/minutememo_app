@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
-import { Container, Row, Col, Form, FormControl, Button, Navbar, Nav, Dropdown, Modal, Spinner } from 'react-bootstrap';
 import { MdDashboard, MdEvent, MdList, MdSettings } from 'react-icons/md'; // Importing icons
 import './styles.css';
 import AudioRecorder from './AudioRecorder';
@@ -14,15 +13,12 @@ import LoginPage from './components/LoginPage';
 import SignupPage from './components/SignupPage';
 import UserEmailDisplay from './components/UserEmailDisplay';
 import LogoutButton from './components/LogoutButton';
-import FileUpload from './components/FileUpload';  // Import FileUpload component
+import FileUpload from './components/FileUpload'; // Import FileUpload component
 import axios from 'axios';
-import MeetingPage from './components/MeetingsPage'; // Adjust the path as necessary
+import MeetingPage from './components/MeetingsPage'; // Adjust the path if necessary
 import MeetingSessionPage from './components/MeetingSessionPage'; // Import the new component
 import SubscribePage from './components/SubscribePage'; // Create this component
-
-
-
-
+import { Container, Row, Col, Form, FormControl, Button, Navbar, Nav, Dropdown, Modal, Spinner } from 'react-bootstrap';
 
 axios.defaults.withCredentials = true; // Ensure cookies are sent with every request
 
@@ -30,9 +26,10 @@ const AppContent = () => {
   const { user } = useUser(); // Get user from the context
   const [meetingHubs, setMeetingHubs] = useState([]);
   const [selectedHub, setSelectedHub] = useState(null);
+  const [selectedMeetingId, setSelectedMeetingId] = useState(null); // Add state for selected meeting
   const [activeHubName, setActiveHubName] = useState('Select Meeting Hub');
   const [showModal, setShowModal] = useState(false);
-  const [newHubName, setNewHubName] = useState("");
+  const [newHubName, setNewHubName] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -52,158 +49,102 @@ const AppContent = () => {
   }, [user]);
 
   const fetchMeetingHubs = async () => {
-    console.log('fetchMeetingHubs called');
     try {
       setIsLoading(true);
-      console.log('Fetching meeting hubs from API...');
       const response = await axios.get(`${backendUrl}/api/meetinghubs`);
-      console.log('API response received:', response);
-  
       if (response.status === 200) {
         const hubs = response.data.meeting_hubs || [];
-        console.log('Fetched meeting hubs:', hubs);
-  
         if (hubs.length > 0) {
           const activeHubId = parseInt(response.data.active_hub_id, 10) || hubs[0]?.id;
-          console.log('Active Hub ID from API:', activeHubId);
-  
-          setMeetingHubs(hubs); // Set meeting hubs in state
-          setSelectedHub(activeHubId); // Set the active hub in state
-          console.log('Selected hub state updated:', activeHubId);
-  
-          // Now that the hubs state is updated, we can safely update the active hub name
+          setMeetingHubs(hubs);
+          setSelectedHub(activeHubId);
           updateActiveHubName(activeHubId, hubs);
         } else {
-          console.log('No hubs found in the response.');
-          setSelectedHub(null); // Handle the case where there are no hubs
+          setSelectedHub(null);
           setActiveHubName('No Meeting Hub Selected');
         }
       } else {
-        console.error('Unexpected response status:', response.status);
         setError('Failed to fetch meeting hubs');
       }
     } catch (err) {
-      console.error('Error fetching meeting hubs:', err);
       setError('Error fetching meeting hubs');
     } finally {
-      console.log('Finished fetching meeting hubs.');
       setIsLoading(false);
     }
   };
-  
+
   const updateActiveHubName = (hubId, hubs = meetingHubs) => {
-    console.log('updateActiveHubName called with hubId:', hubId);
-  
-    // Ensure hubId is compared as a number
     const hub = hubs.find(hub => hub.id === parseInt(hubId, 10));
-  
-    console.log('Meeting hubs array during updateActiveHubName:', hubs);
-  
     if (hub) {
-      console.log('Hub found in updateActiveHubName:', hub);
       setActiveHubName(hub.name);
     } else {
-      console.log('Hub not found in updateActiveHubName');
       setActiveHubName('No Meeting Hub Selected');
     }
   };
-  
-  let tempIdCounter = -1;
-  
+
   const handleCreateHub = async () => {
     if (!newHubName.trim()) {
-      alert("Please enter a hub name.");
+      alert('Please enter a hub name.');
       return;
     }
-  
-    // Use a smaller negative integer as a temporary ID
-    const tempHubId = tempIdCounter--;  // Decrement the counter for each new temporary ID
+
+    const tempHubId = -1; // Temporary ID for the hub
     const tempHub = { id: tempHubId, name: newHubName };
     setMeetingHubs(prevHubs => [...prevHubs, tempHub]);
-    setSelectedHub(tempHub.id); // Temporarily select the new hub
-    setActiveHubName(tempHub.name); // Update the active hub name with the temporary name
-  
+    setSelectedHub(tempHub.id);
+    setActiveHubName(tempHub.name);
+
     try {
       setIsLoading(true);
-      setError('');
-  
       const response = await axios.post(`${backendUrl}/api/meetinghubs`, { name: newHubName });
-  
-      if (response.status === 201 && response.data && response.data.meeting_hub_id) {
+      if (response.status === 201 && response.data.meeting_hub_id) {
         const createdHubId = response.data.meeting_hub_id;
         const createdHub = { id: createdHubId, name: newHubName };
-  
-        // Replace the temporary hub with the actual hub returned by the server
         setMeetingHubs(prevHubs =>
-          prevHubs.map(hub => hub.id === tempHubId ? createdHub : hub)
+          prevHubs.map(hub => (hub.id === tempHubId ? createdHub : hub))
         );
         setSelectedHub(createdHub.id);
         setActiveHubName(createdHub.name);
-  
-        // Store the active hub in the database (if necessary)
         await setActiveHub(createdHub.id);
-  
-        // Refresh the meeting hubs to reflect the latest state
         await fetchMeetingHubs();
-  
       } else {
         setError('Failed to create meeting hub');
-        setMeetingHubs(prevHubs => prevHubs.filter(hub => hub.id !== tempHubId)); // Remove the temporary hub
-        setActiveHubName('No Meeting Hub Selected');
       }
     } catch (err) {
-      console.error('Error creating meeting hub:', err);
       setError('Error creating meeting hub');
-      setMeetingHubs(prevHubs => prevHubs.filter(hub => hub.id !== tempHubId)); // Remove the temporary hub
-      setActiveHubName('No Meeting Hub Selected');
     } finally {
       setIsLoading(false);
-      setNewHubName(""); // Clear the input field after creation
-      setShowModal(false); // Close the modal after creation
+      setNewHubName('');
+      setShowModal(false);
     }
   };
-  
-  const handleHubSelect = async (hubId) => {
+
+  const handleHubSelect = async hubId => {
     try {
-      console.log('handleHubSelect called with hubId:', hubId);
-  
-      // Store the active hub in the backend
       await setActiveHub(hubId);
-  
-      // Update the selected hub state
       setSelectedHub(hubId);
-      console.log('selectedHub state updated:', hubId);
-  
-      // Log current meetingHubs before updating the active hub name
-      console.log('Current meetingHubs array:', meetingHubs);
-  
-      // Update the active hub name in the UI after the state is set
       updateActiveHubName(hubId);
-  
-      // Close the dropdown
       setDropdownVisible(false);
-      console.log('Dropdown closed');
     } catch (err) {
-      console.error('Error selecting hub:', err);
       setError('Error selecting hub');
     }
   };
-  
-  const setActiveHub = async (hubId) => {
+
+  const setActiveHub = async hubId => {
     try {
-      console.log('setActiveHub called with hubId:', hubId);
       await axios.post(`${backendUrl}/api/set_active_hub`, { hub_id: hubId });
-      console.log('Active hub set on the backend for hubId:', hubId);
     } catch (err) {
-      console.error('Error setting active hub:', err);
       setError('Error setting active hub');
     }
   };
-  
+
   const toggleDropdown = () => {
     setDropdownVisible(!dropdownVisible);
   };
 
+  const handleMeetingSelect = (meetingId) => {
+    setSelectedMeetingId(meetingId); // Store the selected meeting ID
+  };
 
   return (
     <Router>
@@ -223,30 +164,36 @@ const AppContent = () => {
                 />
                 <Button variant="outline-success">Search</Button>
               </Form>
-  
-              {/* Customized Hub Selector */}
-              <Dropdown show={dropdownVisible} onToggle={toggleDropdown} onSelect={handleHubSelect} className="hub-selector">
+
+              <Dropdown
+                show={dropdownVisible}
+                onToggle={toggleDropdown}
+                onSelect={handleHubSelect}
+                className="hub-selector"
+              >
                 <Dropdown.Toggle as="div" className="hub-dropdown">
                   <span className="hub-name">{activeHubName}</span>
                   <span className="caret"></span>
                 </Dropdown.Toggle>
-  
                 <Dropdown.Menu>
-                  {meetingHubs.length > 0 ? meetingHubs.map(hub => (
-                    <Dropdown.Item key={hub?.id || `temp-${Date.now()}`} eventKey={hub?.id || null}>
-                      {hub?.name || 'Unnamed Hub'}
-                    </Dropdown.Item>
-                  )) : (
+                  {meetingHubs.length > 0 ? (
+                    meetingHubs.map(hub => (
+                      <Dropdown.Item key={hub.id || `temp-${Date.now()}`} eventKey={hub.id}>
+                        {hub.name || 'Unnamed Hub'}
+                      </Dropdown.Item>
+                    ))
+                  ) : (
                     <Dropdown.Item disabled>No hubs available</Dropdown.Item>
                   )}
                   <Dropdown.Divider />
                   <Dropdown.Item onClick={() => setShowModal(true)}>Create New Hub</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-  
-              <LogoutButton /> {/* Show logout button if the user is logged in */}
+
+              <LogoutButton />
             </Container>
           </Navbar>
+
           <Container fluid>
             <Row>
               <Col md={3} className="bg-light sidebar">
@@ -268,13 +215,15 @@ const AppContent = () => {
                     <span className="link-text">Settings</span>
                   </NavLink>
                 </Nav>
-                <UserEmailDisplay /> {/* Display the user email here if logged in */}
-                <AudioRecorder selectedHub={selectedHub} setSelectedHub={setSelectedHub} /> {/* Display AudioRecorder */}
-                <FileUpload /> {/* Display FileUpload in the sidebar */}
+                <UserEmailDisplay />
+                <AudioRecorder
+                  selectedHub={selectedHub}
+                  selectedMeetingId={selectedMeetingId} // Pass selectedMeetingId to AudioRecorder
+                />
+                <FileUpload />
               </Col>
             </Row>
-  
-            {/* Move the .content Col out of the Row containing the sidebar */}
+
             <Row>
               <Col md={{ span: 9, offset: 3 }} className="content">
                 {isLoading ? (
@@ -284,10 +233,13 @@ const AppContent = () => {
                 ) : (
                   <Routes>
                     <Route path="/" element={<DashboardPage selectedHub={selectedHub} />} />
-                    <Route path="/meetings/:meetingId" element={<MeetingsPage />} /> {/* Add this route */}
-                    <Route path="/sessions/:sessionId" element={<MeetingSessionPage />} /> {/* Add this route */}
-                    <Route path="/meetings" element={<MeetingsPage />} />
-                    <Route path="/action-items" element={<ActionItemsPage />} />
+                    <Route
+                      path="/meetings"
+                      element={<MeetingsPage selectedHub={selectedHub} onMeetingSelect={handleMeetingSelect} />} // Pass handler to MeetingsPage
+                    />
+                    <Route path="/meetings/:meetingId" element={<MeetingPage selectedHub={selectedHub} />} />
+                    <Route path="/sessions/:sessionId" element={<MeetingSessionPage selectedHub={selectedHub} />} />
+                    <Route path="/action-items" element={<ActionItemsPage selectedHub={selectedHub} />} />
                     <Route path="/settings" element={<SettingsPage />} />
                   </Routes>
                 )}
@@ -295,8 +247,7 @@ const AppContent = () => {
               </Col>
             </Row>
           </Container>
-  
-          {/* Modal for Creating New Hub */}
+
           <Modal show={showModal} onHide={() => setShowModal(false)}>
             <Modal.Header closeButton>
               <Modal.Title>Create New Meeting Hub</Modal.Title>
@@ -306,7 +257,7 @@ const AppContent = () => {
                 type="text"
                 placeholder="Enter hub name"
                 value={newHubName}
-                onChange={(e) => setNewHubName(e.target.value)}
+                onChange={e => setNewHubName(e.target.value)}
               />
             </Modal.Body>
             <Modal.Footer>
@@ -340,4 +291,3 @@ const App = () => (
 );
 
 export default App;
-

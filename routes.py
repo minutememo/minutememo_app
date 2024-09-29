@@ -891,11 +891,16 @@ def manage_meetings():
             hub_id = request.args.get('hub_id')
             meeting_id = request.args.get('meeting_id')  # New parameter for meeting_id
 
+            current_app.logger.info(f"GET /api/meetings called with hub_id: {hub_id}, meeting_id: {meeting_id}")
+
             if meeting_id:
+                current_app.logger.info(f"Fetching meeting sessions for meeting_id: {meeting_id}")
+                
                 # Fetch meeting sessions for the given meeting_id
                 sessions = MeetingSession.query.filter_by(meeting_id=meeting_id).all()
 
                 if not sessions:
+                    current_app.logger.warning(f"No sessions found for meeting_id: {meeting_id}")
                     return jsonify({'status': 'success', 'sessions': []}), 200  # Return empty list if no sessions found
 
                 # Serialize the sessions to return as JSON
@@ -907,9 +912,12 @@ def manage_meetings():
                     } for session in sessions
                 ]
 
+                current_app.logger.info(f"Successfully fetched {len(sessions_data)} sessions for meeting_id: {meeting_id}")
                 return jsonify({'status': 'success', 'sessions': sessions_data}), 200
 
             elif hub_id:
+                current_app.logger.info(f"Fetching meetings for hub_id: {hub_id}")
+
                 # Fetch meetings for the given hub_id
                 meetings = Meeting.query.filter_by(meeting_hub_id=hub_id).all()
 
@@ -927,8 +935,11 @@ def manage_meetings():
                     } for meeting in meetings
                 ]
 
+                current_app.logger.info(f"Successfully fetched {len(meetings_data)} meetings for hub_id: {hub_id}")
                 return jsonify({'status': 'success', 'meetings': meetings_data}), 200
             else:
+                current_app.logger.error("Hub ID or Meeting ID not provided")
+                # Return an error if neither hub_id nor meeting_id is provided
                 return jsonify({'status': 'error', 'message': 'Hub ID or Meeting ID is required'}), 400
 
         except Exception as e:
@@ -936,13 +947,16 @@ def manage_meetings():
             return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
 
     elif request.method == 'POST':
-        # Existing POST logic
+        # POST logic to create a new meeting and session
         try:
             data = request.json
             meeting_name = data.get('name')
             hub_id = data.get('hub_id')
 
+            current_app.logger.info(f"POST /api/meetings called with meeting_name: {meeting_name}, hub_id: {hub_id}")
+
             if not meeting_name or not hub_id:
+                current_app.logger.error("Meeting name or hub ID is missing")
                 return jsonify({'status': 'error', 'message': 'Meeting name and hub ID are required'}), 400
 
             # Create the meeting
@@ -954,7 +968,9 @@ def manage_meetings():
             db.session.add(new_meeting)
             db.session.commit()
 
-            # Create the meeting session linked to the meeting
+            current_app.logger.info(f"Created new meeting with id: {new_meeting.id}")
+
+            # Create the first meeting session linked to the new meeting
             session_name = f"{meeting_name} - {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')}"
             new_session = MeetingSession(
                 name=session_name,
@@ -964,6 +980,7 @@ def manage_meetings():
             db.session.add(new_session)
             db.session.commit()
 
+            current_app.logger.info(f"Created new meeting session with id: {new_session.id}")
             return jsonify({'status': 'success', 'meeting_session_id': new_session.id}), 201
 
         except Exception as e:
@@ -1321,6 +1338,7 @@ def transcribe_audio(session_id, audio_url):
             transcription = client.audio.transcriptions.create(
                 model="whisper-1",
                 file=audio_file,
+                language="nl",
                 response_format='text'  # Ask for plain text response
             )
 
@@ -1682,3 +1700,58 @@ def get_summaries(session_id):
         'short_summary': session.short_summary or 'No short summary available',
         'long_summary': session.long_summary or 'No long summary available',
     }), 200
+
+
+@main.route('/api/action_item/<int:id>/complete', methods=['PUT'])
+def update_action_item_status(action_item_id):
+    data = request.get_json()
+    completed = data.get('completed')
+
+    # Fetch the action item by ID
+    action_item = ActionItem.query.get(action_item_id)
+    if not action_item:
+        return jsonify({'status': 'error', 'message': 'Action item not found'}), 404
+
+    # Update the completion status
+    action_item.completed = completed
+
+    try:
+        db.session.commit()
+        return jsonify({'status': 'success', 'message': 'Action item updated successfully'}), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+@main.route('/api/sessions', methods=['POST'])
+def create_session():
+    try:
+        # Parse the request data
+        data = request.json
+        meeting_id = data.get('meeting_id')
+        
+        # Validate meeting_id
+        if not meeting_id:
+            return jsonify({'error': 'Meeting ID is required'}), 400
+
+        # Fetch the meeting from the database to verify it exists
+        meeting = Meeting.query.get(meeting_id)
+        if not meeting:
+            return jsonify({'error': 'Meeting not found'}), 404
+
+        # Create a new meeting session
+        new_session = MeetingSession(
+            name=f'Session for {meeting.name}',  # Example naming convention
+            session_datetime=datetime.utcnow(),
+            meeting_id=meeting_id
+        )
+
+        # Add the new session to the database
+        db.session.add(new_session)
+        db.session.commit()
+
+        # Return the created session ID
+        return jsonify({'session_id': new_session.id}), 201
+
+    except Exception as e:
+        # Handle any errors and return a 500 error
+        return jsonify({'error': str(e)}), 500

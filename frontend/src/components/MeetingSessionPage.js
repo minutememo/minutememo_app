@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import ActionPoints from './ActionPoints';
-import '../styles.css'; // Assuming styles.css is in the src folder
-
+import AudioRecorder from '../AudioRecorder'; // Import the AudioRecorder
+import '../styles.css';
 
 const MeetingSessionPage = () => {
-  const { sessionId } = useParams();
+  const { sessionId } = useParams(); // Get session ID from the route
   const [session, setSession] = useState(null);
   const [error, setError] = useState('');
   const [transcription, setTranscription] = useState('');
@@ -15,7 +15,7 @@ const MeetingSessionPage = () => {
   const [actionPoints, setActionPoints] = useState([]);
   const [isExtracting, setIsExtracting] = useState(false);
   const [isTranscriptionExpanded, setIsTranscriptionExpanded] = useState(false);
-  const [summaries, setSummaries] = useState({ short: '', long: '' }); // Store both summaries
+  const [summaries, setSummaries] = useState({ short: '', long: '' });
   const audioRef = useRef(null);
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
@@ -23,7 +23,6 @@ const MeetingSessionPage = () => {
   useEffect(() => {
     const fetchSessionData = async () => {
       try {
-        // Fetch session data
         const sessionResponse = await axios.get(`${backendUrl}/api/sessions/${sessionId}`);
         if (sessionResponse.status === 200) {
           const sessionData = sessionResponse.data.session;
@@ -32,8 +31,7 @@ const MeetingSessionPage = () => {
         } else {
           setError('Failed to fetch session.');
         }
-  
-        // Fetch summaries (short and long)
+
         const summariesResponse = await axios.get(`${backendUrl}/api/sessions/${sessionId}/summaries`);
         if (summariesResponse.status === 200) {
           setSummaries({
@@ -43,8 +41,7 @@ const MeetingSessionPage = () => {
         } else {
           setError('Failed to fetch summaries.');
         }
-  
-        // Fetch action points
+
         const actionPointsResponse = await axios.get(`${backendUrl}/api/sessions/${sessionId}/action_points`);
         if (actionPointsResponse.status === 200) {
           setActionPoints(actionPointsResponse.data.action_items);
@@ -55,25 +52,34 @@ const MeetingSessionPage = () => {
         setError('Error fetching data.');
       }
     };
-  
+
     fetchSessionData();
   }, [sessionId, backendUrl]);
 
-  // Function to handle reordering action points
   const handleReorder = (newOrder) => {
     setActionPoints(newOrder);
   };
 
-  // Function to handle toggling of completion status
-  const handleToggleComplete = (id) => {
-    setActionPoints(prevItems =>
-      prevItems.map(item =>
-        item.id === id ? { ...item, completed: !item.completed } : item
-      )
-    );
+  const handleToggleComplete = async (id, completed) => {
+    try {
+      const response = await axios.put(`${backendUrl}/api/action_item/${id}/complete`, {
+        completed: !completed,
+      });
+
+      if (response.status === 200) {
+        setActionPoints(prevItems =>
+          prevItems.map(item =>
+            item.id === id ? { ...item, completed: !completed } : item
+          )
+        );
+      } else {
+        setError('Failed to update action point.');
+      }
+    } catch (err) {
+      setError('Error updating action point.');
+    }
   };
 
-  // Function to handle updating action point title
   const handleUpdateTitle = async (id, newTitle) => {
     try {
       const response = await axios.put(`${backendUrl}/api/sessions/${sessionId}/action_points/${id}`, { title: newTitle });
@@ -91,7 +97,6 @@ const MeetingSessionPage = () => {
     }
   };
 
-  // Function to handle adding a new action point
   const handleAddActionPoint = async (title) => {
     try {
       const response = await axios.post(`${backendUrl}/api/sessions/${sessionId}/action_points`, { title });
@@ -106,7 +111,6 @@ const MeetingSessionPage = () => {
     }
   };
 
-  // Function to handle transcription
   const handleTranscription = async () => {
     setIsTranscribing(true);
     try {
@@ -123,7 +127,6 @@ const MeetingSessionPage = () => {
     }
   };
 
-  // Function to handle summarization
   const handleSummarize = async () => {
     setIsSummarizing(true);
     try {
@@ -146,15 +149,12 @@ const MeetingSessionPage = () => {
   const handleExtractActionPoints = async () => {
     setIsExtracting(true);
     try {
-      // Call the backend to extract action points from the transcription
       const response = await axios.post(`${backendUrl}/api/extract_action_points/${sessionId}`, {}, {
         headers: { 'Content-Type': 'application/json' }
       });
-  
+
       if (response.status === 200) {
-        // Action points successfully extracted
-        console.log('Action points extracted successfully:', response.data);
-        setActionPoints(response.data.action_items);  // Assuming the response contains action items
+        setActionPoints(response.data.action_items);
       } else {
         setError('Failed to extract action points.');
       }
@@ -165,13 +165,13 @@ const MeetingSessionPage = () => {
     }
   };
 
-  // Toggle transcription display
   const toggleTranscription = () => {
     setIsTranscriptionExpanded(!isTranscriptionExpanded);
   };
 
   return (
     <div className="session-page">
+      <AudioRecorder sessionId={sessionId} /> {/* Recorder is now fixed at the top */}
       {error && <p className="error-message">{error}</p>}
       {session ? (
         <div>
@@ -209,7 +209,6 @@ const MeetingSessionPage = () => {
               {isExtracting ? 'Extracting Action Points...' : 'Extract Action Points'}
             </button>
 
-            {/* Display Summaries Side by Side */}
             <div className="summary-wrapper">
               <div className="summary-container">
                 <h3>Short Summary</h3>
@@ -229,7 +228,6 @@ const MeetingSessionPage = () => {
               </div>
             </div>
 
-            {/* Action Points Component */}
             <ActionPoints
               actionPoints={actionPoints}
               onReorder={handleReorder}
