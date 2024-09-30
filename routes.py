@@ -1266,22 +1266,39 @@ def update_subscription(subscription_id):
         return jsonify({'status': 'error', 'message': str(e)}), 500
 
 
+from flask import request, jsonify, current_app
+from werkzeug.exceptions import UnsupportedMediaType
+
 @main.route('/api/transcribe/<int:session_id>', methods=['POST'])
 @login_required
 def transcribe(session_id):
+    # Ensure that the request has the correct content type
+    if request.content_type != 'application/json':
+        current_app.logger.error(f"Unsupported media type: {request.content_type}")
+        return jsonify({'error': 'Content-Type must be application/json'}), 415
+
     try:
         current_app.logger.info(f"Received transcription request for session ID: {session_id}")
-
+        
         # Log the current user making the request
         current_app.logger.info(f"User {current_user.email} is requesting transcription for session ID: {session_id}")
 
-        # Fetch the audio URL from the database
+        # Fetch the session and validate the audio URL
         session = MeetingSession.query.get_or_404(session_id)
         current_app.logger.info(f"Fetched session for session ID {session_id}: {session}")
 
-        if not session or not session.audio_url:
+        if not session.audio_url:
             current_app.logger.error(f"No audio URL found for session ID: {session_id}")
             return jsonify({'error': 'No audio file found for this session'}), 404
+
+        # Extract language from the request
+        data = request.get_json()
+        if not data or 'language' not in data:
+            current_app.logger.error("No language specified or incorrect data format.")
+            return jsonify({'error': 'Language not specified or invalid request format'}), 400
+
+        language = data.get('language', 'en')  # Default to English if no language is provided
+        current_app.logger.info(f"Language selected for transcription: {language}")
 
         # Generate the full audio URL using url_for
         filename = session.audio_url.split('/')[-1]
@@ -1289,9 +1306,7 @@ def transcribe(session_id):
         current_app.logger.info(f"Audio URL for session ID {session_id}: {audio_url}")
 
         # Begin the transcription process
-        current_app.logger.info(f"Starting transcription process for session ID {session_id} with audio URL {audio_url}")
-        transcription_result = transcribe_audio(session_id, audio_url)
-
+        transcription_result = transcribe_audio(session_id, audio_url, language)
         if not transcription_result:
             current_app.logger.error(f"Transcription failed for session ID {session_id}")
             return jsonify({'error': 'Failed to transcribe audio'}), 500
@@ -1308,20 +1323,10 @@ def transcribe(session_id):
         current_app.logger.exception(f"An error occurred during transcription for session ID {session_id}: {str(e)}")
         return jsonify({'error': 'An error occurred during transcription'}), 500
 
-def transcribe_audio(session_id, audio_url):
-    try:
-        import os
-        import tempfile
-        import requests
-        from flask import current_app
-        from openai import OpenAI
-        import json  # Import json to handle JSON responses if necessary
-        
-        # Initialize the OpenAI client
-        client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-        # Log the audio URL and session ID
-        current_app.logger.info(f"Transcribing audio for session ID {session_id} from URL: {audio_url}")
+def transcribe_audio(session_id, audio_url, language):
+    try:
+        current_app.logger.info(f"Transcribing audio for session ID {session_id} from URL: {audio_url} in language: {language}")
 
         # Download the audio file
         audio_response = requests.get(audio_url)
@@ -1338,23 +1343,26 @@ def transcribe_audio(session_id, audio_url):
 
         current_app.logger.info(f"Temporary audio file created at {temp_audio_file_path}")
 
-        # Use the OpenAI Whisper API to transcribe the audio, requesting plain text output
+        # Initialize the OpenAI client
+        client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+        # Use the OpenAI Whisper API to transcribe the audio with the selected language
         with open(temp_audio_file_path, "rb") as audio_file:
             transcription = client.audio.transcriptions.create(
                 model="whisper-1",
                 file=audio_file,
-                language="nl",
-                response_format='text'  # Ask for plain text response
+                language=language,  # Use the selected language
+                response_format='text'  # Request plain text response
             )
 
-        # transcription is now a string since we set `response_format='text'`
+        # Log the transcription result
         current_app.logger.info(f"Transcription result for session ID {session_id}: {transcription}")
 
         # Clean up the temporary file
         os.remove(temp_audio_file_path)
         current_app.logger.info(f"Temporary audio file deleted: {temp_audio_file_path}")
 
-        return transcription  # Return the plain text transcription
+        return transcription
 
     except Exception as e:
         current_app.logger.error(f"Error during transcription process for session ID {session_id}: {str(e)}")

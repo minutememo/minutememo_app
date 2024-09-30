@@ -14,6 +14,7 @@ const AudioRecorder = ({ sessionId }) => {
     recordingIdRef, streamRef, stopRef
   } = useContext(RecorderContext);
   const [selectedHub, setSelectedHub] = useState(null); 
+  const [selectedLanguage, setSelectedLanguage] = useState('en'); // Define selectedLanguage state
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
@@ -21,7 +22,6 @@ const AudioRecorder = ({ sessionId }) => {
   const draw = useCallback((array) => {
     const canvas = canvasRef.current;
     
-    // Ensure the canvas element is available before trying to draw
     if (!canvas) {
       console.warn("Canvas element is not available.");
       return; // Stop drawing if canvas is not available
@@ -88,7 +88,6 @@ const AudioRecorder = ({ sessionId }) => {
         analyser.getByteFrequencyData(dataArray);
         draw(dataArray);
 
-        // Only request animation frame if recording is still active and canvas exists
         if (canvasRef.current && recording) {
           animationFrameIdRef.current = requestAnimationFrame(drawVisualizer);
         }
@@ -105,16 +104,14 @@ const AudioRecorder = ({ sessionId }) => {
   const startRecording = async () => {
     console.log("Attempting to start recording...");
   
-    // Ensure sessionId is provided
     if (!sessionId) {
       console.error("No session ID provided. Recording cannot start without a session.");
       alert("No session found. Please start a session before recording.");
       return;
     }
 
-    // Initialize recording session
     recordingIdRef.current = uuidv4();
-    chunkNumberRef.current = 0; // Reset chunk number
+    chunkNumberRef.current = 0;
 
     try {
       const response = await axios.post(`${backendUrl}/api/recordings`, {
@@ -122,7 +119,7 @@ const AudioRecorder = ({ sessionId }) => {
         file_name: `${recordingIdRef.current}.webm`,
         concatenation_status: 'pending',
         concatenation_file_name: `${recordingIdRef.current}_list.txt`,
-        meeting_session_id: sessionId,  // Link to the provided sessionId
+        meeting_session_id: sessionId,
       });
 
       console.log('Recording entry creation response:', response);
@@ -133,7 +130,7 @@ const AudioRecorder = ({ sessionId }) => {
             audioCtxRef.current = new (window.AudioContext || window.webkitAudioContext)();
             sourceRef.current = audioCtxRef.current.createMediaStreamSource(stream);
             streamRef.current = stream;
-            stopRef.current = false; // Reset stop flag
+            stopRef.current = false;
             startNewChunk();
             setRecording(true);
             console.log('Recording started successfully.');
@@ -230,7 +227,6 @@ const AudioRecorder = ({ sessionId }) => {
     stopRef.current = true; 
     setRecording(false);
 
-    // Stop visualizer once recording is stopped
     cancelAnimationFrame(animationFrameIdRef.current);
 
     if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
@@ -247,17 +243,39 @@ const AudioRecorder = ({ sessionId }) => {
 
     try {
       console.log("Starting transcription...");
-      const transcriptionResponse = await axios.post(`${backendUrl}/api/transcribe/${sessionId}`);
+
+      const transcriptionResponse = await axios.post(
+        `${backendUrl}/api/transcribe/${sessionId}`,
+        { language: selectedLanguage },  // Pass the selected language
+        {
+          headers: { 'Content-Type': 'application/json' }
+        }
+      );
+
       if (transcriptionResponse.status === 200) {
         console.log("Transcription successful:", transcriptionResponse.data);
 
         console.log("Starting summarization...");
-        const summaryResponse = await axios.post(`${backendUrl}/api/sessions/${sessionId}/summarize`);
+        const summaryResponse = await axios.post(
+          `${backendUrl}/api/sessions/${sessionId}/summarize`,
+          {},
+          {
+            headers: { 'Content-Type': 'application/json' }
+          }
+        );
+
         if (summaryResponse.status === 200) {
           console.log("Summarization successful:", summaryResponse.data);
 
           console.log("Starting action point extraction...");
-          const actionPointsResponse = await axios.post(`${backendUrl}/api/extract_action_points/${sessionId}`);
+          const actionPointsResponse = await axios.post(
+            `${backendUrl}/api/extract_action_points/${sessionId}`,
+            {},
+            {
+              headers: { 'Content-Type': 'application/json' }
+            }
+          );
+
           if (actionPointsResponse.status === 200) {
             console.log("Action points extraction successful:", actionPointsResponse.data);
           } else {
@@ -277,6 +295,24 @@ const AudioRecorder = ({ sessionId }) => {
   return (
     <div className="audio-recorder">
       <h1>Audio Recorder</h1>
+
+      {/* Language selection dropdown */}
+      <div>
+        <label htmlFor="language-select">Select Transcription Language:</label>
+        <select
+          id="language-select"
+          value={selectedLanguage}
+          onChange={(e) => setSelectedLanguage(e.target.value)}  // Update selectedLanguage on change
+        >
+          <option value="en">English</option>
+          <option value="nl">Dutch</option>
+          <option value="fr">French</option>
+          <option value="de">German</option>
+          <option value="it">Italian</option>
+          <option value="es">Spanish</option>
+        </select>
+      </div>
+
       <div className="controls">
         <button onClick={startRecording} disabled={recording}>Start Recording</button>
         <button onClick={stopRecording} disabled={!recording}>Stop Recording</button>
