@@ -1,9 +1,13 @@
-from flask import Blueprint, request, jsonify, current_app
+from flask import Blueprint, request, jsonify, current_app, redirect, url_for, session
+from authlib.integrations.flask_client import OAuth
 from models import User, Company, MeetingHub, Subscription
 import logging
+import json
 from extensions import db
 from flask_login import login_user, logout_user, login_required, current_user
 import os
+import secrets
+from werkzeug.security import generate_password_hash  # Import the password hashing method
 
 auth = Blueprint('auth', __name__)
 logger = logging.getLogger(__name__)
@@ -14,6 +18,47 @@ if env == 'production':
     logger.setLevel(logging.WARNING)
 else:
     logger.setLevel(logging.DEBUG)
+
+# Load environment variables from the correct file if needed
+from dotenv import load_dotenv
+load_dotenv('.env.development')
+
+# OAuth setup
+oauth = OAuth(current_app)
+
+# Google OAuth configuration
+try:
+    logger.debug('Registering Google OAuth client')
+    oauth.register(
+        name='google',
+        client_id=os.getenv('GOOGLE_CLIENT_ID'),
+        client_secret=os.getenv('GOOGLE_CLIENT_SECRET'),
+        access_token_url='https://accounts.google.com/o/oauth2/token',
+        authorize_url='https://accounts.google.com/o/oauth2/auth',
+        client_kwargs={'scope': 'openid email profile https://www.googleapis.com/auth/calendar'},
+        jwks_uri='https://www.googleapis.com/oauth2/v3/certs'  # Add JWKS URI explicitly
+    )
+    logger.debug('Google OAuth client registered successfully')
+except Exception as e:
+    logger.error(f"Error during Google OAuth registration: {e}")
+
+# Microsoft OAuth configuration (optional, keeping it as is)
+try:
+    logger.debug('Registering Microsoft OAuth client')
+    oauth.register(
+        name='microsoft',
+        client_id=os.getenv('MICROSOFT_CLIENT_ID'),
+        client_secret=os.getenv('MICROSOFT_CLIENT_SECRET'),
+        access_token_url='https://login.microsoftonline.com/common/oauth2/v2.0/token',
+        authorize_url='https://login.microsoftonline.com/common/oauth2/v2.0/authorize',
+        client_kwargs={'scope': 'User.Read openid profile email Calendars.ReadWrite'}
+    )
+    logger.debug('Microsoft OAuth client registered successfully')
+except Exception as e:
+    logger.error(f"Error during Microsoft OAuth registration: {e}")
+
+def generate_nonce():
+    return secrets.token_urlsafe(16)  # Generate a secure random URL-safe nonce
 
 # Route for checking authentication status and user role
 @auth.route('/status', methods=['GET'])
@@ -31,24 +76,152 @@ def status():
         logger.debug("User is not authenticated")
         return jsonify({"logged_in": False}), 200
 
-# Route for user signup
-@auth.route('/signup', methods=['POST', 'OPTIONS'])
+@auth.route('/login/google')
+def google_login():
+    try:
+        # Generate a secure random state string to protect against CSRF attacks
+        state = secrets.token_urlsafe(16)
+        session['oauth_state'] = state  # Store the state in session
+
+        # Construct the redirect URI
+        redirect_uri = url_for('auth.google_authorize', _external=True)
+        
+        # Log the details for debugging
+        logger.debug(f"Google login initiated. Redirect URI: {redirect_uri}, State: {state}")
+        logger.debug(f"Client ID: {os.getenv('GOOGLE_CLIENT_ID')}")
+        logger.debug(f"Client Secret: {'REDACTED'}")
+        logger.debug(f"Session contents: {session}")
+
+        # Trigger Google OAuth flow, redirecting to the Google authorization URL
+        return oauth.google.authorize_redirect(redirect_uri, state=state)
+    except Exception as e:
+        logger.error(f"Error during Google login: {e}")
+        return jsonify({"message": "Error during Google login"}), 500
+
+
+from datetime import datetime, timedelta
+
+@auth.route('/callback')
+def google_authorize():
+    try:
+        logger.debug("Google authorization callback reached")
+
+        # Retrieve the OAuth state from the URL parameters
+        state = request.args.get('state')
+        if not state:
+            raise ValueError("Missing state in request")
+
+        # Retrieve the OAuth state details from the session using the state as the key
+        oauth_state_key = f'_state_google_{state}'
+        oauth_state_data = session.get(oauth_state_key)
+        if not oauth_state_data or 'data' not in oauth_state_data or 'nonce' not in oauth_state_data['data']:
+            raise ValueError("Missing nonce in session state data")
+
+        # Get the nonce from the stored OAuth state data
+        nonce = oauth_state_data['data']['nonce']
+        logger.debug(f"Nonce retrieved: {nonce}")
+
+        # Retrieve the token from Google after successful authorization
+        token = oauth.google.authorize_access_token()  # This should return a dictionary with access_token, refresh_token, etc.
+        logger.debug(f"Token received: {token}")
+
+        # Parse the user's ID token and validate the nonce
+        user_info = oauth.google.parse_id_token(token, nonce=nonce)
+        logger.debug(f"User info: {user_info}")
+
+        # Get the user's email from the user info
+        email = user_info.get('email')
+        if not email:
+            raise ValueError("No email found in user info")
+
+        # Check if the user already exists in the database
+        user = User.query.filter_by(email=email).first()
+
+        # Calculate the token expiration time (current time + token's 'expires_in' value)
+        expires_at = datetime.utcnow() + timedelta(seconds=token.get('expires_in', 3600))
+
+        if not user:
+            logger.debug(f"Creating new user with email: {email}")
+            # Generate a random secure password and hash it
+            random_password = secrets.token_urlsafe(16)  # Generate a random string as a "password"
+            hashed_password = generate_password_hash(random_password)  # Hash the random password
+
+            # Store the token (as a dictionary) and other details in the user record
+            user = User(
+                email=email,
+                user_type='external',
+                password_hash=hashed_password,  # Store the hashed random password
+                google_oauth_token=json.dumps(token),  # Store the entire token as JSON
+                google_token_expires_at=expires_at
+            )
+            db.session.add(user)
+            db.session.commit()
+        else:
+            # Update user's Google OAuth details if the user exists
+            user.google_oauth_token = json.dumps(token)  # Store the entire token as JSON
+            user.google_token_expires_at = expires_at
+            db.session.commit()
+
+        # Log the user in
+        login_user(user)
+        logger.info(f"User logged in with Google: {email}")
+
+        # Clear the state from the session after successful login to avoid reuse
+        session.pop(oauth_state_key, None)
+
+        # Redirect to the dashboard after successful login
+        return redirect('http://localhost:3000/')  # Change to your front-end dashboard route
+
+    except Exception as e:
+        logger.error(f"Error during Google authorization: {e}")
+        return jsonify({"message": f"Error during Google authorization: {str(e)}"}), 500
+
+# Microsoft Login Route (if applicable)
+@auth.route('/login/microsoft')
+def microsoft_login():
+    try:
+        redirect_uri = url_for('auth.microsoft_authorize', _external=True)
+        logger.debug(f"Microsoft login initiated. Redirect URI: {redirect_uri}")
+        return oauth.microsoft.authorize_redirect(redirect_uri)
+    except Exception as e:
+        logger.error(f"Error during Microsoft login: {e}")
+        return jsonify({"message": "Error during Microsoft login"}), 500
+
+# Microsoft Authorization Callback
+@auth.route('/login/microsoft/authorize')
+def microsoft_authorize():
+    try:
+        logger.debug("Microsoft authorization callback reached")
+        token = oauth.microsoft.authorize_access_token()
+        logger.debug(f"Token received: {token}")
+        user_info = oauth.microsoft.get('me').json()
+        logger.debug(f"User info: {user_info}")
+
+        email = user_info.get('mail', user_info.get('userPrincipalName'))
+        first_name = user_info.get('givenName')
+        last_name = user_info.get('surname')
+
+        user = User.query.filter_by(email=email).first()
+
+        if not user:
+            logger.debug(f"Creating new user with email: {email}")
+            user = User(email=email, first_name=first_name, last_name=last_name, user_type='external')
+            db.session.add(user)
+            db.session.commit()
+
+        login_user(user)
+        logger.info(f"User logged in with Microsoft: {email}")
+        return redirect(url_for('auth.status'))
+    except Exception as e:
+        logger.error(f"Error during Microsoft authorization: {e}")
+        return jsonify({"message": "Error during Microsoft authorization"}), 500
+
+# Regular user signup route
+@auth.route('/signup', methods=['POST'])
 def signup():
     logger.debug('Signup route hit')
 
-    if request.method == 'OPTIONS':
-        logger.debug('Handling CORS preflight request')
-        response = current_app.make_default_options_response()
-        response.headers['Access-Control-Allow-Origin'] = request.headers.get('Origin')
-        response.headers['Access-Control-Allow-Credentials'] = 'true'
-        response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'
-        response.headers['Access-Control-Allow-Methods'] = 'POST, OPTIONS'
-        return response
-
-    # Handle POST request
     data = request.get_json()
-    logger.debug('Data received: %s', data)
-    
     email = data.get('email')
     password = data.get('password')
     password_confirmation = data.get('password_confirmation')
@@ -66,57 +239,16 @@ def signup():
         logger.warning(f"Email is already in use: {email}")
         return jsonify({'message': 'Email is already in use'}), 400
 
-    # Create a new user and set the user_type to 'external' by default
     new_user = User(email=email, user_type='external')
     new_user.set_password(password)
     db.session.add(new_user)
     db.session.commit()
 
-    # Create a default company for the new user
-    default_company = Company(
-        name=f"{email}'s Company",
-        address="Default Address",
-        city="Default City",
-        state="Default State",
-        zip_code="00000",
-        country="Default Country",
-        phone_number="000-000-0000"
-    )
-    db.session.add(default_company)
-    db.session.commit()
-
-    # Link the company to the user
-    new_user.company_id = default_company.id
-    db.session.commit()
-
-    # Create a default meeting hub for the new user's company
-    default_hub = MeetingHub(
-        name="My Meeting Hub",
-        description="Default meeting hub",
-        company_id=default_company.id
-    )
-    db.session.add(default_hub)
-    db.session.commit()
-
-    # Create an active subscription for the new company
-    default_subscription = Subscription(
-        company_id=default_company.id,
-        plan_name='Basic Plan',  # Assign a plan name or pass it dynamically if needed
-        price=50.00,  # Example price, adjust based on your actual subscription plan
-        billing_cycle='monthly',  # Example billing cycle
-        max_users=10,  # Example max users
-        status='active',  # Set the subscription to active
-    )
-    db.session.add(default_subscription)
-    db.session.commit()
-
-    # Log the user in automatically
     login_user(new_user)
-
-    logger.info(f"User, company, subscription, and default meeting hub created and user logged in successfully: {email}")
+    logger.info(f"User created and logged in successfully: {email}")
     return jsonify({'message': 'User created and logged in successfully'}), 201
 
-# Route for user login
+# Regular user login route
 @auth.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
@@ -124,19 +256,11 @@ def login():
     password = data.get('password')
 
     logger.debug(f"Login attempt for email: {email}")
-    
     user = User.query.filter_by(email=email).first()
-
-    if user:
-        logger.debug(f"User found: {user.email} with role: {user.internal_user_role}")
-    else:
-        logger.debug(f"User with email {email} not found")
 
     if user and user.check_password(password):
         login_user(user, remember=True)
-        logger.debug(f"Login successful for user: {user.email} with role: {user.internal_user_role}")
-        
-        # Return the user's internal role
+        logger.debug(f"Login successful for user: {user.email}")
         return jsonify({
             "message": "Login successful",
             "internal_user_role": user.internal_user_role  # Return user's role for frontend checks
@@ -145,7 +269,7 @@ def login():
     logger.warning(f"Login failed for email: {email}")
     return jsonify({"message": "Invalid credentials"}), 401
 
-# Route for user logout
+# User logout route
 @auth.route('/logout')
 @login_required
 def logout():

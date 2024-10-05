@@ -18,6 +18,8 @@ import axios from 'axios';
 import MeetingPage from './components/MeetingsPage'; // Adjust the path if necessary
 import MeetingSessionPage from './components/MeetingSessionPage'; // Import the new component
 import SubscribePage from './components/SubscribePage'; // Create this component
+import CalendarPage from './components/CalendarPage'; // New CalendarPage Component for calendar events
+import EventDetailsPage from './components/EventDetailsPage'; // Import EventDetailsPage
 import { Container, Row, Col, Form, FormControl, Button, Navbar, Nav, Dropdown, Modal, Spinner } from 'react-bootstrap';
 
 axios.defaults.withCredentials = true; // Ensure cookies are sent with every request
@@ -34,6 +36,7 @@ const AppContent = () => {
   const [error, setError] = useState('');
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true); // Sidebar is collapsed by default
+  const [calendarEvents, setCalendarEvents] = useState([]); // Store calendar events
 
   // Environment variable for backend URL
   const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
@@ -45,6 +48,7 @@ const AppContent = () => {
   useEffect(() => {
     if (user) {
       fetchMeetingHubs();
+      fetchCalendarEvents(); // Fetch calendar events after login
     }
   }, [user]);
 
@@ -70,6 +74,19 @@ const AppContent = () => {
       setError('Error fetching meeting hubs');
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const fetchCalendarEvents = async () => {
+    try {
+      const response = await axios.get(`${backendUrl}/api/calendar/events`);
+      if (response.status === 200) {
+        setCalendarEvents(response.data); // Store the fetched calendar events
+      } else {
+        setError('Failed to fetch calendar events');
+      }
+    } catch (err) {
+      setError('Error fetching calendar events');
     }
   };
 
@@ -210,6 +227,10 @@ const AppContent = () => {
                     <MdList className="icon" />
                     <span className="link-text">Action Items</span>
                   </NavLink>
+                  <NavLink to="/calendar" className="nav-link"> {/* Add a route for calendar */}
+                    <MdEvent className="icon" />
+                    <span className="link-text">Calendar</span>
+                  </NavLink>
                   <NavLink to="/settings" className="nav-link">
                     <MdSettings className="icon" />
                     <span className="link-text">Settings</span>
@@ -240,6 +261,8 @@ const AppContent = () => {
                     <Route path="/meetings/:meetingId" element={<MeetingPage selectedHub={selectedHub} />} />
                     <Route path="/sessions/:sessionId" element={<MeetingSessionPage selectedHub={selectedHub} />} />
                     <Route path="/action-items" element={<ActionItemsPage selectedHub={selectedHub} />} />
+                    <Route path="/calendar" element={<CalendarPage events={calendarEvents} />} /> {/* New Calendar Page */}
+                    <Route path="/event/:eventId" element={<EventDetailsPage />} />
                     <Route path="/settings" element={<SettingsPage />} />
                   </Routes>
                 )}

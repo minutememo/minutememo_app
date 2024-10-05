@@ -32,6 +32,8 @@ import requests
 import json
 from sqlalchemy.exc import SQLAlchemyError
 from typing import Optional
+from pydub import AudioSegment
+
 
 
 logger = logging.getLogger(__name__)
@@ -216,6 +218,155 @@ def update_concatenation_status(recording_id, status):
         # Rollback any changes if an error occurs
         db.session.rollback()
         current_app.logger.error(f"Failed to update status for recording {recording_id}: {str(e)}")
+
+from datetime import datetime  # Correctly import datetime
+
+@main.route('/api/calendar/events', methods=['GET'])
+@login_required
+def get_calendar_events():
+    try:
+        # Ensure the user is authenticated and has a valid Google OAuth token
+        if not current_user.is_authenticated:
+            return jsonify({"message": "User is not authenticated"}), 403
+
+        # Fetch the OAuth token for the logged-in user (stored as JSON in the User model)
+        token = json.loads(current_user.google_oauth_token)  # Convert the token string to a dictionary
+
+        # Check if the token has expired and refresh it if necessary
+        if token_is_expired(token):  # Implement this function to check token expiry
+            logger.info("Access token expired, refreshing token")
+            token = refresh_google_oauth_token(token["refresh_token"])  # Implement token refresh logic
+
+            # Update the token in the user's record (save the new token as a JSON string)
+            current_user.google_oauth_token = json.dumps(token)
+            db.session.commit()
+
+        # Set up the headers with the Bearer token
+        headers = {
+            'Authorization': f'Bearer {token["access_token"]}'
+        }
+
+        # Define the time range to fetch events starting from January 1st of the current year
+        current_year_start = datetime(datetime.now().year, 1, 1).isoformat() + 'Z'  # UTC format
+
+        # Define the Google Calendar API URL for fetching events from the primary calendar
+        calendar_api_url = 'https://www.googleapis.com/calendar/v3/calendars/primary/events'
+
+        all_events = []
+        next_page_token = None
+
+        while True:
+            # Make a request to Google Calendar API to get events
+            params = {
+                'timeMin': current_year_start,  # Fetch events starting from January 1st of the current year
+                'maxResults': 2500,             # Maximum results per page
+                'singleEvents': True,           # Expand recurring events into individual events
+                'orderBy': 'startTime',         # Order events by start time
+            }
+            if next_page_token:
+                params['pageToken'] = next_page_token
+
+            response = requests.get(calendar_api_url, headers=headers, params=params)
+
+            if response.status_code == 200:
+                events = response.json().get('items', [])
+                all_events.extend(events)  # Add the fetched events to the list
+
+                # Log how many events were fetched
+                logger.debug(f"Fetched {len(events)} events (total so far: {len(all_events)})")
+
+                # Check if there's another page of events
+                next_page_token = response.json().get('nextPageToken')
+
+                # If no more pages, break out of the loop
+                if not next_page_token:
+                    break
+            else:
+                logger.error(f"Failed to fetch events: {response.status_code} - {response.text}")
+                return jsonify({"message": f"Failed to fetch events: {response.status_code}"}), 500
+
+        # Return all events after pagination
+        return jsonify(all_events), 200
+
+    except Exception as e:
+        logger.error(f"Error while fetching calendar events: {e}")
+        return jsonify({"message": f"Error fetching calendar events: {str(e)}"}), 500
+
+
+# Helper function to check if the token is expired
+def token_is_expired(token):
+    # Check if the token has expired using its expiry timestamp
+    expiry_time = token.get('expires_at')  # Assuming token has 'expires_at' field
+    if expiry_time:
+        return datetime.utcnow() >= datetime.utcfromtimestamp(expiry_time)
+    return True
+
+# Helper function to refresh the OAuth token using the refresh_token
+def refresh_google_oauth_token(refresh_token):
+    try:
+        token_url = "https://oauth2.googleapis.com/token"
+        payload = {
+            'refresh_token': refresh_token,
+            'client_id': os.getenv('GOOGLE_CLIENT_ID'),
+            'client_secret': os.getenv('GOOGLE_CLIENT_SECRET'),
+            'grant_type': 'refresh_token'
+        }
+        response = requests.post(token_url, data=payload)
+
+        if response.status_code == 200:
+            new_token = response.json()
+            new_token['expires_at'] = datetime.utcnow().timestamp() + new_token['expires_in']
+            return new_token
+        else:
+            logger.error(f"Failed to refresh token: {response.status_code} - {response.text}")
+            raise Exception(f"Failed to refresh token: {response.status_code}")
+    except Exception as e:
+        logger.error(f"Error while refreshing token: {e}")
+        raise
+
+@main.route('/api/calendar/event/<event_id>', methods=['GET'])
+@login_required
+def get_calendar_event(event_id):
+    logger.info(f"Fetching event with ID: {event_id}")
+    try:
+        # Ensure the user is authenticated and has a valid Google OAuth token
+        if not current_user.is_authenticated:
+            return jsonify({"message": "User is not authenticated"}), 403
+
+        # Fetch the OAuth token for the logged-in user (stored as JSON in the User model)
+        token = json.loads(current_user.google_oauth_token)  # Convert the token string to a dictionary
+
+        # Check if the token has expired and refresh it if necessary
+        if token_is_expired(token):  # Implement this function to check token expiry
+            logger.info("Access token expired, refreshing token")
+            token = refresh_google_oauth_token(token["refresh_token"])  # Implement token refresh logic
+
+            # Update the token in the user's record (save the new token as a JSON string)
+            current_user.google_oauth_token = json.dumps(token)
+            db.session.commit()
+
+        # Set up the headers with the Bearer token
+        headers = {
+            'Authorization': f'Bearer {token["access_token"]}'
+        }
+
+        # Define the Google Calendar API URL for fetching a specific event by ID
+        event_api_url = f'https://www.googleapis.com/calendar/v3/calendars/primary/events/{event_id}'
+
+        # Make a request to Google Calendar API to get the event
+        response = requests.get(event_api_url, headers=headers)
+
+        if response.status_code == 200:
+            event = response.json()
+            logger.debug(f"Fetched event {event_id}")
+            return jsonify(event), 200
+        else:
+            logger.error(f"Failed to fetch event {event_id}: {response.status_code} - {response.text}")
+            return jsonify({"message": f"Failed to fetch event {event_id}: {response.status_code}"}), 500
+
+    except Exception as e:
+        logger.error(f"Error while fetching event {event_id}: {e}")
+        return jsonify({"message": f"Error fetching event {event_id}: {str(e)}"}), 500
 
 @main.route('/api/recordings/<string:recording_id>', methods=['PATCH'])
 @login_required
@@ -1220,17 +1371,23 @@ def check_update():
 @login_required
 def check_subscription_status():
     try:
+        # Get the user's company
         company = current_user.company
         if not company:
+            current_app.logger.warning(f"User {current_user.email} does not belong to any company.")
             return jsonify({'is_active': False, 'is_empty': True}), 404
 
+        # Check if there's an active subscription for the company
         active_subscription = Subscription.query.filter_by(company_id=company.id, status='active').first()
 
         if active_subscription:
+            current_app.logger.info(f"User {current_user.email} has an active subscription.")
             return jsonify({'is_active': True, 'is_empty': False}), 200
         else:
+            current_app.logger.info(f"User {current_user.email} has no active subscription.")
             return jsonify({'is_active': False, 'is_empty': False}), 200
     except Exception as e:
+        current_app.logger.error(f"Error while checking subscription status for user {current_user.email}: {e}")
         return jsonify({'error': str(e)}), 500
 
 @main.route('/api/subscription-plans', methods=['GET'])
@@ -1324,6 +1481,13 @@ def transcribe(session_id):
         return jsonify({'error': 'An error occurred during transcription'}), 500
 
 
+from pydub import AudioSegment
+import os
+import requests
+import tempfile
+from flask import current_app
+from openai import OpenAI
+
 def transcribe_audio(session_id, audio_url, language):
     try:
         current_app.logger.info(f"Transcribing audio for session ID {session_id} from URL: {audio_url} in language: {language}")
@@ -1343,26 +1507,49 @@ def transcribe_audio(session_id, audio_url, language):
 
         current_app.logger.info(f"Temporary audio file created at {temp_audio_file_path}")
 
+        # Load the audio file with PyDub to handle larger files
+        audio = AudioSegment.from_mp3(temp_audio_file_path)
+
+        # Split the audio into chunks (less than 25 MB or appropriate duration)
+        chunk_length_ms = 10 * 60 * 1000  # 10 minutes, adjust based on the file size and requirement
+        chunks = [audio[i:i + chunk_length_ms] for i in range(0, len(audio), chunk_length_ms)]
+
         # Initialize the OpenAI client
         client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-        # Use the OpenAI Whisper API to transcribe the audio with the selected language
-        with open(temp_audio_file_path, "rb") as audio_file:
-            transcription = client.audio.transcriptions.create(
-                model="whisper-1",
-                file=audio_file,
-                language=language,  # Use the selected language
-                response_format='text'  # Request plain text response
-            )
+        transcription_result = ""
 
-        # Log the transcription result
-        current_app.logger.info(f"Transcription result for session ID {session_id}: {transcription}")
+        for idx, chunk in enumerate(chunks):
+            current_app.logger.info(f"Processing chunk {idx + 1} of {len(chunks)}")
 
-        # Clean up the temporary file
+            # Export the chunk to a temporary file
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as temp_chunk_file:
+                chunk.export(temp_chunk_file.name, format="mp3")
+                temp_chunk_file_path = temp_chunk_file.name
+
+            # Use the OpenAI Whisper API to transcribe the chunk with the selected language
+            with open(temp_chunk_file_path, "rb") as chunk_file:
+                transcription = client.audio.transcriptions.create(
+                    model="whisper-1",
+                    file=chunk_file,
+                    language=language,
+                    response_format='text'
+                )
+
+            # Append the transcription of the current chunk to the final result
+            transcription_result += transcription
+
+            # Clean up the temporary chunk file
+            os.remove(temp_chunk_file_path)
+            current_app.logger.info(f"Temporary chunk file deleted: {temp_chunk_file_path}")
+
+        # Clean up the original audio file
         os.remove(temp_audio_file_path)
-        current_app.logger.info(f"Temporary audio file deleted: {temp_audio_file_path}")
+        current_app.logger.info(f"Temporary original audio file deleted: {temp_audio_file_path}")
 
-        return transcription
+        current_app.logger.info(f"Final transcription result for session ID {session_id}: {transcription_result}")
+
+        return transcription_result
 
     except Exception as e:
         current_app.logger.error(f"Error during transcription process for session ID {session_id}: {str(e)}")

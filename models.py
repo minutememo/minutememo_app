@@ -1,10 +1,11 @@
 from werkzeug.security import generate_password_hash, check_password_hash
+from sqlalchemy import Column, String, Integer, DateTime, ForeignKey
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
 from extensions import db
 import uuid
 from sqlalchemy.dialects.postgresql import UUID
-from datetime import datetime
+from datetime import datetime, timedelta
 
 class Company(db.Model):
     __table_args__ = {'extend_existing': True}  # Prevent table redefinition error
@@ -24,6 +25,10 @@ class Company(db.Model):
     subscriptions = db.relationship('Subscription', backref='company', lazy=True)
     payments = db.relationship('Payment', backref='company', lazy=True)  # Payments relationship
 
+from datetime import datetime
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
+from extensions import db
 
 class User(UserMixin, db.Model):
     __table_args__ = {'extend_existing': True}  # Prevent table redefinition error
@@ -39,16 +44,26 @@ class User(UserMixin, db.Model):
     meetings = db.relationship('Meeting', secondary='user_meeting', backref=db.backref('users', lazy=True))
     meeting_sessions = db.relationship('MeetingSession', secondary='user_meeting_session', backref=db.backref('users', lazy=True))
     
-    # Add this line for active meeting hub
+    # Active meeting hub reference
     active_meeting_hub_id = db.Column(db.Integer, db.ForeignKey('meeting_hub.id'), nullable=True)
     user_type = db.Column(db.String(20), nullable=False, default='internal')  # 'internal' or 'external'
     internal_user_role = db.Column(db.String(20), nullable=True)  # 'super_admin', 'admin', 'lite_admin'
+
+    # Fields for storing Google OAuth token, updated to TEXT
+    google_oauth_token = db.Column(db.Text, nullable=True)  # Access token can be longer
+    google_refresh_token = db.Column(db.Text, nullable=True)  # Refresh token can be longer
+    google_token_expires_at = db.Column(db.DateTime, nullable=True)  # Token expiration time
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+    def is_google_token_valid(self):
+        if self.google_token_expires_at:
+            return datetime.utcnow() < self.google_token_expires_at
+        return False
 
 
 class Subscription(db.Model):
