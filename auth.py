@@ -8,6 +8,8 @@ from flask_login import login_user, logout_user, login_required, current_user
 import os
 import secrets
 from werkzeug.security import generate_password_hash  # Import the password hashing method
+import requests
+from datetime import datetime, timedelta
 
 auth = Blueprint('auth', __name__)
 logger = logging.getLogger(__name__)
@@ -42,21 +44,6 @@ try:
 except Exception as e:
     logger.error(f"Error during Google OAuth registration: {e}")
 
-# Microsoft OAuth configuration (optional, keeping it as is)
-try:
-    logger.debug('Registering Microsoft OAuth client')
-    oauth.register(
-        name='microsoft',
-        client_id=os.getenv('MICROSOFT_CLIENT_ID'),
-        client_secret=os.getenv('MICROSOFT_CLIENT_SECRET'),
-        access_token_url='https://login.microsoftonline.com/common/oauth2/v2.0/token',
-        authorize_url='https://login.microsoftonline.com/common/oauth2/v2.0/authorize',
-        client_kwargs={'scope': 'User.Read openid profile email Calendars.ReadWrite'}
-    )
-    logger.debug('Microsoft OAuth client registered successfully')
-except Exception as e:
-    logger.error(f"Error during Microsoft OAuth registration: {e}")
-
 def generate_nonce():
     return secrets.token_urlsafe(16)  # Generate a secure random URL-safe nonce
 
@@ -85,7 +72,7 @@ def google_login():
 
         # Construct the redirect URI
         redirect_uri = url_for('auth.google_authorize', _external=True)
-        
+
         # Log the details for debugging
         logger.debug(f"Google login initiated. Redirect URI: {redirect_uri}, State: {state}")
         logger.debug(f"Client ID: {os.getenv('GOOGLE_CLIENT_ID')}")
@@ -93,13 +80,18 @@ def google_login():
         logger.debug(f"Session contents: {session}")
 
         # Trigger Google OAuth flow, redirecting to the Google authorization URL
-        return oauth.google.authorize_redirect(redirect_uri, state=state)
+        # Ensure 'access_type=offline' is set to obtain a refresh token
+        return oauth.google.authorize_redirect(
+            redirect_uri=redirect_uri,
+            state=state,
+            access_type='offline',  # Request offline access to obtain a refresh token
+            prompt='consent'  # Force re-consent to ensure we get the refresh token
+        )
     except Exception as e:
         logger.error(f"Error during Google login: {e}")
         return jsonify({"message": "Error during Google login"}), 500
 
 
-from datetime import datetime, timedelta
 
 @auth.route('/callback')
 def google_authorize():
@@ -108,22 +100,25 @@ def google_authorize():
 
         # Retrieve the OAuth state from the URL parameters
         state = request.args.get('state')
+        logger.debug(f"OAuth state: {state}")
+
         if not state:
             raise ValueError("Missing state in request")
 
         # Retrieve the OAuth state details from the session using the state as the key
         oauth_state_key = f'_state_google_{state}'
         oauth_state_data = session.get(oauth_state_key)
+        logger.debug(f"OAuth state data from session: {oauth_state_data}")
+
         if not oauth_state_data or 'data' not in oauth_state_data or 'nonce' not in oauth_state_data['data']:
             raise ValueError("Missing nonce in session state data")
 
-        # Get the nonce from the stored OAuth state data
         nonce = oauth_state_data['data']['nonce']
         logger.debug(f"Nonce retrieved: {nonce}")
 
         # Retrieve the token from Google after successful authorization
-        token = oauth.google.authorize_access_token()  # This should return a dictionary with access_token, refresh_token, etc.
-        logger.debug(f"Token received: {token}")
+        token = oauth.google.authorize_access_token()
+        logger.debug(f"Token response received: {token}")  # Log the entire token response
 
         # Parse the user's ID token and validate the nonce
         user_info = oauth.google.parse_id_token(token, nonce=nonce)
@@ -134,11 +129,17 @@ def google_authorize():
         if not email:
             raise ValueError("No email found in user info")
 
+        logger.debug(f"User email: {email}")
+
         # Check if the user already exists in the database
         user = User.query.filter_by(email=email).first()
 
         # Calculate the token expiration time (current time + token's 'expires_in' value)
         expires_at = datetime.utcnow() + timedelta(seconds=token.get('expires_in', 3600))
+        logger.debug(f"Access token expiration time: {expires_at}")
+
+        refresh_token = token.get('refresh_token')  # Get the refresh token if available
+        logger.debug(f"Refresh token: {refresh_token}")
 
         if not user:
             logger.debug(f"Creating new user with email: {email}")
@@ -152,15 +153,27 @@ def google_authorize():
                 user_type='external',
                 password_hash=hashed_password,  # Store the hashed random password
                 google_oauth_token=json.dumps(token),  # Store the entire token as JSON
+                google_refresh_token=refresh_token,  # Store the refresh token if available
                 google_token_expires_at=expires_at
             )
             db.session.add(user)
             db.session.commit()
+            logger.debug(f"New user created with email: {email} and tokens stored")
         else:
             # Update user's Google OAuth details if the user exists
-            user.google_oauth_token = json.dumps(token)  # Store the entire token as JSON
-            user.google_token_expires_at = expires_at
-            db.session.commit()
+            logger.debug(f"Updating existing user {user.email} with new token details")
+
+            # Use the helper function to update the tokens
+            update_user_tokens(user, token, refresh_token, expires_at)
+
+            # If the refresh token is missing, force re-consent to get a new one
+            if not user.google_refresh_token:
+                logger.debug(f"Refresh token is missing for {user.email}, forcing re-consent")
+                return oauth.google.authorize_redirect(
+                    url_for('auth.google_authorize', _external=True),
+                    state=state,
+                    prompt='consent'  # Re-consent to get a refresh token
+                )
 
         # Log the user in
         login_user(user)
@@ -175,6 +188,49 @@ def google_authorize():
     except Exception as e:
         logger.error(f"Error during Google authorization: {e}")
         return jsonify({"message": f"Error during Google authorization: {str(e)}"}), 500
+
+# Helper function to refresh the access token using the refresh token
+def refresh_google_token(refresh_token):
+    try:
+        token_url = "https://accounts.google.com/o/oauth2/token"
+        payload = {
+            'refresh_token': refresh_token,
+            'client_id': os.getenv('GOOGLE_CLIENT_ID'),
+            'client_secret': os.getenv('GOOGLE_CLIENT_SECRET'),
+            'grant_type': 'refresh_token'
+        }
+        response = requests.post(token_url, data=payload)
+        if response.status_code == 200:
+            new_token = response.json()
+            new_token['expires_at'] = datetime.utcnow() + timedelta(seconds=new_token['expires_in'])
+            return new_token
+        else:
+            logger.error(f"Failed to refresh Google token: {response.text}")
+            return None
+    except Exception as e:
+        logger.error(f"Error refreshing Google token: {str(e)}")
+        return None
+def update_user_tokens(user, token, refresh_token, expires_at):
+    try:
+        logger.debug(f"Updating tokens for user {user.email}")
+        
+        # Store the new access token
+        user.google_oauth_token = json.dumps(token)
+        
+        # Store the refresh token if it's available
+        if refresh_token:
+            logger.debug(f"Updating refresh token for user {user.email}")
+            user.google_refresh_token = refresh_token
+        
+        # Update token expiration time
+        user.google_token_expires_at = expires_at
+        
+        # Commit changes
+        db.session.commit()
+        logger.debug(f"Tokens successfully updated for user {user.email}")
+    except Exception as e:
+        logger.error(f"Failed to update tokens for user {user.email}: {str(e)}")
+        db.session.rollback()  # Roll back in case of error
 
 # Microsoft Login Route (if applicable)
 @auth.route('/login/microsoft')

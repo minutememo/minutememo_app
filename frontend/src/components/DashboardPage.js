@@ -8,6 +8,7 @@ const DashboardPage = ({ selectedHub }) => {
   const { user } = useUser(); // Get the user context
   const [meetings, setMeetings] = useState([]);
   const [meetingSessions, setMeetingSessions] = useState([]);
+  const [recurringEvents, setRecurringEvents] = useState([]); // State for recurring events
   const [error, setError] = useState('');
   const [subscriptionActive, setSubscriptionActive] = useState(false);
   const [subscriptionEmpty, setSubscriptionEmpty] = useState(false);
@@ -18,11 +19,13 @@ const DashboardPage = ({ selectedHub }) => {
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
+  // Fetch subscription status
   useEffect(() => {
     if (user) {
       const checkSubscriptionStatus = async () => {
         try {
           setIsLoading(true);
+          console.log('Checking subscription status...');
           const response = await axios.get(`${backendUrl}/api/subscription-status`, { withCredentials: true });
           if (response.status === 200) {
             if (response.data.is_active) {
@@ -37,6 +40,7 @@ const DashboardPage = ({ selectedHub }) => {
             setError('Failed to fetch subscription status');
           }
         } catch (err) {
+          console.error('Error checking subscription status:', err);
           setError('Error checking subscription status');
         } finally {
           setIsLoading(false);
@@ -48,10 +52,91 @@ const DashboardPage = ({ selectedHub }) => {
     }
   }, [user, backendUrl, navigate]);
 
+  // Fetch recurring calendar events starting from today
+  const fetchCalendarEvents = async () => {
+    try {
+      const today = new Date(); // Get today's date
+      const sixMonthsAhead = new Date(); // Calculate 6 months ahead
+      sixMonthsAhead.setMonth(sixMonthsAhead.getMonth() + 6);
+      
+      console.log(`Fetching events starting from ${today.toISOString()} to ${sixMonthsAhead.toISOString()}`);
+
+      const response = await axios.get(`${backendUrl}/api/calendar/events`, {
+        params: {
+          start: today.toISOString(),  // Use today's date as the start point
+          end: sixMonthsAhead.toISOString(), // Use a future date as the end point (6 months ahead)
+          singleEvents: false, // Don't expand recurring events
+        },
+      });
+
+      if (response.status === 200) {
+        console.log('Calendar events fetched successfully.');
+        const events = response.data;
+
+        // Convert event start and end to Date objects
+        const eventsWithDateObjects = events.map(event => ({
+          ...event,
+          start: new Date(event.start),
+          end: new Date(event.end),
+        }));
+
+        // Filtering for recurring events
+        const recurring = eventsWithDateObjects.filter(event => event.recurringEventId);
+
+        if (recurring.length === 0) {
+          console.log('No recurring events found');
+        } else {
+          console.log(`Found ${recurring.length} recurring events.`);
+        }
+
+        // Ensure only unique recurring events
+        const uniqueRecurringEvents = recurring.reduce((acc, event) => {
+          if (!acc[event.recurringEventId]) {
+            acc[event.recurringEventId] = event;
+          }
+          return acc;
+        }, {});
+
+        const recurringEventsArray = Object.values(uniqueRecurringEvents);
+        console.log(`Unique recurring events count: ${recurringEventsArray.length}`);
+
+        // Fetch linked meetings for each recurring event
+        const linkedEvents = await Promise.all(
+          recurringEventsArray.map(async (event, index) => {
+            console.log(`Fetching linked meeting for recurring event ${index + 1} with ID: ${event.recurringEventId}`);
+            try {
+              const linkedResponse = await axios.get(`${backendUrl}/api/recurring-event/${event.recurringEventId}`);
+              if (linkedResponse.status === 200) {
+                console.log(`Linked meeting found for event ${index + 1}: ${linkedResponse.data.meeting_name}`);
+                return { ...event, linkedMeeting: linkedResponse.data.meeting_name };
+              } else {
+                console.log(`No linked meeting found for event ${index + 1}`);
+                return { ...event, linkedMeeting: null };
+              }
+            } catch (err) {
+              console.error(`Error fetching linked meeting for event ${index + 1}:`, err);
+              return { ...event, linkedMeeting: null };
+            }
+          })
+        );
+
+        setRecurringEvents(linkedEvents);  // Set the state
+      } else {
+        console.error('Failed to fetch calendar events. Response status:', response.status);
+        setError('Failed to fetch calendar events');
+      }
+    } catch (err) {
+      console.error('Error fetching calendar events:', err);
+      setError('Error fetching calendar events');
+    }
+  };
+
+  // Fetch meetings and meeting sessions
   useEffect(() => {
     if (selectedHub && subscriptionActive) {
       const fetchMeetings = async () => {
         try {
+          console.log('Fetching meetings...');
           const response = await axios.get(`${backendUrl}/api/meetings?hub_id=${selectedHub}`);
           if (response.status === 200) {
             setMeetings(response.data.meetings);
@@ -59,12 +144,14 @@ const DashboardPage = ({ selectedHub }) => {
             setError('Failed to fetch meetings');
           }
         } catch (err) {
+          console.error('Error fetching meetings:', err);
           setError('Error fetching meetings');
         }
       };
 
       const fetchMeetingSessions = async () => {
         try {
+          console.log('Fetching meeting sessions...');
           const response = await axios.get(`${backendUrl}/api/meetingsessions?hub_id=${selectedHub}`);
           if (response.status === 200) {
             setMeetingSessions(response.data.meeting_sessions);
@@ -72,15 +159,20 @@ const DashboardPage = ({ selectedHub }) => {
             setError('Failed to fetch meeting sessions');
           }
         } catch (err) {
+          console.error('Error fetching meeting sessions:', err);
           setError('Error fetching meeting sessions');
         }
       };
 
       fetchMeetings();
       fetchMeetingSessions();
+      fetchCalendarEvents(); // Fetch recurring events starting from today
+    } else {
+      console.log('Selected Hub or Subscription not active. Skipping fetch.');
     }
   }, [selectedHub, backendUrl, subscriptionActive]);
 
+  // Create new meeting
   const handleCreateMeeting = async () => {
     if (!newMeetingName || !selectedHub) {
       setError('Please provide a meeting name and select a hub.');
@@ -101,9 +193,33 @@ const DashboardPage = ({ selectedHub }) => {
         setError('Failed to create a new meeting');
       }
     } catch (err) {
+      console.error('Error creating a new meeting:', err);
       setError('Error creating a new meeting');
     } finally {
       setIsCreatingMeeting(false);
+    }
+  };
+
+  // Link meeting to recurring event
+  const handleLinkMeeting = async (recurringEventId) => {
+    const meetingName = prompt('Enter a new meeting name to link with this recurring event:');
+
+    if (meetingName) {
+      try {
+        const response = await axios.post(`${backendUrl}/api/recurring-event/${recurringEventId}/link`, {
+          meeting_name: meetingName,
+        });
+        if (response.status === 201) {
+          setError('');
+          alert('Meeting created and linked to the recurring event');
+          fetchCalendarEvents(); // Refresh events after linking
+        } else {
+          setError('Failed to link meeting');
+        }
+      } catch (err) {
+        console.error('Error linking meeting to recurring event:', err);
+        setError('Error linking meeting to recurring event');
+      }
     }
   };
 
@@ -169,6 +285,38 @@ const DashboardPage = ({ selectedHub }) => {
             ))}
           </tbody>
         </table>
+      </div>
+
+      <div className="box-shadow-container">
+        <h3>Recurring Calendar Events</h3>
+        {recurringEvents.length === 0 ? (
+          <p>No recurring events found.</p>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>Event Name</th>
+                <th>Linked Meeting</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {recurringEvents.map((event) => (
+                <tr key={event.id}>
+                  <td>{event.summary}</td>
+                  <td>{event.linkedMeeting ? event.linkedMeeting : 'Not linked'}</td>
+                  <td>
+                    {event.linkedMeeting ? (
+                      <button disabled>Linked</button>
+                    ) : (
+                      <button onClick={() => handleLinkMeeting(event.recurringEventId)}>Link</button>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
 
       <div className="box-shadow-container">

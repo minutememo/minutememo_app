@@ -1,9 +1,10 @@
 from werkzeug.security import generate_password_hash, check_password_hash
-from sqlalchemy import Column, String, Integer, DateTime, ForeignKey
+from sqlalchemy import Column, String, Integer, DateTime, ForeignKey, Boolean, DateTime
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import relationship
 from flask_login import UserMixin
 from extensions import db
-import uuid
+
 from sqlalchemy.dialects.postgresql import UUID
 from datetime import datetime, timedelta
 
@@ -121,9 +122,13 @@ class Meeting(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
     description = db.Column(db.String(256))
-    meeting_hub_id = db.Column(db.Integer, db.ForeignKey('meeting_hub.id'), nullable=False)
     is_recurring = db.Column(db.Boolean, default=False)
+    recurring_event_id = Column(String(255), unique=True)  # To store the recurringEventId from Google
+    meeting_hub_id = db.Column(db.Integer, db.ForeignKey('meeting_hub.id'), nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow)
     meeting_sessions = db.relationship('MeetingSession', backref='meeting', lazy=True)
+
+
 
 
 class MeetingSession(db.Model):

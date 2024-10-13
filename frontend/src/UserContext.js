@@ -14,10 +14,14 @@ export const UserProvider = ({ children }) => {
     const savedUser = localStorage.getItem('user');
     return savedUser ? JSON.parse(savedUser) : null;
   });
-  const [loading, setLoading] = useState(true);  // New loading state
-
-  // Environment variable for backend URL
+  const [loading, setLoading] = useState(true);  // Loading state
   const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+
+  // Helper function to check token expiration
+  const isTokenExpired = (expiresAt) => {
+    const currentTime = new Date().getTime();
+    return expiresAt && currentTime >= new Date(expiresAt).getTime();
+  };
 
   useEffect(() => {
     const checkUserSession = async () => {
@@ -25,7 +29,15 @@ export const UserProvider = ({ children }) => {
       try {
         const savedUser = localStorage.getItem('user');
         if (savedUser) {
-          setUser(JSON.parse(savedUser));
+          const parsedUser = JSON.parse(savedUser);
+
+          // Check token expiration
+          if (isTokenExpired(parsedUser.token_expires_at)) {
+            // Token is expired, so log out user
+            await logoutUser();
+          } else {
+            setUser(parsedUser);  // Set user if token is valid
+          }
         } else {
           const response = await axios.get(`${backendUrl}/auth/status`, { withCredentials: true });
           if (response.data.logged_in) {

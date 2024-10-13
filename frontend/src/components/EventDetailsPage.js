@@ -8,13 +8,15 @@ const EventDetailsPage = () => {
   const [eventDetails, setEventDetails] = useState(location.state?.event || null); // Use state if available
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(!location.state?.event); // Avoid loading if event is in state
+  const [meetings, setMeetings] = useState([]);  // Store meetings linked to the event
 
+  // Fetch event details if not passed via state
   useEffect(() => {
-    if (!eventDetails) { // Only fetch from API if no event is in the state
-      const fetchEventDetails = async () => {
+    const fetchEventDetails = async () => {
+      if (!eventDetails) {
+        setLoading(true);
         try {
-          setLoading(true);
-          const response = await axios.get(`/api/calendar/event/${eventId}`); // Fetch event details by ID
+          const response = await axios.get(`/api/calendar/event/${eventId}`);
           if (response.status === 200) {
             setEventDetails(response.data);
           } else {
@@ -25,11 +27,50 @@ const EventDetailsPage = () => {
         } finally {
           setLoading(false); // Stop loading
         }
-      };
+      }
+    };
 
-      fetchEventDetails();
-    }
+    fetchEventDetails();
   }, [eventId, eventDetails]);
+
+  // Fetch available meetings linked to the hub
+  useEffect(() => {
+    const fetchMeetings = async () => {
+      try {
+        const hubId = eventDetails?.hubId; // Get the hub ID from eventDetails or wherever it's available
+        if (hubId) {
+          const response = await axios.get(`/api/meetings?hub_id=${hubId}`);
+          if (response.status === 200 && response.data.meetings) {
+            setMeetings(response.data.meetings); // Set the list of meetings
+          } else {
+            setError('Failed to fetch meetings');
+          }
+        }
+      } catch (err) {
+        setError('Error fetching meetings');
+      }
+    };
+
+    if (eventDetails) {
+      fetchMeetings(); // Fetch meetings only after event details are loaded
+    }
+  }, [eventDetails]);
+
+  const handleLinkMeeting = async (meetingId) => {
+    try {
+      const response = await axios.post(`/api/link-event-meeting`, {
+        eventId,
+        meetingId,
+      });
+      if (response.status === 200) {
+        alert('Event successfully linked to the meeting');
+      } else {
+        alert('Failed to link event to the meeting');
+      }
+    } catch (err) {
+      alert('Error linking event to meeting');
+    }
+  };
 
   if (loading) {
     return <p>Loading event details...</p>;
@@ -70,6 +111,19 @@ const EventDetailsPage = () => {
       <p><strong>Organizer:</strong> {eventDetails.organizer?.email || 'No organizer'}</p>
       <p><strong>Created:</strong> {new Date(eventDetails.created).toLocaleString()}</p>
       <p><strong>Updated:</strong> {new Date(eventDetails.updated).toLocaleString()}</p>
+
+      {/* Dropdown to select a meeting to link to */}
+      <div>
+        <label>Select a Meeting to Link:</label>
+        <select onChange={(e) => handleLinkMeeting(e.target.value)} defaultValue="">
+          <option value="" disabled>Select a meeting</option>
+          {meetings.map((meeting) => (
+            <option key={meeting.id} value={meeting.id}>
+              {meeting.name} {meeting.is_recurring ? '(Recurring)' : ''}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 };

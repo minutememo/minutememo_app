@@ -221,76 +221,170 @@ def update_concatenation_status(recording_id, status):
 
 from datetime import datetime  # Correctly import datetime
 
-@main.route('/api/calendar/events', methods=['GET'])
+@main.route('/api/calendar/event/<event_id>/link-meeting', methods=['POST'])
 @login_required
-def get_calendar_events():
+def link_event_to_meeting(event_id):
     try:
         # Ensure the user is authenticated and has a valid Google OAuth token
         if not current_user.is_authenticated:
             return jsonify({"message": "User is not authenticated"}), 403
 
+        data = request.get_json()
+        meeting_id = data.get('meeting_id')
+        is_recurring = data.get('is_recurring', False)
+
+        # Fetch the Google Calendar event
+        token = json.loads(current_user.google_oauth_token)
+        if token_is_expired(token):
+            token = refresh_google_oauth_token(token["refresh_token"])
+            current_user.google_oauth_token = json.dumps(token)
+            db.session.commit()
+
+        headers = {'Authorization': f'Bearer {token["access_token"]}'}
+        event_api_url = f'https://www.googleapis.com/calendar/v3/calendars/primary/events/{event_id}'
+        response = requests.get(event_api_url, headers=headers)
+
+        if response.status_code != 200:
+            return jsonify({"message": f"Failed to fetch event {event_id}: {response.status_code}"}), 500
+
+        event = response.json()
+
+        # Link event to meeting
+        meeting = Meeting.query.get(meeting_id)
+        if not meeting:
+            return jsonify({"message": "Meeting not found"}), 404
+
+        # Check if the event is recurring
+        if is_recurring:
+            # If recurring, update all sessions linked to this meeting
+            event_recurring_id = event.get('recurringEventId')
+            if event_recurring_id:
+                # Update all sessions for the recurring event
+                meeting.is_recurring = True
+                db.session.commit()
+            else:
+                return jsonify({"message": "Event is not recurring"}), 400
+        else:
+            # Handle non-recurring events
+            meeting.is_recurring = False
+            db.session.commit()
+
+        # Optionally, link the event to the meeting
+        return jsonify({"message": f"Event {event_id} linked to meeting {meeting_id}"}), 200
+
+    except Exception as e:
+        logger.error(f"Error linking event {event_id} to meeting: {e}")
+        return jsonify({"message": f"Error linking event {event_id} to meeting: {str(e)}"}), 500
+
+@main.route('/api/calendar/events', methods=['GET'])
+@login_required
+def get_calendar_events():
+    try:
+        logger.debug("Starting calendar events retrieval process")
+
+        # Ensure the user is authenticated and has a valid Google OAuth token
+        if not current_user.is_authenticated:
+            logger.warning("User is not authenticated")
+            return jsonify({"message": "User is not authenticated"}), 403
+
+        logger.debug(f"User {current_user.email} is authenticated")
+
         # Fetch the OAuth token for the logged-in user (stored as JSON in the User model)
-        token = json.loads(current_user.google_oauth_token)  # Convert the token string to a dictionary
+        token = json.loads(current_user.google_oauth_token)
+        logger.debug("OAuth token successfully retrieved from the database")
 
         # Check if the token has expired and refresh it if necessary
-        if token_is_expired(token):  # Implement this function to check token expiry
+        if token_is_expired(token):
             logger.info("Access token expired, refreshing token")
-            token = refresh_google_oauth_token(token["refresh_token"])  # Implement token refresh logic
+            token = refresh_google_oauth_token(token["refresh_token"])
 
             # Update the token in the user's record (save the new token as a JSON string)
             current_user.google_oauth_token = json.dumps(token)
             db.session.commit()
+            logger.debug("OAuth token refreshed and updated in the database")
 
         # Set up the headers with the Bearer token
         headers = {
             'Authorization': f'Bearer {token["access_token"]}'
         }
+        logger.debug("Headers set with the Bearer token")
 
-        # Define the time range to fetch events starting from January 1st of the current year
-        current_year_start = datetime(datetime.now().year, 1, 1).isoformat() + 'Z'  # UTC format
+        # Retrieve the start and end times from the request's query parameters
+        start_time = request.args.get('start')
+        end_time = request.args.get('end')
 
-        # Define the Google Calendar API URL for fetching events from the primary calendar
+        if not start_time or not end_time:
+            logger.error("Missing 'start' or 'end' parameters in the request")
+            return jsonify({"message": "Missing 'start' or 'end' query parameters"}), 400
+
+        logger.debug(f"Fetching events between {start_time} and {end_time}")
+
+        # Google Calendar API URL for fetching events from the primary calendar
         calendar_api_url = 'https://www.googleapis.com/calendar/v3/calendars/primary/events'
 
         all_events = []
         next_page_token = None
 
         while True:
-            # Make a request to Google Calendar API to get events
+            # Make a request to Google Calendar API to get events within the range
             params = {
-                'timeMin': current_year_start,  # Fetch events starting from January 1st of the current year
-                'maxResults': 2500,             # Maximum results per page
-                'singleEvents': True,           # Expand recurring events into individual events
-                'orderBy': 'startTime',         # Order events by start time
+                'timeMin': start_time,
+                'timeMax': end_time,
+                'maxResults': 2500,
+                'singleEvents': True,
+                'orderBy': 'startTime',
             }
             if next_page_token:
                 params['pageToken'] = next_page_token
+                logger.debug(f"Using next page token: {next_page_token}")
 
+            logger.debug(f"Requesting events with params: {params}")
             response = requests.get(calendar_api_url, headers=headers, params=params)
 
             if response.status_code == 200:
                 events = response.json().get('items', [])
-                all_events.extend(events)  # Add the fetched events to the list
+                logger.debug(f"Fetched {len(events)} events in this request")
+                all_events.extend(events)
 
-                # Log how many events were fetched
-                logger.debug(f"Fetched {len(events)} events (total so far: {len(all_events)})")
-
-                # Check if there's another page of events
                 next_page_token = response.json().get('nextPageToken')
-
-                # If no more pages, break out of the loop
                 if not next_page_token:
+                    logger.debug("No more pages of events to fetch")
                     break
             else:
                 logger.error(f"Failed to fetch events: {response.status_code} - {response.text}")
                 return jsonify({"message": f"Failed to fetch events: {response.status_code}"}), 500
 
-        # Return all events after pagination
-        return jsonify(all_events), 200
+        logger.debug(f"Finished fetching a total of {len(all_events)} events")
+
+        # Process recurring events and link them to meetings (as per your existing logic)
+        processed_events = []
+        for event in all_events:
+            event_data = {
+                'id': event.get('id'),
+                'summary': event.get('summary', 'No Title'),
+                'start': event.get('start', {}).get('dateTime', ''),
+                'end': event.get('end', {}).get('dateTime', ''),
+                'recurringEventId': event.get('recurringEventId', None),
+                'linked_meeting': None,
+                'meeting_hub_id': None
+            }
+
+            if 'recurringEventId' in event:
+                recurring_event_id = event['recurringEventId']
+                existing_meeting = Meeting.query.filter_by(recurring_event_id=recurring_event_id).first()
+
+                if existing_meeting:
+                    event_data['linked_meeting'] = existing_meeting.name
+                    event_data['meeting_hub_id'] = existing_meeting.meeting_hub_id
+
+            processed_events.append(event_data)
+
+        logger.debug(f"Returning {len(processed_events)} processed events")
+        return jsonify(processed_events), 200
 
     except Exception as e:
-        logger.error(f"Error while fetching calendar events: {e}")
-        return jsonify({"message": f"Error fetching calendar events: {str(e)}"}), 500
+        logger.error(f"An error occurred while fetching calendar events: {str(e)}", exc_info=True)
+        return jsonify({"message": "An error occurred while fetching calendar events"}), 500
 
 
 # Helper function to check if the token is expired
@@ -1955,3 +2049,92 @@ def create_session():
     except Exception as e:
         # Handle any errors and return a 500 error
         return jsonify({'error': str(e)}), 500
+
+@main.route('/api/google-calendar/create-event', methods=['POST'])
+def create_google_event():
+    try:
+        # Parse the event details from the request
+        event_data = request.json
+
+        # Fetch user's Google credentials from your database
+        user = get_current_user()  # Your logic to get the logged-in user
+
+        # Create credentials object with the stored tokens
+        credentials = Credentials(
+            token=user.google_oauth_token,
+            refresh_token=user.google_refresh_token,
+            client_id=os.getenv('GOOGLE_CLIENT_ID'),
+            client_secret=os.getenv('GOOGLE_CLIENT_SECRET'),
+            token_uri='https://oauth2.googleapis.com/token',
+        )
+
+        # Check if the token has expired and refresh if needed
+        if credentials.expired and credentials.refresh_token:
+            credentials.refresh(Request())
+            user.google_oauth_token = credentials.token
+            db.session.commit()
+
+        # Create a Google Calendar service instance
+        service = build('calendar', 'v3', credentials=credentials)
+
+        # Define the event to be created with additional fields
+        event = {
+            'summary': event_data['summary'],
+            'description': event_data.get('description'),
+            'location': event_data.get('location'),
+            'start': {
+                'dateTime': event_data['start'],
+                'timeZone': 'UTC',
+            },
+            'end': {
+                'dateTime': event_data['end'],
+                'timeZone': 'UTC',
+            },
+            'attendees': event_data.get('attendees', []),
+            'reminders': event_data.get('reminders', {'useDefault': True}),
+            'recurrence': event_data.get('recurrence', []),
+        }
+
+        # Insert the event into the user's calendar
+        created_event = service.events().insert(calendarId='primary', body=event).execute()
+
+        return jsonify(created_event), 201
+    except Exception as e:
+        current_app.logger.error(f"Failed to create Google Calendar event: {e}")
+        return jsonify({"error": str(e)}), 500
+
+@main.route('/api/recurring-event/<recurring_event_id>', methods=['GET'])
+@login_required
+def get_meeting_by_recurring_event(recurring_event_id):
+    meeting = Meeting.query.filter_by(recurring_event_id=recurring_event_id).first()
+    if meeting:
+        return jsonify({"meeting_id": meeting.id, "meeting_name": meeting.name}), 200
+    else:
+        return jsonify({"message": "No meeting linked to this recurring event"}), 404
+
+# Link a recurring event to an existing meeting or create a new meeting
+@main.route('/api/recurring-event/<recurring_event_id>/link', methods=['POST'])
+@login_required
+def link_meeting_to_recurring_event(recurring_event_id):
+    data = request.get_json()
+    meeting_id = data.get("meeting_id")
+    meeting_name = data.get("meeting_name")
+
+    if meeting_id:
+        # Link to existing meeting
+        meeting = Meeting.query.get(meeting_id)
+        if meeting:
+            meeting.recurring_event_id = recurring_event_id
+            meeting.is_recurring = True
+            db.session.commit()
+            return jsonify({"message": "Meeting linked to recurring event"}), 200
+        else:
+            return jsonify({"message": "Meeting not found"}), 404
+    elif meeting_name:
+        # Create a new meeting
+        new_meeting = Meeting(name=meeting_name, is_recurring=True, recurring_event_id=recurring_event_id)
+        db.session.add(new_meeting)
+        db.session.commit()
+        return jsonify({"message": "New meeting created and linked to recurring event"}), 201
+    else:
+        return jsonify({"message": "Meeting ID or name required"}), 400

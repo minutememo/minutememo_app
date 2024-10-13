@@ -1,52 +1,1017 @@
-2024-10-03 10:08:33,233 - httpcore.http11 - DEBUG - receive_response_body.complete
-2024-10-03 10:08:33,245 - httpcore.http11 - DEBUG - response_closed.started
-2024-10-03 10:08:33,246 - httpcore.http11 - DEBUG - response_closed.complete
-2024-10-03 10:08:33,246 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers([('date', 'Thu, 03 Oct 2024 08:08:33 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'minute-memo'), ('openai-processing-ms', '2867'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '10000'), ('x-ratelimit-limit-tokens', '200000'), ('x-ratelimit-remaining-requests', '9999'), ('x-ratelimit-remaining-tokens', '189728'), ('x-ratelimit-reset-requests', '8.64s'), ('x-ratelimit-reset-tokens', '3.081s'), ('x-request-id', 'req_0d95c3348c48c2c3689e23a67c695bda'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=KQIXztGnjqFUHjH_KzDvhZwSjsbna79QSdpMvhr5LUw-1727942913-1.0.1.1-SrtP7DUokqFIE2OGv8o7h0qp5dV4l6aLoai4LJ2CZ9xc9CBTiyIjmLo7ZrI6RD1BH7lohURqLgfk1p7rTdcoOQ; path=/; expires=Thu, 03-Oct-24 08:38:33 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=6c1aj6glIoJegHZ9v9I.083DBiw3MfIHgsC_oF1Bvb4-1727942913278-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8ccb71d31a2d83d3-BRU'), ('content-encoding', 'gzip')])
-2024-10-03 10:08:33,246 - openai._base_client - DEBUG - request_id: req_0d95c3348c48c2c3689e23a67c695bda
-2024-10-03 10:08:33,270 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a helpful assistant.'}, {'role': 'user', 'content': "\n    Summarize the meeting in detail, including sections and action points.\n\n    Use HTML for formatting:\n    <strong>Summary of this meeting:</strong>\n\n    <strong>Relevant topic:</strong>\n    <ul>\n        <li>.......</li>\n        <li>.......</li>\n        <li>.......</li>\n    </ul>\n\n    <strong>Action points:</strong>\n    <ul>\n        <li>.......</li>\n        <li>.......</li>\n        <li>.......</li>\n    </ul>\n    Omdat we daar wat acties op gedaan hebben en er is ook nog geen structureerde KPI's, maar er is al een meeting rond feedback geven aan de STA en zo verder. En een budget van 2022, waar we ook wel wat van gaan geven. Vorige maand waren dus de challenges en initiatives toen opgelegd in een strakke pipeline hygiene. En alles loopt eigenlijk een beetje samen, dus het loggen van... ...strakker, naar het einde van de maand is dat weer wat uitgeweid omdat er veel binnengekomen was en zo verder. Maar we hebben dus die dashboards samen met Thomas en eigenlijk vooral ook... ...hij gaat dat ook zien van deze maand, we hebben heel veel samen gezeten, we hebben heel veel samen gekeken ook. En wat meer gemicromanaged dan we voorheen deden. Wat de druk ook heeft verhoogd, wat een beetje pushback gaf van de teamheid. Maar uiteindelijk, we zagen daar wel een effect van. En voor ons een effect daarvan was de SQL naar opportunity ratio. Die is na het einde van de maand weer wat meer naar achter gegaan. Dat is een typisch effect dat we zien. Maar ik snap dat we daar de extra druk moeten blijven houden. Een aantal initiatieven die we nu gaan nemen, zullen er ook moeten zijn dat dat structureel op blijft. Waar kan je dat invoeren? Gisteren hebben we een meeting gehad om de efficiëntie te vergroten in een hubspot. Onder andere en er was een iets dat heel vaak voorkomt. De opvolging van de klanten, proberen contact te krijgen. En daar zijn we nu mee bezig om sequenties en ook meetings te gaan inplannen. Het is helemaal nieuws wat we hier doen. Goed is dat we hier begonnen. En hij heeft daar wel het succes mee. We zullen er straks verder op binnen. Maar alles ligt een beetje samen. De logging en monitoring ook. De telefoons worden beluisterd, zoals afgesproken. We hebben een eerste meeting gehad om de bevindingen te bespreken. Een beetje afgeweid van wat we al gevonden hadden. De feedback kwam dat we de discovery call niet wilden doen. Koen doet een discovery call. Anthony doet het zonder dat hij het zegt. Maar daar hebben we een mooie take-away uitgehaald die Koen nu al toepast. Hij zegt dat hij al resultaten moet boeken. Straks heeft hij wat dieper op inhoud. Data-driven quick actions. Die leading KPIs. We hebben er vorige week nog een meeting over gehad. We proberen nu elke week structurerend meer leading KPIs te doen. Ik heb er een beter begrip van. Het laatste, de payments average bekijken ten opzichte van Bjorn, heb ik niet gedaan. We hebben de hele waslijst al gezien van actiepunten die we hebben genomen. Thomas en ik zouden graag nog eens samen zitten om te zien waar we vooruit willen. Wat moeten we bijstellen. Thomas heeft ook het initiatief genomen om een Q4-meeting te houden tussen ons twee. We hebben die nog niet gehad, maar we gaan die van de week houden. Om te zien hoe we het verschil kunnen maken. Er zijn een aantal punten die we wel willen opbrengen naar u toe. Ook met Bjorn gespart daarover. Deze maand en volgende maand. Over het algemeen heb je gezien... Ah, ik zat over het verkeer te kijken. Sorry, ik zat hier te kijken. Mijn excuses. Ik dacht dat we door het salvat gaan. Ja. Over het algemeen heb je gezien, veel groen. Vorige maand was een hele sterke maand. De company performance zit op 102% van het budget voor closed-bound deals. Op het vlak van euro's zitten we op 141%. Als we dan kijken naar het business, hebben we dus... Of dat het een direct effect heeft, het zal zeker een effect hebben gehad van de initiatieven die we hebben gehad. Vorige maand. Ons doel was 41, we hebben 40 behaald. Maar ons initieel doel was 36. Dus die vier zijn een eerste stap naar een inhaalmaneuver. Nu we het beseffen, ook voor het kwartaal, moeten we gemiddeld zeven per maand... Acht. Acht. Moeten we gemiddeld acht per maand gaan bovenhouden. Dus dit is het begin van de... Ja, en dus... Het gaat... Maar bon, we gaan er eens mee over praten. Dat is, vorige maand, op het vlak van nu, business, deals, 110%. En op het vlak van de payment, 118%. En voor de rest, bijna overal, target ook gehad. Referral 100% op... Klopt dat, Bjorn? 10k ten opzichte van 31? Of is dat omgekeerd? Nee, mijn brouwhuis zit daar echt. Het is 150 of 200.000. Ja, oké. 106. Dan heb je dat. Part-time performance, gewoon down the line. En dan existing business heeft euro's target gehaald. Maar niet in het aantal deals. Zijn er nog vragen over? We kunnen straks naar de vorige toekomst praten. We hadden het eerst in het verhaal moeten doen. Maar dat is voor de vorige toekomst al lang niet. We zullen wel meer vragen stellen. Alle relaties zijn helemaal goed. We kunnen dat hier niet. Maar dat is de relaties goed. We komen er dan op terug straks. Dat zit in dat kortschijn. Ja. Oké. Aanzicht, een goede vermoedeling. We zijn de relaties niet bijgesteld. Het wordt niet best of slecht. Maar we hebben het zeker meegemaakt. De volume heeft het zeker al meegespeeld. Ik verteel jullie iedere keer het kantaal. De theorie en die van Carmen. Maar de omschrijving van de bot is al een augment. Met lokale aanvoer. En het loggen. Dus we moeten dan ook een keer een knopje doorgaan. Het is verhaalbaar. Het is een goede toevoeging. Het is een van mijn beleidspunten. Ik heb het al een paar keer in een meeting gehad. Dat het commandisch gevoel is. We moeten er echt iets mee doen. De achievements. Vooral met Sanne en Ketan. De rapportering tussen Parkchip en MyRect. Dat is ook een van onze beleidspuntjes. Als we een groen deal hebben. Als die gebieden nog niet zo veel eraf zijn. We hebben dat nog wel eens gezien. Ondanks dat het het grootste volume was. Zaten we op 112 procent. Misschien wel op 90 procent. Maar in volume wijzen we in het laatste geval het grootste beleidsbehaal van NSQL. Alles daarmee geleidt. Onze kosten zijn niet veel gestegen. Bijna amper. Waardoor onze kost per kluis vol het laagste ooit is. De laatste vijf maanden. Het is consequent op dat beeld. Onze NSQL kosten zijn ook wel serieus gedaald daardoor. Waar het plaats neer is. Increasing Steady. Het experiment Criteo. Heeft het potentieel om daarmee aan te slagen. Criteo is een platform waarin je advertenties kan laten tonen. Aan de mensen die je website hebben bezocht. Je mag het ook gebruiken voor specifieke advertenties. Om te gaan plaatsen op websites. Bijvoorbeeld Autoscore. Deze heeft ongeveer 1200 euro gekost. Om hem samen te pakken. De rest is met Autoscore. De advertenties die ze aanbieden, verwijzen we ook aan via Criteo. Het is veel goedkoper. We gaan Criteo er ook maar plaatsen. Om te gaan kijken of we er zo aan nieuwe klanten kunnen brengen. En ook met een speciale soort advertenties. Het is gewoon interessant. Het is totaal niet duur. We experimenteren daarmee verder. Het kan misschien wel iets worden dat in het budget past. Dat is al te zeggen. Dan de stuf. Ik weet niet of ik het eerder geschreven heb. Maar wat behoorlijk in de aanhang is. We hebben een push in onze funnel. Op de school. Dat is onze actie.\nde ballonnetjes dat we geknald hebben. Sales, incentive, whatever. Ja, twee F's normaal. Ben je klantcontent? Hoe klantcontent ben je? Ik, we zijn continu aan het samenleven. Ik wil ook niet dat hij mij meer leads geeft als de ratio's niet zijn waar ze moeten zijn. Gisteren heeft Thomas nog een aantal rapporten naar mij doorgestuurd die aantonen dat de ratio's toen dat Yannick hier zat wel hoger zijn effectief dan Koen. Maar het aantal leads die Koen behandelt zijn wel dubbel zoveel als Yannick. Dus er is een curve in het aantal leads die je kunt behandelen. De close rates kunnen stabiel blijven, maar als je teveel krijgt gaan ze namelijk lager. En ik denk dat we daar een goede balans moeten vinden. Ik denk dat een higher nog altijd heel belangrijk is. Frans Daal gelead zijn de helft van PKW. Zo lijkt dat we het ook hebben gezien, als ik me niet vergis. Dus als we Daal kunnen wegnemen. Je hebt een kandidaat die eigenlijk van partnerships komt. Ik heb vrijdag ook iemand gekomt via nieuwe groetenbureaus die we hebben gekregen. Ik heb Pieter uitgenodigd om aan te maken. We zitten meer dan 40% achter dat profiel. Voor sales dan alles? Ja voor operations misschien wel. In de CV probeer je wel zo'n inbuitstek die CV niet te doen. Ik had ze doorgestuurd. Ik zal ze nog een keer doorsturen. Het is in conversie dan? Maar in aantal was het wel? In aantal hebben we het net behaald, maar het is in conversie. Oké, dat is goed. Goed, tot volgende programma. Wat hebben jullie gedaan eigenlijk? In de zondag hebben we het volume niet bereikt op LKW-NL, LKW-FR en PKW-NL. Kwaliteit was ook nog niet genoeg en dat is waarom ik denk aan mijn klant. LKW-DE, IPN-L en PKW-FR. Daar moeten we nog op gaan werken. Dupele stokjes netjes presenteren, hoewel schaalbaarheid brengt in ons voertuighandel. Beheer van lokale financiers is nog steeds niet opgepakt. Deze Excel-corrigering met een uitval, zoals we vorige keer hebben, hebben we nog niet gedaan. En dan experimenteren, experimenten met autoscopes. Ik wacht op 10 minuten. Wat zegt dat eigenlijk? Dat zijn wel de experimenten die we voorzien in ons budget van tevoren. En het is beter dat we nu weten wat ons volgend jaar op ons budget staat om te testen. Volumen en kwaliteit onderzoeken. LKW-DE, uitgewezen in de functie van meer volume naar volgend jaar. De NisQL, QNQL, TrendTargetPrint. Eigenlijk zijn we dit kwartaal nu van gekomen om meer volume on-plus te doen. We gaan hetzelfde volume doen zoals in september. De laatste is bijvoorbeeld deze voor het jaar. NisQL, QNQL, TrendTargetPrint. Dat waarschijnlijk wel. Dat ook. Het objectief van Q3 is het ding dat de regels toch inzetten. Je hoort het al, dat is de Q4. En dat is niet nodig. Niet gedaan. Laten we zeggen dat we vertrouwen hebben op data-rapportering-processen. Het werkt wel eens bij mij. Als dat bij mij is, dan gaat dat in een paar maanden misschien weer goed zijn. Laten we zeggen dat Robin heel veel taloen in de lucht heeft. Hij heeft kleine dingetjes die hij een keer moet fiksen. En een keer moet fiksen. En dan dat programmaatje die erbij komt. Je mist de ruimte en de tijd om een keer een overzicht te maken. Waar zitten mijn leaking-buckets hier overal? En hoe maak ik ze hier consequent? Los van iedere dag de brand tussen de dingetjes. En ik ga me dat ook uitzetten in functie van volgend jaar. Bijvoorbeeld op het bouwgebied, dat wat op deeltjes draait. En verder al die dingen. Ik ga wel wat weerwerk geven in Q4. Als het afkomt met zotte initiatieven op processen enzovoort. Dat zal het niet voorgetogen zijn. Hans is bezig met zijn winkel. Dat gaat straks weer op de start worden. Dus er zal wel wat effect waarschijnlijk zijn. Een keer moet het best zijn. En zo gaan we ook wel weer op de muur gaan. En we moeten ergens een beetje aan meedoen. Wat ik zelf wel een beetje vind de laatste tijd. We zijn over een heel systeem gekeken met de keepers. En die weten wat het zit. En dat vind ik wel fantastisch. We gaan het simpel goed doen. Het is simpel, we hebben het recht aanpast. Dat hoef je niet te verwinden, Robin. Voor een simpel bereik kan dat niet de bedoeling zijn. En het kan ook niet de bedoeling zijn dat Robin met zijn ongelooflijke nieuwe pannetier. En het kan ook niet de bedoeling zijn dat iedereen van ons het simpel bereik aanpast. Geen zin in dat. We moeten er wel wat bij doen. We moeten er wel wat bij doen. We moeten wel vragen op Facebook. We moeten er wel wat bij doen op Facebook, zodat je dat bereik mag gebruiken. Ja, ik weet dat er een procedure is. Maar die procedure kan ook niet zijn. In het ziel. Het is zo'n situatie. Dan mogen we van Robin weggaan. Als dat niet wel kan geweest zijn. Dan zijn we in een andere situatie geweest. Wat wil je nog? Ook alles van de archeocultuur is heel veel bij hem gekomen. En je hoeft het al even in de lucht te doen. Je hoeft het zo in de lucht te doen. Je hoeft het zo in de lucht te doen. Maar het is ook zo. Het gaat spullen oplossen. Maar hoe meer processen je bouwt, hoe meer je moet onderhouden. Hoe meer coden je schrijft, hoe meer mensen je nodig hebt in je IT-team om die coden te onderhouden en te blijven testen. Dus ik denk dat we voor volgend jaar daaronder misschien wel iemand gaan nodig hebben. Die op stappaart-time, op stapschool-time, een deel van de automatisatie van het proces-team binnen zich wil aan de hand brengen. Misschien moet je dat bereiken. Misschien moet je dat bereiken om dat in onze organisatie te kunnen gaan. Of misschien is het een strategie. Breng je het dan in deze nabijland te bespreken. Bij veel tijden is het ook teveel stellen nodig. Het proces die gelinkt is en de processen in andere departementen. Als je dat bekijkt, wordt het niet echt gelopen. Zelfs in de marketingbevoel bekijken. Maar we proberen om de oplossingen te integreren in de totale organisatie. Of dan is daar ook wel even wat op te vragen. Om er iets op te zetten is het zeker. Als wij het doen is het lelijk. Terwijl we misschien perfect iets kunnen opzetten. Dat we twee aan elkaar gelinkt zijn. Daarom is het ook veel meer oplossingen. Het is een actiepunt. Schrijf dan alsjeblieft iets goed nieuws. Schrijf wanneer we die hele IP-support. Voor mij is het net al. Zelfs de marketingprocessen. Ja, ik snap het. Dat het dan al met die projectinstructies van volgend jaar wordt. Volgend jaar mogen we al die dingen in. Die aanvallingen mogen we zonder die structuur aan te zetten. Maar natuurlijk wat meer is die we moeten gaan bekijken. Met Hans. We hebben een stuk op het moment gekocht voor online finance. Dat we daarmee ook goed voor zijn. Dat moeten we dan gewoon samen bekijken. Ook met Robin. Maar ook met Christy. Met dat ding. Dan moeten we dat ook fundamenteel uitleggen. Ja. Feedback moet we aanhouden. En... Project Studio 22. Re-planning. Uitdaging. Voor jullie. Hier aan de tafel. Eigenlijk is het al behoorlijk finaal. Visualisatie. Maandag stel ik dat al een beetje voor. Want hier zit het dan in eerste finale. Samen met een timeline. En dan mag er wel iets naar ons gevochten zijn. Ja. Wat is het tijdsgeleden finale feedback? Vorig jaar nog. Interm. Deze maand. Met een verhuis zou ik wel nemen in december. Dat we daar zitten. En dat iedereen op dat moment de druik krijgt. De koerdienst. Dat iedereen een spaardexer is. Dat de bouw ook spaardex is. En dan... Volgens mij nog in januari. Eindelijk dat de communicatie aan de buitenkant is gebeurd. En dat er een goed event is gemaakt. Om zijn familie aan te werken. Ja. Allright. Dan gaan we naar de eerste. Dan gaan we naar het gebouw. En de nieuwe aandrijving. Oké. Zo'n beetje kort. Wat is er aan de hand voor customer support vandaag? Geen kloot. Want... Wat hij hier zo hoort ook. Hij komt vanuit u.\nHoe is dat daar ook uitgekomen? Ik heb in augustus al heel dicht in mijn eerste versie uit HubSpot, maar vanwege problemen met de taal. Ik heb de persoon gehoord dat ik in mijn taalpotje kon worden gezet. Ik heb heel snel het systeem geplaatst in de klant om dat aan te brengen. Dat was eigenlijk wel een vrij goed spel, maar taalgewijs ging dat niet. Ik heb dan naar andere no-go-out oplossingen gekeken, en toen vond ik dat wij niet de ruimte in de tijd hadden om daarin te diep te blijven. Ik heb wel met een partij samengezeten die de tracking doet van alles, zolang er iemand op die website is, tot het bestemde portemonnee is. Ik denk wel dat we me niet hebben verschoven aan de ideeën dat het is nodig, want dat is de bedoeling van het customer portal. Het is geen zeehondsport, of iets van dat soort. Nee, ik heb wel iets van dat soort bedoelingen. Ik vind het wel leuk. We zitten nog wel een school uitgeplaatst, en we hebben hier in deze bank zo'n boel. Dan ga je dat wel oprekenen met een customer portal. Inderdaad, hier in Mercedes-Benz hebben we ook wat nieuwe dingen, dus dan weet je wel wat anders je kan doen met je samenleving. Er is veel aan vooruit. Ja. We hebben daar een beetje gebruik van gehad, want dat is een heel extreem programma hier. Ja. Stiekem alweer. Ik voelde het een beetje lekker. Het is zo'n goede gemeente, maar je krijgt mooie dingen in de hand. Dat is precies wat ik bedoel. Ook als het customer portal heel basic is, dan kan je altijd eruit laten, om het op te leggen met datum of zo. Ik zou er wel wat voor gebruiken, maar daarom niet. Dat was ook een beetje mijn insteek, als ik bezig was met dat soort dingen. Je mag eigenlijk niet versnellen, maar als actiepunt, customer portal, dan zou ik wel een general kickover nemen, waarin we de dagen en de tijd bepalen. Goed. Yes. All right. Yes. We zijn de chievens for new business, dus we hebben een heel sterke maat gehad. Er waren wel eens maar drie van Björn, maar zelfs zonder de drie van Björn hadden we aan 37 geraakt, wat nog altijd een record is. Ik moet zeggen dat, als je kijkt naar het team zelf, Gilles heeft een heel mooie inhalelemanueel gedaan in de laatste week. Hij liep een beetje naar achter tegen de derde week. Anthony heeft een heel sterke maand gehad, en wat we daarop merken, is dat zijn sales cycle veel langer is. Dus hij bewaart zijn deals ook veel langer dan hij... We merken dat hij zich goed nurturet. En Koen... Koen, jij hebt daar die nappen in gedaan. We merken nog altijd dat hij soms... Dat er soms wat deals uit de boot vallen, bijzonsprekend. Dus dat is alweer dat effect van te veel leads hebben. Het kwartaal is behaald, dus dat is positief. Maar we hebben nog veel in de taal natuurlijk voor het jaar. En de SPIV heeft een goede vibe gebracht ook over het algemeen. Ze hebben het zelf ook uitgesproken. Ook al zijn het maar stomme ballonnetjes, zeggen ze, maar het spoort wel aan om in een ballon... Een SPIV? Een SPIV? Ja, dat zou het zijn. Voilà. De challenge is dan... Er is wel wat druk gebracht geweest voor een maand op het team, meteraard, vanwege de target die verhoogd is. Ik die wat meer in actie geschoten is op het vlak van monitoring en zo verder. En dat heeft wel wat weerwerk gehad. Ze hebben een interventie gehad met mij, om het een keer te zeggen. Maar dat is nu allemaal in goede orde, ondertussen. Maar bon. Dus het is iets dat... Niet enkel doordat het druk is, maar ook... Ze vinden ook dat ik op sommige vlakken meer haar op mijn tanden mag hebben, en zo verder. Dus... Dat zijn zo een paar zaken die opgebracht zijn, wat ik weet. Dat zijn werkpunten van mij. Een grote challenge is hoe kunnen we die vibe gaan behouden? We hebben het er van de week nog over gehad. Hoe behouden we die momentum? Een spit is leuk, maar is iets dat we niet altijd kunnen doen. Eerst en vooral in twee. Als ze afhankelijk worden van spits, dan gaan zij wachten op een spit voordat ze gaan beginnen te performen. Dus dat is een beetje die balans erin houden. Maar we willen wel een manier vinden om die vibe te behouden en de momentum op over de week. Het zit wel goed nog deze week. Dus ik denk sowieso, als er een goede performance is, dat dat ook al momentum krijgt. Dan moeten we kijken. We hebben wel een paar ideeën dat we eventueel klaar hebben staan voor het geval dat we een spit kunnen lanceren. Maar dat is een ander gesprek. Voor mij zijn de initiatiefs voor deze maand vooral. Dus echt het proces beter gaan bewaren. Dat gaat over de deals die geclosed zijn door de hele funnel tot de oplevering. Dus daar heb ik elke ochtend een rapport van dat ik dan elke ochtend met mijn team overloop. Partially paid. Ik denk dat die dan eventueel nog bij een kredietcommittee zouden zitten. Dat wordt elke dag overlopen. Zij krijgen die ook elke ochtend bezien. Maar daarvoor zorgen dat ze van in het begin het proces ook goed volgen. Daarnaast het proces ook op het vlak van hoe de deals door de funnel gaan. Dus als je daar in die meetingzaal gaat zitten, ga je een soort van flowchart zien. Koen heeft die gemaakt. Heel sterk. Koen heeft die gemaakt. En daar hebben we dus een paar zaken ontrafeld. Wat komt er het meest voor? Wat is onze quick win? Om daar tijd te gaan winnen bij de reps. Waaronder dus die automatisatie, de sequences en kalendermeetings insteken enzovoort. Kader. Dus dat is een deel van ook voor mij een beetje meer te ontlasten. Alhoewel dat gisteren weer heel druk was. Maar hun duidelijk het kader aanbieden als ze weten wat ze erin mogen doen. Vorig maand had ik ook een goed gesprek met Björn daarover. Om dat nog een keer goed uit te klaren. Waar ik het soms te gecompliceerd bedacht. Dat ik het eigenlijk makkelijker kan gaan doen. Dus dat is ook nu op die manier gecompliceerd. Dus ik ga mij minder gaan betrekken bij performance. Accepteren. Ik krijg ze wel elke ochtend te zien. En mijn tool stuurt ze ook met mij door. En voor de rest, als we ook een beetje speling hebben op pricing enzovoort. En dan is dat mij de harmonie. Personal development. Dus dat valt in het kader van die telefoniemonitoring enzovoort. Dus nogmaals, van de week echt een heel goede teammeeting gehad. Daarover. En dat er een initiatief is uitgekomen. Om daarop verder te werken. Wat ik geloof ook een impact gaat hebben. Sowieso focus op Rio. Is een grote. En het Piet Zageman verhaal gaan we ook toepassen. We hebben dat nu even geparkeerd. Om de voorboden even te verbeteren op dat vlak. Ook in het kader van dat. Een veel sterkere samenwerking met Giel nu ook. Om ervoor te zorgen dat de communicatie. Of de discoverie die SDH doet. Of de Rio. Die zijn bepaalde. Zodat dat ook beter bij ons opgevolgd wordt. Dus nu bijvoorbeeld staat dat ook in de grid. In de deal waarop Giel in contact stond. Heeft hij dat nu ook automatiseerd. Dat dat in de grid komt. En dus dat we daar ook altijd meer zicht op hebben. Ja, momentum. Dus dat is hetgeen dat ik daarin heb verteld. En dan uiteraard. Eén van de initiatieven. Waar we het over hebben gehad. Waar we geloven dat. Sowieso een impact gaat hebben. We geloven sterk dat het een impact gaat hebben. Op het closen. En op de close rates. Is het inroeren van negatief. Ik weet dat je zegt. We moeten een business case komen. Bjorn heeft ons daar ook een keer in gechallenged. En het idee zou zijn. Om het toch te proberen op LKW. Maar dan op een D3. Bjorn heeft voorgesteld. LKW's in stok. In bulk te kopen. Zodat we dus korting op kunnen krijgen. En in die korting zou je eventueel de degressieve ideeën kunnen ontdekken. Maar natuurlijk willen we daar ook succescriteria achter halen. Dus dat we dat meten. Dat we een maand proberen. Maar dat we weten dat het een effect moet hebben op de close one rates. Wat dan effect heeft op het aantal deals. En wat dan ook een effect heeft op kak. En op dat vlak heeft dat dan ook een positieve funnel. Thomas heeft gisteren berekend. Als we vier of vijf deals meer zouden behalen. Over de hele lijn. Niet enkel op nieuw business. Dan is onze kak al verbeterd met duizend euro. Dus als we dat op nieuw business zouden... Op LKW ja. Dus als we het dan enkel op nieuw business zouden focussen. Dan zou de kak in principe nog een grotere impact moeten hebben. Oké. Ik ben er weer in. Ik ben echt triest. Ik ben benieuwd. Ik ben er zo meteen in. Maar ik ben het nu wel van de tijd gedeeld. Verder heb ik geleden nog een ding voor jou. Kijk dan, je hebt veel verteld. Ik ga geen concrete actie of initiatief doen voor jou. En dat wil ik wel. Voor volgende maand doe je. Ja. Om half 1 uur. Of een uur later. Dat is de lijst die Pieter kent. Maar je zegt hier de processes. Ja, ik bedoel van waar ga je nu zich afvangen? Ja. Ja.\nIk denk, mijn gevoel is, misschien kan ik dat ook van Thomas, dat die concreter zullen zijn. Gewoon niet, want dat is mij misschien te veel gehoord. Het stuurt ook niet uit, het stuurt ook omgekeerd. Nee, inderdaad. Volgende week zal er een betere, concreter kurs zijn. Maar voor jezelf en anders, weet ik niet. Als ze stokken elke week kopen, dan zijn die resten nogal goed. Het is een allerlei... Het is natuurlijk een antwoord, een moeilijk antwoord op de vraag van hoe gaan we ervoor zorgen dat we dit kwartaal nog extra inhanden kunnen maken. Het is een antwoord daarop dat we aan het zoeken zijn. Hoe gaan we het kwartaal nog een keer beschermen? We zijn eigenlijk twee zomeren afgegaan, we hebben gekeken naar je journal-oefeningen. En ik denk dat je dat ook met het voorschot 8.000 zelfs een stuk intensiever wordt. Ik denk, je journal-oefeningen, vandaar moeten wij de tijd vormen van je journal-oefeningen om hierboven te werken. We zien je dus te roken, dat is anders gelegd. Het nummer 1 is om je oporting te bekomen. Het nummer 2 is, dat je kan te werken. Dus het is twee weken afgaande of vijf weken afgaande? Ik denk, voor de stabiele plukken. Ja, voor de week was het samen met de handel, en voor de week tussen de handel en de WTG, moeten we het ter dag maken. Willen we hier doorgaan, of gaan we nog een keer aan de tafel zitten, en dan nog een keer opnieuw presenteren aan WTG? Die lijst heb je heel vaak gezien. Het is niet de maanden die je gezien hebt. Nee, dat zijn allemaal initiatieven die we nemen om te zien, wat al heeft veel een extra... Ik zou graag willen dat we samen zijn. We hebben nu een maand daarop gewerkt, we gaan nu een beetje bijschikken en dan... Ja, daar komen jullie dan in, want ik denk dat we zeker beginnen te blijven kijken. Een soort van condolatie, niet normaal gesproken, hoe we ons daarmee doen. Gewoon lekker dat gelegd. Oké, goed. Yes? Johan? Ah ja, ik zat erop. Ik ga er wel even doorgaan. Zobiet hebben we het om de saves, dat we nog gaan in de tijd bekijken. Uiteraard heb ik niet veel tijd opgestoken, dat zit dan op het dagelijks, in onze efforts dan. Ik heb de year-to-date er een keer bijgebracht, we vinden dat nog altijd eurocientisch, vooral met ons hier zo. Dus als het zijt goed, dat is vooral de echting van het jaar, dan hebben we het goed, we kunnen zien wat we gaan doen. Existing business on target, dat krijg ik niet veel op de kant. We hadden niet één keer twintig taaksters, maar vijfentwintig taaksters, die zijn afgewerkt. Dat soort vervoer is dan, elfte man die we hebben, dus hier deze maand. Maar year-to-date zijn we daar eigenlijk... Wat eigenlijk zeg ik? Iets voorop daarop, en al daarop. Dus we hebben niet veel tijd. Head-to-partnerships, ik heb een plan van een aanpak voorgesteld, midden augustus. Dat was ook niet het meest concreet, dat is ook niet mijn beste artikel, maar het is wel iets wat zeker is gewoon. Ik heb een zoek gedaan, ik heb met Pieter met broodvlies geweest. We hebben aangezegd, dat we alle dossiers aan 20% nemen nu, en die kan voor ons van 25% aantallen, ik bedoel, zodat zij, nu we komen in, de nieuwe PKV's zijn, dat is al 25% gewoontest, tot het einde van het jaar, tot 20%. Wat dan meer volume genereert, dat is ook al een beetje een defensieve oefening. Het is nu te hoog voor daar, eigenlijk al te zijn, dat dat erin is, dat we hier een boodschap zetten. Een halfhonderd commissieën, dat lekt alweer een procent op. We hebben een extra incentive voor een stad, per scheef van 100.000 euro, voor schoppen dat ze binnenhalen, tot en met 10.30 uur, dus 200 euro extra. Factor 1, de toestelling was er, een miljoen, nog te doen vanaf begin september, maar om mid september, voor de stad, dat maakt niet uit. Dus dat is, van die pot van 50.000 euro, dat moet budgetteren, en dan krijg je ook weer 20.000 euro uit, als je een vliegtuig van Basne heeft gekocht. Dus, er zit dan nog een beetje in het budget. Ik hoop dat ze hier, om 1 in Delbeek, een private kans, van Bram, is dat weg. Ik ben al langs geweest, we zijn daarmee een stad, een Californische incentive, gestimuleerd. Ja, en dat loopt. En nu moet ik, meestal gezien, Het is de grootste verzekeraar, van Brussel, ze worden in Romein, Polen, en de hele Bazaar, en ze hebben nu 4 man gezet, om te financieren. Brokership. Maar ze werken ook met je partner, dat is Arbol, en dat is Mitter. En we hebben dat er, A, B, C, klanten uit elkaar, die naar je persoon is, ondermaats, in de tweede plek, en Tom, om te communiceren met je, was de bundesaanvoerder. Dus ik moest daar een beetje feeling aan doen, maar Bram probeert dat ook, ook een behoefte met mij. Maar we staan er ook toe, dat die verzekering, ja, hen mag roken. Dus eigenlijk, dat moet ik gebruiken. Ik heb nog hetzelfde, dat zij, op dezelfde manier, als de verzekering, beschrijven, dat we, ja, samen met Ieland, of zoiets, maken, dan het frameboek wilde, over de stoodaard, een beetje uit staat lijden spinnen. Dus dat is inderdaad, ik zeg innemer ook absoluut voor mij, wat er mooi staande is. Emsto twikkelen aan een boom? Wat? Je moet toch alleen ook prijzen? Ja, Audio toezitten. Jouw weer. Emsto twekelen aan een boom, Emsto wat meer sens op ons te doen? Die gaat wel zakken. Denk ik. En vooral, als je ze nog weer die opzet, moet je ermee zorgen. En dat is on-going. Leest nyt н bowsig een nieuwe, Nederlandse lease advisor, dat ik gevonden heb. Ik ga daar volgende week, dinsdag. Hij zal de grenzen bovenhand hebben, niet alleen in Vondervolk. Nee, ik schrok echt heel optioneel, ook op de timer. Bij geen lease, stond ik nog aan het wachten, maar toen ik gevraagd heb, hoe combineren we dinsdag, moeten we ergens af te spreken. We gaan naar DAF. Neen, dat is Option Finance. Dan gaan we naar Parijs. Ik en Antonie, op een vrijdag, om te vroeg te houden, zijn we moeten op de 9e, toch? En ILE is, op het moment dat, zo, het handel van financiering, kunnen we mee nemen. Dat is kentachtig, Option Finance. Ja, als je die ook, financieringsafstand, dat is echt heel erg belangrijk. Heel erg belangrijk. Want, als je zo'n bakje, een loonstafje, schrijven, dat is al eens goed. Maar, er is ook nog een tijd, maar, nou, ik weet niet, waar je dat tegenkomt. Maar, we kunnen toch beter, op het moment dat, je maakt een rit, dan mag je dat je banken presenteren, als het goed is. Die staan helemaal, als we gaan, de meeste documenten, dus dan, als je zegt dat, de prioriteiten, blokking van banken, als parlement, dat hoort erop, dan blokken we dat in. Ik geloof, Antonie, we gaan effectief, nog een keer, ons meepakken, ook, wat voor filen, wat we gebruiken, maar, als we die allemaal kunnen, dan is het maar een paar, dan hebben we dat, vanaf 5 maart, tot en met augustus, met 65 aanvragen, per maand. Dus, in september is dat maar 94 gedaan. Je zou te grof moeten zijn, dat is door, de acties dat genomen wordt, en nog eens september, we willen een topmand, dat er het gongeest. Dat weet je niet. Die 94 aanvragen, konden we genereren, in een miljoen, 84.000 euro voorstel. Dus, dat is wel gigantisch, veel potentieel. Om dat uiteindelijk behaalt, 22 kleurstons, 247.000 euro, en daarin, 7 B&P-vlies, 6 viatinerco, en 2 diviners, en de rest, is overal, de one-ups. Maar is de reden ofwel, dat ze dan toch niet, bij ons gepakt worden, want profvlies, maakt zelf al keuze. Allee, zij zijn eigenlijk, van, we verwachten dat hij niet, bij de anderen gaat. Dus, wat dat op aantrekt. En ook, het gevoel, dat ik wel eens, op vrijdag, 20.00, misschien, er zal nog, een nummer aanvragen. Allee, we hebben juist daarom, verwachten dat de, de closing ratio's, een stuk hoger is, omdat je al, een voorschildering hebt. Nu, de, niet dat het eruit ziet, maar dat de, de kwaliteitskwaliteit, die zelf, wat wij dus, moeten binnenbrengen, en de kwaliteitskwaliteit, is natuurlijk, niet zo goed beschadigd. Hoe, hoe telt die diviniteit? Dashboard? Nee. Eén waarop we gemaakt hebben, in december, om de cijfers, van, de eerste track. Ze hadden er zelfs, dashboard, gans beneden. Al gaan, vooral, de productieve, started the protrusols. Then the Mustang branch, was for Lifetime Value. Ondertussen hadden we ze, ook een dashboard van de Brussels. In december, gelaten we op vraag van Battlefield, te kijken, om daarop te zetten werden ze er, стрongeren op. En ik had al altijd, mijn cijfers doorhebben, van de dealer source, Damascus, daarin. Maar, als de akteelveelhouding, dan gaan ze er zijn, zijn deals, zijn deals krijgen ze, om te halen. Och, met de budget oefening, ik had al in mijn beeden, dat daarsomaar, ik geef u, ik zei eigenlijk, excuse me. Pieter zei, ga jij niet geven nu, met 2020? Ik zei, wat zeg jij nu? Ja, ik had een toffe foto te zien, voor jou, met een 76, dat was een 1.2 miljoen. 1 september, zelf al, onder een melding, met een 1.658 miljoen. Dus, als we zo verder doen, is dat al verdubbeld, met partnerships, in 2024. En, als we dan niemand hebben, van de worstvallen, tot, dat begint alleen met jou, 13. Meneer, today's, we zitten wel achter het budget, we zitten onder een helft, tenminste, 145, dat moest eind september, voor de euro's, we weten allemaal wel waarom. Maar, wat daarmee begonnen is, in die budget oefening, ik was alvast vergeten, we zaten in, de cijfers van partnerships, hebben integraal, 52 machines gestoken, tot en met, ja, tot en met september, 37. Ik moet een kat de kat noemen, we hebben vandaag, 12 machines, is dat? Ja, 12 machines, ja. Ja, want die 12 machines, zijn er zeven geldbakken, dat komen de andere weg, iemand kan daar kunnen komen. We zijn in dat ene bieden, de aftract zit in, hebben, een aantal moscheers. Dit doet niet terg, maar het is wel een waarschuwing, het is eigenlijk, klop, budget. Ja. Het is puur, eigenlijk alleen machines, maken全tje in die budget, en dat zitten er eigenlijk alleen. Dat zijn alleen de overallen. Dat is, lokale recoupings. Kan je je bed verseren, met de mannen die dat doen? En dat, dat kan niet nog meer,\ndat we dat apart herholen, maar dat we daar vooral mee in samenspraak gaan zitten met de andere prioriteiten. Strijkbare hands. Zullen we dat gaan compenseren? Die machine is niet... Niet per se in de machine, we kunnen wel een extra effort doen met de machine, maar ik wil niet dat dat ingehaald wordt. Wat kunnen we erin halen? Rest year is drie keer 21. Ik vind dat haalbaar, dat spreekt gevoelsmaatregelen, omdat die trenden een brug door zijn en op de tuur die 4-9 avond van september is het nu al vier of vijf plus onze partners dat we deze maand kunnen doen. Dus het zit daar ook een aging in, ook die aging is hetzelfde, ik ben nu bezig dat dat een week, twee, drie, vier is. Ik heb geen idee van, maar ik zou nu wel bewijzen, ook bij het interieur is dat niet 20 maanden, want dan moet er niet veel effort gebeuren dat ik denk, ik wil het dan in het budget zetten en ga ik even net focussen op mezelf vrijmaken. En dat is op het laatste punt, recruitment, en ik heb een handje gevonden. Wat vond je van de recruitment tax in 2013, Thomas? Goed, en die van Vure? Dat is in dat video, waar hij spreekt. Wat zei hij ook al? Hoe weet hij dat? Ah, ik kan hem niet meer stoppen. Thomas had er al, hij is er ook al, ik kan hem niet meer stoppen. Dus ik heb erop gelanceerd, ik heb volgende maandag, volgens mij een heel zwaar middenprofiel, die langs komt te worden, ik had ook al een feestje in Van Gogh voor Jobs, voor gasten en kruiden, en die kwam ook op, en ik had nog geen facturen, het is nu dat maandag, en ze hebben de handen geschoven, het is een heel bepaald iemand, volgens mij, die langs komt, ik zal hem uitpakken, want er was al gisteren een opmerking van een passieur, Stéphanie, en het is Van Gogh niet, maar langs de andere kant, er staan heel veel hires, dat is terug 5.000 per week, 15.000 mensen zitten bij ons op dit moment. Ik ken dat, dat is veel. En voor wie dan? Dat moest het zijn, van die mensen. Maar ik snap het niet. Heeft er iemand al een kandidaat gezien, die van haar komt? Ik heb al. Ja, oké. Is er nog een goeie? Oh ja, dat was in de tijd, dat is geen vast... Het was een 4-5'er, dat is iemand die voor sport doet. Ja, dat is wel vast. Maar 4-5'er toch? Maar ze dalen, ze hadden nooit... Ik vond het niet slecht, ik heb nog een of twee instructies. Oké, goed. Dus je had een recruitment, ik zou het op die tijd van het jaar zien, dat ik een running heb van mezelf, als ze niet voorbereid zijn, tegen het volgende jaar. Dus dat ik eigenlijk minder een indruk ga maken. We zijn op zoek naar een project. Ja, oké. Dat, oké. Voor Stephanie, waar we staan daarvoor, moet ik zelf, in plaats van zij, of zoiets. Ja. Zou het niet moeilijk zijn als Stephanie een verhaal kan doen? Heb je dat ook gedaan? Ja. Zijn we minstens samen, dan moet het goed zijn. Misschien niet dit, maar ik wist dat het allemaal een paar randjes kan gaan, maar ik heb ook gedronken, maar het is niet de andere, het is niet de realiteit. Zou je die filmpjes op de zaal kunnen vinden, in plaats van hier op Kantoor? Dat denk ik niet. Misschien wel. Ik vind het voor je wel, dat dat wat sterk klinkt, dat je er ook geen nieuw profiel van ziet. Als je de rest niet stuurt, ben ik weer profiel. Ik heb daar niks aan gezien. Ik moet zeggen, ik heb er wel een paar aan gezien, maar toen ben ik er zo aan gezien, is het een feest dat ik de meeste uur al op de cd ben gereden, en dat is het meeste dat ik heb gedaan, is echt niet. Verstaan je? Oké. Dan schroeven we nog een keer op. Nog een vraagstukje, en dan zijn we er weer. Alsjeblieft. Dus, kakko, hoe blijft het dat je op 8% en dat is een representatiekost, stel dat we bij 2398 in de voetbalkade zijn. Ja, dat is positief. Ik zei het vroeger niet, maar nu heb ik het helemaal verstaan. Waarom je het overhoudt? Ik zal het even uitleggen. Aan de kost is er niet veel veranderd, maar wat we ook zien onderaan in ons rapport, dat is voor de eerste keer dat we onze targets op een aantal nieuwe klanten hebben gehaald. Die zitten daar genoeg om onze kak naar beneden te halen. Ik was met een team aan het klappen om deze maand te halen, en ik heb er 100 zitten op, dus... Maar ja, dat is jouw overtuiging, die moet ook opgeperkt zijn. Ik ben daar al een tijdje over gesproken, en in het begin heb ik het bijna aan het oog, maar dan moet ik dat zeggen, want als jij weg wil van de maand, dan kun je op een bepaalde hoogte zitten bij mij in de kerk, en je start van de maand is ook al sterker dan vorige maand, dat is geen effect, dat kunnen we wel herinneren. Het is een reden om dan al voorbij te gaan, als er dan nog een extra klant komt, maar dat was niet ook een voordeel van het budget. Nee. Het budget is 32, om dat uit te zetten, dat is eigenlijk acht de maand. Dat is 40, dat is drie uur per maand, misschien wel, ik weet het niet zeker, maar ik denk het. Het was in september, en zoals ik al zei, de ratio's waren niet min of meer, maar wel oké, we hadden een veel slechter ritme dan we hadden verwacht, en zo heb ik op een maand en een keurige risico's gezet. Dit is nog niet van ons budget, maar we hadden het ook goed gelieverd, en dan is het wel een plus van ons budget, maar we hebben ook al best een aantal dingen gesproken waar ik dat beter kan aantrekken. En ik geef het niet nieuws, en als je het over dat paartje kijkt, dan zie je ook dat in ons budget zijn we eigenlijk 49 op LKW, dus ik heb geen idee van TP, dat zie je niet alleen op het budget, want dat vervaalt TP dan ook. En LKW is niet onderstaanbaar. Ja, nee, nee, nee, 99 is zeker, zelfs op het budget, niet zo vervolgbaar. Ik weet dat we... ... ... ... ... ... ... ... Ja, de verkoop gaat beter, omdat we nu stock ook hebben. ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ...\nWe hebben het ook niet vergeten. In de eerste en tweede contracten wisten we niet wat de cijfers waren. Maar we zijn met zo'n goede andere ouders, dan kan ik niet veel meer van schiften. We hebben het niet gedaan. We hebben het BKW-carrier gespeeld. Dat is afgelopen maand. We hebben het niet gedaan. We hebben het niet gedaan. We hebben het niet gedaan. We gaan niet afvallen. We zijn afgelopen maand verantwoordelijk mee geweest. We hebben het niet uitgebreid. Dit was met het afvallen van het brendtuin toch wel een heel toegangsverhaal. We hebben het niet uitgebreid. resurrectedtheory.com We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid.\n"}], 'model': 'gpt-4o-mini'}}
-2024-10-03 10:08:33,274 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
-2024-10-03 10:08:33,274 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2024-10-03 10:08:33,274 - httpcore.http11 - DEBUG - send_request_headers.complete
-2024-10-03 10:08:33,274 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2024-10-03 10:08:33,274 - httpcore.http11 - DEBUG - send_request_body.complete
-2024-10-03 10:08:33,274 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2024-10-03 10:08:39,118 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 03 Oct 2024 08:08:39 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'minute-memo'), (b'openai-processing-ms', b'5445'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'200000'), (b'x-ratelimit-remaining-requests', b'9998'), (b'x-ratelimit-remaining-tokens', b'189731'), (b'x-ratelimit-reset-requests', b'13.907s'), (b'x-ratelimit-reset-tokens', b'3.08s'), (b'x-request-id', b'req_9f5974c92f0d43da050aa12de0cf4656'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8ccb71e86d1783d3-BRU'), (b'Content-Encoding', b'gzip')])
-2024-10-03 10:08:39,119 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2024-10-03 10:08:39,119 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2024-10-03 10:08:39,120 - httpcore.http11 - DEBUG - receive_response_body.complete
-2024-10-03 10:08:39,120 - httpcore.http11 - DEBUG - response_closed.started
-2024-10-03 10:08:39,120 - httpcore.http11 - DEBUG - response_closed.complete
-2024-10-03 10:08:39,120 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers({'date': 'Thu, 03 Oct 2024 08:08:39 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-expose-headers': 'X-Request-ID', 'openai-organization': 'minute-memo', 'openai-processing-ms': '5445', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '200000', 'x-ratelimit-remaining-requests': '9998', 'x-ratelimit-remaining-tokens': '189731', 'x-ratelimit-reset-requests': '13.907s', 'x-ratelimit-reset-tokens': '3.08s', 'x-request-id': 'req_9f5974c92f0d43da050aa12de0cf4656', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8ccb71e86d1783d3-BRU', 'content-encoding': 'gzip'})
-2024-10-03 10:08:39,120 - openai._base_client - DEBUG - request_id: req_9f5974c92f0d43da050aa12de0cf4656
-2024-10-03 10:08:39,483 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-03 10:08:39,485 - werkzeug - INFO - 127.0.0.1 - - [03/Oct/2024 10:08:39] "POST /api/sessions/162/summarize HTTP/1.1" 200 -
-2024-10-03 10:08:40,945 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-03 10:08:40,978 - werkzeug - INFO - 127.0.0.1 - - [03/Oct/2024 10:08:40] "OPTIONS /api/extract_action_points/162 HTTP/1.1" 200 -
-2024-10-03 10:08:41,026 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
-2024-10-03 10:08:41,029 - httpx - DEBUG - load_verify_locations cafile='/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2024-10-03 10:08:41,154 - httpcore.connection - DEBUG - close.started
-2024-10-03 10:08:41,169 - httpcore.connection - DEBUG - close.complete
-2024-10-03 10:08:41,172 - httpcore.connection - DEBUG - close.started
-2024-10-03 10:08:41,182 - httpcore.connection - DEBUG - close.complete
-2024-10-03 10:08:41,089 - routes - DEBUG - Starting action point extraction for session_id: 162
-2024-10-03 10:08:41,411 - routes - DEBUG - Sending transcription to OpenAI for action item extraction with structured output, session_id: 162
-2024-10-03 10:08:41,429 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are an AI that extracts action items from meeting transcriptions.'}, {'role': 'user', 'content': "Omdat we daar wat acties op gedaan hebben en er is ook nog geen structureerde KPI's, maar er is al een meeting rond feedback geven aan de STA en zo verder. En een budget van 2022, waar we ook wel wat van gaan geven. Vorige maand waren dus de challenges en initiatives toen opgelegd in een strakke pipeline hygiene. En alles loopt eigenlijk een beetje samen, dus het loggen van... ...strakker, naar het einde van de maand is dat weer wat uitgeweid omdat er veel binnengekomen was en zo verder. Maar we hebben dus die dashboards samen met Thomas en eigenlijk vooral ook... ...hij gaat dat ook zien van deze maand, we hebben heel veel samen gezeten, we hebben heel veel samen gekeken ook. En wat meer gemicromanaged dan we voorheen deden. Wat de druk ook heeft verhoogd, wat een beetje pushback gaf van de teamheid. Maar uiteindelijk, we zagen daar wel een effect van. En voor ons een effect daarvan was de SQL naar opportunity ratio. Die is na het einde van de maand weer wat meer naar achter gegaan. Dat is een typisch effect dat we zien. Maar ik snap dat we daar de extra druk moeten blijven houden. Een aantal initiatieven die we nu gaan nemen, zullen er ook moeten zijn dat dat structureel op blijft. Waar kan je dat invoeren? Gisteren hebben we een meeting gehad om de efficiëntie te vergroten in een hubspot. Onder andere en er was een iets dat heel vaak voorkomt. De opvolging van de klanten, proberen contact te krijgen. En daar zijn we nu mee bezig om sequenties en ook meetings te gaan inplannen. Het is helemaal nieuws wat we hier doen. Goed is dat we hier begonnen. En hij heeft daar wel het succes mee. We zullen er straks verder op binnen. Maar alles ligt een beetje samen. De logging en monitoring ook. De telefoons worden beluisterd, zoals afgesproken. We hebben een eerste meeting gehad om de bevindingen te bespreken. Een beetje afgeweid van wat we al gevonden hadden. De feedback kwam dat we de discovery call niet wilden doen. Koen doet een discovery call. Anthony doet het zonder dat hij het zegt. Maar daar hebben we een mooie take-away uitgehaald die Koen nu al toepast. Hij zegt dat hij al resultaten moet boeken. Straks heeft hij wat dieper op inhoud. Data-driven quick actions. Die leading KPIs. We hebben er vorige week nog een meeting over gehad. We proberen nu elke week structurerend meer leading KPIs te doen. Ik heb er een beter begrip van. Het laatste, de payments average bekijken ten opzichte van Bjorn, heb ik niet gedaan. We hebben de hele waslijst al gezien van actiepunten die we hebben genomen. Thomas en ik zouden graag nog eens samen zitten om te zien waar we vooruit willen. Wat moeten we bijstellen. Thomas heeft ook het initiatief genomen om een Q4-meeting te houden tussen ons twee. We hebben die nog niet gehad, maar we gaan die van de week houden. Om te zien hoe we het verschil kunnen maken. Er zijn een aantal punten die we wel willen opbrengen naar u toe. Ook met Bjorn gespart daarover. Deze maand en volgende maand. Over het algemeen heb je gezien... Ah, ik zat over het verkeer te kijken. Sorry, ik zat hier te kijken. Mijn excuses. Ik dacht dat we door het salvat gaan. Ja. Over het algemeen heb je gezien, veel groen. Vorige maand was een hele sterke maand. De company performance zit op 102% van het budget voor closed-bound deals. Op het vlak van euro's zitten we op 141%. Als we dan kijken naar het business, hebben we dus... Of dat het een direct effect heeft, het zal zeker een effect hebben gehad van de initiatieven die we hebben gehad. Vorige maand. Ons doel was 41, we hebben 40 behaald. Maar ons initieel doel was 36. Dus die vier zijn een eerste stap naar een inhaalmaneuver. Nu we het beseffen, ook voor het kwartaal, moeten we gemiddeld zeven per maand... Acht. Acht. Moeten we gemiddeld acht per maand gaan bovenhouden. Dus dit is het begin van de... Ja, en dus... Het gaat... Maar bon, we gaan er eens mee over praten. Dat is, vorige maand, op het vlak van nu, business, deals, 110%. En op het vlak van de payment, 118%. En voor de rest, bijna overal, target ook gehad. Referral 100% op... Klopt dat, Bjorn? 10k ten opzichte van 31? Of is dat omgekeerd? Nee, mijn brouwhuis zit daar echt. Het is 150 of 200.000. Ja, oké. 106. Dan heb je dat. Part-time performance, gewoon down the line. En dan existing business heeft euro's target gehaald. Maar niet in het aantal deals. Zijn er nog vragen over? We kunnen straks naar de vorige toekomst praten. We hadden het eerst in het verhaal moeten doen. Maar dat is voor de vorige toekomst al lang niet. We zullen wel meer vragen stellen. Alle relaties zijn helemaal goed. We kunnen dat hier niet. Maar dat is de relaties goed. We komen er dan op terug straks. Dat zit in dat kortschijn. Ja. Oké. Aanzicht, een goede vermoedeling. We zijn de relaties niet bijgesteld. Het wordt niet best of slecht. Maar we hebben het zeker meegemaakt. De volume heeft het zeker al meegespeeld. Ik verteel jullie iedere keer het kantaal. De theorie en die van Carmen. Maar de omschrijving van de bot is al een augment. Met lokale aanvoer. En het loggen. Dus we moeten dan ook een keer een knopje doorgaan. Het is verhaalbaar. Het is een goede toevoeging. Het is een van mijn beleidspunten. Ik heb het al een paar keer in een meeting gehad. Dat het commandisch gevoel is. We moeten er echt iets mee doen. De achievements. Vooral met Sanne en Ketan. De rapportering tussen Parkchip en MyRect. Dat is ook een van onze beleidspuntjes. Als we een groen deal hebben. Als die gebieden nog niet zo veel eraf zijn. We hebben dat nog wel eens gezien. Ondanks dat het het grootste volume was. Zaten we op 112 procent. Misschien wel op 90 procent. Maar in volume wijzen we in het laatste geval het grootste beleidsbehaal van NSQL. Alles daarmee geleidt. Onze kosten zijn niet veel gestegen. Bijna amper. Waardoor onze kost per kluis vol het laagste ooit is. De laatste vijf maanden. Het is consequent op dat beeld. Onze NSQL kosten zijn ook wel serieus gedaald daardoor. Waar het plaats neer is. Increasing Steady. Het experiment Criteo. Heeft het potentieel om daarmee aan te slagen. Criteo is een platform waarin je advertenties kan laten tonen. Aan de mensen die je website hebben bezocht. Je mag het ook gebruiken voor specifieke advertenties. Om te gaan plaatsen op websites. Bijvoorbeeld Autoscore. Deze heeft ongeveer 1200 euro gekost. Om hem samen te pakken. De rest is met Autoscore. De advertenties die ze aanbieden, verwijzen we ook aan via Criteo. Het is veel goedkoper. We gaan Criteo er ook maar plaatsen. Om te gaan kijken of we er zo aan nieuwe klanten kunnen brengen. En ook met een speciale soort advertenties. Het is gewoon interessant. Het is totaal niet duur. We experimenteren daarmee verder. Het kan misschien wel iets worden dat in het budget past. Dat is al te zeggen. Dan de stuf. Ik weet niet of ik het eerder geschreven heb. Maar wat behoorlijk in de aanhang is. We hebben een push in onze funnel. Op de school. Dat is onze actie.\nde ballonnetjes dat we geknald hebben. Sales, incentive, whatever. Ja, twee F's normaal. Ben je klantcontent? Hoe klantcontent ben je? Ik, we zijn continu aan het samenleven. Ik wil ook niet dat hij mij meer leads geeft als de ratio's niet zijn waar ze moeten zijn. Gisteren heeft Thomas nog een aantal rapporten naar mij doorgestuurd die aantonen dat de ratio's toen dat Yannick hier zat wel hoger zijn effectief dan Koen. Maar het aantal leads die Koen behandelt zijn wel dubbel zoveel als Yannick. Dus er is een curve in het aantal leads die je kunt behandelen. De close rates kunnen stabiel blijven, maar als je teveel krijgt gaan ze namelijk lager. En ik denk dat we daar een goede balans moeten vinden. Ik denk dat een higher nog altijd heel belangrijk is. Frans Daal gelead zijn de helft van PKW. Zo lijkt dat we het ook hebben gezien, als ik me niet vergis. Dus als we Daal kunnen wegnemen. Je hebt een kandidaat die eigenlijk van partnerships komt. Ik heb vrijdag ook iemand gekomt via nieuwe groetenbureaus die we hebben gekregen. Ik heb Pieter uitgenodigd om aan te maken. We zitten meer dan 40% achter dat profiel. Voor sales dan alles? Ja voor operations misschien wel. In de CV probeer je wel zo'n inbuitstek die CV niet te doen. Ik had ze doorgestuurd. Ik zal ze nog een keer doorsturen. Het is in conversie dan? Maar in aantal was het wel? In aantal hebben we het net behaald, maar het is in conversie. Oké, dat is goed. Goed, tot volgende programma. Wat hebben jullie gedaan eigenlijk? In de zondag hebben we het volume niet bereikt op LKW-NL, LKW-FR en PKW-NL. Kwaliteit was ook nog niet genoeg en dat is waarom ik denk aan mijn klant. LKW-DE, IPN-L en PKW-FR. Daar moeten we nog op gaan werken. Dupele stokjes netjes presenteren, hoewel schaalbaarheid brengt in ons voertuighandel. Beheer van lokale financiers is nog steeds niet opgepakt. Deze Excel-corrigering met een uitval, zoals we vorige keer hebben, hebben we nog niet gedaan. En dan experimenteren, experimenten met autoscopes. Ik wacht op 10 minuten. Wat zegt dat eigenlijk? Dat zijn wel de experimenten die we voorzien in ons budget van tevoren. En het is beter dat we nu weten wat ons volgend jaar op ons budget staat om te testen. Volumen en kwaliteit onderzoeken. LKW-DE, uitgewezen in de functie van meer volume naar volgend jaar. De NisQL, QNQL, TrendTargetPrint. Eigenlijk zijn we dit kwartaal nu van gekomen om meer volume on-plus te doen. We gaan hetzelfde volume doen zoals in september. De laatste is bijvoorbeeld deze voor het jaar. NisQL, QNQL, TrendTargetPrint. Dat waarschijnlijk wel. Dat ook. Het objectief van Q3 is het ding dat de regels toch inzetten. Je hoort het al, dat is de Q4. En dat is niet nodig. Niet gedaan. Laten we zeggen dat we vertrouwen hebben op data-rapportering-processen. Het werkt wel eens bij mij. Als dat bij mij is, dan gaat dat in een paar maanden misschien weer goed zijn. Laten we zeggen dat Robin heel veel taloen in de lucht heeft. Hij heeft kleine dingetjes die hij een keer moet fiksen. En een keer moet fiksen. En dan dat programmaatje die erbij komt. Je mist de ruimte en de tijd om een keer een overzicht te maken. Waar zitten mijn leaking-buckets hier overal? En hoe maak ik ze hier consequent? Los van iedere dag de brand tussen de dingetjes. En ik ga me dat ook uitzetten in functie van volgend jaar. Bijvoorbeeld op het bouwgebied, dat wat op deeltjes draait. En verder al die dingen. Ik ga wel wat weerwerk geven in Q4. Als het afkomt met zotte initiatieven op processen enzovoort. Dat zal het niet voorgetogen zijn. Hans is bezig met zijn winkel. Dat gaat straks weer op de start worden. Dus er zal wel wat effect waarschijnlijk zijn. Een keer moet het best zijn. En zo gaan we ook wel weer op de muur gaan. En we moeten ergens een beetje aan meedoen. Wat ik zelf wel een beetje vind de laatste tijd. We zijn over een heel systeem gekeken met de keepers. En die weten wat het zit. En dat vind ik wel fantastisch. We gaan het simpel goed doen. Het is simpel, we hebben het recht aanpast. Dat hoef je niet te verwinden, Robin. Voor een simpel bereik kan dat niet de bedoeling zijn. En het kan ook niet de bedoeling zijn dat Robin met zijn ongelooflijke nieuwe pannetier. En het kan ook niet de bedoeling zijn dat iedereen van ons het simpel bereik aanpast. Geen zin in dat. We moeten er wel wat bij doen. We moeten er wel wat bij doen. We moeten wel vragen op Facebook. We moeten er wel wat bij doen op Facebook, zodat je dat bereik mag gebruiken. Ja, ik weet dat er een procedure is. Maar die procedure kan ook niet zijn. In het ziel. Het is zo'n situatie. Dan mogen we van Robin weggaan. Als dat niet wel kan geweest zijn. Dan zijn we in een andere situatie geweest. Wat wil je nog? Ook alles van de archeocultuur is heel veel bij hem gekomen. En je hoeft het al even in de lucht te doen. Je hoeft het zo in de lucht te doen. Je hoeft het zo in de lucht te doen. Maar het is ook zo. Het gaat spullen oplossen. Maar hoe meer processen je bouwt, hoe meer je moet onderhouden. Hoe meer coden je schrijft, hoe meer mensen je nodig hebt in je IT-team om die coden te onderhouden en te blijven testen. Dus ik denk dat we voor volgend jaar daaronder misschien wel iemand gaan nodig hebben. Die op stappaart-time, op stapschool-time, een deel van de automatisatie van het proces-team binnen zich wil aan de hand brengen. Misschien moet je dat bereiken. Misschien moet je dat bereiken om dat in onze organisatie te kunnen gaan. Of misschien is het een strategie. Breng je het dan in deze nabijland te bespreken. Bij veel tijden is het ook teveel stellen nodig. Het proces die gelinkt is en de processen in andere departementen. Als je dat bekijkt, wordt het niet echt gelopen. Zelfs in de marketingbevoel bekijken. Maar we proberen om de oplossingen te integreren in de totale organisatie. Of dan is daar ook wel even wat op te vragen. Om er iets op te zetten is het zeker. Als wij het doen is het lelijk. Terwijl we misschien perfect iets kunnen opzetten. Dat we twee aan elkaar gelinkt zijn. Daarom is het ook veel meer oplossingen. Het is een actiepunt. Schrijf dan alsjeblieft iets goed nieuws. Schrijf wanneer we die hele IP-support. Voor mij is het net al. Zelfs de marketingprocessen. Ja, ik snap het. Dat het dan al met die projectinstructies van volgend jaar wordt. Volgend jaar mogen we al die dingen in. Die aanvallingen mogen we zonder die structuur aan te zetten. Maar natuurlijk wat meer is die we moeten gaan bekijken. Met Hans. We hebben een stuk op het moment gekocht voor online finance. Dat we daarmee ook goed voor zijn. Dat moeten we dan gewoon samen bekijken. Ook met Robin. Maar ook met Christy. Met dat ding. Dan moeten we dat ook fundamenteel uitleggen. Ja. Feedback moet we aanhouden. En... Project Studio 22. Re-planning. Uitdaging. Voor jullie. Hier aan de tafel. Eigenlijk is het al behoorlijk finaal. Visualisatie. Maandag stel ik dat al een beetje voor. Want hier zit het dan in eerste finale. Samen met een timeline. En dan mag er wel iets naar ons gevochten zijn. Ja. Wat is het tijdsgeleden finale feedback? Vorig jaar nog. Interm. Deze maand. Met een verhuis zou ik wel nemen in december. Dat we daar zitten. En dat iedereen op dat moment de druik krijgt. De koerdienst. Dat iedereen een spaardexer is. Dat de bouw ook spaardex is. En dan... Volgens mij nog in januari. Eindelijk dat de communicatie aan de buitenkant is gebeurd. En dat er een goed event is gemaakt. Om zijn familie aan te werken. Ja. Allright. Dan gaan we naar de eerste. Dan gaan we naar het gebouw. En de nieuwe aandrijving. Oké. Zo'n beetje kort. Wat is er aan de hand voor customer support vandaag? Geen kloot. Want... Wat hij hier zo hoort ook. Hij komt vanuit u.\nHoe is dat daar ook uitgekomen? Ik heb in augustus al heel dicht in mijn eerste versie uit HubSpot, maar vanwege problemen met de taal. Ik heb de persoon gehoord dat ik in mijn taalpotje kon worden gezet. Ik heb heel snel het systeem geplaatst in de klant om dat aan te brengen. Dat was eigenlijk wel een vrij goed spel, maar taalgewijs ging dat niet. Ik heb dan naar andere no-go-out oplossingen gekeken, en toen vond ik dat wij niet de ruimte in de tijd hadden om daarin te diep te blijven. Ik heb wel met een partij samengezeten die de tracking doet van alles, zolang er iemand op die website is, tot het bestemde portemonnee is. Ik denk wel dat we me niet hebben verschoven aan de ideeën dat het is nodig, want dat is de bedoeling van het customer portal. Het is geen zeehondsport, of iets van dat soort. Nee, ik heb wel iets van dat soort bedoelingen. Ik vind het wel leuk. We zitten nog wel een school uitgeplaatst, en we hebben hier in deze bank zo'n boel. Dan ga je dat wel oprekenen met een customer portal. Inderdaad, hier in Mercedes-Benz hebben we ook wat nieuwe dingen, dus dan weet je wel wat anders je kan doen met je samenleving. Er is veel aan vooruit. Ja. We hebben daar een beetje gebruik van gehad, want dat is een heel extreem programma hier. Ja. Stiekem alweer. Ik voelde het een beetje lekker. Het is zo'n goede gemeente, maar je krijgt mooie dingen in de hand. Dat is precies wat ik bedoel. Ook als het customer portal heel basic is, dan kan je altijd eruit laten, om het op te leggen met datum of zo. Ik zou er wel wat voor gebruiken, maar daarom niet. Dat was ook een beetje mijn insteek, als ik bezig was met dat soort dingen. Je mag eigenlijk niet versnellen, maar als actiepunt, customer portal, dan zou ik wel een general kickover nemen, waarin we de dagen en de tijd bepalen. Goed. Yes. All right. Yes. We zijn de chievens for new business, dus we hebben een heel sterke maat gehad. Er waren wel eens maar drie van Björn, maar zelfs zonder de drie van Björn hadden we aan 37 geraakt, wat nog altijd een record is. Ik moet zeggen dat, als je kijkt naar het team zelf, Gilles heeft een heel mooie inhalelemanueel gedaan in de laatste week. Hij liep een beetje naar achter tegen de derde week. Anthony heeft een heel sterke maand gehad, en wat we daarop merken, is dat zijn sales cycle veel langer is. Dus hij bewaart zijn deals ook veel langer dan hij... We merken dat hij zich goed nurturet. En Koen... Koen, jij hebt daar die nappen in gedaan. We merken nog altijd dat hij soms... Dat er soms wat deals uit de boot vallen, bijzonsprekend. Dus dat is alweer dat effect van te veel leads hebben. Het kwartaal is behaald, dus dat is positief. Maar we hebben nog veel in de taal natuurlijk voor het jaar. En de SPIV heeft een goede vibe gebracht ook over het algemeen. Ze hebben het zelf ook uitgesproken. Ook al zijn het maar stomme ballonnetjes, zeggen ze, maar het spoort wel aan om in een ballon... Een SPIV? Een SPIV? Ja, dat zou het zijn. Voilà. De challenge is dan... Er is wel wat druk gebracht geweest voor een maand op het team, meteraard, vanwege de target die verhoogd is. Ik die wat meer in actie geschoten is op het vlak van monitoring en zo verder. En dat heeft wel wat weerwerk gehad. Ze hebben een interventie gehad met mij, om het een keer te zeggen. Maar dat is nu allemaal in goede orde, ondertussen. Maar bon. Dus het is iets dat... Niet enkel doordat het druk is, maar ook... Ze vinden ook dat ik op sommige vlakken meer haar op mijn tanden mag hebben, en zo verder. Dus... Dat zijn zo een paar zaken die opgebracht zijn, wat ik weet. Dat zijn werkpunten van mij. Een grote challenge is hoe kunnen we die vibe gaan behouden? We hebben het er van de week nog over gehad. Hoe behouden we die momentum? Een spit is leuk, maar is iets dat we niet altijd kunnen doen. Eerst en vooral in twee. Als ze afhankelijk worden van spits, dan gaan zij wachten op een spit voordat ze gaan beginnen te performen. Dus dat is een beetje die balans erin houden. Maar we willen wel een manier vinden om die vibe te behouden en de momentum op over de week. Het zit wel goed nog deze week. Dus ik denk sowieso, als er een goede performance is, dat dat ook al momentum krijgt. Dan moeten we kijken. We hebben wel een paar ideeën dat we eventueel klaar hebben staan voor het geval dat we een spit kunnen lanceren. Maar dat is een ander gesprek. Voor mij zijn de initiatiefs voor deze maand vooral. Dus echt het proces beter gaan bewaren. Dat gaat over de deals die geclosed zijn door de hele funnel tot de oplevering. Dus daar heb ik elke ochtend een rapport van dat ik dan elke ochtend met mijn team overloop. Partially paid. Ik denk dat die dan eventueel nog bij een kredietcommittee zouden zitten. Dat wordt elke dag overlopen. Zij krijgen die ook elke ochtend bezien. Maar daarvoor zorgen dat ze van in het begin het proces ook goed volgen. Daarnaast het proces ook op het vlak van hoe de deals door de funnel gaan. Dus als je daar in die meetingzaal gaat zitten, ga je een soort van flowchart zien. Koen heeft die gemaakt. Heel sterk. Koen heeft die gemaakt. En daar hebben we dus een paar zaken ontrafeld. Wat komt er het meest voor? Wat is onze quick win? Om daar tijd te gaan winnen bij de reps. Waaronder dus die automatisatie, de sequences en kalendermeetings insteken enzovoort. Kader. Dus dat is een deel van ook voor mij een beetje meer te ontlasten. Alhoewel dat gisteren weer heel druk was. Maar hun duidelijk het kader aanbieden als ze weten wat ze erin mogen doen. Vorig maand had ik ook een goed gesprek met Björn daarover. Om dat nog een keer goed uit te klaren. Waar ik het soms te gecompliceerd bedacht. Dat ik het eigenlijk makkelijker kan gaan doen. Dus dat is ook nu op die manier gecompliceerd. Dus ik ga mij minder gaan betrekken bij performance. Accepteren. Ik krijg ze wel elke ochtend te zien. En mijn tool stuurt ze ook met mij door. En voor de rest, als we ook een beetje speling hebben op pricing enzovoort. En dan is dat mij de harmonie. Personal development. Dus dat valt in het kader van die telefoniemonitoring enzovoort. Dus nogmaals, van de week echt een heel goede teammeeting gehad. Daarover. En dat er een initiatief is uitgekomen. Om daarop verder te werken. Wat ik geloof ook een impact gaat hebben. Sowieso focus op Rio. Is een grote. En het Piet Zageman verhaal gaan we ook toepassen. We hebben dat nu even geparkeerd. Om de voorboden even te verbeteren op dat vlak. Ook in het kader van dat. Een veel sterkere samenwerking met Giel nu ook. Om ervoor te zorgen dat de communicatie. Of de discoverie die SDH doet. Of de Rio. Die zijn bepaalde. Zodat dat ook beter bij ons opgevolgd wordt. Dus nu bijvoorbeeld staat dat ook in de grid. In de deal waarop Giel in contact stond. Heeft hij dat nu ook automatiseerd. Dat dat in de grid komt. En dus dat we daar ook altijd meer zicht op hebben. Ja, momentum. Dus dat is hetgeen dat ik daarin heb verteld. En dan uiteraard. Eén van de initiatieven. Waar we het over hebben gehad. Waar we geloven dat. Sowieso een impact gaat hebben. We geloven sterk dat het een impact gaat hebben. Op het closen. En op de close rates. Is het inroeren van negatief. Ik weet dat je zegt. We moeten een business case komen. Bjorn heeft ons daar ook een keer in gechallenged. En het idee zou zijn. Om het toch te proberen op LKW. Maar dan op een D3. Bjorn heeft voorgesteld. LKW's in stok. In bulk te kopen. Zodat we dus korting op kunnen krijgen. En in die korting zou je eventueel de degressieve ideeën kunnen ontdekken. Maar natuurlijk willen we daar ook succescriteria achter halen. Dus dat we dat meten. Dat we een maand proberen. Maar dat we weten dat het een effect moet hebben op de close one rates. Wat dan effect heeft op het aantal deals. En wat dan ook een effect heeft op kak. En op dat vlak heeft dat dan ook een positieve funnel. Thomas heeft gisteren berekend. Als we vier of vijf deals meer zouden behalen. Over de hele lijn. Niet enkel op nieuw business. Dan is onze kak al verbeterd met duizend euro. Dus als we dat op nieuw business zouden... Op LKW ja. Dus als we het dan enkel op nieuw business zouden focussen. Dan zou de kak in principe nog een grotere impact moeten hebben. Oké. Ik ben er weer in. Ik ben echt triest. Ik ben benieuwd. Ik ben er zo meteen in. Maar ik ben het nu wel van de tijd gedeeld. Verder heb ik geleden nog een ding voor jou. Kijk dan, je hebt veel verteld. Ik ga geen concrete actie of initiatief doen voor jou. En dat wil ik wel. Voor volgende maand doe je. Ja. Om half 1 uur. Of een uur later. Dat is de lijst die Pieter kent. Maar je zegt hier de processes. Ja, ik bedoel van waar ga je nu zich afvangen? Ja. Ja.\nIk denk, mijn gevoel is, misschien kan ik dat ook van Thomas, dat die concreter zullen zijn. Gewoon niet, want dat is mij misschien te veel gehoord. Het stuurt ook niet uit, het stuurt ook omgekeerd. Nee, inderdaad. Volgende week zal er een betere, concreter kurs zijn. Maar voor jezelf en anders, weet ik niet. Als ze stokken elke week kopen, dan zijn die resten nogal goed. Het is een allerlei... Het is natuurlijk een antwoord, een moeilijk antwoord op de vraag van hoe gaan we ervoor zorgen dat we dit kwartaal nog extra inhanden kunnen maken. Het is een antwoord daarop dat we aan het zoeken zijn. Hoe gaan we het kwartaal nog een keer beschermen? We zijn eigenlijk twee zomeren afgegaan, we hebben gekeken naar je journal-oefeningen. En ik denk dat je dat ook met het voorschot 8.000 zelfs een stuk intensiever wordt. Ik denk, je journal-oefeningen, vandaar moeten wij de tijd vormen van je journal-oefeningen om hierboven te werken. We zien je dus te roken, dat is anders gelegd. Het nummer 1 is om je oporting te bekomen. Het nummer 2 is, dat je kan te werken. Dus het is twee weken afgaande of vijf weken afgaande? Ik denk, voor de stabiele plukken. Ja, voor de week was het samen met de handel, en voor de week tussen de handel en de WTG, moeten we het ter dag maken. Willen we hier doorgaan, of gaan we nog een keer aan de tafel zitten, en dan nog een keer opnieuw presenteren aan WTG? Die lijst heb je heel vaak gezien. Het is niet de maanden die je gezien hebt. Nee, dat zijn allemaal initiatieven die we nemen om te zien, wat al heeft veel een extra... Ik zou graag willen dat we samen zijn. We hebben nu een maand daarop gewerkt, we gaan nu een beetje bijschikken en dan... Ja, daar komen jullie dan in, want ik denk dat we zeker beginnen te blijven kijken. Een soort van condolatie, niet normaal gesproken, hoe we ons daarmee doen. Gewoon lekker dat gelegd. Oké, goed. Yes? Johan? Ah ja, ik zat erop. Ik ga er wel even doorgaan. Zobiet hebben we het om de saves, dat we nog gaan in de tijd bekijken. Uiteraard heb ik niet veel tijd opgestoken, dat zit dan op het dagelijks, in onze efforts dan. Ik heb de year-to-date er een keer bijgebracht, we vinden dat nog altijd eurocientisch, vooral met ons hier zo. Dus als het zijt goed, dat is vooral de echting van het jaar, dan hebben we het goed, we kunnen zien wat we gaan doen. Existing business on target, dat krijg ik niet veel op de kant. We hadden niet één keer twintig taaksters, maar vijfentwintig taaksters, die zijn afgewerkt. Dat soort vervoer is dan, elfte man die we hebben, dus hier deze maand. Maar year-to-date zijn we daar eigenlijk... Wat eigenlijk zeg ik? Iets voorop daarop, en al daarop. Dus we hebben niet veel tijd. Head-to-partnerships, ik heb een plan van een aanpak voorgesteld, midden augustus. Dat was ook niet het meest concreet, dat is ook niet mijn beste artikel, maar het is wel iets wat zeker is gewoon. Ik heb een zoek gedaan, ik heb met Pieter met broodvlies geweest. We hebben aangezegd, dat we alle dossiers aan 20% nemen nu, en die kan voor ons van 25% aantallen, ik bedoel, zodat zij, nu we komen in, de nieuwe PKV's zijn, dat is al 25% gewoontest, tot het einde van het jaar, tot 20%. Wat dan meer volume genereert, dat is ook al een beetje een defensieve oefening. Het is nu te hoog voor daar, eigenlijk al te zijn, dat dat erin is, dat we hier een boodschap zetten. Een halfhonderd commissieën, dat lekt alweer een procent op. We hebben een extra incentive voor een stad, per scheef van 100.000 euro, voor schoppen dat ze binnenhalen, tot en met 10.30 uur, dus 200 euro extra. Factor 1, de toestelling was er, een miljoen, nog te doen vanaf begin september, maar om mid september, voor de stad, dat maakt niet uit. Dus dat is, van die pot van 50.000 euro, dat moet budgetteren, en dan krijg je ook weer 20.000 euro uit, als je een vliegtuig van Basne heeft gekocht. Dus, er zit dan nog een beetje in het budget. Ik hoop dat ze hier, om 1 in Delbeek, een private kans, van Bram, is dat weg. Ik ben al langs geweest, we zijn daarmee een stad, een Californische incentive, gestimuleerd. Ja, en dat loopt. En nu moet ik, meestal gezien, Het is de grootste verzekeraar, van Brussel, ze worden in Romein, Polen, en de hele Bazaar, en ze hebben nu 4 man gezet, om te financieren. Brokership. Maar ze werken ook met je partner, dat is Arbol, en dat is Mitter. En we hebben dat er, A, B, C, klanten uit elkaar, die naar je persoon is, ondermaats, in de tweede plek, en Tom, om te communiceren met je, was de bundesaanvoerder. Dus ik moest daar een beetje feeling aan doen, maar Bram probeert dat ook, ook een behoefte met mij. Maar we staan er ook toe, dat die verzekering, ja, hen mag roken. Dus eigenlijk, dat moet ik gebruiken. Ik heb nog hetzelfde, dat zij, op dezelfde manier, als de verzekering, beschrijven, dat we, ja, samen met Ieland, of zoiets, maken, dan het frameboek wilde, over de stoodaard, een beetje uit staat lijden spinnen. Dus dat is inderdaad, ik zeg innemer ook absoluut voor mij, wat er mooi staande is. Emsto twikkelen aan een boom? Wat? Je moet toch alleen ook prijzen? Ja, Audio toezitten. Jouw weer. Emsto twekelen aan een boom, Emsto wat meer sens op ons te doen? Die gaat wel zakken. Denk ik. En vooral, als je ze nog weer die opzet, moet je ermee zorgen. En dat is on-going. Leest nyt н bowsig een nieuwe, Nederlandse lease advisor, dat ik gevonden heb. Ik ga daar volgende week, dinsdag. Hij zal de grenzen bovenhand hebben, niet alleen in Vondervolk. Nee, ik schrok echt heel optioneel, ook op de timer. Bij geen lease, stond ik nog aan het wachten, maar toen ik gevraagd heb, hoe combineren we dinsdag, moeten we ergens af te spreken. We gaan naar DAF. Neen, dat is Option Finance. Dan gaan we naar Parijs. Ik en Antonie, op een vrijdag, om te vroeg te houden, zijn we moeten op de 9e, toch? En ILE is, op het moment dat, zo, het handel van financiering, kunnen we mee nemen. Dat is kentachtig, Option Finance. Ja, als je die ook, financieringsafstand, dat is echt heel erg belangrijk. Heel erg belangrijk. Want, als je zo'n bakje, een loonstafje, schrijven, dat is al eens goed. Maar, er is ook nog een tijd, maar, nou, ik weet niet, waar je dat tegenkomt. Maar, we kunnen toch beter, op het moment dat, je maakt een rit, dan mag je dat je banken presenteren, als het goed is. Die staan helemaal, als we gaan, de meeste documenten, dus dan, als je zegt dat, de prioriteiten, blokking van banken, als parlement, dat hoort erop, dan blokken we dat in. Ik geloof, Antonie, we gaan effectief, nog een keer, ons meepakken, ook, wat voor filen, wat we gebruiken, maar, als we die allemaal kunnen, dan is het maar een paar, dan hebben we dat, vanaf 5 maart, tot en met augustus, met 65 aanvragen, per maand. Dus, in september is dat maar 94 gedaan. Je zou te grof moeten zijn, dat is door, de acties dat genomen wordt, en nog eens september, we willen een topmand, dat er het gongeest. Dat weet je niet. Die 94 aanvragen, konden we genereren, in een miljoen, 84.000 euro voorstel. Dus, dat is wel gigantisch, veel potentieel. Om dat uiteindelijk behaalt, 22 kleurstons, 247.000 euro, en daarin, 7 B&P-vlies, 6 viatinerco, en 2 diviners, en de rest, is overal, de one-ups. Maar is de reden ofwel, dat ze dan toch niet, bij ons gepakt worden, want profvlies, maakt zelf al keuze. Allee, zij zijn eigenlijk, van, we verwachten dat hij niet, bij de anderen gaat. Dus, wat dat op aantrekt. En ook, het gevoel, dat ik wel eens, op vrijdag, 20.00, misschien, er zal nog, een nummer aanvragen. Allee, we hebben juist daarom, verwachten dat de, de closing ratio's, een stuk hoger is, omdat je al, een voorschildering hebt. Nu, de, niet dat het eruit ziet, maar dat de, de kwaliteitskwaliteit, die zelf, wat wij dus, moeten binnenbrengen, en de kwaliteitskwaliteit, is natuurlijk, niet zo goed beschadigd. Hoe, hoe telt die diviniteit? Dashboard? Nee. Eén waarop we gemaakt hebben, in december, om de cijfers, van, de eerste track. Ze hadden er zelfs, dashboard, gans beneden. Al gaan, vooral, de productieve, started the protrusols. Then the Mustang branch, was for Lifetime Value. Ondertussen hadden we ze, ook een dashboard van de Brussels. In december, gelaten we op vraag van Battlefield, te kijken, om daarop te zetten werden ze er, стрongeren op. En ik had al altijd, mijn cijfers doorhebben, van de dealer source, Damascus, daarin. Maar, als de akteelveelhouding, dan gaan ze er zijn, zijn deals, zijn deals krijgen ze, om te halen. Och, met de budget oefening, ik had al in mijn beeden, dat daarsomaar, ik geef u, ik zei eigenlijk, excuse me. Pieter zei, ga jij niet geven nu, met 2020? Ik zei, wat zeg jij nu? Ja, ik had een toffe foto te zien, voor jou, met een 76, dat was een 1.2 miljoen. 1 september, zelf al, onder een melding, met een 1.658 miljoen. Dus, als we zo verder doen, is dat al verdubbeld, met partnerships, in 2024. En, als we dan niemand hebben, van de worstvallen, tot, dat begint alleen met jou, 13. Meneer, today's, we zitten wel achter het budget, we zitten onder een helft, tenminste, 145, dat moest eind september, voor de euro's, we weten allemaal wel waarom. Maar, wat daarmee begonnen is, in die budget oefening, ik was alvast vergeten, we zaten in, de cijfers van partnerships, hebben integraal, 52 machines gestoken, tot en met, ja, tot en met september, 37. Ik moet een kat de kat noemen, we hebben vandaag, 12 machines, is dat? Ja, 12 machines, ja. Ja, want die 12 machines, zijn er zeven geldbakken, dat komen de andere weg, iemand kan daar kunnen komen. We zijn in dat ene bieden, de aftract zit in, hebben, een aantal moscheers. Dit doet niet terg, maar het is wel een waarschuwing, het is eigenlijk, klop, budget. Ja. Het is puur, eigenlijk alleen machines, maken全tje in die budget, en dat zitten er eigenlijk alleen. Dat zijn alleen de overallen. Dat is, lokale recoupings. Kan je je bed verseren, met de mannen die dat doen? En dat, dat kan niet nog meer,\ndat we dat apart herholen, maar dat we daar vooral mee in samenspraak gaan zitten met de andere prioriteiten. Strijkbare hands. Zullen we dat gaan compenseren? Die machine is niet... Niet per se in de machine, we kunnen wel een extra effort doen met de machine, maar ik wil niet dat dat ingehaald wordt. Wat kunnen we erin halen? Rest year is drie keer 21. Ik vind dat haalbaar, dat spreekt gevoelsmaatregelen, omdat die trenden een brug door zijn en op de tuur die 4-9 avond van september is het nu al vier of vijf plus onze partners dat we deze maand kunnen doen. Dus het zit daar ook een aging in, ook die aging is hetzelfde, ik ben nu bezig dat dat een week, twee, drie, vier is. Ik heb geen idee van, maar ik zou nu wel bewijzen, ook bij het interieur is dat niet 20 maanden, want dan moet er niet veel effort gebeuren dat ik denk, ik wil het dan in het budget zetten en ga ik even net focussen op mezelf vrijmaken. En dat is op het laatste punt, recruitment, en ik heb een handje gevonden. Wat vond je van de recruitment tax in 2013, Thomas? Goed, en die van Vure? Dat is in dat video, waar hij spreekt. Wat zei hij ook al? Hoe weet hij dat? Ah, ik kan hem niet meer stoppen. Thomas had er al, hij is er ook al, ik kan hem niet meer stoppen. Dus ik heb erop gelanceerd, ik heb volgende maandag, volgens mij een heel zwaar middenprofiel, die langs komt te worden, ik had ook al een feestje in Van Gogh voor Jobs, voor gasten en kruiden, en die kwam ook op, en ik had nog geen facturen, het is nu dat maandag, en ze hebben de handen geschoven, het is een heel bepaald iemand, volgens mij, die langs komt, ik zal hem uitpakken, want er was al gisteren een opmerking van een passieur, Stéphanie, en het is Van Gogh niet, maar langs de andere kant, er staan heel veel hires, dat is terug 5.000 per week, 15.000 mensen zitten bij ons op dit moment. Ik ken dat, dat is veel. En voor wie dan? Dat moest het zijn, van die mensen. Maar ik snap het niet. Heeft er iemand al een kandidaat gezien, die van haar komt? Ik heb al. Ja, oké. Is er nog een goeie? Oh ja, dat was in de tijd, dat is geen vast... Het was een 4-5'er, dat is iemand die voor sport doet. Ja, dat is wel vast. Maar 4-5'er toch? Maar ze dalen, ze hadden nooit... Ik vond het niet slecht, ik heb nog een of twee instructies. Oké, goed. Dus je had een recruitment, ik zou het op die tijd van het jaar zien, dat ik een running heb van mezelf, als ze niet voorbereid zijn, tegen het volgende jaar. Dus dat ik eigenlijk minder een indruk ga maken. We zijn op zoek naar een project. Ja, oké. Dat, oké. Voor Stephanie, waar we staan daarvoor, moet ik zelf, in plaats van zij, of zoiets. Ja. Zou het niet moeilijk zijn als Stephanie een verhaal kan doen? Heb je dat ook gedaan? Ja. Zijn we minstens samen, dan moet het goed zijn. Misschien niet dit, maar ik wist dat het allemaal een paar randjes kan gaan, maar ik heb ook gedronken, maar het is niet de andere, het is niet de realiteit. Zou je die filmpjes op de zaal kunnen vinden, in plaats van hier op Kantoor? Dat denk ik niet. Misschien wel. Ik vind het voor je wel, dat dat wat sterk klinkt, dat je er ook geen nieuw profiel van ziet. Als je de rest niet stuurt, ben ik weer profiel. Ik heb daar niks aan gezien. Ik moet zeggen, ik heb er wel een paar aan gezien, maar toen ben ik er zo aan gezien, is het een feest dat ik de meeste uur al op de cd ben gereden, en dat is het meeste dat ik heb gedaan, is echt niet. Verstaan je? Oké. Dan schroeven we nog een keer op. Nog een vraagstukje, en dan zijn we er weer. Alsjeblieft. Dus, kakko, hoe blijft het dat je op 8% en dat is een representatiekost, stel dat we bij 2398 in de voetbalkade zijn. Ja, dat is positief. Ik zei het vroeger niet, maar nu heb ik het helemaal verstaan. Waarom je het overhoudt? Ik zal het even uitleggen. Aan de kost is er niet veel veranderd, maar wat we ook zien onderaan in ons rapport, dat is voor de eerste keer dat we onze targets op een aantal nieuwe klanten hebben gehaald. Die zitten daar genoeg om onze kak naar beneden te halen. Ik was met een team aan het klappen om deze maand te halen, en ik heb er 100 zitten op, dus... Maar ja, dat is jouw overtuiging, die moet ook opgeperkt zijn. Ik ben daar al een tijdje over gesproken, en in het begin heb ik het bijna aan het oog, maar dan moet ik dat zeggen, want als jij weg wil van de maand, dan kun je op een bepaalde hoogte zitten bij mij in de kerk, en je start van de maand is ook al sterker dan vorige maand, dat is geen effect, dat kunnen we wel herinneren. Het is een reden om dan al voorbij te gaan, als er dan nog een extra klant komt, maar dat was niet ook een voordeel van het budget. Nee. Het budget is 32, om dat uit te zetten, dat is eigenlijk acht de maand. Dat is 40, dat is drie uur per maand, misschien wel, ik weet het niet zeker, maar ik denk het. Het was in september, en zoals ik al zei, de ratio's waren niet min of meer, maar wel oké, we hadden een veel slechter ritme dan we hadden verwacht, en zo heb ik op een maand en een keurige risico's gezet. Dit is nog niet van ons budget, maar we hadden het ook goed gelieverd, en dan is het wel een plus van ons budget, maar we hebben ook al best een aantal dingen gesproken waar ik dat beter kan aantrekken. En ik geef het niet nieuws, en als je het over dat paartje kijkt, dan zie je ook dat in ons budget zijn we eigenlijk 49 op LKW, dus ik heb geen idee van TP, dat zie je niet alleen op het budget, want dat vervaalt TP dan ook. En LKW is niet onderstaanbaar. Ja, nee, nee, nee, 99 is zeker, zelfs op het budget, niet zo vervolgbaar. Ik weet dat we... ... ... ... ... ... ... ... Ja, de verkoop gaat beter, omdat we nu stock ook hebben. ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ...\nWe hebben het ook niet vergeten. In de eerste en tweede contracten wisten we niet wat de cijfers waren. Maar we zijn met zo'n goede andere ouders, dan kan ik niet veel meer van schiften. We hebben het niet gedaan. We hebben het BKW-carrier gespeeld. Dat is afgelopen maand. We hebben het niet gedaan. We hebben het niet gedaan. We hebben het niet gedaan. We gaan niet afvallen. We zijn afgelopen maand verantwoordelijk mee geweest. We hebben het niet uitgebreid. Dit was met het afvallen van het brendtuin toch wel een heel toegangsverhaal. We hebben het niet uitgebreid. resurrectedtheory.com We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid. We hebben het niet uitgebreid.\n"}], 'model': 'gpt-4o-2024-08-06', 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'action_item_schema', 'schema': {'type': 'object', 'properties': {'action_items': {'type': 'array', 'items': {'type': 'object', 'properties': {'summary': {'type': 'string', 'description': 'Summary of the action item'}, 'details': {'type': 'string', 'description': 'Detailed explanation of the action item'}, 'assigned_to': {'type': 'string', 'description': 'Person assigned to the action item'}, 'due_date': {'type': ['string', 'null'], 'description': 'Due date of the action item in ISO format'}, 'completed': {'type': 'boolean', 'description': 'Completion status of the action item'}}, 'required': ['summary', 'details']}}}, 'required': ['action_items']}}}}}
-2024-10-03 10:08:41,436 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
-2024-10-03 10:08:41,437 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
-2024-10-03 10:08:41,470 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x10da757c0>
-2024-10-03 10:08:41,470 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x10cfd6f50> server_hostname='api.openai.com' timeout=5.0
-2024-10-03 10:08:41,507 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x10da74200>
-2024-10-03 10:08:41,507 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2024-10-03 10:08:41,508 - httpcore.http11 - DEBUG - send_request_headers.complete
-2024-10-03 10:08:41,508 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2024-10-03 10:08:41,508 - httpcore.http11 - DEBUG - send_request_body.complete
-2024-10-03 10:08:41,508 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2024-10-03 10:08:48,682 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 03 Oct 2024 08:08:48 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'minute-memo'), (b'openai-processing-ms', b'6848'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'500'), (b'x-ratelimit-limit-tokens', b'30000'), (b'x-ratelimit-remaining-requests', b'499'), (b'x-ratelimit-remaining-tokens', b'19826'), (b'x-ratelimit-reset-requests', b'120ms'), (b'x-ratelimit-reset-tokens', b'20.348s'), (b'x-request-id', b'req_d53e2eff9d327cc5ff3ce52f23c3c9ab'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=hE.Xa5yDfgYfwNixonM6MtGAYvbOdRFKMgUUR12ntLs-1727942928-1.0.1.1-_KzcVEqUCUZStexRX7kJLf27wLNm4DIDSVG3QkTieVAgL5PbOaH2lu3A2tuJHIyQAe2BY.6vJYWT6A.ymRTKSw; path=/; expires=Thu, 03-Oct-24 08:38:48 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=f8trsVCUqhQjwgGvRIn3mij968J48TbvUfGCXgyWEp8-1727942928731-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8ccb721bd9e5b75d-BRU'), (b'Content-Encoding', b'gzip')])
-2024-10-03 10:08:48,689 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2024-10-03 10:08:48,690 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2024-10-03 10:08:48,691 - httpcore.http11 - DEBUG - receive_response_body.complete
-2024-10-03 10:08:48,691 - httpcore.http11 - DEBUG - response_closed.started
-2024-10-03 10:08:48,691 - httpcore.http11 - DEBUG - response_closed.complete
-2024-10-03 10:08:48,692 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers([('date', 'Thu, 03 Oct 2024 08:08:48 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'minute-memo'), ('openai-processing-ms', '6848'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '500'), ('x-ratelimit-limit-tokens', '30000'), ('x-ratelimit-remaining-requests', '499'), ('x-ratelimit-remaining-tokens', '19826'), ('x-ratelimit-reset-requests', '120ms'), ('x-ratelimit-reset-tokens', '20.348s'), ('x-request-id', 'req_d53e2eff9d327cc5ff3ce52f23c3c9ab'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=hE.Xa5yDfgYfwNixonM6MtGAYvbOdRFKMgUUR12ntLs-1727942928-1.0.1.1-_KzcVEqUCUZStexRX7kJLf27wLNm4DIDSVG3QkTieVAgL5PbOaH2lu3A2tuJHIyQAe2BY.6vJYWT6A.ymRTKSw; path=/; expires=Thu, 03-Oct-24 08:38:48 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=f8trsVCUqhQjwgGvRIn3mij968J48TbvUfGCXgyWEp8-1727942928731-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8ccb721bd9e5b75d-BRU'), ('content-encoding', 'gzip')])
-2024-10-03 10:08:48,692 - openai._base_client - DEBUG - request_id: req_d53e2eff9d327cc5ff3ce52f23c3c9ab
-2024-10-03 10:08:48,696 - routes - DEBUG - Full OpenAI response: ChatCompletion(id='chatcmpl-AEBB3FicPPZHSoi5HJhUvjXm112AX', choices=[Choice(finish_reason='stop', index=0, logprobs=None, message=ChatCompletionMessage(content='{"action_items":[{"summary":"Q4 strategy meeting between Thomas and the speaker","details":"Thomas has taken the initiative to hold a Q4 strategy meeting with the speaker to discuss future progress and adjustments. The speaker and Thomas will finalize their strategic goals for the following quarter.","assigned_to":"Thomas and the speaker","due_date":"2023-10-15T00:00:00Z","completed":false},{"summary":"Plan weekly meetings to enhance leading KPIs","details":"Schedule weekly meetings aimed at structuring and improving leading KPIs, as discussed in previous meetings.","assigned_to":"The speaker","due_date":null,"completed":false},{"summary":"Incorporate data-driven quick actions based on the discovery call insights","details":"Integrate insights from discovery calls (Koen\'s approach) into actionable strategies for maintaining or improving SQL to opportunity conversion ratios.","assigned_to":"Koen","due_date":null,"completed":false},{"summary":"Run Criteo ad experiment to target website visitors","details":"Experiment with Criteo platform by placing specific ads targeted at website visitors. Evaluate cost-effectiveness and potential inclusion in budget if successful.","assigned_to":"Marketing team","due_date":null,"completed":false},{"summary":"Review and discuss findings from call listening sessions","details":"Organize a meeting to discuss the outcomes and feedback from recent call listening sessions, with an emphasis on improving the discovery phase of calls.","assigned_to":"Anthony, Koen, and team","due_date":null,"completed":false},{"summary":"Focus on improving client follow-up sequences in HubSpot","details":"Enhance the client follow-up process within HubSpot, ensuring the implementation of efficient sequences and meeting scheduling to improve contact rates.","assigned_to":"CRM team","due_date":null,"completed":false},{"summary":"Finalize customer portal adjustments","details":"Review and potentially adjust the new customer portal based on the latest feedback to improve user experience and functionality as part of the ongoing digital transformation.","assigned_to":"IT and Customer Support teams","due_date":"2023-12-01T00:00:00Z","completed":false},{"summary":"Negotiate potential volume deals on LKW for discounts","details":"Consider bulk purchasing of LKWs to gain discounts, potentially integrating this strategy into sales tactics to enhance close rates and reduce customer acquisition cost (CAC).","assigned_to":"Sales and Procurement teams","due_date":null,"completed":false},{"summary":"Plan for new hire focusing on process automation","details":"Consider recruiting a part-time or short-term staff member dedicated to process automation improvements to streamline internal processes across teams.","assigned_to":"HR and Operations","due_date":null,"completed":false},{"summary":"Prepare report on potential impacts of using LKW bulk purchase deals","details":"Develop a business case analysis to assess the impact of using bulk purchasing discounts for LKWs, focusing on its effects on deal closing rates and overall sales efficiency.","assigned_to":"Thomas and data analysis team","due_date":null,"completed":false}]}', refusal=None, role='assistant', function_call=None, tool_calls=None))], created=1727942921, model='gpt-4o-2024-08-06', object='chat.completion', service_tier=None, system_fingerprint='fp_e5e4913e83', usage=CompletionUsage(completion_tokens=609, prompt_tokens=10010, total_tokens=10619, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=0), prompt_tokens_details={'cached_tokens': 0}))
+2024-10-08 23:16:13,048 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,049 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,049 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,050 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,050 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,050 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,050 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,051 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,051 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,083 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,106 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,109 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,128 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,128 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,128 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,130 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,130 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,130 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,137 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,137 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,137 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,138 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,138 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,138 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,141 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,141 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,142 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,142 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,143 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,143 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,143 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,143 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,143 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,144 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,144 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,144 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,145 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,145 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,145 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,146 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,146 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,146 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,159 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,159 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,159 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,160 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,160 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,160 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,161 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,161 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,161 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,161 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,162 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,162 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,162 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,162 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,162 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,163 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,163 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,163 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,164 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,164 - routes - DEBUG - Processing event: Max bday 
+2024-10-08 23:16:13,164 - routes - DEBUG - Recurring event ID found: 6lsabhpr6o4lkkvt0gtk5j88vf
+2024-10-08 23:16:13,165 - routes - DEBUG - No existing meeting found for recurring event Max bday 
+2024-10-08 23:16:13,165 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,165 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,166 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,166 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,166 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,166 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,167 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,167 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,167 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,167 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,167 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,168 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,168 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,168 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,168 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,168 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,168 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,169 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,169 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,169 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,169 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,169 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,169 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,170 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,170 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,170 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,170 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,170 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,170 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,171 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,171 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,171 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,173 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,174 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,174 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,175 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,176 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,176 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,176 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,176 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,176 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,177 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,178 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,178 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,179 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,182 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,182 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,185 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,185 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,185 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,186 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,186 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,186 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,186 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,186 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,186 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,187 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,187 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,187 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,188 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,188 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,188 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,189 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,189 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,189 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,189 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,189 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,189 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,190 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,190 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,190 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,190 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,191 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,191 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,191 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,191 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,191 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,192 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,192 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,192 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,192 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,192 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,193 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,193 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,193 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,193 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,193 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,193 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,193 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,194 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,194 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,194 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,194 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,195 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,195 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,195 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,195 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,195 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,196 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,196 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,196 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,196 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,196 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,196 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,197 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,197 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,197 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,198 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,198 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,198 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,198 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,198 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,198 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,200 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,200 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,200 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,201 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,201 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,201 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,201 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,201 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,201 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,202 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,202 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,202 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,202 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,202 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,202 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,203 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,203 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,203 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,203 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,203 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,203 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,204 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,204 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,204 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,204 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,204 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,204 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,205 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,205 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,205 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,206 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,206 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,206 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,206 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,207 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,207 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,207 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,207 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,208 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,209 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,209 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,209 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,209 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,209 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,209 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,210 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,210 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,210 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,210 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,210 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,210 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,211 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,211 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,211 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,211 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,211 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,211 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,212 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,212 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,212 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,213 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,213 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,213 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,213 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,213 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,214 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,214 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,214 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,214 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,215 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,215 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,215 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,217 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,217 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,217 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,217 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,218 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,218 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,218 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,218 - routes - DEBUG - Processing event: Max bday 
+2024-10-08 23:16:13,218 - routes - DEBUG - Recurring event ID found: 6lsabhpr6o4lkkvt0gtk5j88vf
+2024-10-08 23:16:13,219 - routes - DEBUG - No existing meeting found for recurring event Max bday 
+2024-10-08 23:16:13,219 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,219 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,220 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,220 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,220 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,220 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,221 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,221 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,221 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,221 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,221 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,222 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,222 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,222 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,223 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,223 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,223 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,223 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,223 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,223 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,224 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,224 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,224 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,225 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,225 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,225 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,226 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,226 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,226 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,226 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,226 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,226 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,227 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,227 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,227 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,228 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,228 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,228 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,228 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,229 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,229 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,229 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,229 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,229 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,230 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,230 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,230 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,230 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,231 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,231 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,231 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,231 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,231 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,232 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,232 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,232 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,233 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,233 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,233 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,234 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,234 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,234 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,234 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,234 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,234 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,235 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,235 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,235 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,236 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,236 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,236 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,237 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,237 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,237 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,237 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,237 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,238 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,238 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,238 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,238 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,239 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,239 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,239 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,239 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,240 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,240 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,240 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,241 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,241 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,242 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,242 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,242 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,242 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,242 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,242 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,243 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,243 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,243 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,245 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,245 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,245 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,246 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,246 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,246 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,247 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,247 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,247 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,248 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,248 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,248 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,253 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,254 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,254 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,254 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,254 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,254 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,255 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,255 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,255 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,255 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,255 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,256 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,256 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,256 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,256 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,257 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,257 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,257 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,257 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,257 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,258 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,258 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,258 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,258 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,259 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,259 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,259 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,259 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,259 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,259 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,260 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,260 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,260 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,261 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,261 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,261 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,261 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,261 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,262 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,262 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,262 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,262 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,263 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,263 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,263 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,263 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,263 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,264 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,264 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,264 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,264 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,265 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,265 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,265 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,265 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,266 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,266 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,266 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,266 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,266 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,268 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,268 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,268 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,269 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,269 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,269 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,270 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,270 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,270 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,271 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,271 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,271 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,271 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,271 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,271 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,272 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,272 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,272 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,272 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,273 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,273 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,273 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,273 - routes - DEBUG - Processing event: Max bday 
+2024-10-08 23:16:13,273 - routes - DEBUG - Recurring event ID found: 6lsabhpr6o4lkkvt0gtk5j88vf
+2024-10-08 23:16:13,274 - routes - DEBUG - No existing meeting found for recurring event Max bday 
+2024-10-08 23:16:13,274 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,274 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,275 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,275 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,275 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,276 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,276 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,276 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,276 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,276 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,276 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,277 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,277 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,277 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,278 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,278 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,278 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,278 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,278 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,278 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,278 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,278 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,279 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,279 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,279 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,279 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,280 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,280 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,280 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,280 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,280 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,280 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,286 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,286 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,286 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,287 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,287 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,287 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,288 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,288 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,288 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,288 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,289 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,289 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,289 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,289 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,289 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,290 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,290 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,290 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,291 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,291 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,291 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,291 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,291 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,291 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,293 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,293 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,293 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,293 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,294 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,294 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,294 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,294 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,294 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,295 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,295 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,295 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,295 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,295 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,295 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,296 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,296 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,296 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,296 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,296 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,296 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,297 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,297 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,297 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,298 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,298 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,298 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,298 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,298 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,299 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,299 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,299 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,299 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,300 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,300 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,300 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,301 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,301 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,301 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,301 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,301 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,301 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,302 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,302 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,302 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,302 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,302 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,303 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,303 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,303 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,303 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,303 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,303 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,304 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,304 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,304 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,304 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,304 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,304 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,305 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,305 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,305 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,305 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,306 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,306 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,306 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,307 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,307 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,307 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,308 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,308 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,308 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,309 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,309 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,309 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,309 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,309 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,309 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,310 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,310 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,310 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,310 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,310 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,310 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,311 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,311 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,311 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,311 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,311 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,311 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,312 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,312 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,312 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,313 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,313 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,313 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,313 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,313 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,313 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,314 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,314 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,314 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,315 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,315 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,315 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,315 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,315 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,315 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,318 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,318 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,318 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,318 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,318 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,318 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,320 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,320 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,320 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,320 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,320 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,320 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,321 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,321 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,321 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,321 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,321 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,321 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,322 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,322 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,322 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,323 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,323 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,323 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,323 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,323 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,323 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,324 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,324 - routes - DEBUG - Processing event: Max bday 
+2024-10-08 23:16:13,324 - routes - DEBUG - Recurring event ID found: 6lsabhpr6o4lkkvt0gtk5j88vf
+2024-10-08 23:16:13,324 - routes - DEBUG - No existing meeting found for recurring event Max bday 
+2024-10-08 23:16:13,325 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,325 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,325 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,325 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,325 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,326 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,326 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,326 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,326 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,326 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,326 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,326 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,327 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,327 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,327 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,327 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,327 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,328 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,328 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,328 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,329 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,329 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,329 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,329 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,329 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,329 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,330 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,330 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,330 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,331 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,331 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,331 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,331 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,331 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,331 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,332 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,332 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,332 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,333 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,333 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,333 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,333 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,333 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,333 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,334 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,334 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,334 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,334 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,334 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,334 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,335 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,335 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,335 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,335 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,335 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,335 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,336 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,336 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,336 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,336 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,336 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,336 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,337 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,337 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,337 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,337 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,338 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,338 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,338 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,338 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,338 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,339 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,339 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,339 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,339 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,339 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,340 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,340 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,340 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,340 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,341 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,341 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,341 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,341 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,341 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,341 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,342 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,342 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,342 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,342 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,342 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,342 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,343 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,343 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,343 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,343 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,343 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,343 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,344 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,344 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,344 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,345 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,345 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,345 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,345 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,345 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,345 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,346 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,346 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,346 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,346 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,346 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,347 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,347 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,347 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,347 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,348 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,348 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,348 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,348 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,348 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,348 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,349 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,349 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,349 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,350 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,350 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,350 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,350 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,350 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,350 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,350 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,351 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,351 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,353 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,353 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,353 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,354 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,354 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,354 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,354 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,354 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,355 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,356 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,356 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,356 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,357 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,357 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,357 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,360 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,360 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,361 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,361 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,361 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,361 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,362 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,362 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,362 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,363 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,363 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,363 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,363 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,363 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,363 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,364 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,364 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,364 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,364 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,364 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,364 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,365 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,365 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,365 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,365 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,366 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,366 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,370 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,370 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,370 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,371 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,371 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,371 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,371 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,371 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,372 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,372 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,372 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,372 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,373 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,373 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,373 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,373 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,373 - routes - DEBUG - Processing event: Max bday 
+2024-10-08 23:16:13,373 - routes - DEBUG - Recurring event ID found: 6lsabhpr6o4lkkvt0gtk5j88vf
+2024-10-08 23:16:13,374 - routes - DEBUG - No existing meeting found for recurring event Max bday 
+2024-10-08 23:16:13,374 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,374 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,375 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,375 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,375 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,376 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,376 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,376 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,376 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,376 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,376 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,377 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,377 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,377 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,377 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,377 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,377 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,378 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,378 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,378 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,378 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,378 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,378 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,379 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,379 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,379 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,380 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,381 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,381 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,381 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,381 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,381 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,382 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,382 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,382 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,385 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,385 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,385 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,386 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,386 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,386 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,386 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,386 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,386 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,387 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,387 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,387 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,388 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,388 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,388 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,388 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,388 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,388 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,389 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,389 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,389 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,389 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,389 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,389 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,390 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,390 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,390 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,391 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,391 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,391 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,391 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,391 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,391 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,392 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,392 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,392 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,392 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,392 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,392 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,392 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,393 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,393 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,393 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,393 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,393 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,403 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,403 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,403 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,404 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,404 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,404 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,405 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,405 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,405 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,405 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,405 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,405 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,406 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,406 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,406 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,407 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,407 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,407 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,407 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,407 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,407 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,409 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,409 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,409 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,409 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,409 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,409 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,410 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,410 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,410 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,411 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,411 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,411 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,412 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,412 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,412 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,412 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,412 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,412 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,413 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,413 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,413 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,413 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,414 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,414 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,414 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,414 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,414 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,415 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,415 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,415 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,415 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,415 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,415 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,416 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,416 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,417 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,417 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,417 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,417 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,418 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,418 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,418 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,418 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,418 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,418 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,418 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,419 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,419 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,419 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,419 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,419 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,420 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,420 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,420 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,420 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,420 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,420 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,421 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,421 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,421 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,421 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,421 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,422 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,422 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,422 - routes - DEBUG - Processing event: Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,422 - routes - DEBUG - Recurring event ID found: 85e5trb68659rlgi2l3kji1hmi
+2024-10-08 23:16:13,422 - routes - DEBUG - No existing meeting found for recurring event Denise Nahas' Zoom Meeting
+2024-10-08 23:16:13,422 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,422 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
+2024-10-08 23:16:13,423 - routes - DEBUG - No existing meeting found for recurring event Beatport - in Rekordbox
+2024-10-08 23:16:13,423 - routes - DEBUG - Processing event: Beatport - in Rekordbox
+2024-10-08 23:16:13,423 - routes - DEBUG - Recurring event ID found: 36ogtdrnkv686ipva0v3ins9me
