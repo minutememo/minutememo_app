@@ -1,417 +1,741 @@
-2024-10-11 22:43:27,867 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:27] "[35m[1mPOST /api/sessions HTTP/1.1[0m" 500 -
-2024-10-11 22:43:33,540 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:33,541 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:33] "OPTIONS /api/sessions HTTP/1.1" 200 -
-2024-10-11 22:43:33,546 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:33,547 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:33] "[35m[1mPOST /api/sessions HTTP/1.1[0m" 500 -
-2024-10-11 22:43:39,210 - minutememo_app.app - INFO - User gaetan.buelinckx@gmail.com has an active subscription.
-2024-10-11 22:43:39,211 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:39,211 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:39] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-10-11 22:43:39,216 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 32, meeting_id: None
-2024-10-11 22:43:39,217 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 32
-2024-10-11 22:43:39,218 - minutememo_app.app - INFO - User gaetan.buelinckx@gmail.com has an active subscription.
-2024-10-11 22:43:39,218 - routes - DEBUG - Starting calendar events retrieval process
-2024-10-11 22:43:39,218 - minutememo_app.app - INFO - Fetching meetings for hub_id: 32
-2024-10-11 22:43:39,218 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:39,219 - routes - DEBUG - User gaetan.buelinckx@gmail.com is authenticated
-2024-10-11 22:43:39,219 - minutememo_app.app - INFO - Successfully fetched 1 meetings for hub_id: 32
-2024-10-11 22:43:39,219 - routes - DEBUG - OAuth token successfully retrieved from the database
-2024-10-11 22:43:39,220 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:39,220 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:39] "GET /api/subscription-status HTTP/1.1" 200 -
-2024-10-11 22:43:39,220 - routes - DEBUG - Headers set with the Bearer token
-2024-10-11 22:43:39,220 - routes - DEBUG - Fetching events between 2024-10-11T20:43:39.213Z and 2025-04-11T20:43:39.213Z
-2024-10-11 22:43:39,221 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:39] "GET /api/meetings?hub_id=32 HTTP/1.1" 200 -
-2024-10-11 22:43:39,221 - routes - DEBUG - Requesting events with params: {'timeMin': '2024-10-11T20:43:39.213Z', 'timeMax': '2025-04-11T20:43:39.213Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
-2024-10-11 22:43:39,221 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:39,223 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.googleapis.com:443
-2024-10-11 22:43:39,224 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:39] "GET /api/meetingsessions?hub_id=32 HTTP/1.1" 200 -
-2024-10-11 22:43:39,617 - urllib3.connectionpool - DEBUG - https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-11T20%3A43%3A39.213Z&timeMax=2025-04-11T20%3A43%3A39.213Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 677348
-2024-10-11 22:43:39,842 - routes - DEBUG - Fetched 475 events in this request
-2024-10-11 22:43:39,845 - routes - DEBUG - No more pages of events to fetch
-2024-10-11 22:43:39,845 - routes - DEBUG - Finished fetching a total of 475 events
-2024-10-11 22:43:40,032 - routes - DEBUG - Returning 475 processed events
-2024-10-11 22:43:40,033 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:40,034 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:40] "GET /api/calendar/events?start=2024-10-11T20:43:39.213Z&end=2025-04-11T20:43:39.213Z&singleEvents=false HTTP/1.1" 200 -
-2024-10-11 22:43:40,043 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:40,043 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:40,043 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:40,043 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:40,043 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:40,044 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:40] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
-2024-10-11 22:43:40,044 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:40] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
-2024-10-11 22:43:40,045 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:40] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
-2024-10-11 22:43:40,045 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:40] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
-2024-10-11 22:43:40,045 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:40] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
-2024-10-11 22:43:40,404 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 32, meeting_id: None
-2024-10-11 22:43:40,404 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: 143
-2024-10-11 22:43:40,405 - minutememo_app.app - INFO - Fetching meetings for hub_id: 32
-2024-10-11 22:43:40,405 - minutememo_app.app - INFO - Fetching meeting sessions for meeting_id: 143
-2024-10-11 22:43:40,406 - minutememo_app.app - INFO - Successfully fetched 1 meetings for hub_id: 32
-2024-10-11 22:43:40,406 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:40,407 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:40] "GET /api/meetings?hub_id=32 HTTP/1.1" 200 -
-2024-10-11 22:43:40,408 - minutememo_app.app - WARNING - No sessions found for meeting_id: 143
-2024-10-11 22:43:40,408 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:40,408 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:40] "GET /api/meetings?meeting_id=143 HTTP/1.1" 200 -
-2024-10-11 22:43:40,411 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 32, meeting_id: None
-2024-10-11 22:43:40,411 - minutememo_app.app - INFO - Fetching meetings for hub_id: 32
-2024-10-11 22:43:40,412 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: None, meeting_id: 143
-2024-10-11 22:43:40,412 - minutememo_app.app - INFO - Fetching meeting sessions for meeting_id: 143
-2024-10-11 22:43:40,412 - minutememo_app.app - INFO - Successfully fetched 1 meetings for hub_id: 32
-2024-10-11 22:43:40,412 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:40,413 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:40] "GET /api/meetings?hub_id=32 HTTP/1.1" 200 -
-2024-10-11 22:43:40,414 - minutememo_app.app - WARNING - No sessions found for meeting_id: 143
-2024-10-11 22:43:40,415 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:40,415 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:40] "GET /api/meetings?meeting_id=143 HTTP/1.1" 200 -
-2024-10-11 22:43:41,176 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:41,176 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:41] "OPTIONS /api/sessions HTTP/1.1" 200 -
-2024-10-11 22:43:41,187 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:41,188 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:41] "[35m[1mPOST /api/sessions HTTP/1.1[0m" 201 -
-2024-10-11 22:43:41,203 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:41,204 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:41] "GET /api/sessions/165 HTTP/1.1" 200 -
-2024-10-11 22:43:41,209 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:41,209 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:41,209 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:41] "GET /api/sessions/165/summaries HTTP/1.1" 200 -
-2024-10-11 22:43:41,210 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:41] "GET /api/sessions/165 HTTP/1.1" 200 -
-2024-10-11 22:43:41,216 - routes - DEBUG - Fetching action points for session_id: 165
-2024-10-11 22:43:41,221 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:41,222 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:41] "GET /api/sessions/165/summaries HTTP/1.1" 200 -
-2024-10-11 22:43:41,223 - routes - INFO - No action items found for session_id: 165
-2024-10-11 22:43:41,223 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:41,224 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:41] "GET /api/sessions/165/action_points HTTP/1.1" 200 -
-2024-10-11 22:43:41,226 - routes - DEBUG - Fetching action points for session_id: 165
-2024-10-11 22:43:41,229 - routes - INFO - No action items found for session_id: 165
-2024-10-11 22:43:41,229 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:41,230 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:41] "GET /api/sessions/165/action_points HTTP/1.1" 200 -
-2024-10-11 22:43:42,382 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:42,383 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:42] "OPTIONS /api/recordings HTTP/1.1" 200 -
-2024-10-11 22:43:42,406 - minutememo_app.app - INFO - Recording 01154963-63c3-47f2-be5e-4faccabab3e3 created for user 14 in session 165
-2024-10-11 22:43:42,406 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:42,407 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:42] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
-2024-10-11 22:43:47,705 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:47,706 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:47] "POST /upload_chunk HTTP/1.1" 200 -
-2024-10-11 22:43:52,740 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:52,740 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:52] "POST /upload_chunk HTTP/1.1" 200 -
-2024-10-11 22:43:57,778 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:43:57,779 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:43:57] "POST /upload_chunk HTTP/1.1" 200 -
-2024-10-11 22:44:02,820 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:02,821 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:02] "POST /upload_chunk HTTP/1.1" 200 -
-2024-10-11 22:44:07,857 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:07,858 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:07] "POST /upload_chunk HTTP/1.1" 200 -
-2024-10-11 22:44:12,897 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:12,898 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:12] "POST /upload_chunk HTTP/1.1" 200 -
-2024-10-11 22:44:17,942 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:17,944 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:17] "POST /upload_chunk HTTP/1.1" 200 -
-2024-10-11 22:44:22,979 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:22,979 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:22] "POST /upload_chunk HTTP/1.1" 200 -
-2024-10-11 22:44:32,177 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:32,177 - routes - DEBUG - Starting calendar events retrieval process
-2024-10-11 22:44:32,178 - routes - DEBUG - User gaetan.buelinckx@gmail.com is authenticated
-2024-10-11 22:44:32,178 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:32] "GET /api/sessions/165 HTTP/1.1" 200 -
-2024-10-11 22:44:32,178 - routes - DEBUG - OAuth token successfully retrieved from the database
-2024-10-11 22:44:32,178 - routes - DEBUG - Headers set with the Bearer token
-2024-10-11 22:44:32,178 - routes - ERROR - Missing 'start' or 'end' parameters in the request
-2024-10-11 22:44:32,178 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:32,179 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:32] "[31m[1mGET /api/calendar/events HTTP/1.1[0m" 400 -
-2024-10-11 22:44:32,187 - routes - DEBUG - Starting calendar events retrieval process
-2024-10-11 22:44:32,190 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:32,190 - routes - DEBUG - User gaetan.buelinckx@gmail.com is authenticated
-2024-10-11 22:44:32,191 - routes - DEBUG - OAuth token successfully retrieved from the database
-2024-10-11 22:44:32,191 - routes - DEBUG - Headers set with the Bearer token
-2024-10-11 22:44:32,191 - routes - ERROR - Missing 'start' or 'end' parameters in the request
-2024-10-11 22:44:32,191 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:32,192 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:32] "GET /api/sessions/165 HTTP/1.1" 200 -
-2024-10-11 22:44:32,193 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:32] "[31m[1mGET /api/calendar/events HTTP/1.1[0m" 400 -
-2024-10-11 22:44:32,195 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:32,198 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:32,198 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:32] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-10-11 22:44:32,198 - routes - DEBUG - Starting calendar events retrieval process
-2024-10-11 22:44:32,198 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:32] "GET /api/sessions/165/summaries HTTP/1.1" 200 -
-2024-10-11 22:44:32,199 - routes - DEBUG - User gaetan.buelinckx@gmail.com is authenticated
-2024-10-11 22:44:32,199 - routes - DEBUG - OAuth token successfully retrieved from the database
-2024-10-11 22:44:32,201 - routes - DEBUG - Headers set with the Bearer token
-2024-10-11 22:44:32,202 - routes - ERROR - Missing 'start' or 'end' parameters in the request
-2024-10-11 22:44:32,203 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:32,206 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:32,205 - routes - DEBUG - Fetching action points for session_id: 165
-2024-10-11 22:44:32,207 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:32] "[31m[1mGET /api/calendar/events HTTP/1.1[0m" 400 -
-2024-10-11 22:44:32,208 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:32] "GET /api/sessions/165/summaries HTTP/1.1" 200 -
-2024-10-11 22:44:32,209 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:32,211 - routes - INFO - No action items found for session_id: 165
-2024-10-11 22:44:32,211 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:32,211 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:32] "GET /api/sessions/165 HTTP/1.1" 200 -
-2024-10-11 22:44:32,212 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:32,212 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:32] "GET /api/sessions/165/action_points HTTP/1.1" 200 -
-2024-10-11 22:44:32,213 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:32] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-10-11 22:44:32,216 - routes - DEBUG - Fetching action points for session_id: 165
-2024-10-11 22:44:32,219 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:32,219 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:32,220 - routes - INFO - No action items found for session_id: 165
-2024-10-11 22:44:32,221 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:32,221 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:32] "GET /api/sessions/165 HTTP/1.1" 200 -
-2024-10-11 22:44:32,221 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:32,221 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:32] "GET /api/sessions/165/summaries HTTP/1.1" 200 -
-2024-10-11 22:44:32,222 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:32] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-10-11 22:44:32,222 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:32] "GET /api/sessions/165/action_points HTTP/1.1" 200 -
-2024-10-11 22:44:32,226 - routes - DEBUG - Fetching action points for session_id: 165
-2024-10-11 22:44:32,228 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:32,229 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:32] "GET /api/sessions/165/summaries HTTP/1.1" 200 -
-2024-10-11 22:44:32,229 - routes - INFO - No action items found for session_id: 165
-2024-10-11 22:44:32,229 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:32,230 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:32] "GET /api/sessions/165/action_points HTTP/1.1" 200 -
-2024-10-11 22:44:32,232 - routes - DEBUG - Fetching action points for session_id: 165
-2024-10-11 22:44:32,234 - routes - INFO - No action items found for session_id: 165
-2024-10-11 22:44:32,234 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:32,235 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:32] "GET /api/sessions/165/action_points HTTP/1.1" 200 -
-2024-10-11 22:44:32,982 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:32,982 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:32] "OPTIONS /api/recordings HTTP/1.1" 200 -
-2024-10-11 22:44:32,987 - minutememo_app.app - INFO - Recording eb3cd1d7-62eb-4fb4-8889-0b158b574213 created for user 14 in session 165
-2024-10-11 22:44:32,987 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:32,987 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:32] "[35m[1mPOST /api/recordings HTTP/1.1[0m" 201 -
-2024-10-11 22:44:38,264 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:38,265 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:38] "POST /upload_chunk HTTP/1.1" 200 -
-2024-10-11 22:44:43,304 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:43,307 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:43] "POST /upload_chunk HTTP/1.1" 200 -
-2024-10-11 22:44:48,345 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:48,346 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:48] "POST /upload_chunk HTTP/1.1" 200 -
-2024-10-11 22:44:52,339 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:52,340 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:52] "OPTIONS /concatenate HTTP/1.1" 200 -
-2024-10-11 22:44:52,349 - minutememo_app.app - INFO - Received request to concatenate for recording_id: eb3cd1d7-62eb-4fb4-8889-0b158b574213
-2024-10-11 22:44:52,352 - minutememo_app.app - INFO - Local chunk files for recording_id eb3cd1d7-62eb-4fb4-8889-0b158b574213: ['eb3cd1d7-62eb-4fb4-8889-0b158b574213_chunk_0.webm', 'eb3cd1d7-62eb-4fb4-8889-0b158b574213_chunk_1.webm', 'eb3cd1d7-62eb-4fb4-8889-0b158b574213_chunk_2.webm']
-2024-10-11 22:44:52,352 - minutememo_app.app - INFO - List file created at: uploads/audio_recordings/eb3cd1d7-62eb-4fb4-8889-0b158b574213_list.txt
-2024-10-11 22:44:52,352 - minutememo_app.app - INFO - Running FFmpeg locally with list file uploads/audio_recordings/eb3cd1d7-62eb-4fb4-8889-0b158b574213_list.txt
-2024-10-11 22:44:54,882 - minutememo_app.app - INFO - Local concatenation output at uploads/audio_recordings/eb3cd1d7-62eb-4fb4-8889-0b158b574213.webm
-2024-10-11 22:44:55,072 - minutememo_app.app - INFO - MP3 conversion successful. File saved at uploads/audio_recordings/eb3cd1d7-62eb-4fb4-8889-0b158b574213.mp3
-2024-10-11 22:44:55,091 - minutememo_app.app - INFO - Concatenation status for eb3cd1d7-62eb-4fb4-8889-0b158b574213 updated to success
-2024-10-11 22:44:55,091 - minutememo_app.app - INFO - Concatenation status updated to 'success' in the database for recording_id: eb3cd1d7-62eb-4fb4-8889-0b158b574213
-2024-10-11 22:44:55,092 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:55,092 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:55] "POST /concatenate HTTP/1.1" 200 -
-2024-10-11 22:44:55,099 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:55,100 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:55] "OPTIONS /api/recordings/eb3cd1d7-62eb-4fb4-8889-0b158b574213 HTTP/1.1" 200 -
-2024-10-11 22:44:55,102 - minutememo_app.app - INFO - Entering update_recording function for recording_id: eb3cd1d7-62eb-4fb4-8889-0b158b574213
-2024-10-11 22:44:55,103 - minutememo_app.app - INFO - Received data for updating recording eb3cd1d7-62eb-4fb4-8889-0b158b574213: {'audio_url': '/uploads/audio_recordings/eb3cd1d7-62eb-4fb4-8889-0b158b574213.mp3'}
-2024-10-11 22:44:55,103 - minutememo_app.app - INFO - Fetching Recording with ID: eb3cd1d7-62eb-4fb4-8889-0b158b574213
-2024-10-11 22:44:55,105 - minutememo_app.app - INFO - Current recording before update: <Recording eb3cd1d7-62eb-4fb4-8889-0b158b574213>
-2024-10-11 22:44:55,105 - minutememo_app.app - INFO - Fetching associated MeetingSession with ID: 165
-2024-10-11 22:44:55,106 - minutememo_app.app - INFO - Current MeetingSession before update: <MeetingSession 165>
-2024-10-11 22:44:55,106 - minutememo_app.app - INFO - Updating audio_url for MeetingSession ID: 165
-2024-10-11 22:44:55,111 - minutememo_app.app - INFO - MeetingSession after update: <MeetingSession 165>
-2024-10-11 22:44:55,111 - minutememo_app.app - INFO - Exiting update_recording function for recording_id: eb3cd1d7-62eb-4fb4-8889-0b158b574213
-2024-10-11 22:44:55,111 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:55,111 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:55] "PATCH /api/recordings/eb3cd1d7-62eb-4fb4-8889-0b158b574213 HTTP/1.1" 200 -
-2024-10-11 22:44:55,114 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:55,115 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:55] "OPTIONS /api/transcribe/165 HTTP/1.1" 200 -
-2024-10-11 22:44:55,118 - minutememo_app.app - INFO - Received transcription request for session ID: 165
-2024-10-11 22:44:55,118 - minutememo_app.app - INFO - User gaetan.buelinckx@gmail.com is requesting transcription for session ID: 165
-2024-10-11 22:44:55,118 - minutememo_app.app - INFO - Fetched session for session ID 165: <MeetingSession 165>
-2024-10-11 22:44:55,119 - minutememo_app.app - INFO - Language selected for transcription: en
-2024-10-11 22:44:55,119 - minutememo_app.app - INFO - Audio URL for session ID 165: http://localhost:5000/uploads/audio_recordings/eb3cd1d7-62eb-4fb4-8889-0b158b574213.mp3
-2024-10-11 22:44:55,119 - minutememo_app.app - INFO - Transcribing audio for session ID 165 from URL: http://localhost:5000/uploads/audio_recordings/eb3cd1d7-62eb-4fb4-8889-0b158b574213.mp3 in language: en
-2024-10-11 22:44:55,120 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:5000
-2024-10-11 22:44:55,125 - auth - DEBUG - After request, Origin: None
-2024-10-11 22:44:55,126 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:55] "GET /uploads/audio_recordings/eb3cd1d7-62eb-4fb4-8889-0b158b574213.mp3 HTTP/1.1" 200 -
-2024-10-11 22:44:55,126 - urllib3.connectionpool - DEBUG - http://localhost:5000 "GET /uploads/audio_recordings/eb3cd1d7-62eb-4fb4-8889-0b158b574213.mp3 HTTP/11" 200 120044
-2024-10-11 22:44:55,127 - minutememo_app.app - INFO - Temporary audio file created at /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmpe1k0crp3.mp3
-2024-10-11 22:44:55,244 - pydub.converter - DEBUG - subprocess.call(['ffmpeg', '-y', '-f', 'mp3', '-i', '/var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmpe1k0crp3.mp3', '-acodec', 'pcm_s16le', '-vn', '-f', 'wav', '-'])
-2024-10-11 22:44:55,349 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
-2024-10-11 22:44:55,350 - httpx - DEBUG - load_verify_locations cafile='/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2024-10-11 22:44:55,367 - minutememo_app.app - INFO - Processing chunk 1 of 1
-2024-10-11 22:44:55,368 - pydub.converter - DEBUG - subprocess.call(['ffmpeg', '-y', '-f', 'wav', '-i', '/var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmpta35u_qx', '-f', 'mp3', '/var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmpu8398dgm'])
-2024-10-11 22:44:55,561 - pydub.converter - DEBUG - subprocess output: b'ffmpeg version 7.0.2 Copyright (c) 2000-2024 the FFmpeg developers'
-2024-10-11 22:44:55,561 - pydub.converter - DEBUG - subprocess output: b'  built with Apple clang version 15.0.0 (clang-1500.3.9.4)'
-2024-10-11 22:44:55,561 - pydub.converter - DEBUG - subprocess output: b"  configuration: --prefix=/usr/local/Cellar/ffmpeg/7.0.2 --enable-shared --enable-pthreads --enable-version3 --cc=clang --host-cflags= --host-ldflags='-Wl,-ld_classic' --enable-ffplay --enable-gnutls --enable-gpl --enable-libaom --enable-libaribb24 --enable-libbluray --enable-libdav1d --enable-libharfbuzz --enable-libjxl --enable-libmp3lame --enable-libopus --enable-librav1e --enable-librist --enable-librubberband --enable-libsnappy --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtesseract --enable-libtheora --enable-libvidstab --enable-libvmaf --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-lzma --enable-libfontconfig --enable-libfreetype --enable-frei0r --enable-libass --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libspeex --enable-libsoxr --enable-libzmq --enable-libzimg --disable-libjack --disable-indev=jack --enable-videotoolbox --enable-audiotoolbox"
-2024-10-11 22:44:55,561 - pydub.converter - DEBUG - subprocess output: b'  libavutil      59.  8.100 / 59.  8.100'
-2024-10-11 22:44:55,561 - pydub.converter - DEBUG - subprocess output: b'  libavcodec     61.  3.100 / 61.  3.100'
-2024-10-11 22:44:55,561 - pydub.converter - DEBUG - subprocess output: b'  libavformat    61.  1.100 / 61.  1.100'
-2024-10-11 22:44:55,561 - pydub.converter - DEBUG - subprocess output: b'  libavdevice    61.  1.100 / 61.  1.100'
-2024-10-11 22:44:55,561 - pydub.converter - DEBUG - subprocess output: b'  libavfilter    10.  1.100 / 10.  1.100'
-2024-10-11 22:44:55,562 - pydub.converter - DEBUG - subprocess output: b'  libswscale      8.  1.100 /  8.  1.100'
-2024-10-11 22:44:55,562 - pydub.converter - DEBUG - subprocess output: b'  libswresample   5.  1.100 /  5.  1.100'
-2024-10-11 22:44:55,562 - pydub.converter - DEBUG - subprocess output: b'  libpostproc    58.  1.100 / 58.  1.100'
-2024-10-11 22:44:55,562 - pydub.converter - DEBUG - subprocess output: b'[aist#0:0/pcm_s16le @ 0x7f8d6f704340] Guessed Channel Layout: mono'
-2024-10-11 22:44:55,562 - pydub.converter - DEBUG - subprocess output: b"Input #0, wav, from '/var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmpta35u_qx':"
-2024-10-11 22:44:55,562 - pydub.converter - DEBUG - subprocess output: b'  Duration: 00:00:14.94, bitrate: 768 kb/s'
-2024-10-11 22:44:55,562 - pydub.converter - DEBUG - subprocess output: b'  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 48000 Hz, mono, s16, 768 kb/s'
-2024-10-11 22:44:55,562 - pydub.converter - DEBUG - subprocess output: b'Stream mapping:'
-2024-10-11 22:44:55,562 - pydub.converter - DEBUG - subprocess output: b'  Stream #0:0 -> #0:0 (pcm_s16le (native) -> mp3 (libmp3lame))'
-2024-10-11 22:44:55,562 - pydub.converter - DEBUG - subprocess output: b'Press [q] to stop, [?] for help'
-2024-10-11 22:44:55,562 - pydub.converter - DEBUG - subprocess output: b"Output #0, mp3, to '/var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmpu8398dgm':"
-2024-10-11 22:44:55,562 - pydub.converter - DEBUG - subprocess output: b'  Metadata:'
-2024-10-11 22:44:55,562 - pydub.converter - DEBUG - subprocess output: b'    TSSE            : Lavf61.1.100'
-2024-10-11 22:44:55,562 - pydub.converter - DEBUG - subprocess output: b'  Stream #0:0: Audio: mp3, 48000 Hz, mono, s16p'
-2024-10-11 22:44:55,562 - pydub.converter - DEBUG - subprocess output: b'      Metadata:'
-2024-10-11 22:44:55,562 - pydub.converter - DEBUG - subprocess output: b'        encoder         : Lavc61.3.100 libmp3lame'
-2024-10-11 22:44:55,562 - pydub.converter - DEBUG - subprocess output: b'[out#0/mp3 @ 0x7f8d6f707180] video:0KiB audio:117KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.196982%'
-2024-10-11 22:44:55,562 - pydub.converter - DEBUG - subprocess output: b'size=     117KiB time=00:00:14.94 bitrate=  64.3kbits/s speed= 171x'
-2024-10-11 22:44:55,565 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/audio/transcriptions', 'headers': {'Content-Type': 'multipart/form-data'}, 'files': [('file', SerializationIterator(index=0, iterator=SerializationIterator(index=0, iterator=<_io.BufferedReader name='/var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmp_tkoj6to.mp3'>)))], 'json_data': {'model': 'whisper-1', 'language': 'en', 'response_format': 'text'}}
-2024-10-11 22:44:55,583 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/audio/transcriptions
-2024-10-11 22:44:55,584 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
-2024-10-11 22:44:55,619 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x106de0fb0>
-2024-10-11 22:44:55,619 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x106f613d0> server_hostname='api.openai.com' timeout=5.0
-2024-10-11 22:44:55,647 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x106f423c0>
-2024-10-11 22:44:55,647 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2024-10-11 22:44:55,648 - httpcore.http11 - DEBUG - send_request_headers.complete
-2024-10-11 22:44:55,648 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2024-10-11 22:44:55,648 - httpcore.http11 - DEBUG - send_request_body.complete
-2024-10-11 22:44:55,648 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2024-10-11 22:44:57,550 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 11 Oct 2024 20:44:57 GMT'), (b'Content-Type', b'text/plain; charset=utf-8'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'minute-memo'), (b'openai-processing-ms', b'698'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'500'), (b'x-ratelimit-remaining-requests', b'499'), (b'x-ratelimit-reset-requests', b'120ms'), (b'x-request-id', b'req_a76ce630cbb69ada61830e95294ea7c8'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=LnC0LwAuXmfv5UGVt2iV.mO7s3aiY125CR0HCqnwC2s-1728679497-1.0.1.1-i_7.wmcm35Pg3CXNwvBPWlzFynGICWOztnrTuW1_7vv6W_HI8gkfzARXNI4ec4guROSMQ2suWdEQGnK6ErWcAA; path=/; expires=Fri, 11-Oct-24 21:14:57 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=jYFUeHigG_XayunO5yrTbjxCL6yRKuLxR7gOqjlLwyk-1728679497603-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d11b0e0bfd1ba81-BRU'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
-2024-10-11 22:44:57,551 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
-2024-10-11 22:44:57,552 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2024-10-11 22:44:57,552 - httpcore.http11 - DEBUG - receive_response_body.complete
-2024-10-11 22:44:57,552 - httpcore.http11 - DEBUG - response_closed.started
-2024-10-11 22:44:57,552 - httpcore.http11 - DEBUG - response_closed.complete
-2024-10-11 22:44:57,552 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/audio/transcriptions "200 OK" Headers([('date', 'Fri, 11 Oct 2024 20:44:57 GMT'), ('content-type', 'text/plain; charset=utf-8'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'minute-memo'), ('openai-processing-ms', '698'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '500'), ('x-ratelimit-remaining-requests', '499'), ('x-ratelimit-reset-requests', '120ms'), ('x-request-id', 'req_a76ce630cbb69ada61830e95294ea7c8'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=LnC0LwAuXmfv5UGVt2iV.mO7s3aiY125CR0HCqnwC2s-1728679497-1.0.1.1-i_7.wmcm35Pg3CXNwvBPWlzFynGICWOztnrTuW1_7vv6W_HI8gkfzARXNI4ec4guROSMQ2suWdEQGnK6ErWcAA; path=/; expires=Fri, 11-Oct-24 21:14:57 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=jYFUeHigG_XayunO5yrTbjxCL6yRKuLxR7gOqjlLwyk-1728679497603-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8d11b0e0bfd1ba81-BRU'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
-2024-10-11 22:44:57,552 - openai._base_client - DEBUG - request_id: req_a76ce630cbb69ada61830e95294ea7c8
-2024-10-11 22:44:57,553 - openai._response - DEBUG - Could not read JSON from response data due to <class 'json.decoder.JSONDecodeError'> - Expecting value: line 1 column 1 (char 0)
-2024-10-11 22:44:57,553 - minutememo_app.app - INFO - Temporary chunk file deleted: /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmp_tkoj6to.mp3
-2024-10-11 22:44:57,553 - minutememo_app.app - INFO - Temporary original audio file deleted: /var/folders/wt/j1gbj0y9587fq_vzh2v9451r0000gn/T/tmpe1k0crp3.mp3
-2024-10-11 22:44:57,553 - minutememo_app.app - INFO - Final transcription result for session ID 165: But the second one really is more of a bromance between the two brothers. We really love these movies like Tango of Cash. Tango of Cash is such a fun movie.
-
-2024-10-11 22:44:57,562 - minutememo_app.app - INFO - Transcription saved successfully for session ID 165
-2024-10-11 22:44:57,563 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:57,563 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:57] "POST /api/transcribe/165 HTTP/1.1" 200 -
-2024-10-11 22:44:57,570 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:44:57,571 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:44:57] "OPTIONS /api/sessions/165/summarize HTTP/1.1" 200 -
-2024-10-11 22:44:57,574 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
-2024-10-11 22:44:57,575 - httpx - DEBUG - load_verify_locations cafile='/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2024-10-11 22:44:57,594 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a helpful assistant.'}, {'role': 'user', 'content': '\n    Summarize the core topics in a maximum of 5 bullet points. Sentences should be short and capture only the core ideas.\n\n    Use HTML for formatting:\n    <strong>This meeting was about:</strong>\n    <ul>\n        <li>.......</li>\n        <li>.......</li>\n        <li>.......</li>\n    </ul>\n\n    <strong>Action points:</strong>\n    <ul>\n        <li>.......</li>\n        <li>.......</li>\n        <li>.......</li>\n    </ul>\n    But the second one really is more of a bromance between the two brothers. We really love these movies like Tango of Cash. Tango of Cash is such a fun movie.\n'}], 'model': 'gpt-4o-mini'}}
-2024-10-11 22:44:57,595 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
-2024-10-11 22:44:57,595 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
-2024-10-11 22:44:57,626 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x106de3d40>
-2024-10-11 22:44:57,626 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x106f631d0> server_hostname='api.openai.com' timeout=5.0
-2024-10-11 22:44:57,643 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x106de3c50>
-2024-10-11 22:44:57,643 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2024-10-11 22:44:57,644 - httpcore.http11 - DEBUG - send_request_headers.complete
-2024-10-11 22:44:57,644 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2024-10-11 22:44:57,644 - httpcore.http11 - DEBUG - send_request_body.complete
-2024-10-11 22:44:57,644 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2024-10-11 22:45:00,107 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 11 Oct 2024 20:45:00 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'minute-memo'), (b'openai-processing-ms', b'2121'), (b'openai-version', b'2020-10-01'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'200000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'199828'), (b'x-ratelimit-reset-requests', b'8.64s'), (b'x-ratelimit-reset-tokens', b'51ms'), (b'x-request-id', b'req_3dc97a568e0cd6af84caf6eadeb10d54'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=Dv4xDU.Zy287r2DxAfXhghhUlvxt.TJ_evY88r6sm14-1728679500-1.0.1.1-sE.IkGFFhhdUafitlKM.AmDcJG2aJNi2kNNykWZBayGw8bA7kS_EoAr6M.lS2B_iZkWek.1ueWzcYNnEExuCWw; path=/; expires=Fri, 11-Oct-24 21:15:00 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=L3K5NVRxE2Vn3u20oOjF.80kblnphZx7JAJvFRyvyYw-1728679500178-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d11b0ed1b1fb9bd-BRU'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
-2024-10-11 22:45:00,108 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2024-10-11 22:45:00,108 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2024-10-11 22:45:00,114 - httpcore.http11 - DEBUG - receive_response_body.complete
-2024-10-11 22:45:00,115 - httpcore.http11 - DEBUG - response_closed.started
-2024-10-11 22:45:00,115 - httpcore.http11 - DEBUG - response_closed.complete
-2024-10-11 22:45:00,115 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers([('date', 'Fri, 11 Oct 2024 20:45:00 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'minute-memo'), ('openai-processing-ms', '2121'), ('openai-version', '2020-10-01'), ('x-ratelimit-limit-requests', '10000'), ('x-ratelimit-limit-tokens', '200000'), ('x-ratelimit-remaining-requests', '9999'), ('x-ratelimit-remaining-tokens', '199828'), ('x-ratelimit-reset-requests', '8.64s'), ('x-ratelimit-reset-tokens', '51ms'), ('x-request-id', 'req_3dc97a568e0cd6af84caf6eadeb10d54'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=Dv4xDU.Zy287r2DxAfXhghhUlvxt.TJ_evY88r6sm14-1728679500-1.0.1.1-sE.IkGFFhhdUafitlKM.AmDcJG2aJNi2kNNykWZBayGw8bA7kS_EoAr6M.lS2B_iZkWek.1ueWzcYNnEExuCWw; path=/; expires=Fri, 11-Oct-24 21:15:00 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=L3K5NVRxE2Vn3u20oOjF.80kblnphZx7JAJvFRyvyYw-1728679500178-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8d11b0ed1b1fb9bd-BRU'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
-2024-10-11 22:45:00,115 - openai._base_client - DEBUG - request_id: req_3dc97a568e0cd6af84caf6eadeb10d54
-2024-10-11 22:45:00,118 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a helpful assistant.'}, {'role': 'user', 'content': '\n    Summarize the meeting in detail, including sections and action points.\n\n    Use HTML for formatting:\n    <strong>Summary of this meeting:</strong>\n\n    <strong>Relevant topic:</strong>\n    <ul>\n        <li>.......</li>\n        <li>.......</li>\n        <li>.......</li>\n    </ul>\n\n    <strong>Action points:</strong>\n    <ul>\n        <li>.......</li>\n        <li>.......</li>\n        <li>.......</li>\n    </ul>\n    But the second one really is more of a bromance between the two brothers. We really love these movies like Tango of Cash. Tango of Cash is such a fun movie.\n'}], 'model': 'gpt-4o-mini'}}
-2024-10-11 22:45:00,119 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
-2024-10-11 22:45:00,119 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2024-10-11 22:45:00,119 - httpcore.http11 - DEBUG - send_request_headers.complete
-2024-10-11 22:45:00,119 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2024-10-11 22:45:00,119 - httpcore.http11 - DEBUG - send_request_body.complete
-2024-10-11 22:45:00,119 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2024-10-11 22:45:02,742 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 11 Oct 2024 20:45:02 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'minute-memo'), (b'openai-processing-ms', b'2410'), (b'openai-version', b'2020-10-01'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'200000'), (b'x-ratelimit-remaining-requests', b'9998'), (b'x-ratelimit-remaining-tokens', b'199831'), (b'x-ratelimit-reset-requests', b'14.943s'), (b'x-ratelimit-reset-tokens', b'50ms'), (b'x-request-id', b'req_58b5a03d21dd7e5859ad67a54a41490f'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d11b0fc9991b9bd-BRU'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
-2024-10-11 22:45:02,743 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2024-10-11 22:45:02,743 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2024-10-11 22:45:02,743 - httpcore.http11 - DEBUG - receive_response_body.complete
-2024-10-11 22:45:02,744 - httpcore.http11 - DEBUG - response_closed.started
-2024-10-11 22:45:02,744 - httpcore.http11 - DEBUG - response_closed.complete
-2024-10-11 22:45:02,744 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers({'date': 'Fri, 11 Oct 2024 20:45:02 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-expose-headers': 'X-Request-ID', 'openai-organization': 'minute-memo', 'openai-processing-ms': '2410', 'openai-version': '2020-10-01', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '200000', 'x-ratelimit-remaining-requests': '9998', 'x-ratelimit-remaining-tokens': '199831', 'x-ratelimit-reset-requests': '14.943s', 'x-ratelimit-reset-tokens': '50ms', 'x-request-id': 'req_58b5a03d21dd7e5859ad67a54a41490f', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8d11b0fc9991b9bd-BRU', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
-2024-10-11 22:45:02,744 - openai._base_client - DEBUG - request_id: req_58b5a03d21dd7e5859ad67a54a41490f
-2024-10-11 22:45:02,753 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:45:02,754 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:45:02] "POST /api/sessions/165/summarize HTTP/1.1" 200 -
-2024-10-11 22:45:02,761 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:45:02,761 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:45:02] "OPTIONS /api/extract_action_points/165 HTTP/1.1" 200 -
-2024-10-11 22:45:02,763 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
-2024-10-11 22:45:02,763 - httpx - DEBUG - load_verify_locations cafile='/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2024-10-11 22:45:02,781 - routes - DEBUG - Starting action point extraction for session_id: 165
-2024-10-11 22:45:02,783 - routes - DEBUG - Sending transcription to OpenAI for action item extraction with structured output, session_id: 165
-2024-10-11 22:45:02,785 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are an AI that extracts action items from meeting transcriptions.'}, {'role': 'user', 'content': 'But the second one really is more of a bromance between the two brothers. We really love these movies like Tango of Cash. Tango of Cash is such a fun movie.\n'}], 'model': 'gpt-4o-2024-08-06', 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'action_item_schema', 'schema': {'type': 'object', 'properties': {'action_items': {'type': 'array', 'items': {'type': 'object', 'properties': {'summary': {'type': 'string', 'description': 'Summary of the action item'}, 'details': {'type': 'string', 'description': 'Detailed explanation of the action item'}, 'assigned_to': {'type': 'string', 'description': 'Person assigned to the action item'}, 'due_date': {'type': ['string', 'null'], 'description': 'Due date of the action item in ISO format'}, 'completed': {'type': 'boolean', 'description': 'Completion status of the action item'}}, 'required': ['summary', 'details']}}}, 'required': ['action_items']}}}}}
-2024-10-11 22:45:02,785 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
-2024-10-11 22:45:02,785 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
-2024-10-11 22:45:02,800 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x106e35430>
-2024-10-11 22:45:02,800 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x106c37050> server_hostname='api.openai.com' timeout=5.0
-2024-10-11 22:45:02,845 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x106e35190>
-2024-10-11 22:45:02,845 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2024-10-11 22:45:02,845 - httpcore.http11 - DEBUG - send_request_headers.complete
-2024-10-11 22:45:02,845 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2024-10-11 22:45:02,845 - httpcore.http11 - DEBUG - send_request_body.complete
-2024-10-11 22:45:02,845 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2024-10-11 22:45:04,200 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 11 Oct 2024 20:45:04 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'minute-memo'), (b'openai-processing-ms', b'1096'), (b'openai-version', b'2020-10-01'), (b'x-ratelimit-limit-requests', b'500'), (b'x-ratelimit-limit-tokens', b'30000'), (b'x-ratelimit-remaining-requests', b'499'), (b'x-ratelimit-remaining-tokens', b'29925'), (b'x-ratelimit-reset-requests', b'120ms'), (b'x-ratelimit-reset-tokens', b'150ms'), (b'x-request-id', b'req_b1ed5ac9f588250322f6bc5cd787566e'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=MU5BHGqR92yeHGfLzagkFIzzeeXzyy_uyNsst75_Lk4-1728679504-1.0.1.1-IC0kxr1HvPpdSIuNzwIJrlc8lzzHtJuPaBb4w2poGptPdXUny14ALlgmcgjWVMdz6ImJS8OcWxt1y0lyP1ZuIg; path=/; expires=Fri, 11-Oct-24 21:15:04 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=87gzkYYBFi6Wpf271oaXEBaIol2gkcOgny_leAPDXiU-1728679504216-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8d11b10da96cb75f-BRU'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
-2024-10-11 22:45:04,201 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2024-10-11 22:45:04,201 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2024-10-11 22:45:04,202 - httpcore.http11 - DEBUG - receive_response_body.complete
-2024-10-11 22:45:04,202 - httpcore.http11 - DEBUG - response_closed.started
-2024-10-11 22:45:04,202 - httpcore.http11 - DEBUG - response_closed.complete
-2024-10-11 22:45:04,202 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers([('date', 'Fri, 11 Oct 2024 20:45:04 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'minute-memo'), ('openai-processing-ms', '1096'), ('openai-version', '2020-10-01'), ('x-ratelimit-limit-requests', '500'), ('x-ratelimit-limit-tokens', '30000'), ('x-ratelimit-remaining-requests', '499'), ('x-ratelimit-remaining-tokens', '29925'), ('x-ratelimit-reset-requests', '120ms'), ('x-ratelimit-reset-tokens', '150ms'), ('x-request-id', 'req_b1ed5ac9f588250322f6bc5cd787566e'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=MU5BHGqR92yeHGfLzagkFIzzeeXzyy_uyNsst75_Lk4-1728679504-1.0.1.1-IC0kxr1HvPpdSIuNzwIJrlc8lzzHtJuPaBb4w2poGptPdXUny14ALlgmcgjWVMdz6ImJS8OcWxt1y0lyP1ZuIg; path=/; expires=Fri, 11-Oct-24 21:15:04 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=87gzkYYBFi6Wpf271oaXEBaIol2gkcOgny_leAPDXiU-1728679504216-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8d11b10da96cb75f-BRU'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
-2024-10-11 22:45:04,202 - openai._base_client - DEBUG - request_id: req_b1ed5ac9f588250322f6bc5cd787566e
-2024-10-11 22:45:04,202 - routes - DEBUG - Full OpenAI response: ChatCompletion(id='chatcmpl-AHGnPM9cL06FMbwpJUMB9ehjaESOh', choices=[Choice(finish_reason='stop', index=0, logprobs=None, message=ChatCompletionMessage(content='{"action_items":[{"summary":"Watch Tango of Cash","details":"Organize a movie night for the team to watch Tango of Cash as it was mentioned to be a fun movie and aligns with the mentioned interest in bromance movies.","assigned_to":"Team Coordinator","due_date":null,"completed":false}]}', refusal=None, role='assistant', function_call=None, tool_calls=None))], created=1728679503, model='gpt-4o-2024-08-06', object='chat.completion', service_tier=None, system_fingerprint='fp_6b68a8204b', usage=CompletionUsage(completion_tokens=63, prompt_tokens=183, total_tokens=246, completion_tokens_details=CompletionTokensDetails(reasoning_tokens=0), prompt_tokens_details={'cached_tokens': 0}))
-2024-10-11 22:45:04,203 - routes - DEBUG - Response content: {"action_items":[{"summary":"Watch Tango of Cash","details":"Organize a movie night for the team to watch Tango of Cash as it was mentioned to be a fun movie and aligns with the mentioned interest in bromance movies.","assigned_to":"Team Coordinator","due_date":null,"completed":false}]}
-2024-10-11 22:45:04,216 - routes - INFO - Action points saved successfully for session_id: 165
-2024-10-11 22:45:04,220 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:45:04,221 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:45:04] "POST /api/extract_action_points/165 HTTP/1.1" 200 -
-2024-10-11 22:45:11,133 - routes - DEBUG - Starting calendar events retrieval process
-2024-10-11 22:45:11,133 - routes - DEBUG - User gaetan.buelinckx@gmail.com is authenticated
-2024-10-11 22:45:11,134 - minutememo_app.app - INFO - Local audio URL for session ID 165: http://localhost:5000/uploads/audio_recordings/eb3cd1d7-62eb-4fb4-8889-0b158b574213.mp3
-2024-10-11 22:45:11,134 - routes - DEBUG - OAuth token successfully retrieved from the database
-2024-10-11 22:45:11,134 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:45:11,134 - routes - DEBUG - Headers set with the Bearer token
-2024-10-11 22:45:11,135 - routes - ERROR - Missing 'start' or 'end' parameters in the request
-2024-10-11 22:45:11,135 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:45:11,135 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:45:11] "GET /api/sessions/165 HTTP/1.1" 200 -
-2024-10-11 22:45:11,136 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:45:11] "[31m[1mGET /api/calendar/events HTTP/1.1[0m" 400 -
-2024-10-11 22:45:11,141 - minutememo_app.app - INFO - Local audio URL for session ID 165: http://localhost:5000/uploads/audio_recordings/eb3cd1d7-62eb-4fb4-8889-0b158b574213.mp3
-2024-10-11 22:45:11,140 - routes - DEBUG - Starting calendar events retrieval process
-2024-10-11 22:45:11,141 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:45:11,141 - routes - DEBUG - User gaetan.buelinckx@gmail.com is authenticated
-2024-10-11 22:45:11,142 - routes - DEBUG - OAuth token successfully retrieved from the database
-2024-10-11 22:45:11,142 - routes - DEBUG - Headers set with the Bearer token
-2024-10-11 22:45:11,142 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:45:11] "GET /api/sessions/165 HTTP/1.1" 200 -
-2024-10-11 22:45:11,142 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:45:11,142 - routes - ERROR - Missing 'start' or 'end' parameters in the request
-2024-10-11 22:45:11,145 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:45:11,145 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:45:11] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-10-11 22:45:11,155 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:45:11] "[31m[1mGET /api/calendar/events HTTP/1.1[0m" 400 -
-2024-10-11 22:45:11,158 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:45:11,179 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:45:11] "GET /api/sessions/165/summaries HTTP/1.1" 200 -
-2024-10-11 22:45:11,179 - routes - DEBUG - Starting calendar events retrieval process
-2024-10-11 22:45:11,179 - routes - DEBUG - User gaetan.buelinckx@gmail.com is authenticated
-2024-10-11 22:45:11,180 - routes - DEBUG - OAuth token successfully retrieved from the database
-2024-10-11 22:45:11,180 - routes - DEBUG - Headers set with the Bearer token
-2024-10-11 22:45:11,181 - routes - ERROR - Missing 'start' or 'end' parameters in the request
-2024-10-11 22:45:11,182 - minutememo_app.app - INFO - Local audio URL for session ID 165: http://localhost:5000/uploads/audio_recordings/eb3cd1d7-62eb-4fb4-8889-0b158b574213.mp3
-2024-10-11 22:45:11,182 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:45:11,182 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:45:11,184 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:45:11,184 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:45:11] "[31m[1mGET /api/calendar/events HTTP/1.1[0m" 400 -
-2024-10-11 22:45:11,184 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:45:11] "GET /api/sessions/165 HTTP/1.1" 200 -
-2024-10-11 22:45:11,186 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:45:11] "GET /api/sessions/165/summaries HTTP/1.1" 200 -
-2024-10-11 22:45:11,187 - routes - DEBUG - Fetching action points for session_id: 165
-2024-10-11 22:45:11,190 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:45:11,191 - minutememo_app.app - INFO - Local audio URL for session ID 165: http://localhost:5000/uploads/audio_recordings/eb3cd1d7-62eb-4fb4-8889-0b158b574213.mp3
-2024-10-11 22:45:11,191 - routes - DEBUG - Returning action points for session_id: 165
-2024-10-11 22:45:11,194 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:45:11] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-10-11 22:45:11,195 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:45:11,196 - auth - DEBUG - After request, Origin: None
-2024-10-11 22:45:11,196 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:45:11,196 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:45:11,198 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:45:11] "[35m[1mGET /uploads/audio_recordings/eb3cd1d7-62eb-4fb4-8889-0b158b574213.mp3 HTTP/1.1[0m" 206 -
-2024-10-11 22:45:11,199 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:45:11] "GET /api/sessions/165 HTTP/1.1" 200 -
-2024-10-11 22:45:11,210 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:45:11] "GET /api/sessions/165/action_points HTTP/1.1" 200 -
-2024-10-11 22:45:11,211 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:45:11] "GET /api/sessions/165/summaries HTTP/1.1" 200 -
-2024-10-11 22:45:11,216 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:45:11,215 - routes - DEBUG - Fetching action points for session_id: 165
-2024-10-11 22:45:11,218 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:45:11] "GET /api/meetinghubs HTTP/1.1" 200 -
-2024-10-11 22:45:11,219 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:45:11,220 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:45:11] "GET /api/sessions/165/summaries HTTP/1.1" 200 -
-2024-10-11 22:45:11,220 - routes - DEBUG - Returning action points for session_id: 165
-2024-10-11 22:45:11,221 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:45:11,223 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:45:11] "GET /api/sessions/165/action_points HTTP/1.1" 200 -
-2024-10-11 22:45:11,225 - routes - DEBUG - Fetching action points for session_id: 165
-2024-10-11 22:45:11,229 - routes - DEBUG - Returning action points for session_id: 165
-2024-10-11 22:45:11,229 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:45:11,230 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:45:11] "GET /api/sessions/165/action_points HTTP/1.1" 200 -
-2024-10-11 22:45:11,232 - routes - DEBUG - Fetching action points for session_id: 165
-2024-10-11 22:45:11,233 - routes - DEBUG - Returning action points for session_id: 165
-2024-10-11 22:45:11,234 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-11 22:45:11,235 - werkzeug - INFO - 127.0.0.1 - - [11/Oct/2024 22:45:11] "GET /api/sessions/165/action_points HTTP/1.1" 200 -
-2024-10-13 20:12:30 DEBUG: close.started
-2024-10-13 20:12:30,234 - httpcore.connection - DEBUG - close.started
-2024-10-13 20:12:30 DEBUG: close.complete
-2024-10-13 20:12:30,241 - httpcore.connection - DEBUG - close.complete
-2024-10-13 20:12:30 DEBUG: close.started
-2024-10-13 20:12:30,241 - httpcore.connection - DEBUG - close.started
-2024-10-13 20:12:30 DEBUG: close.complete
-2024-10-13 20:12:30,241 - httpcore.connection - DEBUG - close.complete
-2024-10-13 20:12:30 DEBUG: close.started
-2024-10-13 20:12:30,241 - httpcore.connection - DEBUG - close.started
-2024-10-13 20:12:30 DEBUG: close.complete
-2024-10-13 20:12:30,241 - httpcore.connection - DEBUG - close.complete
+2024-10-14 21:36:58,981 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:36:58,982 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:36:58,982 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:36:58,982 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:36:58,988 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:36:58] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:36:58,989 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:36:58] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:36:58,989 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:36:58] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:36:58,990 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:36:58] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:36:58,994 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:36:58,995 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:36:58] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:36:59,360 - urllib3.connectionpool - DEBUG - https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A36%3A57.994Z&timeMax=2025-04-14T19%3A36%3A57.994Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:36:59,674 - routes - DEBUG - Fetched 476 events in this request
+2024-10-14 21:36:59,678 - routes - DEBUG - No more pages of events to fetch
+2024-10-14 21:36:59,678 - routes - DEBUG - Finished fetching a total of 476 events
+2024-10-14 21:36:59,956 - routes - DEBUG - Returning 476 processed events
+2024-10-14 21:36:59,958 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:36:59,958 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:36:59] "GET /api/calendar/events?start=2024-10-14T19:36:57.994Z&end=2025-04-14T19:36:57.994Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:36:59,970 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:36:59,970 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:36:59,970 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:36:59,970 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:36:59,971 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:36:59,971 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:36:59] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:36:59,972 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:36:59] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:36:59,972 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:36:59] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:36:59,972 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:36:59] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:36:59,972 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:36:59] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:37:50,869 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:50,869 - routes - DEBUG - Starting calendar events retrieval process
+2024-10-14 21:37:50,870 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:50] "GET /users HTTP/1.1" 200 -
+2024-10-14 21:37:50,870 - routes - DEBUG - User gaetan.buelinckx@gmail.com is authenticated
+2024-10-14 21:37:50,871 - routes - DEBUG - OAuth token successfully retrieved from the database
+2024-10-14 21:37:50,873 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:50,872 - routes - DEBUG - Headers set with the Bearer token
+2024-10-14 21:37:50,873 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:50,873 - routes - DEBUG - Fetching events between 2024-10-14T19:37:50.864Z and 2025-04-14T19:37:50.864Z
+2024-10-14 21:37:50,873 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:50] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-10-14 21:37:50,875 - routes - DEBUG - Requesting events with params: {'timeMin': '2024-10-14T19:37:50.864Z', 'timeMax': '2025-04-14T19:37:50.864Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
+2024-10-14 21:37:50,875 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:50] "GET /users HTTP/1.1" 200 -
+2024-10-14 21:37:50,876 - routes - DEBUG - Starting calendar events retrieval process
+2024-10-14 21:37:50,877 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-14 21:37:50,877 - routes - DEBUG - User gaetan.buelinckx@gmail.com is authenticated
+2024-10-14 21:37:50,878 - routes - DEBUG - OAuth token successfully retrieved from the database
+2024-10-14 21:37:50,879 - routes - DEBUG - Headers set with the Bearer token
+2024-10-14 21:37:50,879 - routes - DEBUG - Fetching events between 2024-10-14T19:37:50.873Z and 2025-04-14T19:37:50.873Z
+2024-10-14 21:37:50,879 - routes - DEBUG - Requesting events with params: {'timeMin': '2024-10-14T19:37:50.873Z', 'timeMax': '2025-04-14T19:37:50.873Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
+2024-10-14 21:37:50,882 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-14 21:37:50,882 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:50,882 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:50,883 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:50] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-10-14 21:37:50,883 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:50] "GET /users HTTP/1.1" 200 -
+2024-10-14 21:37:50,886 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:50,886 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:50] "GET /users HTTP/1.1" 200 -
+2024-10-14 21:37:50,896 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:50,897 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:50] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-10-14 21:37:51,315 - urllib3.connectionpool - DEBUG - https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A37%3A50.873Z&timeMax=2025-04-14T19%3A37%3A50.873Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:37:51,317 - urllib3.connectionpool - DEBUG - https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A37%3A50.864Z&timeMax=2025-04-14T19%3A37%3A50.864Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:37:51,593 - routes - DEBUG - Fetched 476 events in this request
+2024-10-14 21:37:51,596 - routes - DEBUG - No more pages of events to fetch
+2024-10-14 21:37:51,596 - routes - DEBUG - Finished fetching a total of 476 events
+2024-10-14 21:37:51,640 - routes - DEBUG - Fetched 476 events in this request
+2024-10-14 21:37:51,643 - routes - DEBUG - No more pages of events to fetch
+2024-10-14 21:37:51,644 - routes - DEBUG - Finished fetching a total of 476 events
+2024-10-14 21:37:51,773 - routes - DEBUG - Returning 476 processed events
+2024-10-14 21:37:51,775 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:51,776 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:51] "GET /api/calendar/events?start=2024-10-14T19:37:50.873Z&end=2025-04-14T19:37:50.873Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:37:51,787 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:51,787 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:51,788 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:51,790 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:51] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:37:51,790 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:51,792 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:51] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:37:51,793 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:51,793 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:51] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:37:51,794 - routes - DEBUG - Returning 476 processed events
+2024-10-14 21:37:51,795 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:51] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:37:51,796 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:51] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:37:51,797 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:51,798 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:51] "GET /api/calendar/events?start=2024-10-14T19:37:50.864Z&end=2025-04-14T19:37:50.864Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:37:51,800 - routes - DEBUG - Starting calendar events retrieval process
+2024-10-14 21:37:51,800 - routes - DEBUG - User gaetan.buelinckx@gmail.com is authenticated
+2024-10-14 21:37:51,800 - routes - DEBUG - OAuth token successfully retrieved from the database
+2024-10-14 21:37:51,800 - routes - DEBUG - Headers set with the Bearer token
+2024-10-14 21:37:51,800 - routes - DEBUG - Fetching events between 2024-10-14T19:37:50.864Z and 2025-04-14T19:37:50.864Z
+2024-10-14 21:37:51,800 - routes - DEBUG - Requesting events with params: {'timeMin': '2024-10-14T19:37:50.864Z', 'timeMax': '2025-04-14T19:37:50.864Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
+2024-10-14 21:37:51,801 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-14 21:37:51,807 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:51,808 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:51,808 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:51,808 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:51,808 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:51] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:37:51,809 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:51] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:37:51,809 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:51] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:37:51,810 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:51] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:37:51,820 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:51,821 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:51] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:37:52,314 - urllib3.connectionpool - DEBUG - https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A37%3A50.864Z&timeMax=2025-04-14T19%3A37%3A50.864Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:37:52,606 - routes - DEBUG - Fetched 476 events in this request
+2024-10-14 21:37:52,611 - routes - DEBUG - No more pages of events to fetch
+2024-10-14 21:37:52,611 - routes - DEBUG - Finished fetching a total of 476 events
+2024-10-14 21:37:52,895 - routes - DEBUG - Returning 476 processed events
+2024-10-14 21:37:52,898 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:52,900 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:52] "GET /api/calendar/events?start=2024-10-14T19:37:50.864Z&end=2025-04-14T19:37:50.864Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:37:52,915 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:52,916 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:52,916 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:52,917 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:52,918 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:37:52,919 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:52] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:37:52,920 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:52] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:37:52,920 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:52] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:37:52,921 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:52] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:37:52,921 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:37:52] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:39:56 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-10-14 21:39:56,810 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-10-14 21:39:57 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-10-14 21:39:57,072 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-10-14 21:39:57 INFO: [33mPress CTRL+C to quit[0m
+2024-10-14 21:39:57,072 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-10-14 21:40:00 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:00,316 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:00 DEBUG: Starting calendar events retrieval process
+2024-10-14 21:40:00 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:00] "GET /users HTTP/1.1" 200 -
+2024-10-14 21:40:00 DEBUG: Starting calendar events retrieval process
+2024-10-14 21:40:00,316 - routes - DEBUG - Starting calendar events retrieval process
+2024-10-14 21:40:00 DEBUG: User gaetan.buelinckx@gmail.com is authenticated
+2024-10-14 21:40:00,318 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:00] "GET /users HTTP/1.1" 200 -
+2024-10-14 21:40:00,318 - routes - DEBUG - Starting calendar events retrieval process
+2024-10-14 21:40:00 DEBUG: User gaetan.buelinckx@gmail.com is authenticated
+2024-10-14 21:40:00,318 - routes - DEBUG - User gaetan.buelinckx@gmail.com is authenticated
+2024-10-14 21:40:00 DEBUG: OAuth token successfully retrieved from the database
+2024-10-14 21:40:00,318 - routes - DEBUG - User gaetan.buelinckx@gmail.com is authenticated
+2024-10-14 21:40:00 DEBUG: OAuth token successfully retrieved from the database
+2024-10-14 21:40:00,318 - routes - DEBUG - OAuth token successfully retrieved from the database
+2024-10-14 21:40:00 DEBUG: Headers set with the Bearer token
+2024-10-14 21:40:00,318 - routes - DEBUG - OAuth token successfully retrieved from the database
+2024-10-14 21:40:00 DEBUG: Headers set with the Bearer token
+2024-10-14 21:40:00,319 - routes - DEBUG - Headers set with the Bearer token
+2024-10-14 21:40:00 DEBUG: Fetching events between 2024-10-14T19:40:00.263Z and 2025-04-14T19:40:00.263Z
+2024-10-14 21:40:00,319 - routes - DEBUG - Headers set with the Bearer token
+2024-10-14 21:40:00 DEBUG: Fetching events between 2024-10-14T19:40:00.252Z and 2025-04-14T19:40:00.252Z
+2024-10-14 21:40:00,319 - routes - DEBUG - Fetching events between 2024-10-14T19:40:00.263Z and 2025-04-14T19:40:00.263Z
+2024-10-14 21:40:00 DEBUG: Requesting events with params: {'timeMin': '2024-10-14T19:40:00.263Z', 'timeMax': '2025-04-14T19:40:00.263Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
+2024-10-14 21:40:00 DEBUG: Starting calendar events retrieval process
+2024-10-14 21:40:00,319 - routes - DEBUG - Fetching events between 2024-10-14T19:40:00.252Z and 2025-04-14T19:40:00.252Z
+2024-10-14 21:40:00 DEBUG: Requesting events with params: {'timeMin': '2024-10-14T19:40:00.252Z', 'timeMax': '2025-04-14T19:40:00.252Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
+2024-10-14 21:40:00,320 - routes - DEBUG - Requesting events with params: {'timeMin': '2024-10-14T19:40:00.263Z', 'timeMax': '2025-04-14T19:40:00.263Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
+2024-10-14 21:40:00,320 - routes - DEBUG - Starting calendar events retrieval process
+2024-10-14 21:40:00 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:00 DEBUG: User gaetan.buelinckx@gmail.com is authenticated
+2024-10-14 21:40:00,322 - routes - DEBUG - Requesting events with params: {'timeMin': '2024-10-14T19:40:00.252Z', 'timeMax': '2025-04-14T19:40:00.252Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
+2024-10-14 21:40:00 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:00,323 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:00,322 - routes - DEBUG - User gaetan.buelinckx@gmail.com is authenticated
+2024-10-14 21:40:00 DEBUG: OAuth token successfully retrieved from the database
+2024-10-14 21:40:00 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:00] "GET /users HTTP/1.1" 200 -
+2024-10-14 21:40:00,323 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:00,323 - routes - DEBUG - OAuth token successfully retrieved from the database
+2024-10-14 21:40:00 DEBUG: Headers set with the Bearer token
+2024-10-14 21:40:00,324 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:00] "GET /users HTTP/1.1" 200 -
+2024-10-14 21:40:00 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:00] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-10-14 21:40:00,324 - routes - DEBUG - Headers set with the Bearer token
+2024-10-14 21:40:00 DEBUG: Fetching events between 2024-10-14T19:40:00.251Z and 2025-04-14T19:40:00.251Z
+2024-10-14 21:40:00,325 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:00] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-10-14 21:40:00,325 - routes - DEBUG - Fetching events between 2024-10-14T19:40:00.251Z and 2025-04-14T19:40:00.251Z
+2024-10-14 21:40:00 DEBUG: Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-14 21:40:00 DEBUG: Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-14 21:40:00 DEBUG: Requesting events with params: {'timeMin': '2024-10-14T19:40:00.251Z', 'timeMax': '2025-04-14T19:40:00.251Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
+2024-10-14 21:40:00,327 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-14 21:40:00,327 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-14 21:40:00,327 - routes - DEBUG - Requesting events with params: {'timeMin': '2024-10-14T19:40:00.251Z', 'timeMax': '2025-04-14T19:40:00.251Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
+2024-10-14 21:40:00 DEBUG: Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-14 21:40:00,330 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-14 21:40:00 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:00,333 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:00 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:00 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:00] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-10-14 21:40:00,334 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:00,334 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:00] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-10-14 21:40:00 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:00] "GET /users HTTP/1.1" 200 -
+2024-10-14 21:40:00,335 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:00] "GET /users HTTP/1.1" 200 -
+2024-10-14 21:40:00 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:00 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:00,339 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:00,339 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:00 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:00] "GET /users HTTP/1.1" 200 -
+2024-10-14 21:40:00,340 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:00] "GET /users HTTP/1.1" 200 -
+2024-10-14 21:40:00 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:00] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-10-14 21:40:00,340 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:00] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-10-14 21:40:00 DEBUG: https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A40%3A00.252Z&timeMax=2025-04-14T19%3A40%3A00.252Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:40:00,736 - urllib3.connectionpool - DEBUG - https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A40%3A00.252Z&timeMax=2025-04-14T19%3A40%3A00.252Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:40:00 DEBUG: https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A40%3A00.251Z&timeMax=2025-04-14T19%3A40%3A00.251Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:40:00,755 - urllib3.connectionpool - DEBUG - https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A40%3A00.251Z&timeMax=2025-04-14T19%3A40%3A00.251Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:40:00 DEBUG: https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A40%3A00.263Z&timeMax=2025-04-14T19%3A40%3A00.263Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:40:00,756 - urllib3.connectionpool - DEBUG - https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A40%3A00.263Z&timeMax=2025-04-14T19%3A40%3A00.263Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:40:01 DEBUG: Fetched 476 events in this request
+2024-10-14 21:40:01,222 - routes - DEBUG - Fetched 476 events in this request
+2024-10-14 21:40:01 DEBUG: No more pages of events to fetch
+2024-10-14 21:40:01,227 - routes - DEBUG - No more pages of events to fetch
+2024-10-14 21:40:01 DEBUG: Finished fetching a total of 476 events
+2024-10-14 21:40:01,227 - routes - DEBUG - Finished fetching a total of 476 events
+2024-10-14 21:40:01 DEBUG: Fetched 476 events in this request
+2024-10-14 21:40:01,233 - routes - DEBUG - Fetched 476 events in this request
+2024-10-14 21:40:01 DEBUG: No more pages of events to fetch
+2024-10-14 21:40:01,238 - routes - DEBUG - No more pages of events to fetch
+2024-10-14 21:40:01 DEBUG: Finished fetching a total of 476 events
+2024-10-14 21:40:01,239 - routes - DEBUG - Finished fetching a total of 476 events
+2024-10-14 21:40:01 DEBUG: Fetched 476 events in this request
+2024-10-14 21:40:01,247 - routes - DEBUG - Fetched 476 events in this request
+2024-10-14 21:40:01 DEBUG: No more pages of events to fetch
+2024-10-14 21:40:01,252 - routes - DEBUG - No more pages of events to fetch
+2024-10-14 21:40:01 DEBUG: Finished fetching a total of 476 events
+2024-10-14 21:40:01,253 - routes - DEBUG - Finished fetching a total of 476 events
+2024-10-14 21:40:01 DEBUG: Returning 476 processed events
+2024-10-14 21:40:01,423 - routes - DEBUG - Returning 476 processed events
+2024-10-14 21:40:01 DEBUG: Returning 476 processed events
+2024-10-14 21:40:01 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:01,424 - routes - DEBUG - Returning 476 processed events
+2024-10-14 21:40:01,425 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:01 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:01,427 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:01 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:01] "GET /api/calendar/events?start=2024-10-14T19:40:00.263Z&end=2025-04-14T19:40:00.263Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:40:01,427 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:01] "GET /api/calendar/events?start=2024-10-14T19:40:00.263Z&end=2025-04-14T19:40:00.263Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:40:01 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:01] "GET /api/calendar/events?start=2024-10-14T19:40:00.252Z&end=2025-04-14T19:40:00.252Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:40:01,428 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:01] "GET /api/calendar/events?start=2024-10-14T19:40:00.252Z&end=2025-04-14T19:40:00.252Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:40:01 DEBUG: Returning 476 processed events
+2024-10-14 21:40:01,428 - routes - DEBUG - Returning 476 processed events
+2024-10-14 21:40:01 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:01,430 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:01 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:01] "GET /api/calendar/events?start=2024-10-14T19:40:00.251Z&end=2025-04-14T19:40:00.251Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:40:01,430 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:01] "GET /api/calendar/events?start=2024-10-14T19:40:00.251Z&end=2025-04-14T19:40:00.251Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:40:01 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:01 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:01,440 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:01 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:01 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:01 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:01,440 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:01 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01,441 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:01,441 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:01 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01,441 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:01 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01,442 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01,442 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01,442 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01,442 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01,443 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:01 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:01,449 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:01 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:01,449 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:01 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:01 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:01 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01,449 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:01 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01,449 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:01 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01,449 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:01 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01,450 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01,452 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01,452 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01,452 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01,453 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:01 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:01 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:01 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:01,458 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:01,460 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:01 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01,460 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:01,460 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:01 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:40:01,462 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01,462 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01,462 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:40:01,463 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01,463 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01 INFO: 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:40:01,465 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:40:01] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:48:08 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-10-14 21:48:08,075 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-10-14 21:48:08 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-10-14 21:48:08,331 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-10-14 21:48:08 INFO: [33mPress CTRL+C to quit[0m
+2024-10-14 21:48:08,331 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-10-14 21:48:10 DEBUG: Starting calendar events retrieval process
+2024-10-14 21:48:10 DEBUG: Starting calendar events retrieval process
+2024-10-14 21:48:10,028 - routes - DEBUG - Starting calendar events retrieval process
+2024-10-14 21:48:10 DEBUG: Starting calendar events retrieval process
+2024-10-14 21:48:10 DEBUG: User gaetan.buelinckx@gmail.com is authenticated
+2024-10-14 21:48:10,028 - routes - DEBUG - Starting calendar events retrieval process
+2024-10-14 21:48:10 DEBUG: User gaetan.buelinckx@gmail.com is authenticated
+2024-10-14 21:48:10,028 - routes - DEBUG - Starting calendar events retrieval process
+2024-10-14 21:48:10 DEBUG: User gaetan.buelinckx@gmail.com is authenticated
+2024-10-14 21:48:10,028 - routes - DEBUG - User gaetan.buelinckx@gmail.com is authenticated
+2024-10-14 21:48:10 DEBUG: OAuth token successfully retrieved from the database
+2024-10-14 21:48:10,028 - routes - DEBUG - User gaetan.buelinckx@gmail.com is authenticated
+2024-10-14 21:48:10 DEBUG: OAuth token successfully retrieved from the database
+2024-10-14 21:48:10,028 - routes - DEBUG - User gaetan.buelinckx@gmail.com is authenticated
+2024-10-14 21:48:10 DEBUG: OAuth token successfully retrieved from the database
+2024-10-14 21:48:10,029 - routes - DEBUG - OAuth token successfully retrieved from the database
+2024-10-14 21:48:10 DEBUG: Headers set with the Bearer token
+2024-10-14 21:48:10,029 - routes - DEBUG - OAuth token successfully retrieved from the database
+2024-10-14 21:48:10 DEBUG: Headers set with the Bearer token
+2024-10-14 21:48:10,029 - routes - DEBUG - OAuth token successfully retrieved from the database
+2024-10-14 21:48:10 DEBUG: Headers set with the Bearer token
+2024-10-14 21:48:10,029 - routes - DEBUG - Headers set with the Bearer token
+2024-10-14 21:48:10 DEBUG: Fetching events between 2024-10-14T19:48:09.951Z and 2025-04-14T19:48:09.951Z
+2024-10-14 21:48:10,029 - routes - DEBUG - Headers set with the Bearer token
+2024-10-14 21:48:10 DEBUG: Fetching events between 2024-10-14T19:48:09.952Z and 2025-04-14T19:48:09.952Z
+2024-10-14 21:48:10,029 - routes - DEBUG - Headers set with the Bearer token
+2024-10-14 21:48:10 DEBUG: Fetching events between 2024-10-14T19:48:09.956Z and 2025-04-14T19:48:09.956Z
+2024-10-14 21:48:10,029 - routes - DEBUG - Fetching events between 2024-10-14T19:48:09.951Z and 2025-04-14T19:48:09.951Z
+2024-10-14 21:48:10,029 - routes - DEBUG - Fetching events between 2024-10-14T19:48:09.952Z and 2025-04-14T19:48:09.952Z
+2024-10-14 21:48:10 DEBUG: Requesting events with params: {'timeMin': '2024-10-14T19:48:09.951Z', 'timeMax': '2025-04-14T19:48:09.951Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
+2024-10-14 21:48:10 DEBUG: Requesting events with params: {'timeMin': '2024-10-14T19:48:09.952Z', 'timeMax': '2025-04-14T19:48:09.952Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
+2024-10-14 21:48:10,029 - routes - DEBUG - Fetching events between 2024-10-14T19:48:09.956Z and 2025-04-14T19:48:09.956Z
+2024-10-14 21:48:10 DEBUG: Requesting events with params: {'timeMin': '2024-10-14T19:48:09.956Z', 'timeMax': '2025-04-14T19:48:09.956Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
+2024-10-14 21:48:10,029 - routes - DEBUG - Requesting events with params: {'timeMin': '2024-10-14T19:48:09.951Z', 'timeMax': '2025-04-14T19:48:09.951Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
+2024-10-14 21:48:10,029 - routes - DEBUG - Requesting events with params: {'timeMin': '2024-10-14T19:48:09.952Z', 'timeMax': '2025-04-14T19:48:09.952Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
+2024-10-14 21:48:10,030 - routes - DEBUG - Requesting events with params: {'timeMin': '2024-10-14T19:48:09.956Z', 'timeMax': '2025-04-14T19:48:09.956Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
+2024-10-14 21:48:10 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:10 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:10,032 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:10,033 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:10 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:10] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-10-14 21:48:10,035 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:10] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-10-14 21:48:10 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:10] "GET /users HTTP/1.1" 200 -
+2024-10-14 21:48:10 DEBUG: Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-14 21:48:10,036 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:10] "GET /users HTTP/1.1" 200 -
+2024-10-14 21:48:10 DEBUG: Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-14 21:48:10 DEBUG: Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-14 21:48:10,036 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-14 21:48:10,036 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-14 21:48:10,037 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-14 21:48:10 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:10 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:10,041 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:10,041 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:10 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:10] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-10-14 21:48:10,042 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:10] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-10-14 21:48:10 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:10] "GET /users HTTP/1.1" 200 -
+2024-10-14 21:48:10,042 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:10] "GET /users HTTP/1.1" 200 -
+2024-10-14 21:48:10 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:10,046 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:10 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:10] "GET /users HTTP/1.1" 200 -
+2024-10-14 21:48:10,047 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:10] "GET /users HTTP/1.1" 200 -
+2024-10-14 21:48:10 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:10 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:10,050 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:10,051 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:10 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:10] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-10-14 21:48:10 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:10] "GET /users HTTP/1.1" 200 -
+2024-10-14 21:48:10,052 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:10] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-10-14 21:48:10,052 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:10] "GET /users HTTP/1.1" 200 -
+2024-10-14 21:48:10 DEBUG: https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A48%3A09.956Z&timeMax=2025-04-14T19%3A48%3A09.956Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:48:10,628 - urllib3.connectionpool - DEBUG - https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A48%3A09.956Z&timeMax=2025-04-14T19%3A48%3A09.956Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:48:10 DEBUG: https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A48%3A09.951Z&timeMax=2025-04-14T19%3A48%3A09.951Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:48:10,654 - urllib3.connectionpool - DEBUG - https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A48%3A09.951Z&timeMax=2025-04-14T19%3A48%3A09.951Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:48:10 DEBUG: https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A48%3A09.952Z&timeMax=2025-04-14T19%3A48%3A09.952Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:48:10,666 - urllib3.connectionpool - DEBUG - https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A48%3A09.952Z&timeMax=2025-04-14T19%3A48%3A09.952Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:48:10 DEBUG: Fetched 476 events in this request
+2024-10-14 21:48:10,991 - routes - DEBUG - Fetched 476 events in this request
+2024-10-14 21:48:10 DEBUG: No more pages of events to fetch
+2024-10-14 21:48:10,996 - routes - DEBUG - No more pages of events to fetch
+2024-10-14 21:48:10 DEBUG: Finished fetching a total of 476 events
+2024-10-14 21:48:10,996 - routes - DEBUG - Finished fetching a total of 476 events
+2024-10-14 21:48:11 DEBUG: Fetched 476 events in this request
+2024-10-14 21:48:11,004 - routes - DEBUG - Fetched 476 events in this request
+2024-10-14 21:48:11 DEBUG: No more pages of events to fetch
+2024-10-14 21:48:11,008 - routes - DEBUG - No more pages of events to fetch
+2024-10-14 21:48:11 DEBUG: Finished fetching a total of 476 events
+2024-10-14 21:48:11,009 - routes - DEBUG - Finished fetching a total of 476 events
+2024-10-14 21:48:11 DEBUG: Fetched 476 events in this request
+2024-10-14 21:48:11,096 - routes - DEBUG - Fetched 476 events in this request
+2024-10-14 21:48:11 DEBUG: No more pages of events to fetch
+2024-10-14 21:48:11,100 - routes - DEBUG - No more pages of events to fetch
+2024-10-14 21:48:11 DEBUG: Finished fetching a total of 476 events
+2024-10-14 21:48:11,100 - routes - DEBUG - Finished fetching a total of 476 events
+2024-10-14 21:48:11 DEBUG: Returning 476 processed events
+2024-10-14 21:48:11,209 - routes - DEBUG - Returning 476 processed events
+2024-10-14 21:48:11 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:11,212 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:11 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:11] "GET /api/calendar/events?start=2024-10-14T19:48:09.956Z&end=2025-04-14T19:48:09.956Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:48:11,213 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:11] "GET /api/calendar/events?start=2024-10-14T19:48:09.956Z&end=2025-04-14T19:48:09.956Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:48:11 DEBUG: Returning 476 processed events
+2024-10-14 21:48:11,213 - routes - DEBUG - Returning 476 processed events
+2024-10-14 21:48:11 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:11,215 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:11 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:11] "GET /api/calendar/events?start=2024-10-14T19:48:09.951Z&end=2025-04-14T19:48:09.951Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:48:11,217 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:11] "GET /api/calendar/events?start=2024-10-14T19:48:09.951Z&end=2025-04-14T19:48:09.951Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:48:11 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:11 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:11,223 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:11 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:11 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:11,226 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:11 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11,226 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:11 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11,226 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:11 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11,228 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11,228 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11,229 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11,230 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:11 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:11,237 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:11 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:11,238 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:11,240 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:11 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:11 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:11 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11,240 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11,240 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:11,241 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:11 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11,242 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11,242 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11,243 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11,245 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:11,253 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:11 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11,254 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11 DEBUG: Returning 476 processed events
+2024-10-14 21:48:11,293 - routes - DEBUG - Returning 476 processed events
+2024-10-14 21:48:11 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:11,294 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:11 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:11] "GET /api/calendar/events?start=2024-10-14T19:48:09.952Z&end=2025-04-14T19:48:09.952Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:48:11,295 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:11] "GET /api/calendar/events?start=2024-10-14T19:48:09.952Z&end=2025-04-14T19:48:09.952Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:48:11 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:11 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:11,301 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:11 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:11 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:11,301 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:11 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11,301 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:11 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:11 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11,302 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:11 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11,303 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11,303 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:11,303 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11,303 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11,304 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:48:11,304 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:11] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:48:13 INFO: GET /api/meetings called with hub_id: 32, meeting_id: None
+2024-10-14 21:48:13,371 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 32, meeting_id: None
+2024-10-14 21:48:13 INFO: Fetching meetings for hub_id: 32
+2024-10-14 21:48:13,372 - minutememo_app.app - INFO - Fetching meetings for hub_id: 32
+2024-10-14 21:48:13 INFO: Successfully fetched 2 meetings for hub_id: 32
+2024-10-14 21:48:13,373 - minutememo_app.app - INFO - Successfully fetched 2 meetings for hub_id: 32
+2024-10-14 21:48:13 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:13,373 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:13 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:13] "GET /api/meetings?hub_id=32 HTTP/1.1" 200 -
+2024-10-14 21:48:13,374 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:13] "GET /api/meetings?hub_id=32 HTTP/1.1" 200 -
+2024-10-14 21:48:13 INFO: GET /api/meetings called with hub_id: 32, meeting_id: None
+2024-10-14 21:48:13,376 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 32, meeting_id: None
+2024-10-14 21:48:13 INFO: Fetching meetings for hub_id: 32
+2024-10-14 21:48:13,377 - minutememo_app.app - INFO - Fetching meetings for hub_id: 32
+2024-10-14 21:48:13 INFO: Successfully fetched 2 meetings for hub_id: 32
+2024-10-14 21:48:13,377 - minutememo_app.app - INFO - Successfully fetched 2 meetings for hub_id: 32
+2024-10-14 21:48:13 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:13,378 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:13 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:13] "GET /api/meetings?hub_id=32 HTTP/1.1" 200 -
+2024-10-14 21:48:13,378 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:13] "GET /api/meetings?hub_id=32 HTTP/1.1" 200 -
+2024-10-14 21:48:25 INFO: User gaetan.buelinckx@gmail.com has an active subscription.
+2024-10-14 21:48:25,534 - minutememo_app.app - INFO - User gaetan.buelinckx@gmail.com has an active subscription.
+2024-10-14 21:48:25 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:25,534 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:25 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:25] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-10-14 21:48:25,535 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:25] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-10-14 21:48:25 INFO: GET /api/meetings called with hub_id: 32, meeting_id: None
+2024-10-14 21:48:25 INFO: Fetching meeting sessions for hub ID: 32
+2024-10-14 21:48:25,544 - minutememo_app.app - INFO - GET /api/meetings called with hub_id: 32, meeting_id: None
+2024-10-14 21:48:25 DEBUG: Starting calendar events retrieval process
+2024-10-14 21:48:25,545 - minutememo_app.app - INFO - Fetching meeting sessions for hub ID: 32
+2024-10-14 21:48:25 INFO: Fetching meetings for hub_id: 32
+2024-10-14 21:48:25 INFO: User gaetan.buelinckx@gmail.com has an active subscription.
+2024-10-14 21:48:25,545 - routes - DEBUG - Starting calendar events retrieval process
+2024-10-14 21:48:25 DEBUG: User gaetan.buelinckx@gmail.com is authenticated
+2024-10-14 21:48:25,545 - minutememo_app.app - INFO - Fetching meetings for hub_id: 32
+2024-10-14 21:48:25,546 - minutememo_app.app - INFO - User gaetan.buelinckx@gmail.com has an active subscription.
+2024-10-14 21:48:25 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:25,547 - routes - DEBUG - User gaetan.buelinckx@gmail.com is authenticated
+2024-10-14 21:48:25,547 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:25 DEBUG: OAuth token successfully retrieved from the database
+2024-10-14 21:48:25 INFO: Successfully fetched 2 meetings for hub_id: 32
+2024-10-14 21:48:25,547 - routes - DEBUG - OAuth token successfully retrieved from the database
+2024-10-14 21:48:25 DEBUG: Headers set with the Bearer token
+2024-10-14 21:48:25,548 - minutememo_app.app - INFO - Successfully fetched 2 meetings for hub_id: 32
+2024-10-14 21:48:25 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:25] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-10-14 21:48:25 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:25,548 - routes - DEBUG - Headers set with the Bearer token
+2024-10-14 21:48:25 DEBUG: Fetching events between 2024-10-14T19:48:25.538Z and 2025-04-14T19:48:25.538Z
+2024-10-14 21:48:25,548 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:25] "GET /api/subscription-status HTTP/1.1" 200 -
+2024-10-14 21:48:25,548 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:25,549 - routes - DEBUG - Fetching events between 2024-10-14T19:48:25.538Z and 2025-04-14T19:48:25.538Z
+2024-10-14 21:48:25 DEBUG: Requesting events with params: {'timeMin': '2024-10-14T19:48:25.538Z', 'timeMax': '2025-04-14T19:48:25.538Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
+2024-10-14 21:48:25,550 - routes - DEBUG - Requesting events with params: {'timeMin': '2024-10-14T19:48:25.538Z', 'timeMax': '2025-04-14T19:48:25.538Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
+2024-10-14 21:48:25 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:25] "GET /api/meetings?hub_id=32 HTTP/1.1" 200 -
+2024-10-14 21:48:25,550 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:25] "GET /api/meetings?hub_id=32 HTTP/1.1" 200 -
+2024-10-14 21:48:25 DEBUG: Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-14 21:48:25,551 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-14 21:48:25 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:25,555 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:25 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:25] "GET /api/meetingsessions?hub_id=32 HTTP/1.1" 200 -
+2024-10-14 21:48:25,556 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:25] "GET /api/meetingsessions?hub_id=32 HTTP/1.1" 200 -
+2024-10-14 21:48:26 DEBUG: https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A48%3A25.538Z&timeMax=2025-04-14T19%3A48%3A25.538Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:48:26,164 - urllib3.connectionpool - DEBUG - https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A48%3A25.538Z&timeMax=2025-04-14T19%3A48%3A25.538Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:48:26 DEBUG: Fetched 476 events in this request
+2024-10-14 21:48:26,401 - routes - DEBUG - Fetched 476 events in this request
+2024-10-14 21:48:26 DEBUG: No more pages of events to fetch
+2024-10-14 21:48:26,406 - routes - DEBUG - No more pages of events to fetch
+2024-10-14 21:48:26 DEBUG: Finished fetching a total of 476 events
+2024-10-14 21:48:26,406 - routes - DEBUG - Finished fetching a total of 476 events
+2024-10-14 21:48:26 DEBUG: Returning 476 processed events
+2024-10-14 21:48:26,715 - routes - DEBUG - Returning 476 processed events
+2024-10-14 21:48:26 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:26,716 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:26 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:26] "GET /api/calendar/events?start=2024-10-14T19:48:25.538Z&end=2025-04-14T19:48:25.538Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:48:26,717 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:26] "GET /api/calendar/events?start=2024-10-14T19:48:25.538Z&end=2025-04-14T19:48:25.538Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:48:26 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:26 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:26,728 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:26 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:26 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:26,728 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:26 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:26] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:48:26,728 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:26 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:48:26,728 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:26 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:26] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:48:26 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:26] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:48:26,729 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:26] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:48:26,729 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:48:26 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:26] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:48:26,730 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:26] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:48:26 INFO: 127.0.0.1 - - [14/Oct/2024 21:48:26] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:48:26,730 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:26] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:48:26,730 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:26] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:48:26,731 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:48:26] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:49:14 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-10-14 21:49:14,753 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-10-14 21:49:15 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-10-14 21:49:15,009 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-10-14 21:49:15 INFO: [33mPress CTRL+C to quit[0m
+2024-10-14 21:49:15,009 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-10-14 21:49:18 DEBUG: Starting calendar events retrieval process
+2024-10-14 21:49:18 DEBUG: Starting calendar events retrieval process
+2024-10-14 21:49:18,440 - routes - DEBUG - Starting calendar events retrieval process
+2024-10-14 21:49:18,440 - routes - DEBUG - Starting calendar events retrieval process
+2024-10-14 21:49:18 DEBUG: User gaetan.buelinckx@gmail.com is authenticated
+2024-10-14 21:49:18,440 - routes - DEBUG - User gaetan.buelinckx@gmail.com is authenticated
+2024-10-14 21:49:18 DEBUG: User gaetan.buelinckx@gmail.com is authenticated
+2024-10-14 21:49:18,441 - routes - DEBUG - User gaetan.buelinckx@gmail.com is authenticated
+2024-10-14 21:49:18 DEBUG: OAuth token successfully retrieved from the database
+2024-10-14 21:49:18 DEBUG: OAuth token successfully retrieved from the database
+2024-10-14 21:49:18,441 - routes - DEBUG - OAuth token successfully retrieved from the database
+2024-10-14 21:49:18 DEBUG: Headers set with the Bearer token
+2024-10-14 21:49:18,441 - routes - DEBUG - OAuth token successfully retrieved from the database
+2024-10-14 21:49:18 DEBUG: Headers set with the Bearer token
+2024-10-14 21:49:18,441 - routes - DEBUG - Headers set with the Bearer token
+2024-10-14 21:49:18 DEBUG: Fetching events between 2024-10-14T19:49:18.370Z and 2025-04-14T19:49:18.370Z
+2024-10-14 21:49:18,441 - routes - DEBUG - Headers set with the Bearer token
+2024-10-14 21:49:18,441 - routes - DEBUG - Fetching events between 2024-10-14T19:49:18.370Z and 2025-04-14T19:49:18.370Z
+2024-10-14 21:49:18 DEBUG: Fetching events between 2024-10-14T19:49:18.366Z and 2025-04-14T19:49:18.366Z
+2024-10-14 21:49:18 DEBUG: Requesting events with params: {'timeMin': '2024-10-14T19:49:18.370Z', 'timeMax': '2025-04-14T19:49:18.370Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
+2024-10-14 21:49:18,441 - routes - DEBUG - Fetching events between 2024-10-14T19:49:18.366Z and 2025-04-14T19:49:18.366Z
+2024-10-14 21:49:18,441 - routes - DEBUG - Requesting events with params: {'timeMin': '2024-10-14T19:49:18.370Z', 'timeMax': '2025-04-14T19:49:18.370Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
+2024-10-14 21:49:18 DEBUG: Requesting events with params: {'timeMin': '2024-10-14T19:49:18.366Z', 'timeMax': '2025-04-14T19:49:18.366Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
+2024-10-14 21:49:18,441 - routes - DEBUG - Requesting events with params: {'timeMin': '2024-10-14T19:49:18.366Z', 'timeMax': '2025-04-14T19:49:18.366Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
+2024-10-14 21:49:18 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:49:18,445 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:49:18 DEBUG: Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-14 21:49:18 DEBUG: Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-14 21:49:18 INFO: 127.0.0.1 - - [14/Oct/2024 21:49:18] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-10-14 21:49:18,446 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-14 21:49:18,447 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-14 21:49:18,447 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:49:18] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-10-14 21:49:18 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:49:18,452 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:49:18 INFO: 127.0.0.1 - - [14/Oct/2024 21:49:18] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-10-14 21:49:18,453 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:49:18] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-10-14 21:49:18 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:49:18,457 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:49:18 INFO: 127.0.0.1 - - [14/Oct/2024 21:49:18] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-10-14 21:49:18,457 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:49:18] "GET /api/meetinghubs HTTP/1.1" 200 -
+2024-10-14 21:49:18 DEBUG: https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A49%3A18.370Z&timeMax=2025-04-14T19%3A49%3A18.370Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:49:18,891 - urllib3.connectionpool - DEBUG - https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A49%3A18.370Z&timeMax=2025-04-14T19%3A49%3A18.370Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:49:18 DEBUG: https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A49%3A18.366Z&timeMax=2025-04-14T19%3A49%3A18.366Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:49:18,991 - urllib3.connectionpool - DEBUG - https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A49%3A18.366Z&timeMax=2025-04-14T19%3A49%3A18.366Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:49:19 DEBUG: Fetched 476 events in this request
+2024-10-14 21:49:19,291 - routes - DEBUG - Fetched 476 events in this request
+2024-10-14 21:49:19 DEBUG: No more pages of events to fetch
+2024-10-14 21:49:19,294 - routes - DEBUG - No more pages of events to fetch
+2024-10-14 21:49:19 DEBUG: Finished fetching a total of 476 events
+2024-10-14 21:49:19,294 - routes - DEBUG - Finished fetching a total of 476 events
+2024-10-14 21:49:19 DEBUG: Fetched 476 events in this request
+2024-10-14 21:49:19,298 - routes - DEBUG - Fetched 476 events in this request
+2024-10-14 21:49:19 DEBUG: No more pages of events to fetch
+2024-10-14 21:49:19,302 - routes - DEBUG - No more pages of events to fetch
+2024-10-14 21:49:19 DEBUG: Finished fetching a total of 476 events
+2024-10-14 21:49:19,302 - routes - DEBUG - Finished fetching a total of 476 events
+2024-10-14 21:49:19 DEBUG: Returning 476 processed events
+2024-10-14 21:49:19,447 - routes - DEBUG - Returning 476 processed events
+2024-10-14 21:49:19 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:49:19,449 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:49:19 INFO: 127.0.0.1 - - [14/Oct/2024 21:49:19] "GET /api/calendar/events?start=2024-10-14T19:49:18.370Z&end=2025-04-14T19:49:18.370Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:49:19,450 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:49:19] "GET /api/calendar/events?start=2024-10-14T19:49:18.370Z&end=2025-04-14T19:49:18.370Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:49:19 DEBUG: Returning 476 processed events
+2024-10-14 21:49:19,450 - routes - DEBUG - Returning 476 processed events
+2024-10-14 21:49:19 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:49:19,452 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:49:19 INFO: 127.0.0.1 - - [14/Oct/2024 21:49:19] "GET /api/calendar/events?start=2024-10-14T19:49:18.366Z&end=2025-04-14T19:49:18.366Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:49:19,453 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:49:19] "GET /api/calendar/events?start=2024-10-14T19:49:18.366Z&end=2025-04-14T19:49:18.366Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:49:19 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:49:19 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:49:19,459 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:49:19 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:49:19,459 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:49:19 INFO: 127.0.0.1 - - [14/Oct/2024 21:49:19] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:49:19,460 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:49:19 INFO: 127.0.0.1 - - [14/Oct/2024 21:49:19] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:49:19,461 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:49:19] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:49:19,461 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:49:19] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:49:19 INFO: 127.0.0.1 - - [14/Oct/2024 21:49:19] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:49:19,462 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:49:19] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:49:19 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:49:19 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:49:19,466 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:49:19 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:49:19,466 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:49:19,466 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:49:19 INFO: 127.0.0.1 - - [14/Oct/2024 21:49:19] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:49:19 INFO: 127.0.0.1 - - [14/Oct/2024 21:49:19] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:49:19,467 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:49:19] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:49:19,467 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:49:19] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:49:19 INFO: 127.0.0.1 - - [14/Oct/2024 21:49:19] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:49:19,468 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:49:19] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:49:19 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:49:19,473 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:49:19 INFO: 127.0.0.1 - - [14/Oct/2024 21:49:19] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:49:19,474 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:49:19] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:49:19 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:49:19,475 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:49:19 INFO: 127.0.0.1 - - [14/Oct/2024 21:49:19] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:49:19 DEBUG: Starting calendar events retrieval process
+2024-10-14 21:49:19 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:49:19,477 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:49:19] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:49:19,478 - routes - DEBUG - Starting calendar events retrieval process
+2024-10-14 21:49:19 DEBUG: User gaetan.buelinckx@gmail.com is authenticated
+2024-10-14 21:49:19,478 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:49:19,478 - routes - DEBUG - User gaetan.buelinckx@gmail.com is authenticated
+2024-10-14 21:49:19 DEBUG: OAuth token successfully retrieved from the database
+2024-10-14 21:49:19 INFO: 127.0.0.1 - - [14/Oct/2024 21:49:19] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:49:19,479 - routes - DEBUG - OAuth token successfully retrieved from the database
+2024-10-14 21:49:19,479 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:49:19] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:49:19 DEBUG: Headers set with the Bearer token
+2024-10-14 21:49:19,479 - routes - DEBUG - Headers set with the Bearer token
+2024-10-14 21:49:19 DEBUG: Fetching events between 2024-10-14T19:49:18.366Z and 2025-04-14T19:49:18.366Z
+2024-10-14 21:49:19,481 - routes - DEBUG - Fetching events between 2024-10-14T19:49:18.366Z and 2025-04-14T19:49:18.366Z
+2024-10-14 21:49:19 DEBUG: Requesting events with params: {'timeMin': '2024-10-14T19:49:18.366Z', 'timeMax': '2025-04-14T19:49:18.366Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
+2024-10-14 21:49:19 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:49:19,481 - routes - DEBUG - Requesting events with params: {'timeMin': '2024-10-14T19:49:18.366Z', 'timeMax': '2025-04-14T19:49:18.366Z', 'maxResults': 2500, 'singleEvents': True, 'orderBy': 'startTime'}
+2024-10-14 21:49:19,482 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:49:19 INFO: 127.0.0.1 - - [14/Oct/2024 21:49:19] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:49:19,483 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:49:19] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:49:19 DEBUG: Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-14 21:49:19,483 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-14 21:49:19 DEBUG: https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A49%3A18.366Z&timeMax=2025-04-14T19%3A49%3A18.366Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:49:19,886 - urllib3.connectionpool - DEBUG - https://www.googleapis.com:443 "GET /calendar/v3/calendars/primary/events?timeMin=2024-10-14T19%3A49%3A18.366Z&timeMax=2025-04-14T19%3A49%3A18.366Z&maxResults=2500&singleEvents=True&orderBy=startTime HTTP/11" 200 678530
+2024-10-14 21:49:20 DEBUG: Fetched 476 events in this request
+2024-10-14 21:49:20,222 - routes - DEBUG - Fetched 476 events in this request
+2024-10-14 21:49:20 DEBUG: No more pages of events to fetch
+2024-10-14 21:49:20,227 - routes - DEBUG - No more pages of events to fetch
+2024-10-14 21:49:20 DEBUG: Finished fetching a total of 476 events
+2024-10-14 21:49:20,228 - routes - DEBUG - Finished fetching a total of 476 events
+2024-10-14 21:49:20 DEBUG: Returning 476 processed events
+2024-10-14 21:49:20,495 - routes - DEBUG - Returning 476 processed events
+2024-10-14 21:49:20 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:49:20,497 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:49:20 INFO: 127.0.0.1 - - [14/Oct/2024 21:49:20] "GET /api/calendar/events?start=2024-10-14T19:49:18.366Z&end=2025-04-14T19:49:18.366Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:49:20,498 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:49:20] "GET /api/calendar/events?start=2024-10-14T19:49:18.366Z&end=2025-04-14T19:49:18.366Z&singleEvents=false HTTP/1.1" 200 -
+2024-10-14 21:49:20 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:49:20 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:49:20,516 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:49:20 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:49:20,517 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:49:20 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:49:20 INFO: 127.0.0.1 - - [14/Oct/2024 21:49:20] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:49:20 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:49:20,517 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:49:20 INFO: 127.0.0.1 - - [14/Oct/2024 21:49:20] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:49:20,518 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:49:20,519 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:49:20] "[33mGET /api/recurring-event/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88sj0dpp64qk2chn6ook8g9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kq48d248orj0gho68r32d1k7113cgq3852k8g9i6sq34c1k8grg HTTP/1.1[0m" 404 -
+2024-10-14 21:49:20 INFO: 127.0.0.1 - - [14/Oct/2024 21:49:20] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:49:20,519 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:49:20 INFO: 127.0.0.1 - - [14/Oct/2024 21:49:20] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:49:20,520 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:49:20] "[33mGET /api/recurring-event/b5g87smtol1n1c3q2ao4ktld00 HTTP/1.1[0m" 404 -
+2024-10-14 21:49:20,520 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:49:20] "[33mGET /api/recurring-event/36ogtdrnkv686ipva0v3ins9me HTTP/1.1[0m" 404 -
+2024-10-14 21:49:20 INFO: 127.0.0.1 - - [14/Oct/2024 21:49:20] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:49:20,521 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:49:20] "[33mGET /api/recurring-event/pqd8gpgu31jo9c0e7a7puk90e4 HTTP/1.1[0m" 404 -
+2024-10-14 21:49:20,522 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:49:20] "[33mGET /api/recurring-event/85e5trb68659rlgi2l3kji1hmi HTTP/1.1[0m" 404 -
+2024-10-14 21:49:20 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:49:20,773 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:49:20 INFO: 127.0.0.1 - - [14/Oct/2024 21:49:20] "GET /users HTTP/1.1" 200 -
+2024-10-14 21:49:20,775 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:49:20] "GET /users HTTP/1.1" 200 -
+2024-10-14 21:49:20 DEBUG: After request, Origin: http://localhost:3000
+2024-10-14 21:49:20,783 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-14 21:49:20 INFO: 127.0.0.1 - - [14/Oct/2024 21:49:20] "GET /users HTTP/1.1" 200 -
+2024-10-14 21:49:20,784 - werkzeug - INFO - 127.0.0.1 - - [14/Oct/2024 21:49:20] "GET /users HTTP/1.1" 200 -

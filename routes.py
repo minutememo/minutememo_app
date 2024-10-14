@@ -116,6 +116,7 @@ def list_gcs_chunks(bucket_name, recording_id):
 
 @main.route('/generate-presigned-url', methods=['GET'])
 @cross_origin()  # Enable CORS for this route
+@login_required  # Require the user to be logged in
 def generate_presigned_url_route():
     try:
         logging.info("Request received to generate presigned URL.")
@@ -154,6 +155,100 @@ def generate_presigned_url(file_name, file_type):
 
     # Initialize the Google Cloud Storage client with credentials
 
+@main.route('/users', methods=['POST'])
+@cross_origin()  # Enable CORS for this route
+@login_required  # Require the user to be logged in
+def create_user():
+    try:
+        # Get the JSON data from the request body
+        data = request.get_json()
+
+        # Extract the required fields from the request
+        first_name = data.get('first_name')
+        last_name = data.get('last_name')
+        email = data.get('email')
+        password = data.get('password')
+        role = data.get('role', 'user')  # Default role is 'user' if not provided
+
+        # Check for required fields
+        if not first_name or not last_name or not email or not password:
+            return jsonify({"error": "First name, last name, email, and password are required."}), 400
+
+        # Check if the email already exists in the database
+        existing_user = User.query.filter_by(email=email).first()
+        if existing_user:
+            return jsonify({"error": "Email already exists."}), 400
+
+        # Hash the password
+        hashed_password = generate_password_hash(password)
+
+        # Create a new user instance
+        new_user = User(first_name=first_name, last_name=last_name, email=email, password_hash=hashed_password, internal_user_role=role)
+
+        # Add the new user to the database
+        db.session.add(new_user)
+        db.session.commit()
+
+        return jsonify({
+            "message": "User created successfully", 
+            "user": {
+                "id": new_user.id,
+                "first_name": new_user.first_name,
+                "last_name": new_user.last_name,
+                "email": new_user.email,
+                "role": new_user.internal_user_role
+            }
+        }), 201
+
+    except Exception as e:
+        logger.error(f"Error creating user: {e}")
+        return jsonify({"error": "Failed to create user"}), 500
+
+@main.route('/users', methods=['GET'])
+@cross_origin()  # Enable CORS for this route
+@login_required  # Ensure the user is logged in
+def get_users():
+    try:
+        # Get the current user's company_id
+        user_company_id = current_user.company_id
+
+        if not user_company_id:
+            return jsonify({"error": "User does not belong to any company"}), 400
+
+        # Fetch only users from the same company
+        users = User.query.filter_by(company_id=user_company_id).all()
+
+        user_list = [
+            {
+                "id": user.id,
+                "email": user.email,
+                "first_name": user.first_name,
+                "last_name": user.last_name,
+                "role": user.internal_user_role
+            }
+            for user in users
+        ]
+        return jsonify({"users": user_list}), 200
+    except Exception as e:
+        logger.error(f"Error fetching users: {e}")
+        return jsonify({"error": "Failed to fetch users"}), 500
+
+# Delete a user
+@main.route('/users/<int:user_id>', methods=['DELETE'])
+@cross_origin()  # Enable CORS for this route
+@login_required  # Require the user to be logged in
+def delete_user(user_id):
+    try:
+        user = User.query.get(user_id)
+        if not user:
+            return jsonify({"error": "User not found"}), 404
+
+        db.session.delete(user)
+        db.session.commit()
+        return jsonify({"message": "User deleted successfully"}), 200
+    except Exception as e:
+        logger.error(f"Error deleting user: {e}")
+        return jsonify({"error": "Failed to delete user"}), 500
 
 def upload_file(file, file_key):
     try:

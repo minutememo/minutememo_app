@@ -70,13 +70,16 @@ def google_login():
         state = secrets.token_urlsafe(16)
         session['oauth_state'] = state  # Store the state in session
 
+        # Generate and store a nonce in session
+        nonce = generate_nonce()
+        session['nonce'] = nonce  # Store the nonce in session
+
         # Construct the redirect URI
         redirect_uri = url_for('auth.google_authorize', _external=True)
 
         # Log the details for debugging
         logger.debug(f"Google login initiated. Redirect URI: {redirect_uri}, State: {state}")
         logger.debug(f"Client ID: {os.getenv('GOOGLE_CLIENT_ID')}")
-        logger.debug(f"Client Secret: {'REDACTED'}")
         logger.debug(f"Session contents: {session}")
 
         # Trigger Google OAuth flow, redirecting to the Google authorization URL
@@ -84,6 +87,7 @@ def google_login():
         return oauth.google.authorize_redirect(
             redirect_uri=redirect_uri,
             state=state,
+            nonce=nonce,  # Pass the nonce to Google for verification
             access_type='offline',  # Request offline access to obtain a refresh token
             prompt='consent'  # Force re-consent to ensure we get the refresh token
         )
@@ -100,28 +104,31 @@ def google_authorize():
 
         # Retrieve the OAuth state from the URL parameters
         state = request.args.get('state')
-        logger.debug(f"OAuth state: {state}")
+        logger.debug(f"OAuth state from callback: {state}")
 
-        if not state:
-            raise ValueError("Missing state in request")
+        # Compare the state with the one stored in the session
+        session_state = session.get('oauth_state')
+        logger.debug(f"OAuth state from session: {session_state}")
 
-        # Retrieve the OAuth state details from the session using the state as the key
-        oauth_state_key = f'_state_google_{state}'
-        oauth_state_data = session.get(oauth_state_key)
-        logger.debug(f"OAuth state data from session: {oauth_state_data}")
-
-        if not oauth_state_data or 'data' not in oauth_state_data or 'nonce' not in oauth_state_data['data']:
-            raise ValueError("Missing nonce in session state data")
-
-        nonce = oauth_state_data['data']['nonce']
-        logger.debug(f"Nonce retrieved: {nonce}")
+        if not state or state != session_state:
+            raise ValueError("mismatching_state: CSRF Warning! State not equal in request and response.")
 
         # Retrieve the token from Google after successful authorization
         token = oauth.google.authorize_access_token()
-        logger.debug(f"Token response received: {token}")  # Log the entire token response
+        logger.debug(f"Token response received: {token}")
 
-        # Parse the user's ID token and validate the nonce
-        user_info = oauth.google.parse_id_token(token, nonce=nonce)
+        # Verify the nonce in the ID token to protect against replay attacks
+        id_token = token.get('id_token')
+        
+        # Retrieve nonce from session
+        session_nonce = session.get('nonce')
+        if not session_nonce:
+            raise ValueError("Missing nonce in session")
+
+        logger.debug(f"Session nonce: {session_nonce}")
+
+        # Pass the nonce to the `parse_id_token()` method
+        user_info = oauth.google.parse_id_token(token, nonce=session_nonce)
         logger.debug(f"User info: {user_info}")
 
         # Get the user's email from the user info
@@ -179,8 +186,9 @@ def google_authorize():
         login_user(user)
         logger.info(f"User logged in with Google: {email}")
 
-        # Clear the state from the session after successful login to avoid reuse
-        session.pop(oauth_state_key, None)
+        # Clear the state and nonce from the session after successful login to avoid reuse
+        session.pop('oauth_state', None)
+        session.pop('nonce', None)
 
         # Redirect to the dashboard after successful login
         return redirect('http://localhost:3000/')  # Change to your front-end dashboard route

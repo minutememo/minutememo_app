@@ -1,10 +1,12 @@
+// components/DashboardPage.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import '../styles.css';
 import { useUser } from '../UserContext';
+import { Container, Table, Button, Spinner } from 'react-bootstrap';
+import '../styles.css';
 
-const DashboardPage = ({ selectedHub }) => {
+const DashboardPage = ({ selectedHub, meetingHubs, setActiveHubName }) => {  // Use meetingHubs and setActiveHubName from props
   const { user } = useUser(); // Get the user context
   const [meetings, setMeetings] = useState([]);
   const [meetingSessions, setMeetingSessions] = useState([]);
@@ -172,6 +174,16 @@ const DashboardPage = ({ selectedHub }) => {
     }
   }, [selectedHub, backendUrl, subscriptionActive]);
 
+  // Update active hub name
+  const updateActiveHubName = (hubId, hubs = meetingHubs) => {
+    const hub = hubs.find(hub => hub.id === parseInt(hubId, 10));
+    if (hub) {
+      setActiveHubName(hub.name);
+    } else {
+      setActiveHubName('No Meeting Hub Selected');
+    }
+  };
+
   // Create new meeting
   const handleCreateMeeting = async () => {
     if (!newMeetingName || !selectedHub) {
@@ -248,98 +260,111 @@ const DashboardPage = ({ selectedHub }) => {
 
   return (
     <div className="dashboard">
-      <div className="box-shadow-container">
-        <h3>Create a New Meeting</h3>
-        <input
-          type="text"
-          placeholder="Enter meeting name"
-          value={newMeetingName}
-          onChange={(e) => setNewMeetingName(e.target.value)}
-        />
-        <button onClick={handleCreateMeeting} disabled={isCreatingMeeting}>
-          {isCreatingMeeting ? 'Creating...' : 'Create Meeting'}
-        </button>
-        {error && <p className="error-message">{error}</p>}
-      </div>
+      <Container>
+        {/* Create New Meeting Section */}
+        <div className="box-shadow-container mb-4">
+          <h3>Create a New Meeting</h3>
+          <div className="d-flex">
+            <input
+              type="text"
+              placeholder="Enter meeting name"
+              value={newMeetingName}
+              onChange={(e) => setNewMeetingName(e.target.value)}
+              className="form-control me-2"
+            />
+            <Button onClick={handleCreateMeeting} disabled={isCreatingMeeting}>
+              {isCreatingMeeting ? <Spinner animation="border" size="sm" /> : 'Create Meeting'}
+            </Button>
+          </div>
+          {error && <p className="error-message">{error}</p>}
+        </div>
 
-      <div className="box-shadow-container">
-        <h3>Meetings</h3>
-        {error && <p className="error-message">{error}</p>}
-        <table>
-          <thead>
-            <tr>
-              <th>Meeting Name</th>
-              <th>Description</th>
-              <th>Is Recurring</th>
-            </tr>
-          </thead>
-          <tbody>
-            {meetings.map((meeting) => (
-              <tr key={meeting.id}>
-                <td>
-                  <Link to={`/meetings/${meeting.id}`}>{meeting.name}</Link>
-                </td>
-                <td>{meeting.description}</td>
-                <td>{meeting.is_recurring ? 'Yes' : 'No'}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      <div className="box-shadow-container">
-        <h3>Recurring Calendar Events</h3>
-        {recurringEvents.length === 0 ? (
-          <p>No recurring events found.</p>
-        ) : (
-          <table>
+        {/* Meetings List */}
+        <div className="box-shadow-container mb-4">
+          <h3>Meetings</h3>
+          {error && <p className="error-message">{error}</p>}
+          <Table striped bordered hover>
             <thead>
               <tr>
-                <th>Event Name</th>
-                <th>Linked Meeting</th>
-                <th>Action</th>
+                <th>Meeting Name</th>
+                <th>Description</th>
+                <th>Is Recurring</th>
               </tr>
             </thead>
             <tbody>
-              {recurringEvents.map((event) => (
-                <tr key={event.id}>
-                  <td>{event.summary}</td>
-                  <td>{event.linkedMeeting ? event.linkedMeeting : 'Not linked'}</td>
+              {meetings.map((meeting) => (
+                <tr key={meeting.id}>
                   <td>
-                    {event.linkedMeeting ? (
-                      <button disabled>Linked</button>
-                    ) : (
-                      <button onClick={() => handleLinkMeeting(event.recurringEventId)}>Link</button>
-                    )}
+                    <Link to={`/meetings/${meeting.id}`}>{meeting.name}</Link>
                   </td>
+                  <td>{meeting.description}</td>
+                  <td>{meeting.is_recurring ? 'Yes' : 'No'}</td>
                 </tr>
               ))}
             </tbody>
-          </table>
-        )}
-      </div>
+          </Table>
+        </div>
 
-      <div className="box-shadow-container">
-        <h3>Meeting Sessions</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Session Name</th>
-              <th>Meeting Name</th>
-              <th>Date and Time</th>
-            </tr>
-          </thead>
-          <tbody>
-            {meetingSessions.map((session) => (
-              <tr key={session.id}>
-                <td>{session.name}</td>
-                <td>{session.meeting_name}</td>
-                <td>{session.session_datetime}</td>
+        {/* Recurring Calendar Events */}
+        <div className="box-shadow-container mb-4">
+          <h3>Recurring Calendar Events</h3>
+          {recurringEvents.length === 0 ? (
+            <p>No recurring events found.</p>
+          ) : (
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>Event Name</th>
+                  <th>Linked Meeting</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {recurringEvents.map((event) => (
+                  <tr key={event.id}>
+                    <td>{event.summary}</td>
+                    <td>{event.linkedMeeting ? event.linkedMeeting : 'Not linked'}</td>
+                    <td>
+                      {event.linkedMeeting ? (
+                        <Button variant="success" size="sm" disabled>
+                          Linked
+                        </Button>
+                      ) : (
+                        <Button variant="primary" size="sm" onClick={() => handleLinkMeeting(event.recurringEventId)}>
+                          Link
+                        </Button>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          )}
+        </div>
+
+        {/* Meeting Sessions */}
+        <div className="box-shadow-container">
+          <h3>Meeting Sessions</h3>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>Session Name</th>
+                <th>Meeting Name</th>
+                <th>Date and Time</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {meetingSessions.map((session) => (
+                <tr key={session.id}>
+                  <td>{session.name}</td>
+                  <td>{session.meeting_name}</td>
+                  <td>{new Date(session.session_datetime).toLocaleString()}</td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </div>
+      </Container>
     </div>
   );
 };

@@ -1,7 +1,9 @@
+// App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
-import { MdDashboard, MdEvent, MdList, MdSettings } from 'react-icons/md'; // Importing icons
-import './styles.css';
+import { MdDashboard, MdEvent, MdList, MdSettings, MdPerson } from 'react-icons/md'; // Importing icons
+import { FaUserCircle } from 'react-icons/fa'; // User icon
+import './styles.css'; // Import styles
 import AudioRecorder from './AudioRecorder';
 import { RecorderProvider } from './RecorderContext';
 import { UserProvider, useUser } from './UserContext';
@@ -15,12 +17,13 @@ import UserEmailDisplay from './components/UserEmailDisplay';
 import LogoutButton from './components/LogoutButton';
 import FileUpload from './components/FileUpload'; // Import FileUpload component
 import axios from 'axios';
-import MeetingPage from './components/MeetingsPage'; // Adjust the path if necessary
 import MeetingSessionPage from './components/MeetingSessionPage'; // Import the new component
 import SubscribePage from './components/SubscribePage'; // Create this component
 import CalendarPage from './components/CalendarPage'; // New CalendarPage Component for calendar events
 import EventDetailsPage from './components/EventDetailsPage'; // Import EventDetailsPage
-import { Container, Row, Col, Form, FormControl, Button, Navbar, Nav, Dropdown, Modal, Spinner } from 'react-bootstrap';
+import UserManagementPage from './components/UserManagementPage'; // New UserManagementPage Component
+import { Container, Row, Col, Form, FormControl, Button, Navbar, Nav, Dropdown, Modal, Spinner, Image } from 'react-bootstrap';
+
 
 axios.defaults.withCredentials = true; // Ensure cookies are sent with every request
 
@@ -36,7 +39,8 @@ const AppContent = () => {
   const [error, setError] = useState('');
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true); // Sidebar is collapsed by default
-  const [calendarEvents, setCalendarEvents] = useState([]); // Store calendar events
+  const [recurringEvents, setRecurringEvents] = useState([]); // Add this for recurring events state
+  const [calendarEvents, setCalendarEvents] = useState([]); // Add this for calendar events state
 
   // Environment variable for backend URL
   const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
@@ -79,9 +83,66 @@ const AppContent = () => {
 
   const fetchCalendarEvents = async () => {
     try {
-      const response = await axios.get(`${backendUrl}/api/calendar/events`);
+      const today = new Date(); // Get today's date
+      const sixMonthsAhead = new Date(); // Calculate 6 months ahead
+      sixMonthsAhead.setMonth(sixMonthsAhead.getMonth() + 6);
+      
+      console.log(`Fetching events starting from ${today.toISOString()} to ${sixMonthsAhead.toISOString()}`);
+
+      const response = await axios.get(`${backendUrl}/api/calendar/events`, {
+        params: {
+          start: today.toISOString(),
+          end: sixMonthsAhead.toISOString(),
+          singleEvents: false,
+        },
+      });
+
       if (response.status === 200) {
-        setCalendarEvents(response.data); // Store the fetched calendar events
+        console.log('Calendar events fetched successfully.');
+        const events = response.data;
+
+        // Convert event start and end to Date objects
+        const eventsWithDateObjects = events.map(event => ({
+          ...event,
+          start: new Date(event.start),
+          end: new Date(event.end),
+        }));
+
+        const recurring = eventsWithDateObjects.filter(event => event.recurringEventId);
+
+        if (recurring.length === 0) {
+          console.log('No recurring events found');
+        } else {
+          console.log(`Found ${recurring.length} recurring events.`);
+        }
+
+        const uniqueRecurringEvents = recurring.reduce((acc, event) => {
+          if (!acc[event.recurringEventId]) {
+            acc[event.recurringEventId] = event;
+          }
+          return acc;
+        }, {});
+
+        const recurringEventsArray = Object.values(uniqueRecurringEvents);
+        console.log(`Unique recurring events count: ${recurringEventsArray.length}`);
+
+        const linkedEvents = await Promise.all(
+          recurringEventsArray.map(async (event, index) => {
+            console.log(`Fetching linked meeting for recurring event ${index + 1}`);
+            try {
+              const linkedResponse = await axios.get(`${backendUrl}/api/recurring-event/${event.recurringEventId}`);
+              if (linkedResponse.status === 200) {
+                return { ...event, linkedMeeting: linkedResponse.data.meeting_name };
+              } else {
+                return { ...event, linkedMeeting: null };
+              }
+            } catch (err) {
+              return { ...event, linkedMeeting: null };
+            }
+          })
+        );
+
+        setRecurringEvents(linkedEvents);  // Set the state for recurring events
       } else {
         setError('Failed to fetch calendar events');
       }
@@ -186,7 +247,7 @@ const AppContent = () => {
                 show={dropdownVisible}
                 onToggle={toggleDropdown}
                 onSelect={handleHubSelect}
-                className="hub-selector"
+                className="hub-selector me-auto"
               >
                 <Dropdown.Toggle as="div" className="hub-dropdown">
                   <span className="hub-name">{activeHubName}</span>
@@ -207,7 +268,31 @@ const AppContent = () => {
                 </Dropdown.Menu>
               </Dropdown>
 
-              <LogoutButton />
+              <Dropdown align="end">
+                <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                  {user.avatar ? (
+                    <Image src={user.avatar} roundedCircle height="30" width="30" alt="User Avatar" />
+                  ) : (
+                    <FaUserCircle size={30} />
+                  )}
+                  <span className="ms-2">{user.first_name} {user.last_name}</span>
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item as={NavLink} to="/settings">
+                    <MdSettings className="me-2" />
+                    Settings
+                  </Dropdown.Item>
+                  <Dropdown.Item as={NavLink} to="/user-management">
+                    <MdPerson className="me-2" />
+                    User Management
+                  </Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item as="div">
+                    <LogoutButton />
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </Container>
           </Navbar>
 
@@ -227,19 +312,15 @@ const AppContent = () => {
                     <MdList className="icon" />
                     <span className="link-text">Action Items</span>
                   </NavLink>
-                  <NavLink to="/calendar" className="nav-link"> {/* Add a route for calendar */}
+                  <NavLink to="/calendar" className="nav-link">
                     <MdEvent className="icon" />
                     <span className="link-text">Calendar</span>
-                  </NavLink>
-                  <NavLink to="/settings" className="nav-link">
-                    <MdSettings className="icon" />
-                    <span className="link-text">Settings</span>
                   </NavLink>
                 </Nav>
                 <UserEmailDisplay />
                 <AudioRecorder
                   selectedHub={selectedHub}
-                  selectedMeetingId={selectedMeetingId} // Pass selectedMeetingId to AudioRecorder
+                  selectedMeetingId={selectedMeetingId}
                 />
                 <FileUpload />
               </Col>
@@ -256,14 +337,14 @@ const AppContent = () => {
                     <Route path="/" element={<DashboardPage selectedHub={selectedHub} />} />
                     <Route
                       path="/meetings"
-                      element={<MeetingsPage selectedHub={selectedHub} onMeetingSelect={handleMeetingSelect} />} // Pass handler to MeetingsPage
+                      element={<MeetingsPage selectedHub={selectedHub} onMeetingSelect={handleMeetingSelect} />}
                     />
-                    <Route path="/meetings/:meetingId" element={<MeetingPage selectedHub={selectedHub} />} />
                     <Route path="/sessions/:sessionId" element={<MeetingSessionPage selectedHub={selectedHub} />} />
                     <Route path="/action-items" element={<ActionItemsPage selectedHub={selectedHub} />} />
-                    <Route path="/calendar" element={<CalendarPage events={calendarEvents} />} /> {/* New Calendar Page */}
+                    <Route path="/calendar" element={<CalendarPage events={calendarEvents} />} />
                     <Route path="/event/:eventId" element={<EventDetailsPage />} />
                     <Route path="/settings" element={<SettingsPage />} />
+                    <Route path="/user-management" element={<UserManagementPage />} />
                   </Routes>
                 )}
                 {error && <div className="error-message">{error}</div>}

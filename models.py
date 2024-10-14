@@ -1,16 +1,16 @@
+from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
-from sqlalchemy import Column, String, Integer, DateTime, ForeignKey, Boolean, DateTime
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import relationship
 from flask_login import UserMixin
+from sqlalchemy import Column, String, Integer, DateTime, ForeignKey, Boolean, Text, UniqueConstraint
+from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.orm import relationship, backref
+import uuid
 from extensions import db
 
-from sqlalchemy.dialects.postgresql import UUID
-from datetime import datetime, timedelta
-
+# Existing Company model
 class Company(db.Model):
     __table_args__ = {'extend_existing': True}  # Prevent table redefinition error
-    
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
     address = db.Column(db.String(256))
@@ -19,18 +19,30 @@ class Company(db.Model):
     zip_code = db.Column(db.String(10))
     country = db.Column(db.String(64))
     phone_number = db.Column(db.String(20))
-    
+
     users = db.relationship('User', backref='company', lazy=True)
-    
-    # Added relationship for subscription
+    departments = db.relationship('Department', backref='company', lazy=True)  # Added relationship to Department
+    roles = db.relationship('Role', backref='company', lazy=True)  # Added relationship to Role
+
+    # Added relationship for subscription and payments
     subscriptions = db.relationship('Subscription', backref='company', lazy=True)
-    payments = db.relationship('Payment', backref='company', lazy=True)  # Payments relationship
+    payments = db.relationship('Payment', backref='company', lazy=True)
 
-from datetime import datetime
-from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import UserMixin
-from extensions import db
+class MeetingParticipant(db.Model):
+    __tablename__ = 'meeting_participants'  # **Explicitly define the table name**
 
+    __table_args__ = (
+        UniqueConstraint('meeting_id', 'user_id', name='uix_meeting_user'),
+        {'extend_existing': True}
+    )
+
+    id = db.Column(db.Integer, primary_key=True)
+    meeting_id = db.Column(db.Integer, db.ForeignKey('meeting.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    raci_role_id = db.Column(db.Integer, db.ForeignKey('raci_role.id'), nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+# Existing User model, updated
 class User(UserMixin, db.Model):
     __table_args__ = {'extend_existing': True}  # Prevent table redefinition error
 
@@ -40,20 +52,28 @@ class User(UserMixin, db.Model):
     first_name = db.Column(db.String(64))
     last_name = db.Column(db.String(64))
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
-    recordings = db.relationship('Recording', backref='user', lazy=True)
-    meeting_hubs = db.relationship('MeetingHub', secondary='user_meeting_hub', backref=db.backref('users', lazy=True))
-    meetings = db.relationship('Meeting', secondary='user_meeting', backref=db.backref('users', lazy=True))
-    meeting_sessions = db.relationship('MeetingSession', secondary='user_meeting_session', backref=db.backref('users', lazy=True))
     
+    # Relationships
+    recordings = db.relationship('Recording', backref='user', lazy=True)
+    meeting_hubs = db.relationship('MeetingHub', secondary='user_meeting_hub', backref=db.backref('users', lazy='dynamic'))
+    meetings = db.relationship('Meeting', secondary='meeting_participants', backref=db.backref('users', lazy='dynamic'))
+    meeting_sessions = db.relationship('MeetingSession', secondary='user_meeting_session', backref=db.backref('users', lazy='dynamic'))
+
+    # New relationships
+    role_assignments = db.relationship('UserRoleAssignment', backref='user', lazy='dynamic')
+    meeting_participants = db.relationship('MeetingParticipant', backref='user', lazy='dynamic')
+
     # Active meeting hub reference
     active_meeting_hub_id = db.Column(db.Integer, db.ForeignKey('meeting_hub.id'), nullable=True)
+
+    # User type and role fields (consider deprecating if using Role model)
     user_type = db.Column(db.String(20), nullable=False, default='internal')  # 'internal' or 'external'
     internal_user_role = db.Column(db.String(20), nullable=True)  # 'super_admin', 'admin', 'lite_admin'
 
     # Fields for storing Google OAuth token, updated to TEXT
-    google_oauth_token = db.Column(db.Text, nullable=True)  # Access token can be longer
-    google_refresh_token = db.Column(db.Text, nullable=True)  # Refresh token can be longer
-    google_token_expires_at = db.Column(db.DateTime, nullable=True)  # Token expiration time
+    google_oauth_token = db.Column(db.Text, nullable=True)
+    google_refresh_token = db.Column(db.Text, nullable=True)
+    google_token_expires_at = db.Column(db.DateTime, nullable=True)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -66,73 +86,97 @@ class User(UserMixin, db.Model):
             return datetime.utcnow() < self.google_token_expires_at
         return False
 
-
-class Subscription(db.Model):
-    __table_args__ = {'extend_existing': True}  # Prevent table redefinition error
-
-    id = db.Column(db.Integer, primary_key=True)
-    company_id = db.Column(db.Integer, db.ForeignKey('company.id'), nullable=False)  # Link to the Company
-    plan_name = db.Column(db.String(64), nullable=False)  # Subscription plan name
-    price = db.Column(db.Float, nullable=False)  # Price of the subscription
-    billing_cycle = db.Column(db.String(20), nullable=False)  # e.g., 'monthly', 'yearly'
-    max_users = db.Column(db.Integer, nullable=False)  # Maximum number of users allowed in the subscription
-    status = db.Column(db.String(20), nullable=False, default='active')  # Subscription status
-    start_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)  # When the subscription started
-    end_date = db.Column(db.DateTime, nullable=True)  # Nullable if the subscription is ongoing
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    updated_at = db.Column(db.DateTime, onupdate=datetime.utcnow)
-
-    # Relationship to Payments
-    payments = db.relationship('Payment', backref='subscription', lazy=True)
-
-    @property
-    def is_active(self):
-        """Check if the subscription is currently active."""
-        if self.status != 'active':
-            return False
-        if self.end_date and self.end_date < datetime.utcnow():
-            return False
-        return True
-
-class Payment(db.Model):
-    __table_args__ = {'extend_existing': True}  # Prevent table redefinition error
+# New Department model
+class Department(db.Model):
+    __table_args__ = {'extend_existing': True}
 
     id = db.Column(db.Integer, primary_key=True)
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'), nullable=False)
-    subscription_id = db.Column(db.Integer, db.ForeignKey('subscription.id'), nullable=False)  # Link to the Subscription
-    amount = db.Column(db.Float, nullable=False)  # Amount paid
-    payment_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    payment_method = db.Column(db.String(50), nullable=False)  # e.g., 'credit card', 'bank transfer'
-    status = db.Column(db.String(20), nullable=False, default='successful')  # Payment status (e.g., successful, failed)
+    name = db.Column(db.String(128), nullable=False)
+    description = db.Column(db.String(256))
 
+    # Relationships
+    user_role_assignments = db.relationship('UserRoleAssignment', backref='department', lazy='dynamic')
 
+# New Role model
+class Role(db.Model):
+    __table_args__ = {'extend_existing': True}
+
+    id = db.Column(db.Integer, primary_key=True)
+    company_id = db.Column(db.Integer, db.ForeignKey('company.id'), nullable=False)
+    name = db.Column(db.String(64), nullable=False)
+    description = db.Column(db.String(256))
+    hierarchy_level = db.Column(db.Integer, nullable=False)  # Lower number indicates higher authority
+
+    # Relationships
+    user_role_assignments = db.relationship('UserRoleAssignment', backref='role', lazy='dynamic')
+
+class UserRoleAssignment(db.Model):
+    __table_args__ = (
+        UniqueConstraint('user_id', 'role_id', 'department_id', 'hub_id', name='uix_user_role_scope'),
+        {'extend_existing': True}
+    )
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    role_id = db.Column(db.Integer, db.ForeignKey('role.id'), nullable=False)
+    department_id = db.Column(db.Integer, db.ForeignKey('department.id'), nullable=True)
+    hub_id = db.Column(db.Integer, db.ForeignKey('meeting_hub.id'), nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.utcnow)
+
+    # Relationships
+    hub = db.relationship(
+        'MeetingHub',
+        back_populates='user_role_assignments'
+        # Removed 'lazy' parameter
+    )
 class MeetingHub(db.Model):
-    __table_args__ = {'extend_existing': True}  # Prevent table redefinition error
+    __table_args__ = {'extend_existing': True}
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
     description = db.Column(db.String(256))
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'), nullable=False)
+
+    # Relationships
     meetings = db.relationship('Meeting', backref='meeting_hub', lazy=True)
+    user_role_assignments = db.relationship(
+        'UserRoleAssignment',
+        back_populates='hub',
+        lazy='dynamic'  # One-to-Many relationship; 'dynamic' is acceptable here
+    )
 
-
+# Existing Meeting model, updated
 class Meeting(db.Model):
-    __table_args__ = {'extend_existing': True}  # Prevent table redefinition error
+    __table_args__ = {'extend_existing': True}
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
     description = db.Column(db.String(256))
     is_recurring = db.Column(db.Boolean, default=False)
-    recurring_event_id = Column(String(255), unique=True)  # To store the recurringEventId from Google
+    recurring_event_id = db.Column(db.String(255), unique=True)
     meeting_hub_id = db.Column(db.Integer, db.ForeignKey('meeting_hub.id'), nullable=False)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    # Relationships
     meeting_sessions = db.relationship('MeetingSession', backref='meeting', lazy=True)
+    participants = db.relationship('MeetingParticipant', backref='meeting', lazy='dynamic')
 
+# New RaciRole model
+class RaciRole(db.Model):
+    __table_args__ = {'extend_existing': True}
 
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), nullable=False)  # E.g., 'Responsible', 'Accountable', 'Consulted', 'Informed'
+    description = db.Column(db.String(256))
 
+    # Relationships
+    meeting_participants = db.relationship('MeetingParticipant', backref='raci_role', lazy='dynamic')
 
+# Existing MeetingSession model
 class MeetingSession(db.Model):
-    __table_args__ = {'extend_existing': True}  # Prevent table redefinition error
+    __table_args__ = {'extend_existing': True}
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(256), nullable=False)
@@ -147,8 +191,9 @@ class MeetingSession(db.Model):
     short_summary = db.Column(db.Text)  # Store short summary
     long_summary = db.Column(db.Text)  # Store long summary
 
+# Existing ActionItem model
 class ActionItem(db.Model):
-    __table_args__ = {'extend_existing': True}  # Prevent table redefinition error
+    __table_args__ = {'extend_existing': True}
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), nullable=False)
@@ -173,8 +218,9 @@ class ActionItem(db.Model):
             'sorting_id': self.sorting_id
         }
 
+# Existing Recording model
 class Recording(db.Model):
-    __table_args__ = {'extend_existing': True}  # Prevent table redefinition error
+    __table_args__ = {'extend_existing': True}
 
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, unique=True, nullable=False)
     file_name = db.Column(db.String(256), nullable=False)
@@ -184,27 +230,58 @@ class Recording(db.Model):
     concatenation_file_name = db.Column(db.String(256), nullable=False)
     meeting_session_id = db.Column(db.Integer, db.ForeignKey('meeting_session.id'), nullable=False)
 
+# Existing Subscription model
+class Subscription(db.Model):
+    __table_args__ = {'extend_existing': True}
+
+    id = db.Column(db.Integer, primary_key=True)
+    company_id = db.Column(db.Integer, db.ForeignKey('company.id'), nullable=False)
+    plan_name = db.Column(db.String(64), nullable=False)
+    price = db.Column(db.Float, nullable=False)
+    billing_cycle = db.Column(db.String(20), nullable=False)
+    max_users = db.Column(db.Integer, nullable=False)
+    status = db.Column(db.String(20), nullable=False, default='active')
+    start_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    end_date = db.Column(db.DateTime, nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.utcnow)
+
+    # Relationship to Payments
+    payments = db.relationship('Payment', backref='subscription', lazy=True)
+
+    @property
+    def is_active(self):
+        """Check if the subscription is currently active."""
+        if self.status != 'active':
+            return False
+        if self.end_date and self.end_date < datetime.utcnow():
+            return False
+        return True
+
+# Existing Payment model
+class Payment(db.Model):
+    __table_args__ = {'extend_existing': True}
+
+    id = db.Column(db.Integer, primary_key=True)
+    company_id = db.Column(db.Integer, db.ForeignKey('company.id'), nullable=False)
+    subscription_id = db.Column(db.Integer, db.ForeignKey('subscription.id'), nullable=False)
+    amount = db.Column(db.Float, nullable=False)
+    payment_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    payment_method = db.Column(db.String(50), nullable=False)
+    status = db.Column(db.String(20), nullable=False, default='successful')
 
 # Junction table to manage many-to-many relationship between User and MeetingHub
 user_meeting_hub = db.Table('user_meeting_hub',
     db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
     db.Column('meeting_hub_id', db.Integer, db.ForeignKey('meeting_hub.id'), primary_key=True),
-    db.UniqueConstraint('user_id', 'meeting_hub_id'),
-    extend_existing=True,  # Apply extend_existing in the table_args
+    db.UniqueConstraint('user_id', 'meeting_hub_id', name='uix_user_meeting_hub'),
+    __table_args__ = {'extend_existing': True}
 )
 
-# Junction table to manage many-to-many relationship between User and Meeting
-user_meeting = db.Table('user_meeting',
-    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
-    db.Column('meeting_id', db.Integer, db.ForeignKey('meeting.id'), primary_key=True),
-    db.UniqueConstraint('user_id', 'meeting_id'),
-    extend_existing=True,  # Apply extend_existing in the table_args
-)
-
-# Correct definition for the user_meeting_session table
+# Junction table to manage many-to-many relationship between User and MeetingSession
 user_meeting_session = db.Table('user_meeting_session',
     db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
     db.Column('meeting_session_id', db.Integer, db.ForeignKey('meeting_session.id'), primary_key=True),
-    db.UniqueConstraint('user_id', 'meeting_session_id'),
-    extend_existing=True  # Apply extend_existing in the table_args
+    db.UniqueConstraint('user_id', 'meeting_session_id', name='uix_user_meeting_session'),
+    __table_args__ = {'extend_existing': True}
 )
