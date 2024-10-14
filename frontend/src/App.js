@@ -344,6 +344,7 @@ const AppContent = () => {
                     <Route path="/calendar" element={<CalendarPage events={calendarEvents} />} />
                     <Route path="/event/:eventId" element={<EventDetailsPage />} />
                     <Route path="/settings" element={<SettingsPage />} />
+                    <Route path="/meetings/:meetingId" element={<MeetingsPage />} />
                     <Route path="/user-management" element={<UserManagementPage />} />
                   </Routes>
                 )}

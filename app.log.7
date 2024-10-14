@@ -1,87 +1,23 @@
-2024-10-13 20:31:58,383 - minutememo_app.app - ERROR - Exception on /auth/status [GET]
-Traceback (most recent call last):
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_cors/extension.py", line 178, in wrapped_function
-    return cors_after_request(app.make_response(f(*args, **kwargs)))
-                                                ^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/app.py", line 118, in status
-    if current_user.is_authenticated:
-       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/werkzeug/local.py", line 318, in __get__
-    obj = instance._get_current_object()
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/werkzeug/local.py", line 526, in _get_current_object
-    return get_name(local())
-                    ^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/utils.py", line 25, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-                                      ^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/utils.py", line 370, in _get_user
-    current_app.login_manager._load_user()
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/login_manager.py", line 364, in _load_user
-    user = self._user_callback(user_id)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/app.py", line 108, in load_user
-    return User.query.get(int(user_id))
-           ^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
-    return cls.query_class(
-           ^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 275, in __init__
-    self._set_entities(entities)
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 288, in _set_entities
-    coercions.expect(
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 389, in expect
-    insp._post_inspect
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1253, in __get__
-    obj.__dict__[self.__name__] = result = self.fget(obj)
-                                           ^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2711, in _post_inspect
-    self._check_configure()
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2388, in _check_configure
-    _configure_registries({self.registry}, cascade=True)
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4204, in _configure_registries
-    _do_configure_registries(registries, cascade)
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4241, in _do_configure_registries
-    raise e
-sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'meeting_participants' failed to locate a name ("name 'meeting_participants' is not defined"). If this is a class name, consider adding this relationship() to the <class 'models.User'> class after both dependent classes have been defined.
-2024-10-13 20:31:58,387 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-13 20:31:58,388 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 20:31:58] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
-2024-10-13 20:31:59,416 - auth - DEBUG - Google login initiated. Redirect URI: http://localhost:5000/auth/callback, State: 705cdwY9HmKuCqim-XEqJA
-2024-10-13 20:31:59,416 - auth - DEBUG - Client ID: 760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com
-2024-10-13 20:31:59,416 - auth - DEBUG - Session contents: <SecureCookieSession {'_flashes': [('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.')], '_fresh': True, '_id': '80f0c8f52e9d0894341645dd90e6d8ae068eccca8a01568dae0e1571fcf8617cd62df66b248fa262c3936ab84cb81e2f75bd1e859e1c93555c3e41b7cf1c1e14', '_permanent': True, '_user_id': '14', 'oauth_state': '705cdwY9HmKuCqim-XEqJA', 'nonce': 'yLw9KspflXXUz5quU26psw'}>
-2024-10-13 20:31:59,417 - auth - DEBUG - After request, Origin: None
-2024-10-13 20:31:59,417 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 20:31:59] "[32mGET /auth/login/google HTTP/1.1[0m" 302 -
-2024-10-13 20:32:04,091 - auth - DEBUG - Google authorization callback reached
-2024-10-13 20:32:04,092 - auth - DEBUG - OAuth state: 705cdwY9HmKuCqim-XEqJA
-2024-10-13 20:32:04,097 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): accounts.google.com:443
-2024-10-13 20:32:04,312 - urllib3.connectionpool - DEBUG - https://accounts.google.com:443 "POST /o/oauth2/token HTTP/11" 200 None
-2024-10-13 20:32:04,315 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.googleapis.com:443
-2024-10-13 20:32:04,406 - urllib3.connectionpool - DEBUG - https://www.googleapis.com:443 "GET /oauth2/v3/certs HTTP/11" 200 743
-2024-10-13 20:32:04,407 - auth - DEBUG - Token response received: {'access_token': 'ya29.a0AcM612xGm6CCYJ5_VPtNcSggSkMF33o0EgGympa-KGimCaFlP1UIGoLQ_9pBFh8nFEPurs1_VaQeB_ZpkIyAqUWElzo1nou11gaXgeA625M95D6uKThKu3ahq6IvHPgz_VwPEPWZEo9K3WNLjJTtR6o9iDQsv1ZNRDAJQBWKaCgYKAdASARMSFQHGX2MiRZnFzQd9gVkqFJ5Rx4-cqg0175', 'expires_in': 3599, 'refresh_token': '1//03UhnGWTLfpdFCgYIARAAGAMSNwF-L9Ir1NgKVTRhLFDekGYanDyY7iyKMRb3pGpc3x5X1QHmFIkZorPozjE4fIR0lEziVSihNtA', 'scope': 'openid https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile', 'token_type': 'Bearer', 'id_token': 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImE1MGY2ZTcwZWY0YjU0OGE1ZmQ5MTQyZWVjZDFmYjhmNTRkY2U5ZWUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNzYwNjI4MzczMDY0LWNjb3RzbTltNGw5cTgxYTllNmdtdGZqOWdqdWRqcHQxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNzYwNjI4MzczMDY0LWNjb3RzbTltNGw5cTgxYTllNmdtdGZqOWdqdWRqcHQxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA4ODI2NjIyMzE1MDExNzcxMDM2IiwiaGQiOiJtaW51dGVtZW1vLmlvIiwiZW1haWwiOiJnYWV0YW5AbWludXRlbWVtby5pbyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiTDFkYlRaR2Rua3FnenRLQXYzemlTUSIsIm5vbmNlIjoieUx3OUtzcGZsWFhVejVxdVUyNnBzdyIsImlhdCI6MTcyODg0NDMyNCwiZXhwIjoxNzI4ODQ3OTI0fQ.N0yo1VqYm3wSf9zR7g-5seTNPD0xza92e4weZDwV-h2h-n1JCCSNYkz5kuDRBL8nkkU0MEE-LE7N8fdPBQ-qDjV_nhqo44vLMnmJSbGb2uRBTyRP1HkIxOaQfg7d6z1yzsPeycNrDw15swo18BEmS-gEjV6dwUwygYOOGu-Yg1VjGh_R4BOUwYU0FIBcncb5jFgyRejpcQS0h_UgztCFcRr2Gc9LEgWQTEVVcD2GsiEJ1iUOaITstR-fiHbTzAJweu8-sAnAmOFK0UYuKeoesieWhuuripMHgNTRxS33zXV1NVq1AZLmXtO9WwIS1anUBbtR0RJjm5kfnNm6z-fuYg', 'expires_at': 1728847923, 'userinfo': {'iss': 'accounts.google.com', 'azp': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'aud': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'sub': '108826622315011771036', 'hd': 'minutememo.io', 'email': 'gaetan@minutememo.io', 'email_verified': True, 'at_hash': 'L1dbTZGdnkqgztKAv3ziSQ', 'nonce': 'yLw9KspflXXUz5quU26psw', 'iat': 1728844324, 'exp': 1728847924}}
-2024-10-13 20:32:04,407 - auth - ERROR - Error during Google authorization: OpenIDMixin.parse_id_token() missing 1 required positional argument: 'nonce'
-2024-10-13 20:32:04,407 - auth - DEBUG - After request, Origin: None
-2024-10-13 20:32:04,407 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 20:32:04] "[35m[1mGET /auth/callback?state=705cdwY9HmKuCqim-XEqJA&code=4/0AVG7fiT2gkQgtULGRCbsfm-diKj4ychqXCee_VhQS5GR5q6eQJJ8KQAX-LH8wye_R_icuw&scope=email%20profile%20openid%20https://www.googleapis.com/auth/userinfo.email%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/calendar&authuser=0&hd=minutememo.io&prompt=consent HTTP/1.1[0m" 500 -
-2024-10-13 20:33:43 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-10-13 20:33:43,586 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-10-13 20:33:43 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2024-10-13 20:46:26,635 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): accounts.google.com:443
+2024-10-13 20:46:26,785 - urllib3.connectionpool - DEBUG - https://accounts.google.com:443 "POST /o/oauth2/token HTTP/11" 200 None
+2024-10-13 20:46:26,788 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-13 20:46:26,910 - urllib3.connectionpool - DEBUG - https://www.googleapis.com:443 "GET /oauth2/v3/certs HTTP/11" 200 742
+2024-10-13 20:46:26,911 - auth - DEBUG - Token response received: {'access_token': 'ya29.a0AcM612y4T3GYh8xp0zAuBALP1qs6Ods0YxZ7s8d0ZL-IldaBayLLEdgW40KLo2NuqFnJGZQTak32YkeONu-tvrr_C-XuNp7gkgLuvkQ5D8XxvLzB_uFiLzwVd4tMe4ZM_4LFIne1LyQDZMayRmvb1xGiZbfdqaNJsLHEXG_daCgYKAZISARMSFQHGX2MiZWfPLtP2zMlsrSlyC1kGnw0175', 'expires_in': 3599, 'refresh_token': '1//037Ab7yFeNjDWCgYIARAAGAMSNwF-L9Irce0pPX6DnJALrsBQe9TI3zP4pyyrreyY0QpwrM4w1bNqIHQNvxY05bMjvGqbzf3dHow', 'scope': 'https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email openid', 'token_type': 'Bearer', 'id_token': 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImE1MGY2ZTcwZWY0YjU0OGE1ZmQ5MTQyZWVjZDFmYjhmNTRkY2U5ZWUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNzYwNjI4MzczMDY0LWNjb3RzbTltNGw5cTgxYTllNmdtdGZqOWdqdWRqcHQxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNzYwNjI4MzczMDY0LWNjb3RzbTltNGw5cTgxYTllNmdtdGZqOWdqdWRqcHQxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA4ODI2NjIyMzE1MDExNzcxMDM2IiwiaGQiOiJtaW51dGVtZW1vLmlvIiwiZW1haWwiOiJnYWV0YW5AbWludXRlbWVtby5pbyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiUW9oWHFfYWI5X2xHbXZoMWNza2FuQSIsIm5vbmNlIjoiVkRKOUl2S1AxcWt6ZFNNNVJyMXR0USIsImlhdCI6MTcyODg0NTE4NiwiZXhwIjoxNzI4ODQ4Nzg2fQ.omC1M7ZtWWJY6E4CZeP4qxph3JyNZ2Z3wMgto_7dV_GnFxA8zfwKZsmNf8Tx8qRMYJO6-A8Z_gTx_dUIpiB1-5pRF-rR99QvAoYeFESvKgd9rD6TsA-CfsFxI0QzDL846Qgz4b5PCLf_JviQR_TNpOvkSg9zSL8OX5Tn7EKBilp4KWshHx_KK3XA1vu3J5nE3Cqg0MG5s_zAT0EuDsuE2kD4xl4CPxLSBxftTpcHyBeVZdHvF1xHCD1x-GAugWBwplCgSJQJMrCqOgBlNLmEsWvKnh9B16_V_yF8iHAOE2IVdIA5WjNLU30Ys320n4Kmrny0nChwLJzT-2Wjz2KhyA', 'expires_at': 1728848785, 'userinfo': {'iss': 'accounts.google.com', 'azp': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'aud': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'sub': '108826622315011771036', 'hd': 'minutememo.io', 'email': 'gaetan@minutememo.io', 'email_verified': True, 'at_hash': 'QohXq_ab9_lGmvh1cskanA', 'nonce': 'VDJ9IvKP1qkzdSM5Rr1ttQ', 'iat': 1728845186, 'exp': 1728848786}}
+2024-10-13 20:46:26,911 - auth - DEBUG - Session nonce: VDJ9IvKP1qkzdSM5Rr1ttQ
+2024-10-13 20:46:26,912 - auth - DEBUG - User info: {'iss': 'accounts.google.com', 'azp': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'aud': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'sub': '108826622315011771036', 'hd': 'minutememo.io', 'email': 'gaetan@minutememo.io', 'email_verified': True, 'at_hash': 'QohXq_ab9_lGmvh1cskanA', 'nonce': 'VDJ9IvKP1qkzdSM5Rr1ttQ', 'iat': 1728845186, 'exp': 1728848786}
+2024-10-13 20:46:26,912 - auth - DEBUG - User email: gaetan@minutememo.io
+2024-10-13 20:46:26,912 - auth - ERROR - Error during Google authorization: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'meeting_participants' failed to locate a name ("name 'meeting_participants' is not defined"). If this is a class name, consider adding this relationship() to the <class 'models.User'> class after both dependent classes have been defined.
+2024-10-13 20:46:26,913 - auth - DEBUG - After request, Origin: None
+2024-10-13 20:46:26,913 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 20:46:26] "[35m[1mGET /auth/callback?state=cyWmfNqNT3RRlysHPpuR1Q&code=4/0AVG7fiS1fLjMLuuyWQ-VhjFeqfqyv32DSrezHhl89fdxMDDioZCBqbUeKu9Pf4bD3CXrqQ&scope=email%20profile%20openid%20https://www.googleapis.com/auth/userinfo.email%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/calendar&authuser=0&hd=minutememo.io&prompt=consent HTTP/1.1[0m" 500 -
+2024-10-13 20:50:16 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-10-13 20:50:16,706 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-10-13 20:50:16 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5000
-2024-10-13 20:33:43,812 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2024-10-13 20:50:16,925 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5000
-2024-10-13 20:33:43 INFO: [33mPress CTRL+C to quit[0m
-2024-10-13 20:33:43,812 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2024-10-13 20:33:48 ERROR: Exception on /auth/status [GET]
+2024-10-13 20:50:16 INFO: [33mPress CTRL+C to quit[0m
+2024-10-13 20:50:16,926 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-10-13 20:50:22 ERROR: Exception on /auth/status [GET]
 Traceback (most recent call last):
   File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 532, in __call__
     x = eval(self.arg, globals(), self._dict)
@@ -163,7 +99,7 @@ Traceback (most recent call last):
   File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 500, in _raise_for_name
     raise exc.InvalidRequestError(
 sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[User(user)], expression 'meeting_participants' failed to locate a name ("name 'meeting_participants' is not defined"). If this is a class name, consider adding this relationship() to the <class 'models.User'> class after both dependent classes have been defined.
-2024-10-13 20:33:48,551 - minutememo_app.app - ERROR - Exception on /auth/status [GET]
+2024-10-13 20:50:22,099 - minutememo_app.app - ERROR - Exception on /auth/status [GET]
 Traceback (most recent call last):
   File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 532, in __call__
     x = eval(self.arg, globals(), self._dict)
@@ -245,11 +181,11 @@ Traceback (most recent call last):
   File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 500, in _raise_for_name
     raise exc.InvalidRequestError(
 sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[User(user)], expression 'meeting_participants' failed to locate a name ("name 'meeting_participants' is not defined"). If this is a class name, consider adding this relationship() to the <class 'models.User'> class after both dependent classes have been defined.
-2024-10-13 20:33:48 DEBUG: After request, Origin: http://localhost:3000
-2024-10-13 20:33:48,558 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-13 20:33:48 INFO: 127.0.0.1 - - [13/Oct/2024 20:33:48] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
-2024-10-13 20:33:48,560 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 20:33:48] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
-2024-10-13 20:33:48 ERROR: Exception on /auth/status [GET]
+2024-10-13 20:50:22 DEBUG: After request, Origin: http://localhost:3000
+2024-10-13 20:50:22,105 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-13 20:50:22 INFO: 127.0.0.1 - - [13/Oct/2024 20:50:22] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
+2024-10-13 20:50:22,106 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 20:50:22] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
+2024-10-13 20:50:22 ERROR: Exception on /auth/status [GET]
 Traceback (most recent call last):
   File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
@@ -307,7 +243,7 @@ Traceback (most recent call last):
   File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4241, in _do_configure_registries
     raise e
 sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'meeting_participants' failed to locate a name ("name 'meeting_participants' is not defined"). If this is a class name, consider adding this relationship() to the <class 'models.User'> class after both dependent classes have been defined.
-2024-10-13 20:33:48,563 - minutememo_app.app - ERROR - Exception on /auth/status [GET]
+2024-10-13 20:50:22,108 - minutememo_app.app - ERROR - Exception on /auth/status [GET]
 Traceback (most recent call last):
   File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
@@ -365,330 +301,63 @@ Traceback (most recent call last):
   File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4241, in _do_configure_registries
     raise e
 sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'meeting_participants' failed to locate a name ("name 'meeting_participants' is not defined"). If this is a class name, consider adding this relationship() to the <class 'models.User'> class after both dependent classes have been defined.
-2024-10-13 20:33:48 DEBUG: After request, Origin: http://localhost:3000
-2024-10-13 20:33:48,564 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-13 20:33:48 INFO: 127.0.0.1 - - [13/Oct/2024 20:33:48] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
-2024-10-13 20:33:48,564 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 20:33:48] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
-2024-10-13 20:33:51 ERROR: Exception on /auth/status [GET]
-Traceback (most recent call last):
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_cors/extension.py", line 178, in wrapped_function
-    return cors_after_request(app.make_response(f(*args, **kwargs)))
-                                                ^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/app.py", line 118, in status
-    if current_user.is_authenticated:
-       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/werkzeug/local.py", line 318, in __get__
-    obj = instance._get_current_object()
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/werkzeug/local.py", line 526, in _get_current_object
-    return get_name(local())
-                    ^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/utils.py", line 25, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-                                      ^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/utils.py", line 370, in _get_user
-    current_app.login_manager._load_user()
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/login_manager.py", line 364, in _load_user
-    user = self._user_callback(user_id)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/app.py", line 108, in load_user
-    return User.query.get(int(user_id))
-           ^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
-    return cls.query_class(
-           ^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 275, in __init__
-    self._set_entities(entities)
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 288, in _set_entities
-    coercions.expect(
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 389, in expect
-    insp._post_inspect
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1253, in __get__
-    obj.__dict__[self.__name__] = result = self.fget(obj)
-                                           ^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2711, in _post_inspect
-    self._check_configure()
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2388, in _check_configure
-    _configure_registries({self.registry}, cascade=True)
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4204, in _configure_registries
-    _do_configure_registries(registries, cascade)
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4241, in _do_configure_registries
-    raise e
-sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'meeting_participants' failed to locate a name ("name 'meeting_participants' is not defined"). If this is a class name, consider adding this relationship() to the <class 'models.User'> class after both dependent classes have been defined.
-2024-10-13 20:33:51,755 - minutememo_app.app - ERROR - Exception on /auth/status [GET]
-Traceback (most recent call last):
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_cors/extension.py", line 178, in wrapped_function
-    return cors_after_request(app.make_response(f(*args, **kwargs)))
-                                                ^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/app.py", line 118, in status
-    if current_user.is_authenticated:
-       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/werkzeug/local.py", line 318, in __get__
-    obj = instance._get_current_object()
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/werkzeug/local.py", line 526, in _get_current_object
-    return get_name(local())
-                    ^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/utils.py", line 25, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-                                      ^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/utils.py", line 370, in _get_user
-    current_app.login_manager._load_user()
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/login_manager.py", line 364, in _load_user
-    user = self._user_callback(user_id)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/app.py", line 108, in load_user
-    return User.query.get(int(user_id))
-           ^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
-    return cls.query_class(
-           ^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 275, in __init__
-    self._set_entities(entities)
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 288, in _set_entities
-    coercions.expect(
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 389, in expect
-    insp._post_inspect
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1253, in __get__
-    obj.__dict__[self.__name__] = result = self.fget(obj)
-                                           ^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2711, in _post_inspect
-    self._check_configure()
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2388, in _check_configure
-    _configure_registries({self.registry}, cascade=True)
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4204, in _configure_registries
-    _do_configure_registries(registries, cascade)
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4241, in _do_configure_registries
-    raise e
-sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'meeting_participants' failed to locate a name ("name 'meeting_participants' is not defined"). If this is a class name, consider adding this relationship() to the <class 'models.User'> class after both dependent classes have been defined.
-2024-10-13 20:33:51 DEBUG: After request, Origin: http://localhost:3000
-2024-10-13 20:33:51,756 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-13 20:33:51 INFO: 127.0.0.1 - - [13/Oct/2024 20:33:51] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
-2024-10-13 20:33:51,757 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 20:33:51] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
-2024-10-13 20:33:51 ERROR: Exception on /auth/status [GET]
-Traceback (most recent call last):
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_cors/extension.py", line 178, in wrapped_function
-    return cors_after_request(app.make_response(f(*args, **kwargs)))
-                                                ^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/app.py", line 118, in status
-    if current_user.is_authenticated:
-       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/werkzeug/local.py", line 318, in __get__
-    obj = instance._get_current_object()
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/werkzeug/local.py", line 526, in _get_current_object
-    return get_name(local())
-                    ^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/utils.py", line 25, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-                                      ^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/utils.py", line 370, in _get_user
-    current_app.login_manager._load_user()
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/login_manager.py", line 364, in _load_user
-    user = self._user_callback(user_id)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/app.py", line 108, in load_user
-    return User.query.get(int(user_id))
-           ^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
-    return cls.query_class(
-           ^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 275, in __init__
-    self._set_entities(entities)
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 288, in _set_entities
-    coercions.expect(
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 389, in expect
-    insp._post_inspect
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1253, in __get__
-    obj.__dict__[self.__name__] = result = self.fget(obj)
-                                           ^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2711, in _post_inspect
-    self._check_configure()
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2388, in _check_configure
-    _configure_registries({self.registry}, cascade=True)
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4204, in _configure_registries
-    _do_configure_registries(registries, cascade)
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4241, in _do_configure_registries
-    raise e
-sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'meeting_participants' failed to locate a name ("name 'meeting_participants' is not defined"). If this is a class name, consider adding this relationship() to the <class 'models.User'> class after both dependent classes have been defined.
-2024-10-13 20:33:51,759 - minutememo_app.app - ERROR - Exception on /auth/status [GET]
-Traceback (most recent call last):
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_cors/extension.py", line 178, in wrapped_function
-    return cors_after_request(app.make_response(f(*args, **kwargs)))
-                                                ^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/app.py", line 118, in status
-    if current_user.is_authenticated:
-       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/werkzeug/local.py", line 318, in __get__
-    obj = instance._get_current_object()
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/werkzeug/local.py", line 526, in _get_current_object
-    return get_name(local())
-                    ^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/utils.py", line 25, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-                                      ^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/utils.py", line 370, in _get_user
-    current_app.login_manager._load_user()
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/login_manager.py", line 364, in _load_user
-    user = self._user_callback(user_id)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/app.py", line 108, in load_user
-    return User.query.get(int(user_id))
-           ^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
-    return cls.query_class(
-           ^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 275, in __init__
-    self._set_entities(entities)
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 288, in _set_entities
-    coercions.expect(
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 389, in expect
-    insp._post_inspect
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1253, in __get__
-    obj.__dict__[self.__name__] = result = self.fget(obj)
-                                           ^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2711, in _post_inspect
-    self._check_configure()
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2388, in _check_configure
-    _configure_registries({self.registry}, cascade=True)
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4204, in _configure_registries
-    _do_configure_registries(registries, cascade)
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4241, in _do_configure_registries
-    raise e
-sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'meeting_participants' failed to locate a name ("name 'meeting_participants' is not defined"). If this is a class name, consider adding this relationship() to the <class 'models.User'> class after both dependent classes have been defined.
-2024-10-13 20:33:51 DEBUG: After request, Origin: http://localhost:3000
-2024-10-13 20:33:51,760 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-13 20:33:51 INFO: 127.0.0.1 - - [13/Oct/2024 20:33:51] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
-2024-10-13 20:33:51,761 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 20:33:51] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
-2024-10-13 20:33:52 DEBUG: Google login initiated. Redirect URI: http://localhost:5000/auth/callback, State: 24Sl38QlQGfCSMuG0Z_KNQ
-2024-10-13 20:33:52,854 - auth - DEBUG - Google login initiated. Redirect URI: http://localhost:5000/auth/callback, State: 24Sl38QlQGfCSMuG0Z_KNQ
-2024-10-13 20:33:52 DEBUG: Client ID: 760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com
-2024-10-13 20:33:52,854 - auth - DEBUG - Client ID: 760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com
-2024-10-13 20:33:52 DEBUG: Session contents: <SecureCookieSession {'_flashes': [('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.')], '_fresh': True, '_id': '80f0c8f52e9d0894341645dd90e6d8ae068eccca8a01568dae0e1571fcf8617cd62df66b248fa262c3936ab84cb81e2f75bd1e859e1c93555c3e41b7cf1c1e14', '_permanent': True, '_user_id': '14', 'nonce': 'ODy28bxwYmq1JlWiAP2OJQ', 'oauth_state': '24Sl38QlQGfCSMuG0Z_KNQ'}>
-2024-10-13 20:33:52,854 - auth - DEBUG - Session contents: <SecureCookieSession {'_flashes': [('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.')], '_fresh': True, '_id': '80f0c8f52e9d0894341645dd90e6d8ae068eccca8a01568dae0e1571fcf8617cd62df66b248fa262c3936ab84cb81e2f75bd1e859e1c93555c3e41b7cf1c1e14', '_permanent': True, '_user_id': '14', 'nonce': 'ODy28bxwYmq1JlWiAP2OJQ', 'oauth_state': '24Sl38QlQGfCSMuG0Z_KNQ'}>
-2024-10-13 20:33:52 DEBUG: After request, Origin: None
-2024-10-13 20:33:52,854 - auth - DEBUG - After request, Origin: None
-2024-10-13 20:33:52 INFO: 127.0.0.1 - - [13/Oct/2024 20:33:52] "[32mGET /auth/login/google HTTP/1.1[0m" 302 -
-2024-10-13 20:33:52,855 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 20:33:52] "[32mGET /auth/login/google HTTP/1.1[0m" 302 -
-2024-10-13 20:33:58 DEBUG: Google authorization callback reached
-2024-10-13 20:33:58,606 - auth - DEBUG - Google authorization callback reached
-2024-10-13 20:33:58 DEBUG: OAuth state from callback: 24Sl38QlQGfCSMuG0Z_KNQ
-2024-10-13 20:33:58,606 - auth - DEBUG - OAuth state from callback: 24Sl38QlQGfCSMuG0Z_KNQ
-2024-10-13 20:33:58 DEBUG: OAuth state from session: 24Sl38QlQGfCSMuG0Z_KNQ
-2024-10-13 20:33:58,607 - auth - DEBUG - OAuth state from session: 24Sl38QlQGfCSMuG0Z_KNQ
-2024-10-13 20:33:58 DEBUG: Starting new HTTPS connection (1): accounts.google.com:443
-2024-10-13 20:33:58,612 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): accounts.google.com:443
-2024-10-13 20:33:58 DEBUG: https://accounts.google.com:443 "POST /o/oauth2/token HTTP/11" 200 None
-2024-10-13 20:33:58,761 - urllib3.connectionpool - DEBUG - https://accounts.google.com:443 "POST /o/oauth2/token HTTP/11" 200 None
-2024-10-13 20:33:58 DEBUG: Starting new HTTPS connection (1): www.googleapis.com:443
-2024-10-13 20:33:58,778 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.googleapis.com:443
-2024-10-13 20:33:58 DEBUG: https://www.googleapis.com:443 "GET /oauth2/v3/certs HTTP/11" 200 739
-2024-10-13 20:33:58,878 - urllib3.connectionpool - DEBUG - https://www.googleapis.com:443 "GET /oauth2/v3/certs HTTP/11" 200 739
-2024-10-13 20:33:58 DEBUG: Token response received: {'access_token': 'ya29.a0AcM612wU_uYmMVxUZIlBz21fQi4-QN10QWgXMCjX1MhlggBMWG_WuH1i9ijKtmy6gRJwvXdVbGrZJWsmwv3N83_n08vcx6DJBWMVxUgHDQjsVzgpWB5mhnTRiwf96FD0_rVv2cIURDXaNiEgy2CI2g49w8L2LfNRuM6oZb3baCgYKAUkSARASFQHGX2MiXQoAV3Rg_tvCP4vKAzGTyg0175', 'expires_in': 3599, 'refresh_token': '1//03frXtl7OQEPHCgYIARAAGAMSNwF-L9IrfHbw4jib6LHJx3lJUigOelGnJMiEPHONDSwpZFmoSnyzxa0jgmuhubvbZYLDp3YR-wM', 'scope': 'openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/calendar', 'token_type': 'Bearer', 'id_token': 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImE1MGY2ZTcwZWY0YjU0OGE1ZmQ5MTQyZWVjZDFmYjhmNTRkY2U5ZWUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNzYwNjI4MzczMDY0LWNjb3RzbTltNGw5cTgxYTllNmdtdGZqOWdqdWRqcHQxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNzYwNjI4MzczMDY0LWNjb3RzbTltNGw5cTgxYTllNmdtdGZqOWdqdWRqcHQxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTEzNDY1NzQxODQxMjQ0MzI5ODgwIiwiZW1haWwiOiJnYWV0YW4uYnVlbGluY2t4QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoieWRSSGlVZUU2T3VJdEZEb0czNUNHZyIsIm5vbmNlIjoiT0R5MjhieHdZbXExSmxXaUFQMk9KUSIsImlhdCI6MTcyODg0NDQzOCwiZXhwIjoxNzI4ODQ4MDM4fQ.Win8gzTVXx-6BgaCgvnkuQ0rQwiPxo8E7XDnFhgoe1bL5ZsjNRTKnvousnmEqzZF6Ww5eSXbD3oKqLw743_P5GUbr2T1IAVxmjQd9Sris8pqNEnSQzk6KXbhY5fxZNYiAS4YsXpHh00hMJxx00ch3Hm9VP9xzhmhygsYIS0qVd9vVOw8KGNGMHhO7FlQ3kzsLf9XcmMpZM9YyNPswmov_pmJl6mAXcfmSpPe94jsXFGULTZ6xCRL8x8t_0U0iGqKo_ZPHs310dG240K4JlR2Qb-IsM9opoXiBN14nN4xrvryDs-2iVZePKdVYVVEKnCJMlIqPspUzFrFqwgqDlGJLw', 'expires_at': 1728848037, 'userinfo': {'iss': 'accounts.google.com', 'azp': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'aud': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'sub': '113465741841244329880', 'email': 'gaetan.buelinckx@gmail.com', 'email_verified': True, 'at_hash': 'ydRHiUeE6OuItFDoG35CGg', 'nonce': 'ODy28bxwYmq1JlWiAP2OJQ', 'iat': 1728844438, 'exp': 1728848038}}
-2024-10-13 20:33:58,880 - auth - DEBUG - Token response received: {'access_token': 'ya29.a0AcM612wU_uYmMVxUZIlBz21fQi4-QN10QWgXMCjX1MhlggBMWG_WuH1i9ijKtmy6gRJwvXdVbGrZJWsmwv3N83_n08vcx6DJBWMVxUgHDQjsVzgpWB5mhnTRiwf96FD0_rVv2cIURDXaNiEgy2CI2g49w8L2LfNRuM6oZb3baCgYKAUkSARASFQHGX2MiXQoAV3Rg_tvCP4vKAzGTyg0175', 'expires_in': 3599, 'refresh_token': '1//03frXtl7OQEPHCgYIARAAGAMSNwF-L9IrfHbw4jib6LHJx3lJUigOelGnJMiEPHONDSwpZFmoSnyzxa0jgmuhubvbZYLDp3YR-wM', 'scope': 'openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/calendar', 'token_type': 'Bearer', 'id_token': 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImE1MGY2ZTcwZWY0YjU0OGE1ZmQ5MTQyZWVjZDFmYjhmNTRkY2U5ZWUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNzYwNjI4MzczMDY0LWNjb3RzbTltNGw5cTgxYTllNmdtdGZqOWdqdWRqcHQxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNzYwNjI4MzczMDY0LWNjb3RzbTltNGw5cTgxYTllNmdtdGZqOWdqdWRqcHQxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTEzNDY1NzQxODQxMjQ0MzI5ODgwIiwiZW1haWwiOiJnYWV0YW4uYnVlbGluY2t4QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoieWRSSGlVZUU2T3VJdEZEb0czNUNHZyIsIm5vbmNlIjoiT0R5MjhieHdZbXExSmxXaUFQMk9KUSIsImlhdCI6MTcyODg0NDQzOCwiZXhwIjoxNzI4ODQ4MDM4fQ.Win8gzTVXx-6BgaCgvnkuQ0rQwiPxo8E7XDnFhgoe1bL5ZsjNRTKnvousnmEqzZF6Ww5eSXbD3oKqLw743_P5GUbr2T1IAVxmjQd9Sris8pqNEnSQzk6KXbhY5fxZNYiAS4YsXpHh00hMJxx00ch3Hm9VP9xzhmhygsYIS0qVd9vVOw8KGNGMHhO7FlQ3kzsLf9XcmMpZM9YyNPswmov_pmJl6mAXcfmSpPe94jsXFGULTZ6xCRL8x8t_0U0iGqKo_ZPHs310dG240K4JlR2Qb-IsM9opoXiBN14nN4xrvryDs-2iVZePKdVYVVEKnCJMlIqPspUzFrFqwgqDlGJLw', 'expires_at': 1728848037, 'userinfo': {'iss': 'accounts.google.com', 'azp': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'aud': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'sub': '113465741841244329880', 'email': 'gaetan.buelinckx@gmail.com', 'email_verified': True, 'at_hash': 'ydRHiUeE6OuItFDoG35CGg', 'nonce': 'ODy28bxwYmq1JlWiAP2OJQ', 'iat': 1728844438, 'exp': 1728848038}}
-2024-10-13 20:33:58 DEBUG: Session nonce: ODy28bxwYmq1JlWiAP2OJQ
-2024-10-13 20:33:58,880 - auth - DEBUG - Session nonce: ODy28bxwYmq1JlWiAP2OJQ
-2024-10-13 20:33:58 DEBUG: User info: {'iss': 'accounts.google.com', 'azp': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'aud': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'sub': '113465741841244329880', 'email': 'gaetan.buelinckx@gmail.com', 'email_verified': True, 'at_hash': 'ydRHiUeE6OuItFDoG35CGg', 'nonce': 'ODy28bxwYmq1JlWiAP2OJQ', 'iat': 1728844438, 'exp': 1728848038}
-2024-10-13 20:33:58,880 - auth - DEBUG - User info: {'iss': 'accounts.google.com', 'azp': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'aud': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'sub': '113465741841244329880', 'email': 'gaetan.buelinckx@gmail.com', 'email_verified': True, 'at_hash': 'ydRHiUeE6OuItFDoG35CGg', 'nonce': 'ODy28bxwYmq1JlWiAP2OJQ', 'iat': 1728844438, 'exp': 1728848038}
-2024-10-13 20:33:58 DEBUG: User email: gaetan.buelinckx@gmail.com
-2024-10-13 20:33:58,880 - auth - DEBUG - User email: gaetan.buelinckx@gmail.com
-2024-10-13 20:33:58 ERROR: Error during Google authorization: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'meeting_participants' failed to locate a name ("name 'meeting_participants' is not defined"). If this is a class name, consider adding this relationship() to the <class 'models.User'> class after both dependent classes have been defined.
-2024-10-13 20:33:58,880 - auth - ERROR - Error during Google authorization: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'meeting_participants' failed to locate a name ("name 'meeting_participants' is not defined"). If this is a class name, consider adding this relationship() to the <class 'models.User'> class after both dependent classes have been defined.
-2024-10-13 20:33:58 DEBUG: After request, Origin: None
-2024-10-13 20:33:58,881 - auth - DEBUG - After request, Origin: None
-2024-10-13 20:33:58 INFO: 127.0.0.1 - - [13/Oct/2024 20:33:58] "[35m[1mGET /auth/callback?state=24Sl38QlQGfCSMuG0Z_KNQ&code=4/0AVG7fiQZ0Y4qtLBviApDzqMzT-q20jVjH-EFSOKPQrVBXlPpVjSAfpIo2qBHkEQXHOpMXg&scope=email%20profile%20openid%20https://www.googleapis.com/auth/calendar%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email&authuser=1&prompt=consent HTTP/1.1[0m" 500 -
-2024-10-13 20:33:58,881 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 20:33:58] "[35m[1mGET /auth/callback?state=24Sl38QlQGfCSMuG0Z_KNQ&code=4/0AVG7fiQZ0Y4qtLBviApDzqMzT-q20jVjH-EFSOKPQrVBXlPpVjSAfpIo2qBHkEQXHOpMXg&scope=email%20profile%20openid%20https://www.googleapis.com/auth/calendar%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email&authuser=1&prompt=consent HTTP/1.1[0m" 500 -
-2024-10-13 20:41:41 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-10-13 20:41:41,007 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
-2024-10-13 20:41:41 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2024-10-13 20:50:22 DEBUG: After request, Origin: http://localhost:3000
+2024-10-13 20:50:22,109 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-13 20:50:22 INFO: 127.0.0.1 - - [13/Oct/2024 20:50:22] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
+2024-10-13 20:50:22,109 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 20:50:22] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
+2024-10-13 20:50:23 DEBUG: Google login initiated. Redirect URI: http://localhost:5000/auth/callback, State: d0IDNt0d6qWIXId60D5O4g
+2024-10-13 20:50:23,198 - auth - DEBUG - Google login initiated. Redirect URI: http://localhost:5000/auth/callback, State: d0IDNt0d6qWIXId60D5O4g
+2024-10-13 20:50:23 DEBUG: Client ID: 760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com
+2024-10-13 20:50:23,198 - auth - DEBUG - Client ID: 760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com
+2024-10-13 20:50:23 DEBUG: Session contents: <SecureCookieSession {'_flashes': [('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.')], '_fresh': True, '_id': '80f0c8f52e9d0894341645dd90e6d8ae068eccca8a01568dae0e1571fcf8617cd62df66b248fa262c3936ab84cb81e2f75bd1e859e1c93555c3e41b7cf1c1e14', '_permanent': True, '_user_id': '14', 'nonce': '1IlK9DV1WBHuwJhGNTjKtQ', 'oauth_state': 'd0IDNt0d6qWIXId60D5O4g'}>
+2024-10-13 20:50:23,198 - auth - DEBUG - Session contents: <SecureCookieSession {'_flashes': [('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.')], '_fresh': True, '_id': '80f0c8f52e9d0894341645dd90e6d8ae068eccca8a01568dae0e1571fcf8617cd62df66b248fa262c3936ab84cb81e2f75bd1e859e1c93555c3e41b7cf1c1e14', '_permanent': True, '_user_id': '14', 'nonce': '1IlK9DV1WBHuwJhGNTjKtQ', 'oauth_state': 'd0IDNt0d6qWIXId60D5O4g'}>
+2024-10-13 20:50:23 DEBUG: After request, Origin: None
+2024-10-13 20:50:23,198 - auth - DEBUG - After request, Origin: None
+2024-10-13 20:50:23 INFO: 127.0.0.1 - - [13/Oct/2024 20:50:23] "[32mGET /auth/login/google HTTP/1.1[0m" 302 -
+2024-10-13 20:50:23,199 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 20:50:23] "[32mGET /auth/login/google HTTP/1.1[0m" 302 -
+2024-10-13 20:50:31 DEBUG: Google authorization callback reached
+2024-10-13 20:50:31,882 - auth - DEBUG - Google authorization callback reached
+2024-10-13 20:50:31 DEBUG: OAuth state from callback: d0IDNt0d6qWIXId60D5O4g
+2024-10-13 20:50:31,882 - auth - DEBUG - OAuth state from callback: d0IDNt0d6qWIXId60D5O4g
+2024-10-13 20:50:31 DEBUG: OAuth state from session: d0IDNt0d6qWIXId60D5O4g
+2024-10-13 20:50:31,883 - auth - DEBUG - OAuth state from session: d0IDNt0d6qWIXId60D5O4g
+2024-10-13 20:50:31 DEBUG: Starting new HTTPS connection (1): accounts.google.com:443
+2024-10-13 20:50:31,888 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): accounts.google.com:443
+2024-10-13 20:50:32 DEBUG: https://accounts.google.com:443 "POST /o/oauth2/token HTTP/11" 200 None
+2024-10-13 20:50:32,001 - urllib3.connectionpool - DEBUG - https://accounts.google.com:443 "POST /o/oauth2/token HTTP/11" 200 None
+2024-10-13 20:50:32 DEBUG: Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-13 20:50:32,002 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-13 20:50:32 DEBUG: https://www.googleapis.com:443 "GET /oauth2/v3/certs HTTP/11" 200 737
+2024-10-13 20:50:32,104 - urllib3.connectionpool - DEBUG - https://www.googleapis.com:443 "GET /oauth2/v3/certs HTTP/11" 200 737
+2024-10-13 20:50:32 DEBUG: Token response received: {'access_token': 'ya29.a0AcM612yWGw2_b7KVPs8YW9Mp9PufrS2SSmM9nin7UqzQt6e1QhASQlmp7zUUm-9LEB7CQUya5LfyhIMZ9sGKA8TBei7Rk_zlX9gx-Xl874K7mlTo4p-9onEt78oTDBKWRVEp69hOXomMKAmPcAceuBPvHBrI74b7P5i4faJ7aCgYKAasSARASFQHGX2Miw_ayKQ_FJO0NqhufzTqYTQ0175', 'expires_in': 3599, 'refresh_token': '1//03jWOzoaJA4DkCgYIARAAGAMSNwF-L9Irn0IsSloVmC0wzGkbAU5hURbDLVVYo0GCxSRz2bBZI5RvvTt6rJVdJ44qPas7Amk1jlY', 'scope': 'https://www.googleapis.com/auth/userinfo.profile openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/calendar', 'token_type': 'Bearer', 'id_token': 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImE1MGY2ZTcwZWY0YjU0OGE1ZmQ5MTQyZWVjZDFmYjhmNTRkY2U5ZWUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNzYwNjI4MzczMDY0LWNjb3RzbTltNGw5cTgxYTllNmdtdGZqOWdqdWRqcHQxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNzYwNjI4MzczMDY0LWNjb3RzbTltNGw5cTgxYTllNmdtdGZqOWdqdWRqcHQxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTEzNDY1NzQxODQxMjQ0MzI5ODgwIiwiZW1haWwiOiJnYWV0YW4uYnVlbGluY2t4QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiTW83cDRQODFjRk50c2VPX3VPa3prUSIsIm5vbmNlIjoiMUlsSzlEVjFXQkh1d0poR05Uakt0USIsImlhdCI6MTcyODg0NTQzMiwiZXhwIjoxNzI4ODQ5MDMyfQ.m2Q-AI0glqDpFIcaU-AKJjWmzyF-PHI-LJyhhq8AEZVzVH4lQveSI9dYvCmRNjD_SU0C8aqy5E1SrzA8HLAcOiTSjJSFcKxdy-gr0tVrAKfi-wYcT_VUKndylbO4sBZj-GtpVXt2WFxHO1-6UTiE_P5TwtrNmiU5GFzD3KJnjs_bGp_gpBg7b_MZQjFj3N_O166HBBJgQbJ23i-_ogq5GIujTRJmu1HQL9cFOTz_BfiobIb2H2l2kP-DGCvZUYh064xEdoJu_ehNvXJB1P-msX1JtGTEFGeLq8ty5jl4rxOPyWiLDv5aWTs-GRevO5n7mDIcTt2rQBzCwqpC-5A5Hw', 'expires_at': 1728849031, 'userinfo': {'iss': 'accounts.google.com', 'azp': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'aud': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'sub': '113465741841244329880', 'email': 'gaetan.buelinckx@gmail.com', 'email_verified': True, 'at_hash': 'Mo7p4P81cFNtseO_uOkzkQ', 'nonce': '1IlK9DV1WBHuwJhGNTjKtQ', 'iat': 1728845432, 'exp': 1728849032}}
+2024-10-13 20:50:32,105 - auth - DEBUG - Token response received: {'access_token': 'ya29.a0AcM612yWGw2_b7KVPs8YW9Mp9PufrS2SSmM9nin7UqzQt6e1QhASQlmp7zUUm-9LEB7CQUya5LfyhIMZ9sGKA8TBei7Rk_zlX9gx-Xl874K7mlTo4p-9onEt78oTDBKWRVEp69hOXomMKAmPcAceuBPvHBrI74b7P5i4faJ7aCgYKAasSARASFQHGX2Miw_ayKQ_FJO0NqhufzTqYTQ0175', 'expires_in': 3599, 'refresh_token': '1//03jWOzoaJA4DkCgYIARAAGAMSNwF-L9Irn0IsSloVmC0wzGkbAU5hURbDLVVYo0GCxSRz2bBZI5RvvTt6rJVdJ44qPas7Amk1jlY', 'scope': 'https://www.googleapis.com/auth/userinfo.profile openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/calendar', 'token_type': 'Bearer', 'id_token': 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImE1MGY2ZTcwZWY0YjU0OGE1ZmQ5MTQyZWVjZDFmYjhmNTRkY2U5ZWUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNzYwNjI4MzczMDY0LWNjb3RzbTltNGw5cTgxYTllNmdtdGZqOWdqdWRqcHQxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNzYwNjI4MzczMDY0LWNjb3RzbTltNGw5cTgxYTllNmdtdGZqOWdqdWRqcHQxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTEzNDY1NzQxODQxMjQ0MzI5ODgwIiwiZW1haWwiOiJnYWV0YW4uYnVlbGluY2t4QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiTW83cDRQODFjRk50c2VPX3VPa3prUSIsIm5vbmNlIjoiMUlsSzlEVjFXQkh1d0poR05Uakt0USIsImlhdCI6MTcyODg0NTQzMiwiZXhwIjoxNzI4ODQ5MDMyfQ.m2Q-AI0glqDpFIcaU-AKJjWmzyF-PHI-LJyhhq8AEZVzVH4lQveSI9dYvCmRNjD_SU0C8aqy5E1SrzA8HLAcOiTSjJSFcKxdy-gr0tVrAKfi-wYcT_VUKndylbO4sBZj-GtpVXt2WFxHO1-6UTiE_P5TwtrNmiU5GFzD3KJnjs_bGp_gpBg7b_MZQjFj3N_O166HBBJgQbJ23i-_ogq5GIujTRJmu1HQL9cFOTz_BfiobIb2H2l2kP-DGCvZUYh064xEdoJu_ehNvXJB1P-msX1JtGTEFGeLq8ty5jl4rxOPyWiLDv5aWTs-GRevO5n7mDIcTt2rQBzCwqpC-5A5Hw', 'expires_at': 1728849031, 'userinfo': {'iss': 'accounts.google.com', 'azp': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'aud': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'sub': '113465741841244329880', 'email': 'gaetan.buelinckx@gmail.com', 'email_verified': True, 'at_hash': 'Mo7p4P81cFNtseO_uOkzkQ', 'nonce': '1IlK9DV1WBHuwJhGNTjKtQ', 'iat': 1728845432, 'exp': 1728849032}}
+2024-10-13 20:50:32 DEBUG: Session nonce: 1IlK9DV1WBHuwJhGNTjKtQ
+2024-10-13 20:50:32,105 - auth - DEBUG - Session nonce: 1IlK9DV1WBHuwJhGNTjKtQ
+2024-10-13 20:50:32 DEBUG: User info: {'iss': 'accounts.google.com', 'azp': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'aud': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'sub': '113465741841244329880', 'email': 'gaetan.buelinckx@gmail.com', 'email_verified': True, 'at_hash': 'Mo7p4P81cFNtseO_uOkzkQ', 'nonce': '1IlK9DV1WBHuwJhGNTjKtQ', 'iat': 1728845432, 'exp': 1728849032}
+2024-10-13 20:50:32,106 - auth - DEBUG - User info: {'iss': 'accounts.google.com', 'azp': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'aud': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'sub': '113465741841244329880', 'email': 'gaetan.buelinckx@gmail.com', 'email_verified': True, 'at_hash': 'Mo7p4P81cFNtseO_uOkzkQ', 'nonce': '1IlK9DV1WBHuwJhGNTjKtQ', 'iat': 1728845432, 'exp': 1728849032}
+2024-10-13 20:50:32 DEBUG: User email: gaetan.buelinckx@gmail.com
+2024-10-13 20:50:32,106 - auth - DEBUG - User email: gaetan.buelinckx@gmail.com
+2024-10-13 20:50:32 ERROR: Error during Google authorization: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'meeting_participants' failed to locate a name ("name 'meeting_participants' is not defined"). If this is a class name, consider adding this relationship() to the <class 'models.User'> class after both dependent classes have been defined.
+2024-10-13 20:50:32,106 - auth - ERROR - Error during Google authorization: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'meeting_participants' failed to locate a name ("name 'meeting_participants' is not defined"). If this is a class name, consider adding this relationship() to the <class 'models.User'> class after both dependent classes have been defined.
+2024-10-13 20:50:32 DEBUG: After request, Origin: None
+2024-10-13 20:50:32,106 - auth - DEBUG - After request, Origin: None
+2024-10-13 20:50:32 INFO: 127.0.0.1 - - [13/Oct/2024 20:50:32] "[35m[1mGET /auth/callback?state=d0IDNt0d6qWIXId60D5O4g&code=4/0AVG7fiSAkIhkS5zqO1DDYcx6dF4k7Dlp9-mMJr0kCKlPutucccLvujjE5fwF4owipQLmPg&scope=email%20profile%20openid%20https://www.googleapis.com/auth/calendar%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email&authuser=1&prompt=consent HTTP/1.1[0m" 500 -
+2024-10-13 20:50:32,106 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 20:50:32] "[35m[1mGET /auth/callback?state=d0IDNt0d6qWIXId60D5O4g&code=4/0AVG7fiSAkIhkS5zqO1DDYcx6dF4k7Dlp9-mMJr0kCKlPutucccLvujjE5fwF4owipQLmPg&scope=email%20profile%20openid%20https://www.googleapis.com/auth/calendar%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email&authuser=1&prompt=consent HTTP/1.1[0m" 500 -
+2024-10-13 20:57:04 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-10-13 20:57:04,696 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-10-13 20:57:11 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-10-13 20:57:11,029 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-10-13 20:59:50 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-10-13 20:59:50,613 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-10-13 21:00:10 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-10-13 21:00:10,281 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-10-13 21:00:10 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5000
-2024-10-13 20:41:41,234 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2024-10-13 21:00:10,500 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5000
-2024-10-13 20:41:41 INFO: [33mPress CTRL+C to quit[0m
-2024-10-13 20:41:41,234 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2024-10-13 20:41:45 DEBUG: Google authorization callback reached
-2024-10-13 20:41:45,300 - auth - DEBUG - Google authorization callback reached
-2024-10-13 20:41:45 DEBUG: OAuth state from callback: 24Sl38QlQGfCSMuG0Z_KNQ
-2024-10-13 20:41:45,300 - auth - DEBUG - OAuth state from callback: 24Sl38QlQGfCSMuG0Z_KNQ
-2024-10-13 20:41:45 DEBUG: OAuth state from session: 24Sl38QlQGfCSMuG0Z_KNQ
-2024-10-13 20:41:45,300 - auth - DEBUG - OAuth state from session: 24Sl38QlQGfCSMuG0Z_KNQ
-2024-10-13 20:41:45 ERROR: Error during Google authorization: mismatching_state: CSRF Warning! State not equal in request and response.
-2024-10-13 20:41:45,300 - auth - ERROR - Error during Google authorization: mismatching_state: CSRF Warning! State not equal in request and response.
-2024-10-13 20:41:45 DEBUG: After request, Origin: None
-2024-10-13 20:41:45,300 - auth - DEBUG - After request, Origin: None
-2024-10-13 20:41:45 INFO: 127.0.0.1 - - [13/Oct/2024 20:41:45] "[35m[1mGET /auth/callback?state=24Sl38QlQGfCSMuG0Z_KNQ&code=4/0AVG7fiQZ0Y4qtLBviApDzqMzT-q20jVjH-EFSOKPQrVBXlPpVjSAfpIo2qBHkEQXHOpMXg&scope=email%20profile%20openid%20https://www.googleapis.com/auth/calendar%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email&authuser=1&prompt=consent HTTP/1.1[0m" 500 -
-2024-10-13 20:41:45,301 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 20:41:45] "[35m[1mGET /auth/callback?state=24Sl38QlQGfCSMuG0Z_KNQ&code=4/0AVG7fiQZ0Y4qtLBviApDzqMzT-q20jVjH-EFSOKPQrVBXlPpVjSAfpIo2qBHkEQXHOpMXg&scope=email%20profile%20openid%20https://www.googleapis.com/auth/calendar%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email&authuser=1&prompt=consent HTTP/1.1[0m" 500 -
-2024-10-13 20:41:48 DEBUG: Google authorization callback reached
-2024-10-13 20:41:48,726 - auth - DEBUG - Google authorization callback reached
-2024-10-13 20:41:48 DEBUG: OAuth state from callback: 24Sl38QlQGfCSMuG0Z_KNQ
-2024-10-13 20:41:48,726 - auth - DEBUG - OAuth state from callback: 24Sl38QlQGfCSMuG0Z_KNQ
-2024-10-13 20:41:48 DEBUG: OAuth state from session: 24Sl38QlQGfCSMuG0Z_KNQ
-2024-10-13 20:41:48,726 - auth - DEBUG - OAuth state from session: 24Sl38QlQGfCSMuG0Z_KNQ
-2024-10-13 20:41:48 ERROR: Error during Google authorization: access_denied: 
-2024-10-13 20:41:48,726 - auth - ERROR - Error during Google authorization: access_denied: 
-2024-10-13 20:41:48 DEBUG: After request, Origin: None
-2024-10-13 20:41:48,726 - auth - DEBUG - After request, Origin: None
-2024-10-13 20:41:48 INFO: 127.0.0.1 - - [13/Oct/2024 20:41:48] "[35m[1mGET /auth/callback?error=access_denied&state=24Sl38QlQGfCSMuG0Z_KNQ HTTP/1.1[0m" 500 -
-2024-10-13 20:41:48,727 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 20:41:48] "[35m[1mGET /auth/callback?error=access_denied&state=24Sl38QlQGfCSMuG0Z_KNQ HTTP/1.1[0m" 500 -
-2024-10-13 20:41:50 ERROR: Exception on /auth/status [GET]
-Traceback (most recent call last):
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 532, in __call__
-    x = eval(self.arg, globals(), self._dict)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<string>", line 1, in <module>
-NameError: name 'meeting_participants' is not defined
-
-The above exception was the direct cause of the following exception:
-
+2024-10-13 21:00:10 INFO: [33mPress CTRL+C to quit[0m
+2024-10-13 21:00:10,500 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-10-13 21:00:14 ERROR: Exception on /auth/status [GET]
 Traceback (most recent call last):
   File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
@@ -749,28 +418,12 @@ Traceback (most recent call last):
     prop.init()
   File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 584, in init
     self.do_init()
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1641, in do_init
-    self._process_dependent_arguments()
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1682, in _process_dependent_arguments
-    rel_arg._resolve_against_registry(self._clsregistry_resolvers[1])
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 270, in _resolve_against_registry
-    self.resolved = clsregistry_resolver(
-                    ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 539, in __call__
-    self._raise_for_name(n.args[0], n)
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 500, in _raise_for_name
-    raise exc.InvalidRequestError(
-sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[User(user)], expression 'meeting_participants' failed to locate a name ("name 'meeting_participants' is not defined"). If this is a class name, consider adding this relationship() to the <class 'models.User'> class after both dependent classes have been defined.
-2024-10-13 20:41:50,855 - minutememo_app.app - ERROR - Exception on /auth/status [GET]
-Traceback (most recent call last):
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 532, in __call__
-    x = eval(self.arg, globals(), self._dict)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<string>", line 1, in <module>
-NameError: name 'meeting_participants' is not defined
-
-The above exception was the direct cause of the following exception:
-
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1647, in do_init
+    self._generate_backref()
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 2075, in _generate_backref
+    raise sa_exc.ArgumentError(
+sqlalchemy.exc.ArgumentError: Error creating backref 'user_role_assignments' on relationship 'UserRoleAssignment.hub': property of that name exists on mapper 'Mapper[MeetingHub(meeting_hub)]'
+2024-10-13 21:00:14,172 - minutememo_app.app - ERROR - Exception on /auth/status [GET]
 Traceback (most recent call last):
   File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
@@ -831,23 +484,318 @@ Traceback (most recent call last):
     prop.init()
   File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 584, in init
     self.do_init()
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1641, in do_init
-    self._process_dependent_arguments()
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1682, in _process_dependent_arguments
-    rel_arg._resolve_against_registry(self._clsregistry_resolvers[1])
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 270, in _resolve_against_registry
-    self.resolved = clsregistry_resolver(
-                    ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 539, in __call__
-    self._raise_for_name(n.args[0], n)
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 500, in _raise_for_name
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1647, in do_init
+    self._generate_backref()
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 2075, in _generate_backref
+    raise sa_exc.ArgumentError(
+sqlalchemy.exc.ArgumentError: Error creating backref 'user_role_assignments' on relationship 'UserRoleAssignment.hub': property of that name exists on mapper 'Mapper[MeetingHub(meeting_hub)]'
+2024-10-13 21:00:14 DEBUG: After request, Origin: http://localhost:3000
+2024-10-13 21:00:14,179 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-13 21:00:14 INFO: 127.0.0.1 - - [13/Oct/2024 21:00:14] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
+2024-10-13 21:00:14,179 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 21:00:14] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
+2024-10-13 21:00:14 ERROR: Exception on /auth/status [GET]
+Traceback (most recent call last):
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_cors/extension.py", line 178, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/app.py", line 118, in status
+    if current_user.is_authenticated:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/werkzeug/local.py", line 318, in __get__
+    obj = instance._get_current_object()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/werkzeug/local.py", line 526, in _get_current_object
+    return get_name(local())
+                    ^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/login_manager.py", line 364, in _load_user
+    user = self._user_callback(user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/app.py", line 108, in load_user
+    return User.query.get(int(user_id))
+           ^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 275, in __init__
+    self._set_entities(entities)
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 288, in _set_entities
+    coercions.expect(
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 389, in expect
+    insp._post_inspect
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1253, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2711, in _post_inspect
+    self._check_configure()
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2388, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4204, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4241, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[UserRoleAssignment(user_role_assignment)]'. Original exception was: Error creating backref 'user_role_assignments' on relationship 'UserRoleAssignment.hub': property of that name exists on mapper 'Mapper[MeetingHub(meeting_hub)]'
+2024-10-13 21:00:14,181 - minutememo_app.app - ERROR - Exception on /auth/status [GET]
+Traceback (most recent call last):
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_cors/extension.py", line 178, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/app.py", line 118, in status
+    if current_user.is_authenticated:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/werkzeug/local.py", line 318, in __get__
+    obj = instance._get_current_object()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/werkzeug/local.py", line 526, in _get_current_object
+    return get_name(local())
+                    ^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/login_manager.py", line 364, in _load_user
+    user = self._user_callback(user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/app.py", line 108, in load_user
+    return User.query.get(int(user_id))
+           ^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 275, in __init__
+    self._set_entities(entities)
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 288, in _set_entities
+    coercions.expect(
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 389, in expect
+    insp._post_inspect
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1253, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2711, in _post_inspect
+    self._check_configure()
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2388, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4204, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4241, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[UserRoleAssignment(user_role_assignment)]'. Original exception was: Error creating backref 'user_role_assignments' on relationship 'UserRoleAssignment.hub': property of that name exists on mapper 'Mapper[MeetingHub(meeting_hub)]'
+2024-10-13 21:00:14 DEBUG: After request, Origin: http://localhost:3000
+2024-10-13 21:00:14,182 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-13 21:00:14 INFO: 127.0.0.1 - - [13/Oct/2024 21:00:14] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
+2024-10-13 21:00:14,183 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 21:00:14] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
+2024-10-13 21:00:15 DEBUG: Google login initiated. Redirect URI: http://localhost:5000/auth/callback, State: nh3u7Zkm0ZVSGPBW4zdYYw
+2024-10-13 21:00:15,296 - auth - DEBUG - Google login initiated. Redirect URI: http://localhost:5000/auth/callback, State: nh3u7Zkm0ZVSGPBW4zdYYw
+2024-10-13 21:00:15 DEBUG: Client ID: 760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com
+2024-10-13 21:00:15,296 - auth - DEBUG - Client ID: 760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com
+2024-10-13 21:00:15 DEBUG: Session contents: <SecureCookieSession {'_flashes': [('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.')], '_fresh': True, '_id': '80f0c8f52e9d0894341645dd90e6d8ae068eccca8a01568dae0e1571fcf8617cd62df66b248fa262c3936ab84cb81e2f75bd1e859e1c93555c3e41b7cf1c1e14', '_permanent': True, '_user_id': '14', 'nonce': 'o_k5DE4LXBgJd-69GEYB4A', 'oauth_state': 'nh3u7Zkm0ZVSGPBW4zdYYw'}>
+2024-10-13 21:00:15,297 - auth - DEBUG - Session contents: <SecureCookieSession {'_flashes': [('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.')], '_fresh': True, '_id': '80f0c8f52e9d0894341645dd90e6d8ae068eccca8a01568dae0e1571fcf8617cd62df66b248fa262c3936ab84cb81e2f75bd1e859e1c93555c3e41b7cf1c1e14', '_permanent': True, '_user_id': '14', 'nonce': 'o_k5DE4LXBgJd-69GEYB4A', 'oauth_state': 'nh3u7Zkm0ZVSGPBW4zdYYw'}>
+2024-10-13 21:00:15 DEBUG: After request, Origin: None
+2024-10-13 21:00:15,297 - auth - DEBUG - After request, Origin: None
+2024-10-13 21:00:15 INFO: 127.0.0.1 - - [13/Oct/2024 21:00:15] "[32mGET /auth/login/google HTTP/1.1[0m" 302 -
+2024-10-13 21:00:15,298 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 21:00:15] "[32mGET /auth/login/google HTTP/1.1[0m" 302 -
+2024-10-13 21:00:19 DEBUG: Google authorization callback reached
+2024-10-13 21:00:19,495 - auth - DEBUG - Google authorization callback reached
+2024-10-13 21:00:19 DEBUG: OAuth state from callback: nh3u7Zkm0ZVSGPBW4zdYYw
+2024-10-13 21:00:19,495 - auth - DEBUG - OAuth state from callback: nh3u7Zkm0ZVSGPBW4zdYYw
+2024-10-13 21:00:19 DEBUG: OAuth state from session: nh3u7Zkm0ZVSGPBW4zdYYw
+2024-10-13 21:00:19,495 - auth - DEBUG - OAuth state from session: nh3u7Zkm0ZVSGPBW4zdYYw
+2024-10-13 21:00:19 DEBUG: Starting new HTTPS connection (1): accounts.google.com:443
+2024-10-13 21:00:19,500 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): accounts.google.com:443
+2024-10-13 21:00:19 DEBUG: https://accounts.google.com:443 "POST /o/oauth2/token HTTP/11" 200 None
+2024-10-13 21:00:19,660 - urllib3.connectionpool - DEBUG - https://accounts.google.com:443 "POST /o/oauth2/token HTTP/11" 200 None
+2024-10-13 21:00:19 DEBUG: Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-13 21:00:19,671 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-13 21:00:19 DEBUG: https://www.googleapis.com:443 "GET /oauth2/v3/certs HTTP/11" 200 741
+2024-10-13 21:00:19,787 - urllib3.connectionpool - DEBUG - https://www.googleapis.com:443 "GET /oauth2/v3/certs HTTP/11" 200 741
+2024-10-13 21:00:19 DEBUG: Token response received: {'access_token': 'ya29.a0AcM612wr5aYgqwGTNdeYuPwc-Bfe40ZdRjWthe0hyXU3tbjivi6Vyg7szoMw1T2QxT7tzr7ywAxHIy9dXK2lMdBn3Rx9gnrNdqM4VKyIOWuRbFeqafQ7ZpyH7M4N8sZ6pU2kJLAPsoOUc3xe-5AeqR8RblZmLUDlCj9fZ9lSaCgYKASgSARMSFQHGX2MiwUdvFhj901nLIADnvM9FZw0175', 'expires_in': 3599, 'refresh_token': '1//03ujoqqIbFBUBCgYIARAAGAMSNwF-L9IrcvMrUnE9VPMkUArr6mLqGBsXtibb8jc6PTftXAKAdcFGHx9AEM2dJe2lW3BYaQjqvuE', 'scope': 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/userinfo.email openid', 'token_type': 'Bearer', 'id_token': 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImE1MGY2ZTcwZWY0YjU0OGE1ZmQ5MTQyZWVjZDFmYjhmNTRkY2U5ZWUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNzYwNjI4MzczMDY0LWNjb3RzbTltNGw5cTgxYTllNmdtdGZqOWdqdWRqcHQxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNzYwNjI4MzczMDY0LWNjb3RzbTltNGw5cTgxYTllNmdtdGZqOWdqdWRqcHQxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA4ODI2NjIyMzE1MDExNzcxMDM2IiwiaGQiOiJtaW51dGVtZW1vLmlvIiwiZW1haWwiOiJnYWV0YW5AbWludXRlbWVtby5pbyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiUGNvLUJTNjVqUU1ySThZVlJVSF9PdyIsIm5vbmNlIjoib19rNURFNExYQmdKZC02OUdFWUI0QSIsImlhdCI6MTcyODg0NjAxOSwiZXhwIjoxNzI4ODQ5NjE5fQ.fl0LrfqGhuWASevL2wMlGgtVwr4l5MPhvPtoGDp-QvLb0gwFttT6GX9FJY_yrqcWi1wz9JjZzmj0qiQJZytXuAepNEIqXdLIa6lViQ4m0zwjSyrbC9kyW_JbR6Oy3kZHP-RVj9Qr1nyEEvsOMraYCpQ1t_PiDRE2vcgrS5dzbhXpSXOsW-EQO4QlHlxytLdSbNLYKTrOAtk1srtpxnlnqDWsu7mZJESprpOfEzMX6fdQJuFIjlGaY0PII1uIiXFb239_PEN0H0h6RvdWGHEkllaF2dzttBKzaXVxcLplYf9ssGBrFJ8swiFRTdV1bWaytnDhj4io9cPQa9FfuS4G1Q', 'expires_at': 1728849618, 'userinfo': {'iss': 'accounts.google.com', 'azp': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'aud': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'sub': '108826622315011771036', 'hd': 'minutememo.io', 'email': 'gaetan@minutememo.io', 'email_verified': True, 'at_hash': 'Pco-BS65jQMrI8YVRUH_Ow', 'nonce': 'o_k5DE4LXBgJd-69GEYB4A', 'iat': 1728846019, 'exp': 1728849619}}
+2024-10-13 21:00:19,788 - auth - DEBUG - Token response received: {'access_token': 'ya29.a0AcM612wr5aYgqwGTNdeYuPwc-Bfe40ZdRjWthe0hyXU3tbjivi6Vyg7szoMw1T2QxT7tzr7ywAxHIy9dXK2lMdBn3Rx9gnrNdqM4VKyIOWuRbFeqafQ7ZpyH7M4N8sZ6pU2kJLAPsoOUc3xe-5AeqR8RblZmLUDlCj9fZ9lSaCgYKASgSARMSFQHGX2MiwUdvFhj901nLIADnvM9FZw0175', 'expires_in': 3599, 'refresh_token': '1//03ujoqqIbFBUBCgYIARAAGAMSNwF-L9IrcvMrUnE9VPMkUArr6mLqGBsXtibb8jc6PTftXAKAdcFGHx9AEM2dJe2lW3BYaQjqvuE', 'scope': 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/userinfo.email openid', 'token_type': 'Bearer', 'id_token': 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImE1MGY2ZTcwZWY0YjU0OGE1ZmQ5MTQyZWVjZDFmYjhmNTRkY2U5ZWUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNzYwNjI4MzczMDY0LWNjb3RzbTltNGw5cTgxYTllNmdtdGZqOWdqdWRqcHQxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNzYwNjI4MzczMDY0LWNjb3RzbTltNGw5cTgxYTllNmdtdGZqOWdqdWRqcHQxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA4ODI2NjIyMzE1MDExNzcxMDM2IiwiaGQiOiJtaW51dGVtZW1vLmlvIiwiZW1haWwiOiJnYWV0YW5AbWludXRlbWVtby5pbyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiUGNvLUJTNjVqUU1ySThZVlJVSF9PdyIsIm5vbmNlIjoib19rNURFNExYQmdKZC02OUdFWUI0QSIsImlhdCI6MTcyODg0NjAxOSwiZXhwIjoxNzI4ODQ5NjE5fQ.fl0LrfqGhuWASevL2wMlGgtVwr4l5MPhvPtoGDp-QvLb0gwFttT6GX9FJY_yrqcWi1wz9JjZzmj0qiQJZytXuAepNEIqXdLIa6lViQ4m0zwjSyrbC9kyW_JbR6Oy3kZHP-RVj9Qr1nyEEvsOMraYCpQ1t_PiDRE2vcgrS5dzbhXpSXOsW-EQO4QlHlxytLdSbNLYKTrOAtk1srtpxnlnqDWsu7mZJESprpOfEzMX6fdQJuFIjlGaY0PII1uIiXFb239_PEN0H0h6RvdWGHEkllaF2dzttBKzaXVxcLplYf9ssGBrFJ8swiFRTdV1bWaytnDhj4io9cPQa9FfuS4G1Q', 'expires_at': 1728849618, 'userinfo': {'iss': 'accounts.google.com', 'azp': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'aud': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'sub': '108826622315011771036', 'hd': 'minutememo.io', 'email': 'gaetan@minutememo.io', 'email_verified': True, 'at_hash': 'Pco-BS65jQMrI8YVRUH_Ow', 'nonce': 'o_k5DE4LXBgJd-69GEYB4A', 'iat': 1728846019, 'exp': 1728849619}}
+2024-10-13 21:00:19 DEBUG: Session nonce: o_k5DE4LXBgJd-69GEYB4A
+2024-10-13 21:00:19,789 - auth - DEBUG - Session nonce: o_k5DE4LXBgJd-69GEYB4A
+2024-10-13 21:00:19 DEBUG: User info: {'iss': 'accounts.google.com', 'azp': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'aud': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'sub': '108826622315011771036', 'hd': 'minutememo.io', 'email': 'gaetan@minutememo.io', 'email_verified': True, 'at_hash': 'Pco-BS65jQMrI8YVRUH_Ow', 'nonce': 'o_k5DE4LXBgJd-69GEYB4A', 'iat': 1728846019, 'exp': 1728849619}
+2024-10-13 21:00:19,789 - auth - DEBUG - User info: {'iss': 'accounts.google.com', 'azp': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'aud': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'sub': '108826622315011771036', 'hd': 'minutememo.io', 'email': 'gaetan@minutememo.io', 'email_verified': True, 'at_hash': 'Pco-BS65jQMrI8YVRUH_Ow', 'nonce': 'o_k5DE4LXBgJd-69GEYB4A', 'iat': 1728846019, 'exp': 1728849619}
+2024-10-13 21:00:19 DEBUG: User email: gaetan@minutememo.io
+2024-10-13 21:00:19,789 - auth - DEBUG - User email: gaetan@minutememo.io
+2024-10-13 21:00:19 ERROR: Error during Google authorization: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[UserRoleAssignment(user_role_assignment)]'. Original exception was: Error creating backref 'user_role_assignments' on relationship 'UserRoleAssignment.hub': property of that name exists on mapper 'Mapper[MeetingHub(meeting_hub)]'
+2024-10-13 21:00:19,789 - auth - ERROR - Error during Google authorization: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[UserRoleAssignment(user_role_assignment)]'. Original exception was: Error creating backref 'user_role_assignments' on relationship 'UserRoleAssignment.hub': property of that name exists on mapper 'Mapper[MeetingHub(meeting_hub)]'
+2024-10-13 21:00:19 DEBUG: After request, Origin: None
+2024-10-13 21:00:19,789 - auth - DEBUG - After request, Origin: None
+2024-10-13 21:00:19 INFO: 127.0.0.1 - - [13/Oct/2024 21:00:19] "[35m[1mGET /auth/callback?state=nh3u7Zkm0ZVSGPBW4zdYYw&code=4/0AVG7fiRugiG01aztrN4L3ud0foLETtyetCI7cqOlLQI4rZKZyyfXrEBIXKcfcuUJQqVx3w&scope=email%20profile%20openid%20https://www.googleapis.com/auth/userinfo.email%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/calendar&authuser=0&hd=minutememo.io&prompt=consent HTTP/1.1[0m" 500 -
+2024-10-13 21:00:19,790 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 21:00:19] "[35m[1mGET /auth/callback?state=nh3u7Zkm0ZVSGPBW4zdYYw&code=4/0AVG7fiRugiG01aztrN4L3ud0foLETtyetCI7cqOlLQI4rZKZyyfXrEBIXKcfcuUJQqVx3w&scope=email%20profile%20openid%20https://www.googleapis.com/auth/userinfo.email%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/calendar&authuser=0&hd=minutememo.io&prompt=consent HTTP/1.1[0m" 500 -
+2024-10-13 21:02:32 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-10-13 21:02:32,981 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-10-13 21:02:37 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-10-13 21:02:37,887 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-10-13 21:02:42 DEBUG: This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-10-13 21:02:42,662 - google.cloud.storage._opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry or one of its components could not be imported; please add compatible versions of opentelemetry-api and opentelemetry-instrumentation packages in order to get Storage Tracing data.
+2024-10-13 21:02:42 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-10-13 21:02:42,881 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-10-13 21:02:42 INFO: [33mPress CTRL+C to quit[0m
+2024-10-13 21:02:42,881 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-10-13 21:02:46 ERROR: Exception on /auth/status [GET]
+Traceback (most recent call last):
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_cors/extension.py", line 178, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/app.py", line 118, in status
+    if current_user.is_authenticated:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/werkzeug/local.py", line 318, in __get__
+    obj = instance._get_current_object()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/werkzeug/local.py", line 526, in _get_current_object
+    return get_name(local())
+                    ^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/login_manager.py", line 364, in _load_user
+    user = self._user_callback(user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/app.py", line 108, in load_user
+    return User.query.get(int(user_id))
+           ^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 275, in __init__
+    self._set_entities(entities)
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 288, in _set_entities
+    coercions.expect(
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 389, in expect
+    insp._post_inspect
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1253, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2711, in _post_inspect
+    self._check_configure()
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2388, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4204, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4245, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2408, in _post_configure_properties
+    prop.post_instrument_class(self)
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 1092, in post_instrument_class
+    self.strategy.init_class_attribute(mapper)
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/writeonly.py", line 454, in init_class_attribute
     raise exc.InvalidRequestError(
-sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[User(user)], expression 'meeting_participants' failed to locate a name ("name 'meeting_participants' is not defined"). If this is a class name, consider adding this relationship() to the <class 'models.User'> class after both dependent classes have been defined.
-2024-10-13 20:41:50 DEBUG: After request, Origin: http://localhost:3000
-2024-10-13 20:41:50,861 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-13 20:41:50 INFO: 127.0.0.1 - - [13/Oct/2024 20:41:50] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
-2024-10-13 20:41:50,862 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 20:41:50] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
-2024-10-13 20:41:50 ERROR: Exception on /auth/status [GET]
+sqlalchemy.exc.InvalidRequestError: On relationship UserRoleAssignment.hub, 'dynamic' loaders cannot be used with many-to-one/one-to-one relationships and/or uselist=False.
+2024-10-13 21:02:46,328 - minutememo_app.app - ERROR - Exception on /auth/status [GET]
+Traceback (most recent call last):
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_cors/extension.py", line 178, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/app.py", line 118, in status
+    if current_user.is_authenticated:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/werkzeug/local.py", line 318, in __get__
+    obj = instance._get_current_object()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/werkzeug/local.py", line 526, in _get_current_object
+    return get_name(local())
+                    ^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/login_manager.py", line 364, in _load_user
+    user = self._user_callback(user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/app.py", line 108, in load_user
+    return User.query.get(int(user_id))
+           ^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 275, in __init__
+    self._set_entities(entities)
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 288, in _set_entities
+    coercions.expect(
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 389, in expect
+    insp._post_inspect
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1253, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2711, in _post_inspect
+    self._check_configure()
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2388, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4204, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4245, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2408, in _post_configure_properties
+    prop.post_instrument_class(self)
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 1092, in post_instrument_class
+    self.strategy.init_class_attribute(mapper)
+  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/writeonly.py", line 454, in init_class_attribute
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: On relationship UserRoleAssignment.hub, 'dynamic' loaders cannot be used with many-to-one/one-to-one relationships and/or uselist=False.
+2024-10-13 21:02:46 DEBUG: After request, Origin: http://localhost:3000
+2024-10-13 21:02:46,331 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-13 21:02:46 INFO: 127.0.0.1 - - [13/Oct/2024 21:02:46] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
+2024-10-13 21:02:46,332 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 21:02:46] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
+2024-10-13 21:02:46 ERROR: Exception on /auth/status [GET]
 Traceback (most recent call last):
   File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
@@ -904,8 +852,8 @@ Traceback (most recent call last):
     _do_configure_registries(registries, cascade)
   File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4241, in _do_configure_registries
     raise e
-sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'meeting_participants' failed to locate a name ("name 'meeting_participants' is not defined"). If this is a class name, consider adding this relationship() to the <class 'models.User'> class after both dependent classes have been defined.
-2024-10-13 20:41:50,863 - minutememo_app.app - ERROR - Exception on /auth/status [GET]
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[UserRoleAssignment(user_role_assignment)]'. Original exception was: On relationship UserRoleAssignment.hub, 'dynamic' loaders cannot be used with many-to-one/one-to-one relationships and/or uselist=False.
+2024-10-13 21:02:46,335 - minutememo_app.app - ERROR - Exception on /auth/status [GET]
 Traceback (most recent call last):
   File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
@@ -962,147 +910,32 @@ Traceback (most recent call last):
     _do_configure_registries(registries, cascade)
   File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4241, in _do_configure_registries
     raise e
-sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'meeting_participants' failed to locate a name ("name 'meeting_participants' is not defined"). If this is a class name, consider adding this relationship() to the <class 'models.User'> class after both dependent classes have been defined.
-2024-10-13 20:41:50 DEBUG: After request, Origin: http://localhost:3000
-2024-10-13 20:41:50,864 - auth - DEBUG - After request, Origin: http://localhost:3000
-2024-10-13 20:41:50 INFO: 127.0.0.1 - - [13/Oct/2024 20:41:50] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
-2024-10-13 20:41:50,865 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 20:41:50] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
-2024-10-13 20:41:54 ERROR: Exception on /auth/status [GET]
-Traceback (most recent call last):
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_cors/extension.py", line 178, in wrapped_function
-    return cors_after_request(app.make_response(f(*args, **kwargs)))
-                                                ^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/app.py", line 118, in status
-    if current_user.is_authenticated:
-       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/werkzeug/local.py", line 318, in __get__
-    obj = instance._get_current_object()
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/werkzeug/local.py", line 526, in _get_current_object
-    return get_name(local())
-                    ^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/utils.py", line 25, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-                                      ^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/utils.py", line 370, in _get_user
-    current_app.login_manager._load_user()
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/login_manager.py", line 364, in _load_user
-    user = self._user_callback(user_id)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/app.py", line 108, in load_user
-    return User.query.get(int(user_id))
-           ^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
-    return cls.query_class(
-           ^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 275, in __init__
-    self._set_entities(entities)
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 288, in _set_entities
-    coercions.expect(
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 389, in expect
-    insp._post_inspect
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1253, in __get__
-    obj.__dict__[self.__name__] = result = self.fget(obj)
-                                           ^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2711, in _post_inspect
-    self._check_configure()
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2388, in _check_configure
-    _configure_registries({self.registry}, cascade=True)
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4204, in _configure_registries
-    _do_configure_registries(registries, cascade)
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4241, in _do_configure_registries
-    raise e
-sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'meeting_participants' failed to locate a name ("name 'meeting_participants' is not defined"). If this is a class name, consider adding this relationship() to the <class 'models.User'> class after both dependent classes have been defined.
-2024-10-13 20:41:54 DEBUG: After request, Origin: http://localhost:3000
-2024-10-13 20:41:54 INFO: 127.0.0.1 - - [13/Oct/2024 20:41:54] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
-2024-10-13 20:41:54 ERROR: Exception on /auth/status [GET]
-Traceback (most recent call last):
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_cors/extension.py", line 178, in wrapped_function
-    return cors_after_request(app.make_response(f(*args, **kwargs)))
-                                                ^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/app.py", line 118, in status
-    if current_user.is_authenticated:
-       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/werkzeug/local.py", line 318, in __get__
-    obj = instance._get_current_object()
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/werkzeug/local.py", line 526, in _get_current_object
-    return get_name(local())
-                    ^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/utils.py", line 25, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-                                      ^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/utils.py", line 370, in _get_user
-    current_app.login_manager._load_user()
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_login/login_manager.py", line 364, in _load_user
-    user = self._user_callback(user_id)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/app.py", line 108, in load_user
-    return User.query.get(int(user_id))
-           ^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
-    return cls.query_class(
-           ^^^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 275, in __init__
-    self._set_entities(entities)
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 288, in _set_entities
-    coercions.expect(
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 389, in expect
-    insp._post_inspect
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1253, in __get__
-    obj.__dict__[self.__name__] = result = self.fget(obj)
-                                           ^^^^^^^^^^^^^^
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2711, in _post_inspect
-    self._check_configure()
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2388, in _check_configure
-    _configure_registries({self.registry}, cascade=True)
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4204, in _configure_registries
-    _do_configure_registries(registries, cascade)
-  File "/Users/gaetanbuelinckx/minutememo_app/venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4241, in _do_configure_registries
-    raise e
-sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'meeting_participants' failed to locate a name ("name 'meeting_participants' is not defined"). If this is a class name, consider adding this relationship() to the <class 'models.User'> class after both dependent classes have been defined.
-2024-10-13 20:41:54 DEBUG: After request, Origin: http://localhost:3000
-2024-10-13 20:41:54 INFO: 127.0.0.1 - - [13/Oct/2024 20:41:54] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
-2024-10-13 20:41:56 DEBUG: Google login initiated. Redirect URI: http://localhost:5000/auth/callback, State: IaHTp4MsLcOOaWn7c8D_jg
-2024-10-13 20:41:56 DEBUG: Client ID: 760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com
-2024-10-13 20:41:56 DEBUG: Session contents: <SecureCookieSession {'_flashes': [('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.')], '_fresh': True, '_id': '80f0c8f52e9d0894341645dd90e6d8ae068eccca8a01568dae0e1571fcf8617cd62df66b248fa262c3936ab84cb81e2f75bd1e859e1c93555c3e41b7cf1c1e14', '_permanent': True, '_user_id': '14', 'nonce': 'E3kOLAOXZ7wr6DU1FYTBGQ', 'oauth_state': 'IaHTp4MsLcOOaWn7c8D_jg'}>
-2024-10-13 20:41:56 DEBUG: After request, Origin: None
-2024-10-13 20:41:56 INFO: 127.0.0.1 - - [13/Oct/2024 20:41:56] "[32mGET /auth/login/google HTTP/1.1[0m" 302 -
-2024-10-13 20:42:09 DEBUG: Google authorization callback reached
-2024-10-13 20:42:09 DEBUG: OAuth state from callback: IaHTp4MsLcOOaWn7c8D_jg
-2024-10-13 20:42:09 DEBUG: OAuth state from session: IaHTp4MsLcOOaWn7c8D_jg
-2024-10-13 20:42:09 DEBUG: Starting new HTTPS connection (1): accounts.google.com:443
-2024-10-13 20:42:09 DEBUG: https://accounts.google.com:443 "POST /o/oauth2/token HTTP/11" 200 None
-2024-10-13 20:42:09 DEBUG: Starting new HTTPS connection (1): www.googleapis.com:443
-2024-10-13 20:42:09 DEBUG: https://www.googleapis.com:443 "GET /oauth2/v3/certs HTTP/11" 200 734
-2024-10-13 20:42:09 DEBUG: Token response received: {'access_token': 'ya29.a0AcM612yB2CJE-YHYUJ5nCneIjmT42OllOi5IByDEVxTAbDkugqW2h6zoqFUWY_yEVK6Lvde35UsgPzPbpXCbGszYx3feIQ5SzZi-UXKauw1LkxDzRGOFkakm5l-M-13YvYrq7AhHLbA5-H8jBPUQn4q2nFQdQxYtxE7MZPM4aCgYKAVwSARMSFQHGX2Mi8Qp7sXjGEFUGkwbft_giWg0175', 'expires_in': 3599, 'refresh_token': '1//03axuBbJmlgPXCgYIARAAGAMSNwF-L9IrigXEWmZQobOoQ5xKfUNy_ACWIZB2tJuTgzdzCIAtQ1biodALnkwlEk2i5ZJejplu930', 'scope': 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/userinfo.profile openid', 'token_type': 'Bearer', 'id_token': 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImE1MGY2ZTcwZWY0YjU0OGE1ZmQ5MTQyZWVjZDFmYjhmNTRkY2U5ZWUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNzYwNjI4MzczMDY0LWNjb3RzbTltNGw5cTgxYTllNmdtdGZqOWdqdWRqcHQxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNzYwNjI4MzczMDY0LWNjb3RzbTltNGw5cTgxYTllNmdtdGZqOWdqdWRqcHQxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA4ODI2NjIyMzE1MDExNzcxMDM2IiwiaGQiOiJtaW51dGVtZW1vLmlvIiwiZW1haWwiOiJnYWV0YW5AbWludXRlbWVtby5pbyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiY3lZQ1NiTFZiVVVxYlRQSzZiREVFUSIsIm5vbmNlIjoiRTNrT0xBT1haN3dyNkRVMUZZVEJHUSIsImlhdCI6MTcyODg0NDkyOSwiZXhwIjoxNzI4ODQ4NTI5fQ.zdvHvz-Tu_eAs6fwmuExxoXNiajbiqQOcp2PuNAi_H1zVQjrVFAI9DhplAhmeUmwUsy4E-eNXE_9RAoDOSTZj5gqjtwUtP7sJyyb3ApdqDa-o35bIg5GWO660sseAeEiyj9crhYK-hWjW3nI0lgsYAIPREyH50x5UKGNncMt0vejvRV5vIb0Ma_4o0ynnsNPR6soSb14qzSu7j7Y3ZJqf65tnKppcf9D6kxOjfKO-7agUTF2xsuHOay2cgrpfkG9Yb0vq15iStZpi4TcFC2BaLcz08Y_T2BtbGDyCWht0qF_oYepWtdZHe9wL70RwMIi7e9JBumw3K9XyCIzWpyNoQ', 'expires_at': 1728848528, 'userinfo': {'iss': 'accounts.google.com', 'azp': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'aud': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'sub': '108826622315011771036', 'hd': 'minutememo.io', 'email': 'gaetan@minutememo.io', 'email_verified': True, 'at_hash': 'cyYCSbLVbUUqbTPK6bDEEQ', 'nonce': 'E3kOLAOXZ7wr6DU1FYTBGQ', 'iat': 1728844929, 'exp': 1728848529}}
-2024-10-13 20:42:09 DEBUG: Session nonce: E3kOLAOXZ7wr6DU1FYTBGQ
-2024-10-13 20:42:09 DEBUG: User info: {'iss': 'accounts.google.com', 'azp': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'aud': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'sub': '108826622315011771036', 'hd': 'minutememo.io', 'email': 'gaetan@minutememo.io', 'email_verified': True, 'at_hash': 'cyYCSbLVbUUqbTPK6bDEEQ', 'nonce': 'E3kOLAOXZ7wr6DU1FYTBGQ', 'iat': 1728844929, 'exp': 1728848529}
-2024-10-13 20:42:09 DEBUG: User email: gaetan@minutememo.io
-2024-10-13 20:42:09 ERROR: Error during Google authorization: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'meeting_participants' failed to locate a name ("name 'meeting_participants' is not defined"). If this is a class name, consider adding this relationship() to the <class 'models.User'> class after both dependent classes have been defined.
-2024-10-13 20:42:09 DEBUG: After request, Origin: None
-2024-10-13 20:42:09 INFO: 127.0.0.1 - - [13/Oct/2024 20:42:09] "[35m[1mGET /auth/callback?state=IaHTp4MsLcOOaWn7c8D_jg&code=4/0AVG7fiRnc7iIKcjfWONa9Xh6lJz8KC96jXQZPZ4a83PIJCjXej9wxAExXEKh7bIZ1Gd5-g&scope=email%20profile%20openid%20https://www.googleapis.com/auth/userinfo.email%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/calendar&authuser=0&hd=minutememo.io&prompt=consent HTTP/1.1[0m" 500 -
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[UserRoleAssignment(user_role_assignment)]'. Original exception was: On relationship UserRoleAssignment.hub, 'dynamic' loaders cannot be used with many-to-one/one-to-one relationships and/or uselist=False.
+2024-10-13 21:02:46 DEBUG: After request, Origin: http://localhost:3000
+2024-10-13 21:02:46,336 - auth - DEBUG - After request, Origin: http://localhost:3000
+2024-10-13 21:02:46 INFO: 127.0.0.1 - - [13/Oct/2024 21:02:46] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
+2024-10-13 21:02:46,337 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 21:02:46] "[35m[1mGET /auth/status HTTP/1.1[0m" 500 -
+2024-10-13 21:03:35 DEBUG: Google login initiated. Redirect URI: http://localhost:5000/auth/callback, State: difjLAWdjvvRGbvVvX07YQ
+2024-10-13 21:03:35,689 - auth - DEBUG - Google login initiated. Redirect URI: http://localhost:5000/auth/callback, State: difjLAWdjvvRGbvVvX07YQ
+2024-10-13 21:03:35 DEBUG: Client ID: 760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com
+2024-10-13 21:03:35,690 - auth - DEBUG - Client ID: 760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com
+2024-10-13 21:03:35 DEBUG: Session contents: <SecureCookieSession {'_flashes': [('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.')], '_fresh': True, '_id': '80f0c8f52e9d0894341645dd90e6d8ae068eccca8a01568dae0e1571fcf8617cd62df66b248fa262c3936ab84cb81e2f75bd1e859e1c93555c3e41b7cf1c1e14', '_permanent': True, '_user_id': '14', 'nonce': 'boBuYp5gVEfidZVdExymBw', 'oauth_state': 'difjLAWdjvvRGbvVvX07YQ'}>
+2024-10-13 21:03:35,690 - auth - DEBUG - Session contents: <SecureCookieSession {'_flashes': [('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.'), ('message', 'Please log in to access this page.')], '_fresh': True, '_id': '80f0c8f52e9d0894341645dd90e6d8ae068eccca8a01568dae0e1571fcf8617cd62df66b248fa262c3936ab84cb81e2f75bd1e859e1c93555c3e41b7cf1c1e14', '_permanent': True, '_user_id': '14', 'nonce': 'boBuYp5gVEfidZVdExymBw', 'oauth_state': 'difjLAWdjvvRGbvVvX07YQ'}>
+2024-10-13 21:03:35 DEBUG: After request, Origin: None
+2024-10-13 21:03:35,690 - auth - DEBUG - After request, Origin: None
+2024-10-13 21:03:35 INFO: 127.0.0.1 - - [13/Oct/2024 21:03:35] "[32mGET /auth/login/google HTTP/1.1[0m" 302 -
+2024-10-13 21:03:35,691 - werkzeug - INFO - 127.0.0.1 - - [13/Oct/2024 21:03:35] "[32mGET /auth/login/google HTTP/1.1[0m" 302 -
+2024-10-13 21:03:43 DEBUG: Google authorization callback reached
+2024-10-13 21:03:43 DEBUG: OAuth state from callback: difjLAWdjvvRGbvVvX07YQ
+2024-10-13 21:03:43 DEBUG: OAuth state from session: difjLAWdjvvRGbvVvX07YQ
+2024-10-13 21:03:43 DEBUG: Starting new HTTPS connection (1): accounts.google.com:443
+2024-10-13 21:03:44 DEBUG: https://accounts.google.com:443 "POST /o/oauth2/token HTTP/11" 200 None
+2024-10-13 21:03:44 DEBUG: Starting new HTTPS connection (1): www.googleapis.com:443
+2024-10-13 21:03:44 DEBUG: https://www.googleapis.com:443 "GET /oauth2/v3/certs HTTP/11" 200 743
+2024-10-13 21:03:44 DEBUG: Token response received: {'access_token': 'ya29.a0AcM612x9YlVRToQW0sSsWTrnjjgbmrMiJN-PJjDupwrRen6sT2YfQXmaj5FyD2DaRjXPP1rC_GJID2TGUQR7WGY9eSD2x782rdR8UO58sguEtwZ4W9PtmZ5vOXF3ExVIU3q9ALGGJpuoe2FLUIEPn7QUzFtyd1XqNoTzuGMVaCgYKAX8SARASFQHGX2Mijmn9BI0FG-tM4c2XyTHe3A0175', 'expires_in': 3599, 'refresh_token': '1//03eqSd4s7hwxDCgYIARAAGAMSNwF-L9IrGEFrNFfFAbZmvAiNK_gCtBjBJi5YoApwrRQd_cn-JSJb2BfcEt2TJLJtDOnVPM7S9UY', 'scope': 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/userinfo.profile openid', 'token_type': 'Bearer', 'id_token': 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImE1MGY2ZTcwZWY0YjU0OGE1ZmQ5MTQyZWVjZDFmYjhmNTRkY2U5ZWUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNzYwNjI4MzczMDY0LWNjb3RzbTltNGw5cTgxYTllNmdtdGZqOWdqdWRqcHQxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNzYwNjI4MzczMDY0LWNjb3RzbTltNGw5cTgxYTllNmdtdGZqOWdqdWRqcHQxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTEzNDY1NzQxODQxMjQ0MzI5ODgwIiwiZW1haWwiOiJnYWV0YW4uYnVlbGluY2t4QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiV3laVEhGdlpDUW5DX3dEQkNLX0ZqUSIsIm5vbmNlIjoiYm9CdVlwNWdWRWZpZFpWZEV4eW1CdyIsImlhdCI6MTcyODg0NjIyNCwiZXhwIjoxNzI4ODQ5ODI0fQ.UE5jLZGCCgV-HRnKiuMSQ3dSlhLYxcBUBX6AMKk1h_ynwOBr6dWCqMSOdf7wCg9AJJ4GnvPj4tXxIL9viMzVy-Vkz1oCSsyOieKLGU868dfoja2cDeZIA3-Js40VGotUQnQmHR48JJ4DS5_RzZZt1GYYjS94SymihFj15UKWok7HrmzvvI8J_nIjNesA8H0IrhJfPjTVjuhRajJ1GaMaRZCgFgIS-SS3bYk2vVcE4Wsj9E9RA8RWwiV4xrKSUZu4qga7DGgvTquzbOdshN5aiyn1LgUKNH6NCI99Dc0VFkveRktYDqaEkW5HpGJADJwFC4P_Fe2mXJw19ye4aF-K8Q', 'expires_at': 1728849823, 'userinfo': {'iss': 'accounts.google.com', 'azp': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'aud': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'sub': '113465741841244329880', 'email': 'gaetan.buelinckx@gmail.com', 'email_verified': True, 'at_hash': 'WyZTHFvZCQnC_wDBCK_FjQ', 'nonce': 'boBuYp5gVEfidZVdExymBw', 'iat': 1728846224, 'exp': 1728849824}}
+2024-10-13 21:03:44 DEBUG: Session nonce: boBuYp5gVEfidZVdExymBw
+2024-10-13 21:03:44 DEBUG: User info: {'iss': 'accounts.google.com', 'azp': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'aud': '760628373064-ccotsm9m4l9q81a9e6gmtfj9gjudjpt1.apps.googleusercontent.com', 'sub': '113465741841244329880', 'email': 'gaetan.buelinckx@gmail.com', 'email_verified': True, 'at_hash': 'WyZTHFvZCQnC_wDBCK_FjQ', 'nonce': 'boBuYp5gVEfidZVdExymBw', 'iat': 1728846224, 'exp': 1728849824}
+2024-10-13 21:03:44 DEBUG: User email: gaetan.buelinckx@gmail.com
+2024-10-13 21:03:44 ERROR: Error during Google authorization: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[UserRoleAssignment(user_role_assignment)]'. Original exception was: On relationship UserRoleAssignment.hub, 'dynamic' loaders cannot be used with many-to-one/one-to-one relationships and/or uselist=False.
+2024-10-13 21:03:44 DEBUG: After request, Origin: None
+2024-10-13 21:03:44 INFO: 127.0.0.1 - - [13/Oct/2024 21:03:44] "[35m[1mGET /auth/callback?state=difjLAWdjvvRGbvVvX07YQ&code=4/0AVG7fiSCS6HPrZA6V4NB_gszBpdoMrPqWJAaHwLnyVSO84cTsW0Rnydb6NcLq7AB0azI2Q&scope=email%20profile%20openid%20https://www.googleapis.com/auth/calendar%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email&authuser=1&prompt=consent HTTP/1.1[0m" 500 -

@@ -1287,7 +1287,6 @@ def manage_meetings():
             return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
 
     elif request.method == 'POST':
-        # POST logic to create a new meeting, optionally create a session if requested
         try:
             data = request.json
             meeting_name = data.get('name')

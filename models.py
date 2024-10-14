@@ -7,9 +7,8 @@ from sqlalchemy.orm import relationship, backref
 import uuid
 from extensions import db
 
-# Existing Company model
 class Company(db.Model):
-    __table_args__ = {'extend_existing': True}  # Prevent table redefinition error
+    __table_args__ = {'extend_existing': True}
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
@@ -21,11 +20,10 @@ class Company(db.Model):
     phone_number = db.Column(db.String(20))
 
     users = db.relationship('User', backref='company', lazy=True)
-    departments = db.relationship('Department', backref='company', lazy=True)  # Added relationship to Department
-    roles = db.relationship('Role', backref='company', lazy=True)  # Added relationship to Role
+    departments = db.relationship('Department', backref='company', lazy=True)  
+    roles = db.relationship('Role', backref='company', lazy=True)  
 
-    # Added relationship for subscription and payments
-    subscriptions = db.relationship('Subscription', backref='company', lazy=True)
+    subscriptions = db.relationship('Subscription', backref='company', lazy=True)  
     payments = db.relationship('Payment', backref='company', lazy=True)
 
 class MeetingParticipant(db.Model):
@@ -42,9 +40,8 @@ class MeetingParticipant(db.Model):
     raci_role_id = db.Column(db.Integer, db.ForeignKey('raci_role.id'), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-# Existing User model, updated
 class User(UserMixin, db.Model):
-    __table_args__ = {'extend_existing': True}  # Prevent table redefinition error
+    __table_args__ = {'extend_existing': True}
 
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
@@ -52,23 +49,28 @@ class User(UserMixin, db.Model):
     first_name = db.Column(db.String(64))
     last_name = db.Column(db.String(64))
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
-    
+
     # Relationships
     recordings = db.relationship('Recording', backref='user', lazy=True)
     meeting_hubs = db.relationship('MeetingHub', secondary='user_meeting_hub', backref=db.backref('users', lazy='dynamic'))
     meetings = db.relationship('Meeting', secondary='meeting_participants', backref=db.backref('users', lazy='dynamic'))
     meeting_sessions = db.relationship('MeetingSession', secondary='user_meeting_session', backref=db.backref('users', lazy='dynamic'))
 
-    # New relationships
+    # Role and status
     role_assignments = db.relationship('UserRoleAssignment', backref='user', lazy='dynamic')
     meeting_participants = db.relationship('MeetingParticipant', backref='user', lazy='dynamic')
+
+    # New status fields to handle user activity, suspension, and ban
+    is_active = db.Column(db.Boolean, nullable=False, default=True)  # Indicates if the user is active
+    is_suspended = db.Column(db.Boolean, nullable=False, default=False)  # Indicates if the user is suspended
+    is_banned = db.Column(db.Boolean, nullable=False, default=False)  # Indicates if the user is banned
 
     # Active meeting hub reference
     active_meeting_hub_id = db.Column(db.Integer, db.ForeignKey('meeting_hub.id'), nullable=True)
 
     # User type and role fields (consider deprecating if using Role model)
-    user_type = db.Column(db.String(20), nullable=False, default='internal')  # 'internal' or 'external'
-    internal_user_role = db.Column(db.String(20), nullable=True)  # 'super_admin', 'admin', 'lite_admin'
+    user_type = db.Column(db.String(20), nullable=False, default='internal')  
+    internal_user_role = db.Column(db.String(20), nullable=True)  
 
     # Fields for storing Google OAuth token, updated to TEXT
     google_oauth_token = db.Column(db.Text, nullable=True)
@@ -239,7 +241,7 @@ class Subscription(db.Model):
     plan_name = db.Column(db.String(64), nullable=False)
     price = db.Column(db.Float, nullable=False)
     billing_cycle = db.Column(db.String(20), nullable=False)
-    max_users = db.Column(db.Integer, nullable=False)
+    max_users = db.Column(db.Integer, nullable=False)  # Maximum users allowed per subscription
     status = db.Column(db.String(20), nullable=False, default='active')
     start_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     end_date = db.Column(db.DateTime, nullable=True)
@@ -257,6 +259,12 @@ class Subscription(db.Model):
         if self.end_date and self.end_date < datetime.utcnow():
             return False
         return True
+
+    @property
+    def active_users_count(self):
+        """Count the number of active users under this subscription."""
+        return User.query.filter_by(company_id=self.company_id, is_active=True, is_suspended=False).count()
+
 
 # Existing Payment model
 class Payment(db.Model):
