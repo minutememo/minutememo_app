@@ -7,7 +7,7 @@ from extensions import db
 from flask_login import login_user, logout_user, login_required, current_user
 import os
 import secrets
-from werkzeug.security import generate_password_hash  # Import the password hashing method
+from werkzeug.security import generate_password_hash
 import requests
 from datetime import datetime, timedelta
 
@@ -38,7 +38,7 @@ try:
         access_token_url='https://accounts.google.com/o/oauth2/token',
         authorize_url='https://accounts.google.com/o/oauth2/auth',
         client_kwargs={'scope': 'openid email profile https://www.googleapis.com/auth/calendar'},
-        jwks_uri='https://www.googleapis.com/oauth2/v3/certs'  # Add JWKS URI explicitly
+        jwks_uri='https://www.googleapis.com/oauth2/v3/certs'
     )
     logger.debug('Google OAuth client registered successfully')
 except Exception as e:
@@ -47,16 +47,17 @@ except Exception as e:
 def generate_nonce():
     return secrets.token_urlsafe(16)  # Generate a secure random URL-safe nonce
 
-# Route for checking authentication status and user role
 @auth.route('/status', methods=['GET'])
 def status():
     if current_user.is_authenticated:
+        company_id = current_user.company_id  # Retrieve company_id from the user model
         logger.debug(f"User {current_user.email} is authenticated with role: {current_user.internal_user_role}")
         return jsonify({
             "logged_in": True,
             "user": {
                 "email": current_user.email,
-                "internal_user_role": current_user.internal_user_role  # Return the user's role
+                "internal_user_role": current_user.internal_user_role,
+                "company_id": company_id  # Include company_id in the response
             }
         }), 200
     else:
@@ -66,138 +67,112 @@ def status():
 @auth.route('/login/google')
 def google_login():
     try:
-        # Generate a secure random state string to protect against CSRF attacks
         state = secrets.token_urlsafe(16)
         session['oauth_state'] = state  # Store the state in session
-
-        # Generate and store a nonce in session
         nonce = generate_nonce()
         session['nonce'] = nonce  # Store the nonce in session
 
-        # Construct the redirect URI
         redirect_uri = url_for('auth.google_authorize', _external=True)
-
-        # Log the details for debugging
         logger.debug(f"Google login initiated. Redirect URI: {redirect_uri}, State: {state}")
-        logger.debug(f"Client ID: {os.getenv('GOOGLE_CLIENT_ID')}")
-        logger.debug(f"Session contents: {session}")
-
-        # Trigger Google OAuth flow, redirecting to the Google authorization URL
-        # Ensure 'access_type=offline' is set to obtain a refresh token
+        
         return oauth.google.authorize_redirect(
             redirect_uri=redirect_uri,
             state=state,
-            nonce=nonce,  # Pass the nonce to Google for verification
-            access_type='offline',  # Request offline access to obtain a refresh token
-            prompt='consent'  # Force re-consent to ensure we get the refresh token
+            nonce=nonce,
+            access_type='offline',
+            prompt='consent'
         )
     except Exception as e:
         logger.error(f"Error during Google login: {e}")
         return jsonify({"message": "Error during Google login"}), 500
 
-
-
 @auth.route('/callback')
 def google_authorize():
     try:
         logger.debug("Google authorization callback reached")
-
-        # Retrieve the OAuth state from the URL parameters
         state = request.args.get('state')
         logger.debug(f"OAuth state from callback: {state}")
 
-        # Compare the state with the one stored in the session
         session_state = session.get('oauth_state')
         logger.debug(f"OAuth state from session: {session_state}")
 
         if not state or state != session_state:
             raise ValueError("mismatching_state: CSRF Warning! State not equal in request and response.")
 
-        # Retrieve the token from Google after successful authorization
         token = oauth.google.authorize_access_token()
         logger.debug(f"Token response received: {token}")
 
-        # Verify the nonce in the ID token to protect against replay attacks
         id_token = token.get('id_token')
-        
-        # Retrieve nonce from session
         session_nonce = session.get('nonce')
         if not session_nonce:
             raise ValueError("Missing nonce in session")
 
         logger.debug(f"Session nonce: {session_nonce}")
 
-        # Pass the nonce to the `parse_id_token()` method
         user_info = oauth.google.parse_id_token(token, nonce=session_nonce)
         logger.debug(f"User info: {user_info}")
 
-        # Get the user's email from the user info
         email = user_info.get('email')
         if not email:
             raise ValueError("No email found in user info")
 
         logger.debug(f"User email: {email}")
 
-        # Check if the user already exists in the database
         user = User.query.filter_by(email=email).first()
 
-        # Calculate the token expiration time (current time + token's 'expires_in' value)
         expires_at = datetime.utcnow() + timedelta(seconds=token.get('expires_in', 3600))
         logger.debug(f"Access token expiration time: {expires_at}")
 
-        refresh_token = token.get('refresh_token')  # Get the refresh token if available
+        refresh_token = token.get('refresh_token')
         logger.debug(f"Refresh token: {refresh_token}")
+
+        company_id = None
 
         if not user:
             logger.debug(f"Creating new user with email: {email}")
-            # Generate a random secure password and hash it
-            random_password = secrets.token_urlsafe(16)  # Generate a random string as a "password"
-            hashed_password = generate_password_hash(random_password)  # Hash the random password
+            random_password = secrets.token_urlsafe(16)
+            hashed_password = generate_password_hash(random_password)
 
-            # Store the token (as a dictionary) and other details in the user record
+            company = Company.query.first()  # Modify this to your actual logic for assigning a company
+            company_id = company.id if company else None
+
             user = User(
                 email=email,
                 user_type='external',
-                password_hash=hashed_password,  # Store the hashed random password
-                google_oauth_token=json.dumps(token),  # Store the entire token as JSON
-                google_refresh_token=refresh_token,  # Store the refresh token if available
-                google_token_expires_at=expires_at
+                password_hash=hashed_password,
+                google_oauth_token=json.dumps(token),
+                google_refresh_token=refresh_token,
+                google_token_expires_at=expires_at,
+                company_id=company_id
             )
             db.session.add(user)
             db.session.commit()
             logger.debug(f"New user created with email: {email} and tokens stored")
         else:
-            # Update user's Google OAuth details if the user exists
             logger.debug(f"Updating existing user {user.email} with new token details")
-
-            # Use the helper function to update the tokens
             update_user_tokens(user, token, refresh_token, expires_at)
+            company_id = user.company_id
 
-            # If the refresh token is missing, force re-consent to get a new one
             if not user.google_refresh_token:
                 logger.debug(f"Refresh token is missing for {user.email}, forcing re-consent")
                 return oauth.google.authorize_redirect(
                     url_for('auth.google_authorize', _external=True),
                     state=state,
-                    prompt='consent'  # Re-consent to get a refresh token
+                    prompt='consent'
                 )
 
-        # Log the user in
         login_user(user)
         logger.info(f"User logged in with Google: {email}")
 
-        # Clear the state and nonce from the session after successful login to avoid reuse
         session.pop('oauth_state', None)
         session.pop('nonce', None)
 
-        # Redirect to the dashboard after successful login
-        return redirect('http://localhost:3000/')  # Change to your front-end dashboard route
+        return redirect(f'http://localhost:3000/?company_id={company_id}')  # Redirect to your front-end
 
     except Exception as e:
         logger.error(f"Error during Google authorization: {e}")
         return jsonify({"message": f"Error during Google authorization: {str(e)}"}), 500
 
-# Helper function to refresh the access token using the refresh token
 def refresh_google_token(refresh_token):
     try:
         token_url = "https://accounts.google.com/o/oauth2/token"
@@ -218,29 +193,23 @@ def refresh_google_token(refresh_token):
     except Exception as e:
         logger.error(f"Error refreshing Google token: {str(e)}")
         return None
+
 def update_user_tokens(user, token, refresh_token, expires_at):
     try:
         logger.debug(f"Updating tokens for user {user.email}")
-        
-        # Store the new access token
         user.google_oauth_token = json.dumps(token)
         
-        # Store the refresh token if it's available
         if refresh_token:
             logger.debug(f"Updating refresh token for user {user.email}")
             user.google_refresh_token = refresh_token
         
-        # Update token expiration time
         user.google_token_expires_at = expires_at
-        
-        # Commit changes
         db.session.commit()
         logger.debug(f"Tokens successfully updated for user {user.email}")
     except Exception as e:
         logger.error(f"Failed to update tokens for user {user.email}: {str(e)}")
         db.session.rollback()  # Roll back in case of error
 
-# Microsoft Login Route (if applicable)
 @auth.route('/login/microsoft')
 def microsoft_login():
     try:
@@ -251,7 +220,6 @@ def microsoft_login():
         logger.error(f"Error during Microsoft login: {e}")
         return jsonify({"message": "Error during Microsoft login"}), 500
 
-# Microsoft Authorization Callback
 @auth.route('/login/microsoft/authorize')
 def microsoft_authorize():
     try:
@@ -280,7 +248,6 @@ def microsoft_authorize():
         logger.error(f"Error during Microsoft authorization: {e}")
         return jsonify({"message": "Error during Microsoft authorization"}), 500
 
-# Regular user signup route
 @auth.route('/signup', methods=['POST'])
 def signup():
     logger.debug('Signup route hit')
@@ -312,7 +279,6 @@ def signup():
     logger.info(f"User created and logged in successfully: {email}")
     return jsonify({'message': 'User created and logged in successfully'}), 201
 
-# Regular user login route
 @auth.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
@@ -327,13 +293,13 @@ def login():
         logger.debug(f"Login successful for user: {user.email}")
         return jsonify({
             "message": "Login successful",
-            "internal_user_role": user.internal_user_role  # Return user's role for frontend checks
+            "internal_user_role": user.internal_user_role,
+            "company_id": user.company_id
         }), 200
     
     logger.warning(f"Login failed for email: {email}")
     return jsonify({"message": "Invalid credentials"}), 401
 
-# User logout route
 @auth.route('/logout')
 @login_required
 def logout():

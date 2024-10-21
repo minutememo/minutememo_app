@@ -3,58 +3,66 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useUser } from '../UserContext';
 
+const VisibilityOptions = {
+  ALL_HUB_MEMBERS: 'all_hub_members',
+  PARTICIPANTS: 'participants',
+  PRIVATE: 'private_to_organiser',
+};
+
 const MeetingsPage = () => {
   const { meetingId } = useParams();
   const [sessions, setSessions] = useState([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
+  const [visibility, setVisibility] = useState(VisibilityOptions.PARTICIPANTS); // default value
   const { user } = useUser();
   const navigate = useNavigate();
-  
-  // Environment variable for backend URL
+
   const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
-  // Fetch sessions for the specific meeting
+  // Fetch sessions and visibility for the specific meeting
   useEffect(() => {
     if (!meetingId || !user) {
-      console.log('Skipping sessions fetch: meetingId or user is missing.');
+      console.log('Skipping fetch: meetingId or user is missing.');
       return;
     }
 
-    console.log('Fetching sessions for meetingId:', meetingId);
+    console.log('Fetching sessions and visibility for meetingId:', meetingId);
 
-    const fetchSessions = async () => {
+    const fetchMeetingData = async () => {
       try {
-        setLoading(true);  // Set loading to true while fetching data
+        setLoading(true);
         const response = await axios.get(`${backendUrl}/api/meetings?meeting_id=${meetingId}`);
-        console.log('Sessions fetch response:', response);
-    
-        if (response.status === 200 && response.data.sessions) {
-          setSessions(response.data.sessions);
+        console.log('Meeting data fetch response:', response);
+
+        if (response.status === 200) {
+          const { sessions, visibility: fetchedVisibility } = response.data;
+          setSessions(sessions || []);
+          setVisibility(fetchedVisibility || VisibilityOptions.PARTICIPANTS); // Default to "Participants" if not provided
         } else {
-          setSessions([]);  // Ensure sessions state is reset if no sessions found
+          setSessions([]);
           setError('No sessions found for this meeting.');
         }
       } catch (err) {
-        console.error('Error fetching sessions:', err); 
-        setError('Error fetching sessions. Please try again later.');
+        console.error('Error fetching meeting data:', err);
+        setError('Error fetching meeting data. Please try again later.');
       } finally {
-        setLoading(false);  // Set loading to false after fetching
+        setLoading(false);
       }
     };
 
-    fetchSessions();
+    fetchMeetingData();
   }, [meetingId, user, backendUrl]);
 
-  // Navigate to create a new session for the selected meeting
+  // Function to handle starting a new session for the meeting
   const handleStartNewSession = async () => {
     try {
       const response = await axios.post(`${backendUrl}/api/sessions`, { meeting_id: meetingId });
-  
+
       if (response.status === 201) {
         const newSessionId = response.data.session_id;
         console.log('New session created:', newSessionId);
-  
+
         // Navigate to the new session page
         navigate(`/sessions/${newSessionId}`);
       } else {
@@ -66,6 +74,27 @@ const MeetingsPage = () => {
     }
   };
 
+  // Function to handle visibility change
+  const handleVisibilityChange = async (event) => {
+    const newVisibility = event.target.value;
+    setVisibility(newVisibility);
+
+    try {
+      const response = await axios.put(`${backendUrl}/api/meetings/${meetingId}/visibility`, {
+        visibility: newVisibility,
+      });
+
+      if (response.status === 200) {
+        console.log('Visibility updated successfully.');
+      } else {
+        setError('Failed to update visibility.');
+      }
+    } catch (err) {
+      console.error('Error updating visibility:', err);
+      setError('Error updating visibility.');
+    }
+  };
+
   if (loading) {
     console.log('Loading data...');
     return <p>Loading...</p>;
@@ -74,6 +103,15 @@ const MeetingsPage = () => {
   return (
     <div className="meeting-page">
       {error && <p className="error-message">{error}</p>}
+
+      <div className="box-shadow-container">
+        <h3>Meeting Visibility Settings</h3>
+        <select value={visibility} onChange={handleVisibilityChange}>
+          <option value={VisibilityOptions.ALL_HUB_MEMBERS}>All Hub Members</option>
+          <option value={VisibilityOptions.PARTICIPANTS}>Participants Only</option>
+          <option value={VisibilityOptions.PRIVATE}>Private to Organizer</option>
+        </select>
+      </div>
 
       {sessions.length > 0 ? (
         <div className="box-shadow-container">

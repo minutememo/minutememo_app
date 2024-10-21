@@ -16,7 +16,7 @@ import ffmpeg
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from decorators import subscription_required
-from models import User, db, Recording, MeetingSession, MeetingHub, Company, Meeting, Subscription, ActionItem
+from models import User, db, Recording, MeetingSession, MeetingHub, Company, Meeting, Subscription, ActionItem, VisibilitySettings
 from extensions import db  # Import from extensions.py
 from flask_login import login_required, current_user
 from datetime import datetime, timedelta
@@ -233,6 +233,71 @@ def get_users():
         logger.error(f"Error fetching users: {e}")
         return jsonify({"error": "Failed to fetch users"}), 500
 
+
+
+
+@main.route('/meetinghubs/<int:hub_id>/users', methods=['GET'])
+@login_required
+def get_users_for_meetinghub(hub_id):
+    try:
+        # Fetch the hub by its ID
+        hub = MeetingHub.query.get(hub_id)
+        if not hub:
+            return jsonify({'status': 'error', 'message': 'Meeting hub not found'}), 404
+
+        # Fetch all users linked to this hub
+        users = hub.users
+
+        user_list = [
+            {
+                'id': user.id,
+                'first_name': user.first_name,
+                'last_name': user.last_name,
+                'email': user.email,
+                'role': user.internal_user_role
+            }
+            for user in users
+        ]
+        return jsonify({'status': 'success', 'users': user_list}), 200
+
+    except Exception as e:
+        logger.error(f"Error fetching users for hub {hub_id}: {str(e)}")
+        return jsonify({'status': 'error', 'message': 'Failed to fetch users for the hub'}), 500
+
+@main.route('/meetinghubs/<int:hub_id>/users/not-in-hub', methods=['GET'])
+@login_required
+def get_users_not_in_meetinghub(hub_id):
+    try:
+        # Fetch the hub by its ID
+        hub = MeetingHub.query.get(hub_id)
+        if not hub:
+            return jsonify({'status': 'error', 'message': 'Meeting hub not found'}), 404
+
+        # Fetch all users linked to this hub
+        users_in_hub = hub.users
+
+        # Fetch all users in the same company as the current user
+        user_company_id = current_user.company_id
+        all_users = User.query.filter_by(company_id=user_company_id).all()
+
+        # Filter out users who are in the specified hub
+        users_not_in_hub = [
+            {
+                'id': user.id,
+                'first_name': user.first_name,
+                'last_name': user.last_name,
+                'email': user.email,
+                'role': user.internal_user_role
+            }
+            for user in all_users if user not in users_in_hub
+        ]
+
+        return jsonify({'status': 'success', 'users_not_in_hub': users_not_in_hub}), 200
+
+    except Exception as e:
+        logger.error(f"Error fetching users not in hub {hub_id}: {str(e)}")
+        return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
+
 # Delete a user
 @main.route('/users/<int:user_id>', methods=['DELETE'])
 @cross_origin()  # Enable CORS for this route
@@ -370,6 +435,36 @@ def link_event_to_meeting(event_id):
     except Exception as e:
         logger.error(f"Error linking event {event_id} to meeting: {e}")
         return jsonify({"message": f"Error linking event {event_id} to meeting: {str(e)}"}), 500
+
+@main.route('/api/hub/<int:hub_id>/users', methods=['GET'])
+@login_required  # Ensure the user is logged in
+def get_users_for_hub(hub_id):
+    try:
+        # Fetch the hub by its ID
+        hub = MeetingHub.query.get(hub_id)
+
+        if not hub:
+            return jsonify({"error": "Hub not found"}), 404
+
+        # Fetch all users linked to this hub
+        users = hub.users
+
+        # Convert the user objects into a list of dictionaries
+        user_list = [
+            {
+                'id': user.id,
+                'email': user.email,
+                'first_name': user.first_name,
+                'last_name': user.last_name,
+                'role': user.internal_user_role  # Assuming internal_user_role is a field for user role
+            }
+            for user in users
+        ]
+
+        return jsonify({"users": user_list}), 200
+    except Exception as e:
+        logger.error(f"Error fetching users for hub {hub_id}: {e}")
+        return jsonify({"error": "Internal Server Error"}), 500
 
 @main.route('/api/calendar/events', methods=['GET'])
 @login_required
@@ -996,22 +1091,29 @@ def manage_meeting_sessions():
 def manage_meeting_hubs():
     if request.method == 'GET':
         try:
-            # Fetch all meeting hubs for the logged-in user
-            user_id = current_user.id
-            meeting_hubs = MeetingHub.query.filter(MeetingHub.users.any(id=user_id)).all()
+            user = current_user
+            company_id = user.company_id
+
+            if not company_id:
+                current_app.logger.error(f"User {user.email} does not belong to any company.")
+                return jsonify({'status': 'error', 'message': 'User does not belong to any company'}), 400
+
+            # Fetch all meeting hubs for the user's company
+            meeting_hubs = MeetingHub.query.filter_by(company_id=company_id).all()
 
             # Fetch the active hub for the user
-            active_hub_id = current_user.active_meeting_hub_id  # Assuming you have an active_meeting_hub_id column in the User model
+            active_hub_id = user.active_meeting_hub_id
 
-            # Serialize the meeting hubs to return as JSON
-            meeting_hubs_data = [
-                {
+            # Serialize the meeting hubs to include 'is_member' flag
+            meeting_hubs_data = []
+            for hub in meeting_hubs:
+                is_member = hub.users.filter(User.id == user.id).count() > 0
+                meeting_hubs_data.append({
                     'id': hub.id,
                     'name': hub.name,
                     'description': hub.description,
-                    'users': [user.email for user in hub.users]  # Assuming User model has an email attribute
-                } for hub in meeting_hubs
-            ]
+                    'is_member': is_member
+                })
 
             return jsonify({
                 'status': 'success',
@@ -1047,7 +1149,8 @@ def manage_meeting_hubs():
             new_hub = MeetingHub(
                 name=name,
                 description=description,
-                company_id=company_id  # Ensure the company_id is set
+                company_id=company_id,  # Ensure the company_id is set
+                created_by=current_user.id  # Set created_by to the current user's ID
             )
             new_hub.users.append(current_user)  # Add the current user to the meeting hub
             db.session.add(new_hub)
@@ -1222,14 +1325,64 @@ def get_company_users(company_id):
         logger.error(f"Error fetching users and subscriptions for company {company_id}: {str(e)}")
         return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500      
 
-@main.route('/api/meetings', methods=['GET', 'POST'])
+@main.route('/api/meetings/<int:meeting_id>/visibility', methods=['PUT'])
+@login_required
+@cross_origin()
+def update_meeting_visibility_and_add_users(meeting_id):
+    try:
+        # Fetch the meeting by ID
+        meeting = Meeting.query.get(meeting_id)
+        if not meeting:
+            return jsonify({'status': 'error', 'message': 'Meeting not found'}), 404
+
+        data = request.json
+        new_visibility = data.get('visibility')
+        user_ids = data.get('user_ids', [])  # List of user IDs to add to the hub, if provided
+
+        # Validate the new visibility setting
+        if new_visibility not in [VisibilitySettings.ALL_HUB_MEMBERS, VisibilitySettings.PARTICIPANTS, VisibilitySettings.PRIVATE]:
+            return jsonify({'status': 'error', 'message': 'Invalid visibility setting'}), 400
+
+        # Update the meeting's visibility
+        meeting.visibility = new_visibility
+
+        # Fetch the associated meeting hub
+        hub = MeetingHub.query.get(meeting.meeting_hub_id)
+        if not hub:
+            return jsonify({'status': 'error', 'message': 'Meeting Hub not found'}), 404
+
+        # Ensure that the current user has the right permissions (admin or super admin)
+        if current_user.id != hub.admin_id and current_user.internal_user_role != 'super_admin':
+            return jsonify({'status': 'error', 'message': 'Unauthorized access'}), 403
+
+        # Add users to the hub if user_ids are provided
+        if user_ids:
+            for user_id in user_ids:
+                # Check if the user already exists in the hub
+                existing_link = db.session.query(user_meeting_hub).filter_by(user_id=user_id, meeting_hub_id=hub.id).first()
+                if not existing_link:
+                    insert_statement = user_meeting_hub.insert().values(user_id=user_id, meeting_hub_id=hub.id)
+                    db.session.execute(insert_statement)
+
+        # Commit the changes
+        db.session.commit()
+
+        return jsonify({'status': 'success', 'message': 'Visibility and users updated successfully'}), 200
+
+    except Exception as e:
+        db.session.rollback()
+        current_app.logger.error(f"Error updating visibility and users: {str(e)}")
+        return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
+
+
+@main.route('/api/meetings', methods=['GET', 'POST', 'PATCH'])
 @login_required
 @cross_origin()
 def manage_meetings():
     if request.method == 'GET':
         try:
             hub_id = request.args.get('hub_id')
-            meeting_id = request.args.get('meeting_id')  # New parameter for meeting_id
+            meeting_id = request.args.get('meeting_id')
 
             current_app.logger.info(f"GET /api/meetings called with hub_id: {hub_id}, meeting_id: {meeting_id}")
 
@@ -1241,9 +1394,9 @@ def manage_meetings():
 
                 if not sessions:
                     current_app.logger.warning(f"No sessions found for meeting_id: {meeting_id}")
-                    return jsonify({'status': 'success', 'sessions': []}), 200  # Return empty list if no sessions found
+                    return jsonify({'status': 'success', 'sessions': []}), 200
 
-                # Serialize the sessions to return as JSON
+                # Serialize the sessions
                 sessions_data = [
                     {
                         'id': session.id,
@@ -1252,7 +1405,6 @@ def manage_meetings():
                     } for session in sessions
                 ]
 
-                current_app.logger.info(f"Successfully fetched {len(sessions_data)} sessions for meeting_id: {meeting_id}")
                 return jsonify({'status': 'success', 'sessions': sessions_data}), 200
 
             elif hub_id:
@@ -1263,23 +1415,22 @@ def manage_meetings():
 
                 if not meetings:
                     current_app.logger.warning(f"No meetings found for hub_id: {hub_id}")
-                    return jsonify({'status': 'success', 'meetings': []}), 200  # Return empty list if no meetings found
+                    return jsonify({'status': 'success', 'meetings': []}), 200
 
-                # Serialize the meetings to return as JSON
+                # Serialize the meetings
                 meetings_data = [
                     {
                         'id': meeting.id,
                         'name': meeting.name,
                         'description': meeting.description,
-                        'is_recurring': meeting.is_recurring  # Assuming the Meeting model has an is_recurring attribute
+                        'is_recurring': meeting.is_recurring,
+                        'visibility': meeting.visibility
                     } for meeting in meetings
                 ]
 
-                current_app.logger.info(f"Successfully fetched {len(meetings_data)} meetings for hub_id: {hub_id}")
                 return jsonify({'status': 'success', 'meetings': meetings_data}), 200
             else:
                 current_app.logger.error("Hub ID or Meeting ID not provided")
-                # Return an error if neither hub_id nor meeting_id is provided
                 return jsonify({'status': 'error', 'message': 'Hub ID or Meeting ID is required'}), 400
 
         except Exception as e:
@@ -1291,9 +1442,10 @@ def manage_meetings():
             data = request.json
             meeting_name = data.get('name')
             hub_id = data.get('hub_id')
-            create_session_flag = data.get('create_session', False)  # Add a flag for session creation
+            create_session_flag = data.get('create_session', False)
+            visibility = data.get('visibility', VisibilitySettings.PARTICIPANTS)
 
-            current_app.logger.info(f"POST /api/meetings called with meeting_name: {meeting_name}, hub_id: {hub_id}, create_session: {create_session_flag}")
+            current_app.logger.info(f"POST /api/meetings called with meeting_name: {meeting_name}, hub_id: {hub_id}, visibility: {visibility}")
 
             if not meeting_name or not hub_id:
                 current_app.logger.error("Meeting name or hub ID is missing")
@@ -1303,7 +1455,8 @@ def manage_meetings():
             new_meeting = Meeting(
                 name=meeting_name,
                 description=f"Meeting for {meeting_name}",
-                meeting_hub_id=hub_id
+                meeting_hub_id=hub_id,
+                visibility=visibility
             )
             db.session.add(new_meeting)
             db.session.commit()
@@ -1311,7 +1464,6 @@ def manage_meetings():
             current_app.logger.info(f"Created new meeting with id: {new_meeting.id}")
 
             if create_session_flag:
-                # If the flag is true, create the first meeting session linked to the new meeting
                 session_name = f"{meeting_name} - {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')}"
                 new_session = MeetingSession(
                     name=session_name,
@@ -1324,12 +1476,40 @@ def manage_meetings():
                 current_app.logger.info(f"Created new meeting session with id: {new_session.id}")
                 return jsonify({'status': 'success', 'meeting_id': new_meeting.id, 'meeting_session_id': new_session.id}), 201
             else:
-                # Only create the meeting, no session
                 return jsonify({'status': 'success', 'meeting_id': new_meeting.id}), 201
 
         except Exception as e:
             db.session.rollback()
             current_app.logger.error(f"Error creating meeting: {str(e)}")
+            return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
+
+    elif request.method == 'PATCH':
+        try:
+            data = request.json
+            meeting_id = data.get('meeting_id')
+            new_visibility = data.get('visibility')
+
+            if not meeting_id or not new_visibility:
+                current_app.logger.error("Meeting ID or visibility setting is missing")
+                return jsonify({'status': 'error', 'message': 'Meeting ID and visibility are required'}), 400
+
+            # Fetch the meeting
+            meeting = Meeting.query.get(meeting_id)
+
+            if not meeting:
+                current_app.logger.error(f"Meeting with id {meeting_id} not found")
+                return jsonify({'status': 'error', 'message': 'Meeting not found'}), 404
+
+            # Update the visibility
+            meeting.visibility = new_visibility
+            db.session.commit()
+
+            current_app.logger.info(f"Updated meeting {meeting_id} visibility to {new_visibility}")
+            return jsonify({'status': 'success', 'message': 'Visibility updated successfully'}), 200
+
+        except Exception as e:
+            db.session.rollback()
+            current_app.logger.error(f"Error updating meeting visibility: {str(e)}")
             return jsonify({'status': 'error', 'message': 'Internal Server Error'}), 500
 
 @main.route('/api/sessions/<int:session_id>', methods=['GET'])
@@ -2202,9 +2382,14 @@ def create_google_event():
 def get_meeting_by_recurring_event(recurring_event_id):
     meeting = Meeting.query.filter_by(recurring_event_id=recurring_event_id).first()
     if meeting:
-        return jsonify({"meeting_id": meeting.id, "meeting_name": meeting.name}), 200
+        return jsonify({
+            "meeting_id": meeting.id,
+            "meeting_name": meeting.name,
+            "recurring_event_id": meeting.recurring_event_id,
+            "is_recurring": meeting.is_recurring
+        }), 200
     else:
-        return jsonify({"message": "No meeting linked to this recurring event"}), 404
+        return jsonify({"message": "No meeting linked to this recurring event."}), 404
 
 # Link a recurring event to an existing meeting or create a new meeting
 @main.route('/api/recurring-event/<recurring_event_id>/link', methods=['POST'])
@@ -2214,21 +2399,52 @@ def link_meeting_to_recurring_event(recurring_event_id):
     meeting_id = data.get("meeting_id")
     meeting_name = data.get("meeting_name")
 
+    if meeting_id and meeting_name:
+        return jsonify({"message": "Provide either meeting_id or meeting_name, not both."}), 400
+
     if meeting_id:
         # Link to existing meeting
         meeting = Meeting.query.get(meeting_id)
         if meeting:
+            if meeting.recurring_event_id:
+                return jsonify({"message": "This meeting is already linked to a recurring event."}), 400
             meeting.recurring_event_id = recurring_event_id
             meeting.is_recurring = True
             db.session.commit()
-            return jsonify({"message": "Meeting linked to recurring event"}), 200
+            return jsonify({
+                "message": "Meeting linked to recurring event successfully.",
+                "meeting": {
+                    "id": meeting.id,
+                    "name": meeting.name,
+                    "recurring_event_id": meeting.recurring_event_id
+                }
+            }), 200
         else:
-            return jsonify({"message": "Meeting not found"}), 404
+            return jsonify({"message": "Meeting not found."}), 404
+
     elif meeting_name:
-        # Create a new meeting
-        new_meeting = Meeting(name=meeting_name, is_recurring=True, recurring_event_id=recurring_event_id)
+        # Create a new meeting and link to recurring event
+        existing_meeting = Meeting.query.filter_by(name=meeting_name, recurring_event_id=recurring_event_id).first()
+        if existing_meeting:
+            return jsonify({"message": "A meeting with this name is already linked to the recurring event."}), 400
+
+        new_meeting = Meeting(
+            name=meeting_name,
+            description=f"Automatically created for recurring event {recurring_event_id}",
+            is_recurring=True,
+            recurring_event_id=recurring_event_id,
+            meeting_hub_id=current_user.active_meeting_hub_id  # Ensure the meeting is linked to the active hub
+        )
         db.session.add(new_meeting)
         db.session.commit()
-        return jsonify({"message": "New meeting created and linked to recurring event"}), 201
+        return jsonify({
+            "message": "New meeting created and linked to recurring event successfully.",
+            "meeting": {
+                "id": new_meeting.id,
+                "name": new_meeting.name,
+                "recurring_event_id": new_meeting.recurring_event_id
+            }
+        }), 201
+
     else:
-        return jsonify({"message": "Meeting ID or name required"}), 400
+        return jsonify({"message": "Provide either meeting_id or meeting_name to link."}), 400

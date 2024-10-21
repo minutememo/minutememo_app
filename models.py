@@ -6,6 +6,8 @@ from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship, backref
 import uuid
 from extensions import db
+from enum import Enum
+
 
 class Company(db.Model):
     __table_args__ = {'extend_existing': True}
@@ -140,6 +142,9 @@ class MeetingHub(db.Model):
     name = db.Column(db.String(128), nullable=False)
     description = db.Column(db.String(256))
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'), nullable=False)
+    created_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  # Track who created the hub
+    admin_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)  # Track admin if different from creator
+
 
     # Relationships
     meetings = db.relationship('Meeting', backref='meeting_hub', lazy=True)
@@ -150,6 +155,11 @@ class MeetingHub(db.Model):
     )
 
 # Existing Meeting model, updated
+class VisibilitySettings(str, Enum):
+    ALL_HUB_MEMBERS = 'all_hub_members'
+    PARTICIPANTS = 'participants'
+    PRIVATE = 'private'
+
 class Meeting(db.Model):
     __table_args__ = {'extend_existing': True}
 
@@ -160,10 +170,28 @@ class Meeting(db.Model):
     recurring_event_id = db.Column(db.String(255), unique=True)
     meeting_hub_id = db.Column(db.Integer, db.ForeignKey('meeting_hub.id'), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    
+    # New visibility field with default setting
+    visibility = db.Column(db.String(32), nullable=False, default=VisibilitySettings.PARTICIPANTS)
 
     # Relationships
     meeting_sessions = db.relationship('MeetingSession', backref='meeting', lazy=True)
     participants = db.relationship('MeetingParticipant', backref='meeting', lazy='dynamic')
+    
+    def is_visible_to_user(self, user):
+        """
+        Determine if the meeting is visible to the given user based on visibility settings.
+        """
+        if self.visibility == VisibilitySettings.ALL_HUB_MEMBERS:
+            # The meeting is visible to all members of the hub
+            return any(hub.id == self.meeting_hub_id for hub in user.meeting_hubs)
+        elif self.visibility == VisibilitySettings.PARTICIPANTS:
+            # The meeting is only visible to participants
+            return any(participant.user_id == user.id for participant in self.participants)
+        elif self.visibility == VisibilitySettings.PRIVATE:
+            # The meeting is only visible to the organizer (created_by)
+            return self.created_by == user.id
+        return False
 
 # New RaciRole model
 class RaciRole(db.Model):
