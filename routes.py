@@ -23,7 +23,7 @@ from datetime import datetime, timedelta
 from pydantic import BaseModel, ValidationError
 import traceback
 from typing import List
-#from app import credentials
+from app import credentials
 from celery.result import AsyncResult
 from celery_factory import celery_app  # Import the initialized Celery app
 from openai import OpenAI
@@ -136,7 +136,6 @@ def generate_presigned_url_route():
         # Generate the presigned URL
         url = generate_presigned_url(file_name, file_type)
         logging.info(f"Presigned URL generated: {url}")
-
         return jsonify({'url': url})
 
     except Exception as e:
@@ -263,6 +262,52 @@ def get_users_for_meetinghub(hub_id):
     except Exception as e:
         logger.error(f"Error fetching users for hub {hub_id}: {str(e)}")
         return jsonify({'status': 'error', 'message': 'Failed to fetch users for the hub'}), 500
+
+@main.route('/api/user/company', methods=['GET'])
+@login_required
+def get_user_companies():
+    try:
+        logger.info("Fetching all companies for user ID %s", current_user.id)
+
+        # Fetch primary company
+        primary_company = current_user.company
+
+        # Fetch additional companies
+        additional_companies = current_user.additional_companies.all()
+
+        # Combine companies, ensuring no duplicates
+        companies = []
+        if primary_company:
+            companies.append(primary_company)
+        for company in additional_companies:
+            if not primary_company or company.id != primary_company.id:
+                companies.append(company)
+
+        if not companies:
+            logger.info("No companies found for user ID %s", current_user.id)
+            return jsonify({'companies': []}), 200
+
+        # Serialize company data
+        companies_data = []
+        for company in companies:
+            company_data = {
+                'id': company.id,
+                'name': company.name,
+                'address': company.address,
+                'city': company.city,
+                'state': company.state,
+                'zip_code': company.zip_code,
+                'country': company.country,
+                'phone_number': company.phone_number,
+            }
+            companies_data.append(company_data)
+
+        logger.info("Successfully fetched companies for user ID %s", current_user.id)
+        return jsonify({'companies': companies_data}), 200
+
+    except Exception as e:
+        logger.error("Error fetching companies for user ID %s: %s", current_user.id, str(e), exc_info=True)
+        return jsonify({'error': 'Failed to fetch user companies'}), 500
 
 @main.route('/meetinghubs/<int:hub_id>/users/not-in-hub', methods=['GET'])
 @login_required
@@ -472,34 +517,18 @@ def get_calendar_events():
     try:
         logger.debug("Starting calendar events retrieval process")
 
-        # Ensure the user is authenticated and has a valid Google OAuth token
+        # Ensure the user is authenticated
         if not current_user.is_authenticated:
             logger.warning("User is not authenticated")
             return jsonify({"message": "User is not authenticated"}), 403
 
         logger.debug(f"User {current_user.email} is authenticated")
 
-        # Fetch the OAuth token for the logged-in user (stored as JSON in the User model)
-        token = json.loads(current_user.google_oauth_token)
-        logger.debug("OAuth token successfully retrieved from the database")
+        # Determine the user's SSO platform
+        sso_platform = current_user.sso_platform
+        logger.debug(f"User SSO platform: {sso_platform}")
 
-        # Check if the token has expired and refresh it if necessary
-        if token_is_expired(token):
-            logger.info("Access token expired, refreshing token")
-            token = refresh_google_oauth_token(token["refresh_token"])
-
-            # Update the token in the user's record (save the new token as a JSON string)
-            current_user.google_oauth_token = json.dumps(token)
-            db.session.commit()
-            logger.debug("OAuth token refreshed and updated in the database")
-
-        # Set up the headers with the Bearer token
-        headers = {
-            'Authorization': f'Bearer {token["access_token"]}'
-        }
-        logger.debug("Headers set with the Bearer token")
-
-        # Retrieve the start and end times from the request's query parameters
+        # Retrieve start and end times from query parameters
         start_time = request.args.get('start')
         end_time = request.args.get('end')
 
@@ -507,70 +536,195 @@ def get_calendar_events():
             logger.error("Missing 'start' or 'end' parameters in the request")
             return jsonify({"message": "Missing 'start' or 'end' query parameters"}), 400
 
-        logger.debug(f"Fetching events between {start_time} and {end_time}")
+        if sso_platform == 'google':
+            # Handle Google Calendar events
+            token_data = current_user.google_oauth_token
+            if not token_data:
+                logger.error("Google OAuth token not found for user.")
+                return jsonify({"message": "Google OAuth token not found."}), 403
 
-        # Google Calendar API URL for fetching events from the primary calendar
-        calendar_api_url = 'https://www.googleapis.com/calendar/v3/calendars/primary/events'
+            token = json.loads(token_data)
+            logger.debug("Google OAuth token successfully retrieved from the database")
 
-        all_events = []
-        next_page_token = None
+            # Check and refresh token if expired
+            if token_is_expired(token):
+                logger.info("Google access token expired, refreshing token")
+                token = refresh_google_oauth_token(token["refresh_token"])
+                current_user.google_oauth_token = json.dumps(token)
+                db.session.commit()
+                logger.debug("Google OAuth token refreshed and updated in the database")
 
-        while True:
-            # Make a request to Google Calendar API to get events within the range
-            params = {
-                'timeMin': start_time,
-                'timeMax': end_time,
-                'maxResults': 2500,
-                'singleEvents': True,
-                'orderBy': 'startTime',
+            headers = {
+                'Authorization': f'Bearer {token["access_token"]}'
             }
-            if next_page_token:
-                params['pageToken'] = next_page_token
-                logger.debug(f"Using next page token: {next_page_token}")
+            logger.debug("Headers set with the Google Bearer token")
 
-            logger.debug(f"Requesting events with params: {params}")
-            response = requests.get(calendar_api_url, headers=headers, params=params)
+            # Google Calendar API URL
+            calendar_api_url = 'https://www.googleapis.com/calendar/v3/calendars/primary/events'
 
-            if response.status_code == 200:
-                events = response.json().get('items', [])
-                logger.debug(f"Fetched {len(events)} events in this request")
-                all_events.extend(events)
+            # Fetch events from Google Calendar
+            all_events = []
+            next_page_token = None
 
-                next_page_token = response.json().get('nextPageToken')
-                if not next_page_token:
-                    logger.debug("No more pages of events to fetch")
-                    break
-            else:
-                logger.error(f"Failed to fetch events: {response.status_code} - {response.text}")
-                return jsonify({"message": f"Failed to fetch events: {response.status_code}"}), 500
+            while True:
+                params = {
+                    'timeMin': start_time,
+                    'timeMax': end_time,
+                    'maxResults': 2500,
+                    'singleEvents': True,
+                    'orderBy': 'startTime',
+                }
+                if next_page_token:
+                    params['pageToken'] = next_page_token
+                    logger.debug(f"Using next page token: {next_page_token}")
 
-        logger.debug(f"Finished fetching a total of {len(all_events)} events")
+                logger.debug(f"Requesting Google events with params: {params}")
+                response = requests.get(calendar_api_url, headers=headers, params=params)
 
-        # Process recurring events and link them to meetings (as per your existing logic)
-        processed_events = []
-        for event in all_events:
-            event_data = {
-                'id': event.get('id'),
-                'summary': event.get('summary', 'No Title'),
-                'start': event.get('start', {}).get('dateTime', ''),
-                'end': event.get('end', {}).get('dateTime', ''),
-                'recurringEventId': event.get('recurringEventId', None),
-                'linked_meeting': None,
-                'meeting_hub_id': None
-            }
+                if response.status_code == 200:
+                    events = response.json().get('items', [])
+                    logger.debug(f"Fetched {len(events)} Google events in this request")
+                    all_events.extend(events)
 
-            if 'recurringEventId' in event:
-                recurring_event_id = event['recurringEventId']
-                existing_meeting = Meeting.query.filter_by(recurring_event_id=recurring_event_id).first()
+                    next_page_token = response.json().get('nextPageToken')
+                    if not next_page_token:
+                        logger.debug("No more pages of Google events to fetch")
+                        break
+                else:
+                    logger.error(f"Failed to fetch Google events: {response.status_code} - {response.text}")
+                    return jsonify({"message": f"Failed to fetch Google events: {response.status_code}"}), 500
 
-                if existing_meeting:
-                    event_data['linked_meeting'] = existing_meeting.name
-                    event_data['meeting_hub_id'] = existing_meeting.meeting_hub_id
+            # Process and format Google events
+            processed_events = []
+            for event in all_events:
+                event_data = {
+                    'id': event.get('id'),
+                    'summary': event.get('summary', 'No Title'),
+                    'start': event.get('start', {}).get('dateTime', ''),
+                    'end': event.get('end', {}).get('dateTime', ''),
+                    'location': event.get('location', ''),
+                    'is_recurring': 'recurringEventId' in event,
+                    'recurringEventId': event.get('recurringEventId', None),
+                    'linked_meeting': None,
+                    'meeting_hub_id': None
+                }
 
-            processed_events.append(event_data)
+                if 'recurringEventId' in event:
+                    recurring_event_id = event['recurringEventId']
+                    existing_meeting = Meeting.query.filter_by(recurring_event_id=recurring_event_id).first()
 
-        logger.debug(f"Returning {len(processed_events)} processed events")
-        return jsonify(processed_events), 200
+                    if existing_meeting:
+                        event_data['linked_meeting'] = existing_meeting.name
+                        event_data['meeting_hub_id'] = existing_meeting.meeting_hub_id
+
+                processed_events.append(event_data)
+
+            logger.debug(f"Returning {len(processed_events)} processed Google events")
+            return jsonify(processed_events), 200
+
+        elif sso_platform == 'microsoft':
+            try:
+                token_data = current_user.microsoft_oauth_token
+                if not token_data:
+                    logger.error("Microsoft OAuth token not found for user.")
+                    return jsonify({"message": "Microsoft OAuth token not found."}), 403
+
+                token = json.loads(token_data)
+                logger.debug(f"Microsoft token data: {token}")
+
+                # Check and refresh token if expired
+                if token_is_expired(token):
+                    logger.info("Microsoft access token expired, refreshing token")
+                    token = refresh_microsoft_oauth_token(token["refresh_token"])
+                    if not token:
+                        logger.error("Failed to refresh Microsoft token")
+                        return jsonify({"message": "Failed to refresh token"}), 401
+                    current_user.microsoft_oauth_token = json.dumps(token)
+                    db.session.commit()
+                    logger.debug("Microsoft token refreshed successfully")
+
+                # Verify that the access token has the required scopes
+                scopes = token.get('scope', '')
+                if 'Calendars.ReadWrite' not in scopes and 'Calendars.Read' not in scopes:
+                    logger.error("Access token lacks required scopes: Calendars.ReadWrite or Calendars.Read")
+                    return jsonify({"message": "Access token lacks required scopes: Calendars.ReadWrite or Calendars.Read"}), 403
+
+                headers = {
+                    'Authorization': f'Bearer {token["access_token"]}',
+                    'Content-Type': 'application/json'
+                }
+                logger.debug("Headers set with Microsoft Bearer token")
+
+                # **Updated Microsoft Graph API URL to use /calendarView**
+                graph_api_url = "https://graph.microsoft.com/v1.0/me/calendarView"
+
+                # **Updated query parameters for /calendarView endpoint**
+                params = {
+                    'startDateTime': start_time,
+                    'endDateTime': end_time,
+                    '$orderby': 'start/dateTime',
+                    '$select': 'id,subject,start,end,location,bodyPreview,type,seriesMasterId',
+                    'singleEvents': 'true'  # **Ensure singleEvents is set to true**
+                }
+
+                logger.debug(f"Requesting Microsoft events with params: {params}")
+                response = requests.get(graph_api_url, headers=headers, params=params)
+
+                if response.status_code == 200:
+                    events = response.json().get('value', [])
+                    logger.debug(f"Fetched {len(events)} Microsoft events in this request")
+
+                    # **Process and format Microsoft events**
+                    processed_events = []
+                    for event in events:
+                        try:
+                            # **Determine if the event is an instance or a series master**
+                            is_recurring = event.get("type") == "seriesMaster"
+
+                            processed_event = {
+                                "id": event["id"],
+                                "summary": event.get("subject", "No Title"),
+                                "start": event["start"]["dateTime"],
+                                "end": event["end"]["dateTime"],
+                                "location": event.get("location", {}).get("displayName", ""),
+                                "is_recurring": is_recurring,
+                                "recurringEventId": event.get("seriesMasterId"),
+                                "linked_meeting": None,
+                                "meeting_hub_id": None
+                            }
+
+                            # **Link recurring events to meetings if applicable**
+                            if processed_event['recurringEventId']:
+                                existing_meeting = Meeting.query.filter_by(recurring_event_id=processed_event['recurringEventId']).first()
+
+                                if existing_meeting:
+                                    processed_event['linked_meeting'] = existing_meeting.name
+                                    processed_event['meeting_hub_id'] = existing_meeting.meeting_hub_id
+
+                            processed_events.append(processed_event)
+                        except KeyError as e:
+                            logger.error(f"Error processing event {event.get('id')}: {e}")
+                            continue
+
+                    logger.debug(f"Successfully processed {len(processed_events)} Microsoft events")
+                    return jsonify(processed_events), 200
+                else:
+                    logger.error(f"Failed to fetch Microsoft events: {response.status_code}")
+                    logger.error(f"Response content: {response.text}")
+                    return jsonify({"message": f"Failed to fetch Microsoft events: {response.status_code}"}), response.status_code
+
+            except Exception as e:
+                logger.error(f"Error during Microsoft calendar fetch: {str(e)}")
+                logger.error(traceback.format_exc())
+                return jsonify({"message": str(e)}), 500
+
+        else:
+            logger.warning("Unsupported SSO platform detected.")
+            return jsonify({"message": "Unsupported SSO platform."}), 400
+
+    except Exception as e:
+        logger.error(f"An error occurred while fetching calendar events: {str(e)}", exc_info=True)
+        return jsonify({"message": "An error occurred while fetching calendar events"}), 500
 
     except Exception as e:
         logger.error(f"An error occurred while fetching calendar events: {str(e)}", exc_info=True)
@@ -579,14 +733,57 @@ def get_calendar_events():
 
 # Helper function to check if the token is expired
 def token_is_expired(token):
-    # Check if the token has expired using its expiry timestamp
+    """
+    Check if the token has expired using its expiry timestamp.
+    """
     expiry_time = token.get('expires_at')  # Assuming token has 'expires_at' field
     if expiry_time:
         return datetime.utcnow() >= datetime.utcfromtimestamp(expiry_time)
     return True
 
-# Helper function to refresh the OAuth token using the refresh_token
+# Helper function to refresh the OAuth token using the refresh_token for Microsoft
+def refresh_microsoft_oauth_token(refresh_token):
+    """
+    Refresh the Microsoft OAuth token using the provided refresh_token.
+    """
+    try:
+        token_url = "https://login.microsoftonline.com/common/oauth2/v2.0/token"
+        payload = {
+            'client_id': os.getenv('MICROSOFT_CLIENT_ID'),
+            'scope': 'Calendars.ReadWrite User.Read',
+            'refresh_token': refresh_token,
+            'redirect_uri': os.getenv('MICROSOFT_REDIRECT_URI'),
+            'grant_type': 'refresh_token',
+            'client_secret': os.getenv('MICROSOFT_CLIENT_SECRET')
+        }
+
+        response = requests.post(token_url, data=payload)
+
+        if response.status_code != 200:
+            logger.error(f"Failed to refresh Microsoft token: {response.status_code} - {response.text}")
+            raise Exception("Failed to refresh Microsoft token.")
+
+        tokens = response.json()
+        access_token = tokens.get('access_token')
+        refresh_token = tokens.get('refresh_token')
+        expires_in = tokens.get('expires_in')  # in seconds
+        expires_at = datetime.utcnow().timestamp() + expires_in
+
+        return {
+            'access_token': access_token,
+            'refresh_token': refresh_token,
+            'expires_at': expires_at,
+            'scope': tokens.get('scope', '')
+        }
+    except Exception as e:
+        logger.error(f"Error while refreshing Microsoft token: {e}")
+        raise
+
+# Helper function to refresh the OAuth token using the refresh_token for Google
 def refresh_google_oauth_token(refresh_token):
+    """
+    Refresh the Google OAuth token using the provided refresh_token.
+    """
     try:
         token_url = "https://oauth2.googleapis.com/token"
         payload = {
@@ -602,11 +799,13 @@ def refresh_google_oauth_token(refresh_token):
             new_token['expires_at'] = datetime.utcnow().timestamp() + new_token['expires_in']
             return new_token
         else:
-            logger.error(f"Failed to refresh token: {response.status_code} - {response.text}")
-            raise Exception(f"Failed to refresh token: {response.status_code}")
+            logger.error(f"Failed to refresh Google token: {response.status_code} - {response.text}")
+            raise Exception(f"Failed to refresh Google token: {response.status_code}")
     except Exception as e:
-        logger.error(f"Error while refreshing token: {e}")
+        logger.error(f"Error while refreshing Google token: {e}")
         raise
+
+
 
 @main.route('/api/calendar/event/<event_id>', methods=['GET'])
 @login_required
@@ -2448,3 +2647,8 @@ def link_meeting_to_recurring_event(recurring_event_id):
 
     else:
         return jsonify({"message": "Provide either meeting_id or meeting_name to link."}), 400
+
+@main.route('/api/user-sso-platform', methods=['GET'])
+@login_required
+def user_sso_platform():
+    return jsonify({'sso_platform': current_user.sso_platform}), 200

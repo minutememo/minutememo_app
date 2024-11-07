@@ -30,12 +30,18 @@ const EventCreationModal = ({ isOpen, onClose, onCreateEvent, initialStart, init
             summary: title,
             description,
             location,
-            start: initialStart,
-            end: initialEnd,
+            start: {
+                dateTime: initialStart.toISOString(),
+                timeZone: 'UTC' // Adjust as needed
+            },
+            end: {
+                dateTime: initialEnd.toISOString(),
+                timeZone: 'UTC' // Adjust as needed
+            },
             attendees: attendeesArray,
             reminders: {
                 useDefault: false,
-                overrides: [{ method: 'email', minutes: reminder }],
+                overrides: [{ method: 'email', minutes: parseInt(reminder, 10) }],
             },
             recurrence: isRecurring ? [recurrence] : [],
         };
@@ -129,26 +135,72 @@ const CalendarPage = () => {
     const [events, setEvents] = useState([]);
     const [isModalOpen, setModalOpen] = useState(false);
     const [selectedSlot, setSelectedSlot] = useState(null);
-    const [currentRange, setCurrentRange] = useState(null); // Keep track of current range
+    const [currentRange, setCurrentRange] = useState(null);
+    const [userSSO, setUserSSO] = useState(null); 
+    const [isLoadingSSO, setIsLoadingSSO] = useState(true); 
     const navigate = useNavigate();
-    const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000'; // Use env variable
+    const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+
+    // Fetch user SSO platform on component load
+    useEffect(() => {
+        const fetchUserSSOPlatform = async () => {
+            try {
+                console.log("Fetching user's SSO platform...");
+                const response = await axios.get(`${backendUrl}/api/user-sso-platform`);
+                console.log("SSO platform response:", response.data);
+                setUserSSO(response.data.sso_platform);
+                if (response.data.sso_platform === 'google') {
+                    console.log("Google SSO detected; ready to fetch Google events.");
+                } else if (response.data.sso_platform === 'microsoft') {
+                    console.log("Microsoft SSO detected; ready to fetch Microsoft events.");
+                } else {
+                    console.log("Unsupported SSO platform; skipping calendar fetch.");
+                }
+            } catch (error) {
+                console.error("Error fetching user's SSO platform:", error);
+            } finally {
+                setIsLoadingSSO(false);
+            }
+        };
+
+        fetchUserSSOPlatform();
+    }, [backendUrl]);
 
     // Function to fetch calendar events for a given date range
     const fetchCalendarEvents = async (start, end) => {
         try {
-            const response = await axios.get(`${backendUrl}/api/calendar/events`, { // Use backendUrl
-                params: {
-                    start: start.toISOString(),  // Ensure this is passed as an ISO string
-                    end: end.toISOString(),      // Ensure this is passed as an ISO string
-                },
-            });
-            console.log('Fetched Calendar Events:', response.data); // Log response
+            console.log(`Fetching calendar events from ${start.toISOString()} to ${end.toISOString()}`);
+            
+            // Prepare query parameters
+            const params = {
+                start: start.toISOString(),
+                end: end.toISOString(),
+            };
 
-            // Convert event start and end to Date objects
+            // **Add singleEvents=true for Microsoft to expand recurring events**
+            if (userSSO === 'microsoft') {
+                params.singleEvents = 'true';
+                params.sso_platform = 'microsoft'; // Pass the SSO platform
+            } else if (userSSO === 'google') {
+                params.sso_platform = 'google'; // Pass the SSO platform
+            }
+
+            const response = await axios.get(`${backendUrl}/api/calendar/events`, {
+                params: params,
+            });
+            console.log('Fetched Calendar Events:', response.data);
+
             const eventsWithDateObjects = response.data.map(event => ({
-                ...event,
-                start: new Date(event.start),
-                end: new Date(event.end),
+                id: event.id,
+                title: event.summary || event.subject, // Microsoft uses 'subject', Google uses 'summary'
+                start: new Date(event.start.dateTime || event.start), // Microsoft returns {dateTime: "..."}, Google returns direct string
+                end: new Date(event.end.dateTime || event.end),
+                location: (event.location?.displayName || event.location || ''), // Microsoft has location in {displayName: "..."} format
+                description: event.bodyPreview || event.description, // Microsoft uses 'bodyPreview'
+                isRecurring: event.is_recurring || false,
+                recurringEventId: event.recurringEventId || null,
+                linkedMeeting: event.linked_meeting || null,
+                meetingHubId: event.meeting_hub_id || null
             }));
 
             setEvents(eventsWithDateObjects);
@@ -160,25 +212,19 @@ const CalendarPage = () => {
     // Trigger API call when the calendar's visible range changes
     const handleRangeChange = (range) => {
         let start, end;
-        // Check if range is an object with start and end dates (common for week/day view)
         if (range.start && range.end) {
             start = range.start;
             end = range.end;
-        } 
-        // Check if range is an array (common for month view)
-        else if (Array.isArray(range) && range.length === 2) {
+        } else if (Array.isArray(range) && range.length === 2) {
             start = range[0];
             end = range[1];
         } else {
             console.error('Invalid range:', range);
             return;
         }
-    
-        // Check if start and end are valid dates
+
         if (start && end && !isNaN(new Date(start)) && !isNaN(new Date(end))) {
-            // Store the current range
             setCurrentRange({ start: new Date(start), end: new Date(end) });
-            // Fetch events within the selected date range
             fetchCalendarEvents(new Date(start), new Date(end));
         } else {
             console.error('Invalid start or end date:', start, end);
@@ -191,37 +237,39 @@ const CalendarPage = () => {
     };
 
     const handleCreateEvent = async (newEvent) => {
+        const endpoint = userSSO === 'google' 
+            ? '/api/calendar/create-event'
+            : '/api/calendar/microsoft/create-event';
+
         try {
-            const response = await fetch(`${backendUrl}/api/google-calendar/create-event`, { // Use backendUrl
+            console.log(`Creating new ${userSSO} Calendar event:`, newEvent);
+            const response = await fetch(`${backendUrl}${endpoint}`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newEvent),
             });
 
-            if (response.ok) {
+            if (response.ok && currentRange) {
                 const createdEvent = await response.json();
-                console.log('Event created successfully:', createdEvent);
-                // Refresh events within the current range after creation
-                if (currentRange) {
-                    fetchCalendarEvents(currentRange.start, currentRange.end);
-                }
+                console.log(`${userSSO} Event created successfully:`, createdEvent);
+                fetchCalendarEvents(currentRange.start, currentRange.end);
             } else {
-                console.error('Failed to create event.');
+                console.error(`Failed to create ${userSSO} event.`);
             }
         } catch (error) {
-            console.error('Error creating event:', error);
+            console.error(`Error creating ${userSSO} event:`, error);
         }
     };
 
+    // Initial range fetch, now dependent on SSO loading
     useEffect(() => {
-        // Initialize the events by fetching the current month/week range on load
-        const now = new Date();
-        const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
-        const monthEnd = new Date(now.getFullYear(), now.getMonth() + 1, 0);
-        handleRangeChange({ start: monthStart, end: monthEnd });
-    }, []);
+        if (!isLoadingSSO && userSSO) {
+            const now = new Date();
+            const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+            const monthEnd = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+            handleRangeChange({ start: monthStart, end: monthEnd });
+        }
+    }, [isLoadingSSO, userSSO]);
 
     return (
         <div className="calendar-page" style={{ padding: '20px' }}>
@@ -234,11 +282,12 @@ const CalendarPage = () => {
                     events={events}
                     startAccessor="start"
                     endAccessor="end"
+                    titleAccessor="title"
                     style={{ height: '100%' }}
                     selectable
                     onSelectSlot={handleSelectSlot}
                     onSelectEvent={(event) => navigate(`/event/${event.id}`, { state: { event } })}
-                    onRangeChange={handleRangeChange}  // Listen for visible range changes
+                    onRangeChange={handleRangeChange}
                 />
             </div>
 
@@ -267,9 +316,9 @@ const CalendarPage = () => {
                     <tbody>
                         {events.map((event) => (
                             <tr key={event.id}>
-                                <td>{event.summary || 'No Title'}</td>
-                                <td>{event.start ? new Date(event.start).toISOString() : 'Invalid date'}</td> {/* Display Date as ISO string */}
-                                <td>{event.end ? new Date(event.end).toISOString() : 'Invalid date'}</td>   {/* Display Date as ISO string */}
+                                <td>{event.title || 'No Title'}</td>
+                                <td>{event.start ? new Date(event.start).toLocaleString() : 'Invalid date'}</td>
+                                <td>{event.end ? new Date(event.end).toLocaleString() : 'Invalid date'}</td>
                             </tr>
                         ))}
                     </tbody>

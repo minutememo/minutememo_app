@@ -1,194 +1,256 @@
-import os
-import sys
-from flask import Flask, request, jsonify, session, g
-from flask_cors import CORS
+from flask import Flask, g, request, session, abort, render_template, jsonify
+from flask_login import LoginManager, current_user
 from flask_migrate import Migrate
-from flask_login import LoginManager, login_required, current_user
-from dotenv import load_dotenv
+from flask_cors import CORS
+from werkzeug.middleware.proxy_fix import ProxyFix
+from sqlalchemy import func
+from authlib.integrations.flask_client import OAuth
+import os
 from datetime import timedelta
-import re
-from logging.handlers import RotatingFileHandler
 import logging
-from extensions import *
-from models import Company, User, MeetingHub
-from auth import *
-from google.oauth2 import service_account
-from super_admin import super_admin_bp  # Ensure this is correct
+from logging.handlers import RotatingFileHandler
+from dotenv import load_dotenv
 
+# Import your models and extensions
+from models import User, Company
+from extensions import db, migrate
+from auth import auth as auth_blueprint
+from routes import main as main_blueprint
 
+# Load environment variables
+load_dotenv()
 
-
-
-# Load environment variables based on FLASK_ENV
-env = os.getenv('FLASK_ENV', 'development')
-if env == 'production':
-    load_dotenv('.env.production')
-else:
-    load_dotenv('.env.development')
-
-
-credentials_info = {
-    "type": os.getenv('GOOGLE_CLOUD_TYPE'),
-    "project_id": os.getenv('GOOGLE_CLOUD_PROJECT_ID'),
-    "private_key_id": os.getenv('GOOGLE_CLOUD_PRIVATE_KEY_ID'),
-    "private_key": os.getenv('GOOGLE_CLOUD_PRIVATE_KEY').replace("\\n", "\n"),
-    "client_email": os.getenv('GOOGLE_CLOUD_CLIENT_EMAIL'),
-    "client_id": os.getenv('GOOGLE_CLOUD_CLIENT_ID'),
-    "auth_uri": os.getenv('GOOGLE_CLOUD_AUTH_URI'),
-    "token_uri": os.getenv('GOOGLE_CLOUD_TOKEN_URI'),
-    "auth_provider_x509_cert_url": os.getenv('GOOGLE_CLOUD_AUTH_PROVIDER_X509_CERT_URL'),
-    "client_x509_cert_url": os.getenv('GOOGLE_CLOUD_CLIENT_X509_CERT_URL')
-}
-
-credentials = service_account.Credentials.from_service_account_info(credentials_info)
-
-
-# Initialize login manager
-login_manager = LoginManager()
-# Setup logging
-logging.basicConfig(filename='app.log', level=logging.DEBUG, 
-                    format='%(asctime)s %(levelname)s: %(message)s',
-                    datefmt='%Y-%m-%d %H:%M:%S')
-
-log_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-
-# Log to file with rotation
-file_handler = RotatingFileHandler('app.log', maxBytes=100000, backupCount=10)
-file_handler.setFormatter(log_formatter)
-file_handler.setLevel(logging.DEBUG)
-
-# Log to console
-console_handler = logging.StreamHandler()
-console_handler.setFormatter(log_formatter)
-console_handler.setLevel(logging.DEBUG)
-
-# Configure the root logger
-logging.getLogger().setLevel(logging.DEBUG)
-logging.getLogger().addHandler(file_handler)
-logging.getLogger().addHandler(console_handler)
-
-migrate = Migrate()
-frontend_url = "https://staging.minutememo.io"  # Your custom domain
-
-
-def create_app():
+def create_app(config_name=None):
     app = Flask(__name__)
-
-    # Load environment variables and configure the app
-    env = os.getenv('FLASK_ENV', 'development')
-    frontend_url = os.getenv('FRONTEND_URL', 'http://localhost:3000')
-    CORS(app, supports_credentials=True, resources={r"/*": {"origins": frontend_url}})
-
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL').replace("postgres://", "postgresql://")
+    
+    # Configuration
+    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.secret_key = os.getenv('SECRET_KEY', 'supersecretkey')
-    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)
-    app.config['REMEMBER_COOKIE_DURATION'] = timedelta(days=7)
-    app.config['REMEMBER_COOKIE_SECURE'] = env == 'production'
-    app.config['REMEMBER_COOKIE_HTTPONLY'] = True
-    app.config['SESSION_COOKIE_SECURE'] = env == 'production'
+    app.config['SESSION_COOKIE_SECURE'] = True
     app.config['SESSION_COOKIE_HTTPONLY'] = True
-    app.config['SESSION_COOKIE_SAMESITE'] = 'None' if env == 'production' else 'Lax'
-    app.config['CELERY_BROKER_URL'] = os.getenv('REDIS_URL')
-    app.config['CELERY_RESULT_BACKEND'] = os.getenv('REDIS_URL')
+    app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
+    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=1)
+    
+    # Set logging level based on environment
+    env = os.getenv('FLASK_ENV', 'development')
+    logger = logging.getLogger(__name__)
+    if env == 'production':
+        logger.setLevel(logging.WARNING)
+    else:
+        logger.setLevel(logging.DEBUG)
 
-    # Database and login setup
+    # CORS configuration
+    if env == 'development':
+        CORS(app, supports_credentials=True, origins=[
+            "http://localhost:3000",
+            "http://127.0.0.1:3000",
+            "http://localhost:5000"
+        ])
+    else:
+        CORS(app, supports_credentials=True, origins=[
+            "https://*.minutememo.io",
+            "https://minutememo.io"
+        ])
+
+    # Initialize extensions
     db.init_app(app)
     migrate.init_app(app, db)
+
+    # OAuth setup
+    oauth = OAuth(app)
+    
+    # Google OAuth configuration
+    try:
+        logger.debug('Registering Google OAuth client')
+        oauth.register(
+            name='google',
+            client_id=os.getenv('GOOGLE_CLIENT_ID'),
+            client_secret=os.getenv('GOOGLE_CLIENT_SECRET'),
+            access_token_url='https://accounts.google.com/o/oauth2/token',
+            authorize_url='https://accounts.google.com/o/oauth2/auth',
+            client_kwargs={'scope': 'openid email profile https://www.googleapis.com/auth/calendar'},
+            jwks_uri='https://www.googleapis.com/oauth2/v3/certs'
+        )
+        logger.debug('Google OAuth client registered successfully')
+    except Exception as e:
+        logger.error(f"Error during Google OAuth registration: {e}")
+
+    # Microsoft OAuth configuration
+    try:
+        logger.debug('Registering Microsoft OAuth client')
+        oauth.register(
+            name='microsoft',
+            client_id=os.getenv('MICROSOFT_CLIENT_ID'),
+            client_secret=os.getenv('MICROSOFT_CLIENT_SECRET'),
+            access_token_url='https://login.microsoftonline.com/common/oauth2/v2.0/token',
+            authorize_url='https://login.microsoftonline.com/common/oauth2/v2.0/authorize',
+            client_kwargs={
+                'scope': 'openid email profile offline_access User.Read Calendars.Read Calendars.ReadWrite',
+                'response_type': 'code',
+            },
+            api_base_url='https://graph.microsoft.com/v1.0/',
+            jwks_uri='https://login.microsoftonline.com/common/discovery/v2.0/keys'
+        )
+        logger.debug('Microsoft OAuth client registered successfully')
+    except Exception as e:
+        logger.error(f"Error during Microsoft OAuth registration: {e}")
+
+    # Configure login manager
+    login_manager = LoginManager()
     login_manager.init_app(app)
     login_manager.login_view = 'auth.login'
-
-    # Initialize Celery here to avoid circular imports
-    from celery_factory import make_celery
-    global celery
-    celery = make_celery(app)
-
+    
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))
 
-    @app.before_request
-    def make_session_permanent():
-        session.permanent = True
-        session.modified = True
-        g.user = current_user
+    # Add proxy middleware for proper subdomain handling
+    app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 
-    @app.route('/auth/status')
-    def status():
-        if current_user.is_authenticated:
-            return jsonify(logged_in=True, user={'email': current_user.email})
-        return jsonify(logged_in=False)
+    # Helper functions
+    def get_subdomain(host):
+        """Extract subdomain from host"""
+        parts = host.split('.')
+        if len(parts) > 2:
+            return parts[0]
+        return None
+
+    def validate_subdomain(subdomain):
+        """Validate subdomain format"""
+        import re
+        if subdomain:
+            return bool(re.match('^[a-zA-Z0-9-]+$', subdomain))
+        return False
+
+    # Workspace middleware
+    @app.before_request
+    def workspace_middleware():
+        # Skip for static files and certain endpoints
+        if request.endpoint and (
+            request.endpoint.startswith('static') or
+            request.endpoint.startswith('auth.') or
+            request.endpoint == 'main.health_check'
+        ):
+            return
+
+        # Get and validate subdomain
+        subdomain = get_subdomain(request.host)
+        g.workspace = None
+        g.workspace_id = None
+
+        if subdomain and subdomain not in ['www', 'api']:
+            # Validate subdomain format
+            if not validate_subdomain(subdomain):
+                app.logger.warning(f"Invalid subdomain format: {subdomain}")
+                return handle_invalid_subdomain()
+
+            # Find company by subdomain
+            company = Company.query.filter(
+                func.lower(func.replace(Company.name, ' ', '-')) == 
+                func.lower(subdomain)
+            ).first()
+
+            if not company:
+                app.logger.warning(f"Company not found for subdomain: {subdomain}")
+                return handle_invalid_subdomain()
+
+            # Set workspace context
+            g.workspace = company
+            g.workspace_id = company.id
+
+            # Verify user access if authenticated
+            if current_user.is_authenticated:
+                has_access = (
+                    current_user.company_id == company.id or
+                    current_user.additional_companies.filter_by(id=company.id).first()
+                )
+
+                if not has_access:
+                    app.logger.warning(
+                        f"User {current_user.id} attempted to access unauthorized workspace: {subdomain}"
+                    )
+                    return handle_unauthorized_access()
+
+    def handle_invalid_subdomain():
+        """Handle invalid subdomain requests"""
+        if request.is_json:
+            return jsonify({'error': 'Invalid workspace'}), 404
+        return render_template('404.html'), 404
+
+    def handle_unauthorized_access():
+        """Handle unauthorized workspace access"""
+        if request.is_json:
+            return jsonify({'error': 'Unauthorized access'}), 403
+        return render_template('403.html'), 403
+
+    # Error handlers
+    @app.errorhandler(404)
+    def not_found_error(error):
+        app.logger.info(f"404 error for path: {request.path}")
+        if request.is_json:
+            return jsonify({'error': 'Not found'}), 404
+        return render_template('404.html'), 404
+
+    @app.errorhandler(403)
+    def forbidden_error(error):
+        app.logger.warning(f"403 error for path: {request.path}")
+        if request.is_json:
+            return jsonify({'error': 'Forbidden'}), 403
+        return render_template('403.html'), 403
+
+    @app.errorhandler(500)
+    def internal_error(error):
+        db.session.rollback()
+        app.logger.error(f"500 error: {str(error)}")
+        if request.is_json:
+            return jsonify({'error': 'Internal server error'}), 500
+        return render_template('500.html'), 500
+
+    # Context processors
+    @app.context_processor
+    def utility_processor():
+        def get_current_workspace():
+            return getattr(g, 'workspace', None)
+        
+        return dict(
+            current_workspace=get_current_workspace,
+            is_workspace=bool(getattr(g, 'workspace', None))
+        )
+
+    # Setup logging
+    if not app.debug and not app.testing:
+        if not os.path.exists('logs'):
+            os.mkdir('logs')
+        
+        file_handler = RotatingFileHandler(
+            'logs/minutememo.log',
+            maxBytes=10240,
+            backupCount=10
+        )
+        file_handler.setFormatter(logging.Formatter(
+            '%(asctime)s %(levelname)s: %(message)s '
+            '[in %(pathname)s:%(lineno)d]'
+        ))
+        file_handler.setLevel(logging.INFO)
+        app.logger.addHandler(file_handler)
+
+        app.logger.setLevel(logging.INFO)
+        app.logger.info('MinuteMemo startup')
 
     # Register blueprints
-    from routes import main as main_blueprint
+    app.register_blueprint(auth_blueprint, url_prefix='/auth')
     app.register_blueprint(main_blueprint)
-    app.register_blueprint(auth, url_prefix='/auth')
-    app.register_blueprint(super_admin_bp)
 
-    @app.route('/test', methods=['GET'])
-    def test():
-        logging.info('Test endpoint hit')
-        return jsonify({"message": "Test endpoint is working"}), 200
-    
-    @app.after_request
-    def after_request(response):
-        origin = request.headers.get('Origin')
-        
-        logger.debug('After request, Origin: %s', origin)
-        
-        # Apply the Access-Control-Allow-Origin only once
-        if origin and 'Access-Control-Allow-Origin' not in response.headers:
-            response.headers['Access-Control-Allow-Origin'] = origin
-        
-        response.headers['Access-Control-Allow-Credentials'] = 'true'
-        response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'
-        response.headers['Access-Control-Allow-Methods'] = 'GET,POST,PUT,DELETE,OPTIONS,PATCH'
-        
-        return response
-
-    
+    # Health check endpoint
+    @app.route('/health')
+    def health_check():
+        return jsonify({'status': 'healthy'}), 200
 
     return app
 
-# Utility function for natural sorting
-def natural_sort_key(s, _nsre=re.compile('([0-9]+)')):
-    return [int(text) if text.isdigit() else text.lower() for text in re.split(_nsre, s)]
+# Create the application instance
+app = create_app()
 
-# Function to concatenate chunks
-def concatenate_chunks(recording_id):
-    chunks_dir = 'uploads'  # Directory where chunks are stored
-
-    # Get all chunk filenames for the given recording_id
-    chunk_files = [os.path.join(chunks_dir, f) for f in os.listdir(chunks_dir) if recording_id in f and f.endswith('.webm')]
-
-    # Sort the chunk filenames
-    chunk_files.sort(key=natural_sort_key)
-
-    # Write the sorted filenames to a file for FFmpeg
-    list_file_path = os.path.join(chunks_dir, f'{recording_id}_file_list.txt')
-    with open(list_file_path, 'w') as f:
-        for chunk in chunk_files:
-            f.write(f"file '{chunk}'\n")
-
-    # Call FFmpeg to concatenate the chunks
-    output_file = os.path.join(chunks_dir, f'{recording_id}.webm')
-    os.system(f'ffmpeg -f concat -safe 0 -i {list_file_path} -c copy {output_file}')
-
-    return output_file
-
-    # Route to handle chunk concatenation
-    @app.route('/concatenate', methods=['POST'])
-    def concatenate():
-        data = request.get_json()
-        recording_id = data['recording_id']
-        
-        # Call the concatenate_chunks function
-        output_file = concatenate_chunks(recording_id)
-        
-        return jsonify({'file_url': output_file})
-
-# The main entry point
 if __name__ == '__main__':
-    print(f"Starting Flask app from {__file__}")
-    app = create_app()
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=int(os.getenv('PORT', 5000)))

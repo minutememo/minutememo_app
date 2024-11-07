@@ -16,7 +16,7 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setMessage('');
-
+  
     try {
       const response = await axios.post(`${backendUrl}/auth/login`, {
         email,
@@ -24,12 +24,12 @@ const LoginPage = () => {
       }, {
         withCredentials: true,  // Ensure credentials are included in the request
       });
-
+  
       if (response && response.data) {
         setMessage(response.data.message);
         if (response.data.message === 'Login successful') {
           loginUser({ email });  // Use loginUser to set user and store in localStorage
-          navigate('/');  // Redirect to the dashboard after successful login
+          navigate('/start-here');  // Redirect to GetStartedPage after successful login
         }
       } else {
         setMessage('Login failed: Invalid response');
@@ -44,6 +44,11 @@ const LoginPage = () => {
   const handleGoogleLogin = () => {
     // Redirect the user to the Google OAuth login URL on the backend
     window.location.href = `${backendUrl}/auth/login/google`;
+  };
+
+  const handleMicrosoftLogin = () => {
+    // Redirect the user to the Microsoft OAuth login URL on the backend
+    window.location.href = `${backendUrl}/auth/login/microsoft`;
   };
 
   return (
@@ -76,6 +81,7 @@ const LoginPage = () => {
           <button type="submit" className="login-button">Login</button>
         </form>
 
+        {/* Google Sign-in Button */}
         <button className="gsi-material-button" onClick={handleGoogleLogin}>
           <div className="gsi-material-button-state"></div>
           <div className="gsi-material-button-content-wrapper">
@@ -90,6 +96,23 @@ const LoginPage = () => {
             </div>
             <span className="gsi-material-button-contents">Sign in with Google</span>
             <span style={{ display: 'none' }}>Sign in with Google</span>
+          </div>
+        </button>
+
+        {/* Microsoft Sign-in Button */}
+        <button className="gsi-material-button" onClick={handleMicrosoftLogin}>
+          <div className="gsi-material-button-state"></div>
+          <div className="gsi-material-button-content-wrapper">
+            <div className="gsi-material-button-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path fill="#F25022" d="M12 12H2.004V2H12v10z"></path>
+                <path fill="#7FBA00" d="M22 12h-10V2h10v10z"></path>
+                <path fill="#00A4EF" d="M12 22H2.004V12H12v10z"></path>
+                <path fill="#FFB900" d="M22 22h-10V12h10v10z"></path>
+              </svg>
+            </div>
+            <span className="gsi-material-button-contents">Sign in with Microsoft</span>
+            <span style={{ display: 'none' }}>Sign in with Microsoft</span>
           </div>
         </button>
 

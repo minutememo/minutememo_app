@@ -1,13 +1,49 @@
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from sqlalchemy import Column, String, Integer, DateTime, ForeignKey, Boolean, Text, UniqueConstraint
+from sqlalchemy import (
+    Column, String, Integer, DateTime, ForeignKey, Boolean, Text, UniqueConstraint
+)
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship, backref
 import uuid
 from extensions import db
 from enum import Enum
 
+# ==========================
+# Association Tables
+# ==========================
+
+# Association table for many-to-many relationship between User and Company
+user_company_association = db.Table(
+    'user_company_association',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
+    db.Column('company_id', db.Integer, db.ForeignKey('company.id'), primary_key=True),
+    db.UniqueConstraint('user_id', 'company_id', name='uix_user_company_association'),
+    extend_existing=True
+)
+
+# Existing Junction table for User and MeetingHub
+user_meeting_hub = db.Table(
+    'user_meeting_hub',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
+    db.Column('meeting_hub_id', db.Integer, db.ForeignKey('meeting_hub.id'), primary_key=True),
+    db.UniqueConstraint('user_id', 'meeting_hub_id', name='uix_user_meeting_hub'),
+    extend_existing=True
+)
+
+# Existing Junction table for User and MeetingSession
+user_meeting_session = db.Table(
+    'user_meeting_session',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
+    db.Column('meeting_session_id', db.Integer, db.ForeignKey('meeting_session.id'), primary_key=True),
+    db.UniqueConstraint('user_id', 'meeting_session_id', name='uix_user_meeting_session'),
+    extend_existing=True
+)
+
+# ==========================
+# Models
+# ==========================
 
 class Company(db.Model):
     __table_args__ = {'extend_existing': True}
@@ -21,12 +57,18 @@ class Company(db.Model):
     country = db.Column(db.String(64))
     phone_number = db.Column(db.String(20))
 
+    # Existing one-to-many relationship
     users = db.relationship('User', backref='company', lazy=True)
-    departments = db.relationship('Department', backref='company', lazy=True)  
-    roles = db.relationship('Role', backref='company', lazy=True)  
 
-    subscriptions = db.relationship('Subscription', backref='company', lazy=True)  
+    # Existing relationships
+    departments = db.relationship('Department', backref='company', lazy=True)
+    roles = db.relationship('Role', backref='company', lazy=True)
+    subscriptions = db.relationship('Subscription', backref='company', lazy=True)
     payments = db.relationship('Payment', backref='company', lazy=True)
+
+    # Access to additional users via backref from User
+    # company.additional_users will be available through User.additional_companies
+
 
 class MeetingParticipant(db.Model):
     __tablename__ = 'meeting_participants'  # **Explicitly define the table name**
@@ -42,6 +84,7 @@ class MeetingParticipant(db.Model):
     raci_role_id = db.Column(db.Integer, db.ForeignKey('raci_role.id'), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
+
 class User(UserMixin, db.Model):
     __table_args__ = {'extend_existing': True}
 
@@ -52,45 +95,85 @@ class User(UserMixin, db.Model):
     last_name = db.Column(db.String(64))
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
 
-    # Relationships
-    recordings = db.relationship('Recording', backref='user', lazy=True)
-    meeting_hubs = db.relationship('MeetingHub', secondary='user_meeting_hub', backref=db.backref('users', lazy='dynamic'))
-    meetings = db.relationship('Meeting', secondary='meeting_participants', backref=db.backref('users', lazy='dynamic'))
-    meeting_sessions = db.relationship('MeetingSession', secondary='user_meeting_session', backref=db.backref('users', lazy='dynamic'))
+    sso_platform = db.Column(db.String(10), nullable=True)  # 'google' or 'microsoft'
 
-    # Role and status
+    # Existing Relationships
+    recordings = db.relationship('Recording', backref='user', lazy=True)
+    meeting_hubs = db.relationship(
+        'MeetingHub',
+        secondary=user_meeting_hub,
+        backref=db.backref('users', lazy='dynamic')
+    )
+    meetings = db.relationship(
+        'Meeting',
+        secondary='meeting_participants',
+        backref=db.backref('users', lazy='dynamic')
+    )
+    meeting_sessions = db.relationship(
+        'MeetingSession',
+        secondary=user_meeting_session,
+        backref=db.backref('users', lazy='dynamic')
+    )
+
+    # New Many-to-Many Relationship
+    additional_companies = db.relationship(
+        'Company',
+        secondary=user_company_association,
+        backref=db.backref('additional_users', lazy='dynamic'),
+        lazy='dynamic'
+    )
+
+    # Role and status fields
     role_assignments = db.relationship('UserRoleAssignment', backref='user', lazy='dynamic')
     meeting_participants = db.relationship('MeetingParticipant', backref='user', lazy='dynamic')
 
-    # New status fields to handle user activity, suspension, and ban
-    is_active = db.Column(db.Boolean, nullable=False, default=True)  # Indicates if the user is active
-    is_suspended = db.Column(db.Boolean, nullable=False, default=False)  # Indicates if the user is suspended
-    is_banned = db.Column(db.Boolean, nullable=False, default=False)  # Indicates if the user is banned
+    # User activity status
+    is_active = db.Column(db.Boolean, nullable=False, default=True)
+    is_suspended = db.Column(db.Boolean, nullable=False, default=False)
+    is_banned = db.Column(db.Boolean, nullable=False, default=False)
 
     # Active meeting hub reference
     active_meeting_hub_id = db.Column(db.Integer, db.ForeignKey('meeting_hub.id'), nullable=True)
 
-    # User type and role fields (consider deprecating if using Role model)
-    user_type = db.Column(db.String(20), nullable=False, default='internal')  
-    internal_user_role = db.Column(db.String(20), nullable=True)  
-
-    # Fields for storing Google OAuth token, updated to TEXT
+    # OAuth token storage fields
     google_oauth_token = db.Column(db.Text, nullable=True)
     google_refresh_token = db.Column(db.Text, nullable=True)
     google_token_expires_at = db.Column(db.DateTime, nullable=True)
 
+    microsoft_oauth_token = db.Column(db.Text, nullable=True)
+    microsoft_refresh_token = db.Column(db.Text, nullable=True)
+    microsoft_token_expires_at = db.Column(db.DateTime, nullable=True)
+
+    # Password management
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+    # Token validity checkers
     def is_google_token_valid(self):
         if self.google_token_expires_at:
             return datetime.utcnow() < self.google_token_expires_at
         return False
 
-# New Department model
+    def is_microsoft_token_valid(self):
+        if self.microsoft_token_expires_at:
+            return datetime.utcnow() < self.microsoft_token_expires_at
+        return False
+
+    # Token refreshing logic (if you need automatic refreshes)
+    def refresh_google_token(self):
+        if not self.is_google_token_valid():
+            # Add logic to refresh Google token using the stored refresh token
+            pass
+
+    def refresh_microsoft_token(self):
+        if not self.is_microsoft_token_valid():
+            # Add logic to refresh Microsoft token using the stored refresh token
+            pass
+
+
 class Department(db.Model):
     __table_args__ = {'extend_existing': True}
 
@@ -102,7 +185,7 @@ class Department(db.Model):
     # Relationships
     user_role_assignments = db.relationship('UserRoleAssignment', backref='department', lazy='dynamic')
 
-# New Role model
+
 class Role(db.Model):
     __table_args__ = {'extend_existing': True}
 
@@ -114,6 +197,7 @@ class Role(db.Model):
 
     # Relationships
     user_role_assignments = db.relationship('UserRoleAssignment', backref='role', lazy='dynamic')
+
 
 class UserRoleAssignment(db.Model):
     __table_args__ = (
@@ -135,6 +219,8 @@ class UserRoleAssignment(db.Model):
         back_populates='user_role_assignments'
         # Removed 'lazy' parameter
     )
+
+
 class MeetingHub(db.Model):
     __table_args__ = {'extend_existing': True}
 
@@ -145,7 +231,6 @@ class MeetingHub(db.Model):
     created_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  # Track who created the hub
     admin_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)  # Track admin if different from creator
 
-
     # Relationships
     meetings = db.relationship('Meeting', backref='meeting_hub', lazy=True)
     user_role_assignments = db.relationship(
@@ -154,11 +239,12 @@ class MeetingHub(db.Model):
         lazy='dynamic'  # One-to-Many relationship; 'dynamic' is acceptable here
     )
 
-# Existing Meeting model, updated
+
 class VisibilitySettings(str, Enum):
     ALL_HUB_MEMBERS = 'all_hub_members'
     PARTICIPANTS = 'participants'
     PRIVATE = 'private'
+
 
 class Meeting(db.Model):
     __table_args__ = {'extend_existing': True}
@@ -193,7 +279,7 @@ class Meeting(db.Model):
             return self.created_by == user.id
         return False
 
-# New RaciRole model
+
 class RaciRole(db.Model):
     __table_args__ = {'extend_existing': True}
 
@@ -204,7 +290,7 @@ class RaciRole(db.Model):
     # Relationships
     meeting_participants = db.relationship('MeetingParticipant', backref='raci_role', lazy='dynamic')
 
-# Existing MeetingSession model
+
 class MeetingSession(db.Model):
     __table_args__ = {'extend_existing': True}
 
@@ -221,7 +307,7 @@ class MeetingSession(db.Model):
     short_summary = db.Column(db.Text)  # Store short summary
     long_summary = db.Column(db.Text)  # Store long summary
 
-# Existing ActionItem model
+
 class ActionItem(db.Model):
     __table_args__ = {'extend_existing': True}
 
@@ -248,7 +334,7 @@ class ActionItem(db.Model):
             'sorting_id': self.sorting_id
         }
 
-# Existing Recording model
+
 class Recording(db.Model):
     __table_args__ = {'extend_existing': True}
 
@@ -260,7 +346,7 @@ class Recording(db.Model):
     concatenation_file_name = db.Column(db.String(256), nullable=False)
     meeting_session_id = db.Column(db.Integer, db.ForeignKey('meeting_session.id'), nullable=False)
 
-# Existing Subscription model
+
 class Subscription(db.Model):
     __table_args__ = {'extend_existing': True}
 
@@ -294,7 +380,6 @@ class Subscription(db.Model):
         return User.query.filter_by(company_id=self.company_id, is_active=True, is_suspended=False).count()
 
 
-# Existing Payment model
 class Payment(db.Model):
     __table_args__ = {'extend_existing': True}
 
@@ -306,18 +391,17 @@ class Payment(db.Model):
     payment_method = db.Column(db.String(50), nullable=False)
     status = db.Column(db.String(20), nullable=False, default='successful')
 
-# Junction table to manage many-to-many relationship between User and MeetingHub
-user_meeting_hub = db.Table('user_meeting_hub',
-    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
-    db.Column('meeting_hub_id', db.Integer, db.ForeignKey('meeting_hub.id'), primary_key=True),
-    db.UniqueConstraint('user_id', 'meeting_hub_id', name='uix_user_meeting_hub'),
-    __table_args__ = {'extend_existing': True}
-)
 
-# Junction table to manage many-to-many relationship between User and MeetingSession
-user_meeting_session = db.Table('user_meeting_session',
-    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
-    db.Column('meeting_session_id', db.Integer, db.ForeignKey('meeting_session.id'), primary_key=True),
-    db.UniqueConstraint('user_id', 'meeting_session_id', name='uix_user_meeting_session'),
-    __table_args__ = {'extend_existing': True}
-)
+# ==========================
+# Additional Models (if any)
+# ==========================
+
+# If you have additional models not shown here, ensure they are included below.
+# For example, models like 'PaymentMethod', 'Invoice', etc.
+
+
+# ==========================
+# Helper Methods or Additional Classes
+# ==========================
+
+# Include any helper functions, mixins, or additional classes below.

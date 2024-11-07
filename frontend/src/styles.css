@@ -826,3 +826,215 @@ audio {
     margin-left: 0;
   }
 }
+
+.oauth-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 10px 0;
+  cursor: pointer;
+  width: 100%;
+  max-width: 400px;
+  transition: background-color 0.3s ease;
+}
+
+.oauth-button-content-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.oauth-button-icon {
+  margin-right: 10px;
+}
+
+.oauth-button:hover {
+  background-color: #f5f5f5;
+}
+
+.oauth-button-contents {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.oauth-button.google:hover {
+  background-color: #eaeaea;
+}
+
+.oauth-button.microsoft:hover {
+  background-color: #eaeaea;
+}
+
+.start-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f8f5ef;
+  padding: 20px;
+}
+
+.start-card {
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+.start-card h1 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.start-card p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.button-primary {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-primary:hover {
+  background-color: #45a049;
+}
+
+.email-consent {
+  margin-top: 20px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.email-consent label {
+  margin: 0 10px;
+}
+
+.try-another-email {
+  margin-top: 30px;
+  color: #333;
+  font-size: 1rem;
+}
+
+.try-another-email button {
+  background-color: transparent;
+  color: #4CAF50;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.illustration {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.illustration img {
+  width: 100px;
+  height: auto;
+}
+
+.company-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.company-item {
+  padding: 12px;
+  margin-bottom: 10px;
+  color: #18A04F;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background-color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  text-align: center;
+}
+
+.company-item:hover {
+  background-color: #18A04F;
+  color: #fff;
+}
+
+/* Company Card Styles */
+.company-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.company-card {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.company-card:hover {
+  background-color: #18A04F;
+}
+
+.company-logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  margin-right: 15px;
+}
+
+.company-info {
+  flex-grow: 1;
+}
+
+.company-name {
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.company-card:hover .company-name {
+  color: #fff;
+}
+
+.company-members {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.company-card:hover .company-members {
+  color: #fff;
+}
+
+.company-arrow {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.company-card:hover .company-arrow {
+  color: #fff;
+}
